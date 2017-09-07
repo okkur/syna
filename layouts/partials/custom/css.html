@@ -1,0 +1,14 @@
+{{ range .Site.Params.custom.css }}
+  {{ "<!-- Custom CSS -->" | safeHTML }}
+  <link rel="stylesheet" href="{{ . | relURL }}">
+{{ end }}
+
+{{ "<!-- Custom Fonts -->" | safeHTML }}
+{{ if .Site.Params.custom.iconFont }}
+  <link href="{{ . | relURL }}" rel="stylesheet" type="text/css">
+{{ end }}
+
+{{ with .Site.Params.custom.favicon }}
+  <link rel="shortcut icon" type="image/x-icon" href="{{ . | relURL }}">
+  <link rel="icon" type="image/x-icon" href="{{ . | relURL }}">
+{{ end }}

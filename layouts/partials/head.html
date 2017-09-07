@@ -1,0 +1,45 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="Content-Language" content="{{ .Site.LanguageCode | default "en-us" }}">
+  <meta name="google" value="notranslate">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="description" content="{{ .Description }}">
+  <meta property="og:title" content="{{ .Title }}">
+  <meta property="og:url" content="{{ .URL | absURL }}">
+  <meta property="og:description" content="{{ .Description }}">
+  <meta property="og:image" content="{{ .Site.Params.image }}">
+  <meta property="og:site_name" content="{{ .Site.Title }}">
+  <meta property="og:type" content="website">
+  {{ with .Site.Params.name }}
+    <meta name="author" content="{{ . }}">
+  {{ end }}
+
+  {{ .Hugo.Generator }}
+
+  <title>
+    {{ .Title }}
+    {{ if not .IsHome }} &middot; {{ .Site.Title }}{{ end }}
+  </title>
+
+  {{ "<!-- Bootstrap -->" | safeHTML }}
+  <link href="{{ "css/bootstrap-4.beta/bootstrap.min.css" | relURL }}" rel="stylesheet">
+  <link href="{{ "css/bootstrap-4.beta/bootstrap-grid.min.css" | relURL }}" rel="stylesheet">
+  <link href="{{ "css/bootstrap-4.beta/bootstrap-reboot.min.css" | relURL }}" rel="stylesheet">
+
+  {{ "<!-- Fonts -->" | safeHTML }}
+  {{ if not .Site.Params.custom.iconFont }}
+    <link href="{{ "fonts/fontawesome-4.7.0/font-awesome.min.css" | relURL }}" rel="stylesheet" type="text/css">
+  {{ end }}
+
+  {{ "<!-- Theme -->" | safeHTML }}
+    <link href="{{ "css/syna.css" | relURL }}" rel="stylesheet" type="text/css">
+
+  {{ with .Site.Params.favicon }}
+    <link rel="shortcut icon" type="image/x-icon" href="{{ . | relURL }}">
+    <link rel="icon" type="image/x-icon" href="{{ . | relURL }}">
+  {{ end }}
+
+    {{ partial "custom/css.html" . }}
+</head>

@@ -1,0 +1,3 @@
+{{ range .Site.Params.custom.js }}
+  <script src="{{ . | relURL }}"></script>
+{{ end }}

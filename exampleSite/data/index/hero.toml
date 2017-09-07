@@ -1,0 +1,13 @@
++++
+#disable = true
+weight = 10
+title = "Syna Theme"
+subtitle = "Showcase your next project"
+button = "Details"
+link = "#details"
+lastmod = "2017-09-07"
+date = "2016-09-07"
+header = "header.jpg"
+logo = "logo-by.svg"
+particles = true
++++

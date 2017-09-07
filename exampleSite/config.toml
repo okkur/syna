@@ -1,0 +1,42 @@
+# Site settings
+baseurl = "https://example.org/"
+languageCode = "en-us"
+title = "Okkur - Syna"
+theme = "syna"
+themesDir = "../.."
+
+# Google Analytics tracking
+googleAnalytics = ""
+
+[params]
+  name = "Okkur Authors"
+  description = "Open Source Theme for your next project"
+  image = "header.jpg" #default: partial.js
+
+  # Branding options
+  [params.branding]
+    logoNavigation = "logo.svg"
+    textNavigation = "Syna"
+
+  # Theme customizations
+  # Assets relative to 'static/'
+  [params.custom]
+    favicon = "favicon.ico"
+    iconFont = ""
+    css = []
+    js  = []
+
+  # Repository Button
+  [params.repoButton]
+    url = "https://github.com/okkur/syna"
+    text = "Star" # default: "Star"
+    icon = "fa-github" # default: "fa-github"
+
+  # Piwik tracking
+  [params.analytics.piwik]
+    URL = "https://stats.example.com"
+    ID = "42"
+    # Track all subdomains with "*.example.com".
+    domain = "www.example.com"
+    # Optional hash for integrity check.
+    hash = "sha512-RfeD0pacGTqy9m7U6PgehQfS4cc7SIt+e+P+H5e848kEvB/RW84CUGO3O4O3LNbxjevym6KPUZ8muPsMrI8WIw=="

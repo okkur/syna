@@ -1,0 +1,18 @@
+<html lang="{{ .Site.LanguageCode | default (printf "en-us") }}">
+
+  {{ partial "head.html" . }}
+
+  <body>
+    {{ partial "nav.html" . }}
+
+    {{ with $.Site.Data.index }}
+      {{ $.Scratch.Set "data" . }}
+
+        {{ partial "fragments/hero.html" $ }}
+
+    {{ end }}
+
+    {{ partial "js.html" . }}
+
+  </body>
+</html>

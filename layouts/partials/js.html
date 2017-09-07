@@ -1,0 +1,26 @@
+{{ "<!-- jQuery -->" | safeHTML }}
+<script src="{{ "js/jquery-3.2.1/jquery.min.js" | relURL }}"></script>
+
+{{ "<!-- Bootstrap Addons -->" | safeHTML }}
+<script src="{{ "js/popper-11.1.0/popper.min.js" | relURL }}"></script>
+
+{{ "<!-- Bootstrap Core -->" | safeHTML }}
+<script src="{{ "js/bootstrap-4.beta/bootstrap.min.js" | relURL }}"></script>
+
+{{ if not .Site.Data.index.hero.image }}
+  {{ "<!-- Particles -->" | safeHTML }}
+  <script src="{{ "js/particles-2.0/particles.min.js" | relURL }}"></script>
+  <script src="{{ "js/particles-2.0/config.js" | relURL }}"></script>
+{{ end }}
+
+{{ with .Site.Params.contact.captcha }}
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+{{ end }}
+
+{{ template "_internal/google_analytics_async.html" . }}
+
+{{ if .Site.Params.analytics.piwik }}
+  {{ partial "_analytics/piwik.html" . }}
+{{ end }}
+
+{{ partial "custom/js.html" . }}

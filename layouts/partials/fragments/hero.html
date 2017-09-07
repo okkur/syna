@@ -1,0 +1,45 @@
+{{ $data := ($.Scratch.Get "data").hero }}
+{{ "<!-- Hero -->" | safeHTML }}
+<header>
+  {{ with $data.header }}
+    <div class="jumbotron text-center header-image">
+  {{ else }}
+    <div class="jumbotron text-center">
+  {{ end }}
+
+  {{ if $data.particles }}
+    <div id="particles-js"></div>
+  {{ end }}
+
+  <div class="overlay">
+
+    {{ with $data.logo }}
+      <img src="{{ (printf "images/%s" .) | relURL }}"></img>
+    {{ else }}
+      <h1 class="jumbotron-heading display-4">
+        {{ with $data.title }}
+          {{ . }}
+        {{ end }}
+      </h1>
+    {{ end }}
+      <p class="lead display-3">
+        {{ with $data.subtitle }}
+          {{ . | markdownify }}
+        {{ end }}
+      </p>
+      {{ if $data.button }}
+       <a class="btn btn-primary btn-lg{{ if hasPrefix $data.link "#" }} anchor {{ end }}" href="{{ $data.link | relLangURL }}">
+          {{ $data.button }}
+       </a>
+      {{ end }}
+      {{ if $data.subscribe }}
+        <div class="lead">
+          <form class="form-inline">
+            <input type="email" class="form-control mb-2 mr-sm-2 mb-sm-0" id="subscribeForm" placeholder="jane@example.com">
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </form>
+        </div>
+      {{ end }}
+    </div>
+  </div>
+</header>
