@@ -1,0 +1,47 @@
+{{ "<!-- Footer section -->" | safeHTML }}
+<footer class=" bg-dark">
+  <div class="container">
+    <div class="row p-3">
+      <div class="col-md">
+        <div class="row navbar-text text-light justify-content-center">
+
+        {{ with .Site.Copyright }}
+        {{ . }}
+        {{ else }}
+        <div class="d-inline-flex mr-1">
+
+          © Copyright 2017
+        </div>
+
+          <div class="d-inline-flex">
+
+         {{ printf  "by %s" .Site.Params.name }}
+       </div>
+
+         {{ end }}
+
+    </div>
+  </div>
+
+      <div class="col-md">
+        <div class="row my-2 justify-content-center">
+
+      <ul class="nav">
+        {{ range sort .Site.Menus.legalfooter }}
+          <li class="nav-item">
+            <a class="nav-link text-light py-0" href="{{ .URL | relLangURL }}"
+              {{ if hasPrefix .URL "#" }}
+                class="anchor"
+              {{ end }}>
+              {{ .Name }}
+            </a>
+          </li>
+        {{ end }}
+      </ul>
+    </div>
+  </div>
+
+  </div>
+
+  </div>
+</footer>

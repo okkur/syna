@@ -28,13 +28,16 @@
   <link href="{{ "css/bootstrap-4.beta/bootstrap-grid.min.css" | relURL }}" rel="stylesheet">
   <link href="{{ "css/bootstrap-4.beta/bootstrap-reboot.min.css" | relURL }}" rel="stylesheet">
 
+  {{ "<!-- Theme -->" | safeHTML }}
+    <link href="{{ "css/syna.css" | relURL }}" rel="stylesheet" type="text/css">
+    <link href="{{ "css/overwrite.css" | relURL }}" rel="stylesheet" type="text/css">
+
   {{ "<!-- Fonts -->" | safeHTML }}
   {{ if not .Site.Params.custom.iconFont }}
     <link href="{{ "fonts/fontawesome-4.7.0/font-awesome.min.css" | relURL }}" rel="stylesheet" type="text/css">
   {{ end }}
 
-  {{ "<!-- Theme -->" | safeHTML }}
-    <link href="{{ "css/syna.css" | relURL }}" rel="stylesheet" type="text/css">
+
 
   {{ with .Site.Params.favicon }}
     <link rel="shortcut icon" type="image/x-icon" href="{{ . | relURL }}">

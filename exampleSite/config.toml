@@ -4,12 +4,13 @@ languageCode = "en-us"
 title = "Okkur - Syna"
 theme = "syna"
 themesDir = "../.."
+copyright = "" # default: Copyright $Year $params.name
 
 # Google Analytics tracking
 googleAnalytics = ""
 
 [params]
-  name = "Okkur Authors"
+  name = "Okkur Labs"
   description = "Open Source Theme for your next project"
   image = "header.jpg" #default: partial.js
 
@@ -17,11 +18,13 @@ googleAnalytics = ""
   [params.branding]
     logoNavigation = "logo.svg"
     textNavigation = "Syna"
+    logoFooter = "logo-by.svg"
+    textFooter = "Copyright 2017 Syna Authors"
 
   # Theme customizations
   # Assets relative to 'static/'
   [params.custom]
-    favicon = "favicon.ico"
+    favicon = "favicon.svg"
     iconFont = ""
     css = []
     js  = []
@@ -34,9 +37,18 @@ googleAnalytics = ""
 
   # Piwik tracking
   [params.analytics.piwik]
-    URL = "https://stats.example.com"
-    ID = "42"
-    # Track all subdomains with "*.example.com".
-    domain = "www.example.com"
-    # Optional hash for integrity check.
+    url = "https://stats.example.com"
+    id = "42"
+    domain = "www.example.com" # Track subdomains via "*.example.com"
+    # Optional: Hash for integrity check
     hash = "sha512-RfeD0pacGTqy9m7U6PgehQfS4cc7SIt+e+P+H5e848kEvB/RW84CUGO3O4O3LNbxjevym6KPUZ8muPsMrI8WIw=="
+
+    [[menu.legalFooter]]
+      url = "about"
+      name = "About Us"
+      weight = 10
+
+    [[menu.legalFooter]]
+      url = "terms"
+      name = "Terms"
+      weight = 30

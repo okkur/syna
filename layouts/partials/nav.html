@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-2">
+<nav class="overlay navbar navbar-expand-lg navbar-dark bg-dark py-2">
   <div class="container">
     {{ if .Site.Params.branding.logoNavigation }}
       <a class="navbar-brand" href="{{ "#page-top" | relLangURL }}">
@@ -17,31 +17,31 @@
       <ul class="navbar-nav">
         {{ range .Site.Menus.prepend }}
           <li class="nav-item">
-            <a class="nav-link" href="{{ .URL | relLangURL }}"
-              {{ if hasPrefix .URL "#" }}
+            <a class="nav-link" href="{{ .url | relLangURL }}"
+              {{ if hasPrefix .url "#" }}
                 class="anchor"
               {{ end }}>
-              {{ .Name }}
+              {{ .name }}
             </a>
           </li>
         {{ end }}
         {{ range .Site.Menus.main }}
           <li class="nav-item">
-            <a class="nav-link" href="{{ .URL | relLangURL }}"
-              {{ if hasPrefix .URL "#" }}
+            <a class="nav-link" href="{{ .url | relLangURL }}"
+              {{ if hasPrefix .url "#" }}
                 class="anchor"
               {{ end }}>
-              {{ .Name }}
+              {{ .name }}
             </a>
           </li>
         {{ end }}
         {{ range .Site.Menus.postpend }}
           <li class="nav-item">
-            <a class="nav-link" href="{{ .URL | relLangURL }}"
-              {{ if hasPrefix .URL "#" }}
+            <a class="nav-link" href="{{ .url | relLangURL }}"
+              {{ if hasPrefix .url "#" }}
                 class="anchor"
               {{ end }}>
-              {{ .Name }}
+              {{ .name }}
             </a>
           </li>
         {{ end }}
@@ -57,7 +57,7 @@
   </div>
       {{ if .Site.Params.repoButton }}
         <div class="d-none d-lg-block ml-auto">
-        <a class="btn btn-light" href="{{ .Site.Params.RepoButton.Url }}" role="button">
+        <a class="btn btn-light" href="{{ .Site.Params.repoButton.url }}" role="button">
           <i class="fa {{ .Site.Params.repoButton.icon | default (printf "fa-github") }} mr-1"></i>
           {{ .Site.Params.repoButton.text | default (printf "Star") }}
         </a>
