@@ -23,6 +23,8 @@ googleAnalytics = ""
   # Assets relative to 'static/'
   [params.custom]
     favicon = "favicon.ico"
+    faviconICOSizes = "16x16 32x32"
+    faviconPNG = "favicon.png"
     faviconSVG = "favicon.svg"
     iconFont = ""
     css = []
