@@ -42,8 +42,8 @@ googleAnalytics = ""
     hash = "sha512-RfeD0pacGTqy9m7U6PgehQfS4cc7SIt+e+P+H5e848kEvB/RW84CUGO3O4O3LNbxjevym6KPUZ8muPsMrI8WIw=="
 
 [[menu.main]]
-  url = "#details"
-  name = "Services"
+  url = "#users"
+  name = "Users"
   weight = 10
 
 [[menu.main]]
@@ -67,13 +67,13 @@ googleAnalytics = ""
   weight = 30
 
 [[menu.footer]]
-  url = "#"
-  name = "Press"
+  url = "#tools"
+  name = "Tools"
   weight = 10
 
 [[menu.footer]]
-  url = "#"
-  name = "Fun"
+  url = "#users"
+  name = "Users"
   weight = 30
 
 [[menu.footer]]

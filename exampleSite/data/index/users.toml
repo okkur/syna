@@ -2,6 +2,7 @@
 fragment = "logos"
 #disabled = false
 dark= true
+selfLink = "users"
 weight = 700
 title = "Our Awesome Users"
 lastmod = "2017-09-09"

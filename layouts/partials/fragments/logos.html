@@ -1,6 +1,6 @@
 {{ $data := ($.Scratch.Get "data") }}
 {{ "<!-- Logos -->" | safeHTML }}
-<section class="logos">
+<section {{ with $data.selfLink }}id="{{ . }}"{{ end }}>
   {{ if $data.dark }}
     <div class="container-fluid bg-dark">
       <div class="container py-3">
