@@ -1,0 +1,77 @@
+{{ $data := ($.Scratch.Get "data") }}
+{{ "<!-- Logos -->" | safeHTML }}
+<section class="logos">
+  {{ if $data.dark }}
+    <div class="container-fluid bg-dark">
+      <div class="container py-3">
+        {{ with $data.title }}
+          <div class="row">
+            <div class="col text-center text-secondary">
+              <h4>
+                {{ . | markdownify }}
+              </h4>
+            </div>
+          </div>
+        {{ end }}
+        {{ with $data.subtitle }}
+          <div class="row">
+            <div class="col text-center text-muted text-secondary">
+              <h5>
+                {{ . | markdownify }}
+              </h5>
+            </div>
+          </div>
+        {{ end }}
+        <div class="row justify-content-center align-items-center">
+          {{ range sort $data.logos }}
+            <div class="col-12 col-sm-6 col-md-3 text-center py-2">
+              {{ $url := printf "images/logos/%s" .logo }}
+              {{ if .link }}
+                <a href="{{ .link }}">
+                  <img src="{{ $url | absURL }}" class="p-2 w-75" alt="{{ .name }}">
+                </a>
+              {{ else }}
+                <img src="{{ $url | absURL }}" class="p-2 w-75" alt="{{ .name }}">
+              {{ end }}
+            </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  {{ else }}
+    <div class="container py-3">
+      {{ with $data.title }}
+        <div class="row">
+          <div class="col text-center">
+            <h4>
+              {{ . | markdownify }}
+            </h4>
+          </div>
+        </div>
+      {{ end }}
+      {{ with $data.subtitle }}
+        <div class="row">
+          <div class="col text-center text-muted">
+            <h5>
+              {{ . | markdownify }}
+            </h5>
+          </div>
+        </div>
+      {{ end }}
+      <div class="row justify-content-center align-items-center">
+        {{ range sort $data.logos }}
+          <div class="col-12 col-sm-6 col-md-3 text-center py-2">
+            {{ $url := printf "images/logos/%s" .logo }}
+            {{ if .link }}
+              <a href="{{ .link }}">
+                <img src="{{ $url | absURL }}" class="p-2 w-75" alt="{{ .name }}">
+              </a>
+            {{ else }}
+              <img src="{{ $url | absURL }}" class="p-2 w-75" alt="{{ .name }}">
+            {{ end }}
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  {{ end }}
+</section>

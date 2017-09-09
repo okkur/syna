@@ -1,4 +1,4 @@
-{{ $data := ($.Scratch.Get "data").footer }}
+{{ $data := ($.Scratch.Get "data") }}
 {{ "<!-- Footer section -->" | safeHTML }}
 <div class="container-fluid bg-dark">
   <div class="container py-5">
@@ -17,19 +17,16 @@
           </p>
         {{ end }}
         {{ if $.Site.Menus.footersocial }}
-        <div class="row justify-content-left">
-
+          <div class="row justify-content-left">
             {{ range sort $.Site.Menus.footersocial }}
-            <span class="fa-stack fa-2x mt-3">
+              <span class="fa-stack fa-2x mt-3">
                 <a href="{{ .URL | relLangURL }}">
                   <i class="fa fa-circle fa-stack-2x"></i>
                   <i class="fa fa-{{ .Pre }} fa-stack-1x fa-fw text-light"></i>
                 </a>
               </span>
-
             {{ end }}
-                  </div>
-
+          </div>
         {{ end }}
       </div>
       <div class="col-md m-2 text-secondary">
@@ -38,33 +35,33 @@
             {{ . }}
           </h4>
         {{ end }}
-        <ul class="nav flex-column">
-          {{ if $.Site.Menus.footer }}
-            {{ range sort $.Site.Menus.footer }}
-              <li class="nav-item">
-                <a class="nav-link text-secondary p-0 display-5" href="{{ .URL | relLangURL }}"
-                  {{ if hasPrefix .URL "#" }}
-                    class="anchor"
-                  {{ end }}>
-                  {{ .Name }}
-                </a>
-              </li>
-            {{ end }}
+        {{ if $.Site.Menus.footer }}
+          <ul class="nav flex-column">
+              {{ range sort $.Site.Menus.footer }}
+                <li class="nav-item">
+                  <a class="nav-link text-secondary p-0 display-5" href="{{ .URL | relLangURL }}"
+                    {{ if hasPrefix .URL "#" }}
+                      class="anchor"
+                    {{ end }}>
+                    {{ .Name }}
+                  </a>
+                </li>
+              {{ end }}
+          </ul>
+        {{ end }}
+      </div>
+      {{ with $data.descriptionTitle }}
+        <div class="col-md m-2 text-secondary">
+            <h4>
+              {{ . }}
+            </h4>
           {{ end }}
-        </ul>
-      </div>
-      <div class="col-md m-2 text-secondary">
-        {{ with $data.descriptionTitle }}
-          <h4>
-            {{ . }}
-          </h4>
-        {{ end }}
-        {{ with $data.description }}
-          <p>
-            {{ . | markdownify }}
-          </p>
-        {{ end }}
-      </div>
+          {{ with $data.description }}
+            <p>
+              {{ . | markdownify }}
+            </p>
+        </div>
+      {{ end }}
     </div>
   </div>
 </div>

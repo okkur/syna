@@ -1,0 +1,25 @@
++++
+fragment = "logos"
+#disabled = false
+weight = 800
+title = "Open Source"
+subtitle = "*at every level*"
+
+lastmod = "2017-09-09"
+date = "2017-09-09"
+
+[[logos]]
+  name = "hugo"
+  weight = 20
+  logo = "hugo.svg"
+
+[[logos]]
+  name = "go"
+  weight = 10
+  logo = "go.svg"
+
+[[logos]]
+  name = "caddy"
+  weight = 30
+  logo = "caddy.svg"
++++

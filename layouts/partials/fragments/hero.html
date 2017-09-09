@@ -1,4 +1,4 @@
-{{ $data := ($.Scratch.Get "data").hero }}
+{{ $data := ($.Scratch.Get "data") }}
 {{ "<!-- Hero -->" | safeHTML }}
 <header>
   {{ with $data.header }}
@@ -6,29 +6,27 @@
   {{ else }}
     <div class="jumbotron text-center">
   {{ end }}
-
   {{ if $data.particles }}
     <div id="particles-js"></div>
   {{ end }}
-
   {{ with $data.logo }}
     <img class="overlay img-fluid" src="{{ (printf "images/%s" .) | relURL }}"></img>
-    <h1 class="overlay jumbotron-heading my-3">
-      {{ with $data.subtitle }}
-        {{ . | markdownify }}
-      {{ end }}
-    </h1>
+    {{ with $data.subtitle }}
+      <h1 class="overlay jumbotron-heading my-3">
+          {{ . | markdownify }}
+      </h1>
+    {{ end }}
   {{ else }}
-    <h1 class="overlay jumbotron-heading">
-      {{ with $data.title }}
-        {{ . }}
-      {{ end }}
-    </h1>
-    <p class="overlay lead">
-      {{ with $data.subtitle }}
+    {{ with $data.title }}
+      <h1 class="overlay jumbotron-heading">
+          {{ . }}
+      </h1>
+    {{ end }}
+    {{ with $data.subtitle }}
+      <p class="overlay lead">
         {{ . | markdownify }}
-      {{ end }}
-    </p>
+      </p>
+    {{ end }}
   {{ end }}
     {{ if $data.button }}
      <a class="overlay btn btn-primary btn-lg{{ if hasPrefix $data.link "#" }} anchor {{ end }}" href="{{ $data.link | relLangURL }}">

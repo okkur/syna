@@ -1,6 +1,7 @@
 +++
-#disable = true
-weight = 10
+fragment = "footer"
+#disabled = true
+weight = 900
 descriptionTitle = "About Syna"
 linkTitle = ""
 logoTitle = ""

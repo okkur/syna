@@ -5,7 +5,9 @@
       <div class="col-md">
         <div class="row navbar-text text-dark">
           {{ with .Site.Copyright }}
-            {{ . }}
+            <div class="d-inline-flex">
+              {{ . }}
+            </div>
           {{ else }}
             <div class="d-inline-flex mr-1">
               © Copyright 2017
@@ -16,24 +18,24 @@
           {{ end }}
         </div>
       </div>
-      <div class="col-md">
-        <div class="row my-2 justify-content-right">
-          {{ if .Site.Menus.legalfooter }}
-            <ul class="nav ml-auto">
-              {{ range sort .Site.Menus.legalfooter }}
-                <li class="nav-item">
-                  <a class="nav-link text-dark py-0" href="{{ .URL | relLangURL }}"
-                    {{ if hasPrefix .URL "#" }}
-                      class="anchor"
-                    {{ end }}>
-                    {{ .Name }}
-                  </a>
-                </li>
-              {{ end }}
-            </ul>
-          {{ end }}
+      {{ if .Site.Menus.legalfooter }}
+        <div class="col-md">
+          <div class="row my-2 justify-content-right">
+              <ul class="nav ml-auto">
+                {{ range sort .Site.Menus.legalfooter }}
+                  <li class="nav-item">
+                    <a class="nav-link text-dark py-0" href="{{ .URL | relLangURL }}"
+                      {{ if hasPrefix .URL "#" }}
+                        class="anchor"
+                      {{ end }}>
+                      {{ .Name }}
+                    </a>
+                  </li>
+                {{ end }}
+              </ul>
+          </div>
         </div>
-      </div>
+      {{ end }}
     </div>
   </div>
 </footer>

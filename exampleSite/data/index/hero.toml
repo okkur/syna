@@ -1,6 +1,7 @@
 +++
-#disable = true
-weight = 10
+fragment = "hero"
+#disabled = true
+weight = 100
 title = "Syna Theme"
 subtitle = "Showcase your next project"
 button = "Details"

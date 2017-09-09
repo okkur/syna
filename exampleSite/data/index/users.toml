@@ -1,0 +1,24 @@
++++
+fragment = "logos"
+#disabled = false
+dark= true
+weight = 700
+title = "Our Awesome Users"
+lastmod = "2017-09-09"
+date = "2017-09-09"
+
+[[logos]]
+  name = "txtdirect"
+  weight = 10
+  logo = "txtdirect.svg"
+
+[[logos]]
+  name = "seetheprogress"
+  weight = 20
+  logo = "stp.svg"
+
+[[logos]]
+  name = "syna"
+  weight = 30
+  logo = "syna.svg"
++++

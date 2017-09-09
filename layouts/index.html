@@ -6,12 +6,22 @@
     {{ partial "nav.html" . }}
 
     {{ with $.Site.Data.index }}
-      {{ $.Scratch.Set "data" . }}
+      {{ range sort . "weight" }}
+        {{ $.Scratch.Set "data" . }}
 
-        {{ partial "fragments/hero.html" $ }}
+        {{ if and (not .disabled) (in .fragment "hero") }}
+          {{ partial "fragments/hero.html" $ }}
+        {{ end }}
 
-        {{ partial "fragments/footer.html" $ }}
+        {{ if in .fragment "logos" }}
+          {{ partial "fragments/logos.html" $ }}
+        {{ end }}
 
+        {{ if in .fragment "footer" }}
+          {{ partial "fragments/footer.html" $ }}
+        {{ end }}
+
+      {{ end }}
     {{ end }}
 
     {{ partial "footer.html" . }}
