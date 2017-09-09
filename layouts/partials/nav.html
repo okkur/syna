@@ -1,11 +1,11 @@
 <nav class="overlay navbar navbar-expand-lg navbar-dark bg-dark py-2">
   <div class="container">
     {{ if .Site.Params.branding.logoNavigation }}
-      <a class="navbar-brand" href="{{ "#page-top" | relLangURL }}">
-        <img src="{{ (printf "images/%s" .Site.Params.branding.logoNavigation) | relURL }}" height="30" class="d-inline-block align-top" alt="{{ .Site.Params.branding.textNavigation }}">
+      <a class="navbar-brand py-0" href="{{ "#page-top" | relLangURL }}">
+        <img src="{{ (printf "images/%s" .Site.Params.branding.logoNavigation) | relURL }}" height="35" class="d-inline-block align-top" alt="{{ .Site.Params.branding.textNavigation }}">
       </a>
     {{ else }}
-      <a class="navbar-brand" href="{{ "#page-top" | relLangURL }}">
+      <a class="navbar-brand py-0" href="{{ "#page-top" | relLangURL }}">
         {{ .Site.Params.branding.textNavigation }}
       </a>
     {{ end }}
@@ -61,14 +61,14 @@
       {{ end }}
     </div>
   </div>
-      {{ if .Site.Params.repoButton }}
-        <div class="d-none d-lg-block ml-auto">
-        <a class="btn btn-light" href="{{ .Site.Params.repoButton.url }}" role="button">
-          <i class="fa {{ .Site.Params.repoButton.icon | default (printf "fa-github") }} mr-1"></i>
-          {{ .Site.Params.repoButton.text | default (printf "Star") }}
-        </a>
-        </div>
-      {{ end }}
+  {{ if .Site.Params.repoButton }}
+    <div class="d-none d-lg-block pl-auto">
+    <a class="btn btn-light" href="{{ .Site.Params.repoButton.url }}" role="button">
+      <i class="fa {{ .Site.Params.repoButton.icon | default (printf "fa-github") }} mr-1"></i>
+      {{ .Site.Params.repoButton.text | default (printf "Star") }}
+    </a>
+    </div>
+  {{ end }}
 </nav>
 
 <!--

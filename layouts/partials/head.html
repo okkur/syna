@@ -39,9 +39,14 @@
 
 
 
-  {{ with .Site.Params.favicon }}
+  {{ with .Site.Params.favicon}}
     <link rel="shortcut icon" type="image/x-icon" href="{{ . | relURL }}">
     <link rel="icon" type="image/x-icon" href="{{ . | relURL }}">
+    <link rel="apple-touch-icon-precomposed" href="{{ . | relURL }}">
+  {{ end }}
+
+  {{ with .Site.Params.faviconSVG }}
+    <link rel="icon" type="image/svg+xml" href="{{ . | relURL }}">
   {{ end }}
 
     {{ partial "custom/css.html" . }}

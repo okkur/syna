@@ -22,7 +22,8 @@ googleAnalytics = ""
   # Theme customizations
   # Assets relative to 'static/'
   [params.custom]
-    favicon = "favicon.svg"
+    favicon = "favicon.ico"
+    faviconSVG = "favicon.svg"
     iconFont = ""
     css = []
     js  = []
