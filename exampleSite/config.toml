@@ -18,8 +18,6 @@ googleAnalytics = ""
   [params.branding]
     logoNavigation = "logo.svg"
     textNavigation = "Syna"
-    logoFooter = "logo-by.svg"
-    textFooter = "Copyright 2017 Syna Authors"
 
   # Theme customizations
   # Assets relative to 'static/'
@@ -43,12 +41,54 @@ googleAnalytics = ""
     # Optional: Hash for integrity check
     hash = "sha512-RfeD0pacGTqy9m7U6PgehQfS4cc7SIt+e+P+H5e848kEvB/RW84CUGO3O4O3LNbxjevym6KPUZ8muPsMrI8WIw=="
 
-    [[menu.legalFooter]]
-      url = "about"
-      name = "About Us"
-      weight = 10
+[[menu.main]]
+  url = "#details"
+  name = "Services"
+  weight = 10
 
-    [[menu.legalFooter]]
-      url = "terms"
-      name = "Terms"
-      weight = 30
+[[menu.main]]
+  url = "#contact"
+  name = "Contact"
+  weight = 30
+
+[[menu.main]]
+  url = "#more"
+  name = "More"
+  weight = 30
+
+[[menu.legalFooter]]
+  url = "about"
+  name = "About Us"
+  weight = 10
+
+[[menu.legalFooter]]
+  url = "terms"
+  name = "Terms"
+  weight = 30
+
+[[menu.footer]]
+  url = "#"
+  name = "Press"
+  weight = 10
+
+[[menu.footer]]
+  url = "#"
+  name = "Fun"
+  weight = 30
+
+[[menu.footer]]
+  url = "#"
+  name = "More Fun"
+  weight = 30
+
+[[menu.footerSocial]]
+  weight = 20
+  name = "facebook"
+  pre = "facebook"
+  url = "#"
+
+[[menu.footerSocial]]
+  weight = 30
+  name = "linkedin"
+  pre = "linkedin"
+  url = "#"

@@ -13,18 +13,23 @@
 
   {{ with $data.logo }}
     <img class="overlay img-fluid" src="{{ (printf "images/%s" .) | relURL }}"></img>
+    <h1 class="overlay jumbotron-heading my-3">
+      {{ with $data.subtitle }}
+        {{ . | markdownify }}
+      {{ end }}
+    </h1>
   {{ else }}
     <h1 class="overlay jumbotron-heading">
       {{ with $data.title }}
         {{ . }}
       {{ end }}
     </h1>
-  {{ end }}
     <p class="overlay lead">
       {{ with $data.subtitle }}
         {{ . | markdownify }}
       {{ end }}
     </p>
+  {{ end }}
     {{ if $data.button }}
      <a class="overlay btn btn-primary btn-lg{{ if hasPrefix $data.link "#" }} anchor {{ end }}" href="{{ $data.link | relLangURL }}">
         {{ $data.button }}

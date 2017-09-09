@@ -1,0 +1,15 @@
++++
+#disable = true
+weight = 10
+descriptionTitle = "About Syna"
+linkTitle = ""
+logoTitle = ""
+logo = "logo.svg"
+logoText = "With <3 by Syna Authors"
+lastmod = "2017-09-07"
+date = "2016-09-07"
+description = """
+Open source theme for your next project
+Provided by Okkur Labs
+"""
++++
