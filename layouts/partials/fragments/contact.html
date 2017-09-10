@@ -1,0 +1,129 @@
+{{ $data := ($.Scratch.Get "data") }}
+{{ "<!-- Contact Section -->" | safeHTML }}
+<section id="{{ $data.selfLink }}">
+  <div class="container-fluid bg-secondary">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-12 text-light text-center">
+        {{ with $data.title }}
+          <h2>{{ . | markdownify }}</h2>
+        {{ end }}
+        {{ with $data.subtitle }}
+          <h3 class="text-muted">
+            {{ . | markdownify }}
+          </h3>
+        {{ end }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        {{ if not $data.postURL }}
+          <form  action="https://formspree.io/{{ $data.email }}" method="POST" name="sentMessage" id="{{ $data.formName | default "contactForm" }}">
+        {{ else }}
+          <form  action="{{ $data.postURL }}" method="POST" name="sentMessage" id="{{ $data.formName | default "contactForm" }}">
+        {{ end }}
+            <div class="row py-3">
+              <div class="col-md-6">
+                {{ with $data.fields.name }}
+                  <div class="form-group">
+                    <input
+                    id="name"
+                    class="form-control"
+                    type="text"
+                    data-validation-error-msg="{{ .error | default (i18n "contact.defaultNameError") }}"
+                    data-validation-error-msg-container="#name-error"
+                    placeholder="{{ with .text }}{{ . | markdownify }}{{ end }}"
+                    required>
+                  </div>
+                  <div class="px-2 d-none" id="name-error"></div>
+                {{ end }}
+                {{ with $data.fields.email }}
+                  <div class="form-group">
+                    <input
+                      id="email"
+                      class="form-control"
+                      type="text"
+                      data-validation="email"
+                      data-validation-error-msg="{{ .error | default (i18n "contact.defaultEmailError") }}"
+                      data-validation-error-msg-container="#email-error"
+                      placeholder="{{ with .text }}{{ . | markdownify }}{{ end }}"
+                      required>
+                      <div class="px-2 d-none" id="email-error"></div>
+                  </div>
+                {{ end }}
+                {{ with $data.fields.phone }}
+                  <div class="form-group">
+                    <input
+                      id="phone"
+                      class="form-control"
+                      type="text"
+                      data-validation="custom"
+                      data-validation-regexp="^([0-9,\+]+)$"
+                      data-validation-optional="true"
+                      data-validation-error-msg="{{ .error | default (i18n "contact.defaultPhoneError") }}"
+                      data-validation-error-msg-container="#phone-error"
+                      placeholder="{{ with .text }}{{ . | markdownify }}{{ end }}">
+                    <div class="px-2 d-none" id="phone-error"></div>
+                  </div>
+                {{ end }}
+              </div>
+              <div class="col-md-6">
+                {{ with $data.fields.message }}
+                  <div class="form-group">
+                    <textarea
+                      id="message"
+                      class="form-control text-dark"
+                      type="text"
+                      data-validation="length"
+                      data-validation-length="min15"
+                      data-validation-error-msg="{{ .error | default (i18n "contact.defaultButton") }}"
+                      data-validation-error-msg-container="#message-error"
+                      placeholder="{{ with .text }}{{ . | markdownify }}{{ end }}"
+                      rows="4"
+                      required></textarea>
+                    <div class="px-2 d-none" id="message-error"></div>
+                  </div>
+                {{ end }}
+              </div>
+              <div class="col-lg-12 text-center">
+                <div class="success text-success d-none" id="success">
+                  {{ with $data.message.success }}
+                    {{ . | markdownify }}
+                  {{ else }}
+                    {{ i18n "contact.defaultGenericSuccess" }}
+                  {{ end }}
+                </div>
+                <div class="error text-danger d-none" id="generic-error">
+                  {{ with $data.message.error }}
+                    {{ . | markdownify }}
+                  {{ else }}
+                    {{ i18n "contact.defaultGenericError" }} {{ $data.email }}.
+                  {{ end }}
+                </div><br />
+                <noscript>
+                  <div class="text-danger py-2" id="js-error">
+                    {{ i18n "contact.defaultJsError" }} {{ $data.email }}.
+                  </div>
+                </noscript>
+                {{ if $data.postURL }}
+                    <button class="btn btn-primary" type="submit" disabled>{{ $data.button | default (i18n "contact.defaultButton") }}</button>
+                {{ else }}
+                    <button class="btn btn-primary" type="submit" disabled>{{ $data.button | default (i18n "contact.defaultButton") }}</button>
+                {{ end }}
+              </div>
+            </div>
+            {{ range $data.fields.hidden }}
+              {{ if eq .name "site" }}
+                <input type="hidden" name="{{ .name }}" value="{{ $.Page.Permalink }}"/>
+              {{ else if eq .name "page" }}
+                <input type="hidden" name="{{ .name }}" value="{{ $.Page.URL }}"/>
+              {{ else }}
+                <input type="hidden" name="{{ .name }}" value="{{ .value }}"/>
+              {{ end }}
+            {{ end }}
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</section>

@@ -13,11 +13,15 @@
           {{ partial "fragments/hero.html" $ }}
         {{ end }}
 
-        {{ if in .fragment "logos" }}
+        {{ if and (not .disabled) (in .fragment "contact") }}
+          {{ partial "fragments/contact.html" $ }}
+        {{ end }}
+
+        {{ if and (not .disabled) (in .fragment "logos") }}
           {{ partial "fragments/logos.html" $ }}
         {{ end }}
 
-        {{ if in .fragment "footer" }}
+        {{ if and (not .disabled) (in .fragment "footer") }}
           {{ partial "fragments/footer.html" $ }}
         {{ end }}
 

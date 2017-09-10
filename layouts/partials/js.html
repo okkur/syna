@@ -13,9 +13,16 @@
   <script src="{{ "js/particles-2.0/config.js" | relURL }}"></script>
 {{ end }}
 
-{{ with .Site.Params.contact.captcha }}
+{{ with .Site.Params.contact }}<!-- TODO: use data file -->
+{{ end }}
+<script src="{{ "js/jquery-form-validator-2.3.77/jquery.form-validator.min.js" | relURL }}"></script>
+
+{{ with .Site.Params.contact.captcha }}<!-- TODO: use data file -->
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 {{ end }}
+
+{{ "<!-- Theme Code -->" | safeHTML }}
+<script src="{{ "js/syna.js" | relURL }}"></script>
 
 {{ template "_internal/google_analytics_async.html" . }}
 
