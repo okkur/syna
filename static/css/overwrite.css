@@ -830,3 +830,7 @@ div.form-error strong,
 div.form-error ul li {
   color: #820404;
 }
+
+.grecaptcha-badge {
+  display: none
+}

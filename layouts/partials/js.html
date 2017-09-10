@@ -13,11 +13,12 @@
   <script src="{{ "js/particles-2.0/config.js" | relURL }}"></script>
 {{ end }}
 
-{{ with .Site.Params.contact }}<!-- TODO: use data file -->
+{{ if not .Site.Params.contact.disabled }}
+  {{ "<!-- Form Validator -->" | safeHTML }}
+  <script src="{{ "js/jquery-form-validator-2.3.77/jquery.form-validator.min.js" | relURL }}"></script>
 {{ end }}
-<script src="{{ "js/jquery-form-validator-2.3.77/jquery.form-validator.min.js" | relURL }}"></script>
 
-{{ with .Site.Params.contact.captcha }}<!-- TODO: use data file -->
+{{ if .Site.Params.contact.captcha }}
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 {{ end }}
 

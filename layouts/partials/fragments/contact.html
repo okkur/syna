@@ -18,9 +18,9 @@
     <div class="row">
       <div class="col-12">
         {{ if not $data.postURL }}
-          <form  action="https://formspree.io/{{ $data.email }}" method="POST" name="sentMessage" id="{{ $data.formName | default "contactForm" }}">
+          <form class="contact" action="https://formspree.io/{{ $data.email }}" method="POST" name="sentMessage" id="{{ $data.formName | default "contactForm" }}">
         {{ else }}
-          <form  action="{{ $data.postURL }}" method="POST" name="sentMessage" id="{{ $data.formName | default "contactForm" }}">
+          <form class="contact" action="{{ $data.postURL }}" method="POST" name="sentMessage" id="{{ $data.formName | default "contactForm" }}">
         {{ end }}
             <div class="row py-3">
               <div class="col-md-6">
@@ -75,7 +75,7 @@
                       class="form-control text-dark"
                       type="text"
                       data-validation="length"
-                      data-validation-length="min15"
+                      data-validation-length="min1"
                       data-validation-error-msg="{{ .error | default (i18n "contact.defaultButton") }}"
                       data-validation-error-msg-container="#message-error"
                       placeholder="{{ with .text }}{{ . | markdownify }}{{ end }}"
@@ -86,14 +86,14 @@
                 {{ end }}
               </div>
               <div class="col-lg-12 text-center">
-                <div class="success text-success d-none" id="success">
+                <div class="generic-success text-success d-none" id="generic-success">
                   {{ with $data.message.success }}
                     {{ . | markdownify }}
                   {{ else }}
                     {{ i18n "contact.defaultGenericSuccess" }}
                   {{ end }}
                 </div>
-                <div class="error text-danger d-none" id="generic-error">
+                <div class="generic-error text-danger d-none" id="generic-error">
                   {{ with $data.message.error }}
                     {{ . | markdownify }}
                   {{ else }}
@@ -105,10 +105,21 @@
                     {{ i18n "contact.defaultJsError" }} {{ $data.email }}.
                   </div>
                 </noscript>
-                {{ if $data.postURL }}
-                    <button class="btn btn-primary" type="submit" disabled>{{ $data.button | default (i18n "contact.defaultButton") }}</button>
+                {{ with $.Site.Params.contact.captcha }}
+                    <div class="g-recaptcha" data-sitekey="{{ .sitekey }}" data-size="invisible" data-badge="inline" data-callback="onContactCaptcha"></div>
+                  <button
+                    class="btn btn-primary"
+                    type="submit"
+                    disabled>
+                    {{ $data.button | default (i18n "contact.defaultButton") }}
+                  </button>
                 {{ else }}
-                    <button class="btn btn-primary" type="submit" disabled>{{ $data.button | default (i18n "contact.defaultButton") }}</button>
+                  <button
+                    class="btn btn-primary"
+                    type="submit"
+                    disabled>
+                    {{ $data.button | default (i18n "contact.defaultButton") }}
+                  </button>
                 {{ end }}
               </div>
             </div>

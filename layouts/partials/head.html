@@ -28,15 +28,17 @@
   <link href="{{ "css/bootstrap-4.beta/bootstrap-grid.min.css" | relURL }}" rel="stylesheet">
   <link href="{{ "css/bootstrap-4.beta/bootstrap-reboot.min.css" | relURL }}" rel="stylesheet">
 
-  {{ "<!-- Form Style -->" | safeHTML }}<!-- TODO: conditional for when contact is used -->
+  {{ if not .Site.Params.contact.disabled }}
+    {{ "<!-- Form Style -->" | safeHTML }}
     <link href="{{ "css/form.min.css" | relURL }}" rel="stylesheet" type="text/css">
+  {{ end }}
 
   {{ "<!-- Theme -->" | safeHTML }}
     <link href="{{ "css/syna.css" | relURL }}" rel="stylesheet" type="text/css">
     <link href="{{ "css/overwrite.css" | relURL }}" rel="stylesheet" type="text/css">
 
-  {{ "<!-- Fonts -->" | safeHTML }}
   {{ if not .Site.Params.custom.iconFont }}
+    {{ "<!-- Fonts -->" | safeHTML }}
     <link href="{{ "fonts/fontawesome-4.7.0/font-awesome.min.css" | relURL }}" rel="stylesheet" type="text/css">
   {{ end }}
 
