@@ -1,7 +1,7 @@
 project:
   name: "Syna Theme"
   state: "beta"
-  image: "https://github.com/okkur/syna/blob/master/media/logo.svg"
+  image: "https://github.com/okkur/syna/blob/master/static/images/logo.svg"
   website: ""
   oneLiner: "Open Source Theme for Hugo Static Site Generator based on Bootstrap 4"
   description: |
