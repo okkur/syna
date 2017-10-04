@@ -1,0 +1,31 @@
++++
+fragment = "column-items"
+#disabled = false
+selfLink = "features"
+weight = 250
+lastmod = "2017-10-04"
+date = "2017-10-04"
+
+[[items]]
+  name = "More Modular"
+  weight = 10
+  icon = "fa-random"
+  link = "#"
+  description = """
+Choose from a wide variety of highly modular partials to built the site you need.
+"""
+
+[[items]]
+  name = "More Customizable"
+  weight = 20
+  icon = "fa-gears"
+  description = """
+Easily switch logos, colours and the various modules within your own site. All based on Syna and the awesome Hugo project."""
+[[items]]
+  name = "More Open Source"
+  weight = 30
+  icon = "fa-code"
+  description = """
+Built with open source components and available for personal and commercial projects.
+"""
++++
