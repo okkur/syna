@@ -1,0 +1,45 @@
+{{ $data := ($.Scratch.Get "data") }}
+{{ "<!-- Items -->" | safeHTML }}
+<section {{ with $data.selfLink }}id="{{ . }}"{{ end }}>
+  <div class="container-fluid">
+    <div class="container py-5">
+      <div class="row align-items-center {{ if eq $data.align "left" }}justify-content-start{{ else }}justify-content-end{{ end }}">
+        <div class="col-12 col-md-8 order-12 {{ if eq $data.align "left" }}order-md-1{{ end }}">
+          {{ if $data.title }}
+              <div class="row pb-3">
+                <div class="col-12">
+
+                <h2>
+                  {{ $data.title | markdownify }}
+                </h2>
+              </div>
+            </div>
+          {{ end }}
+          {{ if $data.subtitle }}
+              <div class="row text-muted text-secondary pb-2">
+                <div class="col-12">
+
+                <h5>
+                  {{ $data.subtitle | markdownify }}
+                </h5>
+              </div>
+                          </div>
+
+          {{ end }}
+          <p class="text-muted text-secondary mb-0">{{ $data.description  | markdownify}}</p>
+        </div>
+        <div class="col-12 col-md-3 order-12 text-center {{ if eq $data.align "left" }}ml-auto{{ else }}order-md-1 mr-auto{{ end }} mt-5">
+          {{ if $data.icon }}
+          <span class="fa-stack fa-4x">
+            <i class="fa fa-circle fa-stack-2x text-primary"></i>
+            <i class="fa {{ $data.icon }} fa-stack-1x fa-inverse"></i>
+          </span>
+          {{ else if $data.image }}
+            {{ $url := printf "images/row/%s" $data.image }}
+            <img src="{{ $url | absURL }}" class="p-2 w-100" alt="{{ $data.name }}">
+          {{ end }}
+        </div>
+        </div>
+    </div>
+  </div>
+</section>
