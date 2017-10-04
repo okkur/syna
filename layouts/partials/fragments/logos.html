@@ -23,7 +23,7 @@
         {{ end }}
         <div class="row justify-content-center align-items-center">
           {{ range sort $data.logos "weight" }}
-            <div class="col-12 col-sm-6 col-md-3 text-center py-2">
+            <div class="col-7 col-sm-4 text-center py-2">
               {{ $url := printf "images/logos/%s" .logo }}
               {{ if .link }}
                 <a href="{{ .link }}">

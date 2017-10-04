@@ -2,9 +2,9 @@
 {{ "<!-- Hero -->" | safeHTML }}
 <header>
   {{ with $data.header }}
-    <div class="jumbotron text-center header-image mb-0">
+    <div class="jumbotron text-center header-image">
   {{ else }}
-    <div class="jumbotron text-center mb-0">
+    <div class="jumbotron text-center">
   {{ end }}
   {{ if $data.particles }}
     <div id="particles-js"></div>

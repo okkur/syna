@@ -2,7 +2,7 @@
 {{ "<!-- Items -->" | safeHTML }}
 <section {{ with $data.selfLink }}id="{{ . }}"{{ end }}>
     <div class="container-fluid">
-      <div class="container py-5">
+      <div class="container pb-5">
         {{ with $data.title }}
           <div class="row">
             <div class="col text-center">
@@ -23,7 +23,7 @@
         {{ end }}
         <div class="row justify-content-center align-items-start">
           {{ range sort $data.items "weight"}}
-            <div class="col-4 text-center">
+            <div class="col-md-4 text-center">
               <span class="fa-stack fa-3x m-2">
                 <i class="fa fa-circle fa-stack-2x text-primary"></i>
                 <i class="fa {{ .icon }} fa-stack-1x fa-inverse"></i>
