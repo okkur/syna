@@ -1,12 +1,13 @@
 +++
 fragment = "column-items"
 #disabled = false
-selfLink = "features"
+date = "2017-10-04"
+lastmod = "2017-10-04"
 weight = 200
+selfLink = "features"
+
 title = "Features"
 subtitle= "Highly modular theme for Hugo built with Boostrap 4"
-lastmod = "2017-10-04"
-date = "2017-10-04"
 
 [[items]]
   name = "Modular"
@@ -21,6 +22,7 @@ Choose from a wide variety of highly modular partials to built the site you need
   name = "Customizable"
   weight = 20
   icon = "fa-gears"
+  #link = "#"
   description = """
 Easily switch logos, colours and the various modules within your own site. All based on Syna and the awesome Hugo project.
 """
@@ -29,6 +31,7 @@ Easily switch logos, colours and the various modules within your own site. All b
   name = "Open Source"
   weight = 30
   icon = "fa-code"
+  #link = "#"
   description = """
 Built with open source components and available for personal and commercial projects.
 """

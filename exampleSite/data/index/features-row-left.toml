@@ -1,14 +1,16 @@
 +++
 fragment = "row-items"
 #disabled = false
-selfLink = "modular"
-weight = 310
-title = "Modular"
-lastmod = "2017-10-04"
 date = "2017-10-04"
-image = ""
-icon = "fa-random"
+lastmod = "2017-10-04"
+weight = 310
+selfLink = "modular"
 align = "left"
+
+title = "Modular"
+#subtitle= "Highly modular theme for Hugo built with Boostrap 4"
+#image = "screenshot.png"
+icon = "fa-random"
 description = """
 Choose from a wide variety of highly modular partials to built the site you need.
 Choose from a wide variety of highly modular partials to built the site you need.

@@ -1,14 +1,15 @@
 +++
 fragment = "hero"
 #disabled = true
+date = "2016-09-07"
+lastmod = "2017-09-07"
 weight = 100
+particles = true
+
 title = "Syna Theme"
 subtitle = "Showcase your next project"
-button = "Details"
-link = "#details"
-lastmod = "2017-09-07"
-date = "2016-09-07"
 header = "header.jpg"
 logo = "logo.svg"
-particles = true
+button = "Details"
+link = "#details"
 +++

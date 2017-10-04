@@ -1,13 +1,14 @@
 +++
 fragment = "contact"
 #disabled = true
-weight = 800
-title = "Contact us"
-subtitle  = "Any feedback welcome"
-lastmod = "2017-09-10"
 date = "2017-09-10"
+lastmod = "2017-09-10"
+weight = 800
 selfLink = "contact"
 formName = "defaultContact"
+
+title = "Contact us"
+subtitle  = "Any feedback welcome"
 
 # PostURL can be used with backends such as mailout from caddy
 postURL = "https://example.com/mailout" #default: formspree.io

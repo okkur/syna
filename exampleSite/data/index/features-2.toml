@@ -1,10 +1,10 @@
 +++
 fragment = "column-items"
 #disabled = false
-selfLink = "features-2"
-weight = 250
-lastmod = "2017-10-04"
 date = "2017-10-04"
+lastmod = "2017-10-04"
+weight = 250
+selfLink = "features-2"
 
 [[items]]
   name = "More Modular"
@@ -19,6 +19,7 @@ Choose from a wide variety of highly modular partials to built the site you need
   name = "More Customizable"
   weight = 20
   icon = "fa-gears"
+  #link = "#"
   description = """
 Easily switch logos, colours and the various modules within your own site. All based on Syna and the awesome Hugo project.
 """
@@ -27,6 +28,7 @@ Easily switch logos, colours and the various modules within your own site. All b
   name = "More Open Source"
   weight = 30
   icon = "fa-code"
+  #link = "#"
   description = """
 Built with open source components and available for personal and commercial projects.
 """

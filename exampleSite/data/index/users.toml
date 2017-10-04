@@ -1,12 +1,14 @@
 +++
 fragment = "logos"
 #disabled = false
+date = "2017-09-09"
+lastmod = "2017-09-09"
+weight = 500
 dark= true
 selfLink = "users"
-weight = 500
+
 title = "Our Awesome Users"
-lastmod = "2017-09-09"
-date = "2017-09-09"
+#subtitle = ""
 
 [[logos]]
   name = "txtdirect"
@@ -18,6 +20,7 @@ date = "2017-09-09"
   name = "seetheprogress"
   weight = 20
   logo = "stp.svg"
+  #link = "#"
 
 [[logos]]
   name = "syna"

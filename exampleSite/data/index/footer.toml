@@ -1,14 +1,15 @@
 +++
 fragment = "footer"
 #disabled = true
+date = "2016-09-07"
+lastmod = "2017-09-07"
 weight = 900
-descriptionTitle = "About Syna"
+
 linkTitle = ""
 logoTitle = ""
 logo = "logo.svg"
 logoText = "With <3 by Syna Authors"
-lastmod = "2017-09-07"
-date = "2016-09-07"
+descriptionTitle = "About Syna"
 description = """
 Open source theme for your next project
 Provided by Okkur Labs
