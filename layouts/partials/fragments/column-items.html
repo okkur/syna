@@ -28,7 +28,7 @@
                 <i class="fa fa-circle fa-stack-2x text-primary"></i>
                 <i class="fa {{ .icon }} fa-stack-1x fa-inverse"></i>
               </span>
-              <h4 class="{{ if eq $data.background "dark" }}text-light{{ end }}">
+              <h4 class="{{ if eq $data.background "dark" }}text-light{{ end }} mb-3">
                 {{ if .link }}
                   <a href="{{ .link | relLangURL }}">{{ .name | markdownify }}</a>
                 {{ else }}
