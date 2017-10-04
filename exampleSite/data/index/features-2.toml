@@ -4,7 +4,7 @@ fragment = "column-items"
 date = "2017-10-04"
 lastmod = "2017-10-04"
 weight = 250
-dark = true
+#background = "dark"
 selfLink = "features-2"
 
 [[items]]

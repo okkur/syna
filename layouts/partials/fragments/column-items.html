@@ -1,11 +1,11 @@
 {{ $data := ($.Scratch.Get "data") }}
 {{ "<!-- Items -->" | safeHTML }}
 <section {{ with $data.selfLink }}id="{{ . }}"{{ end }}>
-    <div class="container-fluid {{ if $data.dark }}bg-dark{{ end }}">
+    <div class="container-fluid {{ if eq $data.background "dark" }}bg-dark{{ end }}">
       <div class="container py-5">
         {{ with $data.title }}
           <div class="row">
-            <div class="col text-center {{ if $data.dark }}text-light{{ end }}">
+            <div class="col text-center {{ if eq $data.background "dark" }}text-light{{ end }}">
               <h2>
                 {{ . | markdownify }}
               </h2>
@@ -28,7 +28,7 @@
                 <i class="fa fa-circle fa-stack-2x text-primary"></i>
                 <i class="fa {{ .icon }} fa-stack-1x fa-inverse"></i>
               </span>
-              <h4 class="{{ if $data.dark }}text-light{{ end }}">
+              <h4 class="{{ if eq $data.background "dark" }}text-light{{ end }}">
                 {{ if .link }}
                   <a href="{{ .link | relLangURL }}">{{ .name | markdownify }}</a>
                 {{ else }}

@@ -1,10 +1,10 @@
 {{ $data := ($.Scratch.Get "data") }}
 {{ "<!-- Items -->" | safeHTML }}
 <section {{ with $data.selfLink }}id="{{ . }}"{{ end }}>
-  <div class="container-fluid {{ if $data.dark }}bg-dark{{ end }}">
+  <div class="container-fluid {{ if eq $data.background "dark" }}bg-dark{{ end }}">
     <div class="container py-5">
       <div class="row align-items-center {{ if eq $data.align "left" }}justify-content-start{{ else }}justify-content-end{{ end }}">
-        <div class="col-12 col-md-8 order-12 {{ if eq $data.align "left" }}order-md-1{{ end }} {{ if $data.dark }}text-light{{ end }}">
+        <div class="col-12 col-md-8 order-12 {{ if eq $data.align "left" }}order-md-1{{ end }} {{ if eq $data.background "dark" }}text-light{{ end }}">
           {{ if $data.title }}
               <div class="row pb-3">
                 <div class="col-12">
