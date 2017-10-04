@@ -20,7 +20,9 @@ Choose from a wide variety of highly modular partials to built the site you need
   weight = 20
   icon = "fa-gears"
   description = """
-Easily switch logos, colours and the various modules within your own site. All based on Syna and the awesome Hugo project."""
+Easily switch logos, colours and the various modules within your own site. All based on Syna and the awesome Hugo project.
+"""
+
 [[items]]
   name = "More Open Source"
   weight = 30
