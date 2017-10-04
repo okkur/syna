@@ -17,7 +17,7 @@
           </p>
         {{ end }}
         {{ if $.Site.Menus.footersocial }}
-          <div class="row justify-content-left">
+          <div class="row justify-content-left ml-4">
             {{ range sort $.Site.Menus.footersocial }}
               <span class="fa-stack fa-2x mt-3">
                 <a href="{{ .URL | relLangURL }}">

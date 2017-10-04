@@ -23,15 +23,15 @@
           </div>
         {{ end }}
         <div class="row justify-content-center align-items-center">
-          {{ range sort $data.logos }}
+          {{ range sort $data.logos "weight" }}
             <div class="col-12 col-sm-6 col-md-3 text-center py-2">
               {{ $url := printf "images/logos/%s" .logo }}
               {{ if .link }}
                 <a href="{{ .link }}">
-                  <img src="{{ $url | absURL }}" class="p-2 w-75" alt="{{ .name }}">
+                  <img src="{{ $url | absURL }}" class="p-2 w-100" alt="{{ .name }}">
                 </a>
               {{ else }}
-                <img src="{{ $url | absURL }}" class="p-2 w-75" alt="{{ .name }}">
+                <img src="{{ $url | absURL }}" class="p-2 w-100" alt="{{ .name }}">
               {{ end }}
             </div>
           {{ end }}
@@ -59,7 +59,7 @@
         </div>
       {{ end }}
       <div class="row justify-content-center align-items-center">
-        {{ range sort $data.logos }}
+        {{ range sort $data.logos "weight" }}
           <div class="col-12 col-sm-6 col-md-3 text-center py-2">
             {{ $url := printf "images/logos/%s" .logo }}
             {{ if .link }}
