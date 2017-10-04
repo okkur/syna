@@ -1,0 +1,58 @@
+project:
+  name: "Syna Theme"
+  state: "beta"
+  image: "https://github.com/okkur/syna/blob/master/media/logo.svg"
+  website: ""
+  oneLiner: "Open Source Theme for Hugo Static Site Generator based on Bootstrap 4"
+  description: |
+    Base your next personal, project or commercial website on Syna.  
+    Highly customizable with modular per-page fragments.
+
+vision:
+  type: "community"
+  overview: |
+    This project thrives to be the goto theme for websites using Hugo.
+  concept: "Example Project's core concept to showcase how, why it does what it does."
+  aim: "Syna provides a generic solution to easily get up and running, but doesn't consider hugely specialized solutions to be integrated."
+
+supportLinks:
+  documentation: "/docs"
+  examples: "/exampleSite"
+  troubleshooting: "/docs/troubleshooting.md"
+
+contributionLinks:
+  issueTemplate: "/.github/ISSUE_TEMPLATE.md"
+  starterIssues: "https://github.com/okkur/syna/labels/starter%20issue"
+
+emails:
+  commercialSupport: "support@okkurlabs.com"
+  security: "security@okkurlabs.com"
+  coc: "coc@okkurlabs.com"
+
+copyright:
+  year: "2017"
+
+cla:
+  copyrightHolder: "Michael Grosser"
+
+maintainers:
+  - name: "Michael Grosser"
+    nick: "stp-ip"
+
+repo:
+  link: "https://github.com/okkur/syna/"
+  type: "Github"
+
+issueTemplate:
+  questions:
+  - "Hugo version"
+
+badges:
+  - image: "https://img.shields.io/badge/state-beta-blue.svg"
+    alt: "state"
+  - image: "https://img.shields.io/github/release/okkur/syna.svg"
+    link: "https://github.com/okkur/syna/releases"
+    alt: "release"
+  - image: "https://img.shields.io/github/license/okkur/syna.svg"
+    link: "LICENSE"
+    alt: "license"
