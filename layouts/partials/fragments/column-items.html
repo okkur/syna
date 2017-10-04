@@ -1,0 +1,44 @@
+{{ $data := ($.Scratch.Get "data") }}
+{{ "<!-- Items -->" | safeHTML }}
+<section {{ with $data.selfLink }}id="{{ . }}"{{ end }}>
+    <div class="container-fluid">
+      <div class="container py-5">
+        {{ with $data.title }}
+          <div class="row">
+            <div class="col text-center">
+              <h2>
+                {{ . | markdownify }}
+              </h2>
+            </div>
+          </div>
+        {{ end }}
+        {{ with $data.subtitle }}
+          <div class="row">
+            <div class="col text-center text-muted text-secondary pt-4 pb-5">
+              <h5>
+                {{ . | markdownify }}
+              </h5>
+            </div>
+          </div>
+        {{ end }}
+        <div class="row justify-content-center align-items-start">
+          {{ range sort $data.items "weight"}}
+            <div class="col-4 text-center">
+              <span class="fa-stack fa-3x m-2">
+                <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                <i class="fa {{ .icon }} fa-stack-1x fa-inverse"></i>
+              </span>
+              <h4>
+                {{ if .link }}
+                  <a href="{{ .link | relLangURL }}">{{ .name | markdownify }}</a>
+                {{ else }}
+                  {{ .name | markdownify }}
+                {{ end }}
+              </h4>
+              <p class="text-muted text-secondary">{{ .description  | markdownify}}</p>
+            </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+</section>
