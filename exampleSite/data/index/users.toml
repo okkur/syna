@@ -12,6 +12,7 @@ date = "2017-09-09"
   name = "txtdirect"
   weight = 10
   logo = "txtdirect.svg"
+  link = "https://about.txtdirect.org"
 
 [[logos]]
   name = "seetheprogress"
@@ -22,4 +23,5 @@ date = "2017-09-09"
   name = "syna"
   weight = 30
   logo = "syna.svg"
+  link = "https://about.okkur.io/"
 +++
