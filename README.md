@@ -3,10 +3,9 @@
 <img src="https://github.com/okkur/syna/blob/master/media/logo.svg" width="500"/>
 
 
-
 Open Source Theme for Hugo Static Site Generator based on Bootstrap 4
 
-[![state](https://img.shields.io/badge/state-beta-blue.svg)]() [![release](https://img.shields.io/github/release/okkur/syna.svg)](https://github.com/okkur/syna/releases) [![license](https://img.shields.io/github/license/okkur/syna.svg)](LICENSE) 
+[![state](https://img.shields.io/badge/state-beta-blue.svg)]() [![release](https://img.shields.io/github/release/okkur/syna.svg)](https://github.com/okkur/syna/releases) [![license](https://img.shields.io/github/license/okkur/syna.svg)](LICENSE)
 
 **NOTE: This is a beta release, we do not consider it completely production ready yet. Use at your own risk.**
 
@@ -15,6 +14,8 @@ Open Source Theme for Hugo Static Site Generator based on Bootstrap 4
 # Syna Theme
 Base your next personal, project or commercial website on Syna.  
 Highly customizable with modular per-page fragments.
+
+![Hugo Agency Theme screenshot](https://github.com/okkur/syna/blob/master/images/screenshot.png)
 
 
 
