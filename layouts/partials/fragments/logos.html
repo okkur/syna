@@ -1,11 +1,20 @@
 {{ $data := ($.Scratch.Get "data") }}
 {{ "<!-- Logos -->" | safeHTML }}
+{{ $bg := $data.background }}
 <section {{ with $data.selfLink }}id="{{ . }}"{{ end }}>
-    <div class="overlay container-fluid {{ if eq $data.background "dark" }}bg-dark{{ end }}">
+    <div class="overlay container-fluid
+      {{- printf " bg-%s" (default "white" $bg) -}}
+    ">
       <div class="container py-3">
         {{ with $data.title }}
           <div class="row">
-            <div class="col text-center {{ if eq $data.background "dark" }}text-secondary{{ end }}">
+            <div class="col text-center
+            {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+              {{- printf " text-%s" "dark" -}}
+            {{- else -}}
+              {{- printf " text-%s" "secondary" -}}
+            {{- end -}}
+          ">
               <h4>
                 {{ . | markdownify }}
               </h4>
@@ -14,7 +23,13 @@
         {{ end }}
         {{ with $data.subtitle }}
           <div class="row">
-            <div class="col text-center text-muted {{ if eq $data.background "dark" }}text-secondary{{ end }}">
+            <div class="col text-center
+            {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+              {{- printf " text-%s" "dark" -}}
+            {{- else -}}
+              {{- printf " text-muted text-%s" "secondary" -}}
+            {{- end -}}
+            ">
               <h5>
                 {{ . | markdownify }}
               </h5>
