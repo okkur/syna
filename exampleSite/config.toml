@@ -57,27 +57,42 @@ googleAnalytics = ""
   #  sitekey = ""
 
 [[menu.main]]
-  url = "#users"
-  name = "Users"
+  url = "/about"
+  name = "About"
   weight = 10
+
+[[menu.main]]
+  url = "/about-split"
+  name = "Split-page"
+  weight = 30
+
+[[menu.main]]
+  url = "/about"
+  name = "Single-page"
+  weight = 30
+
+[[menu.main]]
+  url = "/colors"
+  name = "Colors"
+  weight = 40
 
 [[menu.main]]
   url = "#contact"
   name = "Contact"
-  weight = 30
+  weight = 50
 
 [[menu.main]]
-  url = "#more"
-  name = "More"
+  url = "#modular"
+  name = "Modularity"
   weight = 30
 
 [[menu.legalFooter]]
-  url = "about"
+  url = "/about"
   name = "About Us"
   weight = 10
 
 [[menu.legalFooter]]
-  url = "terms"
+  url = "/about"
   name = "Terms"
   weight = 30
 
@@ -92,8 +107,8 @@ googleAnalytics = ""
   weight = 30
 
 [[menu.footer]]
-  url = "#"
-  name = "More Fun"
+  url = "#customizable"
+  name = "Customizable"
   weight = 30
 
 [[menu.footerSocial]]
