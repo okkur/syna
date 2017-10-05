@@ -1,5 +1,5 @@
 # Site settings
-baseurl = "https://example.org/"
+baseurl = "/"
 languageCode = "en-us"
 title = "Okkur - Syna"
 theme = "syna"
