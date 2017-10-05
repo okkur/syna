@@ -1,0 +1,24 @@
++++
+fragment = "row-items"
+#disabled = false
+date = "2017-10-04"
+lastmod = "2017-10-04"
+weight = 330
+background = "dark"
+selfLink = "customizable"
+align = "right"
+
+title = "Customizable"
+subtitle= "Highly modular theme for Hugo built with Boostrap 4"
+image = "screenshot.png"
+#icon = "fa-gears"
+description = """
+Easily switch logos, colours and the various modules within your own site. All based on Syna and the awesome Hugo project. 
+Easily switch logos, colours and the various modules within your own site. All based on Syna and the awesome Hugo project. 
+Easily switch logos, colours and the various modules within your own site. All based on Syna and the awesome Hugo project. 
+Easily switch logos, colours and the various modules within your own site. All based on Syna and the awesome Hugo project.
+Easily switch logos, colours and the various modules within your own site. All based on Syna and the awesome Hugo project. 
+Easily switch logos, colours and the various modules within your own site. All based on Syna and the awesome Hugo project. 
+Easily switch logos, colours and the various modules within your own site. All based on Syna and the awesome Hugo project. 
+"""
++++
