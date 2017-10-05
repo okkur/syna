@@ -6,14 +6,27 @@
   ">
     <div class="container py-5">
       <div class="row">
-        <div class="col-md-3
-          {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-            {{- printf " text-%s" "dark" -}}
-          {{- else -}}
-            {{- printf " text-muted text-%s" "secondary" -}}
-          {{- end -}}
-        ">
-          <div class="col-12">
+        <div class="col-md-3">
+          {{ if .Page.Params.SidebarTitle }}
+            <div class="col-12 pb-3
+              {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
+                {{- printf " text-%s" "black" -}}
+              {{- else -}}
+                {{- printf " text-%s" "light" -}}
+              {{- end -}}
+            ">
+              <h1>
+                {{ .Page.Params.SidebarTitle | markdownify }}
+              </h1>
+            </div>
+          {{ end }}
+          <div class="col-12
+            {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+              {{- printf " text-%s" "dark" -}}
+            {{- else -}}
+              {{- printf " text-muted text-%s" "secondary" -}}
+            {{- end -}}
+          ">
             {{ .Page.Params.Sidebar  | markdownify }}
           </div>
         </div>

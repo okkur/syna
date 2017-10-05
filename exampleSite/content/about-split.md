@@ -4,10 +4,12 @@ lastmod = "2017-10-05"
 date = "2017-10-05"
 subtitle = ""
 layout = "split"
+sidebarTitle = "Sidebar"
 sidebar = """
-## Awesome sidebar
-With so much information
-For example company data
+So much information  
+Phone numbers  
+Details  
+Or even more
 """
 +++
 

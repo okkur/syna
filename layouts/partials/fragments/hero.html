@@ -12,7 +12,7 @@
   {{ with $data.logo }}
     <img class="overlay img-fluid" src="{{ (printf "images/%s" .) | relURL }}"></img>
     {{ with $data.subtitle }}
-      <h1 class="overlay jumbotron-heading my-3">
+      <h1 class="overlay jumbotron-heading my-4">
           {{ . | markdownify }}
       </h1>
     {{ end }}
@@ -33,6 +33,5 @@
         {{ $data.button }}
      </a>
     {{ end }}
-{{ "<!-- TODO: subscribe for header -->" | safeHTML }}
   </div>
 </header>
