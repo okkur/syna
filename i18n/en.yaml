@@ -25,3 +25,13 @@
   translation: "© Copyright 2017"
 - id: footerLegal.by
   translation: "by "
+
+# 404
+- id: 404.title
+  translation: "Page not found"
+- id: 404.subtitle
+  translation: "Requested page could not be found"
+- id: 404.direction
+  translation: "You can always go back to our main page"
+- id: 404.button
+  translation: "Main page"
