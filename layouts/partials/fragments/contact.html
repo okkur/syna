@@ -1,15 +1,32 @@
 {{ $data := ($.Scratch.Get "data") }}
 {{ "<!-- Contact -->" | safeHTML }}
+{{ $bg := $data.background | default "secondary" }}
 <section id="{{ $data.selfLink }}">
-  <div class="overlay container-fluid bg-secondary">
+  <div class="overlay container-fluid
+    {{- printf " bg-%s" $bg -}}
+  ">
   <div class="container py-5">
     <div class="row">
-      <div class="col-12 text-dark text-center">
+      <div class="col-12 text-center
+        {{- if eq $bg "dark" -}}
+          {{- printf " text-%s" "light" -}}
+          {{ else if eq $bg "primary" -}}
+            {{- printf " text-%s" "black" -}}
+        {{- else -}}
+          {{- printf " text-%s" "dark" -}}
+        {{- end -}}
+      ">
         {{ with $data.title }}
           <h2>{{ . | markdownify }}</h2>
         {{ end }}
         {{ with $data.subtitle }}
-          <h3 class="text-muted">
+          <h3 class="
+            {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+              {{- printf " text-%s" "dark" -}}
+            {{- else -}}
+              {{- printf " text-muted text-%s" "secondary" -}}
+            {{- end -}}
+          ">
             {{ . | markdownify }}
           </h3>
         {{ end }}
@@ -115,7 +132,13 @@
                   </button>
                 {{ else }}
                   <button
-                    class="btn btn-primary"
+                    class="btn
+                      {{- if eq $bg "primary" -}}
+                        {{- printf " btn-%s" "dark" -}}
+                      {{- else -}}
+                        {{- printf " btn-%s" "primary" -}}
+                      {{- end -}}
+                    "
                     type="submit"
                     disabled>
                     {{ $data.button | default (i18n "contact.defaultButton") }}

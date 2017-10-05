@@ -4,6 +4,7 @@ fragment = "contact"
 date = "2017-09-10"
 lastmod = "2017-09-10"
 weight = 800
+#background = "light"
 selfLink = "contact"
 formName = "defaultContact"
 
