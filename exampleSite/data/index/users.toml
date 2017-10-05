@@ -3,8 +3,8 @@ fragment = "logos"
 #disabled = false
 date = "2017-09-09"
 lastmod = "2017-09-09"
-weight = 500
-background = "secondary"
+weight = 520
+background = "dark"
 selfLink = "users"
 
 title = "Our Awesome Users"

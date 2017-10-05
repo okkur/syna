@@ -10,10 +10,8 @@
       <div class="col-12 text-center
         {{- if eq $bg "dark" -}}
           {{- printf " text-%s" "light" -}}
-          {{ else if eq $bg "primary" -}}
-            {{- printf " text-%s" "black" -}}
         {{- else -}}
-          {{- printf " text-%s" "dark" -}}
+          {{- printf " text-%s" "black" -}}
         {{- end -}}
       ">
         {{ with $data.title }}

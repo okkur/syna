@@ -3,8 +3,8 @@ fragment = "logos"
 #disabled = false
 date = "2017-09-09"
 lastmod = "2017-09-09"
-weight = 700
-#background = "light"
+weight = 510
+#background = "secondary"
 selfLink = "tools"
 
 title = "Open Source"
