@@ -1,3 +1,16 @@
+__[v0.3.0](#v030)__
+  - [Downloads for v0.3.0](https://github.com/okkur/syna/releases/tag/v0.3.0)
+  - [Changelog since v0.2.0](#changelog-since-v020)
+
+# v0.3.0
+_2017-10-05_
+[Examples](/exampleSite)
+
+## Changes since v0.2.0
+  - Cleanup exampleSite
+  - Two column single page
+  - More example navigation
+  
 __[v0.2.0](#v020)__
   - [Downloads for v0.2.0](https://github.com/okkur/syna/releases/tag/v0.2.0)
   - [Changelog since v0.1.0](#changelog-since-v010)
