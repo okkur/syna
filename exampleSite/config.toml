@@ -18,6 +18,7 @@ googleAnalytics = ""
   [params.branding]
     logoNavigation = "logo.svg"
     textNavigation = "Syna"
+    #backgroundNavigation = "light" # dark, light, secondary, primary - default: dark
 
   # Theme customizations
   # Assets relative to 'static/'

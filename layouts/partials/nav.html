@@ -1,4 +1,14 @@
-<nav class="overlay navbar navbar-expand-lg navbar-dark bg-dark py-2">
+<nav class="overlay navbar navbar-expand-lg py-2
+  {{ $bg := .Site.Params.branding.backgroundNavigation }}
+  {{- printf " bg-%s" (default "dark" $bg) -}}
+  {{ if or (eq $bg "dark") (eq $bg "primary") }}
+    {{- printf " navbar-%s" "dark" -}}
+  {{ else if or (eq $bg "light") (eq $bg "secondary") }}
+    {{- printf " navbar-%s" "light" -}}
+  {{ else }}
+    {{- printf " navbar-%s" "dark" -}}
+  {{ end }}
+">
   <div class="container">
     {{ if .Site.Params.branding.logoNavigation }}
       <a class="navbar-brand py-0" href="{{ "#page-top" | relLangURL }}">
@@ -70,9 +80,3 @@
     </div>
   {{ end }}
 </nav>
-
-<!--
-
-
-
--->
