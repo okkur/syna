@@ -18,36 +18,34 @@
           {{- end -}}
         ">
           {{ if $data.title }}
-              <div class="row pb-3">
-                <div class="col-12
-                  {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
-                    {{- printf " text-%s" "black" -}}
-                  {{- else -}}
-                    {{- printf " text-%s" "light" -}}
-                  {{- end -}}
-                ">
-                  <h2>
-                    {{ $data.title | markdownify }}
-                  </h2>
+            <div class="row pb-3">
+              <div class="col-12
+                {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
+                  {{- printf " text-%s" "black" -}}
+                {{- else -}}
+                  {{- printf " text-%s" "light" -}}
+                {{- end -}}
+              ">
+                <h2>
+                  {{ $data.title | markdownify }}
+                </h2>
               </div>
             </div>
           {{ end }}
           {{ if $data.subtitle }}
-              <div class="row pb-2
-                {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                  {{- printf " text-%s" "dark" -}}
-                {{- else -}}
-                  {{- printf " text-muted text-%s" "secondary" -}}
-                {{- end -}}
-              ">
-                <div class="col-12">
-
+            <div class="row pb-2
+              {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                {{- printf " text-%s" "dark" -}}
+              {{- else -}}
+                {{- printf " text-muted text-%s" "secondary" -}}
+              {{- end -}}
+            ">
+              <div class="col-12">
                 <h5>
                   {{ $data.subtitle | markdownify }}
                 </h5>
               </div>
-                          </div>
-
+            </div>
           {{ end }}
           <p class="mb-0
             {{- if or (eq $bg "secondary") (eq $bg "primary") -}}

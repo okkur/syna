@@ -41,11 +41,11 @@
             <div class="col-md-4 text-center">
               <span class="fa-stack fa-3x m-2">
                 <i class="fa fa-circle fa-stack-2x
-                {{- if eq $bg "primary" -}}
-                  {{- printf " text-%s" "dark" -}}
-                {{- else -}}
-                  {{- printf " text-%s" "primary" -}}
-                {{- end -}}
+                  {{- if eq $bg "primary" -}}
+                    {{- printf " text-%s" "dark" -}}
+                  {{- else -}}
+                    {{- printf " text-%s" "primary" -}}
+                  {{- end -}}
                 "></i>
                 <i class="fa {{ .icon }} fa-stack-1x fa-inverse"></i>
               </span>
