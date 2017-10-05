@@ -20,6 +20,7 @@ googleAnalytics = ""
     textNavigation = "Syna"
     
   [params.style]
+    #background = "secondary"
     #backgroundNavigation = "light" # white, light, secondary, primary, dark - default: dark
     #backgroundFooter = "light" # white, light, secondary, primary, dark - default: dark
 
