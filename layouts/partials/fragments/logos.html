@@ -1,7 +1,7 @@
 {{ $data := ($.Scratch.Get "data") }}
 {{ "<!-- Logos -->" | safeHTML }}
 <section {{ with $data.selfLink }}id="{{ . }}"{{ end }}>
-    <div class="container-fluid {{ if eq $data.background "dark" }}bg-dark{{ end }}">
+    <div class="overlay container-fluid {{ if eq $data.background "dark" }}bg-dark{{ end }}">
       <div class="container py-3">
         {{ with $data.title }}
           <div class="row">
