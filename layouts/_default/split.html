@@ -1,0 +1,55 @@
+<html lang="{{ .Site.LanguageCode | default (printf "en-us") }}">
+
+  {{ partial "head.html" . }}
+
+  <body>
+    {{ partial "nav.html" . }}
+    
+    {{ $page := replace (strings.TrimRight "/" (strings.TrimLeft "/" .RelPermalink)) "/" "__" }}
+    
+    {{ with index $.Site.Data $page }}
+      {{ range . }}
+        {{ $.Scratch.Set "data" . }}
+
+        {{ if and (not .disabled) (in .fragment "hero") }}
+          {{ partial "fragments/hero.html" $ }}
+        {{ end }}
+        
+      {{ end }}
+    {{ end }}
+
+    {{ partial "content-split.html" . }}
+    
+    {{ with index $.Site.Data $page }}
+      {{ range sort . "weight" }}
+        {{ $.Scratch.Set "data" . }}
+            
+        {{ if and (not .disabled) (in .fragment "column-items") }}
+          {{ partial "fragments/column-items.html" $ }}
+        {{ end }}
+            
+        {{ if and (not .disabled) (in .fragment "row-items") }}
+          {{ partial "fragments/row-items.html" $ }}
+        {{ end }}
+
+        {{ if and (not .disabled) (in .fragment "contact") }}
+          {{ partial "fragments/contact.html" $ }}
+        {{ end }}
+
+        {{ if and (not .disabled) (in .fragment "logos") }}
+          {{ partial "fragments/logos.html" $ }}
+        {{ end }}
+
+        {{ if and (not .disabled) (in .fragment "footer") }}
+          {{ partial "fragments/footer.html" $ }}
+        {{ end }}
+
+      {{ end }}
+    {{ end }}
+
+    {{ partial "footer.html" . }}
+
+    {{ partial "js.html" . }}
+
+  </body>
+</html>

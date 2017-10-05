@@ -5,9 +5,9 @@
     {{- printf " bg-%s" $bg -}}
   ">
     <div class="container py-5">
-      {{ if .Title }}
-        <div class="row">
-          <div class="col pb-3
+      <div class="row">
+        {{ if .Title }}
+          <div class="col-12 pb-3
             {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
               {{- printf " text-%s" "black" -}}
             {{- else -}}
@@ -18,11 +18,9 @@
               {{ .Title | markdownify }}
             </h1>
           </div>
-        </div>
-      {{ end }}
-      {{ if .Page.Params.Subtitle }}
-        <div class="row">
-          <div class="col pb-2
+        {{ end }}
+        {{ if .Page.Params.Subtitle }}
+          <div class="col-12 pb-2
             {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
               {{- printf " text-%s" "dark" -}}
             {{- else -}}
@@ -33,16 +31,15 @@
               {{ .Page.Params.Subtitle | markdownify }}
             </h3>
           </div>
-        </div>
-      {{ end }}
-      <div class="row">
-        <div class="col
+        {{ end }}
+        <div class="col-12
             {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
               {{- printf " text-%s" "dark" -}}
             {{- else -}}
               {{- printf " text-muted text-%s" "secondary" -}}
             {{- end -}}
-          ">{{ .Content  | markdownify }}</p>
+          ">{{ .Content  | markdownify }}
+        </div>
       </div>
     </div>
   </div>
