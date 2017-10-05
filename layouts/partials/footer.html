@@ -1,9 +1,18 @@
 {{ "<!-- Legal Footer section -->" | safeHTML }}
-<footer class=" bg-secondary">
+{{ $bg := .Site.Params.style.backgroundFooter }}
+<footer class="
+  {{- printf " bg-%s" (default "secondary" $bg) -}}
+">
   <div class="container">
     <div class="row p-3">
       <div class="col-md">
-        <div class="row navbar-text text-dark">
+        <div class="row navbar-text
+          {{- if eq $bg "dark" -}}
+            {{- printf " text-%s" "secondary" -}}
+          {{- else -}}
+            {{- printf " text-%s" "dark" -}}
+          {{- end -}}
+        ">
           {{ with .Site.Copyright }}
             <div class="d-inline-flex">
               {{ . }}
@@ -24,7 +33,13 @@
               <ul class="nav ml-auto">
                 {{ range sort .Site.Menus.legalfooter }}
                   <li class="nav-item">
-                    <a class="nav-link text-dark py-0" href="{{ .URL | relLangURL }}"
+                    <a class="nav-link py-0
+                      {{- if eq $bg "dark" -}}
+                        {{- printf " text-%s" "secondary" -}}
+                      {{- else -}}
+                        {{- printf " text-%s" "dark" -}}
+                      {{- end -}}
+                    " href="{{ .URL | relLangURL }}"
                       {{ if hasPrefix .URL "#" }}
                         class="anchor"
                       {{ end }}>
