@@ -1,8 +1,8 @@
 {{ $data := ($.Scratch.Get "data") }}
 {{ "<!-- Footer -->" | safeHTML }}
-{{ $bg := $data.background }}
+{{ $bg := $data.background | default "dark"}}
 <div class="overlay container-fluid
-  {{- printf " bg-%s" (default "dark" $bg) -}}
+  {{- printf " bg-%s" $bg -}}
 ">
   <div class="container py-5">
     <div class="row">

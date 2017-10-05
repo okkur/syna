@@ -1,6 +1,6 @@
 <nav class="overlay navbar navbar-expand-lg py-2
-  {{- $bg := .Site.Params.style.backgroundNavigation -}}
-  {{- printf " bg-%s" (default "dark" $bg) -}}
+  {{- $bg := .Site.Params.style.backgroundNavigation | default "dark" -}}
+  {{- printf " bg-%s" $bg -}}
   {{- if or (eq $bg "light") (eq $bg "white") (eq $bg "secondary") -}}
     {{- printf " navbar-%s" "light" -}}
   {{- else -}}

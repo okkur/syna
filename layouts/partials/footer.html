@@ -1,7 +1,7 @@
 {{ "<!-- Legal Footer section -->" | safeHTML }}
-{{ $bg := .Site.Params.style.backgroundFooter }}
+{{ $bg := .Site.Params.style.backgroundFooter | default "secondary"}}
 <footer class="
-  {{- printf " bg-%s" (default "secondary" $bg) -}}
+  {{- printf " bg-%s" $bg -}}
 ">
   <div class="container">
     <div class="row p-3">
