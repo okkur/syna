@@ -1,22 +1,45 @@
 {{ $data := ($.Scratch.Get "data") }}
 {{ "<!-- Items -->" | safeHTML }}
+{{ $bg := $data.background | default "light"}}
 <section {{ with $data.selfLink }}id="{{ . }}"{{ end }}>
-  <div class="overlay container-fluid {{ if eq $data.background "dark" }}bg-dark{{ end }}">
+  <div class="overlay container-fluid
+    {{- printf " bg-%s" $bg -}}
+  ">
     <div class="container py-5">
-      <div class="row align-items-center {{ if eq $data.align "left" }}justify-content-start{{ else }}justify-content-end{{ end }}">
-        <div class="col-12 col-md-8 order-12 {{ if eq $data.align "left" }}order-md-1{{ end }} {{ if eq $data.background "dark" }}text-light{{ end }}">
+      <div class="row align-items-center
+      {{- if eq $data.align "left" -}}
+        {{- printf " justify-content-start" -}}
+      {{- else -}}
+        {{- printf " justify-content-end" -}}
+      {{- end -}}">
+        <div class="col-12 col-md-8 order-12
+          {{- if eq $data.align "left" -}}
+            {{- printf " order-md-1" -}}
+          {{- end -}}
+        ">
           {{ if $data.title }}
               <div class="row pb-3">
-                <div class="col-12">
-
-                <h2>
-                  {{ $data.title | markdownify }}
-                </h2>
+                <div class="col-12
+                  {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
+                    {{- printf " text-%s" "black" -}}
+                  {{- else -}}
+                    {{- printf " text-%s" "light" -}}
+                  {{- end -}}
+                ">
+                  <h2>
+                    {{ $data.title | markdownify }}
+                  </h2>
               </div>
             </div>
           {{ end }}
           {{ if $data.subtitle }}
-              <div class="row text-muted text-secondary pb-2">
+              <div class="row pb-2
+                {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                  {{- printf " text-%s" "dark" -}}
+                {{- else -}}
+                  {{- printf " text-muted text-%s" "secondary" -}}
+                {{- end -}}
+              ">
                 <div class="col-12">
 
                 <h5>
@@ -26,12 +49,30 @@
                           </div>
 
           {{ end }}
-          <p class="text-muted text-secondary mb-0">{{ $data.description  | markdownify}}</p>
+          <p class="mb-0
+            {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+              {{- printf " text-%s" "dark" -}}
+            {{- else -}}
+              {{- printf " text-muted text-%s" "secondary" -}}
+            {{- end -}}
+          ">{{ $data.description  | markdownify}}</p>
         </div>
-        <div class="col-12 col-md-3 order-12 text-center {{ if eq $data.align "left" }}ml-auto{{ else }}order-md-1 mr-auto{{ end }} mt-5">
+        <div class="col-12 col-md-3 order-12 text-center mt-5
+        {{- if eq $data.align "left" -}}
+          {{- printf " ml-auto" -}}
+        {{- else -}}
+          {{- printf " order-md-1 mr-auto" -}}
+        {{- end -}}
+          ">
           {{ if $data.icon }}
           <span class="fa-stack fa-4x">
-            <i class="fa fa-circle fa-stack-2x text-primary"></i>
+            <i class="fa fa-circle fa-stack-2x
+              {{- if eq $bg "primary" -}}
+                {{- printf " text-%s" "dark" -}}
+              {{- else -}}
+                {{- printf " text-%s" "primary" -}}
+              {{- end -}}
+            "></i>
             <i class="fa {{ $data.icon }} fa-stack-1x fa-inverse"></i>
           </span>
           {{ else if $data.image }}
