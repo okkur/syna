@@ -6,12 +6,19 @@
     {{ partial "nav.html" . }}
 
     {{ with $.Site.Data.index }}
-      {{ range sort . "weight" }}
+      {{ range . }}
         {{ $.Scratch.Set "data" . }}
 
         {{ if and (not .disabled) (in .fragment "hero") }}
           {{ partial "fragments/hero.html" $ }}
         {{ end }}
+        
+      {{ end }}
+    {{ end }}
+        
+    {{ with $.Site.Data.index }}
+      {{ range sort . "weight" }}
+        {{ $.Scratch.Set "data" . }}
 
         {{ if and (not .disabled) (in .fragment "column-items") }}
           {{ partial "fragments/column-items.html" $ }}
