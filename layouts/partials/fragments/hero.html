@@ -28,10 +28,13 @@
       </p>
     {{ end }}
   {{ end }}
-    {{ if $data.button }}
-     <a class="overlay btn btn-primary btn-lg{{ if hasPrefix $data.link "#" }} anchor {{ end }}" href="{{ $data.link | relLangURL }}">
-        {{ $data.button }}
+  {{ range $data.buttons }}
+     <a class="overlay btn btn-lg m-2{{ if hasPrefix .link "#" }} anchor{{ end }}
+       {{- $color := .color | default "primary" -}}
+       {{- printf " btn-%s" $color -}}
+     " href="{{ .link | relLangURL }}">
+        {{ .text }}
      </a>
-    {{ end }}
+  {{ end }}
   </div>
 </header>
