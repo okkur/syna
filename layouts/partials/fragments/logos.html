@@ -2,54 +2,54 @@
 {{ "<!-- Logos -->" | safeHTML }}
 {{ $bg := $data.background | default "white" }}
 <section {{ with $data.selfLink }}id="{{ . }}"{{ end }}>
-    <div class="overlay container-fluid
-      {{- printf " bg-%s" $bg -}}
-    ">
-      <div class="container py-3">
-        {{ with $data.title }}
-          <div class="row">
-            <div class="col text-center
-            {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-              {{- printf " text-%s" "dark" -}}
-            {{- else -}}
-              {{- printf " text-%s" "secondary" -}}
-            {{- end -}}
-          ">
-              <h4>
-                {{ . | markdownify }}
-              </h4>
-            </div>
+  <div class="overlay container-fluid
+    {{- printf " bg-%s" $bg -}}
+  ">
+    <div class="container py-3">
+      {{ with $data.title }}
+        <div class="row">
+          <div class="col text-center
+          {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+            {{- printf " text-%s" "dark" -}}
+          {{- else -}}
+            {{- printf " text-%s" "secondary" -}}
+          {{- end -}}
+        ">
+            <h4>
+              {{ . | markdownify }}
+            </h4>
           </div>
-        {{ end }}
-        {{ with $data.subtitle }}
-          <div class="row">
-            <div class="col text-center
-            {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-              {{- printf " text-%s" "dark" -}}
-            {{- else -}}
-              {{- printf " text-muted text-%s" "secondary" -}}
-            {{- end -}}
-            ">
-              <h5>
-                {{ . | markdownify }}
-              </h5>
-            </div>
-          </div>
-        {{ end }}
-        <div class="row justify-content-center align-items-center">
-          {{ range sort $data.logos "weight" }}
-            <div class="col-7 col-sm-4 text-center py-2">
-              {{ $url := printf "images/logos/%s" .logo }}
-              {{ if .link }}
-                <a href="{{ .link }}">
-                  <img src="{{ $url | absURL }}" class="p-2 w-75" alt="{{ .name }}">
-                </a>
-              {{ else }}
-                <img src="{{ $url | absURL }}" class="p-2 w-75" alt="{{ .name }}">
-              {{ end }}
-            </div>
-          {{ end }}
         </div>
+      {{ end }}
+      {{ with $data.subtitle }}
+        <div class="row">
+          <div class="col text-center
+          {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+            {{- printf " text-%s" "dark" -}}
+          {{- else -}}
+            {{- printf " text-muted text-%s" "secondary" -}}
+          {{- end -}}
+          ">
+            <h5>
+              {{ . | markdownify }}
+            </h5>
+          </div>
+        </div>
+      {{ end }}
+      <div class="row justify-content-center align-items-center">
+        {{ range sort $data.logos "weight" }}
+          <div class="col-7 col-sm-4 text-center py-2">
+            {{ $url := printf "images/logos/%s" .logo }}
+            {{ if .link }}
+              <a href="{{ .link }}">
+                <img src="{{ $url | absURL }}" class="p-2 w-75" alt="{{ .name }}">
+              </a>
+            {{ else }}
+              <img src="{{ $url | absURL }}" class="p-2 w-75" alt="{{ .name }}">
+            {{ end }}
+          </div>
+        {{ end }}
       </div>
     </div>
+  </div>
 </section>
