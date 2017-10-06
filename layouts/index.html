@@ -28,6 +28,10 @@
         {{ if and (not .disabled) (in .fragment "row-items") }}
           {{ partial "fragments/row-items.html" $ }}
         {{ end }}
+        
+        {{ if and (not .disabled) (in .fragment "embed") }}
+          {{ partial "fragments/embed.html" $ }}
+        {{ end }}
 
         {{ if and (not .disabled) (in .fragment "contact") }}
           {{ partial "fragments/contact.html" $ }}
