@@ -5,9 +5,9 @@
 
   <body class="{{ printf "bg-%s" $bg }}">
     {{ partial "nav.html" . }}
-    
+
     {{ $page := replace (strings.TrimRight "/" (strings.TrimLeft "/" .RelPermalink)) "/" "__" }}
-    
+
     {{ with index $.Site.Data $page }}
       {{ range . }}
         {{ $.Scratch.Set "data" . }}
@@ -15,26 +15,30 @@
         {{ if and (not .disabled) (in .fragment "hero") }}
           {{ partial "fragments/hero.html" $ }}
         {{ end }}
-        
+
       {{ end }}
     {{ end }}
 
     {{ partial "content-split.html" . }}
-    
+
     {{ with index $.Site.Data $page }}
       {{ range sort . "weight" }}
         {{ $.Scratch.Set "data" . }}
-            
+
         {{ if and (not .disabled) (in .fragment "column-items") }}
           {{ partial "fragments/column-items.html" $ }}
         {{ end }}
-            
+
         {{ if and (not .disabled) (in .fragment "row-items") }}
           {{ partial "fragments/row-items.html" $ }}
         {{ end }}
-        
+
         {{ if and (not .disabled) (in .fragment "embed") }}
           {{ partial "fragments/embed.html" $ }}
+        {{ end }}
+
+        {{ if and (not .disabled) (in .fragment "subscribe") }}
+          {{ partial "fragments/subscribe.html" $ }}
         {{ end }}
 
         {{ if and (not .disabled) (in .fragment "contact") }}

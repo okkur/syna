@@ -42,15 +42,15 @@
                 {{ with $data.fields.name }}
                   <div class="form-group">
                     <input
-                    id="name"
-                    class="form-control"
-                    type="text"
-                    data-validation-error-msg="{{ .error | default (i18n "contact.defaultNameError") }}"
-                    data-validation-error-msg-container="#name-error"
-                    placeholder="{{ with .text }}{{ . | markdownify }}{{ end }}"
-                    required>
+                      id="name"
+                      class="form-control"
+                      type="text"
+                      data-validation-error-msg="{{ .error | default (i18n "contact.defaultNameError") }}"
+                      data-validation-error-msg-container="#name-error"
+                      placeholder="{{ with .text }}{{ . | markdownify }}{{ end }}"
+                      required>
+                    <div class="px-2 d-none" id="name-error"></div>
                   </div>
-                  <div class="px-2 d-none" id="name-error"></div>
                 {{ end }}
                 {{ with $data.fields.email }}
                   <div class="form-group">
@@ -63,7 +63,7 @@
                       data-validation-error-msg-container="#email-error"
                       placeholder="{{ with .text }}{{ . | markdownify }}{{ end }}"
                       required>
-                      <div class="px-2 d-none" id="email-error"></div>
+                    <div class="px-2 d-none" id="email-error"></div>
                   </div>
                 {{ end }}
                 {{ with $data.fields.phone }}

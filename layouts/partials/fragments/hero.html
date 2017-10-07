@@ -13,13 +13,13 @@
     <img class="overlay img-fluid" src="{{ (printf "images/%s" .) | relURL }}"></img>
     {{ with $data.subtitle }}
       <h1 class="overlay jumbotron-heading my-4">
-          {{ . | markdownify }}
+        {{ . | markdownify }}
       </h1>
     {{ end }}
   {{ else }}
     {{ with $data.title }}
       <h1 class="overlay jumbotron-heading">
-          {{ . }}
+        {{ . }}
       </h1>
     {{ end }}
     {{ with $data.subtitle }}
@@ -29,12 +29,12 @@
     {{ end }}
   {{ end }}
   {{ range $data.buttons }}
-     <a class="overlay btn btn-lg m-2{{ if hasPrefix .link "#" }} anchor{{ end }}
-       {{- $color := .color | default "primary" -}}
-       {{- printf " btn-%s" $color -}}
-     " href="{{ .link | relLangURL }}">
-        {{ .text }}
-     </a>
+    <a class="overlay btn btn-lg m-2{{ if hasPrefix .link "#" }} anchor{{ end }}
+      {{- $color := .color | default "primary" -}}
+      {{- printf " btn-%s" $color -}}
+    " href="{{ .link | relLangURL }}">
+      {{ .text }}
+    </a>
   {{ end }}
   </div>
 </header>

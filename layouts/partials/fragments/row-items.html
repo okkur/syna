@@ -7,11 +7,12 @@
   ">
     <div class="container py-5">
       <div class="row align-items-center
-      {{- if eq $data.align "left" -}}
-        {{- printf " justify-content-start" -}}
-      {{- else -}}
-        {{- printf " justify-content-end" -}}
-      {{- end -}}">
+        {{- if eq $data.align "left" -}}
+          {{- printf " justify-content-start" -}}
+        {{- else -}}
+          {{- printf " justify-content-end" -}}
+        {{- end -}}
+      ">
         <div class="col-12 col-md-8 order-12
           {{- if eq $data.align "left" -}}
             {{- printf " order-md-1" -}}
@@ -56,23 +57,23 @@
           ">{{ $data.description  | markdownify}}</p>
         </div>
         <div class="col-12 col-md-3 order-12 text-center mt-5
-        {{- if eq $data.align "left" -}}
-          {{- printf " ml-auto" -}}
-        {{- else -}}
-          {{- printf " order-md-1 mr-auto" -}}
-        {{- end -}}
-          ">
+          {{- if eq $data.align "left" -}}
+            {{- printf " ml-auto" -}}
+          {{- else -}}
+            {{- printf " order-md-1 mr-auto" -}}
+          {{- end -}}
+        ">
           {{ if $data.icon }}
-          <span class="fa-stack fa-4x">
-            <i class="fa fa-circle fa-stack-2x
-              {{- if eq $bg "primary" -}}
-                {{- printf " text-%s" "dark" -}}
-              {{- else -}}
-                {{- printf " text-%s" "primary" -}}
-              {{- end -}}
-            "></i>
-            <i class="fa {{ $data.icon }} fa-stack-1x fa-inverse"></i>
-          </span>
+            <span class="fa-stack fa-4x">
+              <i class="fa fa-circle fa-stack-2x
+                {{- if eq $bg "primary" -}}
+                  {{- printf " text-%s" "dark" -}}
+                {{- else -}}
+                  {{- printf " text-%s" "primary" -}}
+                {{- end -}}
+              "></i>
+              <i class="fa {{ $data.icon }} fa-stack-1x fa-inverse"></i>
+            </span>
           {{ else if $data.image }}
             {{ $url := printf "images/row/%s" $data.image }}
             <img src="{{ $url | absURL }}" class="p-2 w-100" alt="{{ $data.name }}">
