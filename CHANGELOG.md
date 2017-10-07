@@ -1,3 +1,17 @@
+__[v0.4.0](#v040)__
+  - [Downloads for v0.4.0](https://github.com/okkur/syna/releases/tag/v0.4.0)
+  - [Changelog since v0.3.0](#changelog-since-v030)
+
+# v0.4.0
+_2017-10-09_
+[Examples](/exampleSite)
+
+## Changes since v0.3.0
+  - Background color for body
+  - 404 page
+  - Multiple button option for hero
+  - Embed fragment for videos or other media
+  
 __[v0.3.0](#v030)__
   - [Downloads for v0.3.0](https://github.com/okkur/syna/releases/tag/v0.3.0)
   - [Changelog since v0.2.0](#changelog-since-v020)
