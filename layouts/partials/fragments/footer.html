@@ -75,24 +75,24 @@
           </ul>
         {{ end }}
       </div>
-      {{ with $data.descriptionTitle }}
-        <div class="col-md m-2
-          {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-            {{- printf " text-%s" "dark" -}}
-          {{- else -}}
-            {{- printf " text-%s" "secondary" -}}
-          {{- end -}}
-        ">
-            <h4>
-              {{ . }}
-            </h4>
-          {{ end }}
-          {{ with $data.description }}
-            <p>
-              {{ . | markdownify }}
-            </p>
-        </div>
-      {{ end }}
+      <div class="col-md m-2
+        {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+          {{- printf " text-%s" "dark" -}}
+        {{- else -}}
+          {{- printf " text-%s" "secondary" -}}
+        {{- end -}}
+      ">
+        {{ with $data.descriptionTitle }}
+          <h4>
+            {{ . }}
+          </h4>
+        {{ end }}
+        {{ with $data.description }}
+          <p>
+            {{ . | markdownify }}
+          </p>
+        {{ end }}
+      </div>
     </div>
   </div>
 </div>
