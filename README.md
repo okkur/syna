@@ -1,6 +1,6 @@
 
 
-<img src="https://github.com/okkur/syna/blob/master/logo.svg" width="500"/>
+<img src="https://github.com/okkur/syna/blob/master/exampleSite/static/images/logo.svg" width="500"/>
 
 
 Open Source Theme for Hugo Static Site Generator based on Bootstrap 4
