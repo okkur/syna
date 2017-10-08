@@ -1,10 +1,10 @@
 +++
-fragment = "row-items"
+fragment = "item"
 #disabled = false
 date = "2017-10-04"
 lastmod = "2017-10-04"
-weight = 340
-background = "primary"
+weight = 310
+background = "white"
 selfLink = "modular"
 align = "left"
 

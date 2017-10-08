@@ -21,12 +21,12 @@
       {{ range sort . "weight" }}
         {{ $.Scratch.Set "data" . }}
 
-        {{ if and (not .disabled) (in .fragment "column-items") }}
-          {{ partial "fragments/column-items.html" $ }}
+        {{ if and (not .disabled) (in .fragment "items") }}
+          {{ partial "fragments/items.html" $ }}
         {{ end }}
 
-        {{ if and (not .disabled) (in .fragment "row-items") }}
-          {{ partial "fragments/row-items.html" $ }}
+        {{ if and (not .disabled) (in .fragment "item") }}
+          {{ partial "fragments/item.html" $ }}
         {{ end }}
 
         {{ if and (not .disabled) (in .fragment "embed") }}

@@ -10,6 +10,7 @@ _2017-10-09_
   - Height and width option to hero logo
   - Bind hero background image position to bottom
   - Button fragment for action items
+  - Reorganize fragments
 
 __[v0.4.0](#v040)__
   - [Downloads for v0.4.0](https://github.com/okkur/syna/releases/tag/v0.4.0)

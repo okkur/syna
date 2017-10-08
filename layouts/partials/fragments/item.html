@@ -1,5 +1,5 @@
 {{ $data := ($.Scratch.Get "data") }}
-{{ "<!-- Items -->" | safeHTML }}
+{{ "<!-- Item -->" | safeHTML }}
 {{ $bg := $data.background | default "light"}}
 
 <section {{ with $data.selfLink }}id="{{ . }}"{{ end }}>
@@ -49,13 +49,15 @@
               </div>
             </div>
           {{ end }}
-          <p class="mb-0
-            {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-              {{- printf " text-%s" "dark" -}}
-            {{- else -}}
-              {{- printf " text-muted text-%s" "secondary" -}}
-            {{- end -}}
-          ">{{ $data.description  | markdownify}}</p>
+          {{ if $data.description }}
+            <p class="mb-0
+              {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                {{- printf " text-%s" "dark" -}}
+              {{- else -}}
+                {{- printf " text-muted text-%s" "secondary" -}}
+              {{- end -}}
+            ">{{ $data.description  | markdownify}}</p>
+          {{ end }}
         </div>
         <div class="col-12 col-md-3 order-12 text-center mt-5
           {{- if eq $data.align "left" -}}
