@@ -8,6 +8,7 @@ _2017-10-09_
 
 ## Changes since v0.4.0
   - Add height and width option to hero logo
+  - Bind hero background image position to bottom
 
 __[v0.4.0](#v040)__
   - [Downloads for v0.4.0](https://github.com/okkur/syna/releases/tag/v0.4.0)
