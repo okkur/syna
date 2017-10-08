@@ -19,11 +19,11 @@ logoWidth = "500px" # optional - will default to image width
 
 [[buttons]]
   text = "Download"
-  link = "#download"
+  link = "https://github.com/okkur/syna/releases"
   color = "info"
 
 [[buttons]]
   text = "Contribute"
-  link = "https://github.com/okkur/syna"
+  link = "#contribute"
   color = "success"
 +++

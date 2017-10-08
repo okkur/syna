@@ -73,18 +73,13 @@ googleAnalytics = ""
   weight = 30
 
 [[menu.main]]
-  url = "/colors"
-  name = "Colors"
-  weight = 40
-
-[[menu.main]]
   url = "#contact"
   name = "Contact"
   weight = 50
 
 [[menu.main]]
-  url = "#modular"
-  name = "Modularity"
+  url = "#contribute"
+  name = "Contribute"
   weight = 30
 
 [[menu.legalFooter]]
@@ -98,8 +93,8 @@ googleAnalytics = ""
   weight = 30
 
 [[menu.footer]]
-  url = "#tools"
-  name = "Tools"
+  url = "#contribute"
+  name = "Contribute"
   weight = 10
 
 [[menu.footer]]
@@ -108,8 +103,8 @@ googleAnalytics = ""
   weight = 30
 
 [[menu.footer]]
-  url = "#customizable"
-  name = "Customizable"
+  url = "#download"
+  name = "Download"
   weight = 30
 
 [[menu.footerSocial]]

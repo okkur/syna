@@ -11,6 +11,7 @@ _2017-10-09_
   - Bind hero background image position to bottom
   - Button fragment for call to action
   - Reorganize fragments
+  - Cleanup data files
   
 ## Fixes since v0.4.0
   - Fragment include conditionals

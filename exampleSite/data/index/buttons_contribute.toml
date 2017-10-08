@@ -1,0 +1,26 @@
++++
+fragment = "buttons"
+#disabled = false
+date = "2016-09-07"
+lastmod = "2017-09-07"
+weight = 760
+#background = "light"
+selfLink = "contribute"
+
+title = "Even more Buttons"
+
+[[buttons]]
+  text = "Support"
+  link = "https://github.com/okkur/syna/blob/master/SUPPORT.md"
+  color = "light" # primary, secondary, success, danger, warning, info, light, dark, link - default: primary
+
+[[buttons]]
+  text = "Contribute"
+  link = "https://github.com/okkur/syna/blob/master/CONTRIBUTE.md"
+  color = "success"
+
+[[buttons]]
+  text = "Examples"
+  link = "https://github.com/okkur/syna/tree/master/exampleSite"
+  color = "secondary" # primary, secondary, success, danger, warning, info, light, dark, link - default: primary
++++
