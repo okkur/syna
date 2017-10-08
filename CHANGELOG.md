@@ -1,3 +1,18 @@
+__[v0.5.0](#v050)__
+  - [Downloads for v0.5.0](https://github.com/okkur/syna/releases/tag/v0.5.0)
+  - [Changelog since v0.4.0](#changelog-since-v040)
+
+# v0.5.0
+_2017-10-09_
+[Examples](/exampleSite)
+
+## Changes since v0.4.0
+  - Add height and width option to hero logo
+
+__[v0.4.0](#v040)__
+  - [Downloads for v0.4.0](https://github.com/okkur/syna/releases/tag/v0.4.0)
+  - [Changelog since v0.3.0](#changelog-since-v030)
+
 __[v0.4.0](#v040)__
   - [Downloads for v0.4.0](https://github.com/okkur/syna/releases/tag/v0.4.0)
   - [Changelog since v0.3.0](#changelog-since-v030)

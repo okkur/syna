@@ -10,7 +10,10 @@
     <div id="particles-js"></div>
   {{ end }}
   {{ with $data.logo }}
-    <img class="overlay img-fluid" src="{{ (printf "images/%s" .) | relURL }}"></img>
+    <img class="overlay img-fluid" src="{{ (printf "images/%s" .) | relURL }}"
+      {{- if $data.logoHeight -}} height="{{ $data.logoHeight }}"{{- end -}}
+      {{- if $data.logoWidth -}} width="{{ $data.logoWidth }}"{{- end -}}
+    ></img>
     {{ with $data.subtitle }}
       <h1 class="overlay jumbotron-heading my-4">
         {{ . | markdownify }}
