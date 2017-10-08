@@ -3,7 +3,7 @@ __[v0.5.0](#v050)__
   - [Changelog since v0.4.0](#changelog-since-v040)
 
 # v0.5.0
-_2017-10-09_
+_2017-10-08_
 [Examples](/exampleSite)
 
 ## Changes since v0.4.0
