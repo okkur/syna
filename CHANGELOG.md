@@ -12,7 +12,7 @@ _2017-10-09_
   - Button fragment for call to action
   - Reorganize fragments
   - Cleanup data files
-  - Item fragment with action button
+  - Item fragment with cal to action
   
 ## Fixes since v0.4.0
   - Fragment include conditionals
