@@ -9,8 +9,11 @@ _2017-10-09_
 ## Changes since v0.4.0
   - Height and width option to hero logo
   - Bind hero background image position to bottom
-  - Button fragment for action items
+  - Button fragment for call to action
   - Reorganize fragments
+  
+## Fixes since v0.4.0
+  - Fragment include conditionals
 
 __[v0.4.0](#v040)__
   - [Downloads for v0.4.0](https://github.com/okkur/syna/releases/tag/v0.4.0)

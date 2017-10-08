@@ -8,7 +8,7 @@ weight = 200
 selfLink = "features"
 
 title = "Features"
-subtitle= "Highly modular theme for Hugo built with Boostrap 4"
+subtitle= "Highly modular theme for Hugo built with Boostrap 5"
 
 [[items]]
   name = "Modular"

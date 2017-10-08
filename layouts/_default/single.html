@@ -12,7 +12,7 @@
       {{ range . }}
         {{ $.Scratch.Set "data" . }}
 
-        {{ if and (not .disabled) (in .fragment "hero") }}
+        {{ if and (not .disabled) (eq .fragment "hero") }}
           {{ partial "fragments/hero.html" $ }}
         {{ end }}
 
@@ -25,31 +25,31 @@
       {{ range sort . "weight" }}
         {{ $.Scratch.Set "data" . }}
 
-        {{ if and (not .disabled) (in .fragment "items") }}
+        {{ if and (not .disabled) (eq .fragment "items") }}
           {{ partial "fragments/items.html" $ }}
         {{ end }}
 
-        {{ if and (not .disabled) (in .fragment "item") }}
+        {{ if and (not .disabled) (eq .fragment "item") }}
           {{ partial "fragments/item.html" $ }}
         {{ end }}
 
-        {{ if and (not .disabled) (in .fragment "embed") }}
+        {{ if and (not .disabled) (eq .fragment "embed") }}
           {{ partial "fragments/embed.html" $ }}
         {{ end }}
 
-        {{ if and (not .disabled) (in .fragment "subscribe") }}
+        {{ if and (not .disabled) (eq .fragment "subscribe") }}
           {{ partial "fragments/subscribe.html" $ }}
         {{ end }}
 
-        {{ if and (not .disabled) (in .fragment "buttons") }}
+        {{ if and (not .disabled) (eq .fragment "buttons") }}
           {{ partial "fragments/buttons.html" $ }}
         {{ end }}
 
-        {{ if and (not .disabled) (in .fragment "contact") }}
+        {{ if and (not .disabled) (eq .fragment "contact") }}
           {{ partial "fragments/contact.html" $ }}
         {{ end }}
 
-        {{ if and (not .disabled) (in .fragment "logos") }}
+        {{ if and (not .disabled) (eq .fragment "logos") }}
           {{ partial "fragments/logos.html" $ }}
         {{ end }}
 
