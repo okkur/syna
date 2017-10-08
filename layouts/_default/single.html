@@ -41,6 +41,10 @@
           {{ partial "fragments/subscribe.html" $ }}
         {{ end }}
 
+        {{ if and (not .disabled) (in .fragment "buttons") }}
+          {{ partial "fragments/buttons.html" $ }}
+        {{ end }}
+
         {{ if and (not .disabled) (in .fragment "contact") }}
           {{ partial "fragments/contact.html" $ }}
         {{ end }}

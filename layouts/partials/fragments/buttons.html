@@ -1,0 +1,52 @@
+{{ $data := ($.Scratch.Get "data") }}
+{{ "<!-- Buttons -->" | safeHTML }}
+{{ $bg := $data.background | default "white" }}
+
+<section {{ with $data.selfLink }}id="{{ . }}"{{ end }}>
+  <div class="overlay container-fluid
+    {{- printf " bg-%s" $bg -}}
+  ">
+    <div class="container py-4">
+      {{ with $data.title }}
+        <div class="row">
+          <div class="col text-center
+            {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+              {{- printf " text-%s" "dark" -}}
+            {{- else -}}
+              {{- printf " text-%s" "secondary" -}}
+            {{- end -}}
+          ">
+            <h4>
+              {{ . | markdownify }}
+            </h4>
+          </div>
+        </div>
+      {{ end }}
+      {{ with $data.subtitle }}
+        <div class="row">
+          <div class="col text-center
+            {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+              {{- printf " text-%s" "dark" -}}
+            {{- else -}}
+              {{- printf " text-muted text-%s" "secondary" -}}
+            {{- end -}}
+          ">
+            <h5>
+              {{ . | markdownify }}
+            </h5>
+          </div>
+        </div>
+      {{ end }}
+      <div class="row text-center justify-content-center">
+        {{ range $data.buttons }}
+          <a class="btn btn-lg m-2{{ if hasPrefix .link "#" }} anchor{{ end }}
+            {{- $color := .color | default "primary" -}}
+            {{- printf " btn-%s" $color -}}
+          " href="{{ .link | relLangURL }}">
+            {{ .text }}
+          </a>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,16 @@
++++
+fragment = "buttons"
+#disabled = false
+date = "2016-09-07"
+lastmod = "2017-09-07"
+weight = 720
+background = "secondary"
+selfLink = "Download"
+
+title = "Get your release of Syna now"
+
+[[buttons]]
+  text = "Download"
+  link = "https://github.com/okkur/syna/releases"
+  color = "info"
++++

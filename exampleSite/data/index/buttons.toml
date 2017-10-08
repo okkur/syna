@@ -1,0 +1,22 @@
++++
+fragment = "buttons"
+#disabled = false
+date = "2016-09-07"
+lastmod = "2017-09-07"
+weight = 750
+#background = "light"
+selfLink = "actions"
+
+title = "Action items"
+subtitle = "Simple horizontal action buttons"
+
+[[buttons]]
+  text = "Features"
+  link = "#features"
+  color = "primary" # primary, secondary, success, danger, warning, info, light, dark, link - default: primary
+
+[[buttons]]
+  text = "Contribute"
+  link = "https://github.com/okkur/syna"
+  color = "success"
++++
