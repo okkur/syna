@@ -15,7 +15,7 @@ image = "screenshot.png"
 description = """
 Easily switch logos, colours and the various modules within your own site. All based on Syna and the awesome Hugo project. 
 
-And some more text to showcase the call to action capabilities:
+And some more text to showcase the call to action capabilities:  
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 Curabitur a lorem urna.
 Quisque in neque malesuada, sollicitudin nunc porttitor, ornare est.

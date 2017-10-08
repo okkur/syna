@@ -14,9 +14,9 @@
           {{- printf " justify-content-end" -}}
         {{- end -}}
       ">
-        <div class="col-12 col-md-8 order-12
+        <div class="col-12 col-lg-7 order-12
           {{- if eq $data.align "left" -}}
-            {{- printf " order-md-1" -}}
+            {{- printf " order-lg-1" -}}
           {{- end -}}
         ">
           {{ if $data.title }}
@@ -50,39 +50,49 @@
             </div>
           {{ end }}
           {{ if $data.description }}
-            <p class="mb-0
+            <div class="mb-0
               {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
                 {{- printf " text-%s" "dark" -}}
               {{- else -}}
                 {{- printf " text-muted text-%s" "secondary" -}}
               {{- end -}}
-            ">{{ $data.description  | markdownify}}</p>
+            ">{{ $data.description  | markdownify}}</div>
           {{ end }}
         </div>
-        <div class="col-12 col-md-3 order-12 text-center mt-5
+        <div class="col-12 col-lg-4 order-12 text-center mt-5
           {{- if eq $data.align "left" -}}
             {{- printf " ml-auto" -}}
           {{- else -}}
-            {{- printf " order-md-1 mr-auto" -}}
+            {{- printf " order-lg-1 mr-auto" -}}
           {{- end -}}
         ">
-          {{ if $data.icon }}
-            <span class="fa-stack fa-4x">
-              <i class="fa fa-circle fa-stack-2x
-                {{- if eq $bg "primary" -}}
-                  {{- printf " text-%s" "dark" -}}
-                {{- else -}}
-                  {{- printf " text-%s" "primary" -}}
-                {{- end -}}
-              "></i>
-              <i class="fa {{ $data.icon }} fa-stack-1x fa-inverse"></i>
-            </span>
-          {{ else if $data.image }}
-            {{ $url := printf "images/row/%s" $data.image }}
-            <img src="{{ $url | absURL }}" class="p-2 w-100" alt="{{ $data.name }}">
-          {{ end }}
+          <div class="row">
+            <div class="col-12
+              {{- if eq $data.align "left" -}}
+                {{- printf " text-lg-left mr-lg-auto" -}}
+              {{- else if eq $data.align "right" -}}
+                {{- printf " text-lg-right ml-lg-auto" -}}
+              {{- end -}}
+            ">
+              {{ if $data.icon }}
+                <span class="fa-stack fa-4x">
+                  <i class="fa fa-circle fa-stack-2x
+                    {{- if eq $bg "primary" -}}
+                      {{- printf " text-%s" "dark" -}}
+                    {{- else -}}
+                      {{- printf " text-%s" "primary" -}}
+                    {{- end -}}
+                  "></i>
+                  <i class="fa {{ $data.icon }} fa-stack-1x fa-inverse"></i>
+                </span>
+              {{ else if $data.image }}
+                {{ $url := printf "images/row/%s" $data.image }}
+                <img src="{{ $url | absURL }}" class="p-2 w-100" alt="{{ $data.name }}">
+              {{ end }}
+            </div>
+          </div>
         </div>
-        </div>
+      </div>
     </div>
   </div>
 </section>
