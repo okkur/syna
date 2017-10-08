@@ -1,6 +1,7 @@
 {{ $data := ($.Scratch.Get "data") }}
 {{ "<!-- Contact -->" | safeHTML }}
 {{ $bg := $data.background | default "secondary" }}
+
 <section id="{{ $data.selfLink }}">
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}

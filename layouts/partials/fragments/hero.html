@@ -1,5 +1,6 @@
 {{ $data := ($.Scratch.Get "data") }}
 {{ "<!-- Hero -->" | safeHTML }}
+
 <header>
   {{ with $data.header }}
     <div class="jumbotron text-center header-image mb-0">

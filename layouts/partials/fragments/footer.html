@@ -1,6 +1,7 @@
 {{ $data := ($.Scratch.Get "data") }}
 {{ "<!-- Footer -->" | safeHTML }}
 {{ $bg := $data.background | default "dark"}}
+
 <div class="overlay container-fluid
   {{- printf " bg-%s" $bg -}}
 ">
