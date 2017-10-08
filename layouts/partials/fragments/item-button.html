@@ -14,9 +14,11 @@
           {{- printf " justify-content-end" -}}
         {{- end -}}
       ">
-        <div class="col-12 col-lg-7 order-12
+        <div class="col-12 col-lg-8
           {{- if eq $data.align "left" -}}
-            {{- printf " order-lg-1" -}}
+            {{- printf " order-lg-1 pr-lg-5" -}}
+          {{- else -}}
+            {{- printf " order-lg-12 pl-lg-5" -}}
           {{- end -}}
         ">
           {{ if $data.title }}
@@ -59,9 +61,9 @@
             ">{{ $data.description  | markdownify}}</div>
           {{ end }}
         </div>
-        <div class="col-12 col-lg-4 order-12 mt-5
+        <div class="col-12 col-lg-4 mt-5
           {{- if eq $data.align "left" -}}
-            {{- printf " ml-auto" -}}
+            {{- printf " order-lg-12 ml-auto" -}}
           {{- else -}}
             {{- printf " order-lg-1 mr-auto" -}}
           {{- end -}}
@@ -69,9 +71,9 @@
           <div class="row">
             <div class="col-12 text-center
               {{- if eq $data.align "left" -}}
-                {{- printf " text-lg-left" -}}
+                {{- printf " text-lg-left pl-lg-5" -}}
               {{- else if eq $data.align "right" -}}
-                {{- printf " text-lg-right" -}}
+                {{- printf " text-lg-right pr-lg-5" -}}
               {{- end -}}
             ">
               {{ range $data.buttons }}
