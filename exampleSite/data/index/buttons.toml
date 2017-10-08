@@ -17,6 +17,6 @@ subtitle = "Simple horizontal action buttons"
 
 [[buttons]]
   text = "Contribute"
-  link = "https://github.com/okkur/syna"
+  link = "https://github.com/okkur/syna/blob/master/CONTRIBUTE.md"
   color = "success"
 +++
