@@ -33,6 +33,10 @@
           {{ partial "fragments/embed.html" $ }}
         {{ end }}
 
+        {{ if and (not .disabled) (eq .fragment "item-button") }}
+          {{ partial "fragments/item-button.html" $ }}
+        {{ end }}
+
         {{ if and (not .disabled) (eq .fragment "subscribe") }}
           {{ partial "fragments/subscribe.html" $ }}
         {{ end }}

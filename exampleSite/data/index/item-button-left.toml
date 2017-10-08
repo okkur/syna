@@ -1,5 +1,5 @@
 +++
-fragment = "item"
+fragment = "item-button"
 #disabled = false
 date = "2017-10-04"
 lastmod = "2017-10-04"
@@ -9,9 +9,7 @@ selfLink = "contribute-action"
 align = "left"
 
 title = "Contribute"
-#subtitle= "Highly modular theme for Hugo built with Boostrap 4"
-#image = "screenshot.png"
-icon = "fa-random"
+
 description = """
 Help out and contribute.
 
@@ -25,4 +23,9 @@ Suspendisse rutrum, mi ac sollicitudin blandit, eros sem tincidunt enim, vitae f
 Nunc hendrerit, nibh vitae dignissim pretium, magna nulla lacinia massa, et interdum lacus purus ultricies lacus.
 Nulla tincidunt quis lacus in posuere.
 """
+
+[[buttons]]
+  text = "Contribute"
+  link = "https://github.com/okkur/syna/blob/master/CONTRIBUTE.md"
+  color = "success"
 +++
