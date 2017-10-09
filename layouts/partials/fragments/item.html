@@ -14,11 +14,13 @@
           {{- printf " justify-content-end" -}}
         {{- end -}}
       ">
-        <div class="col-12 col-lg-8
+        <div class="col-12
           {{- if eq $data.align "left" -}}
-            {{- printf " order-lg-1 pr-lg-5" -}}
+            {{- printf " order-lg-1 pr-lg-5 col-lg-8" -}}
+          {{- else if eq $data.align "center" -}}
+            {{- printf " order-lg-1 text-center" -}}
           {{- else -}}
-            {{- printf " order-lg-12 pl-lg-5" -}}
+            {{- printf " order-lg-12 pl-lg-5 col-lg-8" -}}
           {{- end -}}
         ">
           {{ if $data.title }}
@@ -61,21 +63,17 @@
             ">{{ $data.description  | markdownify}}</div>
           {{ end }}
         </div>
-        <div class="col-12 col-lg-4 text-center mt-5
+        <div class="col-12 text-center
           {{- if eq $data.align "left" -}}
-            {{- printf " order-lg-12 ml-auto" -}}
+            {{- printf " order-lg-12 mt-5 ml-auto col-lg-4" -}}
+          {{- else if eq $data.align "center" -}}
+            {{- printf " order-lg-12" -}}
           {{- else -}}
-            {{- printf " order-lg-1 mr-auto" -}}
+            {{- printf " order-lg-1 mt-5 mr-auto col-lg-4" -}}
           {{- end -}}
         ">
           <div class="row">
-            <div class="col-12
-              {{- if eq $data.align "left" -}}
-                {{- printf " text-lg-left pl-lg-5" -}}
-              {{- else if eq $data.align "right" -}}
-                {{- printf " text-lg-right pr-lg-5" -}}
-              {{- end -}}
-            ">
+            <div class="col-12 text-center">
               {{ if $data.icon }}
                 <span class="fa-stack fa-4x">
                   <i class="fa fa-circle fa-stack-2x
@@ -89,7 +87,16 @@
                 </span>
               {{ else if $data.image }}
                 {{ $url := printf "images/row/%s" $data.image }}
-                <img src="{{ $url | absURL }}" class="p-2 w-100" alt="{{ $data.name }}">
+                <img src="{{ $url | absURL }}" class="img-fluid p-2" alt="{{ $data.name }}">
+              {{ end }}
+              {{ range $data.buttons }}
+                <a class="btn btn-lg m-2
+                  {{ if hasPrefix .link "#" }} anchor{{ end }}
+                  {{- $color := .color | default "primary" -}}
+                  {{- printf " btn-%s" $color -}}
+                " href="{{ .link | relLangURL }}">
+                  {{ .text }}
+                </a>
               {{ end }}
             </div>
           </div>
