@@ -1,3 +1,19 @@
+__[v0.6.0](#v060)__
+  - [Downloads for v0.6.0](https://github.com/okkur/syna/releases/tag/v0.6.0)
+  - [Changelog since v0.5.0](#changelog-since-v050)
+
+# v0.6.0
+_2017-10-08_
+[Examples](/exampleSite)
+
+## Changes since v0.5.0
+  - Merge item based fragments into item fragment
+  - Restructure exampled data
+
+## Fixes since v0.5.0
+  - Alignment improvements for item fragment
+  - Responsiveness for item images
+
 __[v0.5.0](#v050)__
   - [Downloads for v0.5.0](https://github.com/okkur/syna/releases/tag/v0.5.0)
   - [Changelog since v0.4.0](#changelog-since-v040)
@@ -21,10 +37,6 @@ __[v0.4.0](#v040)__
   - [Downloads for v0.4.0](https://github.com/okkur/syna/releases/tag/v0.4.0)
   - [Changelog since v0.3.0](#changelog-since-v030)
 
-__[v0.4.0](#v040)__
-  - [Downloads for v0.4.0](https://github.com/okkur/syna/releases/tag/v0.4.0)
-  - [Changelog since v0.3.0](#changelog-since-v030)
-
 # v0.4.0
 _2017-10-07_
 [Examples](/exampleSite)
@@ -34,7 +46,7 @@ _2017-10-07_
   - 404 page
   - Multiple button option for hero
   - Embed fragment for videos or other media
-  
+
 __[v0.3.0](#v030)__
   - [Downloads for v0.3.0](https://github.com/okkur/syna/releases/tag/v0.3.0)
   - [Changelog since v0.2.0](#changelog-since-v020)
@@ -47,7 +59,7 @@ _2017-10-05_
   - Cleanup exampleSite
   - Two column single page
   - More example navigation
-  
+
 __[v0.2.0](#v020)__
   - [Downloads for v0.2.0](https://github.com/okkur/syna/releases/tag/v0.2.0)
   - [Changelog since v0.1.0](#changelog-since-v010)
