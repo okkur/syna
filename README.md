@@ -21,7 +21,7 @@ Highly customizable with modular per-page fragments.
 
 ## Using Syna Theme
 
-
+Check out our [demo](http://controller-christine-21401.netlify.com)
 
 
 Take a look at our full [documentation](/docs).
