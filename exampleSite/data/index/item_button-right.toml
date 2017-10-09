@@ -1,17 +1,18 @@
 +++
-fragment = "item-button"
+fragment = "item"
 #disabled = false
 date = "2017-10-04"
 lastmod = "2017-10-04"
-weight = 310
-#background = "light"
-selfLink = "contribute-action"
-align = "left"
+weight = 400
+background = "dark"
+selfLink = "download-action"
+align = "right"
 
-title = "Contribute"
+title = "Download"
+subtitle= "Showcase your project with our awesome theme"
 
 description = """
-Help out and contribute.
+Download Syna and try it out now.
 
 And some more text to showcase the call to action capabilities:
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -25,7 +26,12 @@ Nulla tincidunt quis lacus in posuere.
 """
 
 [[buttons]]
-  text = "Contribute"
-  link = "https://github.com/okkur/syna/blob/master/CONTRIBUTE.md"
-  color = "success"
+  text = "Download"
+  link = "https://github.com/okkur/syna/releases"
+  color = "primary"
+
+[[buttons]]
+  text = "Download alternative"
+  link = "https://github.com/okkur/syna/releases"
+  color = "secondary"
 +++

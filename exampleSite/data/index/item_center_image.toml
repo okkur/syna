@@ -1,0 +1,13 @@
++++
+fragment = "item"
+#disabled = false
+date = "2017-10-04"
+lastmod = "2017-10-04"
+weight = 330
+background = "secondary"
+selfLink = "modular"
+align = "center"
+
+title = "Image only fragment"
+image = "screenshot.png"
++++

@@ -2,7 +2,7 @@
 {{ "<!-- Embed -->" | safeHTML }}
 {{ $bg := $data.background | default "white" }}
 {{ $ratio := $data.ratio | default "4by3" }}
-{{ $size := $data.size | default "50" }}
+{{ $size := $data.size | default "75" }}
 
 <section {{ with $data.selfLink }}id="{{ . }}"{{ end }}>
   <div class="overlay container-fluid
@@ -39,10 +39,10 @@
           </div>
         </div>
       {{ end }}
-      <div class="row">
+      <div class="row justify-content-center">
         <div class="embed-responsive
           {{- printf " embed-responsive-%s" $ratio -}}
-          {{- printf " h-%s" $size -}}
+          {{- printf " h-%s w-%s" $size $size -}}
         ">
           {{ if $data.media }}
             {{ $data.media }}

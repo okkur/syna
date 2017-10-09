@@ -1,20 +1,21 @@
 +++
-fragment = "item-button"
+fragment = "item"
 #disabled = false
 date = "2017-10-04"
 lastmod = "2017-10-04"
-weight = 330
+weight = 320
 background = "dark"
-selfLink = "download-action"
+selfLink = "customizable"
 align = "right"
 
-title = "Download"
-subtitle= "Showcase your project with our awesome theme"
-
+title = "Customizable"
+subtitle= "Highly modular theme for Hugo built with Boostrap 4"
+image = "screenshot.png"
+#icon = "fa-gears"
 description = """
-Download Syna and try it out now.
+Easily switch logos, colours and the various modules within your own site. All based on Syna and the awesome Hugo project. 
 
-And some more text to showcase the call to action capabilities:
+And some more text to showcase the call to action capabilities:  
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 Curabitur a lorem urna.
 Quisque in neque malesuada, sollicitudin nunc porttitor, ornare est.
@@ -24,14 +25,4 @@ Suspendisse rutrum, mi ac sollicitudin blandit, eros sem tincidunt enim, vitae f
 Nunc hendrerit, nibh vitae dignissim pretium, magna nulla lacinia massa, et interdum lacus purus ultricies lacus.
 Nulla tincidunt quis lacus in posuere.
 """
-
-[[buttons]]
-  text = "Download"
-  link = "https://github.com/okkur/syna/releases"
-  color = "primary"
-
-[[buttons]]
-  text = "Download alternative"
-  link = "https://github.com/okkur/syna/releases"
-  color = "secondary"
 +++

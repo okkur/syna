@@ -4,9 +4,9 @@ fragment = "item"
 date = "2017-10-04"
 lastmod = "2017-10-04"
 weight = 310
-#background = "light"
+background = "secondary"
 selfLink = "modular"
-align = "left"
+align = "center"
 
 title = "Modular"
 #subtitle= "Highly modular theme for Hugo built with Boostrap 4"
