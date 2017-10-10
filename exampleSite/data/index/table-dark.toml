@@ -15,8 +15,9 @@ header = [
   "are",
   "awesome",
   "headers",
-  "button",
-  "more buttons"]
+  "buttons"]
+
+unimportant = [true, false, true, false, false]
 
 [[rows]]
   [[rows.values]]
@@ -30,11 +31,6 @@ header = [
 
   [[rows.values]]
     text = "values"
-
-  [[rows.values]]
-    button = "Download"
-    link = "https://github.com/okkur/syna/releases"
-    color = "success"
 
   [[rows.values]]
     button = "Purchase"
@@ -53,9 +49,6 @@ header = [
 
   [[rows.values]]
     text = "more values"
-
-  [[rows.values]]
-    text = ""
 
   [[rows.values]]
     icon = "fa-download"

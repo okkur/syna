@@ -112,7 +112,7 @@
           {{ end }}
           {{ if $data.rows }}
             <div class="row justify-content-center">
-              <div class="col-auto mr-lg-auto">
+              <div class="col-12 mr-lg-auto">
                 <table class="table table-responsive table-bordered
                   {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
                     {{- printf " text-%s" "dark" -}}
@@ -134,9 +134,17 @@
                       <tr>
                         {{ range .values }}
                           {{ if .header }}
-                           <th class="align-middle">{{ .header | markdownify }}</th>
+                          <th class="align-middle
+                            {{- if .unimportant -}}
+                              {{- printf " d-none .d-sm-none d-md-block d-lg-block d-xl-block" -}}
+                            {{- end -}}
+                          ">{{ .header | markdownify }}</th>
                           {{ else if .button }}
-                            <td class="align-middle">
+                            <td class="align-middle
+                              {{- if .unimportant -}}
+                                {{- printf " d-none .d-sm-none d-md-block d-lg-block d-xl-block" -}}
+                              {{- end -}}
+                            ">
                               <a class="btn
                               {{ if hasPrefix .link "#" }} anchor{{ end }}
                               {{- $color := .color | default "primary" -}}
@@ -146,13 +154,21 @@
                             </a>
                           </td>
                         {{ else if .icon }}
-                          <td class="align-middle">
+                          <td class="align-middle
+                            {{- if .unimportant -}}
+                              {{- printf " d-none .d-sm-none d-md-block d-lg-block d-xl-block" -}}
+                            {{- end -}}
+                          ">
                             <a href="{{ .links }}">
                               <i class="fa {{ .icon }} fa-2x"></i>
                             </a>
                           </td>
                         {{ else }}
-                          <td class="align-middle">{{ .text | markdownify }}</td>
+                          <td class="align-middle
+                            {{- if .unimportant -}}
+                              {{- printf " d-none .d-sm-none d-md-block d-lg-block d-xl-block" -}}
+                            {{- end -}}
+                          ">{{ .text | markdownify }}</td>
                         {{ end }}
                       {{ end }}
                     </tr>

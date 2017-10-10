@@ -18,6 +18,8 @@ header = [
   "button",
   "more buttons"]
 
+unimportant = [true, false, false, false, true, false]
+
 [[rows]]
   [[rows.values]]
     header = "#1"
