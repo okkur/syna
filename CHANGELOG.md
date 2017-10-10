@@ -16,7 +16,7 @@ _2017-10-10_
 
 __[v0.7.0](#v070)__
   - [Downloads for v0.7.0](https://github.com/okkur/syna/releases/tag/v0.7.0)
-  - [Changelog since v0.6.0](#changelog-since-v060)
+  - [Changelog since v0.6.0](#changes-since-v060)
 -->
 
 # v0.6.0
@@ -35,7 +35,7 @@ _2017-10-10_
 
 __[v0.5.0](#v050)__
   - [Downloads for v0.5.0](https://github.com/okkur/syna/releases/tag/v0.5.0)
-  - [Changelog since v0.4.0](#changelog-since-v040)
+  - [Changelog since v0.4.0](#changes-since-v040)
 
 # v0.5.0
 _2017-10-08_
@@ -54,7 +54,7 @@ _2017-10-08_
 
 __[v0.4.0](#v040)__
   - [Downloads for v0.4.0](https://github.com/okkur/syna/releases/tag/v0.4.0)
-  - [Changelog since v0.3.0](#changelog-since-v030)
+  - [Changelog since v0.3.0](#changes-since-v030)
 
 # v0.4.0
 _2017-10-07_
@@ -68,7 +68,7 @@ _2017-10-07_
 
 __[v0.3.0](#v030)__
   - [Downloads for v0.3.0](https://github.com/okkur/syna/releases/tag/v0.3.0)
-  - [Changelog since v0.2.0](#changelog-since-v020)
+  - [Changelog since v0.2.0](#changes-since-v020)
 
 # v0.3.0
 _2017-10-05_
@@ -81,7 +81,7 @@ _2017-10-05_
 
 __[v0.2.0](#v020)__
   - [Downloads for v0.2.0](https://github.com/okkur/syna/releases/tag/v0.2.0)
-  - [Changelog since v0.1.0](#changelog-since-v010)
+  - [Changelog since v0.1.0](#changes-since-v010)
 
 # v0.2.0
 _2017-10-05_
@@ -93,7 +93,7 @@ _2017-10-05_
 
 __[v0.1.0](#v010)__
   - [Downloads for v0.1.0](https://github.com/okkur/syna/releases/tag/v0.1.0)
-  - [Changelog since v0.0.0](#changelog-since-v000)
+  - [Changelog since v0.0.0](#changes-since-v000)
 
 
 # v0.1.0
