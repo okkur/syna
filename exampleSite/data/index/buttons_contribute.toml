@@ -12,7 +12,7 @@ title = "Even more Buttons"
 [[buttons]]
   text = "Support"
   link = "https://github.com/okkur/syna/blob/master/SUPPORT.md"
-  color = "light" # primary, secondary, success, danger, warning, info, light, dark, link - default: primary
+  color = "outline-secondary" # primary, secondary, success, danger, warning, info, light, dark, link - default: primary
 
 [[buttons]]
   text = "Contribute"
