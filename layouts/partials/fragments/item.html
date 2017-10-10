@@ -1,26 +1,30 @@
 {{ $data := ($.Scratch.Get "data") }}
 {{ "<!-- Item -->" | safeHTML }}
 {{ $bg := $data.background | default "light"}}
+{{ $align := $data.align | default "center" }}
+
 
 <section {{ with $data.selfLink }}id="{{ . }}"{{ end }}>
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">
     <div class="container py-5">
-      <div class="row align-items-center
-        {{- if eq $data.align "left" -}}
-          {{- printf " justify-content-start" -}}
+      <div class="row align-items-center text-center
+        {{- if eq $align "left" -}}
+          {{- printf " justify-content-start text-lg-left" -}}
+        {{- else if eq $align "right" -}}
+          {{- printf " justify-content-start text-lg-left" -}}
         {{- else -}}
           {{- printf " justify-content-end" -}}
         {{- end -}}
       ">
         <div class="col-12
-          {{- if eq $data.align "left" -}}
+          {{- if eq $align "left" -}}
             {{- printf " order-lg-1 pr-lg-5 col-lg-8" -}}
-          {{- else if eq $data.align "center" -}}
-            {{- printf " order-lg-1 text-center" -}}
-          {{- else -}}
+          {{- else if eq $align "right" -}}
             {{- printf " order-lg-12 pl-lg-5 col-lg-8" -}}
+          {{- else -}}
+            {{- printf " order-lg-1 text-center" -}}
           {{- end -}}
         ">
           {{ if $data.title }}
@@ -53,23 +57,119 @@
               </div>
             </div>
           {{ end }}
+          <div class="col-12 text-center d-lg-none pb-5
+            {{- if eq $align "left" -}}
+              {{- printf " order-lg-12 mt-lg-5 ml-lg-auto col-lg-4" -}}
+            {{- else if eq $align "right" -}}
+              {{- printf " order-lg-1 mt-lg-5 mr-lg-auto col-lg-4" -}}
+            {{- else -}}
+              {{- printf " order-lg-12" -}}
+            {{- end -}}
+          ">
+            <div class="row">
+              <div class="col-12">
+                {{ if $data.icon }}
+                  <span class="fa-stack fa-4x">
+                    <i class="fa fa-circle fa-stack-2x
+                      {{- if eq $bg "primary" -}}
+                        {{- printf " text-%s" "dark" -}}
+                      {{- else -}}
+                        {{- printf " text-%s" "primary" -}}
+                      {{- end -}}
+                    "></i>
+                    <i class="fa {{ $data.icon }} fa-stack-1x fa-inverse"></i>
+                  </span>
+                {{ else if $data.image }}
+                  {{ $url := printf "images/row/%s" $data.image }}
+                  <img src="{{ $url | absURL }}" class="img-fluid p-2" alt="{{ $data.name }}">
+                {{ end }}
+                {{ range $data.buttons }}
+                  <a class="btn btn-lg m-2
+                    {{ if hasPrefix .link "#" }} anchor{{ end }}
+                    {{- $color := .color | default "primary" -}}
+                    {{- printf " btn-%s" $color -}}
+                  " href="{{ .link | relLangURL }}">
+                    {{ .text }}
+                  </a>
+                {{ end }}
+              </div>
+            </div>
+          </div>
           {{ if $data.description }}
-            <div class="mb-0
-              {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                {{- printf " text-%s" "dark" -}}
-              {{- else -}}
-                {{- printf " text-muted text-%s" "secondary" -}}
-              {{- end -}}
-            ">{{ $data.description  | markdownify}}</div>
+          <div class="row">
+            <div class="col-12">
+              <div class="mb-0
+                {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                  {{- printf " text-%s" "dark" -}}
+                {{- else -}}
+                  {{- printf " text-muted text-%s" "secondary" -}}
+                {{- end -}}
+              ">
+                {{ $data.description  | markdownify}}
+              </div>
+            </div>
+          </div>
           {{ end }}
-        </div>
-        <div class="col-12 text-center
-          {{- if eq $data.align "left" -}}
-            {{- printf " order-lg-12 mt-5 ml-auto col-lg-4" -}}
-          {{- else if eq $data.align "center" -}}
-            {{- printf " order-lg-12" -}}
+          {{ if $data.rows }}
+            <div class="row justify-content-center">
+              <div class="col-auto mr-lg-auto">
+                <table class="table table-responsive
+                  {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                    {{- printf " text-%s" "dark" -}}
+                  {{- else -}}
+                    {{- printf " text-muted text-%s" "secondary" -}}
+                  {{- end -}}
+                ">
+                  <thead>
+                    <tr>
+                      {{ range $data.header }}
+                        <th>
+                          {{ . | markdownify }}
+                        </th>
+                      {{ end }}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{ range $data.rows }}
+                      <tr>
+                        {{ range .values }}
+                          {{ if .header }}
+                           <th class="align-middle">{{ .header | markdownify }}</th>
+                          {{ else if .button }}
+                            <td class="align-middle">
+                              <a class="btn
+                              {{ if hasPrefix .link "#" }} anchor{{ end }}
+                              {{- $color := .color | default "primary" -}}
+                              {{- printf " btn-%s" $color -}}
+                            " href="{{ .link | relLangURL }}">
+                              {{- .button -}}
+                            </a>
+                          </td>
+                        {{ else if .icon }}
+                          <td class="align-middle">
+                            <a href="{{ .links }}">
+                              <i class="fa {{ .icon }} fa-2x"></i>
+                            </a>
+                          </td>
+                        {{ else }}
+                          <td class="align-middle">{{ .text | markdownify }}</td>
+                        {{ end }}
+                      {{ end }}
+                    </tr>
+                  {{ end }}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        {{ end }}
+      </div>
+        <div class="col-12 text-center d-none d-lg-inline
+          {{- if eq $align "left" -}}
+            {{- printf " order-lg-12 mt-5 ml-lg-auto col-lg-4" -}}
+          {{- else if eq $align "right" -}}
+            {{- printf " order-lg-1 mt-5 mr-lg-auto col-lg-4" -}}
           {{- else -}}
-            {{- printf " order-lg-1 mt-5 mr-auto col-lg-4" -}}
+            {{- printf " order-lg-12" -}}
           {{- end -}}
         ">
           <div class="row">
