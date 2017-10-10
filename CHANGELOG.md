@@ -8,7 +8,9 @@ _2017-10-08_
 
 ## Changes since v0.5.0
   - Merge item based fragments into item fragment
-  - Restructure exampled data
+  - Restructure example data
+  - Optional table for item fragment
+  - Table fragment
 
 ## Fixes since v0.5.0
   - Alignment improvements for item fragment
