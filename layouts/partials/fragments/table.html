@@ -1,0 +1,97 @@
+{{ $data := ($.Scratch.Get "data") }}
+{{ "<!-- Item -->" | safeHTML }}
+{{ $bg := $data.background | default "light"}}
+{{ $align := $data.align | default "center" }}
+
+
+<section {{ with $data.selfLink }}id="{{ . }}"{{ end }}>
+  <div class="overlay container-fluid
+    {{- printf " bg-%s" $bg -}}
+  ">
+    <div class="container py-5">
+      <div class="row align-items-center text-center justify-content-end">
+        <div class="col-12 order-lg-1 text-center">
+          {{ if $data.title }}
+            <div class="row pb-3">
+              <div class="col-12
+                {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
+                  {{- printf " text-%s" "black" -}}
+                {{- else -}}
+                  {{- printf " text-%s" "light" -}}
+                {{- end -}}
+              ">
+                <h2>
+                  {{ $data.title | markdownify }}
+                </h2>
+              </div>
+            </div>
+          {{ end }}
+          {{ if $data.subtitle }}
+            <div class="row pb-2
+              {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                {{- printf " text-%s" "dark" -}}
+              {{- else -}}
+                {{- printf " text-muted text-%s" "secondary" -}}
+              {{- end -}}
+            ">
+              <div class="col-12">
+                <h5>
+                  {{ $data.subtitle | markdownify }}
+                </h5>
+              </div>
+            </div>
+          {{ end }}
+          {{ if $data.rows }}
+            <div class="row justify-content-center">
+              <div class="col-auto">
+                <table class="table table-responsive table-bordered
+                  {{- if and (ne $bg "white") (ne $bg "light") -}}
+                    {{- printf " table-inverse" -}}
+                  {{- end -}}
+                ">
+                  <thead>
+                    <tr>
+                      {{ range $data.header }}
+                        <th>
+                          {{ . | markdownify }}
+                        </th>
+                      {{ end }}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{ range $data.rows }}
+                      <tr>
+                        {{ range .values }}
+                          {{ if .header }}
+                           <th class="align-middle">{{ .header | markdownify }}</th>
+                          {{ else if .button }}
+                            <td class="align-middle">
+                              <a class="btn
+                              {{ if hasPrefix .link "#" }} anchor{{ end }}
+                              {{- $color := .color | default "primary" -}}
+                              {{- printf " btn-%s" $color -}}
+                            " href="{{ .link | relLangURL }}">
+                              {{- .button -}}
+                            </a>
+                          </td>
+                        {{ else if .icon }}
+                          <td class="align-middle">
+                            <a href="{{ .links }}">
+                              <i class="fa {{ .icon }} fa-2x"></i>
+                            </a>
+                          </td>
+                        {{ else }}
+                          <td class="align-middle">{{ .text | markdownify }}</td>
+                        {{ end }}
+                      {{ end }}
+                    </tr>
+                  {{ end }}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>

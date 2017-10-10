@@ -1,0 +1,63 @@
++++
+fragment = "table"
+#disabled = false
+date = "2017-10-10"
+lastmod = "2017-10-10"
+weight = 510
+background = "dark"
+selfLink = "table"
+
+title = "Table"
+subtitle= "Even responsive tables can be used"
+
+header = [
+  "these",
+  "are",
+  "awesome",
+  "headers",
+  "button",
+  "more buttons"]
+
+[[rows]]
+  [[rows.values]]
+    header = "#1"
+
+  [[rows.values]]
+    text = "these"
+
+  [[rows.values]]
+    text = "are"
+
+  [[rows.values]]
+    text = "values"
+
+  [[rows.values]]
+    button = "Download"
+    link = "https://github.com/okkur/syna/releases"
+    color = "success"
+
+  [[rows.values]]
+    button = "Purchase"
+    link = "https://github.com/okkur/syna/releases"
+    color = "danger"
+
+[[rows]]
+  [[rows.values]]
+    header = "#2"
+
+  [[rows.values]]
+    text = "these"
+
+  [[rows.values]]
+    text = "are"
+
+  [[rows.values]]
+    text = "more values"
+
+  [[rows.values]]
+    text = ""
+
+  [[rows.values]]
+    icon = "fa-download"
+    link = "https://github.com/okkur/syna/releases"
++++

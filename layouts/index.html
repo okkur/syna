@@ -29,6 +29,10 @@
           {{ partial "fragments/item.html" $ }}
         {{ end }}
 
+        {{ if and (not .disabled) (eq .fragment "table") }}
+          {{ partial "fragments/table.html" $ }}
+        {{ end }}
+
         {{ if and (not .disabled) (eq .fragment "embed") }}
           {{ partial "fragments/embed.html" $ }}
         {{ end }}
