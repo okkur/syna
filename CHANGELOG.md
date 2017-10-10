@@ -1,9 +1,26 @@
-__[v0.6.0](#v060)__
-  - [Downloads for v0.6.0](https://github.com/okkur/syna/releases/tag/v0.6.0)
-  - [Changelog since v0.5.0](#changelog-since-v050)
+<!--
+__[v0.7.0](#v070)__
+  - [Downloads for v0.7.0](https://github.com/okkur/syna/releases/tag/v0.7.0)
+  - [Changelog since v0.6.0](#changelog-since-v060)
+
+# v0.7.0
+_2017-10-10_
+[Examples](/exampleSite)
+
+## Changes since v0.6.0
+  - Option to hide unimportant columns on smaller devices
+
+## Fixes since v0.6.0
+  - Table responsiveness
+
+
+__[v0.7.0](#v070)__
+  - [Downloads for v0.7.0](https://github.com/okkur/syna/releases/tag/v0.7.0)
+  - [Changelog since v0.6.0](#changelog-since-v060)
+-->
 
 # v0.6.0
-_2017-10-08_
+_2017-10-10_
 [Examples](/exampleSite)
 
 ## Changes since v0.5.0
