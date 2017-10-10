@@ -1,10 +1,10 @@
 <!--
-__[v0.7.0](#v070)__
+# v0.7.0
+_2017-10-10_
   - [Downloads for v0.7.0](https://github.com/okkur/syna/releases/tag/v0.7.0)
   - [Changelog since v0.6.0](#changelog-since-v060)
 
-# v0.7.0
-_2017-10-10_
+## Documentation
 [Examples](/exampleSite)
 
 ## Changes since v0.6.0
@@ -12,15 +12,17 @@ _2017-10-10_
 
 ## Fixes since v0.6.0
   - Table responsiveness
+  
+---
 
-
-__[v0.7.0](#v070)__
-  - [Downloads for v0.7.0](https://github.com/okkur/syna/releases/tag/v0.7.0)
-  - [Changelog since v0.6.0](#changes-since-v060)
 -->
 
 # v0.6.0
-_2017-10-10_
+_2017-10-08_
+  - [Downloads for v0.6.0](https://github.com/okkur/syna/releases/tag/v0.6.0)
+  - [Changelog since v0.5.0](#changes-since-v050)
+
+## Documentation
 [Examples](/exampleSite)
 
 ## Changes since v0.5.0
@@ -33,12 +35,14 @@ _2017-10-10_
   - Alignment improvements for item fragment
   - Responsiveness for item images
 
-__[v0.5.0](#v050)__
-  - [Downloads for v0.5.0](https://github.com/okkur/syna/releases/tag/v0.5.0)
-  - [Changelog since v0.4.0](#changes-since-v040)
+---
 
 # v0.5.0
 _2017-10-08_
+  - [Downloads for v0.5.0](https://github.com/okkur/syna/releases/tag/v0.5.0)
+  - [Changelog since v0.4.0](#changes-since-v040)
+
+## Documentation
 [Examples](/exampleSite)
 
 ## Changes since v0.4.0
@@ -52,12 +56,14 @@ _2017-10-08_
 ## Fixes since v0.4.0
   - Fragment include conditionals
 
-__[v0.4.0](#v040)__
-  - [Downloads for v0.4.0](https://github.com/okkur/syna/releases/tag/v0.4.0)
-  - [Changelog since v0.3.0](#changes-since-v030)
+---
 
 # v0.4.0
 _2017-10-07_
+  - [Downloads for v0.4.0](https://github.com/okkur/syna/releases/tag/v0.4.0)
+  - [Changelog since v0.3.0](#changes-since-v030)
+
+## Documentation
 [Examples](/exampleSite)
 
 ## Changes since v0.3.0
@@ -66,12 +72,14 @@ _2017-10-07_
   - Multiple button option for hero
   - Embed fragment for videos or other media
 
-__[v0.3.0](#v030)__
-  - [Downloads for v0.3.0](https://github.com/okkur/syna/releases/tag/v0.3.0)
-  - [Changelog since v0.2.0](#changes-since-v020)
+---
 
 # v0.3.0
 _2017-10-05_
+  - [Downloads for v0.3.0](https://github.com/okkur/syna/releases/tag/v0.3.0)
+  - [Changelog since v0.2.0](#changes-since-v020)
+
+## Documentation
 [Examples](/exampleSite)
 
 ## Changes since v0.2.0
@@ -79,25 +87,29 @@ _2017-10-05_
   - Two column single page
   - More example navigation
 
-__[v0.2.0](#v020)__
-  - [Downloads for v0.2.0](https://github.com/okkur/syna/releases/tag/v0.2.0)
-  - [Changelog since v0.1.0](#changes-since-v010)
+---
 
 # v0.2.0
 _2017-10-05_
+  - [Downloads for v0.2.0](https://github.com/okkur/syna/releases/tag/v0.2.0)
+  - [Changelog since v0.1.0](#changes-since-v010)
+
+## Documentation
 [Examples](/exampleSite)
 
 ## Changes since v0.1.0
   - Background color options
   - Simple one column single page
 
-__[v0.1.0](#v010)__
-  - [Downloads for v0.1.0](https://github.com/okkur/syna/releases/tag/v0.1.0)
-  - [Changelog since v0.0.0](#changes-since-v000)
-
+---
 
 # v0.1.0
 _2017-10-04_
+
+  - [Downloads for v0.1.0](https://github.com/okkur/syna/releases/tag/v0.1.0)
+  - [Changelog since v0.0.0](#changes-since-v000)
+
+## Documentation
 [Examples](/exampleSite)
 
 ## Changes since v0.0.0
