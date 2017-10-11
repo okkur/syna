@@ -5,7 +5,7 @@ _2017-10-10_
   - [Changelog since v0.6.0](#changelog-since-v060)
 
 ## Documentation
-[Examples](/exampleSite)
+[Examples](/tree/v0.7.0/exampleSite)
 
 ## Changes since v0.6.0
   - Option to hide unimportant columns on smaller devices
@@ -23,7 +23,7 @@ _2017-10-08_
   - [Changelog since v0.5.0](#changes-since-v050)
 
 ## Documentation
-[Examples](/exampleSite)
+[Examples](/tree/v0.6.0/exampleSite)
 
 ## Changes since v0.5.0
   - Merge item based fragments into item fragment
@@ -43,7 +43,7 @@ _2017-10-08_
   - [Changelog since v0.4.0](#changes-since-v040)
 
 ## Documentation
-[Examples](/exampleSite)
+[Examples](/tree/v0.5.0/exampleSite)
 
 ## Changes since v0.4.0
   - Height and width option to hero logo
@@ -64,7 +64,7 @@ _2017-10-07_
   - [Changelog since v0.3.0](#changes-since-v030)
 
 ## Documentation
-[Examples](/exampleSite)
+[Examples](/tree/v0.4.0/exampleSite)
 
 ## Changes since v0.3.0
   - Background color for body
@@ -80,7 +80,7 @@ _2017-10-05_
   - [Changelog since v0.2.0](#changes-since-v020)
 
 ## Documentation
-[Examples](/exampleSite)
+[Examples](/tree/v0.3.0/exampleSite)
 
 ## Changes since v0.2.0
   - Cleanup exampleSite
@@ -95,7 +95,7 @@ _2017-10-05_
   - [Changelog since v0.1.0](#changes-since-v010)
 
 ## Documentation
-[Examples](/exampleSite)
+[Examples](/tree/v0.2.0/exampleSite)
 
 ## Changes since v0.1.0
   - Background color options
@@ -110,7 +110,7 @@ _2017-10-04_
   - [Changelog since v0.0.0](#changes-since-v000)
 
 ## Documentation
-[Examples](/exampleSite)
+[Examples](/tree/v0.1.0/exampleSite)
 
 ## Changes since v0.0.0
   - Bootstrap 4 support
