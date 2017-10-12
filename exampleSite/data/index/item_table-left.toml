@@ -37,6 +37,7 @@ header = [
     button = "Download"
     link = "https://github.com/okkur/syna/releases"
     color = "success"
+    center = true
 
   [[rows.values]]
     button = "Purchase"
@@ -62,4 +63,5 @@ header = [
   [[rows.values]]
     icon = "fa-download"
     link = "https://github.com/okkur/syna/releases"
+    center = true
 +++

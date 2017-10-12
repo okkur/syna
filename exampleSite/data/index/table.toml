@@ -42,6 +42,7 @@ unimportant = [true, false, false, false, true, false]
     button = "Purchase"
     link = "https://github.com/okkur/syna/releases"
     color = "danger"
+    center = true
 
 [[rows]]
   [[rows.values]]
@@ -62,4 +63,5 @@ unimportant = [true, false, false, false, true, false]
   [[rows.values]]
     icon = "fa-download"
     link = "https://github.com/okkur/syna/releases"
+    center = true
 +++

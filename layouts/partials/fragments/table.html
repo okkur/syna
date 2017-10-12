@@ -52,13 +52,15 @@
                   <thead>
                     <tr>
                       {{ $.Scratch.Set "col" 0 }}
-
                       {{ range $data.header }}
                         <th class="
                           {{- if $data.unimportant -}}
                             {{- if index $data.unimportant ($.Scratch.Get "col") -}}
                               {{- printf " d-none .d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
                             {{- end -}}
+                          {{- end -}}
+                          {{- if .center -}}
+                            {{- printf " text-center" -}}
                           {{- end -}}
                         ">
                           {{ . | markdownify }}
@@ -79,6 +81,9 @@
                                 {{- printf " d-none .d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
                               {{- end -}}
                             {{- end -}}
+                            {{- if .center -}}
+                              {{- printf " text-center" -}}
+                            {{- end -}}
                           ">{{ .header | markdownify }}</th>
                           {{ else if .button }}
                             <td class="align-middle
@@ -86,6 +91,9 @@
                                 {{- if index $data.unimportant ($.Scratch.Get "col") -}}
                                   {{- printf " d-none .d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
                                 {{- end -}}
+                              {{- end -}}
+                              {{- if .center -}}
+                                {{- printf " text-center" -}}
                               {{- end -}}
                             ">
                               <a class="btn
@@ -103,6 +111,9 @@
                                 {{- printf " d-none .d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
                               {{- end -}}
                             {{- end -}}
+                            {{- if .center -}}
+                              {{- printf " text-center" -}}
+                            {{- end -}}
                           ">
                             <a href="{{ .links }}">
                               <i class="fa {{ .icon }} fa-2x"></i>
@@ -114,6 +125,9 @@
                               {{- if index $data.unimportant ($.Scratch.Get "col") -}}
                                 {{- printf " d-none .d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
                               {{- end -}}
+                            {{- end -}}
+                            {{- if .center -}}
+                              {{- printf " text-center" -}}
                             {{- end -}}
                           ">{{ .text | markdownify }}</td>
                         {{ end }}
