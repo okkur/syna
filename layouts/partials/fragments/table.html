@@ -59,9 +59,6 @@
                               {{- printf " d-none .d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
                             {{- end -}}
                           {{- end -}}
-                          {{- if .center -}}
-                            {{- printf " text-center" -}}
-                          {{- end -}}
                         ">
                           {{ . | markdownify }}
                         </th>
