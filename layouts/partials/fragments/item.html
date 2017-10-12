@@ -136,13 +136,13 @@
                           {{ if .header }}
                           <th class="align-middle
                             {{- if .unimportant -}}
-                              {{- printf " d-none .d-sm-none d-md-block d-lg-block d-xl-block" -}}
+                              {{- printf " d-none .d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
                             {{- end -}}
                           ">{{ .header | markdownify }}</th>
                           {{ else if .button }}
                             <td class="align-middle
                               {{- if .unimportant -}}
-                                {{- printf " d-none .d-sm-none d-md-block d-lg-block d-xl-block" -}}
+                                {{- printf " d-none .d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
                               {{- end -}}
                             ">
                               <a class="btn
@@ -156,7 +156,7 @@
                         {{ else if .icon }}
                           <td class="align-middle
                             {{- if .unimportant -}}
-                              {{- printf " d-none .d-sm-none d-md-block d-lg-block d-xl-block" -}}
+                              {{- printf " d-none .d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
                             {{- end -}}
                           ">
                             <a href="{{ .links }}">
@@ -166,7 +166,7 @@
                         {{ else }}
                           <td class="align-middle
                             {{- if .unimportant -}}
-                              {{- printf " d-none .d-sm-none d-md-block d-lg-block d-xl-block" -}}
+                              {{- printf " d-none .d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
                             {{- end -}}
                           ">{{ .text | markdownify }}</td>
                         {{ end }}
