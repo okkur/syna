@@ -5,7 +5,7 @@ By submitting code as an individual you agree to the
 By submitting code as an entity you agree to the
 [corporate contributor license agreement](/CLA/CORPORATE_CONTRIBUTOR_LICENSE_AGREEMENT.md).  
 
-
+<!-- Should always come as first item in contributor guide! -->
 
 ---
 

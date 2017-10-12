@@ -10,14 +10,14 @@ This project thrives to be the goto theme for websites using Hugo.
 
 ## Core Concept
 
-Example Project&#39;s core concept to showcase how, why it does what it does.
+Example Project's core concept to showcase how, why it does what it does.
 
 
 
 
 ## General Aim
 
-Syna provides a generic solution to easily get up and running, but doesn&#39;t consider hugely specialized solutions to be integrated.
+Syna provides a generic solution to easily get up and running, but doesn't consider hugely specialized solutions to be integrated.
 
 
 
