@@ -5,20 +5,34 @@ date = "2017-10-04"
 lastmod = "2017-10-04"
 weight = 340
 #background = "secondary"
-selfLink = "modular"
+selfLink = "modular-table"
 align = "left"
 
-title = "Modular"
+title = "Modular table"
 #subtitle= "Highly modular theme for Hugo built with Boostrap 4"
 image = "screenshot.png"
 
-header = [
-  "these",
-  "are",
-  "awesome",
-  "headers",
-  "button",
-  "more buttons"]
+#unimportant = [true, false, false, false, true, false]
+
+[header]
+  [[header.values]]
+    text = "these"
+
+  [[header.values]]
+    text = "are"
+    center = true
+
+  [[header.values]]
+    text = "awesome"
+
+  [[header.values]]
+    text = "headers"
+
+  [[header.values]]
+    text = "buttons"
+
+  [[header.values]]
+    text = "more buttons"
 
 [[rows]]
   [[rows.values]]

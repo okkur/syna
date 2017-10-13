@@ -52,15 +52,18 @@
                   <thead>
                     <tr>
                       {{ $.Scratch.Set "col" 0 }}
-                      {{ range $data.header }}
+                      {{ range $data.header.values }}
                         <th class="
                           {{- if $data.unimportant -}}
                             {{- if index $data.unimportant ($.Scratch.Get "col") -}}
                               {{- printf " d-none .d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
                             {{- end -}}
                           {{- end -}}
+                          {{- if .center -}}
+                            {{- printf " text-center" -}}
+                          {{- end -}}
                         ">
-                          {{ . | markdownify }}
+                          {{ .text | markdownify }}
                         </th>
                         {{ $.Scratch.Add "col" 1 }}
                       {{ end }}

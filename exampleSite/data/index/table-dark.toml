@@ -10,14 +10,23 @@ selfLink = "table"
 title = "Table"
 subtitle= "Even responsive tables can be used"
 
-header = [
-  "these",
-  "are",
-  "awesome",
-  "headers",
-  "buttons"]
-
 unimportant = [true, false, true, false, false]
+
+[header]
+  [[header.values]]
+    text = "these"
+
+  [[header.values]]
+    text = "are"
+
+  [[header.values]]
+    text = "awesome"
+
+  [[header.values]]
+    text = "headers"
+
+  [[header.values]]
+    text = "buttons"
 
 [[rows]]
   [[rows.values]]
