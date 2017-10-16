@@ -1,0 +1,37 @@
+# General
+- id: de
+  translation: "deutsch"
+
+# Contact Form
+- id: contact.defaultNameError
+  translation: "Please enter your name"
+- id: contact.defaultEmailError
+  translation: "Please enter your email address"
+- id: contact.defaultPhoneError
+  translation: "Please enter your phone number"
+- id: contact.defaultMessageError
+  translation: "Please enter a message"
+- id: contact.defaultGenericSuccess
+  translation: "Thank you for contacting us"
+- id: contact.defaultGenericError
+  translation: "Message could not be send. Please contact us at"
+- id: contact.defaultJsError
+  translation: "Message can not be send with javascript disabled. Please contact us at"
+- id: contact.defaultButton
+  translation: "Send Message"
+
+# Footer
+- id: footerLegal.copyright
+  translation: "© Copyright 2017"
+- id: footerLegal.by
+  translation: "by "
+
+# 404
+- id: 404.title
+  translation: "Page not found"
+- id: 404.subtitle
+  translation: "Requested page could not be found"
+- id: 404.direction
+  translation: "You can always go back to our main page"
+- id: 404.button
+  translation: "Main page"
