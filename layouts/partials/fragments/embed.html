@@ -45,7 +45,7 @@
           {{- printf " h-%s w-%s" $size $size -}}
         ">
           {{ if $data.media }}
-            {{ $data.media }}
+            {{ $data.media | safeHTML }}
           {{ else }}
             <iframe class="embed-responsive-item" src="{{ $data.mediaSource }}" allowfullscreen></iframe>
           {{ end }}

@@ -12,13 +12,12 @@ googleAnalytics = ""
 [params]
   name = "Okkur Labs"
   description = "Open Source Theme for your next project"
-  image = "header.jpg" #default: partial.js
 
   # Branding options
   [params.branding]
     logoNavigation = "logo.svg"
     textNavigation = "Syna"
-    
+
   [params.style]
     #background = "secondary"
     #backgroundNavigation = "light" # white, light, secondary, primary, dark - default: dark

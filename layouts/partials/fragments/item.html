@@ -42,14 +42,14 @@
             </div>
           {{ end }}
           {{ if $data.subtitle }}
-            <div class="row pb-2
-              {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                {{- printf " text-%s" "dark" -}}
-              {{- else -}}
-                {{- printf " text-muted text-%s" "secondary" -}}
-              {{- end -}}
-            ">
-              <div class="col-12">
+            <div class="row pb-2">
+              <div class="col-12
+                {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                  {{- printf " text-%s" "dark" -}}
+                {{- else -}}
+                  {{- printf " text-muted text-%s" "secondary" -}}
+                {{- end -}}
+              ">
                 <h5>
                   {{ $data.subtitle | markdownify }}
                 </h5>
@@ -126,7 +126,7 @@
                         <th class="
                           {{- if $data.unimportant -}}
                             {{- if index $data.unimportant ($.Scratch.Get "col") -}}
-                              {{- printf " d-none .d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
+                              {{- printf " d-none d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
                             {{- end -}}
                           {{- end -}}
                           {{- if .center -}}
@@ -148,7 +148,7 @@
                           <th class="align-middle
                             {{- if $data.unimportant -}}
                               {{- if index $data.unimportant ($.Scratch.Get "col") -}}
-                                {{- printf " d-none .d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
+                                {{- printf " d-none d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
                               {{- end -}}
                             {{- end -}}
                             {{- if .center -}}
@@ -159,7 +159,7 @@
                             <td class="align-middle
                               {{- if $data.unimportant -}}
                                 {{- if index $data.unimportant ($.Scratch.Get "col") -}}
-                                  {{- printf " d-none .d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
+                                  {{- printf " d-none d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
                                 {{- end -}}
                               {{- end -}}
                               {{- if .center -}}
@@ -178,7 +178,7 @@
                           <td class="align-middle
                             {{- if $data.unimportant -}}
                               {{- if index $data.unimportant ($.Scratch.Get "col") -}}
-                                {{- printf " d-none .d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
+                                {{- printf " d-none d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
                               {{- end -}}
                             {{- end -}}
                             {{- if .center -}}
@@ -193,7 +193,7 @@
                           <td class="align-middle
                             {{- if $data.unimportant -}}
                               {{- if index $data.unimportant ($.Scratch.Get "col") -}}
-                                {{- printf " d-none .d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
+                                {{- printf " d-none d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
                               {{- end -}}
                             {{- end -}}
                             {{- if .center -}}
