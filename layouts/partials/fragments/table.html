@@ -43,8 +43,8 @@
           {{ end }}
           {{ if $data.rows }}
             <div class="row justify-content-center">
-              <div class="col-auto">
-                <table class="table table-responsive table-bordered
+              <div class="col table-responsive">
+                <table class="table table-bordered
                   {{- if and (ne $bg "white") (ne $bg "light") -}}
                     {{- printf " table-inverse" -}}
                   {{- end -}}

@@ -111,8 +111,8 @@
           {{ end }}
           {{ if $data.rows }}
             <div class="row justify-content-center">
-              <div class="col-auto col-lg-12 mr-lg-auto">
-                <table class="table table-responsive table-bordered
+              <div class="col col-lg-12 mr-lg-auto table-responsive">
+                <table class="table table-bordered
                   {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
                     {{- printf " text-%s" "dark" -}}
                   {{- else -}}
