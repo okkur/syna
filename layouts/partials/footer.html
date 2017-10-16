@@ -14,23 +14,20 @@
           {{- end -}}
         ">
           {{ with .Site.Copyright }}
-            <div class="d-inline-flex">
+            <div class="col text-sx-center">
               {{ . }}
             </div>
           {{ else }}
-            <div class="d-inline-flex mr-1">
-              {{ i18n "footerLegal.copyright" }}
-            </div>
-            <div class="d-inline-flex">
-              {{ printf  "%s %s" (i18n "footerLegal.by") .Site.Params.name }}
+            <div class="col text-center text-lg-left">
+              {{- i18n "footerLegal.copyright" -}}{{- printf  " %s %s" (i18n "footerLegal.by") .Site.Params.name -}}
             </div>
           {{ end }}
         </div>
       </div>
       {{ if .Site.Menus.legalfooter }}
         <div class="col-md">
-          <div class="row my-2 justify-content-right">
-              <ul class="nav ml-auto">
+          <div class="row my-2">
+              <ul class="nav mx-auto ml-lg-auto">
                 {{ range sort .Site.Menus.legalfooter }}
                   <li class="nav-item">
                     <a class="nav-link py-0

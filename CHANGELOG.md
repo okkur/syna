@@ -13,7 +13,8 @@ _2017-10-10_
 
 ## Fixes since v0.6.0
   - Table responsiveness
-  
+  - Alignment legal footer
+
 ---
 
 -->
