@@ -15,8 +15,8 @@
         ">
           <div class="row mr-lg-auto">
             {{ with .Site.Copyright }}
-              <div class="col mr-lg-auto">
-                {{ . }}
+              <div class="col-auto">
+                {{ . | markdownify }}
               </div>
             {{ else }}
               <div class="col-auto px-1">

@@ -3,8 +3,8 @@
   <link rel="stylesheet" href="{{ . | relURL }}">
 {{ end }}
 
-{{ "<!-- Custom Fonts -->" | safeHTML }}
 {{ if .Site.Params.custom.iconFont }}
+  {{ "<!-- Custom Fonts -->" | safeHTML }}
   <link href="{{ . | relURL }}" rel="stylesheet" type="text/css">
 {{ end }}
 

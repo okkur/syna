@@ -23,7 +23,7 @@
     {{ if not .IsHome }} &middot; {{ .Site.Title }}{{ end }}
   </title>
 
-  {{ "<!-- Bootstrap -->" | safeHTML }}
+  {{ "<!-- Bootstrap Style -->" | safeHTML }}
   <link href="{{ "css/bootstrap-4.beta/bootstrap.min.css" | relURL }}" rel="stylesheet">
   <link href="{{ "css/bootstrap-4.beta/bootstrap-grid.min.css" | relURL }}" rel="stylesheet">
   <link href="{{ "css/bootstrap-4.beta/bootstrap-reboot.min.css" | relURL }}" rel="stylesheet">
@@ -33,12 +33,12 @@
     <link href="{{ "css/form.min.css" | relURL }}" rel="stylesheet" type="text/css">
   {{ end }}
 
-  {{ "<!-- Theme -->" | safeHTML }}
+    {{ "<!-- Theme Style -->" | safeHTML }}
     <link href="{{ "css/syna.css" | relURL }}" rel="stylesheet" type="text/css">
     <link href="{{ "css/overwrite.css" | relURL }}" rel="stylesheet" type="text/css">
 
   {{ if not .Site.Params.custom.iconFont }}
-    {{ "<!-- Fonts -->" | safeHTML }}
+    {{ "<!-- Custom Iconfont -->" | safeHTML }}
     <link href="{{ "fonts/fontawesome-4.7.0/font-awesome.min.css" | relURL }}" rel="stylesheet" type="text/css">
   {{ end }}
 
