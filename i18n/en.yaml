@@ -1,4 +1,6 @@
 # General
+- id: attribution
+  translation: "Website based on"
 - id: en
   translation: "English"
 

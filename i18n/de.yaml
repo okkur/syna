@@ -1,4 +1,6 @@
 # General
+- id: attribution
+  translation: "Webseite basiert auf"
 - id: de
   translation: "deutsch"
 
