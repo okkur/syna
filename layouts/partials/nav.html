@@ -14,7 +14,7 @@
       </a>
     {{ else }}
       <a class="navbar-brand py-0" href="{{ "#page-top" | relLangURL }}">
-        {{ .Site.Params.branding.textNavigation }}
+        {{- .Site.Params.branding.textNavigation -}}
       </a>
     {{ end }}
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,7 +29,7 @@
                 {{ if hasPrefix .URL "#" }}
                   class="anchor"
                 {{ end }}>
-                {{ .Name }}
+                {{- .Name -}}
               </a>
             </li>
           {{ end }}
@@ -41,7 +41,7 @@
                 {{ if hasPrefix .URL "#" }}
                   class="anchor"
                 {{ end }}>
-                {{ .Name }}
+                {{- .Name -}}
               </a>
             </li>
           {{ end }}
@@ -53,7 +53,7 @@
                 {{ if hasPrefix .URL "#" }}
                   class="anchor"
                 {{ end }}>
-                {{ .Name }}
+                {{- .Name -}}
               </a>
             </li>
           {{ end }}
@@ -62,7 +62,7 @@
       {{ if .Site.IsMultiLingual }}
         {{ range .Site.Languages }}
           <a class="btn btn-secondary p-1 m-1" href="{{ delimit (slice "/" .) "" }}" role="button">
-            {{ . }}
+            {{- . -}}
           </a>
         {{ end }}
       {{ end }}
@@ -70,10 +70,10 @@
   </div>
   {{ if .Site.Params.repoButton }}
     <div class="d-none d-lg-block pl-auto">
-    <a class="btn btn-light" href="{{ .Site.Params.repoButton.url }}" role="button">
-      <i class="fa {{ .Site.Params.repoButton.icon | default (printf "fa-github") }} mr-1"></i>
-      {{ .Site.Params.repoButton.text | default (printf "Star") }}
-    </a>
+      <a class="btn btn-light" href="{{ .Site.Params.repoButton.url }}" role="button">
+        <i class="fa {{ .Site.Params.repoButton.icon | default (printf "fa-github") }} mr-1"></i>
+        {{- .Site.Params.repoButton.text | default (printf "Star") -}}
+      </a>
     </div>
   {{ end }}
 </nav>

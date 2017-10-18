@@ -36,7 +36,7 @@
                 {{- end -}}
               ">
                 <h2>
-                  {{ $data.title | markdownify }}
+                  {{- $data.title | markdownify -}}
                 </h2>
               </div>
             </div>
@@ -51,7 +51,7 @@
                 {{- end -}}
               ">
                 <h5>
-                  {{ $data.subtitle | markdownify }}
+                  {{- $data.subtitle | markdownify -}}
                 </h5>
               </div>
             </div>
@@ -88,7 +88,7 @@
                     {{- $color := .color | default "primary" -}}
                     {{- printf " btn-%s" $color -}}
                   " href="{{ .link | relLangURL }}">
-                    {{ .text }}
+                    {{- .text -}}
                   </a>
                 {{ end }}
               </div>
@@ -104,7 +104,7 @@
                   {{- printf " text-muted text-%s" "secondary" -}}
                 {{- end -}}
               ">
-                {{ $data.description  | markdownify}}
+                {{- $data.description  | markdownify -}}
               </div>
             </div>
           </div>
@@ -133,7 +133,7 @@
                             {{- printf " text-center" -}}
                           {{- end -}}
                         ">
-                          {{ .text | markdownify }}
+                          {{- .text | markdownify -}}
                         </th>
                         {{ $.Scratch.Add "col" 1 }}
                       {{ end }}
@@ -243,7 +243,7 @@
                   {{- $color := .color | default "primary" -}}
                   {{- printf " btn-%s" $color -}}
                 " href="{{ .link | relLangURL }}">
-                  {{ .text }}
+                  {{- .text -}}
                 </a>
               {{ end }}
             </div>

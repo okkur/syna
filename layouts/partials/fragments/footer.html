@@ -16,14 +16,14 @@
       ">
         {{ with $data.logoTitle }}
           <h4>
-            {{ . }}
+            {{- . -}}
           </h4>
         {{ end }}
         {{ if $data.logo }}
           <img src="{{ (printf "images/%s" $data.logo) | relURL }}" class="img-fluid w-50" alt="{{ $data.logoText }}">
         {{ else }}
           <p>
-            {{ $data.logoText }}
+            {{- $data.logoText -}}
           </p>
         {{ end }}
         {{ if $.Site.Menus.footersocial }}
@@ -52,7 +52,7 @@
       ">
         {{ with $data.linkTitle }}
           <h4>
-            {{ . }}
+            {{- . -}}
           </h4>
         {{ end }}
         {{ if $.Site.Menus.footer }}
@@ -69,7 +69,7 @@
                     {{ if hasPrefix .URL "#" }}
                       class="anchor"
                     {{ end }}>
-                    {{ .Name }}
+                    {{- .Name -}}
                   </a>
                 </li>
               {{ end }}
@@ -85,12 +85,12 @@
       ">
         {{ with $data.descriptionTitle }}
           <h4>
-            {{ . }}
+            {{- . -}}
           </h4>
         {{ end }}
         {{ with $data.description }}
           <p>
-            {{ . | markdownify }}
+            {{- . | markdownify -}}
           </p>
         {{ end }}
       </div>

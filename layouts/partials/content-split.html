@@ -1,5 +1,6 @@
 {{ "<!-- Content -->" | safeHTML }}
 {{ $bg := .Page.Params.Background | default "light"}}
+
 <section>
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
@@ -16,7 +17,7 @@
               {{- end -}}
             ">
               <h1>
-                {{ .Page.Params.SidebarTitle | markdownify }}
+                {{- .Page.Params.SidebarTitle | markdownify -}}
               </h1>
             </div>
           {{ end }}
@@ -27,7 +28,7 @@
               {{- printf " text-muted text-%s" "secondary" -}}
             {{- end -}}
           ">
-            {{ .Page.Params.Sidebar  | markdownify }}
+            {{- .Page.Params.Sidebar  | markdownify -}}
           </div>
         </div>
         <div class="col-md-9">
@@ -40,7 +41,7 @@
               {{- end -}}
             ">
               <h1>
-                {{ .Title | markdownify }}
+                {{- .Title | markdownify -}}
               </h1>
             </div>
           {{ end }}
@@ -53,17 +54,18 @@
               {{- end -}}
             ">
               <h3>
-                {{ .Page.Params.Subtitle | markdownify }}
+                {{- .Page.Params.Subtitle | markdownify -}}
               </h3>
             </div>
           {{ end }}
           <div class="col-12
-              {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                {{- printf " text-%s" "dark" -}}
-              {{- else -}}
-                {{- printf " text-muted text-%s" "secondary" -}}
-              {{- end -}}
-            ">{{ .Content  | markdownify }}
+            {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+              {{- printf " text-%s" "dark" -}}
+            {{- else -}}
+              {{- printf " text-muted text-%s" "secondary" -}}
+            {{- end -}}
+          ">
+            {{ .Content  | markdownify -}}
           </div>
         </div>
       </div>

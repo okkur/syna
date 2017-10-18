@@ -19,7 +19,7 @@
             {{- end -}}
           ">
             <h2>
-              {{ . | markdownify }}
+              {{- . | markdownify -}}
             </h2>
           </div>
         </div>
@@ -34,7 +34,7 @@
             {{- end -}}
           ">
             <h5>
-              {{ . | markdownify }}
+              {{- . | markdownify -}}
             </h5>
           </div>
         </div>
@@ -45,7 +45,7 @@
           {{- printf " h-%s w-%s" $size $size -}}
         ">
           {{ if $data.media }}
-            {{ $data.media | safeHTML }}
+            {{- $data.media | safeHTML -}}
           {{ else }}
             <iframe class="embed-responsive-item" src="{{ $data.mediaSource }}" allowfullscreen></iframe>
           {{ end }}

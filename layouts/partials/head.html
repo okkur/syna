@@ -16,10 +16,10 @@
     <meta name="author" content="{{ . }}">
   {{ end }}
 
-  {{ .Hugo.Generator }}
+  {{- .Hugo.Generator -}}
 
   <title>
-    {{ .Title }}
+    {{- .Title -}}
     {{ if not .IsHome }} &middot; {{ .Site.Title }}{{ end }}
   </title>
 

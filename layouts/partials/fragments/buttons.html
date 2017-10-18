@@ -10,14 +10,14 @@
       {{ with $data.title }}
         <div class="row">
           <div class="col text-center
-            {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-              {{- printf " text-%s" "dark" -}}
+            {{- if or (eq $bg "secondary") (eq $bg "white") (eq $bg "primary") -}}
+              {{- printf " text-%s" "black" -}}
             {{- else -}}
-              {{- printf " text-%s" "secondary" -}}
+              {{- printf " text-%s" "white" -}}
             {{- end -}}
           ">
             <h4>
-              {{ . | markdownify }}
+              {{- . | markdownify -}}
             </h4>
           </div>
         </div>
@@ -32,7 +32,7 @@
             {{- end -}}
           ">
             <h5>
-              {{ . | markdownify }}
+              {{- . | markdownify -}}
             </h5>
           </div>
         </div>
@@ -43,7 +43,7 @@
             {{- $color := .color | default "primary" -}}
             {{- printf " btn-%s" $color -}}
           " href="{{ .link | relLangURL }}">
-            {{ .text }}
+            {{- .text -}}
           </a>
         {{ end }}
       </div>

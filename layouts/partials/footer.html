@@ -1,5 +1,6 @@
 {{ "<!-- Legal Footer section -->" | safeHTML }}
 {{ $bg := .Site.Params.style.backgroundFooter | default "secondary"}}
+
 <footer class="overlay container-fluid
   {{- printf " bg-%s" $bg -}}
 ">
@@ -16,7 +17,7 @@
           <div class="row mr-lg-auto">
             {{ with .Site.Copyright }}
               <div class="col-auto">
-                {{ . | markdownify }}
+                {{- . | markdownify -}}
               </div>
             {{ else }}
               <div class="col-auto px-1">
@@ -32,24 +33,24 @@
       {{ if .Site.Menus.legalfooter }}
         <div class="col-md">
           <div class="row my-2 justify-content-center">
-              <ul class="nav ml-lg-auto">
-                {{ range sort .Site.Menus.legalfooter }}
-                  <li class="nav-item">
-                    <a class="nav-link py-0
-                      {{- if eq $bg "dark" -}}
-                        {{- printf " text-%s" "secondary" -}}
-                      {{- else -}}
-                        {{- printf " text-%s" "dark" -}}
-                      {{- end -}}
-                    " href="{{ .URL | relLangURL }}"
-                      {{ if hasPrefix .URL "#" }}
-                        class="anchor"
-                      {{ end }}>
-                      {{ .Name }}
-                    </a>
-                  </li>
-                {{ end }}
-              </ul>
+            <ul class="nav ml-lg-auto">
+              {{ range sort .Site.Menus.legalfooter }}
+                <li class="nav-item">
+                  <a class="nav-link py-0
+                    {{- if eq $bg "dark" -}}
+                      {{- printf " text-%s" "secondary" -}}
+                    {{- else -}}
+                      {{- printf " text-%s" "dark" -}}
+                    {{- end -}}
+                  " href="{{ .URL | relLangURL }}"
+                    {{ if hasPrefix .URL "#" }}
+                      class="anchor"
+                    {{ end }}>
+                      {{- .Name -}}
+                  </a>
+                </li>
+              {{ end }}
+            </ul>
           </div>
         </div>
       {{ end }}

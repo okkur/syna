@@ -16,7 +16,7 @@
         {{- end -}}
       ">
         {{ with $data.title }}
-          <h2>{{ . | markdownify }}</h2>
+          <h2>{{- . | markdownify -}}</h2>
         {{ end }}
         {{ with $data.subtitle }}
           <h3 class="
@@ -26,7 +26,7 @@
               {{- printf " text-muted text-%s" "secondary" -}}
             {{- end -}}
           ">
-            {{ . | markdownify }}
+            {{- . | markdownify -}}
           </h3>
         {{ end }}
       </div>
@@ -104,21 +104,21 @@
               <div class="col-lg-12 text-center">
                 <div class="generic-success text-success d-none" id="generic-success">
                   {{ with $data.message.success }}
-                    {{ . | markdownify }}
+                    {{- . | markdownify -}}
                   {{ else }}
-                    {{ i18n "contact.defaultGenericSuccess" }}
+                    {{- i18n "contact.defaultGenericSuccess" -}}
                   {{ end }}
                 </div>
                 <div class="generic-error text-danger d-none" id="generic-error">
                   {{ with $data.message.error }}
-                    {{ . | markdownify }}
+                    {{- . | markdownify -}}
                   {{ else }}
-                    {{ i18n "contact.defaultGenericError" }} {{ $data.email }}.
+                    {{- i18n "contact.defaultGenericError" }} {{ $data.email -}}.
                   {{ end }}
                 </div><br />
                 <noscript>
                   <div class="text-danger py-2" id="js-error">
-                    {{ i18n "contact.defaultJsError" }} {{ $data.email }}.
+                    {{- i18n "contact.defaultJsError" }} {{ $data.email -}}.
                   </div>
                 </noscript>
                 {{ with $.Site.Params.contact.captcha }}
@@ -127,7 +127,7 @@
                     class="btn btn-primary"
                     type="submit"
                     disabled>
-                    {{ $data.button | default (i18n "contact.defaultButton") }}
+                    {{- $data.button | default (i18n "contact.defaultButton") -}}
                   </button>
                 {{ else }}
                   <button
@@ -140,7 +140,7 @@
                     "
                     type="submit"
                     disabled>
-                    {{ $data.button | default (i18n "contact.defaultButton") }}
+                    {{- $data.button | default (i18n "contact.defaultButton") -}}
                   </button>
                 {{ end }}
               </div>
@@ -154,9 +154,9 @@
                 <input type="hidden" name="{{ .name }}" value="{{ .value }}"/>
               {{ end }}
             {{ end }}
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </section>
