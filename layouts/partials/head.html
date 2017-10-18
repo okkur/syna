@@ -1,4 +1,7 @@
 <head>
+  <meta name="theme" content="Syna Theme - (https://github.com/okkur/syna)">
+  <meta name="theme description" content="Highly modular open source theme for Hugo built with Bootstrap 4">
+  <meta name="theme author" content="Okkur Labs - https://okkur.io">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="Content-Language" content="{{ .Site.LanguageCode | default "en-us" }}">
@@ -41,8 +44,6 @@
     {{ "<!-- Custom Iconfont -->" | safeHTML }}
     <link href="{{ "fonts/fontawesome-4.7.0/font-awesome.min.css" | relURL }}" rel="stylesheet" type="text/css">
   {{ end }}
-
-
 
   {{ with .Site.Params.favicon}}
     <link rel="shortcut icon" type="image/x-icon" href="{{ . | relURL }}">
