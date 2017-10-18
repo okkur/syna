@@ -1,0 +1,122 @@
+{{ $data := ($.Scratch.Get "data") }}
+{{ "<!-- Member -->" | safeHTML }}
+{{ $bg := $data.background | default "light"}}
+
+<section {{ with $data.selfLink }}id="{{ . }}"{{ end }}>
+  <div class="overlay container-fluid
+    {{- printf " bg-%s" $bg -}}
+  ">
+    <div class="container py-5">
+      {{ with $data.title }}
+        <div class="row">
+          <div class="col text-center
+            {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
+              {{- printf " text-%s" "dark" -}}
+            {{- else -}}
+              {{- printf " text-%s" "light" -}}
+            {{- end -}}
+          ">
+            <h2>
+              {{- . | markdownify -}}
+            </h2>
+          </div>
+        </div>
+      {{ end }}
+      {{ with $data.subtitle }}
+        <div class="row">
+          <div class="col text-center pt-2 pb-3
+            {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+              {{- printf " text-%s" "dark" -}}
+            {{- else -}}
+              {{- printf " text-muted text-%s" "secondary" -}}
+            {{- end -}}
+          ">
+            <h5>
+              {{- . | markdownify -}}
+            </h5>
+          </div>
+        </div>
+      {{ end }}
+      <div class="row justify-content-center align-items-start">
+        {{ range sort $data.member "weight"}}
+          <div class="col-lg-4 col-md-6 col-sm-12 pt-3 pb-5 text-left text-sm-center">
+            <div class="text-center m-2">
+              <img src="/images/member/{{ .image }}" class="img-fluid rounded-circle w-75 border
+                {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
+                  {{- printf " border-%s" "dark" -}}
+                {{- else -}}
+                  {{- printf " border-%s" "white" -}}
+                {{- end -}}
+              " alt=""></img>
+            </div>
+            <div class="mt-5 mb-0
+              {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
+                {{- printf " text-%s" "dark" -}}
+              {{- else -}}
+                {{- printf " text-%s" "light" -}}
+              {{- end -}}
+            ">
+              <h2>
+                {{- .name -}}
+              </h2>
+            </div>
+            <div class="member
+              {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                {{- printf " text-%s" "dark" -}}
+              {{- else -}}
+                {{- printf " text-muted text-%s" "secondary" -}}
+              {{- end -}}
+            ">
+              {{ with .position }}
+                <h5 class="mb-3">
+                  {{- . | markdownify -}}
+                </h5>
+              {{ end }}
+              {{ with .reportsTo }}
+                <h6 class="font-italic mb-1">
+                  {{- i18n "member.reportsTo" }} {{ printf " %s" . | markdownify -}}
+                </h6>
+                {{ end }}
+              {{ with .livesIn }}
+                <h6 class="font-italic mb-1">
+                  {{- i18n "member.livesIn" }} {{ printf " %s" . | markdownify -}}
+                </h6>
+              {{ end }}
+              {{ if .scope }}
+                <div class="pt-3 font-weight-bold">
+                  {{ range .scope }}
+                    <div>
+                      {{- . | markdownify -}}
+                    </div>
+                  {{ end }}
+                </div>
+              {{ end }}
+              {{ range .icons }}
+                <span class="fa-stack fa-3x m-2">
+                  <a href="{{ .link }}">
+                    <i class="fa fa-circle fa-stack-2x
+                      {{- if eq $bg "primary" -}}
+                        {{- printf " text-%s" "dark" -}}
+                      {{- else -}}
+                        {{- printf " text-%s" "primary" -}}
+                      {{- end -}}
+                    "></i>
+                    <i class="fa {{ .icon }} fa-stack-1x fa-inverse"></i>
+                  </a>
+                </span>
+              {{ end }}
+                {{ with .description }}
+                  <div class="pt-3">
+                    <p class="description">
+                      {{- . | markdownify -}}
+                    </p>
+                  </div>
+                {{ end }}
+              </div>
+            </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

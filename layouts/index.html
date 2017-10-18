@@ -37,6 +37,10 @@
           {{ partial "fragments/embed.html" $ }}
         {{ end }}
 
+        {{ if and (not .disabled) (eq .fragment "member") }}
+          {{ partial "fragments/member.html" $ }}
+        {{ end }}
+
         {{ if and (not .disabled) (eq .fragment "subscribe") }}
           {{ partial "fragments/subscribe.html" $ }}
         {{ end }}
