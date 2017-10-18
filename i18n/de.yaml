@@ -4,34 +4,40 @@
 
 # Contact Form
 - id: contact.defaultNameError
-  translation: "Please enter your name"
+  translation: "Bitte geben Sie Ihre Namen ein"
 - id: contact.defaultEmailError
-  translation: "Please enter your email address"
+  translation: "Bitte geben Sie Ihre eMail ein"
 - id: contact.defaultPhoneError
-  translation: "Please enter your phone number"
+  translation: "Bitte geben Sie Ihre Telefonnummer ein"
 - id: contact.defaultMessageError
-  translation: "Please enter a message"
+  translation: "Bitte geben Sie Ihre Nachricht ein"
 - id: contact.defaultGenericSuccess
-  translation: "Thank you for contacting us"
+  translation: "Vielen Dank für Ihre Nachricht."
 - id: contact.defaultGenericError
-  translation: "Message could not be send. Please contact us at"
+  translation: "Nachricht konnte nicht gesendet werden. Bitte kontaktieren Sie uns unter"
 - id: contact.defaultJsError
-  translation: "Message can not be send with javascript disabled. Please contact us at"
+  translation: "Nachricht konnte nicht gesendet werden, da Javascript ausgeschaltet ist. Bitte kontaktieren Sie uns unter"
 - id: contact.defaultButton
-  translation: "Send Message"
+  translation: "Nachricht senden"
 
 # Footer
 - id: footerLegal.copyright
   translation: "© Copyright 2017"
 - id: footerLegal.by
-  translation: "by "
+  translation: "von "
 
 # 404
 - id: 404.title
-  translation: "Page not found"
+  translation: "Seite nicht gefunden"
 - id: 404.subtitle
-  translation: "Requested page could not be found"
+  translation: "Die angeforderte Seite konnte nicht gefunden werden"
 - id: 404.direction
-  translation: "You can always go back to our main page"
+  translation: "Sie können jederzeit zu unserer Hauptseite zurückkehren"
 - id: 404.button
-  translation: "Main page"
+  translation: "Hauptseite"
+
+# Member
+- id: member.livesIn
+  translation: "Lebt in"
+- id: member.reportsTo
+  translation: "Berichtet an"

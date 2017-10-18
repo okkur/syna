@@ -35,3 +35,9 @@
   translation: "You can always go back to our main page"
 - id: 404.button
   translation: "Main page"
+  
+# Member
+- id: member.livesIn
+  translation: "Lives in"
+- id: member.reportsTo
+  translation: "Reports to"
