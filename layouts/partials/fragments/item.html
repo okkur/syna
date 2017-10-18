@@ -95,7 +95,15 @@
             </div>
           </div>
           {{ if $data.description }}
-          <div class="row">
+          <div class="row
+            {{- if eq $align "left" -}}
+              {{- printf " text-left" -}}
+            {{- else if eq $align "right" -}}
+              {{- printf " text-left" -}}
+            {{- else -}}
+              {{- printf " text-lg-center text-left" -}}
+            {{- end -}}
+          ">
             <div class="col-12">
               <div class="mb-0
                 {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
