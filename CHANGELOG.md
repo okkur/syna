@@ -10,10 +10,14 @@ _2017-10-10_
 ## Changes since v0.6.0
   - Option to hide unimportant columns on smaller devices
   - Option to center table headers
+  - German translation
+  - Member fragment
+  - Source code note about syna
 
 ## Fixes since v0.6.0
   - Table responsiveness
   - Alignment legal footer
+  - Improve readability on mobile
 
 ---
 
