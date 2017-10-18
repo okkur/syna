@@ -1,6 +1,22 @@
 <!--
+# v0.8.0
+_2017_
+  - [Downloads for v0.8.0](https://github.com/okkur/syna/releases/tag/v0.8.0)
+  - [Changelog since v0.7.0](#changelog-since-v070)
+
+## Documentation
+[Examples](/tree/v0.8.0/exampleSite)
+
+## Changes since v0.7.0
+
+## Fixes since v0.7.0
+
+---
+
+-->
+
 # v0.7.0
-_2017-10-10_
+_2017-10-18_
   - [Downloads for v0.7.0](https://github.com/okkur/syna/releases/tag/v0.7.0)
   - [Changelog since v0.6.0](#changelog-since-v060)
 
@@ -13,6 +29,7 @@ _2017-10-10_
   - German translation
   - Member fragment
   - Source code note about syna
+  - Visual attribution
 
 ## Fixes since v0.6.0
   - Table responsiveness
@@ -20,8 +37,6 @@ _2017-10-10_
   - Improve readability on mobile
 
 ---
-
--->
 
 # v0.6.0
 _2017-10-08_
