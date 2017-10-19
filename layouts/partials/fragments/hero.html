@@ -1,5 +1,6 @@
 {{ $data := ($.Scratch.Get "data") }}
 {{ "<!-- Hero -->" | safeHTML }}
+{{ $bg := $data.background | default "secondary"}}
 
 <header>
   {{ with $data.header }}
@@ -16,13 +17,25 @@
       {{- if $data.logoWidth -}} width="{{ $data.logoWidth }}"{{- end -}}
     ></img>
     {{ with $data.subtitle }}
-      <h1 class="overlay jumbotron-heading my-4">
+      <h1 class="overlay jumbotron-heading my-4
+        {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
+          {{- printf " text-%s" "dark" -}}
+        {{- else -}}
+          {{- printf " text-%s" "light" -}}
+        {{- end -}}
+      ">
         {{- . | markdownify -}}
       </h1>
     {{ end }}
   {{ else }}
     {{ with $data.title }}
-      <h1 class="overlay jumbotron-heading">
+      <h1 class="overlay jumbotron-heading
+        {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
+          {{- printf " text-%s" "dark" -}}
+        {{- else -}}
+          {{- printf " text-%s" "light" -}}
+        {{- end -}}
+      ">
         {{- . -}}
       </h1>
     {{ end }}
