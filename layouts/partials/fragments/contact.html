@@ -44,6 +44,7 @@
                   <div class="form-group">
                     <input
                       id="name"
+                      name="name"
                       class="form-control"
                       type="text"
                       data-validation-error-msg="{{ .error | default (i18n "contact.defaultNameError") }}"
@@ -57,6 +58,7 @@
                   <div class="form-group">
                     <input
                       id="email"
+                      email="email"
                       class="form-control"
                       type="text"
                       data-validation="email"
@@ -71,6 +73,7 @@
                   <div class="form-group">
                     <input
                       id="phone"
+                      name="phone"
                       class="form-control"
                       type="text"
                       data-validation="custom"
@@ -88,6 +91,7 @@
                   <div class="form-group">
                     <textarea
                       id="message"
+                      name="message"
                       class="form-control text-dark"
                       type="text"
                       data-validation="length"
