@@ -91,8 +91,12 @@
                   {{ end }}
                 </div>
               {{ end }}
+              {{ if .icons }}
+              <div class="row justify-content-center pt-4">
+
               {{ range .icons }}
-                <span class="fa-stack fa-3x m-2">
+
+                <span class="fa-stack fa-2x m-2">
                   <a href="{{ .link }}">
                     <i class="fa fa-circle fa-stack-2x
                       {{- if eq $bg "primary" -}}
@@ -104,7 +108,11 @@
                     <i class="fa {{ .icon }} fa-stack-1x fa-inverse"></i>
                   </a>
                 </span>
+
               {{ end }}
+            </div>
+            {{ end }}
+
                 {{ with .description }}
                   <div class="pt-3">
                     <p class="description">

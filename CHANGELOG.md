@@ -8,6 +8,7 @@ _2017_
 [Examples](/tree/v0.8.0/exampleSite)
 
 ## Changes since v0.7.0
+  - Add icons to member fragment
 
 ## Fixes since v0.7.0
 
