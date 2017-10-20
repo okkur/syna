@@ -14,17 +14,17 @@ logoWidth = "500px" # optional - will default to image width
 #logoHeight = "150px" # optional - will default to image height
 
 [[buttons]]
-  text = "Features"
-  link = "#features"
-  color = "primary" # primary, secondary, success, danger, warning, info, light, dark, link - default: primary
+  text = "Button"
+  link = "#"
+  color = "info" # primary, secondary, success, danger, warning, info, light, dark, link - default: primary
 
 [[buttons]]
   text = "Download"
   link = "https://github.com/okkur/syna/releases"
-  color = "info"
+  color = "primary"
 
 [[buttons]]
-  text = "Contribute"
-  link = "#contribute"
+  text = "Button"
+  link = "#"
   color = "success"
 +++

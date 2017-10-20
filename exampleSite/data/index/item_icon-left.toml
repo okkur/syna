@@ -3,16 +3,18 @@ fragment = "item"
 #disabled = false
 date = "2017-10-04"
 lastmod = "2017-10-04"
-weight = 400
-background = "dark"
-selfLink = "item-fragment-button-right"
-align = "right"
+weight = 300
+#background = ""
+selfLink = "item-fragment-icon-left"
+align = "left"
 
-title = "Item Fragment Button Right"
-subtitle= "Easily right align the item fragment even with some buttons"
+title = "Item Fragment Icon Left"
+#subtitle = ""
+
+icon = "fa-random"
 
 description = """
-Also a long description is possible.
+Easily left align item fragments even with an icon.
 
 Some more text to showcase the description capabilities:
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -24,14 +26,4 @@ Suspendisse rutrum, mi ac sollicitudin blandit, eros sem tincidunt enim, vitae f
 Nunc hendrerit, nibh vitae dignissim pretium, magna nulla lacinia massa, et interdum lacus purus ultricies lacus.
 Nulla tincidunt quis lacus in posuere.
 """
-
-[[buttons]]
-  text = "Button"
-  link = "#"
-  color = "primary"
-
-[[buttons]]
-  text = "Long Button"
-  link = "#"
-  color = "secondary"
 +++

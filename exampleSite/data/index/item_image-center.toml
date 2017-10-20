@@ -5,16 +5,18 @@ date = "2017-10-04"
 lastmod = "2017-10-04"
 weight = 350
 background = "secondary"
-selfLink = "modular"
+selfLink = "item-fragment-image-center"
+align = "center"
 
-title = "Modular"
-#subtitle= "Highly modular theme for Hugo built with Boostrap 4"
+title = "Item Fragment Image Center"
+#subtitle= ""
+
 image = "screenshot.png"
 
 description = """
-Choose from a wide variety of highly modular partials to built the site you need.
+Easily center item fragments even with an image.
 
-Some more text to showcase the call to action capabilities:
+Some more text to showcase the description capabilities:
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 Curabitur a lorem urna.
 Quisque in neque malesuada, sollicitudin nunc porttitor, ornare est.

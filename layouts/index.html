@@ -18,6 +18,7 @@
     {{ end }}
 
     {{ with $.Site.Data.index }}
+
       {{ range sort . "weight" }}
         {{ $.Scratch.Set "data" . }}
 

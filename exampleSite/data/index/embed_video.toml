@@ -5,10 +5,11 @@ date = "2017-09-09"
 lastmod = "2017-09-09"
 weight = 800
 background = "secondary"
-selfLink = "video"
+selfLink = "video-fragment"
 
-title = "Easily embed media"
-subtitle = "such as video from YouTube"
+title = "Embed Fragment"
+subtitle = "Easily embed media (videos, iframes etc.)"
+
 mediaSource = "https://www.youtube-nocookie.com/embed/lXpf4kIxygU?rel=0&amp;showinfo=0"
 #media = "<iframe class='embed-responsive-item' src='https://www.youtube-nocookie.com/embed/lXpf4kIxygU?rel=0&amp;showinfo=0' allowfullscreen></iframe>"
 #ratio = "16by9" # 21by9, 16by9, 4by3, 1by1 - Default: 4by3

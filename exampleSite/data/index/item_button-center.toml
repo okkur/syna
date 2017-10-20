@@ -3,19 +3,18 @@ fragment = "item"
 #disabled = false
 date = "2017-10-04"
 lastmod = "2017-10-04"
-weight = 300
-#background = "secondary"
-selfLink = "modular"
-align = "left"
+weight = 420
+background = "dark"
+selfLink = "item-fragment-button-center"
+align = "center"
 
-title = "Modular"
-#subtitle= "Highly modular theme for Hugo built with Boostrap 4"
-#image = "screenshot.png"
-icon = "fa-random"
+title = "Item Fragment Button Center"
+subtitle= "Easily center align the item fragment even with some buttons"
+
 description = """
-Choose from a wide variety of highly modular partials to built the site you need.
+Also a long description is possible.
 
-Some more text to showcase the call to action capabilities:
+Some more text to showcase the description capabilities:
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 Curabitur a lorem urna.
 Quisque in neque malesuada, sollicitudin nunc porttitor, ornare est.
@@ -25,4 +24,14 @@ Suspendisse rutrum, mi ac sollicitudin blandit, eros sem tincidunt enim, vitae f
 Nunc hendrerit, nibh vitae dignissim pretium, magna nulla lacinia massa, et interdum lacus purus ultricies lacus.
 Nulla tincidunt quis lacus in posuere.
 """
+
+[[buttons]]
+  text = "Long Button"
+  link = "#"
+  color = "primary"
+
+[[buttons]]
+  text = "Button"
+  link = "#"
+  color = "secondary"
 +++

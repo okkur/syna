@@ -7,24 +7,24 @@ weight = 1000
 background = "dark"
 selfLink = "users"
 
-title = "Our Awesome Users"
+#title = ""
 #subtitle = ""
 
 [[logos]]
-  name = "txtdirect"
+  name = "syna"
   weight = 10
-  logo = "txtdirect.svg"
-  link = "https://about.txtdirect.org"
+  logo = "syna.svg"
+  #link = "#"
 
 [[logos]]
-  name = "seetheprogress"
+  name = "syna"
   weight = 20
-  logo = "stp.svg"
+  logo = "syna.svg"
   #link = "#"
 
 [[logos]]
   name = "syna"
   weight = 30
   logo = "syna.svg"
-  link = "https://about.okkur.io/"
+  #link = ""
 +++

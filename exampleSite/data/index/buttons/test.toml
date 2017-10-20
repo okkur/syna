@@ -5,18 +5,18 @@ date = "2016-09-07"
 lastmod = "2017-09-07"
 weight = 720
 background = "primary"
-selfLink = "buttons-fragment"
+selfLink = "actions"
 
-title = "Buttons Fragment"
-subtitle = "Using primary background"
+title = "Action items test"
+subtitle = "Simple horizontal action buttons"
 
 [[buttons]]
-  text = "Button"
-  link = "#"
+  text = "Features"
+  link = "#features"
   color = "success" # primary, secondary, success, danger, warning, info, light, dark, link - default: primary
 
 [[buttons]]
-  text = "Danger Button"
-  link = "#"
+  text = "Contribute"
+  link = "https://github.com/okkur/syna/blob/master/CONTRIBUTE.md"
   color = "danger"
 +++

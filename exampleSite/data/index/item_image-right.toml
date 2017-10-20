@@ -3,19 +3,20 @@ fragment = "item"
 #disabled = false
 date = "2017-10-04"
 lastmod = "2017-10-04"
-weight = 310
-background = "secondary"
-selfLink = "modular"
-align = "center"
+weight = 320
+background = "dark"
+selfLink = "item-fragment-image-right"
+align = "right"
 
-title = "Modular"
-#subtitle= "Highly modular theme for Hugo built with Boostrap 4"
-#image = "screenshot.png"
-icon = "fa-random"
+title = "Item Fragment Image Right"
+subtitle= "Easily right align the item fragment even with an image"
+
+image = "screenshot.png"
+
 description = """
-Choose from a wide variety of highly modular partials to built the site you need.
+Easily left align the item fragment even with an image and buttons at the same time.
 
-Some more text to showcase the call to action capabilities:
+Some more text to showcase the description capabilities:
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 Curabitur a lorem urna.
 Quisque in neque malesuada, sollicitudin nunc porttitor, ornare est.

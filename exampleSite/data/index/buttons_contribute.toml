@@ -4,23 +4,24 @@ fragment = "buttons"
 date = "2016-09-07"
 lastmod = "2017-09-07"
 weight = 710
-#background = "light"
-selfLink = "contribute"
+#background = ""
+selfLink = "button-fragment"
 
-title = "Even more Buttons"
+title = "Buttons Fragment"
+#subtitle = ""
 
 [[buttons]]
-  text = "Support"
-  link = "https://github.com/okkur/syna/blob/master/SUPPORT.md"
+  text = "Button"
+  link = "#"
   color = "outline-secondary" # primary, secondary, success, danger, warning, info, light, dark, link - default: primary
 
 [[buttons]]
-  text = "Contribute"
-  link = "https://github.com/okkur/syna/blob/master/CONTRIBUTE.md"
+  text = "Button"
+  link = "#"
   color = "success"
 
 [[buttons]]
-  text = "Examples"
-  link = "https://github.com/okkur/syna/tree/master/exampleSite"
+  text = "Long Button"
+  link = "#"
   color = "secondary" # primary, secondary, success, danger, warning, info, light, dark, link - default: primary
 +++

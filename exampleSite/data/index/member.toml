@@ -5,10 +5,10 @@ date = "2017-10-17"
 lastmod = "2017-10-17"
 weight = 900
 #background = "dark"
-selfLink = "team"
+selfLink = "member-fragment"
 
-title = "Team"
-subtitle = "Highly motivated team"
+title = "Member Fragment"
+subtitle = "Highly motivated Gophers"
 
 [[member]]
   name = "Huge Gopher"
@@ -36,12 +36,6 @@ Praesent ante enim, bibendum sed hendrerit et, iaculis laoreet felis.
 Morbi efficitur dui sit amet orci porttitor, nec tincidunt turpis elementum.
 """
 
-  [[member.icons]]
-    icon = "fa-twitter"
-    link = "#"
-  [[member.icons]]
-    icon = "fa-facebook"
-    link = "#"
   [[member.icons]]
     icon = "fa-linkedin"
     link = "#"
@@ -74,9 +68,6 @@ Morbi efficitur dui sit amet orci porttitor, nec tincidunt turpis elementum.
 
   [[member.icons]]
     icon = "fa-twitter"
-    link = "#"
-  [[member.icons]]
-    icon = "fa-facebook"
     link = "#"
   [[member.icons]]
     icon = "fa-linkedin"

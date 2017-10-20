@@ -1,16 +1,19 @@
 +++
-fragment = "table"
+fragment = "item"
 #disabled = false
-date = "2017-10-10"
-lastmod = "2017-10-10"
-weight = 500
-background = "light"
-selfLink = "table-fragment"
+date = "2017-10-04"
+lastmod = "2017-10-04"
+weight = 340
+#background = ""
+selfLink = "item-fragment-image-table-left"
+align = "left"
 
-title = "Table Fragment"
-subtitle= "Tables are responsive by default"
+title = "Item Fragment Image Table Left"
+#subtitle = ""
 
-unimportant = [true, false, false, false, true, false]
+image = "screenshot.png"
+
+#unimportant = [true, false, false, false, true, false] # hide unimportant columns on mobile
 
 [header]
   [[header.values]]
@@ -18,6 +21,7 @@ unimportant = [true, false, false, false, true, false]
 
   [[header.values]]
     text = "Header 2"
+    center = true
 
   [[header.values]]
     text = "Header 3"
@@ -39,21 +43,21 @@ unimportant = [true, false, false, false, true, false]
     text = "Value"
 
   [[rows.values]]
-    text = "Long Value"
+    text = "Value"
 
   [[rows.values]]
     text = "Value"
 
   [[rows.values]]
-    button = "Long Button"
-    link = "#"
-    color = "success"
-
-  [[rows.values]]
     button = "Button"
     link = "#"
-    color = "danger"
+    color = "success"
     center = true
+
+  [[rows.values]]
+    button = "Long Button"
+    link = "#"
+    color = "danger"
 
 [[rows]]
   [[rows.values]]
@@ -63,7 +67,7 @@ unimportant = [true, false, false, false, true, false]
     text = "Value"
 
   [[rows.values]]
-    text = "Value"
+    text = "Long Value"
 
   [[rows.values]]
     text = "Long Value"
@@ -72,7 +76,7 @@ unimportant = [true, false, false, false, true, false]
     text = ""
 
   [[rows.values]]
-    icon = "fa-gears"
+    icon = "fa-download"
     link = "#"
     center = true
 +++

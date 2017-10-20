@@ -4,16 +4,17 @@ fragment = "item"
 date = "2017-10-04"
 lastmod = "2017-10-04"
 weight = 410
-#background = "light"
-selfLink = "contribute-action"
+#background = ""
+selfLink = "item-fragment-button-left"
 align = "left"
 
-title = "Contribute"
+title = "Item Fragment Button Left"
+#subtitle = ""
 
 description = """
-Help out and contribute.
+Easily left align the item fragment even with some buttons.
 
-Some more text to showcase the call to action capabilities:
+Some more text to showcase the description capabilities:
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 Curabitur a lorem urna.
 Quisque in neque malesuada, sollicitudin nunc porttitor, ornare est.
@@ -25,7 +26,7 @@ Nulla tincidunt quis lacus in posuere.
 """
 
 [[buttons]]
-  text = "Contribute"
-  link = "https://github.com/okkur/syna/blob/master/CONTRIBUTE.md"
+  text = "Button"
+  link = "#"
   color = "success"
 +++

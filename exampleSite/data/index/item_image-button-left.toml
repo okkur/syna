@@ -3,19 +3,20 @@ fragment = "item"
 #disabled = false
 date = "2017-10-04"
 lastmod = "2017-10-04"
-weight = 320
-background = "dark"
-selfLink = "customizable"
-align = "right"
+weight = 360
+background = "light"
+selfLink = "item-fragment-image-button-left"
+align = "left"
 
-title = "Customizable"
-subtitle= "Highly modular theme for Hugo built with Boostrap 4"
+title = "Item Fragment Image Button Left"
+#subtitle = ""
+
 image = "screenshot.png"
-#icon = "fa-gears"
-description = """
-Easily switch logos, colours and the various modules within your own site. All based on Syna and the awesome Hugo project.
 
-Some more text to showcase the call to action capabilities:
+description = """
+Choose from a wide variety of highly modular partials to built the site you need.
+
+Some more text to showcase the description capabilities:
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 Curabitur a lorem urna.
 Quisque in neque malesuada, sollicitudin nunc porttitor, ornare est.
@@ -25,4 +26,14 @@ Suspendisse rutrum, mi ac sollicitudin blandit, eros sem tincidunt enim, vitae f
 Nunc hendrerit, nibh vitae dignissim pretium, magna nulla lacinia massa, et interdum lacus purus ultricies lacus.
 Nulla tincidunt quis lacus in posuere.
 """
+
+[[buttons]]
+  text = "Button"
+  link = "#"
+  color = "primary"
+
+[[buttons]]
+  text = "Long Button"
+  link = "#"
+  color = "secondary"
 +++

@@ -5,9 +5,11 @@ date = "2017-10-04"
 lastmod = "2017-10-04"
 weight = 330
 background = "secondary"
-selfLink = "modular"
-#align = "center"
+selfLink = "item-fragment-image-only-center"
+align = "center"
 
-title = "Image only fragment"
+title = "Item Fragment Image Only"
+#subtitle = ""
+
 image = "screenshot.png"
 +++

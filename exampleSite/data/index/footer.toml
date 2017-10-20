@@ -4,14 +4,15 @@ fragment = "footer"
 date = "2016-09-07"
 lastmod = "2017-09-07"
 weight = 1200
-#background = "light"
+#background = ""
 
-linkTitle = ""
-logoTitle = ""
+linkTitle = "Link Title"
+logoTitle = "Logo Title"
 logo = "logo.svg"
-logoText = "With <3 by Syna Authors"
-descriptionTitle = "About Syna"
+logoText = "Logo Subtext"
+descriptionTitle = "Description Title"
 description = """
+Project description such as:  
 Open source theme for your next project
 Provided by Okkur Labs
 """
