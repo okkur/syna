@@ -10,6 +10,8 @@ _2017_
 ## Changes since v0.7.0
   - Add icons to member fragment
   - Color option for hero
+  - Item fragment with button and image/icon
+  - Cleanup example data
 
 ## Fixes since v0.7.0
 
