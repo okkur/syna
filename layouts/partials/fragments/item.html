@@ -56,13 +56,16 @@
               </div>
             </div>
           {{ end }}
-          <div class="col-12 text-center d-lg-none pb-5
+          <div class="col-12 text-center d-lg-none pb-4
             {{- if eq $align "left" -}}
               {{- printf " order-lg-12 mt-lg-5 ml-lg-auto col-lg-4" -}}
             {{- else if eq $align "right" -}}
               {{- printf " order-lg-1 mt-lg-5 mr-lg-auto col-lg-4" -}}
             {{- else -}}
               {{- printf " order-lg-12" -}}
+            {{- end -}}
+            {{- if and (not $data.icon) (not $data.image) -}}
+              {{- printf " " -}}
             {{- end -}}
           ">
             <div class="row">
@@ -84,7 +87,7 @@
                 {{ end }}
                 {{ if and (not $data.icon) (not $data.image) }}
                   {{ range $data.buttons }}
-                    <a class="btn btn-lg m-2
+                    <a class="btn btn-lg m-2 d-none d-lg-inline
                       {{ if hasPrefix .link "#" }} anchor{{ end }}
                       {{- $color := .color | default "primary" -}}
                       {{- printf " btn-%s" $color -}}
@@ -120,15 +123,17 @@
           </div>
           {{ end }}
           {{ if or $data.icon $data.image }}
-            {{ range $data.buttons }}
-              <a class="btn btn-lg m-2
-                {{ if hasPrefix .link "#" }} anchor{{ end }}
-                {{- $color := .color | default "primary" -}}
-                {{- printf " btn-%s" $color -}}
-              " href="{{ .link | relLangURL }}">
-                {{- .text -}}
-              </a>
-            {{ end }}
+            <div class="col-12 text-center">
+              {{ range $data.buttons }}
+                <a class="btn btn-lg m-2
+                  {{ if hasPrefix .link "#" }} anchor{{ end }}
+                  {{- $color := .color | default "primary" -}}
+                  {{- printf " btn-%s" $color -}}
+                " href="{{ .link | relLangURL }}">
+                  {{- .text -}}
+                </a>
+              {{ end }}
+            </div>
           {{ end }}
           {{ if $data.rows }}
             <div class="row justify-content-center">
@@ -234,9 +239,9 @@
       </div>
         <div class="col-12
           {{- if eq $align "left" -}}
-            {{- printf " order-lg-12 mt-5 ml-lg-auto col-lg-4" -}}
+            {{- printf " order-lg-12 ml-lg-auto col-lg-4" -}}
           {{- else if eq $align "right" -}}
-            {{- printf " order-lg-1 mt-5 mr-lg-auto col-lg-4" -}}
+            {{- printf " order-lg-1 mr-lg-auto col-lg-4" -}}
           {{- else -}}
             {{- printf " order-lg-12" -}}
           {{- end -}}
@@ -254,8 +259,10 @@
                     "></i>
                     <i class="fa {{ $data.icon }} fa-stack-1x fa-inverse"></i>
                   </span>
-                {{ else if $data.image }}
-                  {{ $url := printf "images/row/%s" $data.image }}
+                </div>
+              {{ else if $data.image }}
+                {{ $url := printf "images/row/%s" $data.image }}
+                <div class="col-12 text-center d-none d-lg-inline">
                   <img src="{{ $url | absURL }}" class="img-fluid p-2" alt="{{ $data.name }}">
                 </div>
               {{ end }}
