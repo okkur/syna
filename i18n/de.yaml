@@ -19,6 +19,8 @@
   translation: "Nachricht konnte nicht gesendet werden. Bitte kontaktieren Sie uns unter"
 - id: contact.defaultJsError
   translation: "Nachricht konnte nicht gesendet werden, da Javascript ausgeschaltet ist. Bitte kontaktieren Sie uns unter"
+- id: contact.defaultCaptchaError
+  translation: "Nachricht konnte nicht gesendet werden, da das Captcha  nicht geladen werden konnte. Bitte kontaktieren Sie uns unter"
 - id: contact.defaultButton
   translation: "Nachricht senden"
 

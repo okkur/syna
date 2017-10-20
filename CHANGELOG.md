@@ -15,6 +15,7 @@ _2017_
 
 ## Fixes since v0.7.0
   - Member icon hover
+  - Print error on captcha inaccessible
 
 ---
 

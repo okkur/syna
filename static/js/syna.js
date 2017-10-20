@@ -1,10 +1,17 @@
 var selfCheck = "checkSelf";
 
+// Check if recaptcha is disabled
+$(function() {
+  if ($('.g-recaptcha') && typeof grecaptcha == "undefined") {
+    $('.captcha-error').removeClass('d-none');
+  }
+});
+
 $.validate({
   modules: 'html5, toggleDisabled',
   validateOnEvent: true,
   onError: function($form) {
-    $('form[id=' +  $form.attr('id') +'] .error').removeClass('d-none');
+    $('form[id=' +  $form.attr('id') +'] .generic-error').removeClass('d-none');
  },
   onSuccess: function($form) {
     if (selfCheck != "checkSelf") {

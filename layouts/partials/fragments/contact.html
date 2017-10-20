@@ -113,6 +113,9 @@
                     {{- i18n "contact.defaultGenericSuccess" -}}
                   {{ end }}
                 </div>
+                <div class="captcha-error text-danger d-none" id="captcha-error">
+                    {{- i18n "contact.defaultCaptchaError" }} {{ $data.email -}}.
+                </div>
                 <div class="generic-error text-danger d-none" id="generic-error">
                   {{ with $data.message.error }}
                     {{- . | markdownify -}}

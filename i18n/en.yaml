@@ -19,6 +19,8 @@
   translation: "Message could not be send. Please contact us at"
 - id: contact.defaultJsError
   translation: "Message can not be send with javascript disabled. Please contact us at"
+- id: contact.defaultCaptchaError
+  translation: "Message could not be send could not access captcha. Please contact us at"
 - id: contact.defaultButton
   translation: "Send Message"
 
