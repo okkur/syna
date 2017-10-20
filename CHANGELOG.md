@@ -14,6 +14,7 @@ _2017_
   - Cleanup example data
 
 ## Fixes since v0.7.0
+  - Member icon hover
 
 ---
 
