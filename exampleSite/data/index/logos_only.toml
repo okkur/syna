@@ -15,16 +15,4 @@ selfLink = "users"
   weight = 10
   logo = "syna.svg"
   #link = "#"
-
-[[logos]]
-  name = "syna"
-  weight = 20
-  logo = "syna.svg"
-  #link = "#"
-
-[[logos]]
-  name = "syna"
-  weight = 30
-  logo = "syna.svg"
-  #link = ""
 +++
