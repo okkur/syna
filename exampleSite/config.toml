@@ -64,12 +64,12 @@ googleAnalytics = ""
 
 [[menu.main]]
   url = "/about-split"
-  name = "About-split"
+  name = "Page-split"
   weight = 30
 
 [[menu.main]]
   url = "/about"
-  name = "About-single"
+  name = "Page-single"
   weight = 30
 
 [[menu.main]]
