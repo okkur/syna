@@ -12,6 +12,7 @@ _2017_
   - Color option for hero
   - Item fragment with button and image/icon
   - Cleanup example data
+  - Automatic push to demo via gitlab ci
 
 ## Fixes since v0.7.0
   - Member icon hover

@@ -1,0 +1,28 @@
+image: seetheprogress/build:v17.06-33988a
+
+services:
+  - docker:dind
+
+variables:
+  DOCKER_HOST: "tcp://localhost:2375"
+  THEME_REPO: "https://github.com/okkur/syna.git"
+  THEME: "syna"
+  HUGO_CONTAINER: "seetheprogress/hugo:v0.29.0-63c538"
+
+before_script:
+  - BUILD_REF_SHORT=`echo $CI_BUILD_REF | cut -c1-8`
+  - THEME_REPO_BASE=`echo $THEME_REPO | cut -d "/" -f1`
+
+build pages:about for demo:
+  stage: build
+  environment: development
+  only:
+    - master
+  script:
+  - cd exampleSite
+  - git clone -b master $THEME_REPO themes/$THEME
+  - find . -name 'config.toml' -type f -exec sed -i -e 's/stats.example.com/stats.seetheprogress.eu/g' -- {} +
+  - find . -name 'config.toml' -type f -exec sed -i -e 's/www.example.com/syna-demo.netlify.com/g' -- {} +
+  - find . -name 'config.toml' -type f -exec sed -i -e 's/id = "42"/id = "13"/g' -- {} +
+  - docker run -u $(id -u):$(id -g) -v $(pwd):/source $HUGO_CONTAINER /hugo -s /source
+  - netlify deploy -p public -s $SITE_DEV -t $TOKEN_DEV
