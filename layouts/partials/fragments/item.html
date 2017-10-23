@@ -123,7 +123,7 @@
           </div>
           {{ end }}
           {{ if or $data.icon $data.image }}
-            <div class="col-12 text-center">
+            <div class="col-12 text-center text-lg-left">
               {{ range $data.buttons }}
                 <a class="btn btn-lg m-2
                   {{ if hasPrefix .link "#" }} anchor{{ end }}
