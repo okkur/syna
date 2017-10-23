@@ -13,6 +13,7 @@ _2017_
   - Item fragment with button and image/icon
   - Cleanup example data
   - Automatic push to demo via gitlab ci
+  - Update basefiles via reposeed
 
 ## Fixes since v0.7.0
   - Member icon hover
