@@ -1,6 +1,22 @@
 <!--
-# v0.8.0
+# v0.9.0
 _2017_
+  - [Downloads for v0.9.0](https://github.com/okkur/syna/releases/tag/v0.9.0)
+  - [Changelog since v0.8.0](#changelog-since-v070)
+
+## Documentation
+[Examples](/tree/v0.9.0/exampleSite)
+
+## Changes since v0.8.0
+
+## Fixes since v0.8.0
+
+---
+
+-->
+
+# v0.8.0
+_2017-10-23_
   - [Downloads for v0.8.0](https://github.com/okkur/syna/releases/tag/v0.8.0)
   - [Changelog since v0.7.0](#changelog-since-v070)
 
@@ -20,8 +36,6 @@ _2017_
   - Print error on captcha inaccessible
 
 ---
-
--->
 
 # v0.7.0
 _2017-10-18_
