@@ -26,9 +26,9 @@ contributionLinks:
   starterIssues: "https://github.com/okkur/syna/labels/starter%20issue"
 
 emails:
-  commercialSupport: "support@okkurlabs.com"
-  security: "security@okkurlabs.com"
-  coc: "coc@okkurlabs.com"
+  commercialSupport: "support@okkur.io"
+  security: "security@okkur.io"
+  coc: "coc@okkur.io"
 
 copyright:
   year: "2017"

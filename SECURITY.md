@@ -1,6 +1,6 @@
 # Security Vulnerability Disclosure
 
-Please report any suspected security vulnerabilities privately to security@okkurlabs.com.
+Please report any suspected security vulnerabilities privately to security@okkur.io.
 Please do **NOT** create publicly viewable issues for suspected security vulnerabilities.
 
 We will acknowledge receipt of your vulnerability report as soon as possible and strive to send you regular updates about our progress.
