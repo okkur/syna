@@ -13,7 +13,7 @@ Highly customizable with modular per-page fragments.
 
 ## Using Syna Theme
 
-Check out our [demo](https://demo.syna.okkur.io)
+Check out our [demo](https://syna-demo.okkur.io)
 
 Take a look at our full [documentation](/docs).
 
