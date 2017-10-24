@@ -40,16 +40,22 @@
         </div>
       {{ end }}
       <div class="row justify-content-center">
-        <div class="embed-responsive
-          {{- printf " embed-responsive-%s" $ratio -}}
-          {{- printf " h-%s w-%s" $size $size -}}
-        ">
-          {{ if $data.media }}
+        {{ if eq $data.responsive false }}
+          <div class="{{- printf "w-%s" $size -}}">
             {{- $data.media | safeHTML -}}
-          {{ else }}
-            <iframe class="embed-responsive-item" src="{{ $data.mediaSource }}" allowfullscreen></iframe>
-          {{ end }}
-        </div>
+          </div>
+        {{ else }}
+          <div class="embed-responsive
+            {{- printf " embed-responsive-%s" $ratio -}}
+            {{- printf " h-%s w-%s" $size $size -}}
+          ">
+            {{ if $data.media }}
+              {{- $data.media | safeHTML -}}
+            {{ else }}
+              <iframe class="embed-responsive-item" src="{{ $data.mediaSource }}" allowfullscreen></iframe>
+            {{ end }}
+          </div>
+        {{ end }}
       </div>
     </div>
   </div>

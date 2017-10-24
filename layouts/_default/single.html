@@ -45,10 +45,6 @@
           {{ partial "fragments/member.html" $ }}
         {{ end }}
 
-        {{ if and (not .disabled) (eq .fragment "subscribe") }}
-          {{ partial "fragments/subscribe.html" $ }}
-        {{ end }}
-
         {{ if and (not .disabled) (eq .fragment "buttons") }}
           {{ partial "fragments/buttons.html" $ }}
         {{ end }}

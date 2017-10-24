@@ -8,6 +8,7 @@ _2017_
 [Examples](/tree/v0.9.0/exampleSite)
 
 ## Changes since v0.8.0
+  - Subscribe fragment reusing embed fragment
 
 ## Fixes since v0.8.0
 
