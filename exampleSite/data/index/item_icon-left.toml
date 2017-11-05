@@ -11,6 +11,10 @@ align = "left"
 title = "Item Fragment Icon Left"
 #subtitle = ""
 
+# Subtitle pre and post item
+pre = "Awesome icon"
+post = "Using Fontawesome icons"
+
 icon = "fa-random"
 
 description = """

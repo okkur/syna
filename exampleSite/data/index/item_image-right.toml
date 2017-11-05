@@ -11,6 +11,10 @@ align = "right"
 title = "Item Fragment Image Right"
 subtitle= "Easily right align the item fragment even with an image"
 
+# Subtitle pre and post item
+pre = "Awesome screenshot"
+post = "Showcasing Syna"
+
 image = "screenshot.png"
 
 description = """

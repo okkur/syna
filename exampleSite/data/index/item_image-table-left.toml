@@ -11,6 +11,10 @@ align = "left"
 title = "Item Fragment Image Table Left"
 #subtitle = ""
 
+# Subtitle pre and post item
+#pre = ""
+#post = ""
+
 image = "screenshot.png"
 
 #unimportant = [true, false, false, false, true, false] # hide unimportant columns on mobile

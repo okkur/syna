@@ -11,6 +11,10 @@ align = "center"
 title = "Item Fragment Button Center"
 subtitle= "Easily center align the item fragment even with some buttons"
 
+# Subtitle pre and post item
+#pre = ""
+#post = ""
+
 description = """
 Also a long description is possible.
 

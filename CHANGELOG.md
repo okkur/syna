@@ -9,6 +9,7 @@ _2017_
 
 ## Changes since v0.8.0
   - Subscribe fragment reusing embed fragment
+  - Pre and Post subtitle for item for item fragment
 
 ## Fixes since v0.8.0
 

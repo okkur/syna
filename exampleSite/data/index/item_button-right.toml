@@ -11,6 +11,10 @@ align = "right"
 title = "Item Fragment Button Right"
 subtitle= "Easily right align the item fragment even with some buttons"
 
+# Subtitle pre and post item
+pre = "Awesome Button"
+post = "With a simple subtitle"
+
 description = """
 Also a long description is possible.
 

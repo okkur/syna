@@ -11,6 +11,10 @@ align = "center"
 title = "Item Fragment Icon Center"
 #subtitle = ""
 
+# Subtitle pre and post item
+#pre = ""
+#post = ""
+
 icon = "fa-random"
 
 description = """

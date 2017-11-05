@@ -70,6 +70,21 @@
           ">
             <div class="row">
               <div class="col-12">
+                {{ if $data.pre }}
+                  <div class="row">
+                    <div class="col-12
+                      {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                        {{- printf " text-%s" "dark" -}}
+                      {{- else -}}
+                        {{- printf " text-muted text-%s" "secondary" -}}
+                      {{- end -}}
+                    ">
+                      <p class="mb-0">
+                        {{- $data.pre | markdownify -}}
+                      </p>
+                    </div>
+                  </div>
+                {{ end }}
                 {{ if $data.icon }}
                   <span class="fa-stack fa-4x">
                     <i class="fa fa-circle fa-stack-2x
@@ -95,6 +110,21 @@
                       {{- .text -}}
                     </a>
                   {{ end }}
+                {{ end }}
+                {{ if $data.post }}
+                  <div class="row">
+                    <div class="col-12 mb-0
+                      {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                        {{- printf " text-%s" "dark" -}}
+                      {{- else -}}
+                        {{- printf " text-muted text-%s" "secondary" -}}
+                      {{- end -}}
+                    ">
+                      <p class="mb-0">
+                        {{- $data.post | markdownify -}}
+                      </p>
+                    </div>
+                  </div>
                 {{ end }}
               </div>
             </div>
@@ -247,38 +277,68 @@
           {{- end -}}
         ">
           <div class="row justify-content-center">
-              {{ if $data.icon }}
-                <div class="col-12 text-center d-none d-lg-inline">
-                  <span class="fa-stack fa-4x">
-                    <i class="fa fa-circle fa-stack-2x
-                      {{- if eq $bg "primary" -}}
-                        {{- printf " text-%s" "dark" -}}
-                      {{- else -}}
-                        {{- printf " text-%s" "primary" -}}
-                      {{- end -}}
-                    "></i>
-                    <i class="fa {{ $data.icon }} fa-stack-1x fa-inverse"></i>
-                  </span>
+            {{ if $data.pre }}
+              <div class="row">
+                <div class="col-12 mb-0
+                  {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                    {{- printf " text-%s" "dark" -}}
+                  {{- else -}}
+                    {{- printf " text-muted text-%s" "secondary" -}}
+                  {{- end -}}
+                ">
+                  <p class="mb-0">
+                    {{- $data.pre | markdownify -}}
+                  </p>
                 </div>
-              {{ else if $data.image }}
-                {{ $url := printf "images/row/%s" $data.image }}
-                <div class="col-12 text-center d-none d-lg-inline">
-                  <img src="{{ $url | absURL }}" class="img-fluid p-2" alt="{{ $data.name }}">
-                </div>
-              {{ end }}
-              {{ if and (not $data.icon) (not $data.image) }}
-                <div class="col-12 text-center">
-                  {{ range $data.buttons }}
-                    <a class="btn btn-lg m-2
-                      {{ if hasPrefix .link "#" }} anchor{{ end }}
-                      {{- $color := .color | default "primary" -}}
-                      {{- printf " btn-%s" $color -}}
-                    " href="{{ .link | relLangURL }}">
-                      {{- .text -}}
-                    </a>
+              </div>
+            {{ end }}
+            {{ if $data.icon }}
+              <div class="col-12 text-center d-none d-lg-inline">
+                <span class="fa-stack fa-4x">
+                  <i class="fa fa-circle fa-stack-2x
+                    {{- if eq $bg "primary" -}}
+                      {{- printf " text-%s" "dark" -}}
+                    {{- else -}}
+                      {{- printf " text-%s" "primary" -}}
+                    {{- end -}}
+                  "></i>
+                  <i class="fa {{ $data.icon }} fa-stack-1x fa-inverse"></i>
+                </span>
+              </div>
+            {{ else if $data.image }}
+              {{ $url := printf "images/row/%s" $data.image }}
+              <div class="col-12 text-center d-none d-lg-inline">
+                <img src="{{ $url | absURL }}" class="img-fluid p-2" alt="{{ $data.name }}">
+              </div>
+            {{ end }}
+            {{ if and (not $data.icon) (not $data.image) }}
+              <div class="col-12 text-center">
+                {{ range $data.buttons }}
+                  <a class="btn btn-lg m-2
+                    {{ if hasPrefix .link "#" }} anchor{{ end }}
+                    {{- $color := .color | default "primary" -}}
+                    {{- printf " btn-%s" $color -}}
+                  " href="{{ .link | relLangURL }}">
+                    {{- .text -}}
+                  </a>
                   {{ end }}
+              </div>
+            {{ end }}
+            {{ if $data.post }}
+              <div class="row">
+                <div class="col-12 mb-0
+                  {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                    {{- printf " text-%s" "dark" -}}
+                  {{- else -}}
+                    {{- printf " text-muted text-%s" "secondary" -}}
+                  {{- end -}}
+                ">
+                  <p class="mb-0">
+                    {{- $data.post | markdownify -}}
+                  </p>
                 </div>
-              {{ end }}
+              </div>
+            {{ end }}
             </div>
           </div>
         </div>

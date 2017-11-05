@@ -11,6 +11,10 @@ align = "left"
 title = "Item Fragment Button Left"
 #subtitle = ""
 
+# Subtitle pre and post item
+#pre = ""
+#post = ""
+
 description = """
 Easily left align the item fragment even with some buttons.
 

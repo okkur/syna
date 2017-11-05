@@ -11,6 +11,10 @@ align = "center"
 title = "Item Fragment Image Center"
 #subtitle= ""
 
+# Subtitle pre and post item
+#pre = ""
+#post = ""
+
 image = "screenshot.png"
 
 description = """
