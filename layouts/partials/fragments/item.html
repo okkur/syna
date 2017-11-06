@@ -279,7 +279,7 @@
           <div class="row justify-content-center">
             {{ if $data.pre }}
               <div class="row">
-                <div class="col-12 mb-0
+                <div class="col-12 mb-0 d-none d-lg-inline
                   {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
                     {{- printf " text-%s" "dark" -}}
                   {{- else -}}
@@ -326,7 +326,7 @@
             {{ end }}
             {{ if $data.post }}
               <div class="row">
-                <div class="col-12 mb-0
+                <div class="col-12 mb-0 d-none d-lg-inline
                   {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
                     {{- printf " text-%s" "dark" -}}
                   {{- else -}}
