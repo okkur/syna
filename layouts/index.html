@@ -4,6 +4,7 @@
   {{ $bg := .Site.Params.style.background | default "secondary"}}
 
   <body class="{{ printf "bg-%s" $bg }}">
+    <a name="page-top"></a>
     {{ partial "nav.html" . }}
 
     {{ with $.Site.Data.index }}

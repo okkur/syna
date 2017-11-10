@@ -12,7 +12,7 @@ _2017_
   - Pre and Post subtitle for item for item fragment
 
 ## Fixes since v0.8.0
-
+  - Page-top anchor (#20)
 ---
 
 -->
