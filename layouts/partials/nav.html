@@ -71,7 +71,7 @@
   {{ if .Site.Params.repoButton }}
     <div class="d-none d-lg-block pl-auto">
       <a class="btn btn-light" href="{{ .Site.Params.repoButton.url }}" role="button">
-        <i class="fa {{ .Site.Params.repoButton.icon | default (printf "fa-github") }} mr-1"></i>
+        <i class="fa {{ printf "fab %s" .Site.Params.repoButton.icon | default (printf "fab fa-github") }} mr-1"></i>
         {{- .Site.Params.repoButton.text | default (printf "Star") -}}
       </a>
     </div>

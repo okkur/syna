@@ -31,7 +31,7 @@ googleAnalytics = ""
     faviconICOSizes = "16x16 32x32"
     faviconPNG = "favicon.png"
     faviconSVG = "favicon.svg"
-    iconFont = ""
+    # fontawesome = "fontawesome" # defaults to js/fontawesome/fontawesome-all.min.js
     css = []
     js  = []
 
@@ -39,7 +39,7 @@ googleAnalytics = ""
   [params.repoButton]
     url = "https://github.com/okkur/syna"
     text = "Star" # default: "Star"
-    icon = "fa-github" # default: "fa-github"
+    icon = "fa-github" # defaults: "fa-github"
 
   # Piwik tracking
   [params.analytics.piwik]
@@ -51,6 +51,10 @@ googleAnalytics = ""
 
   # Optional, global disable switch for form related files
   [params.contact]
+    disabled = false
+
+  # Optional, global disable switch for fontawesome related files
+  [params.fontawesome]
     disabled = false
 
   # Optional google captcha
@@ -110,11 +114,11 @@ googleAnalytics = ""
 [[menu.footerSocial]]
   weight = 20
   name = "facebook"
-  pre = "facebook"
+  pre = "fa-facebook-f"
   url = "#"
 
 [[menu.footerSocial]]
   weight = 30
   name = "linkedin"
-  pre = "linkedin"
+  pre = "fa-linkedin-in"
   url = "#"

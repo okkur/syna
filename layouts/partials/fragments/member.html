@@ -96,12 +96,12 @@
                 {{ range .icons }}
                   <span class="fa-stack fa-2x m-2">
                     <a href="{{ .link }}">
-                      <i class="fa fa-circle fa-stack-2x
+                      <i class="fas fa-circle fa-stack-2x
                         {{- if eq $bg "primary" -}}
                           {{- printf " text-%s" "dark" -}}
                         {{- end -}}
                       "></i>
-                      <i class="fa {{ .icon }} fa-stack-1x fa-inverse"></i>
+                      <i class="fab {{ .icon }} fa-stack-1x fa-inverse"></i>
                     </a>
                   </span>
                 {{ end }}

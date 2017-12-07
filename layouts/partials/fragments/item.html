@@ -87,14 +87,14 @@
                 {{ end }}
                 {{ if $data.icon }}
                   <span class="fa-stack fa-4x">
-                    <i class="fa fa-circle fa-stack-2x
+                    <i class="fas fa-circle fa-stack-2x
                       {{- if eq $bg "primary" -}}
                         {{- printf " text-%s" "dark" -}}
                       {{- else -}}
                         {{- printf " text-%s" "primary" -}}
                       {{- end -}}
                     "></i>
-                    <i class="fa {{ $data.icon }} fa-stack-1x fa-inverse"></i>
+                    <i class="fas {{ $data.icon }} fa-stack-1x fa-inverse"></i>
                   </span>
                 {{ else if $data.image }}
                   {{ $url := printf "images/row/%s" $data.image }}
@@ -242,7 +242,7 @@
                             {{- end -}}
                           ">
                             <a href="{{ .links }}">
-                              <i class="fa {{ .icon }} fa-2x"></i>
+                              <i class="fas {{ .icon }} fa-2x"></i>
                             </a>
                           </td>
                         {{ else }}
@@ -295,14 +295,14 @@
             {{ if $data.icon }}
               <div class="col-12 text-center d-none d-lg-inline">
                 <span class="fa-stack fa-4x">
-                  <i class="fa fa-circle fa-stack-2x
+                  <i class="fas fa-circle fa-stack-2x
                     {{- if eq $bg "primary" -}}
                       {{- printf " text-%s" "dark" -}}
                     {{- else -}}
                       {{- printf " text-%s" "primary" -}}
                     {{- end -}}
                   "></i>
-                  <i class="fa {{ $data.icon }} fa-stack-1x fa-inverse"></i>
+                  <i class="fas {{ $data.icon }} fa-stack-1x fa-inverse"></i>
                 </span>
               </div>
             {{ else if $data.image }}

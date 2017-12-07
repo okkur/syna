@@ -7,6 +7,11 @@
 {{ "<!-- Bootstrap Core -->" | safeHTML }}
 <script src="{{ "js/bootstrap-4.beta/bootstrap.min.js" | relURL }}"></script>
 
+{{ if not .Site.Params.fontawesome.disabled }}
+  {{ "<!-- Custom Fontawesome -->" | safeHTML }}
+  <script src="{{ "js/fontawesome-5.0.0/fontawesome-all.min.js" | relURL }}"></script>
+{{ end }}
+
 {{ if not .Site.Data.index.hero.image }}
   {{ "<!-- Particles -->" | safeHTML }}
   <script src="{{ "js/particles-2.0/particles.min.js" | relURL }}"></script>

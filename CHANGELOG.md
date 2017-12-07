@@ -7,9 +7,12 @@ _2017_
 ## Documentation
 [Examples](/tree/v0.9.0/exampleSite)
 
+Notes: Member and Footer fragments only support brand icons for now.
+
 ## Changes since v0.8.0
   - Subscribe fragment reusing embed fragment
   - Pre and Post subtitle for item for item fragment
+  - Migrate to Fontawesome v5
 
 ## Fixes since v0.8.0
   - Page-top anchor (#20)

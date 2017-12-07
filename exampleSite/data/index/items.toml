@@ -22,7 +22,7 @@ Showcasing descriptions for column based items
 [[items]]
   name = "Column 2"
   weight = 20
-  icon = "fa-gears"
+  icon = "fa-code"
   #link = "#"
   description = """
 Showcasing descriptions for column based items

@@ -37,7 +37,7 @@ Morbi efficitur dui sit amet orci porttitor, nec tincidunt turpis elementum.
 """
 
   [[member.icons]]
-    icon = "fa-linkedin"
+    icon = "fa-linkedin-in"
     link = "#"
 
 [[member]]
@@ -70,7 +70,7 @@ Morbi efficitur dui sit amet orci porttitor, nec tincidunt turpis elementum.
     icon = "fa-twitter"
     link = "#"
   [[member.icons]]
-    icon = "fa-linkedin"
+    icon = "fa-linkedin-in"
     link = "#"
 
 [[member]]
@@ -103,10 +103,10 @@ Morbi efficitur dui sit amet orci porttitor, nec tincidunt turpis elementum.
     icon = "fa-twitter"
     link = "#"
   [[member.icons]]
-    icon = "fa-facebook"
+    icon = "fa-facebook-f"
     link = "#"
   [[member.icons]]
-    icon = "fa-linkedin"
+    icon = "fa-linkedin-in"
     link = "#"
 
   [[member]]
@@ -139,10 +139,10 @@ Morbi efficitur dui sit amet orci porttitor, nec tincidunt turpis elementum.
       icon = "fa-twitter"
       link = "#"
     [[member.icons]]
-      icon = "fa-facebook"
+      icon = "fa-facebook-f"
       link = "#"
     [[member.icons]]
-      icon = "fa-linkedin"
+      icon = "fa-linkedin-in"
       link = "#"
 
 [[member]]
@@ -196,6 +196,6 @@ Morbi efficitur dui sit amet orci porttitor, nec tincidunt turpis elementum.
     icon = "fa-facebook"
     link = "#"
   [[member.icons]]
-    icon = "fa-linkedin"
+    icon = "fa-linkedin-in"
     link = "#"
 +++

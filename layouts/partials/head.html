@@ -36,14 +36,9 @@
     <link href="{{ "css/form.min.css" | relURL }}" rel="stylesheet" type="text/css">
   {{ end }}
 
-    {{ "<!-- Theme Style -->" | safeHTML }}
-    <link href="{{ "css/syna.css" | relURL }}" rel="stylesheet" type="text/css">
-    <link href="{{ "css/overwrite.css" | relURL }}" rel="stylesheet" type="text/css">
-
-  {{ if not .Site.Params.custom.iconFont }}
-    {{ "<!-- Custom Iconfont -->" | safeHTML }}
-    <link href="{{ "fonts/fontawesome-4.7.0/font-awesome.min.css" | relURL }}" rel="stylesheet" type="text/css">
-  {{ end }}
+  {{ "<!-- Theme Style -->" | safeHTML }}
+  <link href="{{ "css/syna.css" | relURL }}" rel="stylesheet" type="text/css">
+  <link href="{{ "css/overwrite.css" | relURL }}" rel="stylesheet" type="text/css">
 
   {{ with .Site.Params.favicon}}
     <link rel="shortcut icon" type="image/x-icon" href="{{ . | relURL }}">
