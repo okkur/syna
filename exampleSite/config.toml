@@ -31,7 +31,6 @@ googleAnalytics = ""
     faviconICOSizes = "16x16 32x32"
     faviconPNG = "favicon.png"
     faviconSVG = "favicon.svg"
-    # fontawesome = "fontawesome" # defaults to js/fontawesome/fontawesome-all.min.js
     css = []
     js  = []
 
@@ -54,6 +53,7 @@ googleAnalytics = ""
     disabled = false
 
   # Optional, global disable switch for fontawesome related files
+  # For custom fontawesome js files use the custom.js method
   [params.fontawesome]
     disabled = false
 
