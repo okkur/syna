@@ -1,8 +1,25 @@
 <!--
-# v0.9.0
+# v0.10.0
 _2017_
+  - [Downloads for v0.10.0](https://github.com/okkur/syna/releases/tag/v0.10.0)
+  - [Changelog since v0.9.0](#changelog-since-v090)
+
+## Documentation
+[Examples](/tree/v0.10.0/exampleSite)
+
+## Changes since v0.9.0
+  -
+
+## Fixes since v0.9.0
+  -
+
+---
+
+-->
+# v0.9.0
+_2017-12-08_
   - [Downloads for v0.9.0](https://github.com/okkur/syna/releases/tag/v0.9.0)
-  - [Changelog since v0.8.0](#changelog-since-v070)
+  - [Changelog since v0.8.0](#changelog-since-v080)
 
 ## Documentation
 [Examples](/tree/v0.9.0/exampleSite)
@@ -18,9 +35,8 @@ Notes: Member and Footer fragments only support brand icons for now.
 
 ## Fixes since v0.8.0
   - Page-top anchor (#20)
----
 
--->
+---
 
 # v0.8.0
 _2017-10-23_
