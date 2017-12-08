@@ -13,6 +13,7 @@ Notes: Member and Footer fragments only support brand icons for now.
   - Subscribe fragment reusing embed fragment
   - Pre and Post subtitle for item for item fragment
   - Migrate to Fontawesome v5
+  - Unchanged bootstrap v4 scss files
 
 ## Fixes since v0.8.0
   - Page-top anchor (#20)
