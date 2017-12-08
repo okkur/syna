@@ -40,7 +40,13 @@
       </h1>
     {{ end }}
     {{ with $data.subtitle }}
-      <p class="overlay lead">
+      <p class="overlay lead
+        {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
+          {{- printf " text-%s" "dark" -}}
+        {{- else -}}
+          {{- printf " text-%s" "light" -}}
+        {{- end -}}
+      ">
         {{- . | markdownify -}}
       </p>
     {{ end }}
