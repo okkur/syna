@@ -34,16 +34,16 @@ $grays: map-merge((
   "900": $gray-900
 ), $grays);
 
-$blue:    #00838F !default;
-$indigo:  #54008f !default;
-$purple:  #8f0083 !default;
-$pink:    #c77fc1 !default;
-$red:     #8f0c00 !default;
-$orange:  #fd9742 !default;
-$yellow:  #fdf314 !default;
-$green:   #008f54 !default;
-$teal:    #4cb087 !default;
-$cyan:    #00c9dc !default;
+$blue:    #007bff !default;
+$indigo:  #6610f2 !default;
+$purple:  #6f42c1 !default;
+$pink:    #e83e8c !default;
+$red:     #dc3545 !default;
+$orange:  #fd7e14 !default;
+$yellow:  #ffc107 !default;
+$green:   #28a745 !default;
+$teal:    #20c997 !default;
+$cyan:    #17a2b8 !default;
 
 $colors: () !default;
 $colors: map-merge((
@@ -162,6 +162,10 @@ $grid-breakpoints: (
   xl: 1200px
 ) !default;
 
+@include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
+@include _assert-starts-at-zero($grid-breakpoints);
+
+
 // Grid containers
 //
 // Define the maximum width of `.container` for different screen sizes.
@@ -172,6 +176,9 @@ $container-max-widths: (
   lg: 960px,
   xl: 1140px
 ) !default;
+
+@include _assert-ascending($container-max-widths, "$container-max-widths");
+
 
 // Grid columns
 //
