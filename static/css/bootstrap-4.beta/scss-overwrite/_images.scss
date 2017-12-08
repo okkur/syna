@@ -1,0 +1,14 @@
+// Image thumbnails
+.img-thumbnail {
+  padding: $thumbnail-padding;
+  background-color: $thumbnail-bg;
+  border: $thumbnail-border-width solid $thumbnail-border-color;
+}
+
+//
+// Figures
+//
+
+.figure-caption {
+  color: $figure-caption-color;
+}

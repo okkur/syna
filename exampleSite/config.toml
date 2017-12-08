@@ -31,7 +31,7 @@ googleAnalytics = ""
     faviconICOSizes = "16x16 32x32"
     faviconPNG = "favicon.png"
     faviconSVG = "favicon.svg"
-    css = []
+    css = ["css/overwrite-color.min.css", "css/overwrite-reboot.min.css"]
     js  = []
 
   # Repository Button

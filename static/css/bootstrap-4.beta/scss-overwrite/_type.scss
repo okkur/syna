@@ -1,0 +1,36 @@
+// stylelint-disable declaration-no-important, selector-list-comma-newline-after
+
+//
+// Headings
+//
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  color: $headings-color;
+}
+
+//
+// Horizontal rules
+//
+
+hr {
+  border-top: $hr-border-width solid $hr-border-color;
+}
+
+
+//
+// Emphasis
+//
+
+mark,
+.mark {
+  background-color: $mark-bg;
+}
+
+//
+// Misc
+//
+
+.blockquote-footer {
+  color: $blockquote-small-color;
+}

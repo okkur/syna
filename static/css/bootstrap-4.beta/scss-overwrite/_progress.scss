@@ -1,0 +1,13 @@
+.progress {
+  background-color: $progress-bg;
+}
+
+.progress-bar {
+  color: $progress-bar-color;
+  background-color: $progress-bar-bg;
+}
+
+.progress-bar-striped {
+  @include gradient-striped();
+  background-size: $progress-height $progress-height;
+}

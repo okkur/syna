@@ -38,7 +38,8 @@
 
   {{ "<!-- Theme Style -->" | safeHTML }}
   <link href="{{ "css/syna.css" | relURL }}" rel="stylesheet" type="text/css">
-  <link href="{{ "css/overwrite.css" | relURL }}" rel="stylesheet" type="text/css">
+  <link href="{{ "css/overwrite-color.min.css" | relURL }}" rel="stylesheet" type="text/css">
+  <link href="{{ "css/overwrite-reboot.min.css" | relURL }}" rel="stylesheet" type="text/css">
 
   {{ with .Site.Params.favicon}}
     <link rel="shortcut icon" type="image/x-icon" href="{{ . | relURL }}">

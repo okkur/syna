@@ -14,6 +14,7 @@ Notes: Member and Footer fragments only support brand icons for now.
   - Pre and Post subtitle for item for item fragment
   - Migrate to Fontawesome v5
   - Unchanged bootstrap v4 scss files
+  - Syna specific color overwrite
 
 ## Fixes since v0.8.0
   - Page-top anchor (#20)

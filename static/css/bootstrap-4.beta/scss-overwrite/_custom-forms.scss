@@ -1,0 +1,101 @@
+// Embedded icons from Open Iconic.
+// Released under MIT and copyright 2014 Waybury.
+// https://useiconic.com/open
+
+.custom-control-input {
+  &:checked ~ .custom-control-indicator {
+    color: $custom-control-indicator-checked-color;
+    @include gradient-bg($custom-control-indicator-checked-bg);
+  }
+
+  &:active ~ .custom-control-indicator {
+    color: $custom-control-indicator-active-color;
+    @include gradient-bg($custom-control-indicator-active-bg);
+  }
+
+  &:disabled {
+    ~ .custom-control-indicator {
+      background-color: $custom-control-indicator-disabled-bg;
+    }
+
+    ~ .custom-control-description {
+      color: $custom-control-description-disabled-color;
+    }
+  }
+}
+
+// Custom indicator
+//
+// Generates a shadow element to create our makeshift checkbox/radio background.
+
+.custom-control-indicator {
+  background-color: $custom-control-indicator-bg;
+}
+
+// Checkboxes
+//
+// Tweak just a few things for checkboxes.
+
+.custom-checkbox {
+  .custom-control-input:checked ~ .custom-control-indicator {
+    background-image: $custom-checkbox-indicator-icon-checked;
+  }
+
+  .custom-control-input:indeterminate ~ .custom-control-indicator {
+    background-color: $custom-checkbox-indicator-indeterminate-bg;
+    background-image: $custom-checkbox-indicator-icon-indeterminate;
+  }
+}
+
+// Radios
+//
+// Tweak just a few things for radios.
+
+.custom-radio {
+  .custom-control-input:checked ~ .custom-control-indicator {
+    background-image: $custom-radio-indicator-icon-checked;
+  }
+}
+
+// Select
+//
+// Replaces the browser default select with a custom one, mostly pulled from
+// http://primercss.io.
+//
+
+.custom-select {
+  color: $custom-select-color;
+  background: $custom-select-bg $custom-select-indicator no-repeat right $custom-select-padding-x center;
+  border: $custom-select-border-width solid $custom-select-border-color;
+
+  &:focus {
+    border-color: $custom-select-focus-border-color;
+
+    &::-ms-value {
+      // For visual consistency with other platforms/browsers,
+      // supress the default white text on blue background highlight given to
+      // the selected option text when the (still closed) <select> receives focus
+      // in IE and (under certain conditions) Edge.
+      // See https://github.com/twbs/bootstrap/issues/19398.
+      color: $input-color;
+      background-color: $input-bg;
+    }
+  }
+
+  &:disabled {
+    color: $custom-select-disabled-color;
+    background-color: $custom-select-disabled-bg;
+  }
+}
+
+.custom-file-control {
+  color: $custom-file-color;
+  background-color: $custom-file-bg;
+  border: $custom-file-border-width solid $custom-file-border-color;
+
+  &::before {
+    color: $custom-file-button-color;
+    @include gradient-bg($custom-file-button-bg);
+    border: $custom-file-border-width solid $custom-file-border-color;
+  }
+}
