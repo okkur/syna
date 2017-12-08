@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "AAAA;;;;;;GAMG;ACNH,IAAK;EACH,KAAK,ECkzB6B,OAAS;EDjzB3C,gBAAgB,EC8yBkB,IAAM;;ADvyB1C,CAAE;EACA,KAAK,ECstB6B,OAAqB;ECrtBrD,OAAQ;IFCR,KAAK,ECkjB2B,OAAiB;;AD1iBrD,OAAQ;EACN,KAAK,ECkvB6B,OAAS",
-"sources": ["bootstrap-reboot.scss","_reboot.scss","_variables.scss","mixins/_hover.scss"],
+"mappings": "AAAA;;;;;;GAMG;ACJH,IAAK;EACH,KAAK,ECgzB6B,OAAS;ED/yB3C,gBAAgB,EC4yBkB,IAAM;;ADryB1C,CAAE;EACA,KAAK,ECotB6B,OAAqB;ECrtBrD,OAAQ;IFGR,KAAK,ECgjB2B,OAAiB;;ADxiBrD,OAAQ;EACN,KAAK,ECgvB6B,OAAS",
+"sources": ["overwrite-reboot.scss","_reboot.scss","_variables.scss","mixins/_hover.scss"],
 "names": [],
-"file": "bootstrap-reboot.css"
+"file": "overwrite-reboot.css"
 }

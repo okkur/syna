@@ -72,7 +72,7 @@ unimportant = [true, false, false, false, true, false]
     text = ""
 
   [[rows.values]]
-    icon = "fa-gears"
+    icon = "fa-download"
     link = "#"
     center = true
 +++
