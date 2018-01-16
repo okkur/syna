@@ -21,7 +21,7 @@
               </div>
             {{ else }}
               <div class="col-auto px-1">
-                {{- i18n "footerLegal.copyright" -}}
+                {{- i18n "footerLegal.copyright" -}} &nbsp;{{ now.Format "2006"}}
               </div>
               <div class="col-auto px-0">
                 {{- printf  " %s %s" (i18n "footerLegal.by") .Site.Params.name -}}
