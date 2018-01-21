@@ -7,9 +7,9 @@
     <a name="page-top"></a>
     {{ partial "nav.html" . }}
 
-    {{ with $.Site.Data.index }}
+    {{ with .Resources.ByType "hero" }}
       {{ range . }}
-        {{ $.Scratch.Set "data" . }}
+        <!-- {{ $.Scratch.Set "data" . }} -->
 
         {{ if and (not .disabled) (eq .fragment "hero") }}
           {{ partial "fragments/hero.html" $ }}
