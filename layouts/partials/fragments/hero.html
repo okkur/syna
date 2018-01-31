@@ -1,6 +1,6 @@
-{{ $hero := (.Resources.GetByPrefix "hero") }}
+{{ $hero := . }}
 {{ "<!-- hero -->" | safeHTML }}
-{{ $bg := $hero.background | default "secondary"}}
+{{ $bg := $hero.background | default "secondary" }}
 
 <header>
   {{ with $hero.header }}
