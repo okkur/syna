@@ -21,7 +21,9 @@
     {{ with index $.Site.Data $page }}
       {{ range sort . "weight" }}
         {{ $.Scratch.Set "data" . }}
-      
+
+        {{ .Resource }}
+
         {{ if and (not .Params.disabled) (eq .Params.fragment "items") }}
           {{ partial "fragments/items.html" .Params }}
         {{ end }}

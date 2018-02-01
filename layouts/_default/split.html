@@ -18,10 +18,11 @@
 
     {{ partial "content-split.html" . }}
 
+    {{ .Resource }}
     {{ with index $.Site.Data $page }}
       {{ range sort . "weight" }}
         {{ $.Scratch.Set "data" . }}
-        
+
         {{ if and (not .Params.disabled) (eq .Params.fragment "items") }}
           {{ partial "fragments/items.html" .Params }}
         {{ end }}
