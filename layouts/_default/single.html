@@ -11,30 +11,30 @@
       {{ if and (not .Params.disabled) (eq .Params.fragment "hero") }}
         {{ partial "fragments/hero.html" .Params }}
       {{ end }}
+      
+      {{ if and (not .Params.disabled) (eq .Params.fragment "items") }}
+        {{ partial "fragments/items.html" .Params }}
+      {{ end }}
 
+      {{ if and (not .Params.disabled) (eq .Params.fragment "item") }}
+        {{ partial "fragments/item.html" .Params }}
+      {{ end }}
+      
+      {{ if and (not .Params.disabled) (eq .Params.fragment "table") }}
+        {{ partial "fragments/table.html" .Params }}
+      {{ end }}
     {{ end }}
 
     {{ $page := replace (strings.TrimRight "/" (strings.TrimLeft "/" .RelPermalink)) "/" "__" }}
 
-     {{ partial "content-single.html" . }}
 
+      {{ if and (not .Params.disabled) (eq .Params.fragment "buttons") }}
+        {{ partial "fragments/buttons.html" .Params }}
+      {{ end }}
+     <!-- {{ partial "content-single.html" . }} -->
     {{ with index $.Site.Data $page }}
       {{ range sort . "weight" }}
         {{ $.Scratch.Set "data" . }}
-
-        {{ .Resource }}
-
-        {{ if and (not .Params.disabled) (eq .Params.fragment "items") }}
-          {{ partial "fragments/items.html" .Params }}
-        {{ end }}
-
-        {{ if and (not .disabled) (eq .fragment "item") }}
-          {{ partial "fragments/item.html" $ }}
-        {{ end }}
-
-        {{ if and (not .disabled) (eq .fragment "table") }}
-          {{ partial "fragments/table.html" $ }}
-        {{ end }}
 
         {{ if and (not .disabled) (eq .fragment "embed") }}
           {{ partial "fragments/embed.html" $ }}
@@ -44,9 +44,6 @@
           {{ partial "fragments/member.html" $ }}
         {{ end }}
 
-        {{ if and (not .disabled) (eq .fragment "buttons") }}
-          {{ partial "fragments/buttons.html" $ }}
-        {{ end }}
 
         {{ if and (not .disabled) (eq .fragment "contact") }}
           {{ partial "fragments/contact.html" $ }}

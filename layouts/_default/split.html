@@ -11,29 +11,30 @@
       {{ if and (not .Params.disabled) (eq .Params.fragment "hero") }}
         {{ partial "fragments/hero.html" .Params }}
       {{ end }}
-
-    {{ end }}
-
-    {{ $page := replace (strings.TrimRight "/" (strings.TrimLeft "/" .RelPermalink)) "/" "__" }}
-
-    {{ partial "content-split.html" . }}
-
-    {{ .Resource }}
-    {{ with index $.Site.Data $page }}
-      {{ range sort . "weight" }}
-        {{ $.Scratch.Set "data" . }}
-
+        
         {{ if and (not .Params.disabled) (eq .Params.fragment "items") }}
           {{ partial "fragments/items.html" .Params }}
         {{ end }}
 
-        {{ if and (not .disabled) (eq .fragment "item") }}
-          {{ partial "fragments/item.html" $ }}
+        {{ if and (not .Params.disabled) (eq .Params.fragment "item") }}
+          {{ partial "fragments/item.html" .Params }}
         {{ end }}
+        
+        {{ if and (not .Params.disabled) (eq .Params.fragment "table") }}
+          {{ partial "fragments/table.html" .Params }}
+        {{ end }}
+    {{ end }}
 
-        {{ if and (not .disabled) (eq .fragment "table") }}
-          {{ partial "fragments/table.html" $ }}
-        {{ end }}
+    {{ $page := replace (strings.TrimRight "/" (strings.TrimLeft "/" .RelPermalink)) "/" "__" }}
+
+    <!-- {{ partial "content-split.html" . }} -->
+
+    {{ with index $.Site.Data $page }}
+      {{ range sort . "weight" }}
+        {{ $.Scratch.Set "data" . }}
+
+
+
 
         {{ if and (not .disabled) (eq .fragment "embed") }}
           {{ partial "fragments/embed.html" $ }}
