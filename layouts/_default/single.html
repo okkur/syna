@@ -15,6 +15,10 @@
       {{ if and (not .Params.disabled) (eq .Params.fragment "items") }}
         {{ partial "fragments/items.html" (dict "self" . ) }}
       {{ end }}
+      
+      {{ if and (not .Params.disabled) (eq .Params.fragment "items") }}
+        {{ partial "fragments/items.html" .Params }}
+      {{ end }}
 
       {{ if and (not .Params.disabled) (eq .Params.fragment "item") }}
         {{ partial "fragments/item.html" (dict "self" . ) }}
