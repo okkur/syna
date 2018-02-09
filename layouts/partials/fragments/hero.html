@@ -1,4 +1,4 @@
-{{ $hero := . }}
+{{ $hero := .self.Params  }}
 {{ "<!-- hero -->" | safeHTML }}
 {{ $bg := $hero.background | default "secondary" }}
 

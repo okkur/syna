@@ -6,59 +6,50 @@
   <body class="{{ printf "bg-%s" $bg }}">
     {{ partial "nav.html" . }}
 
-    {{ range sort .Resources }}
+    {{ range .Resources }}
 
       {{ if and (not .Params.disabled) (eq .Params.fragment "hero") }}
-        {{ partial "fragments/hero.html" .Params }}
+        {{ partial "fragments/hero.html" (dict "self" . ) }}
       {{ end }}
       
       {{ if and (not .Params.disabled) (eq .Params.fragment "items") }}
-        {{ partial "fragments/items.html" .Params }}
+        {{ partial "fragments/items.html" (dict "self" . ) }}
       {{ end }}
 
       {{ if and (not .Params.disabled) (eq .Params.fragment "item") }}
-        {{ partial "fragments/item.html" .Params }}
+        {{ partial "fragments/item.html" (dict "self" . ) }}
+      {{ end }}
+
+      {{ if and (not .Params.disabled) (eq .Params.fragment "table") }}
+        {{ partial "fragments/table.html" (dict "self" . ) }}
+      {{ end }}
+     
+      {{ if and (not .Params.disabled) (eq .Params.fragment "embed") }}
+        {{ partial "fragments/embed.html" (dict "self" . ) }}
+      {{ end }}
+
+      {{ if and (not .Params.disabled) (eq .Params.fragment "member") }}
+        {{ partial "fragments/member.html" (dict "self" . ) }}
+      {{ end }}
+
+      {{ if and (not .Params.disabled) (eq .Params.fragment "logos") }}
+        {{ partial "fragments/logos.html" (dict "self" . ) }}
       {{ end }}
       
-      {{ if and (not .Params.disabled) (eq .Params.fragment "table") }}
-        {{ partial "fragments/table.html" .Params }}
+      {{ if and (not .Params.disabled) (eq .Params.fragment "contact") }}
+        {{ partial "fragments/contact.html" (dict "self" . ) }}
+      {{ end }}
+    
+      {{ if and (not .Params.disabled) (in .Params.fragment "footer") }}
+        {{ partial "fragments/footer.html" (dict "self" . ) }}
+      {{ end }}
+   
+      {{ if and (not .Params.disabled) (eq .Params.fragment "buttons") }}
+        {{ partial "fragments/buttons.html" (dict "self" . ) }}
       {{ end }}
     {{ end }}
 
     {{ $page := replace (strings.TrimRight "/" (strings.TrimLeft "/" .RelPermalink)) "/" "__" }}
-
-
-      {{ if and (not .Params.disabled) (eq .Params.fragment "buttons") }}
-        {{ partial "fragments/buttons.html" .Params }}
-      {{ end }}
-     <!-- {{ partial "content-single.html" . }} -->
-    {{ with index $.Site.Data $page }}
-      {{ range sort . "weight" }}
-        {{ $.Scratch.Set "data" . }}
-
-        {{ if and (not .disabled) (eq .fragment "embed") }}
-          {{ partial "fragments/embed.html" $ }}
-        {{ end }}
-
-        {{ if and (not .disabled) (eq .fragment "member") }}
-          {{ partial "fragments/member.html" $ }}
-        {{ end }}
-
-
-        {{ if and (not .disabled) (eq .fragment "contact") }}
-          {{ partial "fragments/contact.html" $ }}
-        {{ end }}
-
-        {{ if and (not .disabled) (eq .fragment "logos") }}
-          {{ partial "fragments/logos.html" $ }}
-        {{ end }}
-
-        {{ if and (not .disabled) (in .fragment "footer") }}
-          {{ partial "fragments/footer.html" $ }}
-        {{ end }}
-
-      {{ end }}
-    {{ end }}
 
     {{ partial "footer.html" . }}
 

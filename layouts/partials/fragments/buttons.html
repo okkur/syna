@@ -1,4 +1,4 @@
-{{ $buttons := . }}
+{{ $buttons := .self.Params }}
 {{ "<!-- Buttons -->" | safeHTML }}
 {{ $bg := $buttons.background | default "white" }}
 

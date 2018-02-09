@@ -1,6 +1,6 @@
-{{ $data := ($.Scratch.Get "data") }}
+{{ $contact := .self.Params }}
 {{ "<!-- Footer -->" | safeHTML }}
-{{ $bg := $data.background | default "dark"}}
+{{ $bg := $contact.background | default "dark"}}
 
 <div class="overlay container-fluid
   {{- printf " bg-%s" $bg -}}
@@ -14,16 +14,16 @@
           {{- printf " text-%s" "secondary" -}}
         {{- end -}}
       ">
-        {{ with $data.logoTitle }}
+        {{ with $contact.logoTitle }}
           <h4>
             {{- . -}}
           </h4>
         {{ end }}
-        {{ if $data.logo }}
-          <img src="{{ (printf "images/%s" $data.logo) | relURL }}" class="img-fluid w-50" alt="{{ $data.logoText }}">
+        {{ if $contact.logo }}
+          <img src="{{ (printf "images/%s" $contact.logo) | relURL }}" class="img-fluid w-50" alt="{{ $contact.logoText }}">
         {{ else }}
           <p>
-            {{- $data.logoText -}}
+            {{- $contact.logoText -}}
           </p>
         {{ end }}
         {{ if $.Site.Menus.footersocial }}
@@ -50,7 +50,7 @@
           {{- printf " text-%s" "secondary" -}}
         {{- end -}}
       ">
-        {{ with $data.linkTitle }}
+        {{ with $contact.linkTitle }}
           <h4>
             {{- . -}}
           </h4>
@@ -83,12 +83,12 @@
           {{- printf " text-%s" "secondary" -}}
         {{- end -}}
       ">
-        {{ with $data.descriptionTitle }}
+        {{ with $contact.descriptionTitle }}
           <h4>
             {{- . -}}
           </h4>
         {{ end }}
-        {{ with $data.description }}
+        {{ with $contact.description }}
           <p>
             {{- . | markdownify -}}
           </p>

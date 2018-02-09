@@ -1,13 +1,13 @@
-{{ $data := ($.Scratch.Get "data") }}
+{{ $member := .self.Params }}
 {{ "<!-- Member -->" | safeHTML }}
-{{ $bg := $data.background | default "light"}}
+{{ $bg := $member.background | default "light"}}
 
-<section {{ with $data.selfLink }}id="{{ . }}"{{ end }}>
+<section {{ with $member.selfLink }}id="{{ . }}"{{ end }}>
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">
     <div class="container py-5">
-      {{ with $data.title }}
+      {{ with $member.title }}
         <div class="row">
           <div class="col text-center
             {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
@@ -22,7 +22,7 @@
           </div>
         </div>
       {{ end }}
-      {{ with $data.subtitle }}
+      {{ with $member.subtitle }}
         <div class="row">
           <div class="col text-center pt-2 pb-3
             {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
@@ -38,7 +38,7 @@
         </div>
       {{ end }}
       <div class="row justify-content-center align-items-start">
-        {{ range sort $data.member "weight"}}
+        {{ range sort $member.member "weight"}}
           <div class="col-lg-4 col-md-6 col-sm-12 pt-3 pb-5 text-left text-sm-center">
             <div class="text-center m-2">
               <img src="/images/member/{{ .image }}" class="img-fluid rounded-circle w-75 border

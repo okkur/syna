@@ -1,4 +1,4 @@
-{{ $item := . }}
+{{ $item := .self.Params}}
 {{ "<!-- Item -->" | safeHTML }}
 {{ $bg := $item.background | default "light"}}
 {{ $align := $item.align | default "center" }}

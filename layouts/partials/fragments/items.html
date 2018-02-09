@@ -1,6 +1,7 @@
-{{ $items := . }}
+{{ $items := .self.Params }}
 {{ "<!-- Items -->" | safeHTML }}
 {{ $bg := $items.background | default "light"}}
+
 
 <section {{ with $items.selfLink }}id="{{ . }}"{{ end }}>
   <div class="overlay container-fluid

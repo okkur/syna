@@ -1,4 +1,4 @@
-{{ $table := . }}
+{{ $table := .self.Params }}
 {{ "<!-- Item -->" | safeHTML }}
 {{ $bg := $table.background | default "light"}}
 {{ $align := $table.align | default "center" }}
@@ -75,25 +75,9 @@
                         {{ range .values }}
                           {{ if .header }}
                           <th class="align-middle
-                            {{- if $table.unimportant -}}
-                              {{- if index $table.unimportant ($.Scratch.Get "col") -}}
-                                {{- printf " d-none .d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
-                              {{- end -}}
-                            {{- end -}}
-                            {{- if .center -}}
-                              {{- printf " text-center" -}}
-                            {{- end -}}
                           ">{{ .header | markdownify }}</th>
                           {{ else if .button }}
                             <td class="align-middle
-                              {{- if $table.unimportant -}}
-                                {{- if index $table.unimportant ($.Scratch.Get "col") -}}
-                                  {{- printf " d-none .d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
-                                {{- end -}}
-                              {{- end -}}
-                              {{- if .center -}}
-                                {{- printf " text-center" -}}
-                              {{- end -}}
                             ">
                               <a class="btn
                               {{ if hasPrefix .link "#" }} anchor{{ end }}

@@ -1,13 +1,13 @@
-{{ $data := ($.Scratch.Get "data") }}
+{{ $logos := .self.Params }}
 {{ "<!-- Logos -->" | safeHTML }}
-{{ $bg := $data.background | default "white" }}
+{{ $bg := $logos.background | default "white" }}
 
-<section {{ with $data.selfLink }}id="{{ . }}"{{ end }}>
+<section {{ with $logos.selfLink }}id="{{ . }}"{{ end }}>
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">
     <div class="container py-3">
-      {{ with $data.title }}
+      {{ with $logos.title }}
         <div class="row">
           <div class="col text-center
             {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
@@ -22,7 +22,7 @@
           </div>
         </div>
       {{ end }}
-      {{ with $data.subtitle }}
+      {{ with $logos.subtitle }}
         <div class="row">
           <div class="col text-center
             {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
@@ -38,7 +38,7 @@
         </div>
       {{ end }}
       <div class="row justify-content-center align-items-center">
-        {{ range sort $data.logos "weight" }}
+        {{ range sort $logos.logos "weight" }}
           <div class="col-7 col-sm-4 text-center py-2">
             {{ $url := printf "images/logos/%s" .logo }}
             {{ if .link }}
