@@ -3,7 +3,7 @@ fragment = "hero"
 #disabled = true
 date = "2016-09-07"
 lastmod = "2017-09-07"
-weight = 50
+weight = 300
 #background = "dark" # can influence the text color
 particles = true
 

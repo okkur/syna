@@ -10,7 +10,6 @@ selfLink = "table-fragment"
 title = "Table Fragment"
 subtitle= "Tables are responsive by default"
 
-unimportant = [true, false, false, false, true, false]
 
 [header]
   [[header.values]]
