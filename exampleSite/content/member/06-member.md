@@ -1,0 +1,43 @@
++++
+fragment = "member"
+#disabled = false
+date = "2017-10-17"
+lastmod = "2017-10-17"
+weight = 900
+#background = "dark"
+selfLink = "member-fragment"
+
+title = "Member Fragment"
+subtitle = "Highly motivated Gophers"
+
+
+[[member]]
+  name = "Tiny Gopher 5"
+  weight = 30
+  joined = "2017-10-17"
+  image = "tinygopher.png"
+
+  livesIn = "[Iceland](https://www.google.com/maps/place/Iceland/)"
+
+  description = """
+Really tiny Gopher
+
+Some more text to showcase the capabilities:
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Curabitur a lorem urna.
+Quisque in neque malesuada, sollicitudin nunc porttitor, ornare est.
+Praesent ante enim, bibendum sed hendrerit et, iaculis laoreet felis.
+Morbi efficitur dui sit amet orci porttitor, nec tincidunt turpis elementum.
+"""
+
+  [[member.icons]]
+    icon = "fa-twitter"
+    link = "#"
+  [[member.icons]]
+    icon = "fa-facebook"
+    link = "#"
+  [[member.icons]]
+    icon = "fa-linkedin-in"
+    link = "#"
+
++++
