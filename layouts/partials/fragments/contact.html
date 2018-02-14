@@ -47,8 +47,8 @@
                       name="name"
                       class="form-control"
                       type="text"
-                      contact-validation-error-msg="{{ .error | default (i18n "contact.defaultNameError") }}"
-                      contact-validation-error-msg-container="#name-error"
+                      data-validation-error-msg="{{ .error | default (i18n "contact.defaultNameError") }}"
+                      data-validation-error-msg-container="#name-error"
                       placeholder="{{ with .text }}{{ . | markdownify }}{{ end }}"
                       required>
                     <div class="px-2 d-none" id="name-error"></div>
@@ -61,9 +61,9 @@
                       name="email"
                       class="form-control"
                       type="text"
-                      contact-validation="email"
-                      contact-validation-error-msg="{{ .error | default (i18n "contact.defaultEmailError") }}"
-                      contact-validation-error-msg-container="#email-error"
+                      data-validation="email"
+                      data-validation-error-msg="{{ .error | default (i18n "contact.defaultEmailError") }}"
+                      data-validation-error-msg-container="#email-error"
                       placeholder="{{ with .text }}{{ . | markdownify }}{{ end }}"
                       required>
                     <div class="px-2 d-none" id="email-error"></div>
@@ -76,11 +76,11 @@
                       name="phone"
                       class="form-control"
                       type="text"
-                      contact-validation="custom"
-                      contact-validation-regexp="^([0-9,\+]+)$"
-                      contact-validation-optional="true"
-                      contact-validation-error-msg="{{ .error | default (i18n "contact.defaultPhoneError") }}"
-                      contact-validation-error-msg-container="#phone-error"
+                      data-validation="custom"
+                      data-validation-regexp="^([0-9,\+]+)$"
+                      data-validation-optional="true"
+                      data-validation-error-msg="{{ .error | default (i18n "contact.defaultPhoneError") }}"
+                      data-validation-error-msg-container="#phone-error"
                       placeholder="{{ with .text }}{{ . | markdownify }}{{ end }}">
                     <div class="px-2 d-none" id="phone-error"></div>
                   </div>
@@ -94,10 +94,10 @@
                       name="message"
                       class="form-control text-dark"
                       type="text"
-                      contact-validation="length"
-                      contact-validation-length="min1"
-                      contact-validation-error-msg="{{ .error | default (i18n "contact.defaultButton") }}"
-                      contact-validation-error-msg-container="#message-error"
+                      data-validation="length"
+                      data-validation-length="min1"
+                      data-validation-error-msg="{{ .error | default (i18n "contact.defaultButton") }}"
+                      data-validation-error-msg-container="#message-error"
                       placeholder="{{ with .text }}{{ . | markdownify }}{{ end }}"
                       rows="4"
                       required></textarea>
@@ -129,7 +129,7 @@
                   </div>
                 </noscript>
                 {{ with $.Site.Params.contact.captcha }}
-                    <div class="g-recaptcha" contact-sitekey="{{ .sitekey }}" contact-size="invisible" contact-badge="inline" contact-callback="onContactCaptcha"></div>
+                    <div class="g-recaptcha" data-sitekey="{{ .sitekey }}" data-size="invisible" data-badge="inline" data-callback="onContactCaptcha"></div>
                   <button
                     class="btn btn-primary"
                     type="submit"
