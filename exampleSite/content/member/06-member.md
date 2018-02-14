@@ -7,8 +7,8 @@ weight = 900
 #background = "dark"
 selfLink = "member-fragment"
 
-title = "Member Fragment"
-subtitle = "Highly motivated Gophers"
+title = ""
+subtitle = ""
 
 
 [[member]]

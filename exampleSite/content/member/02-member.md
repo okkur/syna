@@ -7,10 +7,11 @@ weight = 900
 #background = "dark"
 selfLink = "member-fragment"
 
-title = "Member Fragment"
-subtitle = "Highly motivated Gophers"
+title = ""
+subtitle = ""
 
-[member]]
+[[member]]
+
   name = "Tiny Gopher"
   weight = 10
   joined = "2017-10-17"
@@ -42,5 +43,6 @@ Morbi efficitur dui sit amet orci porttitor, nec tincidunt turpis elementum.
   [[member.icons]]
     icon = "fa-linkedin-in"
     link = "#"
+
 +++
 

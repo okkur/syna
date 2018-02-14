@@ -1,4 +1,7 @@
 {{ $member := .self.Params }}
+{{ $name := .self.Name }}
+{{ $name_t := strings.TrimSuffix ".md" $name }}
+{{ $members := .resources.Match (printf "%s/*" $name_t) }}
 {{ "<!-- Member -->" | safeHTML }}
 {{ $bg := $member.background | default "light"}}
 

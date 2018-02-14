@@ -180,11 +180,6 @@
                       {{ $.Scratch.Set "col" 0 }}
                       {{ range $item.header.values }}
                         <th class="
-                          {{- if $item.unimportant -}}
-                            {{- if index $item.unimportant ($.Scratch.Get "col") -}}
-                              {{- printf " d-none d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
-                            {{- end -}}
-                          {{- end -}}
                           {{- if .center -}}
                             {{- printf " text-center" -}}
                           {{- end -}}
@@ -202,22 +197,12 @@
                         {{ range .values }}
                           {{ if .header }}
                           <th class="align-middle
-                            {{- if $item.unimportant -}}
-                              {{- if index $item.unimportant ($.Scratch.Get "col") -}}
-                                {{- printf " d-none d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
-                              {{- end -}}
-                            {{- end -}}
                             {{- if .center -}}
                               {{- printf " text-center" -}}
                             {{- end -}}
                           ">{{ .header | markdownify }}</th>
                           {{ else if .button }}
                             <td class="align-middle
-                              {{- if $item.unimportant -}}
-                                {{- if index $item.unimportant ($.Scratch.Get "col") -}}
-                                  {{- printf " d-none d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
-                                {{- end -}}
-                              {{- end -}}
                               {{- if .center -}}
                                 {{- printf " text-center" -}}
                               {{- end -}}
@@ -232,11 +217,6 @@
                           </td>
                         {{ else if .icon }}
                           <td class="align-middle
-                            {{- if $item.unimportant -}}
-                              {{- if index $item.unimportant ($.Scratch.Get "col") -}}
-                                {{- printf " d-none d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
-                              {{- end -}}
-                            {{- end -}}
                             {{- if .center -}}
                               {{- printf " text-center" -}}
                             {{- end -}}
@@ -247,11 +227,6 @@
                           </td>
                         {{ else }}
                           <td class="align-middle
-                            {{- if $item.unimportant -}}
-                              {{- if index $item.unimportant ($.Scratch.Get "col") -}}
-                                {{- printf " d-none d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
-                              {{- end -}}
-                            {{- end -}}
                             {{- if .center -}}
                               {{- printf " text-center" -}}
                             {{- end -}}
