@@ -53,11 +53,6 @@
                       {{ $.Scratch.Set "col" 0 }}
                       {{ range $table.header.values }}
                         <th class="
-                          {{- if $table.unimportant -}}
-                            {{- if index $table.unimportant ($.Scratch.Get "col") -}}
-                              {{- printf " d-none .d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
-                            {{- end -}}
-                          {{- end -}}
                           {{- if .center -}}
                             {{- printf " text-center" -}}
                           {{- end -}}
@@ -89,11 +84,6 @@
                           </td>
                         {{ else if .icon }}
                           <td class="align-middle
-                            {{- if $table.unimportant -}}
-                              {{- if index $table.unimportant ($.Scratch.Get "col") -}}
-                                {{- printf " d-none .d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
-                              {{- end -}}
-                            {{- end -}}
                             {{- if .center -}}
                               {{- printf " text-center" -}}
                             {{- end -}}
@@ -104,11 +94,6 @@
                           </td>
                         {{ else }}
                           <td class="align-middle
-                            {{- if $table.unimportant -}}
-                              {{- if index $table.unimportant ($.Scratch.Get "col") -}}
-                                {{- printf " d-none .d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
-                              {{- end -}}
-                            {{- end -}}
                             {{- if .center -}}
                               {{- printf " text-center" -}}
                             {{- end -}}
