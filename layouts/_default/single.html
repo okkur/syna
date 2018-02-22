@@ -29,7 +29,7 @@
       {{ end }}
 
       {{ if and (not .Params.disabled) (eq .Params.fragment "member") }}
-        {{ partial "fragments/member.html" (dict "self" . ) }}
+        {{ partial "fragments/member.html" (dict "resources" $.Resources "self" . ) }}
       {{ end }}
 
       {{ if and (not .Params.disabled) (eq .Params.fragment "logos") }}
