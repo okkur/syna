@@ -1,29 +1,28 @@
 +++
+  title = "Tiny Gopher 3"
+  weight = 30
+  joined = "2017-10-17"
+  image = "tinygopher.png"
+  position = "Gopherineer"
+  
+  reportsTo = "Lead Gophineer"
+  livesIn = "[Iceland](https://www.google.com/maps/place/Iceland/)"
+  scope = [
+    "Gopherineering for various tasks",
+    "Contributor for [Goper Team A](#)",
+    "Gopher Community Member"
+  ]
 
-    title = "Tiny Gopher 3"
-    weight = 30
-    joined = "2017-10-17"
-    image = "tinygopher.png"
-    position = "Gopherineer"
-    
-    reportsTo = "Lead Gophineer"
-    livesIn = "[Iceland](https://www.google.com/maps/place/Iceland/)"
-    scope = [
-      "Gopherineering for various tasks",
-      "Contributor for [Goper Team A](#)",
-      "Gopher Community Member"
-    ]
 
-
-    [[member.icons]]
-      icon = "fa-twitter"
-      link = "#"
-    [[member.icons]]
-      icon = "fa-facebook-f"
-      link = "#"
-    [[member.icons]]
-      icon = "fa-linkedin-in"
-      link = "#"
+  [[member.icons]]
+    icon = "fa-twitter"
+    link = "#"
+  [[member.icons]]
+    icon = "fa-facebook-f"
+    link = "#"
+  [[member.icons]]
+    icon = "fa-linkedin-in"
+    link = "#"
 +++
     
   description = """

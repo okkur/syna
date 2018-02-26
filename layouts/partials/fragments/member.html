@@ -1,11 +1,11 @@
 {{ $memberf := .self.Params }}
 {{ $name := .self.Name }}
 {{ $name_t := strings.TrimSuffix ".md" $name }}
-{{ $member := .resources.Match (printf "%s/*" $name_t) }}
+{{ $members := .resources.Match (printf "%s/*" $name_t) }}
 {{ "<!-- Member -->" | safeHTML }}
 {{ $bg := $memberf.background | default "light"}}
 
-<section {{ with $member.selfLink }}id="{{ . }}"{{ end }}>
+<section {{ with $memberf.selfLink }}id="{{ . }}"{{ end }}>
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">
@@ -41,7 +41,7 @@
         </div>
       {{ end }}
       <div class="row justify-content-center align-items-start">
-        {{ range $member }}
+        {{ range $members }}
           {{ $member := .Params }}
           <div class="col-lg-4 col-md-6 col-sm-12 pt-3 pb-5 text-left text-sm-center">
             <div class="text-center m-2">

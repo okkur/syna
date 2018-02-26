@@ -1,5 +1,4 @@
 +++
-
   title = "Tiny Gopher"
   weight = 10
   joined = "2017-10-17"

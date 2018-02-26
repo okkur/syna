@@ -5,6 +5,16 @@
   image = "tinygopher.png"
   position = "Gopherineer"
 
+  livesIn = "[Iceland](https://www.google.com/maps/place/Iceland/)"
+  scope = [
+    "Gopherineering for various tasks",
+    "Contributor for [Goper Team A](#)",
+    "Gopher Community Member"
+  ]
+
++++
+
+
 description = """
 Really tiny Gopher
 
@@ -15,13 +25,4 @@ Quisque in neque malesuada, sollicitudin nunc porttitor, ornare est.
 Praesent ante enim, bibendum sed hendrerit et, iaculis laoreet felis.
 Morbi efficitur dui sit amet orci porttitor, nec tincidunt turpis elementum.
 """
-
-  livesIn = "[Iceland](https://www.google.com/maps/place/Iceland/)"
-  scope = [
-    "Gopherineering for various tasks",
-    "Contributor for [Goper Team A](#)",
-    "Gopher Community Member"
-  ]
-
-+++
  
