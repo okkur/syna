@@ -14,16 +14,16 @@
           {{- printf " text-%s" "secondary" -}}
         {{- end -}}
       ">
-        {{ with $contact.logoTitle }}
+        {{ with $contact.logotitle }}
           <h4>
             {{- . -}}
           </h4>
         {{ end }}
         {{ if $contact.logo }}
-          <img src="{{ (printf "images/%s" $contact.logo) | relURL }}" class="img-fluid w-50" alt="{{ $contact.logoText }}">
+          <img src="{{ (printf "images/%s" $contact.logo) | relURL }}" class="img-fluid w-50" alt="{{ $contact.logotext }}">
         {{ else }}
           <p>
-            {{- $contact.logoText -}}
+            {{- $contact.logotext -}}
           </p>
         {{ end }}
         {{ if $.Site.Menus.footersocial }}
@@ -50,7 +50,7 @@
           {{- printf " text-%s" "secondary" -}}
         {{- end -}}
       ">
-        {{ with $contact.linkTitle }}
+        {{ with $contact.linktitle }}
           <h4>
             {{- . -}}
           </h4>
@@ -83,7 +83,7 @@
           {{- printf " text-%s" "secondary" -}}
         {{- end -}}
       ">
-        {{ with $contact.descriptionTitle }}
+        {{ with $contact.descriptiontitle }}
           <h4>
             {{- . -}}
           </h4>

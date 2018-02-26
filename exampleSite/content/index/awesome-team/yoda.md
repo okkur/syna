@@ -1,6 +1,6 @@
 +++
-  [[member]]
-    name = "Tiny Gopher 3"
+
+    title = "Tiny Gopher 3"
     weight = 30
     joined = "2017-10-17"
     image = "tinygopher.png"
@@ -14,16 +14,6 @@
       "Gopher Community Member"
     ]
 
-    description = """
-  Really tiny Gopher
-
-  Some more text to showcase the capabilities:
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  Curabitur a lorem urna.
-  Quisque in neque malesuada, sollicitudin nunc porttitor, ornare est.
-  Praesent ante enim, bibendum sed hendrerit et, iaculis laoreet felis.
-  Morbi efficitur dui sit amet orci porttitor, nec tincidunt turpis elementum.
-  """
 
     [[member.icons]]
       icon = "fa-twitter"
@@ -35,3 +25,14 @@
       icon = "fa-linkedin-in"
       link = "#"
 +++
+    
+  description = """
+  Really tiny Gopher
+
+  Some more text to showcase the capabilities:
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  Curabitur a lorem urna.
+  Quisque in neque malesuada, sollicitudin nunc porttitor, ornare est.
+  Praesent ante enim, bibendum sed hendrerit et, iaculis laoreet felis.
+  Morbi efficitur dui sit amet orci porttitor, nec tincidunt turpis elementum.
+  """

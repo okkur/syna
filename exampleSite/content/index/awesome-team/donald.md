@@ -1,21 +1,11 @@
 +++
-[[member]]
-
-  name = "Tiny Gopher"
-  weight = 10
+  title = "Tiny Gopher 4"
+  weight = 30
   joined = "2017-10-17"
   image = "tinygopher.png"
   position = "Gopherineer"
 
-  reportsTo = "Lead Gophineer"
-  livesIn = "[Iceland](https://www.google.com/maps/place/Iceland/)"
-  scope = [
-    "Gopherineering for various tasks",
-    "Contributor for [Goper Team A](#)",
-  "Go`  pher Community Member"
-  ]
-
-  description = """
+description = """
 Really tiny Gopher
 
 Some more text to showcase the capabilities:
@@ -26,12 +16,12 @@ Praesent ante enim, bibendum sed hendrerit et, iaculis laoreet felis.
 Morbi efficitur dui sit amet orci porttitor, nec tincidunt turpis elementum.
 """
 
-  [[member.icons]]
-    icon = "fa-twitter"
-    link = "#"
-  [[member.icons]]
-    icon = "fa-linkedin-in"
-    link = "#"
+  livesIn = "[Iceland](https://www.google.com/maps/place/Iceland/)"
+  scope = [
+    "Gopherineering for various tasks",
+    "Contributor for [Goper Team A](#)",
+    "Gopher Community Member"
+  ]
 
 +++
-
+ 

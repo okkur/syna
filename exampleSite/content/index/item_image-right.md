@@ -17,6 +17,8 @@ post = "Showcasing Syna"
 
 image = "screenshot.png"
 
++++
+
 description = """
 Easily left align the item fragment even with an image and buttons at the same time.
 
@@ -30,4 +32,3 @@ Suspendisse rutrum, mi ac sollicitudin blandit, eros sem tincidunt enim, vitae f
 Nunc hendrerit, nibh vitae dignissim pretium, magna nulla lacinia massa, et interdum lacus purus ultricies lacus.
 Nulla tincidunt quis lacus in posuere.
 """
-+++
