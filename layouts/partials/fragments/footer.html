@@ -1,5 +1,5 @@
 {{ $footer := .self.Params }}
-{{ $name := .menus }}
+{{ $menus := .menus }}
 {{ "<!-- Footer -->" | safeHTML }}
 {{ $bg := $footer.background | default "dark"}}
 
@@ -27,8 +27,7 @@
             {{- $footer.logotext -}}
           </p>
         {{ end }}
-        {{$name.footersocial}}
-        {{ $menus := $name.footersocial }}
+        
         {{ if $menus.footersocial }}
           <div class="row justify-content-left ml-0">
             {{ range sort $menus.footersocial }}
@@ -58,9 +57,9 @@
             {{- . -}}
           </h4>
         {{ end }}
-        {{ if $.Site.Menus.footer }}
+        {{ if $menus.footer }}
           <ul class="nav flex-column">
-              {{ range sort $.Site.Menus.footer }}
+              {{ range sort $menus.footer }}
                 <li class="nav-item">
                   <a class="nav-link p-0 display-5
                     {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
