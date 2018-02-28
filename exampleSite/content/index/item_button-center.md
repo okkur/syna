@@ -15,6 +15,19 @@ subtitle= "Easily center align the item fragment even with some buttons"
 #pre = ""
 #post = ""
 
+
+[[buttons]]
+  text = "Long Button"
+  link = "#"
+  color = "primary"
+
+[[buttons]]
+  text = "Button"
+  link = "#"
+  color = "secondary"
++++
+
+
 description = """
 Also a long description is possible.
 
@@ -28,14 +41,3 @@ Suspendisse rutrum, mi ac sollicitudin blandit, eros sem tincidunt enim, vitae f
 Nunc hendrerit, nibh vitae dignissim pretium, magna nulla lacinia massa, et interdum lacus purus ultricies lacus.
 Nulla tincidunt quis lacus in posuere.
 """
-
-[[buttons]]
-  text = "Long Button"
-  link = "#"
-  color = "primary"
-
-[[buttons]]
-  text = "Button"
-  link = "#"
-  color = "secondary"
-+++

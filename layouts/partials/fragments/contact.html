@@ -33,7 +33,7 @@
     </div>
     <div class="row">
       <div class="col-12">
-        {{ if not $contact.postURL }}
+        {{ if not $contact.posturl }}
           <form class="contact" action="https://formspree.io/{{ $contact.email }}" method="POST" name="sentMessage" id="{{ $contact.formName | default "contactForm" }}">
         {{ else }}
           <form class="contact" action="{{ $contact.postURL }}" method="POST" name="sentMessage" id="{{ $contact.formName | default "contactForm" }}">

@@ -41,7 +41,7 @@
       {{ end }}
     
       {{ if and (not .Params.disabled) (in .Params.fragment "footer") }}
-        {{ partial "fragments/footer.html" (dict "self" . ) }}
+        {{ partial "fragments/footer.html" (dict "menus" $.Site.Menus "self" . ) }}
       {{ end }}
    
       {{ if and (not .Params.disabled) (eq .Params.fragment "buttons") }}

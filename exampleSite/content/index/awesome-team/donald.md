@@ -1,6 +1,5 @@
 +++
-[[member]]
-  name = "Tiny Gopher 4"
+  title = "Tiny Gopher 4"
   weight = 30
   joined = "2017-10-17"
   image = "tinygopher.png"
@@ -13,7 +12,10 @@
     "Gopher Community Member"
   ]
 
-  description = """
++++
+
+
+description = """
 Really tiny Gopher
 
 Some more text to showcase the capabilities:
@@ -23,4 +25,4 @@ Quisque in neque malesuada, sollicitudin nunc porttitor, ornare est.
 Praesent ante enim, bibendum sed hendrerit et, iaculis laoreet felis.
 Morbi efficitur dui sit amet orci porttitor, nec tincidunt turpis elementum.
 """
-+++
+ 

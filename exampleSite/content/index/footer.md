@@ -6,14 +6,16 @@ lastmod = "2017-09-07"
 weight = 1200
 #background = ""
 
-linkTitle = "Link Title"
-logoTitle = "Logo Title"
+linktitle = "Link Title"
+logotitle = "Logo Title"
 logo = "logo.svg"
-logoText = "Logo Subtext"
-descriptionTitle = "Description Title"
-description = """
+logotext = "Logo Subtext"
+descriptiontitle = "Description Title"
+description ="""
 Project description such as:  
 Open source theme for your next project
 Provided by Okkur Labs
 """
 +++
+
+

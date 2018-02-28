@@ -1,6 +1,5 @@
 +++
-[[member]]
-  name = "Huge Gopher"
+  title = "Huge Gopher"
   weight = 0
   joined = "2017-10-17"
   image = "hugegopher.png"
@@ -14,7 +13,13 @@
     "Gopher [Community Administration](#)"
   ]
 
-  description = """
+  [[member.icons]]
+    icon = "fa-linkedin-in"
+    link = "#"
+
++++
+  
+description = """
 Hugely huge Gopher
 
 Some more text to showcase the capabilities:
@@ -24,9 +29,3 @@ Quisque in neque malesuada, sollicitudin nunc porttitor, ornare est.
 Praesent ante enim, bibendum sed hendrerit et, iaculis laoreet felis.
 Morbi efficitur dui sit amet orci porttitor, nec tincidunt turpis elementum.
 """
-
-  [[member.icons]]
-    icon = "fa-linkedin-in"
-    link = "#"
-
-+++

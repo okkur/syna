@@ -52,7 +52,7 @@
             {{ if $embed.media }}
               {{- $embed.media | safeHTML -}}
             {{ else }}
-              <iframe class="embed-responsive-item" src="{{ $embed.mediaSource }}" allowfullscreen></iframe>
+              <iframe class="embed-responsive-item" src="{{ $embed.mediasource }}" allowfullscreen></iframe>
             {{ end }}
           </div>
         {{ end }}

@@ -1,6 +1,7 @@
-{{ $contact := .self.Params }}
+{{ $footer := .self.Params }}
+{{ $menus := .menus }}
 {{ "<!-- Footer -->" | safeHTML }}
-{{ $bg := $contact.background | default "dark"}}
+{{ $bg := $footer.background | default "dark"}}
 
 <div class="overlay container-fluid
   {{- printf " bg-%s" $bg -}}
@@ -14,21 +15,22 @@
           {{- printf " text-%s" "secondary" -}}
         {{- end -}}
       ">
-        {{ with $contact.logoTitle }}
+        {{ with $footer.logotitle }}
           <h4>
             {{- . -}}
           </h4>
         {{ end }}
-        {{ if $contact.logo }}
-          <img src="{{ (printf "images/%s" $contact.logo) | relURL }}" class="img-fluid w-50" alt="{{ $contact.logoText }}">
+        {{ if $footer.logo }}
+          <img src="{{ (printf "images/%s" $footer.logo) | relURL }}" class="img-fluid w-50" alt="{{ $footer.logotext }}">
         {{ else }}
           <p>
-            {{- $contact.logoText -}}
+            {{- $footer.logotext -}}
           </p>
         {{ end }}
-        {{ if $.Site.Menus.footersocial }}
+        
+        {{ if $menus.footersocial }}
           <div class="row justify-content-left ml-0">
-            {{ range sort $.Site.Menus.footersocial }}
+            {{ range sort $menus.footersocial }}
               <span class="fa-stack fa-2x mt-3 mr-1">
                 <a href="{{ .URL | relLangURL }}" class="
                   {{- if eq $bg "primary" -}}
@@ -50,14 +52,14 @@
           {{- printf " text-%s" "secondary" -}}
         {{- end -}}
       ">
-        {{ with $contact.linkTitle }}
+        {{ with $footer.linktitle }}
           <h4>
             {{- . -}}
           </h4>
         {{ end }}
-        {{ if $.Site.Menus.footer }}
+        {{ if $menus.footer }}
           <ul class="nav flex-column">
-              {{ range sort $.Site.Menus.footer }}
+              {{ range sort $menus.footer }}
                 <li class="nav-item">
                   <a class="nav-link p-0 display-5
                     {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
@@ -83,12 +85,12 @@
           {{- printf " text-%s" "secondary" -}}
         {{- end -}}
       ">
-        {{ with $contact.descriptionTitle }}
+        {{ with $footer.descriptiontitle }}
           <h4>
             {{- . -}}
           </h4>
         {{ end }}
-        {{ with $contact.description }}
+        {{ with $footer.description }}
           <p>
             {{- . | markdownify -}}
           </p>
