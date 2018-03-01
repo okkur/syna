@@ -129,7 +129,7 @@
               </div>
             </div>
           </div>
-          {{ if $item.description }}
+          {{ if .self.Content }}
           <div class="row
             {{- if eq $align "left" -}}
               {{- printf " text-left" -}}
@@ -147,7 +147,7 @@
                   {{- printf " text-muted text-%s" "secondary" -}}
                 {{- end -}}
               ">
-                {{- $item.description  | markdownify -}}
+                {{- .self.Content  | markdownify -}}
               </div>
             </div>
           </div>
