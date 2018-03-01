@@ -6,11 +6,11 @@ lastmod = "2017-09-07"
 weight = 1200
 #background = ""
 
-linktitle = "Link Title"
-logotitle = "Logo Title"
+linkTitle = "Link Title"
+logoTitle = "Logo Title"
 logo = "logo.svg"
-logotext = "Logo Subtext"
-descriptiontitle = "Description Title"
+logoText = "Logo Subtext"
+descriptionTitle = "Description Title"
 description ="""
 Project description such as:  
 Open source theme for your next project
