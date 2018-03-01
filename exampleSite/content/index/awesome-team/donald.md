@@ -15,7 +15,6 @@
 +++
 
 
-description = """
 Really tiny Gopher
 
 Some more text to showcase the capabilities:
@@ -24,5 +23,5 @@ Curabitur a lorem urna.
 Quisque in neque malesuada, sollicitudin nunc porttitor, ornare est.
 Praesent ante enim, bibendum sed hendrerit et, iaculis laoreet felis.
 Morbi efficitur dui sit amet orci porttitor, nec tincidunt turpis elementum.
-"""
+
  
