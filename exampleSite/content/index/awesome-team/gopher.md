@@ -10,7 +10,7 @@
   scope = [
     "Gopherineering for various tasks",
     "Contributor for [Goper Team A](#)",
-  "Go`  pher Community Member"
+    "Gopher Community Member"
   ]
 
   [[member.icons]]
