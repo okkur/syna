@@ -11,11 +11,8 @@ logoTitle = "Logo Title"
 logo = "logo.svg"
 logoText = "Logo Subtext"
 descriptionTitle = "Description Title"
-description ="""
-Project description such as:  
-Open source theme for your next project
-Provided by Okkur Labs
-"""
 +++
 
-
+Project description such as:
+Open source theme for your next project
+Provided by Okkur Labs

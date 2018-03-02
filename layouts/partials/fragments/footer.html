@@ -90,7 +90,7 @@
             {{- . -}}
           </h4>
         {{ end }}
-        {{ with $footer.description }}
+        {{ with .self.Content }}
           <p>
             {{- . | markdownify -}}
           </p>
