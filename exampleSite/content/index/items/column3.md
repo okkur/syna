@@ -1,9 +1,9 @@
 +++
-[[items]]
   name = "Column 3"
   weight = 30
   icon = "fa-code"
   #link = "#"
 +++
-
-Showcasing descriptions for column based items
+<span style="color:#848D95">
+  Showcasing descriptions for column based items
+</span>
