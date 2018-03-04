@@ -11,7 +11,7 @@
       {{ if and (not .Params.disabled) (eq .Params.fragment "hero") }}
         {{ partial "fragments/hero.html" (dict "self" . ) }}
       {{ end }}
-      
+
       {{ if and (not .Params.disabled) (eq .Params.fragment "items") }}
         {{ partial "fragments/items.html" (dict "resources" $.Resources "self" . ) }}
       {{ end }}
@@ -23,7 +23,7 @@
       {{ if and (not .Params.disabled) (eq .Params.fragment "table") }}
         {{ partial "fragments/table.html" (dict "self" . ) }}
       {{ end }}
-     
+
       {{ if and (not .Params.disabled) (eq .Params.fragment "embed") }}
         {{ partial "fragments/embed.html" (dict "self" . ) }}
       {{ end }}
@@ -35,15 +35,15 @@
       {{ if and (not .Params.disabled) (eq .Params.fragment "logos") }}
         {{ partial "fragments/logos.html" (dict "self" . ) }}
       {{ end }}
-      
+
       {{ if and (not .Params.disabled) (eq .Params.fragment "contact") }}
         {{ partial "fragments/contact.html" (dict "self" . ) }}
       {{ end }}
-    
+
       {{ if and (not .Params.disabled) (in .Params.fragment "footer") }}
         {{ partial "fragments/footer.html" (dict "self" . ) }}
       {{ end }}
-      
+
       {{ if and (not .Params.disabled) (eq .Params.fragment "buttons") }}
         {{ partial "fragments/buttons.html" (dict "self" .) }}
       {{ end }}
