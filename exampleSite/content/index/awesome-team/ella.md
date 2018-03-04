@@ -16,7 +16,6 @@
   [[icons]]
     icon = "fa-linkedin-in"
     link = "#"
-
 +++
 
 Hugely huge Gopher

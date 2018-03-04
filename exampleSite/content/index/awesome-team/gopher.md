@@ -19,7 +19,6 @@
   [[member.icons]]
     icon = "fa-linkedin-in"
     link = "#"
-
 +++
 
 Really tiny Gopher

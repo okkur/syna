@@ -17,7 +17,6 @@ title = "Item Fragment Image Table Left"
 
 image = "screenshot.png"
 
-#unimportant = [true, false, false, false, true, false] # hide unimportant columns on mobile
 
 [header]
   [[header.values]]

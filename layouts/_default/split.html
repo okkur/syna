@@ -13,7 +13,7 @@
       {{ end }}
       
       {{ if and (not .Params.disabled) (eq .Params.fragment "items") }}
-        {{ partial "fragments/items.html" (dict "self" . ) }}
+        {{ partial "fragments/items.html" (dict "resources" $.Resources "self" . ) }}
       {{ end }}
 
       {{ if and (not .Params.disabled) (eq .Params.fragment "item") }}
