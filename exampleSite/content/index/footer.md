@@ -10,9 +10,9 @@ linkTitle = "Link Title"
 logoTitle = "Logo Title"
 logo = "logo.svg"
 logoText = "Logo Subtext"
-descriptionTitle = "Description Title"
 +++
 
+#### Description Title
 Project description such as:
 Open source theme for your next project
 Provided by Okkur Labs
