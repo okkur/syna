@@ -72,13 +72,13 @@
                 {{- $items.name | markdownify -}}
               {{ end }}
             </h4>
-            <p class="
+            <div class="
               {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
                 {{- printf " text-%s" "dark" -}}
               {{- else -}}
                 {{- printf " text-muted text-%s" "secondary" -}}
               {{- end -}}
-            ">{{ .Content }}</p>
+            ">{{ .Content }}</div>
           </div>
         {{ end }}
       </div>
