@@ -6,6 +6,8 @@
   <body class="{{ printf "bg-%s" $bg }}">
     {{ partial "nav.html" . }}
 
+    {{ partial "content-single.html" . }}
+
     {{ range .Resources.ByType "page" }}
 
       {{ if and (not .Params.disabled) (eq .Params.fragment "hero") }}
