@@ -1,6 +1,23 @@
 <!--
-# v0.10.0
+# v0.11.0
 _2017_
+  - [Downloads for v0.11.0](https://github.com/okkur/syna/releases/tag/v0.11.0)
+  - [Changelog since v0.10.0](#changelog-since-v010)
+
+## Documentation
+[Examples](/tree/v0.11.0/exampleSite)
+
+## Changes since v0.10.0
+  -
+
+## Fixes since v0.10.0
+  -
+
+---
+
+-->
+# v0.10.0
+_2018-03-09_
   - [Downloads for v0.10.0](https://github.com/okkur/syna/releases/tag/v0.10.0)
   - [Changelog since v0.9.0](#changelog-since-v090)
 
@@ -8,14 +25,15 @@ _2017_
 [Examples](/tree/v0.10.0/exampleSite)
 
 ## Changes since v0.9.0
-  -
+  - Migrate data files to Page Bundles
+  - Organize Content structure
 
 ## Fixes since v0.9.0
-  -
+  - Split up member files into individual files (#13)
+  - Move from `<p>` to `<div>` for anything that could contain markdown content (#31)
 
 ---
 
--->
 # v0.9.0
 _2017-12-08_
   - [Downloads for v0.9.0](https://github.com/okkur/syna/releases/tag/v0.9.0)
@@ -118,7 +136,7 @@ _2017-10-08_
   - Reorganize fragments
   - Cleanup data files
   - Item fragment with cal to action
-  
+
 ## Fixes since v0.4.0
   - Fragment include conditionals
 
