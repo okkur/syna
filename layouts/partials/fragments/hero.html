@@ -12,11 +12,14 @@
     <div id="particles-js"></div>
   {{ end }}
   {{ with $hero.logo }}
-    <img class="overlay img-fluid" src="{{ (printf "images/%s" .) | relURL }}"
-      {{- if $hero.logoHeight -}} height="{{ $hero.logoHeight }}"{{- end -}}
-      {{- if $hero.logoWidth -}} width="{{ $hero.logoWidth }}"{{- end -}}
-    ></img>
+    <div class="row justify-content-center align-items-start">
+      <img class="overlay img-fluid" src="{{ (printf "images/%s" .) | relURL }}"
+        {{- if $hero.logoheight -}} height="{{ $hero.logoheight }}"{{- end -}}
+        {{- if $hero.logowidth -}} width="{{ $hero.logowidth }}"{{- end -}}
+      ></img>
+    </div>
     {{ with $hero.subtitle }}
+    <div class="row justify-content-center align-items-start">
       <h1 class="overlay jumbotron-heading my-4
         {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
           {{- printf " text-%s" "dark" -}}
@@ -26,9 +29,11 @@
       ">
         {{- . | markdownify -}}
       </h1>
+    </div>
     {{ end }}
   {{ else }}
     {{ with $hero.title }}
+    <div class="row justify-content-center align-items-start">
       <h1 class="overlay jumbotron-heading
         {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
           {{- printf " text-%s" "dark" -}}
@@ -38,8 +43,10 @@
       ">
         {{- . -}}
       </h1>
+    </div>
     {{ end }}
     {{ with $hero.subtitle }}
+    <div class="row justify-content-center align-items-start">
       <p class="overlay lead
         {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
           {{- printf " text-%s" "dark" -}}
@@ -49,15 +56,19 @@
       ">
         {{- . | markdownify -}}
       </p>
+    </div>
     {{ end }}
   {{ end }}
   {{ range $hero.buttons }}
-    <a class="overlay btn btn-lg m-2{{ if hasPrefix .link "#" }} anchor{{ end }}
-      {{- $color := .color | default "primary" -}}
-      {{- printf " btn-%s" $color -}}
-    " href="{{ .link | relLangURL }}">
+    <a class="overlay btn btn-lg m-2{{ if hasPrefix .link " # " }} anchor{{ end }}
+          {{- $color := .color | default "primary " -}}
+          {{- printf " btn-%s " $color -}}
+        " href="{{ .link | relLangURL }}">
+    <div class="column justify-content-center align-content-center">
       {{- .text -}}
+    </div>
     </a>
+
   {{ end }}
   </div>
 </header>
