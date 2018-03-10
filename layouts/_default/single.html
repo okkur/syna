@@ -6,13 +6,17 @@
   <body class="{{ printf "bg-%s" $bg }}">
     {{ partial "nav.html" . }}
 
-    {{ partial "content-single.html" . }}
-
-    {{ range .Resources.ByType "page" }}
-
+    {{ range .Resources.ByType "page"}}
       {{ if and (not .Params.disabled) (eq .Params.fragment "hero") }}
         {{ partial "fragments/hero.html" (dict "self" . ) }}
       {{ end }}
+    {{ end }}
+
+    {{ if .Content }}
+      {{ partial "content-single.html" . }}
+    {{ end }}
+
+    {{ range .Resources.ByType "page" }}
 
       {{ if and (not .Params.disabled) (eq .Params.fragment "items") }}
         {{ partial "fragments/items.html" (dict "resources" $.Resources "self" . ) }}
