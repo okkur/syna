@@ -24,6 +24,8 @@ _2018-03-09_
 ## Documentation
 [Examples](/tree/v0.10.0/exampleSite)
 
+Notes: This version is a breaking change.
+
 ## Changes since v0.9.0
   - Migrate data files to Page Bundles
   - Organize Content structure
