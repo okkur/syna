@@ -2,8 +2,8 @@ var selfCheck = "checkSelf";
 
 // Check if recaptcha is disabled
 $(function() {
-  if ($('.g-recaptcha') && typeof grecaptcha == "undefined") {
-    $('.captcha-error').removeClass('d-none');
+  if ($('.g-recaptcha')) {
+    checkReCaptcha()
   }
 });
 
@@ -48,4 +48,13 @@ $.validate({
 
 function onContactCaptcha($form) {
   $('form.contact').submit();
+}
+
+function checkReCaptcha() {
+  if (typeof grecaptcha === "undefined") {
+    $('.captcha-error').removeClass('d-none');
+    setTimeout(checkReCaptcha, 200);
+  } else {
+    $('.captcha-error').addClass('d-none');
+  }
 }

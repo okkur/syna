@@ -129,10 +129,13 @@
                   </div>
                 </noscript>
                 {{ with $.Site.Params.contact.captcha }}
-                    <div class="g-recaptcha" data-sitekey="{{ .sitekey }}" data-size="invisible" data-badge="inline" data-callback="onContactCaptcha"></div>
                   <button
-                    class="btn btn-primary"
+                    class="g-recaptcha btn btn-primary"
                     type="submit"
+                    data-sitekey="{{ .sitekey }}"
+                    data-size="invisible"
+                    data-badge="inline"
+                    data-callback="onContactCaptcha"
                     disabled>
                     {{- $contact.button | default (i18n "contact.defaultButton") -}}
                   </button>
