@@ -30,22 +30,6 @@
           </div>
         </div>
       </div>
-      {{ if .Site.Params.attribution }}
-        <div class="col-auto mx-auto">
-          <div class="row navbar-text text-center
-            {{- if eq $bg "dark" -}}
-              {{- printf " text-%s" "secondary" -}}
-            {{- else -}}
-              {{- printf " text-%s" "dark" -}}
-            {{- end -}}
-          ">
-            {{- i18n "attribution" -}}
-            <a href="https://github.com/okkur/syna" class="ml-1">
-              {{- printf "Syna" -}}
-            </a>
-          </div>
-        </div>
-      {{ end }}
       {{ if .Site.Menus.legalfooter }}
         <div class="col-md">
           <div class="row my-2 justify-content-center">

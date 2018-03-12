@@ -12,7 +12,6 @@ googleAnalytics = ""
 [params]
   name = "Okkur Labs"
   description = "Open Source Theme for your next project"
-  attribution = "true"
 
   # Branding options
   [params.branding]
