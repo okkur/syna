@@ -1,13 +1,16 @@
-{{ $data := ($.Scratch.Get "data") }}
+{{ $memberf := .self.Params }}
+{{ $name := .self.Name }}
+{{ $name_t := strings.TrimSuffix ".md" $name }}
+{{ $members := .resources.Match (printf "%s/*" $name_t) }}
 {{ "<!-- Member -->" | safeHTML }}
-{{ $bg := $data.background | default "light"}}
+{{ $bg := $memberf.background | default "light"}}
 
-<section {{ with $data.selfLink }}id="{{ . }}"{{ end }}>
+<section {{ with $memberf.selflink }}id="{{ . }}"{{ end }}>
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">
     <div class="container py-5">
-      {{ with $data.title }}
+      {{ with $memberf.title }}
         <div class="row">
           <div class="col text-center
             {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
@@ -22,7 +25,7 @@
           </div>
         </div>
       {{ end }}
-      {{ with $data.subtitle }}
+      {{ with $memberf.subtitle }}
         <div class="row">
           <div class="col text-center pt-2 pb-3
             {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
@@ -38,10 +41,11 @@
         </div>
       {{ end }}
       <div class="row justify-content-center align-items-start">
-        {{ range sort $data.member "weight"}}
+        {{ range $members }}
+          {{ $member := .Params }}
           <div class="col-lg-4 col-md-6 col-sm-12 pt-3 pb-5 text-left text-sm-center">
             <div class="text-center m-2">
-              <img src="/images/member/{{ .image }}" class="img-fluid rounded-circle w-75 border
+              <img src="/images/member/{{ $member.image }}" class="img-fluid rounded-circle w-75 border
                 {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
                   {{- printf " border-%s" "dark" -}}
                 {{- else -}}
@@ -57,7 +61,7 @@
               {{- end -}}
             ">
               <h2>
-                {{- .name -}}
+                {{- $member.title -}}
               </h2>
             </div>
             <div class="member
@@ -67,33 +71,33 @@
                 {{- printf " text-muted text-%s" "secondary" -}}
               {{- end -}}
             ">
-              {{ with .position }}
+              {{ with $member.position }}
                 <h5 class="mb-3">
                   {{- . | markdownify -}}
                 </h5>
               {{ end }}
-              {{ with .reportsTo }}
+              {{ with $member.reportsTo }}
                 <h6 class="font-italic mb-1">
                   {{- i18n "member.reportsTo" }} {{ printf " %s" . | markdownify -}}
                 </h6>
                 {{ end }}
-              {{ with .livesIn }}
+              {{ with $member.livesIn }}
                 <h6 class="font-italic mb-1">
                   {{- i18n "member.livesIn" }} {{ printf " %s" . | markdownify -}}
                 </h6>
               {{ end }}
-              {{ if .scope }}
+              {{ if $member.scope }}
                 <div class="pt-3 font-weight-bold">
-                  {{ range .scope }}
+                  {{ range $member.scope }}
                     <div>
                       {{- . | markdownify -}}
                     </div>
                   {{ end }}
                 </div>
               {{ end }}
-              {{ if .icons }}
+              {{ if $member.icons }}
               <div class="row justify-content-center pt-4">
-                {{ range .icons }}
+                {{ range $member.icons }}
                   <span class="fa-stack fa-2x m-2">
                     <a href="{{ .link }}">
                       <i class="fas fa-circle fa-stack-2x
@@ -107,11 +111,11 @@
                 {{ end }}
               </div>
               {{ end }}
-                {{ with .description }}
+                {{ with .Content }}
                   <div class="pt-3">
-                    <p class="description">
+                    <div class="description">
                       {{- . | markdownify -}}
-                    </p>
+                    </div>
                   </div>
                 {{ end }}
               </div>

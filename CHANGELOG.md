@@ -1,25 +1,45 @@
 <!--
-# v0.10.0
+# v0.11.0
 _2017_
-  - [Downloads for v0.10.0](https://github.com/okkur/syna/releases/tag/v0.10.0)
-  - [Changelog since v0.9.0](#changelog-since-v090)
+  - [Downloads for v0.11.0](https://github.com/okkur/syna/releases/tag/v0.11.0)
+  - [Changelog since v0.10.0](#changes-since-v010)
 
 ## Documentation
-[Examples](/tree/v0.10.0/exampleSite)
+[Examples](/tree/v0.11.0/exampleSite)
 
-## Changes since v0.9.0
+## Changes since v0.10.0
   -
 
-## Fixes since v0.9.0
+## Fixes since v0.10.0
   -
 
 ---
 
 -->
+# v0.10.0
+_2018-03-09_
+  - [Downloads for v0.10.0](https://github.com/okkur/syna/releases/tag/v0.10.0)
+  - [Changelog since v0.9.0](#changes-since-v090)
+
+## Documentation
+[Examples](/tree/v0.10.0/exampleSite)
+
+Notes: This version is a breaking change.
+
+## Changes since v0.9.0
+  - Migrate data files to Page Bundles
+  - Organize Content structure
+
+## Fixes since v0.9.0
+  - Split up member files into individual files (#13)
+  - Move from `<p>` to `<div>` for anything that could contain markdown content (#31)
+
+---
+
 # v0.9.0
 _2017-12-08_
   - [Downloads for v0.9.0](https://github.com/okkur/syna/releases/tag/v0.9.0)
-  - [Changelog since v0.8.0](#changelog-since-v080)
+  - [Changelog since v0.8.0](#changes-since-v080)
 
 ## Documentation
 [Examples](/tree/v0.9.0/exampleSite)
@@ -41,7 +61,7 @@ Notes: Member and Footer fragments only support brand icons for now.
 # v0.8.0
 _2017-10-23_
   - [Downloads for v0.8.0](https://github.com/okkur/syna/releases/tag/v0.8.0)
-  - [Changelog since v0.7.0](#changelog-since-v070)
+  - [Changelog since v0.7.0](#changes-since-v070)
 
 ## Documentation
 [Examples](/tree/v0.8.0/exampleSite)
@@ -63,7 +83,7 @@ _2017-10-23_
 # v0.7.0
 _2017-10-18_
   - [Downloads for v0.7.0](https://github.com/okkur/syna/releases/tag/v0.7.0)
-  - [Changelog since v0.6.0](#changelog-since-v060)
+  - [Changelog since v0.6.0](#changes-since-v060)
 
 ## Documentation
 [Examples](/tree/v0.7.0/exampleSite)
@@ -118,7 +138,7 @@ _2017-10-08_
   - Reorganize fragments
   - Cleanup data files
   - Item fragment with cal to action
-  
+
 ## Fixes since v0.4.0
   - Fragment include conditionals
 

@@ -1,13 +1,13 @@
-{{ $data := ($.Scratch.Get "data") }}
+{{ $buttons := .self.Params }}
 {{ "<!-- Buttons -->" | safeHTML }}
-{{ $bg := $data.background | default "white" }}
+{{ $bg := $buttons.background | default "white" }}
 
-<section {{ with $data.selfLink }}id="{{ . }}"{{ end }}>
+<section {{ with $buttons.selflink }}id="{{ . }}"{{ end }}>
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">
     <div class="container py-4">
-      {{ with $data.title }}
+      {{ with $buttons.title }}
         <div class="row">
           <div class="col text-center
             {{- if or (eq $bg "secondary") (eq $bg "white") (eq $bg "primary") -}}
@@ -22,7 +22,7 @@
           </div>
         </div>
       {{ end }}
-      {{ with $data.subtitle }}
+      {{ with $buttons.subtitle }}
         <div class="row">
           <div class="col text-center
             {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
@@ -38,7 +38,7 @@
         </div>
       {{ end }}
       <div class="row text-center justify-content-center">
-        {{ range $data.buttons }}
+        {{ range $buttons.buttons }}
           <a class="btn btn-lg m-2{{ if hasPrefix .link "#" }} anchor{{ end }}
             {{- $color := .color | default "primary" -}}
             {{- printf " btn-%s" $color -}}

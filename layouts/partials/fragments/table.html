@@ -1,16 +1,16 @@
-{{ $data := ($.Scratch.Get "data") }}
+{{ $table := .self.Params }}
 {{ "<!-- Item -->" | safeHTML }}
-{{ $bg := $data.background | default "light"}}
-{{ $align := $data.align | default "center" }}
+{{ $bg := $table.background | default "light"}}
+{{ $align := $table.align | default "center" }}
 
-<section {{ with $data.selfLink }}id="{{ . }}"{{ end }}>
+<section {{ with $table.selflink }}id="{{ . }}"{{ end }}>
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">
     <div class="container py-5">
       <div class="row align-items-center text-center justify-content-end">
         <div class="col-12 order-lg-1 text-center">
-          {{ if $data.title }}
+          {{ if $table.title }}
             <div class="row pb-3">
               <div class="col-12
                 {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
@@ -20,12 +20,12 @@
                 {{- end -}}
               ">
                 <h2>
-                  {{- $data.title | markdownify -}}
+                  {{- $table.title | markdownify -}}
                 </h2>
               </div>
             </div>
           {{ end }}
-          {{ if $data.subtitle }}
+          {{ if $table.subtitle }}
             <div class="row pb-2
               {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
                 {{- printf " text-%s" "dark" -}}
@@ -35,12 +35,12 @@
             ">
               <div class="col-12">
                 <h5>
-                  {{- $data.subtitle | markdownify -}}
+                  {{- $table.subtitle | markdownify -}}
                 </h5>
               </div>
             </div>
           {{ end }}
-          {{ if $data.rows }}
+          {{ if $table.rows }}
             <div class="row justify-content-center">
               <div class="col table-responsive">
                 <table class="table table-bordered
@@ -51,13 +51,8 @@
                   <thead>
                     <tr>
                       {{ $.Scratch.Set "col" 0 }}
-                      {{ range $data.header.values }}
+                      {{ range $table.header.values }}
                         <th class="
-                          {{- if $data.unimportant -}}
-                            {{- if index $data.unimportant ($.Scratch.Get "col") -}}
-                              {{- printf " d-none .d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
-                            {{- end -}}
-                          {{- end -}}
                           {{- if .center -}}
                             {{- printf " text-center" -}}
                           {{- end -}}
@@ -69,31 +64,15 @@
                     </tr>
                   </thead>
                   <tbody>
-                    {{ range $data.rows }}
+                    {{ range $table.rows }}
                       {{ $.Scratch.Set "col" 0 }}
                       <tr>
                         {{ range .values }}
                           {{ if .header }}
                           <th class="align-middle
-                            {{- if $data.unimportant -}}
-                              {{- if index $data.unimportant ($.Scratch.Get "col") -}}
-                                {{- printf " d-none .d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
-                              {{- end -}}
-                            {{- end -}}
-                            {{- if .center -}}
-                              {{- printf " text-center" -}}
-                            {{- end -}}
                           ">{{ .header | markdownify }}</th>
                           {{ else if .button }}
                             <td class="align-middle
-                              {{- if $data.unimportant -}}
-                                {{- if index $data.unimportant ($.Scratch.Get "col") -}}
-                                  {{- printf " d-none .d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
-                                {{- end -}}
-                              {{- end -}}
-                              {{- if .center -}}
-                                {{- printf " text-center" -}}
-                              {{- end -}}
                             ">
                               <a class="btn
                               {{ if hasPrefix .link "#" }} anchor{{ end }}
@@ -105,11 +84,6 @@
                           </td>
                         {{ else if .icon }}
                           <td class="align-middle
-                            {{- if $data.unimportant -}}
-                              {{- if index $data.unimportant ($.Scratch.Get "col") -}}
-                                {{- printf " d-none .d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
-                              {{- end -}}
-                            {{- end -}}
                             {{- if .center -}}
                               {{- printf " text-center" -}}
                             {{- end -}}
@@ -120,11 +94,6 @@
                           </td>
                         {{ else }}
                           <td class="align-middle
-                            {{- if $data.unimportant -}}
-                              {{- if index $data.unimportant ($.Scratch.Get "col") -}}
-                                {{- printf " d-none .d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
-                              {{- end -}}
-                            {{- end -}}
                             {{- if .center -}}
                               {{- printf " text-center" -}}
                             {{- end -}}

@@ -1,9 +1,9 @@
-{{ $data := ($.Scratch.Get "data") }}
+{{ $item := .self.Params}}
 {{ "<!-- Item -->" | safeHTML }}
-{{ $bg := $data.background | default "light"}}
-{{ $align := $data.align | default "center" }}
+{{ $bg := $item.background | default "light"}}
+{{ $align := $item.align | default "center" }}
 
-<section {{ with $data.selfLink }}id="{{ . }}"{{ end }}>
+<section {{ with $item.selflink }}id="{{ . }}"{{ end }}>
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">
@@ -26,7 +26,7 @@
             {{- printf " order-lg-1 text-center" -}}
           {{- end -}}
         ">
-          {{ if $data.title }}
+          {{ if $item.title }}
             <div class="row pb-3">
               <div class="col-12
                 {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
@@ -36,12 +36,12 @@
                 {{- end -}}
               ">
                 <h2>
-                  {{- $data.title | markdownify -}}
+                  {{- $item.title | markdownify -}}
                 </h2>
               </div>
             </div>
           {{ end }}
-          {{ if $data.subtitle }}
+          {{ if $item.subtitle }}
             <div class="row pb-2">
               <div class="col-12
                 {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
@@ -51,7 +51,7 @@
                 {{- end -}}
               ">
                 <h5>
-                  {{- $data.subtitle | markdownify -}}
+                  {{- $item.subtitle | markdownify -}}
                 </h5>
               </div>
             </div>
@@ -64,13 +64,13 @@
             {{- else -}}
               {{- printf " order-lg-12" -}}
             {{- end -}}
-            {{- if and (not $data.icon) (not $data.image) -}}
+            {{- if and (not $item.icon) (not $item.image) -}}
               {{- printf " " -}}
             {{- end -}}
           ">
             <div class="row">
               <div class="col-12">
-                {{ if $data.pre }}
+                {{ if $item.pre }}
                   <div class="row">
                     <div class="col-12
                       {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
@@ -80,12 +80,12 @@
                       {{- end -}}
                     ">
                       <p class="mb-0">
-                        {{- $data.pre | markdownify -}}
+                        {{- $item.pre | markdownify -}}
                       </p>
                     </div>
                   </div>
                 {{ end }}
-                {{ if $data.icon }}
+                {{ if $item.icon }}
                   <span class="fa-stack fa-4x">
                     <i class="fas fa-circle fa-stack-2x
                       {{- if eq $bg "primary" -}}
@@ -94,14 +94,14 @@
                         {{- printf " text-%s" "primary" -}}
                       {{- end -}}
                     "></i>
-                    <i class="fas {{ $data.icon }} fa-stack-1x fa-inverse"></i>
+                    <i class="fas {{ $item.icon }} fa-stack-1x fa-inverse"></i>
                   </span>
-                {{ else if $data.image }}
-                  {{ $url := printf "images/row/%s" $data.image }}
-                  <img src="{{ $url | absURL }}" class="img-fluid p-2" alt="{{ $data.name }}">
+                {{ else if $item.image }}
+                  {{ $url := printf "images/row/%s" $item.image }}
+                  <img src="{{ $url | absURL }}" class="img-fluid p-2" alt="{{ $item.name }}">
                 {{ end }}
-                {{ if and (not $data.icon) (not $data.image) }}
-                  {{ range $data.buttons }}
+                {{ if and (not $item.icon) (not $item.image) }}
+                  {{ range $item.buttons }}
                     <a class="btn btn-lg m-2 d-none d-lg-inline
                       {{ if hasPrefix .link "#" }} anchor{{ end }}
                       {{- $color := .color | default "primary" -}}
@@ -111,7 +111,7 @@
                     </a>
                   {{ end }}
                 {{ end }}
-                {{ if $data.post }}
+                {{ if $item.post }}
                   <div class="row">
                     <div class="col-12 mb-0
                       {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
@@ -121,7 +121,7 @@
                       {{- end -}}
                     ">
                       <p class="mb-0">
-                        {{- $data.post | markdownify -}}
+                        {{- $item.post | markdownify -}}
                       </p>
                     </div>
                   </div>
@@ -129,7 +129,7 @@
               </div>
             </div>
           </div>
-          {{ if $data.description }}
+          {{ if .self.Content }}
           <div class="row
             {{- if eq $align "left" -}}
               {{- printf " text-left" -}}
@@ -147,14 +147,14 @@
                   {{- printf " text-muted text-%s" "secondary" -}}
                 {{- end -}}
               ">
-                {{- $data.description  | markdownify -}}
+                {{- .self.Content  | markdownify -}}
               </div>
             </div>
           </div>
           {{ end }}
-          {{ if or $data.icon $data.image }}
+          {{ if or $item.icon $item.image }}
             <div class="col-12 text-center text-lg-left">
-              {{ range $data.buttons }}
+              {{ range $item.buttons }}
                 <a class="btn btn-lg m-2
                   {{ if hasPrefix .link "#" }} anchor{{ end }}
                   {{- $color := .color | default "primary" -}}
@@ -165,7 +165,7 @@
               {{ end }}
             </div>
           {{ end }}
-          {{ if $data.rows }}
+          {{ if $item.rows }}
             <div class="row justify-content-center">
               <div class="col col-lg-12 mr-lg-auto table-responsive">
                 <table class="table table-bordered
@@ -178,13 +178,8 @@
                   <thead>
                     <tr>
                       {{ $.Scratch.Set "col" 0 }}
-                      {{ range $data.header.values }}
+                      {{ range $item.header.values }}
                         <th class="
-                          {{- if $data.unimportant -}}
-                            {{- if index $data.unimportant ($.Scratch.Get "col") -}}
-                              {{- printf " d-none d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
-                            {{- end -}}
-                          {{- end -}}
                           {{- if .center -}}
                             {{- printf " text-center" -}}
                           {{- end -}}
@@ -196,28 +191,18 @@
                     </tr>
                   </thead>
                   <tbody>
-                    {{ range $data.rows }}
+                    {{ range $item.rows }}
                       {{ $.Scratch.Set "col" 0 }}
                       <tr>
                         {{ range .values }}
                           {{ if .header }}
                           <th class="align-middle
-                            {{- if $data.unimportant -}}
-                              {{- if index $data.unimportant ($.Scratch.Get "col") -}}
-                                {{- printf " d-none d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
-                              {{- end -}}
-                            {{- end -}}
                             {{- if .center -}}
                               {{- printf " text-center" -}}
                             {{- end -}}
                           ">{{ .header | markdownify }}</th>
                           {{ else if .button }}
                             <td class="align-middle
-                              {{- if $data.unimportant -}}
-                                {{- if index $data.unimportant ($.Scratch.Get "col") -}}
-                                  {{- printf " d-none d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
-                                {{- end -}}
-                              {{- end -}}
                               {{- if .center -}}
                                 {{- printf " text-center" -}}
                               {{- end -}}
@@ -232,11 +217,6 @@
                           </td>
                         {{ else if .icon }}
                           <td class="align-middle
-                            {{- if $data.unimportant -}}
-                              {{- if index $data.unimportant ($.Scratch.Get "col") -}}
-                                {{- printf " d-none d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
-                              {{- end -}}
-                            {{- end -}}
                             {{- if .center -}}
                               {{- printf " text-center" -}}
                             {{- end -}}
@@ -247,11 +227,6 @@
                           </td>
                         {{ else }}
                           <td class="align-middle
-                            {{- if $data.unimportant -}}
-                              {{- if index $data.unimportant ($.Scratch.Get "col") -}}
-                                {{- printf " d-none d-sm-none d-md-table-cell d-lg-table-cell d-xl-table-cell" -}}
-                              {{- end -}}
-                            {{- end -}}
                             {{- if .center -}}
                               {{- printf " text-center" -}}
                             {{- end -}}
@@ -277,7 +252,7 @@
           {{- end -}}
         ">
           <div class="row justify-content-center">
-            {{ if $data.pre }}
+            {{ if $item.pre }}
               <div class="row">
                 <div class="col-12 mb-0 d-none d-lg-inline
                   {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
@@ -287,12 +262,12 @@
                   {{- end -}}
                 ">
                   <p class="mb-0">
-                    {{- $data.pre | markdownify -}}
+                    {{- $item.pre | markdownify -}}
                   </p>
                 </div>
               </div>
             {{ end }}
-            {{ if $data.icon }}
+            {{ if $item.icon }}
               <div class="col-12 text-center d-none d-lg-inline">
                 <span class="fa-stack fa-4x">
                   <i class="fas fa-circle fa-stack-2x
@@ -302,18 +277,18 @@
                       {{- printf " text-%s" "primary" -}}
                     {{- end -}}
                   "></i>
-                  <i class="fas {{ $data.icon }} fa-stack-1x fa-inverse"></i>
+                  <i class="fas {{ $item.icon }} fa-stack-1x fa-inverse"></i>
                 </span>
               </div>
-            {{ else if $data.image }}
-              {{ $url := printf "images/row/%s" $data.image }}
+            {{ else if $item.image }}
+              {{ $url := printf "images/row/%s" $item.image }}
               <div class="col-12 text-center d-none d-lg-inline">
-                <img src="{{ $url | absURL }}" class="img-fluid p-2" alt="{{ $data.name }}">
+                <img src="{{ $url | absURL }}" class="img-fluid p-2" alt="{{ $item.name }}">
               </div>
             {{ end }}
-            {{ if and (not $data.icon) (not $data.image) }}
+            {{ if and (not $item.icon) (not $item.image) }}
               <div class="col-12 text-center">
-                {{ range $data.buttons }}
+                {{ range $item.buttons }}
                   <a class="btn btn-lg m-2
                     {{ if hasPrefix .link "#" }} anchor{{ end }}
                     {{- $color := .color | default "primary" -}}
@@ -324,7 +299,7 @@
                   {{ end }}
               </div>
             {{ end }}
-            {{ if $data.post }}
+            {{ if $item.post }}
               <div class="row">
                 <div class="col-12 mb-0 d-none d-lg-inline
                   {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
@@ -334,7 +309,7 @@
                   {{- end -}}
                 ">
                   <p class="mb-0">
-                    {{- $data.post | markdownify -}}
+                    {{- $item.post | markdownify -}}
                   </p>
                 </div>
               </div>
