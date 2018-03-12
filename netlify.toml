@@ -1,0 +1,20 @@
+[build]
+  base    = "exampleSite"
+  publish = "exampleSite/public"
+  command = "hugo -t repo"
+
+[context.production.environment]
+  HUGO_VERSION = "0.37.1"
+  HUGO_ENV = "production"
+
+[context.deploy-preview]
+  command = "hugo -t repo -b $DEPLOY_PRIME_URL"
+
+[context.deploy-preview.environment]
+  HUGO_VERSION = "0.37.1"
+
+[context.branch-deploy]
+  command = "hugo -t repo -b $DEPLOY_PRIME_URL"
+
+[context.branch-deploy.environment]
+  HUGO_VERSION = "0.37.1"
