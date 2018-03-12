@@ -6,18 +6,15 @@
   <body class="{{ printf "bg-%s" $bg }}">
     {{ partial "nav.html" . }}
 
-    {{ $page := replace (strings.TrimRight "/" (strings.TrimLeft "/" .RelPermalink)) "/" "__" }}
+    {{ range sort .Resources }}
 
-    {{ with index $.Site.Data $page }}
-      {{ range . }}
-        {{ $.Scratch.Set "data" . }}
-
-        {{ if and (not .disabled) (eq .fragment "hero") }}
-          {{ partial "fragments/hero.html" $ }}
-        {{ end }}
-
+      {{ if and (not .Params.disabled) (eq .Params.fragment "hero") }}
+        {{ partial "fragments/hero.html" .Params }}
       {{ end }}
+
     {{ end }}
+
+    {{ $page := replace (strings.TrimRight "/" (strings.TrimLeft "/" .RelPermalink)) "/" "__" }}
 
     {{ partial "content-split.html" . }}
 
