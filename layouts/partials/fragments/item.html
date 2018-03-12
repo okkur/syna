@@ -3,7 +3,7 @@
 {{ $bg := $item.background | default "light"}}
 {{ $align := $item.align | default "center" }}
 
-<section {{ with $item.selfLink }}id="{{ . }}"{{ end }}>
+<section {{ with $item.selflink }}id="{{ . }}"{{ end }}>
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">

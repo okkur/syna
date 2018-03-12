@@ -4,7 +4,7 @@
 {{ $ratio := $embed.ratio | default "4by3" }}
 {{ $size := $embed.size | default "75" }}
 
-<section {{ with $embed.selfLink }}id="{{ . }}"{{ end }}>
+<section {{ with $embed.selflink }}id="{{ . }}"{{ end }}>
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">

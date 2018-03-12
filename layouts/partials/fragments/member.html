@@ -5,7 +5,7 @@
 {{ "<!-- Member -->" | safeHTML }}
 {{ $bg := $memberf.background | default "light"}}
 
-<section {{ with $memberf.selfLink }}id="{{ . }}"{{ end }}>
+<section {{ with $memberf.selflink }}id="{{ . }}"{{ end }}>
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">
