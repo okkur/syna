@@ -24,11 +24,13 @@ _2018-03-09_
 ## Documentation
 [Examples](/tree/v0.10.0/exampleSite)
 
-Notes: This version is a breaking change.
+Notes: This version includes a major breaking change.
 
 ## Changes since v0.9.0
   - Migrate data files to Page Bundles
-  - Organize Content structure
+  - Use individual content files for member fragment
+  - Use individual content files for items fragment
+  - Reorganize Content structure
 
 ## Fixes since v0.9.0
   - Split up member files into individual files (#13)
