@@ -1,60 +1,48 @@
-<html lang="{{ .Site.LanguageCode | default (printf "en-us") }}">
+{{ define "main" }}
 
-  {{ partial "head.html" . }}
-  {{ $bg := .Site.Params.style.background | default "secondary"}}
+  {{ partial "content-split.html" . }}
 
-  <body class="{{ printf "bg-%s" $bg }}">
-    {{ partial "nav.html" . }}
+  {{ range .Resources.ByType "page" }}
 
-    {{ partial "content-split.html" . }}
-
-    {{ range .Resources.ByType "page" }}
-
-      {{ if and (not .Params.disabled) (eq .Params.fragment "hero") }}
-        {{ partial "fragments/hero.html" (dict "self" . ) }}
-      {{ end }}
-
-      {{ if and (not .Params.disabled) (eq .Params.fragment "items") }}
-        {{ partial "fragments/items.html" (dict "resources" $.Resources "self" . ) }}
-      {{ end }}
-
-      {{ if and (not .Params.disabled) (eq .Params.fragment "item") }}
-        {{ partial "fragments/item.html" (dict "self" . ) }}
-      {{ end }}
-
-      {{ if and (not .Params.disabled) (eq .Params.fragment "table") }}
-        {{ partial "fragments/table.html" (dict "self" . ) }}
-      {{ end }}
-
-      {{ if and (not .Params.disabled) (eq .Params.fragment "embed") }}
-        {{ partial "fragments/embed.html" (dict "self" . ) }}
-      {{ end }}
-
-      {{ if and (not .Params.disabled) (eq .Params.fragment "member") }}
-        {{ partial "fragments/member.html" (dict "self" . ) }}
-      {{ end }}
-
-      {{ if and (not .Params.disabled) (eq .Params.fragment "logos") }}
-        {{ partial "fragments/logos.html" (dict "self" . ) }}
-      {{ end }}
-
-      {{ if and (not .Params.disabled) (eq .Params.fragment "contact") }}
-        {{ partial "fragments/contact.html" (dict "self" . ) }}
-      {{ end }}
-
-      {{ if and (not .Params.disabled) (in .Params.fragment "footer") }}
-        {{ partial "fragments/footer.html" (dict "self" . ) }}
-      {{ end }}
-
-      {{ if and (not .Params.disabled) (eq .Params.fragment "buttons") }}
-        {{ partial "fragments/buttons.html" (dict "self" .) }}
-      {{ end }}
-
+    {{ if and (not .Params.disabled) (eq .Params.fragment "hero") }}
+      {{ partial "fragments/hero.html" (dict "self" . ) }}
     {{ end }}
 
-    {{ partial "footer.html" . }}
+    {{ if and (not .Params.disabled) (eq .Params.fragment "items") }}
+      {{ partial "fragments/items.html" (dict "resources" $.Resources "self" . ) }}
+    {{ end }}
 
-    {{ partial "js.html" . }}
+    {{ if and (not .Params.disabled) (eq .Params.fragment "item") }}
+      {{ partial "fragments/item.html" (dict "self" . ) }}
+    {{ end }}
 
-  </body>
-</html>
+    {{ if and (not .Params.disabled) (eq .Params.fragment "table") }}
+      {{ partial "fragments/table.html" (dict "self" . ) }}
+    {{ end }}
+
+    {{ if and (not .Params.disabled) (eq .Params.fragment "embed") }}
+      {{ partial "fragments/embed.html" (dict "self" . ) }}
+    {{ end }}
+
+    {{ if and (not .Params.disabled) (eq .Params.fragment "member") }}
+      {{ partial "fragments/member.html" (dict "self" . ) }}
+    {{ end }}
+
+    {{ if and (not .Params.disabled) (eq .Params.fragment "logos") }}
+      {{ partial "fragments/logos.html" (dict "self" . ) }}
+    {{ end }}
+
+    {{ if and (not .Params.disabled) (eq .Params.fragment "contact") }}
+      {{ partial "fragments/contact.html" (dict "self" . ) }}
+    {{ end }}
+
+    {{ if and (not .Params.disabled) (in .Params.fragment "footer") }}
+      {{ partial "fragments/footer.html" (dict "self" . ) }}
+    {{ end }}
+
+    {{ if and (not .Params.disabled) (eq .Params.fragment "buttons") }}
+      {{ partial "fragments/buttons.html" (dict "self" .) }}
+    {{ end }}
+
+  {{ end }}
+{{ end }}
