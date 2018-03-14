@@ -30,7 +30,7 @@
           </div>
         </div>
       </div>
-      {{ if .Site.Params.attribution }}
+      {{- if eq .Site.Params.attribution  "true" -}}
         <div class="col-auto mx-auto">
           <div class="row navbar-text text-center
             {{- if eq $bg "dark" -}}
