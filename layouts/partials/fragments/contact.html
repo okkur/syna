@@ -35,8 +35,7 @@
       <div class="col-12">
         <form class="contact" action="
           {{- if not $contact.netlify -}}
-            {{- $postEmailUrl := printf "https://formspree.io/$%s" $contact.email }}
-            {{- $postUrl := $contact.posturl | default $postEmailUrl -}}
+            {{- $postUrl := $contact.posturl | default (printf "https://formspree.io/%s" $contact.email) -}}
             {{- printf $postUrl -}}
           {{- end -}}
         " method="POST" name="
