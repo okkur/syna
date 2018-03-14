@@ -33,11 +33,18 @@
     </div>
     <div class="row">
       <div class="col-12">
-        {{ if not $contact.posturl }}
-          <form class="contact" action="https://formspree.io/{{ $contact.email }}" method="POST" name="sentMessage" id="{{ $contact.formName | default "contactForm" }}">
-        {{ else }}
-          <form class="contact" action="{{ $contact.postURL }}" method="POST" name="sentMessage" id="{{ $contact.formName | default "contactForm" }}">
-        {{ end }}
+        <form class="contact" action="
+          {{- if not $contact.netlify -}}
+            {{- $postUrl := $contact.posturl | default $contact.email -}}
+            {{- printf "https://formspree.io/%s" $postUrl -}}
+          {{- end -}}
+        " method="POST" name="
+        {{- if $contact.netlify -}}
+          netlify
+        {{- else -}}
+          sentMessage
+        {{- end -}}
+        " id="{{ $contact.formName | default "contactForm" }}">
             <div class="row py-3">
               <div class="col-md-6">
                 {{ with $contact.fields.name }}
