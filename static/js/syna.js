@@ -2,6 +2,10 @@ var selfCheck = "checkSelf";
 
 // Check if recaptcha is disabled
 $(function() {
+  handleScroll()
+  $(window).on('scroll', handleScroll);
+  $('.scroll-to-top').on('click', scrollToTop)
+
   if ($('.g-recaptcha') && typeof grecaptcha == "undefined") {
     $('.captcha-error').removeClass('d-none');
   }
@@ -48,4 +52,16 @@ $.validate({
 
 function onContactCaptcha($form) {
   $('form.contact').submit();
+}
+
+function handleScroll() {
+  if (window.scrollY > window.innerHeight / 2) {
+    $('.scroll-to-top').removeClass('d-none');
+  } else {
+    $('.scroll-to-top').addClass('d-none');
+  }
+}
+
+function scrollToTop() {
+  $('html,body').animate({ scrollTop: 0 }, 'slow');
 }
