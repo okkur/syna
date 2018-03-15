@@ -10,6 +10,10 @@
   border-radius: 0rem;
 }
 
+.jumbotron {
+  border-radius: 0rem !important;
+}
+
 .overlay {
   position: relative;
   z-index: 100;
