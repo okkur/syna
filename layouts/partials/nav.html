@@ -77,3 +77,13 @@
     </div>
   {{ end }}
 </nav>
+<div class="scroll-to-top
+  {{- if not .Site.Params.fontawesome.disabled -}}
+    {{ print " has-font-icon" }}
+  {{- end -}}">
+  {{ if not .Site.Params.fontawesome.disabled }}
+    <i class="fas fa-angle-up"></i>
+  {{ else }}
+    Top
+  {{ end }}
+</div>
