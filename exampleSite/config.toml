@@ -12,7 +12,7 @@ googleAnalytics = ""
 [params]
   name = "Okkur Labs"
   description = "Open Source Theme for your next project"
-  attribution = "false"
+  attribution = "false" # enable attribution by setting it to true
 
   # Branding options
   [params.branding]
