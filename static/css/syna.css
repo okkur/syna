@@ -47,7 +47,7 @@
     justify-content: space-between;
   }
 
-  .g-recaptcha-container .filler {
+  .g-recaptcha-container .filler, .g-recaptcha-filler {
     display: block;
     width: 256px;
   }

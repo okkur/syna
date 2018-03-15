@@ -56,6 +56,7 @@ function checkReCaptcha() {
     setTimeout(checkReCaptcha, 200);
   } else {
     $('.captcha-error').addClass('d-none');
+    $('.g-recaptcha-filler').addClass('d-none');
     $('.g-recaptcha').attr('disabled', true);
   }
 }
