@@ -12,7 +12,7 @@ googleAnalytics = ""
 [params]
   name = "Okkur Labs"
   description = "Open Source Theme for your next project"
-  attribution = "false"
+  attribution = "false" # enable attribution by setting it to true
 
   # Branding options
   [params.branding]
@@ -60,6 +60,10 @@ googleAnalytics = ""
   # Optional google captcha
   #[params.contact.captcha]
   #  sitekey = ""
+
+  # [params.navbar]
+  #   Force navbar to be displayed even if no menu items are available
+  #   force_display = true
 
 [[menu.main]]
   url = "#"
