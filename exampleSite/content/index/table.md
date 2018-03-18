@@ -14,6 +14,7 @@ subtitle= "Tables are responsive by default"
 [header]
   [[header.values]]
     text = "Header 1"
+    # hide_on_mobile = true
 
   [[header.values]]
     text = "Header 2"
