@@ -51,7 +51,7 @@
     {{ end }}
     {{ with $hero.subtitle }}
     <div class="row justify-content-center align-items-start">
-      <p class="overlay lead
+      <div class="overlay lead
         {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
           {{- printf " text-%s" "dark" -}}
         {{- else -}}
@@ -59,7 +59,7 @@
         {{- end -}}
       ">
         {{- . | markdownify -}}
-      </p>
+      </div>
     </div>
     {{ end }}
   {{ end }}
