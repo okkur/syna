@@ -134,13 +134,20 @@
                   </div>
                 </noscript>
                 {{ with $.Site.Params.contact.captcha }}
-                    <div class="g-recaptcha" data-sitekey="{{ .sitekey }}" data-size="invisible" data-badge="inline" data-callback="onContactCaptcha"></div>
-                  <button
-                    class="btn btn-primary"
-                    type="submit"
-                    disabled>
-                    {{- $contact.button | default (i18n "contact.defaultButton") -}}
-                  </button>
+                  <div class="g-recaptcha-container">
+                    <span class="g-recaptcha-filler"></span>
+                    <button
+                      class="g-recaptcha btn btn-primary"
+                      type="submit"
+                      data-sitekey="{{ .sitekey }}"
+                      data-size="invisible"
+                      data-badge="inline"
+                      data-callback="onContactCaptcha"
+                      disabled>
+                      {{- $contact.button | default (i18n "contact.defaultButton") -}}
+                    </button>
+                    <span class="filler"></span>
+                  </div>
                 {{ else }}
                   <button
                     class="btn
