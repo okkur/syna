@@ -8,10 +8,19 @@ _2017_
 [Examples](/tree/v0.11.0/exampleSite)
 
 ## Changes since v0.10.0
+  - Scroll to top button
+  - Netlify contact form support
+  - Use snake_case variable names
+  - Use nesting for variables
+  - Default attribution to opt-in
+  - Settable jumbotron background
+  - Auto hide navbar (no menu items ) with optional overwrite
   -
 
 ## Fixes since v0.10.0
-  -
+  - Recaptcha support
+  - Jumbotron corners
+  - 
 
 ---
 
