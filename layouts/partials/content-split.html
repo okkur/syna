@@ -8,7 +8,7 @@
     <div class="container py-5">
       <div class="row">
         <div class="col-md-3">
-          {{ if .Page.Params.SidebarTitle }}
+          {{ if .Page.Params.sidebar_title }}
             <div class="col-12 pb-3
               {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
                 {{- printf " text-%s" "dark" -}}
@@ -17,7 +17,7 @@
               {{- end -}}
             ">
               <h1>
-                {{- .Page.Params.SidebarTitle | markdownify -}}
+                {{- .Page.Params.sidebar_title | markdownify -}}
               </h1>
             </div>
           {{ end }}
@@ -28,7 +28,7 @@
               {{- printf " text-muted text-%s" "secondary" -}}
             {{- end -}}
           ">
-            {{- .Page.Params.Sidebar  | markdownify -}}
+            {{- .Page.Params.sidebar  | markdownify -}}
           </div>
         </div>
         <div class="col-md-9">

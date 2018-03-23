@@ -6,7 +6,7 @@
 {{ $bg := $itemf.background | default "light"}}
 
 
-<section {{ with $itemf.selflink }}id="{{ . }}"{{ end }}>
+<section {{ with $itemf.self_link }}id="{{ . }}"{{ end }}>
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">

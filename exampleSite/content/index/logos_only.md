@@ -5,7 +5,7 @@ date = "2017-09-09"
 lastmod = "2017-09-09"
 weight = 1010
 background = "dark"
-selfLink = "users"
+self_link = "users"
 
 #title = ""
 #subtitle = ""

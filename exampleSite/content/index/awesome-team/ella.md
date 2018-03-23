@@ -5,8 +5,8 @@
   image = "hugegopher.png"
   position = "Lead Gopherineer"
 
-  reportsTo = "CTO"
-  livesIn = "[Munich, Germany](https://www.google.com/maps/place/Munich,+Germany/)"
+  reports_to = "CTO"
+  lives_in = "[Munich, Germany](https://www.google.com/maps/place/Munich,+Germany/)"
   scope = [
     "UX for [Food Dashboard](#)",
     "Maintainer for [Goper Team A](#)",

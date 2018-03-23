@@ -2,7 +2,7 @@
 {{ "<!-- Logos -->" | safeHTML }}
 {{ $bg := $logos.background | default "white" }}
 
-<section {{ with $logos.selflink }}id="{{ . }}"{{ end }}>
+<section {{ with $logos.self_link }}id="{{ . }}"{{ end }}>
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">

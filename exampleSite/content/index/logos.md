@@ -5,7 +5,7 @@ date = "2017-09-09"
 lastmod = "2017-09-09"
 weight = 1000
 #background = ""
-selfLink = "tools"
+self_link = "tools"
 
 title = "Logo Fragment"
 subtitle = "Even linking is possible"

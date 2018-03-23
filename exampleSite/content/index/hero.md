@@ -11,8 +11,8 @@ title = "Syna Theme"
 subtitle = "Showcase your next project"
 header = "header.jpg"
 logo = "logo.svg"
-logoWidth = "500px" # optional - will default to image width
-#logoHeight = "150px" # optional - will default to image height
+logo_width = "500px" # optional - will default to image width
+#logo_height = "150px" # optional - will default to image height
 
 [[buttons]]
   text = "Button"

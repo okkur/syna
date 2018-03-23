@@ -15,7 +15,7 @@
           {{- printf " text-%s" "secondary" -}}
         {{- end -}}
       ">
-        {{ with $footer.logotitle }}
+        {{ with $footer.logo_title }}
           <h4>
             {{- . -}}
           </h4>
@@ -24,7 +24,7 @@
           <img src="{{ (printf "images/%s" $footer.logo) | relURL }}" class="img-fluid w-50" alt="{{ $footer.logotext }}">
         {{ else }}
           <div>
-            {{- $footer.logotext -}}
+            {{- $footer.logo_text -}}
           </div>
         {{ end }}
 
@@ -52,7 +52,7 @@
           {{- printf " text-%s" "secondary" -}}
         {{- end -}}
       ">
-        {{ with $footer.linktitle }}
+        {{ with $footer.link_title }}
           <h4>
             {{- . -}}
           </h4>
@@ -85,11 +85,6 @@
           {{- printf " text-%s" "secondary" -}}
         {{- end -}}
       ">
-        {{ with $footer.descriptiontitle }}
-          <h4>
-            {{- . -}}
-          </h4>
-        {{ end }}
         {{ with .self.Content }}
           <div>
             {{- . | markdownify -}}
