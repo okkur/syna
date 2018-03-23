@@ -6,9 +6,9 @@ subtitle = ""
 layout = "split"
 sidebar_title = "Sidebar"
 sidebar = """
-So much information
-Phone numbers
-Details
+So much information   
+Phone numbers  
+Details  
 Or even more
 """
 +++
