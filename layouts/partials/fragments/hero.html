@@ -18,8 +18,8 @@
   {{ with $hero.logo }}
     <div class="row justify-content-center align-items-start">
       <img class="overlay img-fluid" src="{{ (printf "images/%s" .) | relURL }}"
-        {{- if $hero.logoheight -}} height="{{ $hero.logoheight }}"{{- end -}}
-        {{- if $hero.logowidth -}} width="{{ $hero.logowidth }}"{{- end -}}
+        {{- if $hero.logo_height -}} height="{{ $hero.logo_height }}"{{- end -}}
+        {{- if $hero.logo_width -}} width="{{ $hero.logo_width }}"{{- end -}}
       ></img>
     </div>
     {{ with $hero.subtitle }}

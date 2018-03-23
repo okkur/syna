@@ -2,7 +2,7 @@
 {{ "<!-- Contact -->" | safeHTML }}
 {{ $bg := $contact.background | default "secondary" }}
 
-<section id="{{ $contact.selflink }}">
+<section id="{{ $contact.self_link }}">
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">
@@ -41,7 +41,7 @@
           {{- if $contact.netlify -}}
             " netlify
           {{- else -}}
-            " action="{{- $contact.posturl | default (printf "https://formspree.io/%s" $contact.email) -}}"
+            " action="{{- $contact.post_url | default (printf "https://formspree.io/%s" $contact.email) -}}"
           {{- end -}}>
             <div class="row py-3">
               <div class="col-md-6">

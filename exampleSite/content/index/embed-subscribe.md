@@ -5,8 +5,8 @@ date = "2017-10-07"
 lastmod = "2017-10-07"
 weight = 1050
 background = "light"
-selfLink = "contact"
-formName = "subscribe"
+self_link = "contact"
+form_name = "subscribe"
 
 #title = ""
 #subtitle  = ""

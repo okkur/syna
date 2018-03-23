@@ -5,7 +5,7 @@ date = "2017-10-04"
 lastmod = "2017-10-04"
 weight = 340
 #background = ""
-selfLink = "item-fragment-image-table-left"
+self_link = "item-fragment-image-table-left"
 align = "left"
 
 title = "Item Fragment Image Table Left"

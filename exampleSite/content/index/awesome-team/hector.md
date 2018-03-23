@@ -4,8 +4,7 @@
   joined = "2017-10-17"
   image = "tinygopher.png"
 
-  livesIn = "[Iceland](https://www.google.com/maps/place/Iceland/)"
-
+  lives_in = "[Iceland](https://www.google.com/maps/place/Iceland/)"
 
   [[icons]]
     icon = "fa-twitter"
