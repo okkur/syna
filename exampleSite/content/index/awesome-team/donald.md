@@ -5,7 +5,7 @@
   image = "tinygopher.png"
   position = "Gopherineer"
 
-  livesIn = "[Iceland](https://www.google.com/maps/place/Iceland/)"
+  lives_in = "[Iceland](https://www.google.com/maps/place/Iceland/)"
   scope = [
     "Gopherineering for various tasks",
     "Contributor for [Goper Team A](#)",

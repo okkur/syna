@@ -4,7 +4,7 @@
 {{ $ratio := $embed.ratio | default "4by3" }}
 {{ $size := $embed.size | default "75" }}
 
-<section {{ with $embed.selflink }}id="{{ . }}"{{ end }}>
+<section {{ with $embed.self_link }}id="{{ . }}"{{ end }}>
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">
@@ -52,7 +52,7 @@
             {{ if $embed.media }}
               {{- $embed.media | safeHTML -}}
             {{ else }}
-              <iframe class="embed-responsive-item" src="{{ $embed.mediasource }}" allowfullscreen></iframe>
+              <iframe class="embed-responsive-item" src="{{ $embed.media_source }}" allowfullscreen></iframe>
             {{ end }}
           </div>
         {{ end }}

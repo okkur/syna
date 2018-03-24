@@ -2,7 +2,7 @@
 {{ "<!-- Contact -->" | safeHTML }}
 {{ $bg := $contact.background | default "secondary" }}
 
-<section id="{{ $contact.selflink }}">
+<section id="{{ $contact.self_link }}">
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">
@@ -41,7 +41,7 @@
           {{- if $contact.netlify -}}
             " netlify
           {{- else -}}
-            " action="{{- $contact.posturl | default (printf "https://formspree.io/%s" $contact.email) -}}"
+            " action="{{- $contact.post_url | default (printf "https://formspree.io/%s" $contact.email) -}}"
           {{- end -}}>
             <div class="row py-3">
               <div class="col-md-6">
@@ -134,13 +134,20 @@
                   </div>
                 </noscript>
                 {{ with $.Site.Params.contact.captcha }}
-                    <div class="g-recaptcha" data-sitekey="{{ .sitekey }}" data-size="invisible" data-badge="inline" data-callback="onContactCaptcha"></div>
-                  <button
-                    class="btn btn-primary"
-                    type="submit"
-                    disabled>
-                    {{- $contact.button | default (i18n "contact.defaultButton") -}}
-                  </button>
+                  <div class="g-recaptcha-container">
+                    <span class="g-recaptcha-filler"></span>
+                    <button
+                      class="g-recaptcha btn btn-primary"
+                      type="submit"
+                      data-sitekey="{{ .sitekey }}"
+                      data-size="invisible"
+                      data-badge="inline"
+                      data-callback="onContactCaptcha"
+                      disabled>
+                      {{- $contact.button | default (i18n "contact.defaultButton") -}}
+                    </button>
+                    <span class="filler"></span>
+                  </div>
                 {{ else }}
                   <button
                     class="btn

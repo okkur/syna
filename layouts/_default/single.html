@@ -36,7 +36,7 @@
     {{ end }}
 
     {{ if and (not .Params.disabled) (eq .Params.fragment "contact") }}
-      {{ partial "fragments/contact.html" (dict "self" . ) }}
+      {{ partial "fragments/contact.html" (dict "Site" .Site "self" . ) }}
     {{ end }}
 
     {{ if and (not .Params.disabled) (in .Params.fragment "footer") }}

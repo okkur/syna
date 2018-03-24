@@ -5,7 +5,7 @@
 {{ "<!-- Member -->" | safeHTML }}
 {{ $bg := $memberf.background | default "light"}}
 
-<section {{ with $memberf.selflink }}id="{{ . }}"{{ end }}>
+<section {{ with $memberf.self_link }}id="{{ . }}"{{ end }}>
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">
@@ -76,12 +76,12 @@
                   {{- . | markdownify -}}
                 </h5>
               {{ end }}
-              {{ with $member.reportsTo }}
+              {{ with $member.reports_to }}
                 <h6 class="font-italic mb-1">
                   {{- i18n "member.reportsTo" }} {{ printf " %s" . | markdownify -}}
                 </h6>
                 {{ end }}
-              {{ with $member.livesIn }}
+              {{ with $member.lives_in }}
                 <h6 class="font-italic mb-1">
                   {{- i18n "member.livesIn" }} {{ printf " %s" . | markdownify -}}
                 </h6>

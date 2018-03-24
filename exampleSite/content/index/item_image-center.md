@@ -5,7 +5,7 @@ date = "2017-10-04"
 lastmod = "2017-10-04"
 weight = 350
 background = "secondary"
-selfLink = "item-fragment-image-center"
+self_link = "item-fragment-image-center"
 align = "center"
 
 title = "Item Fragment Image Center"

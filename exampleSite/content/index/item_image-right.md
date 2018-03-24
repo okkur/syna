@@ -5,7 +5,7 @@ date = "2017-10-04"
 lastmod = "2017-10-04"
 weight = 320
 background = "dark"
-selfLink = "item-fragment-image-right"
+self_link = "item-fragment-image-right"
 align = "right"
 
 title = "Item Fragment Image Right"

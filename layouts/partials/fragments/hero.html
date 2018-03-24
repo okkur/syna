@@ -4,9 +4,13 @@
 
 <header>
   {{ with $hero.header }}
-    <div class="jumbotron text-center header-image mb-0">
+    <div class="jumbotron text-center header-image mb-0
+     {{- printf " bg-%s" $bg -}}
+    ">
   {{ else }}
-    <div class="jumbotron text-center mb-0">
+    <div class="jumbotron text-center mb-0
+     {{- printf " bg-%s" $bg -}}
+    ">
   {{ end }}
   {{ if $hero.particles }}
     <div id="particles-js"></div>
@@ -14,8 +18,8 @@
   {{ with $hero.logo }}
     <div class="row justify-content-center align-items-start">
       <img class="overlay img-fluid" src="{{ (printf "images/%s" .) | relURL }}"
-        {{- if $hero.logoheight -}} height="{{ $hero.logoheight }}"{{- end -}}
-        {{- if $hero.logowidth -}} width="{{ $hero.logowidth }}"{{- end -}}
+        {{- if $hero.logo_height -}} height="{{ $hero.logo_height }}"{{- end -}}
+        {{- if $hero.logo_width -}} width="{{ $hero.logo_width }}"{{- end -}}
       ></img>
     </div>
     {{ with $hero.subtitle }}
@@ -47,7 +51,7 @@
     {{ end }}
     {{ with $hero.subtitle }}
     <div class="row justify-content-center align-items-start">
-      <p class="overlay lead
+      <div class="overlay lead
         {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
           {{- printf " text-%s" "dark" -}}
         {{- else -}}
@@ -55,7 +59,7 @@
         {{- end -}}
       ">
         {{- . | markdownify -}}
-      </p>
+      </div>
     </div>
     {{ end }}
   {{ end }}

@@ -5,7 +5,7 @@ date = "2016-09-07"
 lastmod = "2017-09-07"
 weight = 720
 background = "primary"
-selfLink = "buttons-fragment"
+self_link = "buttons-fragment"
 
 title = "Buttons Fragment"
 subtitle = "Using primary background"

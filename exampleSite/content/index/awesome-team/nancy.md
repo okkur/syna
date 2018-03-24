@@ -5,14 +5,13 @@
   image = "tinygopher.png"
   position = "Gopherineer"
 
-  reportsTo = "Lead Gophineer"
-  livesIn = "[Iceland](https://www.google.com/maps/place/Iceland/)"
+  reports_to = "Lead Gophineer"
+  lives_in = "[Iceland](https://www.google.com/maps/place/Iceland/)"
   scope = [
     "Gopherineering for various tasks",
     "Contributor for [Goper Team A](#)",
     "Gopher Community Member"
   ]
-
 
   [[icons]]
     icon = "fa-twitter"
@@ -24,7 +23,7 @@
     icon = "fa-linkedin-in"
     link = "#"
 +++
-  
+
 Really tiny Gopher
 
 Some more text to showcase the capabilities:

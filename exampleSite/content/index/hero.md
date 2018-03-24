@@ -4,15 +4,15 @@ fragment = "hero"
 date = "2016-09-07"
 lastmod = "2017-09-07"
 weight = 50
-#background = "dark" # can influence the text color
+background = "dark" # can influence the text color
 particles = true
 
 title = "Syna Theme"
 subtitle = "Showcase your next project"
 header = "header.jpg"
 logo = "logo.svg"
-logoWidth = "500px" # optional - will default to image width
-#logoHeight = "150px" # optional - will default to image height
+logo_width = "500px" # optional - will default to image width
+#logo_height = "150px" # optional - will default to image height
 
 [[buttons]]
   text = "Button"

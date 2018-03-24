@@ -2,7 +2,7 @@
 {{ "<!-- Buttons -->" | safeHTML }}
 {{ $bg := $buttons.background | default "white" }}
 
-<section {{ with $buttons.selflink }}id="{{ . }}"{{ end }}>
+<section {{ with $buttons.self_link }}id="{{ . }}"{{ end }}>
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">

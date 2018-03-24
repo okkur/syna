@@ -5,7 +5,7 @@ date = "2017-10-04"
 lastmod = "2017-10-04"
 weight = 420
 background = "dark"
-selfLink = "item-fragment-button-center"
+self_link = "item-fragment-button-center"
 align = "center"
 
 title = "Item Fragment Button Center"
