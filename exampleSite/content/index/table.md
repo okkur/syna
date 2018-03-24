@@ -21,9 +21,11 @@ subtitle= "Tables are responsive by default"
 
   [[header.values]]
     text = "Header 3"
+    hide_on_mobile = true
 
   [[header.values]]
     text = "Header 4"
+    hide_on_mobile = true
 
   [[header.values]]
     text = "Header 5"
