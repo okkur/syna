@@ -72,6 +72,13 @@
   margin-bottom: 10px;
 }
 
+
+@media screen and (max-width: 767px) {
+  .hide-on-mobile {
+    display: none;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .grecaptcha-badge {
     margin-bottom: 0;

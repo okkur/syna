@@ -56,6 +56,9 @@
                           {{- if .center -}}
                             {{- printf " text-center" -}}
                           {{- end -}}
+                          {{- if .hide_on_mobile -}}
+                            {{- print " hide-on-mobile" }}
+                          {{- end -}}
                         ">
                           {{- .text | markdownify -}}
                         </th>
@@ -67,12 +70,18 @@
                     {{ range $table.rows }}
                       {{ $.Scratch.Set "col" 0 }}
                       <tr>
-                        {{ range .values }}
+                        {{ range $i, $s := .values }}
                           {{ if .header }}
                           <th class="align-middle
+                            {{- if (index $table.header.values $i).hide_on_mobile -}}
+                              {{- print " hide-on-mobile" }}
+                            {{- end -}}
                           ">{{ .header | markdownify }}</th>
                           {{ else if .button }}
                             <td class="align-middle
+                              {{- if (index $table.header.values $i).hide_on_mobile -}}
+                                {{- print " hide-on-mobile" }}
+                              {{- end -}}
                             ">
                               <a class="btn
                               {{ if hasPrefix .link "#" }} anchor{{ end }}
@@ -87,6 +96,9 @@
                             {{- if .center -}}
                               {{- printf " text-center" -}}
                             {{- end -}}
+                            {{- if (index $table.header.values $i).hide_on_mobile -}}
+                              {{- print " hide-on-mobile" }}
+                            {{- end -}}
                           ">
                             <a href="{{ .links }}">
                               <i class="fas {{ .icon }} fa-2x"></i>
@@ -96,6 +108,9 @@
                           <td class="align-middle
                             {{- if .center -}}
                               {{- printf " text-center" -}}
+                            {{- end -}}
+                            {{- if (index $table.header.values $i).hide_on_mobile -}}
+                              {{- print " hide-on-mobile" }}
                             {{- end -}}
                           ">{{ .text | markdownify }}</td>
                         {{ end }}
