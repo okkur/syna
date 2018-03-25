@@ -47,5 +47,9 @@
       {{ partial "fragments/buttons.html" (dict "self" . ) }}
     {{ end }}
 
+    {{ if and (not .Params.disabled) (in .Params.fragment "custom") }}
+      {{ partial (print "fragments/" .Params.fragment_name ".html") (dict "self" .) }}
+    {{ end }}
+
   {{ end }}
 {{ end }}
