@@ -1,5 +1,6 @@
-<img src='https://github.com/okkur/syna/blob/master/exampleSite/static/images/logo.svg' width='500'/>
-Open Source Theme for Hugo Static Site Generator based on Bootstrap 4
+<img src='https://github.com/okkur/syna/blob/master/static/images/logo.svg' width='500'/>
+
+Highly customizable open source theme for Hugo based static websites
 
  [![state](https://img.shields.io/badge/state-beta-blue.svg)]() [![release](https://img.shields.io/github/release/okkur/syna.svg)](https://github.com/okkur/syna/releases) [![license](https://img.shields.io/github/license/okkur/syna.svg)](LICENSE)
 

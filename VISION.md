@@ -3,7 +3,7 @@ Syna Theme is a community project. From our current viewpoint, its role is:
 This project thrives to be the goto theme for websites using Hugo.
 
 ## Core Concept
-Example Project's core concept to showcase how, why it does what it does.
+Built a modular theme to be easily extendible with a default library of fragments available.
 
 ## General Aim
 Syna provides a generic solution to easily get up and running, but doesn't consider hugely specialized solutions to be integrated.

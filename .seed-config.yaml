@@ -3,17 +3,17 @@ project:
   state: "beta"
   image: "https://github.com/okkur/syna/blob/master/static/images/logo.svg"
   website: ""
-  oneLiner: "Open Source Theme for Hugo Static Site Generator based on Bootstrap 4"
+  oneLiner: "Highly customizable open source theme for Hugo based static websites"
   description: |
     Base your next personal, project or commercial website on Syna.  
     Highly customizable with modular per-page fragments.
-  version: "v0.1.0"
+  version: "v0.10.0"
 
 vision:
   type: "community"
   overview: |
     This project thrives to be the goto theme for websites using Hugo.
-  concept: "Example Project's core concept to showcase how, why it does what it does."
+  concept: "Built a modular theme to be easily extendible with a default library of fragments available."
   aim: "Syna provides a generic solution to easily get up and running, but doesn't consider hugely specialized solutions to be integrated."
 
 supportLinks:
