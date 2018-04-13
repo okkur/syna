@@ -27,19 +27,7 @@
   </title>
 
   {{ "<!-- Bootstrap Style -->" | safeHTML }}
-  <link href="{{ "css/bootstrap-4.beta/bootstrap.min.css" | relURL }}" rel="stylesheet">
-  <link href="{{ "css/bootstrap-4.beta/bootstrap-grid.min.css" | relURL }}" rel="stylesheet">
-  <link href="{{ "css/bootstrap-4.beta/bootstrap-reboot.min.css" | relURL }}" rel="stylesheet">
-
-  {{ if not .Site.Params.contact.disabled }}
-    {{ "<!-- Form Style -->" | safeHTML }}
-    <link href="{{ "css/form.min.css" | relURL }}" rel="stylesheet" type="text/css">
-  {{ end }}
-
-  {{ "<!-- Theme Style -->" | safeHTML }}
-  <link href="{{ "css/syna.css" | relURL }}" rel="stylesheet" type="text/css">
-  <link href="{{ "css/overwrite-color.min.css" | relURL }}" rel="stylesheet" type="text/css">
-  <link href="{{ "css/overwrite-reboot.min.css" | relURL }}" rel="stylesheet" type="text/css">
+  <link href="{{ "css/main.css" | relURL }}" rel="stylesheet">
 
   {{ with .Site.Params.favicon}}
     <link rel="shortcut icon" type="image/x-icon" href="{{ . | relURL }}">
