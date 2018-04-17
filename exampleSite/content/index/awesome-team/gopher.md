@@ -13,10 +13,10 @@
     "Gopher Community Member"
   ]
 
-  [[member.icons]]
+  [[icons]]
     icon = "fa-twitter"
     link = "#"
-  [[member.icons]]
+  [[icons]]
     icon = "fa-linkedin-in"
     link = "#"
 +++
