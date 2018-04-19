@@ -1,4 +1,4 @@
-<img src='https://github.com/okkur/syna/blob/master/static/images/logo.svg' width='500'/>
+<img src='https://github.com/okkur/syna/blob/master/exampleSite/static/images/logo.svg' width='500'/>
 
 Highly customizable open source theme for Hugo based static websites
 
