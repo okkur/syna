@@ -42,9 +42,9 @@ googleAnalytics = ""
 
   # Piwik tracking
   [params.analytics.piwik]
-    url = "https://stats.example.com"
-    id = "42"
-    domain = "www.example.com" # Track subdomains via "*.example.com"
+    url = "https://use.okkur.net"
+    id = "13"
+    domain = "syna-demo.okkur.io" # Track subdomains via "*.example.com"
     # Optional hash for integrity check
     #hash = "sha512-RfeD0pacGTqy9m7U6PgehQfS4cc7SIt+e+P+H5e848kEvB/RW84CUGO3O4O3LNbxjevym6KPUZ8muPsMrI8WIw=="
 
