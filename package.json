@@ -1,7 +1,7 @@
 {
   "name": "syna",
   "version": "0.8.0",
-  "description": "Open Source Theme for Hugo Static Site Generator based on Bootstrap 4",
+  "description": "Highly customizable open source theme for Hugo based static websites",
   "main": "static-main",
   "repository": "git@github.com:okkur/syna.git",
   "author": "Michael Grosser (stp-ip)",
