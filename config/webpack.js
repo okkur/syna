@@ -1,8 +1,8 @@
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const extractSass = new MiniCssExtractPlugin({
-  filename: "css/[name].css",
-  chunkFilename: "[id].css"
+  filename: '[name].css',
+  chunkFilename: '[id].css'
 });
 
 const sassLoader = {
@@ -10,15 +10,26 @@ const sassLoader = {
   use: [
     MiniCssExtractPlugin.loader,
     {
-      loader: "css-loader"
+      loader: 'css-loader'
     },
     {
-      loader: "sass-loader"
+      loader: 'sass-loader'
     }
   ],
 };
 
+const jsLoader = {
+  test: /\.js$/,
+  exclude: /node_modules/,
+  use: {
+    loader: 'babel-loader',
+    options: {
+      presets: ['env'],
+    },
+  },
+};
+
 module.exports = {
-  rules: [sassLoader],
+  rules: [sassLoader, jsLoader],
   plugins: [extractSass],
 };

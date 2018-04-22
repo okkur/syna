@@ -1,3 +1,4 @@
+import 'particles.js';
 /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
 particlesJS("particles-js", {
   "particles": {

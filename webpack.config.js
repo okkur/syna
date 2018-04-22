@@ -6,10 +6,14 @@ if (process.env === 'production') {
 }
 
 module.exports = {
-  entry: ['./static-main/styles/index.scss'],
+  entry: ['./static-main/js/index.js'],
   output: {
     path: path.resolve('./static/'),
-    filename: '[name].min.js',
+    filename: 'main.js',
+  },
+  resolve: {
+    extensions: ['.js', '.scss'],
+    modules: [path.join(process.cwd(), 'src'), 'node_modules'],
   },
   mode: process.env === 'production' ? 'production' : 'development',
   module: {

@@ -10,6 +10,9 @@
     "start": "webpack --watch --progress"
   },
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
     "concurrently": "^3.5.1",
     "css-loader": "^0.28.11",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
@@ -21,6 +24,10 @@
     "webpack-cli": "^2.0.14"
   },
   "dependencies": {
-    "bootstrap": "^4.1.0"
+    "@fortawesome/fontawesome": "^1.1.5",
+    "bootstrap": "^4.1.0",
+    "jquery": "^3.3.1",
+    "particles.js": "^2.0.0",
+    "popper.js": "^1.14.3"
   }
 }

@@ -1,26 +1,7 @@
-{{ "<!-- jQuery -->" | safeHTML }}
-<script src="{{ "js/jquery-3.2.1/jquery.min.js" | relURL }}"></script>
-
-{{ "<!-- Bootstrap Addons -->" | safeHTML }}
-<script src="{{ "js/popper-11.1.0/popper.min.js" | relURL }}"></script>
-
-{{ "<!-- Bootstrap Core -->" | safeHTML }}
-<script src="{{ "js/bootstrap-4.beta/bootstrap.min.js" | relURL }}"></script>
-
-{{ if not .Site.Params.fontawesome.disabled }}
-  {{ "<!-- Custom Fontawesome -->" | safeHTML }}
-  <script src="{{ "js/fontawesome-5.0.0/fontawesome-all.min.js" | relURL }}"></script>
-{{ end }}
-
-{{ if not .Site.Data.index.hero.image }}
-  {{ "<!-- Particles -->" | safeHTML }}
-  <script src="{{ "js/particles-2.0/particles.min.js" | relURL }}"></script>
-  <script src="{{ "js/particles-2.0/config.js" | relURL }}"></script>
-{{ end }}
 
 {{ if not .Site.Params.contact.disabled }}
   {{ "<!-- Form Validator -->" | safeHTML }}
-  <script src="{{ "js/jquery-form-validator-2.3.77/jquery.form-validator.min.js" | relURL }}"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
 {{ end }}
 
 {{ if .Site.Params.contact.captcha }}
@@ -28,7 +9,7 @@
 {{ end }}
 
 {{ "<!-- Theme Code -->" | safeHTML }}
-<script src="{{ "js/syna.js" | relURL }}"></script>
+<script src="{{ "main.js" | relURL }}"></script>
 
 {{ template "_internal/google_analytics_async.html" . }}
 
