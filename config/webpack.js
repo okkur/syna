@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const extractSass = new MiniCssExtractPlugin({
@@ -31,5 +32,5 @@ const jsLoader = {
 
 module.exports = {
   rules: [sassLoader, jsLoader],
-  plugins: [extractSass],
+  plugins: [extractSass, ],
 };

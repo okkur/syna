@@ -1,15 +1,9 @@
-
-{{ if not .Site.Params.contact.disabled }}
-  {{ "<!-- Form Validator -->" | safeHTML }}
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
-{{ end }}
+{{ "<!-- Theme Code -->" | safeHTML }}
+<script src="{{ "main.js" | relURL }}"></script>
 
 {{ if .Site.Params.contact.captcha }}
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 {{ end }}
-
-{{ "<!-- Theme Code -->" | safeHTML }}
-<script src="{{ "main.js" | relURL }}"></script>
 
 {{ template "_internal/google_analytics_async.html" . }}
 

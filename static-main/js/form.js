@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import 'jquery-form-validator';
 
 $(function() {
   if ($('.g-recaptcha')) {
