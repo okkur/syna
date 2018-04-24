@@ -1,0 +1,98 @@
+.header-image {
+  background: url('/images/header.jpg');
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: bottom center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  border-radius: 0rem;
+}
+
+.jumbotron {
+  border-radius: 0rem !important;
+}
+
+.overlay {
+  position: relative;
+  z-index: 100;
+}
+
+#particles-js {
+  position: absolute;
+  width: 100%;
+  margin-left: -2rem;
+  height: 550px;
+  margin-top: -4rem;
+  overflow: hidden;
+}
+
+.scroll-to-top {
+  position: fixed;
+  right: 32px;
+  bottom: 32px;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #00838f;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 999;
+}
+
+.scroll-to-top.has-font-icon {
+  font-size: 24px;
+}
+
+.scroll-to-top.d-none {
+  display: flex !important;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.grecaptcha-badge {
+  margin: -1.5rem 0 1rem;
+}
+
+.g-recaptcha-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.g-recaptcha-container .filler {
+  display: none;
+}
+
+.generic-success, .generic-error, .captcha-error {
+  margin-bottom: 10px;
+}
+
+
+@media screen and (max-width: 767px) {
+  .hide-on-mobile {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .grecaptcha-badge {
+    margin-bottom: 0;
+  }
+
+  .g-recaptcha-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .g-recaptcha-container .filler, .g-recaptcha-filler {
+    display: block;
+    width: 256px;
+  }
+}
