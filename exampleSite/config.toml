@@ -57,10 +57,6 @@ googleAnalytics = ""
   [params.fontawesome]
     disabled = false
 
-  # Optional google captcha
-  #[params.contact.captcha]
-  #  sitekey = ""
-
   # [params.navbar]
   #   Force navbar to be displayed even if no menu items are available
   #   force_display = true

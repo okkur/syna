@@ -133,7 +133,7 @@
                     {{- i18n "contact.defaultJsError" }} {{ $contact.email -}}.
                   </div>
                 </noscript>
-                {{ with $.Site.Params.contact.captcha }}
+                {{ with $contact.recaptcha }}
                   <div class="g-recaptcha-container">
                     <span class="g-recaptcha-filler"></span>
                     <button
@@ -157,8 +157,7 @@
                         {{- printf " btn-%s" "primary" -}}
                       {{- end -}}
                     "
-                    type="submit"
-                    disabled>
+                    type="submit">
                     {{- $contact.button | default (i18n "contact.defaultButton") -}}
                   </button>
                 {{ end }}
@@ -179,3 +178,7 @@
     </div>
   </div>
 </section>
+
+{{ if $contact.recaptcha }}
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+{{ end }}

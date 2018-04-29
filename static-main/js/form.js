@@ -13,13 +13,13 @@ if ($.validate) {
     validateOnEvent: true,
     onError: function($form) {
       $('form[id=' + $form.attr('id') +'] .generic-error').removeClass('d-none');
-  },
+    },
     onSuccess: function($form) {
       if (selfCheck != "checkSelf") {
         $('form[id=' + $form.attr('id') +'] .generic-error').removeClass('d-none');
         return false;
       }
-      if ($('.g-recaptcha').length == 0) {
+      if ($('.g-recaptcha').length === 0) {
         $.post($('#' + $form.attr('id')).attr('action'), $('#' + $form.attr('id')).serialize(), function(){
         }, 'json')
         .fail(function(){
@@ -28,8 +28,8 @@ if ($.validate) {
         .done(function(){
           $('form[id=' + $form.attr('id') +'] .generic-success').removeClass('d-none');
         });
-      } else if (typeof grecaptcha != "undefined") {
-        if (grecaptcha.getResponse() != "") {
+      } else if (typeof grecaptcha !== "undefined") {
+        if (grecaptcha.getResponse() !== "") {
           $.post($('#' + $form.attr('id')).attr('action'), $('#' + $form.attr('id')).serialize(), function(){
             $('form[id=' + $form.attr('id') +'] .success').removeClass('d-none');
           }, 'json')
@@ -48,9 +48,9 @@ if ($.validate) {
   });
 }
 
-
 function checkReCaptcha() {
-  if (typeof grecaptcha === "undefined") {
+  if (document.querySelector('.g-recaptcha-container') && typeof grecaptcha === "undefined") {
+    debugger
     $('.captcha-error').removeClass('d-none');
     setTimeout(checkReCaptcha, 200);
   } else {

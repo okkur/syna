@@ -1,10 +1,6 @@
 {{ "<!-- Theme Code -->" | safeHTML }}
 <script src="{{ "main.js" | relURL }}"></script>
 
-{{ if .Site.Params.contact.captcha }}
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-{{ end }}
-
 {{ template "_internal/google_analytics_async.html" . }}
 
 {{ if .Site.Params.analytics.piwik }}
