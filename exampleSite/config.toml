@@ -115,13 +115,13 @@ googleAnalytics = ""
   name = "Tiny Link"
   weight = 30
 
-[[menu.footerSocial]]
+[[menu.footer_social]]
   weight = 20
   name = "facebook"
   pre = "fa-facebook-f"
   url = "#"
 
-[[menu.footerSocial]]
+[[menu.footer_social]]
   weight = 30
   name = "linkedin"
   pre = "fa-linkedin-in"
