@@ -1,5 +1,6 @@
-{{ "<!-- Legal Footer section -->" | safeHTML }}
-{{ $bg := .Site.Params.style.backgroundFooter | default "secondary"}}
+{{ $copyright := .self.Params }}
+{{ "<!-- Copyright -->" | safeHTML }}
+{{ $bg := $copyright.backgroundFooter | default "secondary"}}
 
 <footer class="overlay container-fluid
   {{- printf " bg-%s" $bg -}}
@@ -15,7 +16,7 @@
           {{- end -}}
         ">
           <div class="row mr-lg-auto">
-            {{ with .Site.Copyright }}
+            {{ with $copyright.copyright }}
               <div class="col-auto">
                 {{- . | markdownify -}}
               </div>
@@ -24,13 +25,13 @@
                 {{- i18n "footerLegal.copyright" -}} &nbsp;{{ now.Format "2006"}}
               </div>
               <div class="col-auto px-0">
-                {{- printf  " %s %s" (i18n "footerLegal.by") .Site.Params.name -}}
+                {{- printf " %s %s" (i18n "footerLegal.by") $.Site.Params.name -}}
               </div>
             {{ end }}
           </div>
         </div>
       </div>
-      {{- if eq .Site.Params.attribution  "true" -}}
+      {{- if eq $copyright.attribution true -}}
         <div class="col-auto mx-auto">
           <div class="row navbar-text text-center
             {{- if eq $bg "dark" -}}
@@ -46,11 +47,11 @@
           </div>
         </div>
       {{ end }}
-      {{ if .Site.Menus.legalfooter }}
+      {{ if $copyright.menus }}
         <div class="col-md">
           <div class="row my-2 justify-content-center">
             <ul class="nav ml-lg-auto">
-              {{ range sort .Site.Menus.legalfooter }}
+              {{ range sort $copyright.menus }}
                 <li class="nav-item">
                   <a class="nav-link py-0
                     {{- if eq $bg "dark" -}}
@@ -58,11 +59,11 @@
                     {{- else -}}
                       {{- printf " text-%s" "dark" -}}
                     {{- end -}}
-                  " href="{{ .URL | relLangURL }}"
-                    {{ if hasPrefix .URL "#" }}
-                      class="anchor"
-                    {{ end }}>
-                      {{- .Name -}}
+                  " href="{{ .url | relLangURL }}"
+                  {{ if hasPrefix .url "#" }}
+                    class="anchor"
+                  {{ end }}>
+                    {{- .name -}}
                   </a>
                 </li>
               {{ end }}

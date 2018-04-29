@@ -43,6 +43,10 @@
       {{ partial "fragments/footer.html" (dict "menus" $.Site.Menus "self" . ) }}
     {{ end }}
 
+    {{ if and (not .Params.disabled) (eq .Params.fragment "copyright") }}
+      {{ partial "fragments/copyright.html" (dict "Site" .Site "self" . ) }}
+    {{ end }}
+
     {{ if and (not .Params.disabled) (eq .Params.fragment "buttons") }}
       {{ partial "fragments/buttons.html" (dict "self" . ) }}
     {{ end }}
