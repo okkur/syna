@@ -9691,9 +9691,11 @@ div.form-error ul li {
 
 #particles-js {
   position: absolute;
-  width: 90%;
+  width: 100%;
+  margin-left: -2rem;
   height: 550px;
-  margin-top: -4rem; }
+  margin-top: -4rem;
+  overflow: hidden; }
 
 .scroll-to-top {
   position: fixed;
