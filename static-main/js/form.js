@@ -50,7 +50,6 @@ if ($.validate) {
 
 function checkReCaptcha() {
   if (document.querySelector('.g-recaptcha-container') && typeof grecaptcha === "undefined") {
-    debugger
     $('.captcha-error').removeClass('d-none');
     setTimeout(checkReCaptcha, 200);
   } else {
