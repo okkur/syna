@@ -1,4 +1,5 @@
 {{ $copyright := .self.Params }}
+{{ $menus := .menus }}
 {{ "<!-- Copyright -->" | safeHTML }}
 {{ $bg := $copyright.backgroundFooter | default "secondary"}}
 
@@ -47,11 +48,11 @@
           </div>
         </div>
       {{ end }}
-      {{ if $copyright.menus }}
+      {{ if $menus.copyright_footer }}
         <div class="col-md">
           <div class="row my-2 justify-content-center">
             <ul class="nav ml-lg-auto">
-              {{ range sort $copyright.menus }}
+              {{ range sort $menus.copyright_footer }}
                 <li class="nav-item">
                   <a class="nav-link py-0
                     {{- if eq $bg "dark" -}}
@@ -59,11 +60,11 @@
                     {{- else -}}
                       {{- printf " text-%s" "dark" -}}
                     {{- end -}}
-                  " href="{{ .url | relLangURL }}"
-                  {{ if hasPrefix .url "#" }}
+                  " href="{{ .URL | relLangURL }}"
+                  {{ if hasPrefix .URL "#" }}
                     class="anchor"
                   {{ end }}>
-                    {{- .name -}}
+                    {{- .Name -}}
                   </a>
                 </li>
               {{ end }}

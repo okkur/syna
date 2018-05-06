@@ -100,6 +100,16 @@ googleAnalytics = ""
   name = "Tiny Link"
   weight = 30
 
+[[menu.copyright_footer]]
+  url = "/about"
+  name = "About Us"
+  weight = 10
+
+[[menu.copyright_footer]]
+  url = "#"
+  name = "Another Link"
+  weight = 30
+
 [[menu.footer_social]]
   weight = 20
   name = "facebook"

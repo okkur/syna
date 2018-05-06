@@ -44,7 +44,7 @@
     {{ end }}
 
     {{ if and (not .Params.disabled) (eq .Params.fragment "copyright") }}
-      {{ partial "fragments/copyright.html" (dict "Site" .Site "self" . ) }}
+      {{ partial "fragments/copyright.html" (dict "menus" $.Site.Menus "Site" .Site "self" . ) }}
     {{ end }}
 
     {{ if and (not .Params.disabled) (eq .Params.fragment "buttons") }}
