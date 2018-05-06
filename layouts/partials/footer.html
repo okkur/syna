@@ -1,5 +1,5 @@
 {{ "<!-- Legal Footer section -->" | safeHTML }}
-{{ $bg := .Site.Params.style.backgroundFooter | default "secondary"}}
+{{ $bg := .Site.Params.style.background_footer | default "secondary"}}
 
 <footer class="overlay container-fluid
   {{- printf " bg-%s" $bg -}}
@@ -46,11 +46,11 @@
           </div>
         </div>
       {{ end }}
-      {{ if .Site.Menus.legalfooter }}
+      {{ if .Site.Menus.legal_footer }}
         <div class="col-md">
           <div class="row my-2 justify-content-center">
             <ul class="nav ml-lg-auto">
-              {{ range sort .Site.Menus.legalfooter }}
+              {{ range sort .Site.Menus.legal_footer }}
                 <li class="nav-item">
                   <a class="nav-link py-0
                     {{- if eq $bg "dark" -}}
