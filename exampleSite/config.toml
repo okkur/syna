@@ -56,10 +56,6 @@ googleAnalytics = ""
   [params.fontawesome]
     disabled = false
 
-  # Optional google captcha
-  #[params.contact.captcha]
-  #  sitekey = ""
-
   # [params.navbar]
   #   Force navbar to be displayed even if no menu items are available
   #   force_display = true
@@ -104,13 +100,13 @@ googleAnalytics = ""
   name = "Tiny Link"
   weight = 30
 
-[[menu.footerSocial]]
+[[menu.footer_social]]
   weight = 20
   name = "facebook"
   pre = "fa-facebook-f"
   url = "#"
 
-[[menu.footerSocial]]
+[[menu.footer_social]]
   weight = 30
   name = "linkedin"
   pre = "fa-linkedin-in"
