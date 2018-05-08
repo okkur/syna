@@ -44,6 +44,7 @@
         {{ $tmp_full.Scratch.Set "image" .RelPermalink }}
       {{ end }}
   {{ end }}
+      
   {{ range $hero.logo }}
     <div class="row justify-content-center align-items-start">
       <img class="overlay img-fluid" src="{{ $tmp_full.Scratch.Get "image" | relURL }}"
