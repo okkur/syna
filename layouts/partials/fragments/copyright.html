@@ -1,7 +1,7 @@
 {{ $copyright := .self.Params }}
 {{ $menus := .menus }}
 {{ "<!-- Copyright -->" | safeHTML }}
-{{ $bg := $copyright.backgroundFooter | default "secondary"}}
+{{ $bg := $copyright.background | default "secondary"}}
 
 <footer class="overlay container-fluid
   {{- printf " bg-%s" $bg -}}
