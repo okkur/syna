@@ -52,11 +52,11 @@
                       name="name"
                       class="form-control"
                       type="text"
+                      data-validation
                       data-validation-error-msg="{{ .error | default (i18n "contact.defaultNameError") }}"
-                      data-validation-error-msg-container="#name-error"
                       placeholder="{{ with .text }}{{ . | markdownify }}{{ end }}"
                       required>
-                    <div class="px-2" id="name-error"></div>
+                    <div class="px-2" data-error id="name-error"></div>
                   </div>
                 {{ end }}
                 {{ with $contact.fields.email }}
@@ -68,10 +68,9 @@
                       type="text"
                       data-validation="email"
                       data-validation-error-msg="{{ .error | default (i18n "contact.defaultEmailError") }}"
-                      data-validation-error-msg-container="#email-error"
                       placeholder="{{ with .text }}{{ . | markdownify }}{{ end }}"
                       required>
-                    <div class="px-2" id="email-error"></div>
+                    <div class="px-2" data-error id="email-error"></div>
                   </div>
                 {{ end }}
                 {{ with $contact.fields.phone }}
@@ -81,13 +80,11 @@
                       name="phone"
                       class="form-control"
                       type="text"
-                      data-validation="custom"
-                      data-validation-regexp="^([0-9,\+]+)$"
-                      data-validation-optional="true"
+                      data-validation="regex"
+                      data-validation-regex="^([0-9,\+]+)$"
                       data-validation-error-msg="{{ .error | default (i18n "contact.defaultPhoneError") }}"
-                      data-validation-error-msg-container="#phone-error"
                       placeholder="{{ with .text }}{{ . | markdownify }}{{ end }}">
-                    <div class="px-2" id="phone-error"></div>
+                    <div class="px-2" data-error id="phone-error"></div>
                   </div>
                 {{ end }}
               </div>
@@ -99,14 +96,12 @@
                       name="message"
                       class="form-control text-dark"
                       type="text"
-                      data-validation="length"
-                      data-validation-length="min1"
+                      data-validation
                       data-validation-error-msg="{{ .error | default (i18n "contact.defaultButton") }}"
-                      data-validation-error-msg-container="#message-error"
                       placeholder="{{ with .text }}{{ . | markdownify }}{{ end }}"
                       rows="4"
                       required></textarea>
-                    <div class="px-2" id="message-error"></div>
+                    <div class="px-2" data-error id="message-error"></div>
                   </div>
                 {{ end }}
               </div>
