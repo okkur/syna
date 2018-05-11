@@ -19,20 +19,25 @@
     footer fragment, the local one is rendered.
     */}}
   {{ $global := .Site.GetPage "page" "global" }}
-  {{ $global_fragments := $global.Resources.ByType "page" }}
+  {{ $.Scratch.Delete "global_fragments" }}
+  {{ if $global }}
+    {{ $.Scratch.Set "global_fragments" ($global.Resources.ByType "page") }}
+  {{ end }}
   {{ $local_fragments := .Resources.ByType "page" }}
 
   {{ $.Scratch.Delete "fragments" }}
   {{ range $local_fragments }}
     {{ $.Scratch.Add "fragments" (slice .) }}
   {{ end }}
-  {{ range $global_fragments }}
-    {{ if not (where ($.Scratch.Get "fragments") ".Name" .Name) }}
-      {{ $.Scratch.Add "fragments" (slice .) }}
+  {{ if and ($.Scratch.Get "global_fragments") ($.Scratch.Get "fragments") }}
+    {{ range ($.Scratch.Get "global_fragments") }}
+      {{ if not (where ($.Scratch.Get "fragments") ".Name" .Name) }}
+        {{ $.Scratch.Add "fragments" (slice .) }}
+      {{ end }}
     {{ end }}
   {{ end }}
 
-  {{ range sort ($.Scratch.Get "fragments") "Params.weight" }}
+  {{ range sort ($.Scratch.Get "fragments" | default slice) "Params.weight" }}
     {{ if and (not .Params.disabled) (isset .Params "fragment") (not (eq .Params.fragment "hero")) }}
       {{ partial (print "fragments/" .Params.fragment ".html") (dict "menus" $.Site.Menus "Site" $.Site "resources" $.Resources "self" .) }}
     {{ end }}
