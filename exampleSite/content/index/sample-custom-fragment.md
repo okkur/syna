@@ -1,6 +1,5 @@
 +++
-fragment = "custom"
-fragment_name = "sample-custom-fragment"
+fragment = "sample-custom-fragment"
 #disabled = false
 date = "2017-09-09"
 lastmod = "2017-09-09"
