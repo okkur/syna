@@ -27,11 +27,11 @@
   {{ end }}
   {{ $local_fragments := .Resources.ByType "page" }}
 
-  {{ $.Scratch.Delete "fragments" }}
+  {{ $.Scratch.Set "fragments" slice }}
   {{ range $local_fragments }}
     {{ $.Scratch.Add "fragments" (slice .) }}
   {{ end }}
-  {{ if and ($.Scratch.Get "global_fragments") ($.Scratch.Get "fragments") }}
+  {{ if $.Scratch.Get "global_fragments" }}
     {{ range ($.Scratch.Get "global_fragments") }}
       {{ if not (where ($.Scratch.Get "fragments") ".Name" .Name) }}
         {{ $.Scratch.Add "fragments" (slice .) }}
