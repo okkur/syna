@@ -31,23 +31,28 @@
     <div id="particles-js"></div>
   {{ end }}
   {{ if $hero.logo }}
-    {{ $tmp_full.Scratch.Set "image" (printf "images/%s" $hero.logo) }}
-    {{ range .resources.ByType "image" }}
-    {{ $location := (printf "%s/%s" $name_t $hero.logo) }}
+    {{ range $hero.logo }}
+    {{ $tmp_full.Scratch.Set "image" (printf "images/%s" .image) }}
+  {{ range .resources.ByType "image" }}
+    {{ $location := (printf "%s/%s" $name_t .image) }}
       {{ if eq .Name $location }}
         {{ $tmp_full.Scratch.Set "image" .RelPermalink }}
       {{ end }}
+  {{ end }}
     {{ $location := (printf "%s/%s $name $hero.header") }}
       {{ if eq .Name $location }}
         {{ $tmp_full.Scratch.Set "image" .RelPermalink }}
       {{ end }}
   {{ end }}
+      
+  {{ range $hero.logo }}
     <div class="row justify-content-center align-items-start">
       <img class="overlay img-fluid" src="{{ $tmp_full.Scratch.Get "image" | relURL }}"
-        {{- if $hero.logo_height -}} height="{{ $hero.logo_height }}"{{- end -}}
-        {{- if $hero.logo_width -}} width="{{ $hero.logo_width }}"{{- end -}}
+        {{- if .height -}} height="{{ .height }}"{{- end -}}
+        {{- if .width -}} width="{{ .width }}"{{- end -}}
       ></img>
     </div>
+  {{ end }}
     {{ with $hero.subtitle }}
     <div class="row justify-content-center align-items-start">
       <h1 class="overlay jumbotron-heading my-4
