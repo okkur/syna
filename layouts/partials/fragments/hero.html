@@ -1,24 +1,16 @@
 {{ $hero := .self.Params }}
+{{ $dot := .dot }}
 {{ $name := .self.Name }}
-{{ $name_t := strings.TrimSuffix "/index.md" $name }}
-{{ $name_t := strings.TrimSuffix ".md" $name_t}}
-{{ $tmp_full := .tmp_full }}
+{{ $name := strings.TrimSuffix ".md" $name }}
+{{ $path := $dot.File.Path }}
+{{ $path := replace $path "/index.md" "" }}
+{{ $path := strings.TrimSuffix ".md" $path }}
+{{ $page_path := strings.TrimSuffix "/hero" $path }} {{ $tmp_full := .tmp_full }}
 {{ "<!-- hero -->" | safeHTML }}
 {{ $bg := $hero.background | default "secondary" }}
 
 <header>
   {{ if $hero.header }}
-    {{ $tmp_full.Scratch.Set "image" (printf "images/%s" $hero.header) }}
-    {{ range .resources.ByType "image" }}
-    {{ $location := (printf "%s/%s" $name_t $hero.header) }}
-      {{ if  eq .Name $location }}
-        {{ $tmp_full.Scratch.Set "image" .RelPermalink }}
-      {{ end }}
-    {{ $location := (printf "%s/%s $name $hero.header") }}
-      {{ if eq .Name $location }}
-        {{ $tmp_full.Scratch.Set "image" .RelPermalink }}
-      {{ end }}
-  {{ end }}
     <div class="jumbotron text-center header-image mb-0
      {{- printf " bg-%s" $bg -}}
     ">
@@ -30,29 +22,31 @@
   {{ if $hero.particles }}
     <div id="particles-js"></div>
   {{ end }}
+
   {{ if $hero.logo }}
+    {{/* fallback to global resource */}}
+    {{ $tmp_full.Scratch.Set "image" (printf "images/%s" $hero.logo.image) }}
+    {{ range .resources.ByType "image" }}
+      {{/* try for page specific resource */}}
+      {{ $location := (printf "%s/%s" $page_path $hero.logo.image) }}
+      {{ if (fileExists $location) }}
+        {{ $tmp_full.Scratch.Set "image" $location }}
+      {{ end }}
+
+      {{/* try for fragment specific resource */}}
+      {{ $location := (printf "%s/%s" $path $hero.logo.image) }}
+      {{ if (fileExists $location) }}
+        {{ $tmp_full.Scratch.Set "image" $location }}
+      {{ end }}
+    {{ end }}
     {{ with $hero.logo }}
-    {{ $tmp_full.Scratch.Set "image" (printf "images/%s" .image) }}
-  {{ range .resources.ByType "image" }}
-    {{ $location := (printf "%s/%s" $name_t .image) }}
-      {{ if eq .Name $location }}
-        {{ $tmp_full.Scratch.Set "image" .RelPermalink }}
-      {{ end }}
-  {{ end }}
-    {{ $location := (printf "%s/%s $name $hero.header") }}
-      {{ if eq .Name $location }}
-        {{ $tmp_full.Scratch.Set "image" .RelPermalink }}
-      {{ end }}
-  {{ end }}
-      
-  {{ with $hero.logo }}
-    <div class="row justify-content-center align-items-start">
-      <img class="overlay img-fluid" src="{{ $tmp_full.Scratch.Get "image" | relURL }}"
-        {{- if .height -}} height="{{ .height }}"{{- end -}}
-        {{- if .width -}} width="{{ .width }}"{{- end -}}
-      ></img>
-    </div>
-  {{ end }}
+      <div class="row justify-content-center align-items-start">
+        <img class="overlay img-fluid" src="{{ $tmp_full.Scratch.Get "image" | relURL }}"
+          {{- if .height -}} height="{{ .height }}"{{- end -}}
+          {{- if .width -}} width="{{ .width }}"{{- end -}}
+        ></img>
+      </div>
+    {{ end }}
     {{ with $hero.subtitle }}
     <div class="row justify-content-center align-items-start">
       <h1 class="overlay jumbotron-heading my-4

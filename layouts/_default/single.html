@@ -1,7 +1,7 @@
 {{ define "main" }}
   {{ range .Resources.ByType "page"}}
     {{ if and (not .Params.disabled) (eq .Params.fragment "hero") }}
-      {{ partial "fragments/hero.html" (dict "tmp_full" $ "resources" $.Resources "self" . ) }}
+      {{ partial "fragments/hero.html" (dict "dot" . "tmp_full" $ "resources" $.Resources "self" . ) }}
     {{ end }}
   {{ end }}
 
