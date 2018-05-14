@@ -7,7 +7,7 @@ themesDir = "../.."
 copyright = "" # default: Copyright $Year $params.name
 
 # Google Analytics tracking
-google_analytics = ""
+googleAnalytics = ""
 
 [params]
   name = "Okkur Labs"
