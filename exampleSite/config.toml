@@ -1,6 +1,6 @@
 # Site settings
 baseurl = "/"
-languageCode = "en-us"
+LanguageCode = "en-us"
 title = "Okkur - Syna"
 theme = "syna"
 themesDir = "../.."
