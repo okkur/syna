@@ -1,7 +1,7 @@
 {{ define "main" }}
   {{ range .Resources.ByType "page"}}
     {{ if and (not .Params.disabled) (eq .Params.fragment "hero") }}
-      {{ partial "fragments/hero.html" (dict "self" . ) }}
+      {{ partial "fragments/hero.html" (dict "dot" . "tmp_full" $ "resources" $.Resources "self" . ) }}
     {{ end }}
   {{ end }}
 
@@ -9,47 +9,39 @@
     {{ partial "content-single.html" . }}
   {{ end }}
 
-  {{ range .Resources.ByType "page" }}
+  {{/*
+    This code may not be understandable immediately. This is trying to find all
+    the resources (read fragments) for each page and all the global fragments.
+    When combining global and local fragments, local ones have more priority.
+    So if there is only one footer fragment and that is global, that footer
+    fragment is shown. The same is true if there are no global footer fragments
+    and one local one. But if there is one global footer fragment and one local
+    footer fragment, the local one is rendered. Filename is checked in order to
+    check for presence of local fragments since multiple files can use a single
+    fragment.
+    */}}
+  {{ $global := .Site.GetPage "page" "global" }}
+  {{ $.Scratch.Delete "global_fragments" }}
+  {{ if $global }}
+    {{ $.Scratch.Set "global_fragments" ($global.Resources.ByType "page") }}
+  {{ end }}
+  {{ $local_fragments := .Resources.ByType "page" }}
 
-    {{ if and (not .Params.disabled) (eq .Params.fragment "items") }}
-      {{ partial "fragments/items.html" (dict "resources" $.Resources "self" . ) }}
+  {{ $.Scratch.Set "fragments" slice }}
+  {{ range $local_fragments }}
+    {{ $.Scratch.Add "fragments" (slice .) }}
+  {{ end }}
+  {{ if $.Scratch.Get "global_fragments" }}
+    {{ range ($.Scratch.Get "global_fragments") }}
+      {{ if not (where ($.Scratch.Get "fragments") ".Name" .Name) }}
+        {{ $.Scratch.Add "fragments" (slice .) }}
+      {{ end }}
     {{ end }}
+  {{ end }}
 
-    {{ if and (not .Params.disabled) (eq .Params.fragment "item") }}
-      {{ partial "fragments/item.html" (dict "self" . ) }}
+  {{ range sort ($.Scratch.Get "fragments" | default slice) "Params.weight" }}
+    {{ if and (not .Params.disabled) (isset .Params "fragment") (not (eq .Params.fragment "hero")) }}
+      {{ partial (print "fragments/" .Params.fragment ".html") (dict "menus" $.Site.Menus "Site" $.Site "resources" $.Resources "self" .) }}
     {{ end }}
-
-    {{ if and (not .Params.disabled) (eq .Params.fragment "table") }}
-      {{ partial "fragments/table.html" (dict "self" . ) }}
-    {{ end }}
-
-    {{ if and (not .Params.disabled) (eq .Params.fragment "embed") }}
-      {{ partial "fragments/embed.html" (dict "self" . ) }}
-    {{ end }}
-
-    {{ if and (not .Params.disabled) (eq .Params.fragment "member") }}
-      {{ partial "fragments/member.html" (dict "resources" $.Resources "self" . ) }}
-    {{ end }}
-
-    {{ if and (not .Params.disabled) (eq .Params.fragment "logos") }}
-      {{ partial "fragments/logos.html" (dict "self" . ) }}
-    {{ end }}
-
-    {{ if and (not .Params.disabled) (eq .Params.fragment "contact") }}
-      {{ partial "fragments/contact.html" (dict "Site" .Site "self" . ) }}
-    {{ end }}
-
-    {{ if and (not .Params.disabled) (in .Params.fragment "footer") }}
-      {{ partial "fragments/footer.html" (dict "menus" $.Site.Menus "self" . ) }}
-    {{ end }}
-
-    {{ if and (not .Params.disabled) (eq .Params.fragment "buttons") }}
-      {{ partial "fragments/buttons.html" (dict "self" . ) }}
-    {{ end }}
-
-    {{ if and (not .Params.disabled) (in .Params.fragment "custom") }}
-      {{ partial (print "fragments/" .Params.fragment_name ".html") (dict "self" .) }}
-    {{ end }}
-
   {{ end }}
 {{ end }}

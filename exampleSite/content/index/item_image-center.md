@@ -16,7 +16,6 @@ title = "Item Fragment Image Center"
 #post = ""
 
 image = "screenshot.png"
-
 +++
 
 

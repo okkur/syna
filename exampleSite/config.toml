@@ -12,7 +12,6 @@ google_analytics = ""
 [params]
   name = "Okkur Labs"
   description = "Open Source Theme for your next project"
-  attribution = "false" # enable attribution by setting it to true
 
   # Branding options
   [params.branding]
@@ -109,6 +108,16 @@ google_analytics = ""
 [[menu.footer]]
   url = "#"
   name = "Tiny Link"
+  weight = 30
+
+[[menu.copyright_footer]]
+  url = "/about"
+  name = "About Us"
+  weight = 10
+
+[[menu.copyright_footer]]
+  url = "#"
+  name = "Another Link"
   weight = 30
 
 [[menu.footer_social]]

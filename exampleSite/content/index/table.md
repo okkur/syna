@@ -10,7 +10,6 @@ self_link = "table-fragment"
 title = "Table Fragment"
 subtitle= "Tables are responsive by default"
 
-
 [header]
   [[header.values]]
     text = "Header 1"

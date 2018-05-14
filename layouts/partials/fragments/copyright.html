@@ -1,5 +1,7 @@
-{{ "<!-- Legal Footer section -->" | safeHTML }}
-{{ $bg := .Site.Params.style.background_footer | default "secondary"}}
+{{ $copyright := .self.Params }}
+{{ $menus := .menus }}
+{{ "<!-- Copyright -->" | safeHTML }}
+{{ $bg := $copyright.background | default "secondary"}}
 
 <footer class="overlay container-fluid
   {{- printf " bg-%s" $bg -}}
@@ -15,7 +17,7 @@
           {{- end -}}
         ">
           <div class="row mr-lg-auto">
-            {{ with .Site.Copyright }}
+            {{ with $copyright.copyright }}
               <div class="col-auto">
                 {{- . | markdownify -}}
               </div>
@@ -24,13 +26,13 @@
                 {{- i18n "footerLegal.copyright" -}} &nbsp;{{ now.Format "2006"}}
               </div>
               <div class="col-auto px-0">
-                {{- printf  " %s %s" (i18n "footerLegal.by") .Site.Params.name -}}
+                {{- printf " %s %s" (i18n "footerLegal.by") $.Site.Params.name -}}
               </div>
             {{ end }}
           </div>
         </div>
       </div>
-      {{- if eq .Site.Params.attribution  "true" -}}
+      {{- if eq $copyright.attribution true -}}
         <div class="col-auto mx-auto">
           <div class="row navbar-text text-center
             {{- if eq $bg "dark" -}}
@@ -59,10 +61,10 @@
                       {{- printf " text-%s" "dark" -}}
                     {{- end -}}
                   " href="{{ .URL | relLangURL }}"
-                    {{ if hasPrefix .URL "#" }}
-                      class="anchor"
-                    {{ end }}>
-                      {{- .Name -}}
+                  {{ if hasPrefix .URL "#" }}
+                    class="anchor"
+                  {{ end }}>
+                    {{- .Name -}}
                   </a>
                 </li>
               {{ end }}

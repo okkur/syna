@@ -16,7 +16,6 @@ title = "Item Fragment Icon Center"
 #post = ""
 
 icon = "fa-random"
-
 +++
 
 Easily center item fragments even with an icon.

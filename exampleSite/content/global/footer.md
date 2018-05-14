@@ -6,10 +6,13 @@ lastmod = "2017-09-07"
 weight = 1200
 #background = ""
 
-link_title = "Link Title"
-logo_title = "Logo Title"
-logo = "logo.svg"
-logo_text = "Logo Subtext"
+menu_title = "Link Title"
+
+[logo]
+    title = "Logo Title"
+    image = "logo.svg"
+    text = "Logo Subtext"
+    link = "#"
 +++
 
 #### Description Title

@@ -71,13 +71,13 @@
   {{ if .Site.Params.repo_button }}
     <div class="d-none d-lg-block pl-auto">
       <a class="btn btn-light" href="{{ .Site.Params.repo_button.url }}" role="button">
-        <i class="fa {{ printf "fab %s" .Site.Params.repo_button.icon | default (printf "fab fa-github") }} mr-1"></i>
+        <i class="{{ printf "fab %s" .Site.Params.repo_button.icon | default (printf "fab fa-github") }} mr-1"></i>
         {{- .Site.Params.repo_button.text | default (printf "Star") -}}
       </a>
     </div>
   {{ end }}
 </nav>
-<div class="scroll-to-top
+<div class="scroll-to-top bg-primary
   {{- if not .Site.Params.fontawesome.disabled -}}
     {{ print " has-font-icon" }}
   {{- end -}}">

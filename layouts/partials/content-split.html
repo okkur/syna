@@ -8,29 +8,31 @@
     <div class="container py-5">
       <div class="row">
         <div class="col-md-3">
-          {{ if .Page.Params.sidebar_title }}
-            <div class="col-12 pb-3
-              {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
+          {{ with .Page.Params.sidebar }}
+            {{ if .title }}
+              <div class="col-12 pb-3
+                {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
+                  {{- printf " text-%s" "dark" -}}
+                {{- else -}}
+                  {{- printf " text-%s" "light" -}}
+                {{- end -}}
+              ">
+                <h1>
+                  {{- .title | markdownify -}}
+                </h1>
+              </div>
+            {{ end }}
+            <div class="col-12
+              {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
                 {{- printf " text-%s" "dark" -}}
               {{- else -}}
-                {{- printf " text-%s" "light" -}}
+                {{- printf " text-muted text-%s" "secondary" -}}
               {{- end -}}
             ">
-              <h1>
-                {{- .Page.Params.sidebar_title | markdownify -}}
-              </h1>
+              {{- .content  | markdownify -}}
             </div>
-          {{ end }}
-          <div class="col-12
-            {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-              {{- printf " text-%s" "dark" -}}
-            {{- else -}}
-              {{- printf " text-muted text-%s" "secondary" -}}
-            {{- end -}}
-          ">
-            {{- .Page.Params.sidebar  | markdownify -}}
           </div>
-        </div>
+        {{end}}
         <div class="col-md-9">
           {{ if .Title }}
             <div class="col-12 pb-3

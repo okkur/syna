@@ -5,10 +5,8 @@
   #link = "#"
 +++
 
- 
-  Showcasing descriptions for column based items
-  Some more text to showcase the description capabilities:
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  Curabitur a lorem urna.
-  Quisque in neque malesuada, sollicitudin nunc porttitor, ornare est.
- 
+Showcasing descriptions for column based items
+Some more text to showcase the description capabilities:
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Curabitur a lorem urna.
+Quisque in neque malesuada, sollicitudin nunc porttitor, ornare est.

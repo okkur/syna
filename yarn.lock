@@ -2176,6 +2176,10 @@ form-data@~2.3.1:
     combined-stream "1.0.6"
     mime-types "^2.1.12"
 
+form-validator-simple@^0.0.11:
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/form-validator-simple/-/form-validator-simple-0.0.11.tgz#a2e06512841e7fc98d64adad53c849c3485ebec4"
+
 fragment-cache@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/fragment-cache/-/fragment-cache-0.2.1.tgz#4290fad27f13e89be7f33799c6bc5a0abfff0d19"
@@ -3035,13 +3039,7 @@ isurl@^1.0.0-alpha5:
     has-to-string-tag-x "^1.2.0"
     is-object "^1.0.1"
 
-jquery-form-validator@^2.3.77:
-  version "2.3.77"
-  resolved "https://registry.yarnpkg.com/jquery-form-validator/-/jquery-form-validator-2.3.77.tgz#389e106509052ddc7d9d002525abe3a1422118c5"
-  dependencies:
-    jquery ">1.8.0"
-
-jquery@>1.8.0, jquery@^3.3.1:
+jquery@^3.3.1:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.3.1.tgz#958ce29e81c9790f31be7792df5d4d95fc57fbca"
 

@@ -15,17 +15,19 @@
           {{- printf " text-%s" "secondary" -}}
         {{- end -}}
       ">
-        {{ with $footer.logo_title }}
+        {{ with $footer.logo }}
           <h4>
-            {{- . -}}
+            {{- .title -}}
           </h4>
-        {{ end }}
-        {{ if $footer.logo }}
-          <img src="{{ (printf "images/%s" $footer.logo) | relURL }}" class="img-fluid w-50" alt="{{ $footer.logotext }}">
-        {{ else }}
+          {{ if .image }}
+          <a href="{{ .link }}">
+            <img src="{{ (printf "images/%s" .image) | relURL }}" class="img-fluid w-50" alt="{{ .text }}">
+          </a>
+          {{ else }}
           <div>
-            {{- $footer.logo_text -}}
+            {{- .text -}}
           </div>
+          {{ end }}
         {{ end }}
 
         {{ if $menus.footer_social }}
@@ -52,7 +54,7 @@
           {{- printf " text-%s" "secondary" -}}
         {{- end -}}
       ">
-        {{ with $footer.link_title }}
+        {{ with $footer.menu_title }}
           <h4>
             {{- . -}}
           </h4>

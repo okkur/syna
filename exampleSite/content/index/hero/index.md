@@ -10,9 +10,11 @@ particles = true
 title = "Syna Theme"
 subtitle = "Showcase your next project"
 header = "header.jpg"
-logo = "logo.svg"
-logo_width = "500px" # optional - will default to image width
-#logo_height = "150px" # optional - will default to image height
+
+[logo]
+  image = "logo.svg"
+  width = "500px" # optional - will default to image width
+  #height = "150px" # optional - will default to image height
 
 [[buttons]]
   text = "Button"

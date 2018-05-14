@@ -17,7 +17,6 @@ title = "Item Fragment Image Table Left"
 
 image = "screenshot.png"
 
-
 [header]
   [[header.values]]
     text = "Header 1"

@@ -5,5 +5,4 @@
   #link = "#"
 +++
  
-  Showcasing descriptions for column based items
- 
+Showcasing descriptions for column based items
