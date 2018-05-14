@@ -13,7 +13,6 @@
     "Gopher Community Member"
   ]
 
-
   [[icons]]
     icon = "fa-twitter"
     link = "#"
