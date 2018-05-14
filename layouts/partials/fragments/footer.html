@@ -15,7 +15,7 @@
           {{- printf " text-%s" "secondary" -}}
         {{- end -}}
       ">
-        {{ range $footer.logo }}
+        {{ with $footer.logo }}
           <h4>
             {{- .title -}}
           </h4>
