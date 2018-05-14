@@ -5,7 +5,7 @@ date = "2017-10-05"
 subtitle = ""
 layout = "split"
 
-[[sidebar]]
+[sidebar]
     title = "Sidebar"
     content = """
 So much information  
