@@ -1,6 +1,6 @@
 # Site settings
 baseurl = "/"
-LanguageCode = "en-us"
+languageCode = "en-us"
 title = "Okkur - Syna"
 theme = "syna"
 themesDir = "../.."
@@ -21,7 +21,6 @@ googleAnalytics = ""
   [params.style]
     #background = "secondary"
     #background_navigation = "light" # white, light, secondary, primary, dark - default: dark
-    #background_footer = "light" # white, light, secondary, primary, dark - default: dark
 
   # Theme customizations
   # Assets relative to 'static/'
@@ -83,16 +82,6 @@ googleAnalytics = ""
 [[menu.main]]
   url = "#"
   name = "Link"
-  weight = 30
-
-[[menu.legal_footer]]
-  url = "/about"
-  name = "About Us"
-  weight = 10
-
-[[menu.legal_footer]]
-  url = "#"
-  name = "Another Link"
   weight = 30
 
 [[menu.footer]]
