@@ -15,27 +15,27 @@ weight = 0
   text = "Star" # default: "Star"
   icon = "fa-github" # defaults: "fa-github"
 
-[main]
+[[main]]
   url = "#"
   name = "Long Link"
   weight = 10
 
-[main]
+[[main]]
   url = "/about-split"
   name = "Page-split"
   weight = 30
 
-[main]
+[[main]]
   url = "/about"
   name = "Page-single"
   weight = 30
 
-[main]
+[[main]]
   url = "#contact-fragment"
   name = "Contact"
   weight = 50
 
-[main]
+[[main]]
   url = "#"
   name = "Link"
   weight = 30
