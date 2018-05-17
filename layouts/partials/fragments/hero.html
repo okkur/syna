@@ -1,9 +1,8 @@
 {{ $hero := .self.Params }}
-{{ $dot := .dot }}
 {{ $name := .self.Name }}
 {{ $name := replace $name "/index.md" "" }}
 {{ $name := strings.TrimSuffix ".md" $name }}
-{{ $path := $dot.File.Path }}
+{{ $path := .self.File.Path }}
 {{ $path := replace $path "/index.md" "" }}
 {{ $path := strings.TrimSuffix ".md" $path }}
 {{ $page_path := replace $path (printf "/%s" $name) "" }} {{ $tmp_full := .tmp_full }}

@@ -1,14 +1,4 @@
 {{ define "main" }}
-  {{ range .Resources.ByType "page"}}
-    {{ if and (not .Params.disabled) (eq .Params.fragment "hero") }}
-      {{ partial "fragments/hero.html" (dict "dot" . "tmp_full" $ "resources" $.Resources "self" . ) }}
-    {{ end }}
-  {{ end }}
-
-  {{ if .Content }}
-    {{ partial "content-single.html" . }}
-  {{ end }}
-
   {{/*
     This code may not be understandable immediately. This is trying to find all
     the resources (read fragments) for each page and all the global fragments.
@@ -40,8 +30,8 @@
   {{ end }}
 
   {{ range sort ($.Scratch.Get "fragments" | default slice) "Params.weight" }}
-    {{ if and (not .Params.disabled) (isset .Params "fragment") (not (eq .Params.fragment "hero")) }}
-      {{ partial (print "fragments/" .Params.fragment ".html") (dict "menus" $.Site.Menus "Site" $.Site "resources" $.Resources "self" .) }}
+    {{ if and (not .Params.disabled) (isset .Params "fragment") }}
+      {{ partial (print "fragments/" .Params.fragment ".html") (dict "tmp_full" $ "Site" $.Site "menus" $.Site.Menus "resources" $.Resources "self" .) }}
     {{ end }}
   {{ end }}
 {{ end }}

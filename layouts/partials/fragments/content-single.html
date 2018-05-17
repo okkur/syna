@@ -1,5 +1,6 @@
+{{ $content_single := .self.Params }}
 {{ "<!-- Content -->" | safeHTML }}
-{{ $bg := .Page.Params.Background | default "light"}}
+{{ $bg :=  $content_single.background | default "light"}}
 
 <section>
   <div class="overlay container-fluid
@@ -7,7 +8,7 @@
   ">
     <div class="container py-5">
       <div class="row">
-        {{ if .Title }}
+        {{ if $content_single.title }}
           <div class="col-12 pb-3
             {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
               {{- printf " text-%s" "dark" -}}
@@ -16,11 +17,11 @@
             {{- end -}}
           ">
             <h1>
-              {{- .Title | markdownify -}}
+              {{- $content_single.title | markdownify -}}
             </h1>
           </div>
         {{ end }}
-        {{ if .Page.Params.Subtitle }}
+        {{ if $content_single.subtitle }}
           <div class="col-12 pb-2
             {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
               {{- printf " text-%s" "dark" -}}
@@ -29,7 +30,7 @@
             {{- end -}}
           ">
             <h3>
-              {{- .Page.Params.Subtitle | markdownify -}}
+              {{- $content_single.subtitle | markdownify -}}
             </h3>
           </div>
         {{ end }}
@@ -40,7 +41,7 @@
             {{- printf " text-muted text-%s" "secondary" -}}
           {{- end -}}
         ">
-          {{- .Content  | markdownify -}}
+          {{- $content_single.content | markdownify -}}
         </div>
       </div>
     </div>
