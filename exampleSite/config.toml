@@ -16,26 +16,25 @@ googleAnalytics = ""
 
   # Branding options
   [params.branding]
-    logoNavigation = "logo.svg"
-    textNavigation = "Syna"
+    logo_navigation = "logo.svg"
+    text_navigation = "Syna"
 
   [params.style]
     #background = "secondary"
-    #backgroundNavigation = "light" # white, light, secondary, primary, dark - default: dark
-    #backgroundFooter = "light" # white, light, secondary, primary, dark - default: dark
+    #background_navigation = "light" # white, light, secondary, primary, dark - default: dark
 
   # Theme customizations
   # Assets relative to 'static/'
   [params.custom]
     favicon = "favicon.ico"
-    faviconICOSizes = "16x16 32x32"
-    faviconPNG = "favicon.png"
-    faviconSVG = "favicon.svg"
+    favicon_ico_sizes = "16x16 32x32"
+    favicon_png = "favicon.png"
+    favicon_svg = "favicon.svg"
     css = ["css/overwrite-color.min.css", "css/overwrite-reboot.min.css"]
     js  = []
 
   # Repository Button
-  [params.repoButton]
+  [params.repo_button]
     url = "https://github.com/okkur/syna"
     text = "Star" # default: "Star"
     icon = "fa-github" # defaults: "fa-github"
