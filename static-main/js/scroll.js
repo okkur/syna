@@ -1,10 +1,10 @@
-import $ from 'jquery';
+import $ from './helpers/jq-helpers';
 
-$(function() {
+(function() {
   handleScroll()
-  $(window).on('scroll', handleScroll);
+  window.onscroll = handleScroll;
   $('.scroll-to-top').on('click', scrollToTop);
-});
+})();
 
 function handleScroll() {
   if (window.scrollY > window.innerHeight / 2) {
@@ -15,5 +15,5 @@ function handleScroll() {
 }
 
 function scrollToTop() {
-  $('html,body').animate({ scrollTop: 0 }, 'slow');
+  $.scrollTo(document.body, 0, 250)
 }
