@@ -5,6 +5,7 @@ title = "Okkur - Syna"
 theme = "syna"
 themesDir = "../.."
 copyright = "" # default: Copyright $Year $params.name
+enableGitInfo = true
 
 # Google Analytics tracking
 googleAnalytics = ""
@@ -59,6 +60,10 @@ googleAnalytics = ""
   # [params.navbar]
   #   Force navbar to be displayed even if no menu items are available
   #   force_display = true
+
+[frontmatter]
+date = ["date", "lastmod"]
+lastmod = ["lastmod", ":git", "date"]
 
 [[menu.main]]
   url = "#"
