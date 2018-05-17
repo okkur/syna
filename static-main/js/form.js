@@ -1,12 +1,13 @@
-import $ from 'jquery';
+import $ from './helpers/jq-helpers';
 import Validator from 'form-validator-simple';
 
-const selfCheck = 'checkSelf'
-$(function() {
+const selfCheck = 'checkSelf';
+
+(function() {
   if ($('.g-recaptcha')) {
     checkReCaptcha();
   }
-});
+})();
 
 const validator = new Validator({
   errorTemplate: '<span class="help-block form-error">%s</span>',
@@ -30,14 +31,17 @@ const validator = new Validator({
     const genericError = $(`form[id=${id}] .generic-error`)
     const serializedForm = $(`#${id}`).serialize()
     if ($('.g-recaptcha').length === 0) {
-      $.post(action, serializedForm, function() {}, 'json')
-        .fail(() => genericError.removeClass('d-none'))
-        .done(() => genericSuccess.removeClass('d-none'));
+      $.post(action, serializedForm)
+        .then(() => genericSuccess.removeClass('d-none'))
+        .catch(() => genericError.removeClass('d-none'));
     } else if (typeof grecaptcha !== "undefined") {
       if (grecaptcha.getResponse() !== "") {
-        $.post(action, serializedForm, () => $(`form[id=${id}] .success`).removeClass('d-none'), 'json')
-          .fail(() => genericError.removeClass('d-none'))
-          .done(() => genericSuccess.removeClass('d-none'));
+        $.post(action, serializedForm)
+          .then(() => {
+            genericSuccess.removeClass('d-none')
+            $(`form[id=${id}] .success`).removeClass('d-none')
+          })
+          .catch(() => genericError.removeClass('d-none'));
       } else {
         grecaptcha.execute();
       };
