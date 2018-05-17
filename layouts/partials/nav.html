@@ -1,5 +1,5 @@
 <nav class="overlay navbar navbar-expand-lg py-2
-  {{- $bg := .Site.Params.style.backgroundNavigation | default "dark" -}}
+  {{- $bg := .Site.Params.style.background_navigation | default "dark" -}}
   {{- printf " bg-%s" $bg -}}
   {{- if or (eq $bg "light") (eq $bg "white") (eq $bg "secondary") -}}
     {{- printf " navbar-%s" "light" -}}
@@ -8,13 +8,13 @@
   {{- end -}}
 ">
   <div class="container">
-    {{ if .Site.Params.branding.logoNavigation }}
+    {{ if .Site.Params.branding.logo_navigation }}
       <a class="navbar-brand py-0" href="{{ "#page-top" | relLangURL }}">
-        <img src="{{ (printf "images/%s" .Site.Params.branding.logoNavigation) | relURL }}" height="35" class="d-inline-block align-top" alt="{{ .Site.Params.branding.textNavigation }}">
+        <img src="{{ (printf "images/%s" .Site.Params.branding.logo_navigation) | relURL }}" height="35" class="d-inline-block align-top" alt="{{ .Site.Params.branding.text_navigation }}">
       </a>
     {{ else }}
       <a class="navbar-brand py-0" href="{{ "#page-top" | relLangURL }}">
-        {{- .Site.Params.branding.textNavigation -}}
+        {{- .Site.Params.branding.text_navigation -}}
       </a>
     {{ end }}
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,11 +68,11 @@
       {{ end }}
     </div>
   </div>
-  {{ if .Site.Params.repoButton }}
+  {{ if .Site.Params.repo_button }}
     <div class="d-none d-lg-block pl-auto">
-      <a class="btn btn-light" href="{{ .Site.Params.repoButton.url }}" role="button">
-        <i class="{{ printf "fab %s" .Site.Params.repoButton.icon | default (printf "fab fa-github") }} mr-1"></i>
-        {{- .Site.Params.repoButton.text | default (printf "Star") -}}
+      <a class="btn btn-light" href="{{ .Site.Params.repo_button.url }}" role="button">
+        <i class="{{ printf "fab %s" .Site.Params.repo_button.icon | default (printf "fab fa-github") }} mr-1"></i>
+        {{- .Site.Params.repo_button.text | default (printf "Star") -}}
       </a>
     </div>
   {{ end }}
