@@ -4,9 +4,6 @@
   {{ $bg := .Site.Params.style.background | default "secondary"}}
 
   <body class="{{ printf "bg-%s" $bg }}">
-    {{- if or (.Site.Params.navbar.force_display) (.Site.Menus.prepend) (.Site.Menus.main) (.Site.Menus.postpend) -}}
-      {{ partial "nav.html" . }}
-    {{- end -}}
     {{ block "main" . }}
       <!-- The part of the page that begins to differ between templates -->
     {{ end }}

@@ -13,11 +13,6 @@ googleAnalytics = ""
   name = "Okkur Labs"
   description = "Open Source Theme for your next project"
 
-  # Branding options
-  [params.branding]
-    logo_navigation = "logo.svg"
-    text_navigation = "Syna"
-
   [params.style]
     #background = "secondary"
     #background_navigation = "light" # white, light, secondary, primary, dark - default: dark
@@ -31,12 +26,6 @@ googleAnalytics = ""
     favicon_svg = "favicon.svg"
     css = ["css/overwrite-color.min.css", "css/overwrite-reboot.min.css"]
     js  = []
-
-  # Repository Button
-  [params.repo_button]
-    url = "https://github.com/okkur/syna"
-    text = "Star" # default: "Star"
-    icon = "fa-github" # defaults: "fa-github"
 
   # Piwik tracking
   [params.analytics.piwik]
@@ -54,35 +43,6 @@ googleAnalytics = ""
   # For custom fontawesome js files use the custom.js method
   [params.fontawesome]
     disabled = false
-
-  # [params.navbar]
-  #   Force navbar to be displayed even if no menu items are available
-  #   force_display = true
-
-[[menu.main]]
-  url = "#"
-  name = "Long Link"
-  weight = 10
-
-[[menu.main]]
-  url = "/about-split"
-  name = "Page-split"
-  weight = 30
-
-[[menu.main]]
-  url = "/about"
-  name = "Page-single"
-  weight = 30
-
-[[menu.main]]
-  url = "#contact-fragment"
-  name = "Contact"
-  weight = 50
-
-[[menu.main]]
-  url = "#"
-  name = "Link"
-  weight = 30
 
 [[menu.footer]]
   url = "#"
