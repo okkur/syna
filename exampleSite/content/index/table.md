@@ -2,7 +2,6 @@
 fragment = "table"
 #disabled = false
 date = "2017-10-10"
-lastmod = "2017-10-10"
 weight = 500
 background = "light"
 self_link = "table-fragment"

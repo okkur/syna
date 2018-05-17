@@ -2,7 +2,6 @@
 fragment = "item"
 #disabled = false
 date = "2017-10-04"
-lastmod = "2017-10-04"
 weight = 320
 background = "dark"
 self_link = "item-fragment-image-right"

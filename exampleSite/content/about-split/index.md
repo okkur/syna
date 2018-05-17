@@ -1,6 +1,5 @@
 +++
 title = "About Syna"
-lastmod = "2017-10-05"
 date = "2017-10-05"
 subtitle = ""
 layout = "split"
@@ -8,9 +7,9 @@ layout = "split"
 [sidebar]
     title = "Sidebar"
     content = """
-So much information  
-Phone numbers  
-Details  
+So much information
+Phone numbers
+Details
 Or even more
 """
 +++
