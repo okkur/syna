@@ -1,6 +1,5 @@
 +++
 title = "About Syna"
-lastmod = "2017-10-05"
 date = "2017-10-05"
 subtitle = ""
 layout = "split"
@@ -11,7 +10,7 @@ layout = "split"
 So much information  
 Phone numbers  
 Details  
-Or even more
+Or even more  
 """
 +++
 
