@@ -4,6 +4,8 @@ fragment = "content-split"
 date = "2016-09-07"
 weight = 100
 #background = ""
+
+title = "About Syna"
 subtitle = ""
 
 [sidebar]

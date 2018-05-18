@@ -4,9 +4,10 @@ fragment = "content-single"
 date = "2017-10-05"
 weight = 100
 #background = ""
-+++
-# Nested Page
 
+title = "Nested Page"
+subtitle = ""
++++
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 Curabitur a lorem urna.
 Quisque in neque malesuada, sollicitudin nunc porttitor, ornare est.
