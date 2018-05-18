@@ -4,7 +4,7 @@ fragment = "content-single"
 date = "2017-10-05"
 weight = 100
 #background = ""
-subtitle = "asdfasdfsaf"
+subtitle = ""
 +++
 Open Source Theme from Okkur for your next project.
 
