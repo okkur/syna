@@ -31,7 +31,7 @@
                 {{- printf " text-muted text-%s" "secondary" -}}
               {{- end -}}
             ">
-              {{- $self.Content | markdownify -}}
+              {{- .content | markdownify -}}
             </div>
           </div>
         {{end}}

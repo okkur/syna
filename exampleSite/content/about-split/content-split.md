@@ -9,10 +9,10 @@ subtitle = ""
 [sidebar]
   title = "Sidebar"
   content = """
-So much information
-Phone numbers
-Details
-Or even more
+So much information  
+Phone numbers  
+Details  
+Or even more  
 """
 +++
 Open Source Theme from Okkur for your next project.
