@@ -1,3 +1,4 @@
+{{ $self := .self }}
 {{ $content_single := .self.Params }}
 {{ "<!-- Content -->" | safeHTML }}
 {{ $bg :=  $content_single.background | default "light"}}
@@ -41,7 +42,7 @@
             {{- printf " text-muted text-%s" "secondary" -}}
           {{- end -}}
         ">
-          {{- $content_single.content | markdownify -}}
+          {{- $self.Content | markdownify -}}
         </div>
       </div>
     </div>
