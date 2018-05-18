@@ -6,7 +6,7 @@ weight = 100
 #background = ""
 
 title = "About Syna"
-#subtitle = ""
+subtitle = "Split in two!"
 
 [sidebar]
   title = "Sidebar"
