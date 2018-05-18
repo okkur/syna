@@ -1,9 +1,8 @@
 {{ $nav := .self.Params }}
 {{ "<!-- Nav -->" | safeHTML }}
-{{ $bg := $nav.background | default "secondary" }}
+{{ $bg := $nav.background | default "dark" }}
 
 <nav class="overlay navbar navbar-expand-lg py-2
-  {{- $bg := .Site.Params.style.background_navigation | default "dark" -}}
   {{- printf " bg-%s" $bg -}}
   {{- if or (eq $bg "light") (eq $bg "white") (eq $bg "secondary") -}}
     {{- printf " navbar-%s" "light" -}}
