@@ -5,6 +5,7 @@ title = "Okkur - Syna"
 theme = "syna"
 themesDir = "../.."
 copyright = "" # default: Copyright $Year $params.name
+enableGitInfo = true
 
 # Google Analytics tracking
 googleAnalytics = ""
@@ -43,6 +44,10 @@ googleAnalytics = ""
   # For custom fontawesome js files use the custom.js method
   [params.fontawesome]
     disabled = false
+
+[frontmatter]
+date = ["date", "lastmod"]
+lastmod = ["lastmod", ":git", "date"]
 
 # main/prepend/postpend menus are displayed in nav fragment.
 # Keep an eye out for updates. These will be moved out to make navbar more

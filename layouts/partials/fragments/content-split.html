@@ -1,3 +1,4 @@
+{{ $self := .self }}
 {{ $content_split := .self.Params }}
 {{ "<!-- Content -->" | safeHTML }}
 {{ $bg := $content_split.background | default "light"}}
@@ -68,7 +69,7 @@
               {{- printf " text-muted text-%s" "secondary" -}}
             {{- end -}}
           ">
-            {{ $content_split.content | markdownify -}}
+            {{ $self.Content | markdownify -}}
           </div>
         </div>
       </div>

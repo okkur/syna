@@ -2,7 +2,6 @@
 fragment = "embed"
 #disabled = true
 date = "2017-10-07"
-lastmod = "2017-10-07"
 weight = 1050
 background = "light"
 self_link = "contact"

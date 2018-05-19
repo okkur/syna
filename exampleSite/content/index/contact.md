@@ -2,7 +2,6 @@
 fragment = "contact"
 #disabled = true
 date = "2017-09-10"
-lastmod = "2017-09-10"
 weight = 1100
 #background = "light"
 self_link = "contact-fragment"
