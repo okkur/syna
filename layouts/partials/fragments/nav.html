@@ -37,14 +37,14 @@
             </li>
           {{ end }}
         {{ end }}
-        {{ if $nav.main }}
-          {{ range sort $nav.main }}
+        {{ if .Site.Menus.main }}
+          {{ range sort .Site.Menus.main }}
             <li class="nav-item">
-              <a class="nav-link" href="{{ .url | relLangURL }}"
-                {{ if hasPrefix .url "#" }}
+              <a class="nav-link" href="{{ .URL | relLangURL }}"
+                {{ if hasPrefix .URL "#" }}
                   class="anchor"
                 {{ end }}>
-                {{- .name -}}
+                {{- .Name -}}
               </a>
             </li>
           {{ end }}

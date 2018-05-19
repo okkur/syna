@@ -44,6 +44,34 @@ googleAnalytics = ""
   [params.fontawesome]
     disabled = false
 
+# main/prepend/postpend menus are displayed in nav fragment.
+# Keep an eye out for updates. These will be moved out to make navbar more
+# configurable.
+[[menu.main]]
+  url = "#"
+  name = "Long Link"
+  weight = 10
+
+[[menu.main]]
+  url = "/about-split"
+  name = "Page-split"
+  weight = 30
+
+[[menu.main]]
+  url = "/about"
+  name = "Page-single"
+  weight = 30
+
+[[menu.main]]
+  url = "#contact-fragment"
+  name = "Contact"
+  weight = 50
+
+[[menu.main]]
+  url = "#"
+  name = "Link"
+  weight = 30
+
 [[menu.footer]]
   url = "#"
   name = "Link"
