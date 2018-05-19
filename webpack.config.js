@@ -1,15 +1,19 @@
 const path = require('path');
-const { plugins, rules } = require('./config/webpack')
+const { plugins, rules } = require('./config/webpack');
 
 if (process.env === 'production') {
   plugins.push(extractSass);
 }
 
 module.exports = {
-  entry: ['./static-main/js/index.js'],
+  entry: {
+    main: './static-main/js/index.js',
+    contact: './static-main/js/contact.js',
+    hero: './static-main/js/hero.js',
+  },
   output: {
     path: path.resolve('./static/'),
-    filename: 'main.js',
+    filename: '[name].js'
   },
   resolve: {
     extensions: ['.js', '.scss'],
