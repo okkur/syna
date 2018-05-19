@@ -1,8 +1,6 @@
 <html lang="{{ .Site.LanguageCode | default (printf "en-us") }}">
 
   {{ partial "head.html" . }}
-  {{ partial "js.html" . }}
-
   {{ $bg := .Site.Params.style.background | default "secondary" }}
 
   <body class="{{ printf "bg-%s" $bg }}">
@@ -12,6 +10,8 @@
     {{ block "main" . }}
       <!-- The part of the page that begins to differ between templates -->
     {{ end }}
+
+    {{ partial "js.html" . }}
 
   </body>
 </html>
