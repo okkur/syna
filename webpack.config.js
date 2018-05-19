@@ -13,7 +13,7 @@ module.exports = {
   },
   output: {
     path: path.resolve('./static/'),
-    filename: '[name].js'
+    filename: '[id].js'
   },
   resolve: {
     extensions: ['.js', '.scss'],
