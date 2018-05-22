@@ -14,11 +14,6 @@ googleAnalytics = ""
   name = "Okkur Labs"
   description = "Open Source Theme for your next project"
 
-  # Branding options
-  [params.branding]
-    logo_navigation = "logo.svg"
-    text_navigation = "Syna"
-
   [params.style]
     #background = "secondary"
     #background_navigation = "light" # white, light, secondary, primary, dark - default: dark
@@ -32,12 +27,6 @@ googleAnalytics = ""
     favicon_svg = "favicon.svg"
     css = []
     js  = []
-
-  # Repository Button
-  [params.repo_button]
-    url = "https://github.com/okkur/syna"
-    text = "Star" # default: "Star"
-    icon = "fa-github" # defaults: "fa-github"
 
   # Piwik tracking
   [params.analytics.piwik]
@@ -56,14 +45,13 @@ googleAnalytics = ""
   [params.fontawesome]
     disabled = false
 
-  # [params.navbar]
-  #   Force navbar to be displayed even if no menu items are available
-  #   force_display = true
-
 [frontmatter]
 date = ["date", "lastmod"]
 lastmod = ["lastmod", ":git", "date"]
 
+# main/prepend/postpend menus are displayed in nav fragment.
+# Keep an eye out for updates. These will be moved out to make navbar more
+# configurable.
 [[menu.main]]
   url = "#"
   name = "Long Link"
