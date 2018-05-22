@@ -37,90 +37,179 @@
             </h5>
           </div>
         </div>
-      {{- end }}
-      <div class="row justify-content-center align-items-start">
-        {{- range $members -}}
-          {{- $member := .Params }}
-          <div class="col-lg-4 col-md-6 col-sm-12 pt-3 pb-5 text-left text-sm-center">
-            <div class="text-center m-2">
-              <img src="/images/member/{{ $member.image }}" class="img-fluid rounded-circle w-75 border
+      {{ end }}
+      {{ if gt $members 1 }}
+        <div class="row justify-content-center align-items-start">
+          {{ range $members }}
+            {{ $member := .Params }}
+            <div class="col-lg-4 col-md-6 col-sm-12 pt-3 pb-5 text-left text-sm-center">
+              <div class="text-center m-2">
+                <img src="/images/member/{{ $member.image }}" class="img-fluid rounded-circle w-75 border
+                  {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
+                    {{- printf " border-%s" "dark" -}}
+                  {{- else -}}
+                    {{- printf " border-%s" "white" -}}
+                  {{- end -}}
+                " alt=""></img>
+              </div>
+              <div class="mt-5 mb-0
                 {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
-                  {{- printf " border-%s" "dark" -}}
+                  {{- printf " text-%s" "dark" -}}
                 {{- else -}}
-                  {{- printf " border-%s" "white" -}}
+                  {{- printf " text-%s" "light" -}}
                 {{- end -}}
-              " alt=""></img>
-            </div>
-            <div class="mt-5 mb-0
-              {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
-                {{- printf " text-%s" "dark" -}}
-              {{- else -}}
-                {{- printf " text-%s" "light" -}}
-              {{- end -}}
-            ">
-              <h2>
-                {{- $member.title -}}
-              </h2>
-            </div>
-            <div class="member
-              {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                {{- printf " text-%s" "dark" -}}
-              {{- else -}}
-                {{- printf " text-muted text-%s" "secondary" -}}
-              {{- end -}}
-            ">
-              {{- with $member.position }}
-                <h5 class="mb-3">
-                  {{- . | markdownify -}}
-                </h5>
-              {{- end -}}
-              {{- with $member.reports_to }}
-                <h6 class="font-italic mb-1">
-                  {{- i18n "member.reportsTo" }} {{ printf " %s" . | markdownify -}}
-                </h6>
+              ">
+                <h2>
+                  {{- $member.title -}}
+                </h2>
+              </div>
+              <div class="member
+                {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                  {{- printf " text-%s" "dark" -}}
+                {{- else -}}
+                  {{- printf " text-muted text-%s" "secondary" -}}
+                {{- end -}}
+              ">
+                {{ with $member.position }}
+                  <h5 class="mb-3">
+                    {{- . | markdownify -}}
+                  </h5>
                 {{ end }}
-              {{- with $member.lives_in }}
-                <h6 class="font-italic mb-1">
-                  {{- i18n "member.livesIn" }} {{ printf " %s" . | markdownify -}}
-                </h6>
-              {{- end -}}
-              {{- if $member.scope }}
-                <div class="pt-3 font-weight-bold">
-                  {{- range $member.scope }}
-                    <div>
-                      {{- . | markdownify -}}
-                    </div>
-                  {{- end }}
-                </div>
-              {{- end -}}
-              {{- if $member.icons }}
-              <div class="row justify-content-center pt-4">
-                {{- range $member.icons }}
-                  <span class="fa-stack fa-2x m-2">
-                    <a href="{{ .link }}">
-                      <i class="fas fa-circle fa-stack-2x
-                        {{- if eq $bg "primary" -}}
-                          {{- printf " text-%s" "dark" -}}
-                        {{- end -}}
-                      "></i>
-                      <i class="fab {{ .icon }} fa-stack-1x fa-inverse"></i>
-                    </a>
-                  </span>
-                {{- end }}
-              </div>
-              {{- end -}}
-                {{- with .Content }}
-                  <div class="pt-3">
-                    <div class="description">
-                      {{- . | markdownify -}}
-                    </div>
+                {{ with $member.reports_to }}
+                  <h6 class="font-italic mb-1">
+                    {{- i18n "member.reportsTo" }} {{ printf " %s" . | markdownify -}}
+                  </h6>
+                {{ end }}
+                {{ with $member.lives_in }}
+                  <h6 class="font-italic mb-1">
+                    {{- i18n "member.livesIn" }} {{ printf " %s" . | markdownify -}}
+                  </h6>
+                {{ end }}
+                {{ if $member.scope }}
+                  <div class="pt-3 font-weight-bold">
+                    {{ range $member.scope }}
+                      <div>
+                        {{- . | markdownify -}}
+                      </div>
+                    {{ end }}
                   </div>
-                {{- end }}
+                {{ end }}
+                {{ if $member.icons }}
+                <div class="row justify-content-center pt-4">
+                  {{ range $member.icons }}
+                    <span class="fa-stack fa-2x m-2">
+                      <a href="{{ .link }}">
+                        <i class="fas fa-circle fa-stack-2x
+                          {{- if eq $bg "primary" -}}
+                            {{- printf " text-%s" "dark" -}}
+                          {{- end -}}
+                        "></i>
+                        <i class="fab {{ .icon }} fa-stack-1x fa-inverse"></i>
+                      </a>
+                    </span>
+                  {{ end }}
+                </div>
+                {{ end }}
+                {{ with .Content }}
+                    <div class="pt-3">
+                      <div class="description">
+                        {{- . | markdownify -}}
+                      </div>
+                    </div>
+                {{ end }}
               </div>
             </div>
-          {{- end }}
+            {{ end }}
         </div>
-      </div>
+      {{ end }}
+      {{ if le $members 1  }}
+        <div class="card p-2 m-2">
+          <div class="row justify-content-start align-items-start">
+            {{ range $members }}
+              {{ $member := .Params }}
+              <div class="col-lg-6 col-md-6 col-sm-10 pt-3 pb-3 text-center text-sm-center">
+                <div class="text-center m-0">
+                  <img src="/images/member/{{ $member.image }}" class="img-fluid rounded-circle w-75 border
+                    {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
+                      {{- printf " border-%s" "dark" -}}
+                    {{- else -}}
+                      {{- printf " border-%s" "white" -}}
+                    {{- end -}}
+                  " alt=""></img>
+                </div>
+                <div class="mt-5 mb-0
+                  {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
+                    {{- printf " text-%s" "dark" -}}
+                  {{- else -}}
+                    {{- printf " text-%s" "light" -}}
+                  {{- end -}}
+                ">
+                  <h1>
+                    {{- $member.title -}}
+                  </h1>
+                  {{ with $member.position }}
+                  <h5 class="mb-1">
+                    {{- . | markdownify -}}
+                  </h5>
+                {{ end }}
+                {{ with $member.reports_to }}
+                  <h6 class="font-italic mb-1">
+                    {{- i18n "member.reportsTo" }} {{ printf " %s" . | markdownify -}}
+                  </h6>
+                {{ end }}
+                {{ with $member.lives_in }}
+                  <h6 class="font-italic mb-0">
+                    {{- i18n "member.livesIn" }} {{ printf " %s" . | markdownify -}}
+                  </h6>
+                {{ end }}
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 col-sm-10 mt-lg-4 pt-lg-4 text-center text-sm-center">
+                <div class="member
+                  {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                    {{- printf " text-%s" "dark" -}}
+                  {{- else -}}
+                    {{- printf " text-muted text-%s" "secondary" -}}
+                  {{- end -}}
+                ">
+                  {{ if $member.scope }}
+                    <div class="mt-4 font-weight-bold">
+                      {{ range $member.scope }}
+                        <div>
+                          {{- . | markdownify -}}
+                        </div>
+                      {{ end }}
+                    </div>
+                  {{ end }}
+                  {{ if $member.icons }}
+                  <div class="row justify-content-center pt-4">
+                    {{ range $member.icons }}
+                      <span class="fa-stack fa-2x m-2">
+                        <a href="{{ .link }}">
+                          <i class="fas fa-circle fa-stack-2x
+                            {{- if eq $bg "primary" -}}
+                              {{- printf " text-%s" "dark" -}}
+                            {{- end -}}
+                          "></i>
+                          <i class="fab {{ .icon }} fa-stack-1x fa-inverse"></i>
+                        </a>
+                      </span>
+                    {{ end }}
+                  </div>
+                  {{ end }}
+                  {{ with .Content }}
+                      <div class="pt-3">
+                        <div class="description">
+                          {{- . | markdownify -}}
+                        </div>
+                      </div>
+                  {{ end }}
+                </div>
+              </div>
+            {{ end }}
+          </div>
+        </div>
+      {{ end }}
     </div>
   </div>
 </section>
