@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAAA;;;;;;GAMG;ACJH,IAAK;EACH,KAAK,ECgzB6B,OAAS;ED/yB3C,gBAAgB,EC4yBkB,IAAM;;ADryB1C,CAAE;EACA,KAAK,ECotB6B,OAAqB;ECrtBrD,OAAQ;IFGR,KAAK,ECgjB2B,OAAiB;;ADxiBrD,OAAQ;EACN,KAAK,ECgvB6B,OAAS",
-"sources": ["overwrite-reboot.scss","_reboot.scss","_variables.scss","mixins/_hover.scss"],
-"names": [],
-"file": "overwrite-reboot.css"
-}

@@ -24,7 +24,7 @@
     "webpack-cli": "^2.0.14"
   },
   "dependencies": {
-    "bootstrap": "^4.1.0",
+    "bootstrap": "^4.1.1",
     "form-validator-simple": "^0.0.11",
     "particles.js": "^2.0.0",
     "popper.js": "^1.14.3"
