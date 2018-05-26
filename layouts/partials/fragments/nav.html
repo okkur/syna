@@ -1,4 +1,5 @@
 {{ $nav := .self.Params }}
+{{ $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") }}
 {{ "<!-- Nav -->" | safeHTML }}
 {{ $bg := $nav.background | default "dark" }}
 
@@ -9,7 +10,7 @@
   {{- else -}}
     {{- printf " navbar-%s" "dark" -}}
   {{- end -}}
-">
+" id="{{ $name }}">
   <div class="container">
     {{ if $nav.branding.logo }}
       <a class="navbar-brand py-0" href="{{ "#page-top" | relLangURL }}">

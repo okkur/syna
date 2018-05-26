@@ -4,7 +4,6 @@ fragment = "embed"
 date = "2017-10-07"
 weight = 1050
 background = "light"
-self_link = "contact"
 form_name = "subscribe"
 
 #title = ""

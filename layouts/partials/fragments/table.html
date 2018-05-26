@@ -1,9 +1,10 @@
 {{ $table := .self.Params }}
+{{ $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") }}
 {{ "<!-- Item -->" | safeHTML }}
 {{ $bg := $table.background | default "light"}}
 {{ $align := $table.align | default "center" }}
 
-<section {{ with $table.self_link }}id="{{ . }}"{{ end }}>
+<section id="{{ $name }}">
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">

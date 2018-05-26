@@ -1,12 +1,10 @@
 {{ $itemf := .self.Params }}
-{{ $name := .self.Name }}
-{{ $name_t := strings.TrimSuffix ".md" $name }}
-{{ $items:= .resources.Match (printf "%s/*" $name_t) }}
+{{ $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") }}
+{{ $items := .resources.Match (printf "%s/*" $name) }}
 {{ "<!-- Items -->" | safeHTML }}
 {{ $bg := $itemf.background | default "light"}}
 
-
-<section {{ with $itemf.self_link }}id="{{ . }}"{{ end }}>
+<section id="{{ $name }}">
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">

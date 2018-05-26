@@ -4,7 +4,6 @@ fragment = "item"
 date = "2017-10-04"
 weight = 410
 #background = ""
-self_link = "item-fragment-button-left"
 align = "left"
 
 title = "Item Fragment Button Left"

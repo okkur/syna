@@ -1,10 +1,11 @@
 {{ $embed := .self.Params }}
+{{ $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") }}
 {{ "<!-- Embed -->" | safeHTML }}
 {{ $bg := $embed.background | default "white" }}
 {{ $ratio := $embed.ratio | default "4by3" }}
 {{ $size := $embed.size | default "75" }}
 
-<section {{ with $embed.self_link }}id="{{ . }}"{{ end }}>
+<section id="{{ $name }}">
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">

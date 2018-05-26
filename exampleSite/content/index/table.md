@@ -4,7 +4,6 @@ fragment = "table"
 date = "2017-10-10"
 weight = 500
 background = "light"
-self_link = "table-fragment"
 
 title = "Table Fragment"
 subtitle= "Tables are responsive by default"

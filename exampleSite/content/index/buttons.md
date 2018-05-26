@@ -4,7 +4,6 @@ fragment = "buttons"
 date = "2016-09-07"
 weight = 720
 background = "primary"
-self_link = "buttons-fragment"
 
 title = "Buttons Fragment"
 subtitle = "Using primary background"

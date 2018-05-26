@@ -1,7 +1,8 @@
 {{ $fragment := .self.Params }}
+{{ $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") }}
 {{ $bg := $fragment.background | default "secondary" }}
 
-<section id="{{ $fragment.self_link }}">
+<section id="{{ $name }}">
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">

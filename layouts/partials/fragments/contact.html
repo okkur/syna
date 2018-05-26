@@ -1,8 +1,9 @@
 {{ $contact := .self.Params }}
+{{ $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") }}
 {{ "<!-- Contact -->" | safeHTML }}
 {{ $bg := $contact.background | default "secondary" }}
 
-<section id="{{ $contact.self_link }}">
+<section id="{{ $name }}">
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">
