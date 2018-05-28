@@ -11,14 +11,10 @@
   {{- end -}}
 ">
   <div class="container">
-    {{ if $nav.branding.logo }}
-      <a class="navbar-brand py-0" href="{{ "#page-top" | relLangURL }}">
-        <img src="{{ (printf "images/%s" $nav.branding.logo) | relURL }}" height="35" class="d-inline-block align-top" alt="{{ $nav.branding.text }}">
-      </a>
-    {{ else }}
-      <a class="navbar-brand py-0" href="{{ "#page-top" | relLangURL }}">
-        {{- $nav.branding.text -}}
-      </a>
+    {{ with $nav.branding }}
+      {{ $src := (printf "images/%s" .logo) | relURL }}
+      {{ $url := "#page-top" | relLangURL }}
+      {{ partial "shortcodes/logo.html" (dict "src" $src "text" .text "url" $url "class" "navbar-brand py-0" "image_class" "d-inline-block align-top" "height" "35") }}
     {{ end }}
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
