@@ -4,7 +4,6 @@ fragment = "embed"
 date = "2017-09-09"
 weight = 800
 background = "secondary"
-self_link = "video-fragment"
 
 title = "Embed Fragment"
 subtitle = "Easily embed media (videos, iframes etc.)"

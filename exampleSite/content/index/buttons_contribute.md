@@ -4,7 +4,6 @@ fragment = "buttons"
 date = "2016-09-07"
 weight = 710
 #background = ""
-self_link = "button-fragment"
 
 title = "Buttons Fragment"
 #subtitle = ""

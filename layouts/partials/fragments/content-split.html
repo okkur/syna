@@ -1,9 +1,10 @@
 {{ $self := .self }}
+{{ $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") }}
 {{ $content_split := .self.Params }}
 {{ "<!-- Content -->" | safeHTML }}
 {{ $bg := $content_split.background | default "light"}}
 
-<section>
+<section id="{{ $name }}">
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">
