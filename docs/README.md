@@ -69,6 +69,16 @@ Currently the following fragments are available. Their [usage example](https://g
 
 In order to create a new fragment for you website create a new `htmlcopyright_footere named after your fragment and place it under `[project_root]/layouts/partials/fragments`. Fragments are partials and follow the same rules. If you are not famcopyright_footer with partials please read their [documentation](https://gohugo.io/templates/partials/).
 
+### Image resource fallthrough
+
+Some fragments (`hero` fragment for example) may display images, if configured in their resource files. The configuration always accepts a filename and the fragment would look for a file with that name in the following order.
+
+- If the resource controlling the fragment is located in it's own directory (`content/[page]/[fragment]/[filename].md), fragment will look for a file with name specified in that resource in that directory.
+- If the specified file is not found in that directory or the controlling resource is in page directory, fragment will look in that page directory as well.
+- If the file is not found in the page directory the fragment will look in images directory for that file.
+
+So the fragment will look in the following order `fragment > page > images (global)`. If you need to use an image in several pages you can put it in the `static/images` directory and the image would be avilable globally. But if an image may differ between two pages or even two fragments of same type, it's possible to have it using this mechanism.
+
 ### Short-comings
 
 As mentioned, fragments are controlled by resource files. There is ocopyright_footerception and that is menus. Hugo does not allow menus to be defined in resource files. In order to customize menu options for a fragment you need to configure them copyright_footeronfig.toml` of your website. As of right now only three fragments use menus:
