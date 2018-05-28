@@ -1,9 +1,9 @@
 ## Contributor license agreement
 
 By submitting code as an individual you agree to the
-[individual contributor license agreement](/CLA/INDIVIDUAL_CONTRIBUTOR_LICENSE_AGREEMENT.md).  
+[individual contributor license agreement](/CLA/INDIVIDUAL_CONTRIBUTOR_LICENSE_AGREEMENT.md).
 By submitting code as an entity you agree to the
-[corporate contributor license agreement](/CLA/CORPORATE_CONTRIBUTOR_LICENSE_AGREEMENT.md).  
+[corporate contributor license agreement](/CLA/CORPORATE_CONTRIBUTOR_LICENSE_AGREEMENT.md).
 
 <!-- Should always come as first item in contributor guide! -->
 
@@ -11,13 +11,26 @@ By submitting code as an entity you agree to the
 
 ## Contribute to Project
 
-Thank you for your interest in contributing to Syna Theme.  
+Thank you for your interest in contributing to Syna Theme.
 This guide helps make contributing to Syna Theme simple and efficient for everyone.
 
 ### First contribution
 
 If you are starting out contributing to Syna Theme, there might be smaller scoped "starter issues" available:
 [Current starter issues](https://github.com/okkur/syna/labels/starter%20issue)
+
+If you're about to change JS or CSS files, you are going to need Webpack. Please run the following commands:
+
+```
+yarn install
+yarn start
+```
+
+Of course you need to have `node` and `yarn` installed beforehand.
+
+`yarn start` would start webpack and any change you make to JS or CSS files would result in a build that is located in `static/`.
+
+Keep in mind that files JS and CSS files located in `static/` are bundles that created automatically that reflect files from `static-main/` directory.
 
 ### Report bug
 
@@ -35,8 +48,6 @@ It would be helpful to answer some questions:
 ## Helping Others
 
 Please help other users whenever you can.
-
-
 
 ## User Support/Questions
 
@@ -56,10 +67,10 @@ Inactive issues or pull/merge requests may be closed after a specific period. Th
 
 ### Pull Request/Merge Request Guidelines
 
-Please keep the change in a single pull/merge request **as small as possible**.  
-If you want to contribute a large feature think very hard what the minimum viable change is.  
-The smaller a pull/merge request is the more likely it is it will be merged (quickly).  
-Afterwards follow-up requests for enhancements are appreciated.  
+Please keep the change in a single pull/merge request **as small as possible**.
+If you want to contribute a large feature think very hard what the minimum viable change is.
+The smaller a pull/merge request is the more likely it is it will be merged (quickly).
+Afterwards follow-up requests for enhancements are appreciated.
 
 ### Contribution Acceptance Criteria
 
