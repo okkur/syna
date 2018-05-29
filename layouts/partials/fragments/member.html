@@ -1,15 +1,14 @@
-{{ $memberf := .self.Params }}
-{{ $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") }}
-{{ $members := .resources.Match (printf "%s/*" $name) }}
+{{- $memberf := .self.Params -}}
+{{- $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") -}}
+{{- $members := .resources.Match (printf "%s/*" $name) -}}
 {{ "<!-- Member -->" | safeHTML }}
-{{ $bg := $memberf.background | default "light"}}
-
+{{- $bg := $memberf.background | default "light" }}
 <section id="{{ $name }}">
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">
     <div class="container py-5">
-      {{ with $memberf.title }}
+      {{- with $memberf.title }}
         <div class="row">
           <div class="col text-center
             {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
@@ -23,8 +22,8 @@
             </h2>
           </div>
         </div>
-      {{ end }}
-      {{ with $memberf.subtitle }}
+      {{- end -}}
+      {{- with $memberf.subtitle }}
         <div class="row">
           <div class="col text-center pt-2 pb-3
             {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
@@ -38,10 +37,10 @@
             </h5>
           </div>
         </div>
-      {{ end }}
+      {{- end }}
       <div class="row justify-content-center align-items-start">
-        {{ range $members }}
-          {{ $member := .Params }}
+        {{- range $members -}}
+          {{- $member := .Params }}
           <div class="col-lg-4 col-md-6 col-sm-12 pt-3 pb-5 text-left text-sm-center">
             <div class="text-center m-2">
               <img src="/images/member/{{ $member.image }}" class="img-fluid rounded-circle w-75 border
@@ -70,33 +69,33 @@
                 {{- printf " text-muted text-%s" "secondary" -}}
               {{- end -}}
             ">
-              {{ with $member.position }}
+              {{- with $member.position }}
                 <h5 class="mb-3">
                   {{- . | markdownify -}}
                 </h5>
-              {{ end }}
-              {{ with $member.reports_to }}
+              {{- end -}}
+              {{- with $member.reports_to }}
                 <h6 class="font-italic mb-1">
                   {{- i18n "member.reportsTo" }} {{ printf " %s" . | markdownify -}}
                 </h6>
                 {{ end }}
-              {{ with $member.lives_in }}
+              {{- with $member.lives_in }}
                 <h6 class="font-italic mb-1">
                   {{- i18n "member.livesIn" }} {{ printf " %s" . | markdownify -}}
                 </h6>
-              {{ end }}
-              {{ if $member.scope }}
+              {{- end -}}
+              {{- if $member.scope }}
                 <div class="pt-3 font-weight-bold">
-                  {{ range $member.scope }}
+                  {{- range $member.scope }}
                     <div>
                       {{- . | markdownify -}}
                     </div>
-                  {{ end }}
+                  {{- end }}
                 </div>
-              {{ end }}
-              {{ if $member.icons }}
+              {{- end -}}
+              {{- if $member.icons }}
               <div class="row justify-content-center pt-4">
-                {{ range $member.icons }}
+                {{- range $member.icons }}
                   <span class="fa-stack fa-2x m-2">
                     <a href="{{ .link }}">
                       <i class="fas fa-circle fa-stack-2x
@@ -107,19 +106,19 @@
                       <i class="fab {{ .icon }} fa-stack-1x fa-inverse"></i>
                     </a>
                   </span>
-                {{ end }}
+                {{- end }}
               </div>
-              {{ end }}
-                {{ with .Content }}
+              {{- end -}}
+                {{- with .Content }}
                   <div class="pt-3">
                     <div class="description">
                       {{- . | markdownify -}}
                     </div>
                   </div>
-                {{ end }}
+                {{- end }}
               </div>
             </div>
-          {{ end }}
+          {{- end }}
         </div>
       </div>
     </div>

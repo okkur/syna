@@ -1,9 +1,8 @@
-{{ $self := .self }}
-{{ $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") }}
-{{ $content_split := .self.Params }}
+{{- $self := .self -}}
+{{- $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") -}}
+{{- $content_split := .self.Params -}}
 {{ "<!-- Content -->" | safeHTML }}
-{{ $bg := $content_split.background | default "light"}}
-
+{{- $bg := $content_split.background | default "light" }}
 <section id="{{ $name }}">
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
@@ -11,8 +10,8 @@
     <div class="container py-5">
       <div class="row">
         <div class="col-md-3">
-          {{ with $content_split.sidebar }}
-            {{ if .title }}
+          {{- with $content_split.sidebar -}}
+            {{- if .title }}
               <div class="col-12 pb-3
                 {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
                   {{- printf " text-%s" "dark" -}}
@@ -24,7 +23,7 @@
                   {{- .title | markdownify -}}
                 </h1>
               </div>
-            {{ end }}
+            {{- end }}
             <div class="col-12
               {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
                 {{- printf " text-%s" "dark" -}}
@@ -35,9 +34,9 @@
               {{- .content | markdownify -}}
             </div>
           </div>
-        {{end}}
+        {{- end }}
         <div class="col-md-9">
-          {{ if $content_split.title }}
+          {{- if $content_split.title }}
             <div class="col-12 pb-3
               {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
                 {{- printf " text-%s" "dark" -}}
@@ -49,8 +48,8 @@
                 {{- $content_split.title | markdownify -}}
               </h1>
             </div>
-          {{ end }}
-          {{ if $content_split.subtitle }}
+          {{- end -}}
+          {{- if $content_split.subtitle }}
             <div class="col-12 pb-2
               {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
                 {{- printf " text-%s" "dark" -}}
@@ -62,7 +61,7 @@
                 {{- $content_split.subtitle | markdownify -}}
               </h3>
             </div>
-          {{ end }}
+          {{- end }}
           <div class="col-12
             {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
               {{- printf " text-%s" "dark" -}}
@@ -70,7 +69,7 @@
               {{- printf " text-muted text-%s" "secondary" -}}
             {{- end -}}
           ">
-            {{ $self.Content | markdownify -}}
+            {{ $self.Content | markdownify }}
           </div>
         </div>
       </div>

@@ -1,8 +1,7 @@
-{{ $nav := .self.Params }}
-{{ $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") }}
-{{ "<!-- Nav -->" | safeHTML }}
-{{ $bg := $nav.background | default "dark" }}
-
+{{- $nav := .self.Params -}}
+{{- $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") -}}
+{{- "<!-- Nav -->" | safeHTML -}}
+{{- $bg := $nav.background | default "dark" }}
 <nav class="overlay navbar navbar-expand-lg py-2
   {{- printf " bg-%s" $bg -}}
   {{- if or (eq $bg "light") (eq $bg "white") (eq $bg "secondary") -}}
@@ -12,82 +11,73 @@
   {{- end -}}
 " id="{{ $name }}">
   <div class="container">
-    {{ if $nav.branding.logo }}
+    {{- if $nav.branding.logo }}
       <a class="navbar-brand py-0" href="{{ "#page-top" | relLangURL }}">
         <img src="{{ (printf "images/%s" $nav.branding.logo) | relURL }}" height="35" class="d-inline-block align-top" alt="{{ $nav.branding.text }}">
       </a>
-    {{ else }}
+    {{- else }}
       <a class="navbar-brand py-0" href="{{ "#page-top" | relLangURL }}">
         {{- $nav.branding.text -}}
       </a>
-    {{ end }}
+    {{- end }}
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
       <ul class="navbar-nav">
-        {{ if $nav.prepend }}
-          {{ range sort $nav.prepend }}
+        {{- if $nav.prepend -}}
+          {{- range sort $nav.prepend }}
             <li class="nav-item">
-              <a class="nav-link" href="{{ .url | relLangURL }}"
-                {{ if hasPrefix .url "#" }}
-                  class="anchor"
-                {{ end }}>
-                {{- .name -}}
+              <a href="{{ .url | relLangURL }}" {{- if hasPrefix .url "#" }} class="anchor nav-link"{{ else }} class="nav-link"{{ end }}>
+                {{ .name }}
               </a>
             </li>
-          {{ end }}
-        {{ end }}
-        {{ if .Site.Menus.main }}
-          {{ range sort .Site.Menus.main }}
+          {{- end -}}
+        {{- end }}
+        {{- if .Site.Menus.main -}}
+          {{- range sort .Site.Menus.main }}
             <li class="nav-item">
-              <a class="nav-link" href="{{ .URL | relLangURL }}"
-                {{ if hasPrefix .URL "#" }}
-                  class="anchor"
-                {{ end }}>
-                {{- .Name -}}
+              <a href="{{ .URL | relLangURL }}" {{- if hasPrefix .URL "#" }} class="nav-link anchor"{{ else }} class="nav-link"{{ end }}>
+                {{ .Name }}
               </a>
             </li>
-          {{ end }}
-        {{ end }}
-        {{ if $nav.postpend }}
-          {{ range sort $nav.postpend }}
+          {{- end -}}
+        {{- end }}
+        {{- if $nav.postpend -}}
+          {{- range sort $nav.postpend }}
             <li class="nav-item">
-              <a class="nav-link" href="{{ .url | relLangURL }}"
-                {{ if hasPrefix .url "#" }}
-                  class="anchor"
-                {{ end }}>
-                {{- .name -}}
+              <a href="{{ .url | relLangURL }}" {{- if hasPrefix .URL "#" }} class="nav-link anchor"{{ else }} class="nav-link"{{ end }}>
+                {{ .name }}
               </a>
             </li>
-          {{ end }}
-        {{ end }}
+          {{- end -}}
+        {{- end }}
       </ul>
-      {{ if .Site.IsMultiLingual }}
-        {{ range .Site.Languages }}
+      {{- if .Site.IsMultiLingual -}}
+        {{- range .Site.Languages }}
           <a class="btn btn-secondary p-1 m-1" href="{{ delimit (slice "/" .) "" }}" role="button">
-            {{- . -}}
+            {{ . }}
           </a>
-        {{ end }}
-      {{ end }}
+        {{- end -}}
+      {{- end }}
     </div>
   </div>
-  {{ if $nav.repo_button }}
+  {{- if $nav.repo_button }}
     <div class="d-none d-lg-block pl-auto">
       <a class="btn btn-light" href="{{ $nav.repo_button.url }}" role="button">
         <i class="{{ printf "fab %s" $nav.repo_button.icon | default (printf "fab fa-github") }} mr-1"></i>
-        {{- $nav.repo_button.text | default (printf "Star") -}}
+        {{ $nav.repo_button.text | default "Star" }}
       </a>
     </div>
-  {{ end }}
+  {{- end }}
 </nav>
 <div class="scroll-to-top bg-primary
   {{- if not .Site.Params.fontawesome.disabled -}}
     {{ print " has-font-icon" }}
   {{- end -}}">
-  {{ if not .Site.Params.fontawesome.disabled }}
+  {{- if not .Site.Params.fontawesome.disabled -}}
     <i class="fas fa-angle-up"></i>
-  {{ else }}
+  {{- else -}}
     Top
-  {{ end }}
+  {{- end -}}
 </div>

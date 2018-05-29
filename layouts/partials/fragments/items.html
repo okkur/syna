@@ -1,15 +1,14 @@
-{{ $itemf := .self.Params }}
-{{ $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") }}
-{{ $items := .resources.Match (printf "%s/*" $name) }}
+{{- $itemf := .self.Params -}}
+{{- $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") -}}
+{{- $items := .resources.Match (printf "%s/*" $name) -}}
 {{ "<!-- Items -->" | safeHTML }}
-{{ $bg := $itemf.background | default "light"}}
-
+{{- $bg := $itemf.background | default "light" }}
 <section id="{{ $name }}">
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">
     <div class="container py-5">
-      {{ with $itemf.title }}
+      {{- with $itemf.title }}
         <div class="row">
           <div class="col text-center
             {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
@@ -23,8 +22,8 @@
             </h2>
           </div>
         </div>
-      {{ end }}
-      {{ with $itemf.subtitle }}
+      {{- end -}}
+      {{- with $itemf.subtitle -}}
         <div class="row">
           <div class="col text-center pt-4 pb-5
             {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
@@ -38,10 +37,10 @@
             </h5>
           </div>
         </div>
-      {{ end }}
+      {{- end }}
       <div class="row justify-content-center align-items-start">
-         {{ range $items}}
-           {{ $items:= .Params }}
+         {{- range $items -}}
+           {{- $items:= .Params }}
           <div class="col-md-4 text-center">
             <span class="fa-stack fa-3x m-2">
               <i class="fas fa-circle fa-stack-2x
@@ -60,15 +59,15 @@
                 {{- printf " text-%s" "light" -}}
               {{- end -}}
             ">
-              {{ if $items.link }}
+              {{- if $items.link }}
                 <a href="{{ $items.link | relLangURL }}" class="
                   {{- if eq $bg "primary" -}}
                     {{- printf " text-%s" "dark" -}}
                   {{- end -}}
                 ">{{ $items.name | markdownify }}</a>
-              {{ else }}
+              {{- else }}
                 {{- $items.name | markdownify -}}
-              {{ end }}
+              {{- end }}
             </h4>
             <div class="
               {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
@@ -78,7 +77,7 @@
               {{- end -}}
             ">{{ .Content }}</div>
           </div>
-        {{ end }}
+        {{- end }}
       </div>
     </div>
   </div>

@@ -1,9 +1,8 @@
-{{ $copyright := .self.Params }}
-{{ $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") }}
-{{ $menus := .menus }}
+{{- $copyright := .self.Params -}}
+{{- $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") -}}
+{{- $menus := .menus -}}
 {{ "<!-- Copyright -->" | safeHTML }}
-{{ $bg := $copyright.background | default "secondary"}}
-
+{{- $bg := $copyright.background | default "secondary" }}
 <footer class="overlay container-fluid
   {{- printf " bg-%s" $bg -}}
 " id="{{ $name }}">
@@ -18,22 +17,22 @@
           {{- end -}}
         ">
           <div class="row mr-lg-auto">
-            {{ with $copyright.copyright }}
+            {{- with $copyright.copyright }}
               <div class="col-auto">
                 {{- . | markdownify -}}
               </div>
-            {{ else }}
+            {{- else }}
               <div class="col-auto px-1">
-                {{- i18n "footerLegal.copyright" -}} &nbsp;{{ now.Format "2006"}}
+                {{- i18n "footerLegal.copyright" -}} &nbsp;{{ now.Format "2006" -}}
               </div>
               <div class="col-auto px-0">
                 {{- printf " %s %s" (i18n "footerLegal.by") $.Site.Params.name -}}
               </div>
-            {{ end }}
+            {{- end }}
           </div>
         </div>
       </div>
-      {{- if eq $copyright.attribution true -}}
+      {{- if eq $copyright.attribution true }}
         <div class="col-auto mx-auto">
           <div class="row navbar-text text-center
             {{- if eq $bg "dark" -}}
@@ -48,12 +47,12 @@
             </a>
           </div>
         </div>
-      {{ end }}
-      {{ if .Site.Menus.copyright_footer }}
+      {{- end -}}
+      {{- if .Site.Menus.copyright_footer }}
         <div class="col-md">
           <div class="row my-2 justify-content-center">
             <ul class="nav ml-lg-auto">
-              {{ range sort .Site.Menus.copyright_footer }}
+              {{- range sort .Site.Menus.copyright_footer }}
                 <li class="nav-item">
                   <a class="nav-link py-0
                     {{- if eq $bg "dark" -}}
@@ -68,11 +67,11 @@
                     {{- .Name -}}
                   </a>
                 </li>
-              {{ end }}
+              {{- end }}
             </ul>
           </div>
         </div>
-      {{ end }}
+      {{- end }}
     </div>
   </div>
 </footer>

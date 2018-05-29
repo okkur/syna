@@ -15,35 +15,33 @@
   <meta property="og:image" content="{{ .Site.Params.image }}">
   <meta property="og:site_name" content="{{ .Site.Title }}">
   <meta property="og:type" content="website">
-  {{ with .Site.Params.name }}
-    <meta name="author" content="{{ . }}">
-  {{ end }}
+  {{ with .Site.Params.name -}}<meta name="author" content="{{ . }}">{{- end }}
 
-  {{- .Hugo.Generator -}}
+  {{ .Hugo.Generator }}
 
   <title>
     {{- .Title -}}
-    {{ if not .IsHome }} &middot; {{ .Site.Title }}{{ end }}
+    {{- if not .IsHome }} &middot; {{ .Site.Title }}{{ end -}}
   </title>
 
   {{ "<!-- Bootstrap Style -->" | safeHTML }}
   <link href="{{ "main.css" | relURL }}" rel="stylesheet">
 
-  {{ with .Site.Params.favicon}}
+  {{- with .Site.Params.favicon }}
     <link rel="shortcut icon" type="image/x-icon" href="{{ . | relURL }}">
     <link rel="icon" {{ with .Site.Params.favicon_ico_sizes }}sizes="{{ . }}"{{ end }} type="image/x-icon" href="{{ . | relURL }}">
-  {{ end }}
+  {{- end }}
 
-  {{ with .Site.Params.favicon_png }}
+  {{- with .Site.Params.favicon_png }}
     <link rel="icon" href="{{ . | relURL }}">
     <link rel="apple-touch-icon-precomposed" href="{{ . | relURL }}">
-  {{ end }}
+  {{- end }}
 
-  {{ with .Site.Params.favicon_svg }}
+  {{- with .Site.Params.favicon_svg }}
     <link rel="icon" type="image/svg+xml" href="{{ . | relURL }}">
-  {{ end }}
+  {{- end }}
 
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
-  {{ partial "custom/css.html" . }}
+  {{- partial "custom/css.html" . }}
 
 </head>
