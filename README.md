@@ -16,7 +16,13 @@ Highly customizable with modular per-page fragments.
 
 Check out our [demo](https://syna-demo.okkur.io)
 
-Take a look at our full [documentation](/docs).
+## Documentation
+
+Take a look at our full [documentation](/docs/README.md).
+
+## Changelog
+
+Detailed changes for each release are documented in the [release notes.](https://github.com/okkur/syna/releases)
 
 ## Support
 For detailed information on support options see our [support guide](/SUPPORT.md).

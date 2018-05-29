@@ -68,7 +68,7 @@ lastmod = ["lastmod", ":git", "date"]
   weight = 30
 
 [[menu.main]]
-  url = "#contact-fragment"
+  url = "#contact"
   name = "Contact"
   weight = 50
 
