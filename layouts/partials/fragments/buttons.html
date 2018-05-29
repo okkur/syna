@@ -1,14 +1,13 @@
-{{ $buttons := .self.Params }}
-{{ $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") }}
+{{- $buttons := .self.Params -}}
+{{- $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") -}}
 {{ "<!-- Buttons -->" | safeHTML }}
-{{ $bg := $buttons.background | default "white" }}
-
+{{- $bg := $buttons.background | default "white" }}
 <section id="{{ $name }}">
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">
     <div class="container py-4">
-      {{ with $buttons.title }}
+      {{- with $buttons.title }}
         <div class="row">
           <div class="col text-center
             {{- if or (eq $bg "secondary") (eq $bg "white") (eq $bg "primary") -}}
@@ -22,8 +21,8 @@
             </h4>
           </div>
         </div>
-      {{ end }}
-      {{ with $buttons.subtitle }}
+      {{- end -}}
+      {{- with $buttons.subtitle }}
         <div class="row">
           <div class="col text-center
             {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
@@ -37,16 +36,16 @@
             </h5>
           </div>
         </div>
-      {{ end }}
+      {{- end }}
       <div class="row text-center justify-content-center">
-        {{ range $buttons.buttons }}
+        {{- range $buttons.buttons }}
           <a class="btn btn-lg m-2{{ if hasPrefix .link "#" }} anchor{{ end }}
             {{- $color := .color | default "primary" -}}
             {{- printf " btn-%s" $color -}}
           " href="{{ .link | relLangURL }}">
             {{- .text -}}
           </a>
-        {{ end }}
+        {{- end }}
       </div>
     </div>
   </div>

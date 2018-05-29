@@ -1,16 +1,15 @@
-{{ $embed := .self.Params }}
-{{ $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") }}
+{{- $embed := .self.Params -}}
+{{- $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") -}}
 {{ "<!-- Embed -->" | safeHTML }}
-{{ $bg := $embed.background | default "white" }}
-{{ $ratio := $embed.ratio | default "4by3" }}
-{{ $size := $embed.size | default "75" }}
-
+{{- $bg := $embed.background | default "white" -}}
+{{- $ratio := $embed.ratio | default "4by3" -}}
+{{- $size := $embed.size | default "75" }}
 <section id="{{ $name }}">
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">
     <div class="container py-5">
-      {{ with $embed.title }}
+      {{- with $embed.title }}
         <div class="row">
           <div class="col text-center py-3
             {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
@@ -24,8 +23,8 @@
             </h2>
           </div>
         </div>
-      {{ end }}
-      {{ with $embed.subtitle }}
+      {{- end -}}
+      {{- with $embed.subtitle }}
         <div class="row">
           <div class="col text-center pb-4
             {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
@@ -39,24 +38,24 @@
             </h5>
           </div>
         </div>
-      {{ end }}
+      {{- end }}
       <div class="row justify-content-center">
-        {{ if eq $embed.responsive false }}
+        {{- if eq $embed.responsive false }}
           <div class="{{- printf "w-%s" $size -}}">
             {{- $embed.media | safeHTML -}}
           </div>
-        {{ else }}
+        {{- else }}
           <div class="embed-responsive
             {{- printf " embed-responsive-%s" $ratio -}}
             {{- printf " h-%s w-%s" $size $size -}}
           ">
-            {{ if $embed.media }}
+            {{- if $embed.media }}
               {{- $embed.media | safeHTML -}}
-            {{ else }}
+            {{- else }}
               <iframe class="embed-responsive-item" src="{{ $embed.media_source }}" allowfullscreen></iframe>
-            {{ end }}
+            {{- end }}
           </div>
-        {{ end }}
+        {{- end }}
       </div>
     </div>
   </div>

@@ -1,4 +1,4 @@
-{{ range .Site.Params.custom.js }}
+{{- range .Site.Params.custom.js }}
   {{ "<!-- Custom JS -->" | safeHTML }}
   <script src="{{ . | relURL }}"></script>
-{{ end }}
+{{- end }}

@@ -1,9 +1,8 @@
-{{ $table := .self.Params }}
-{{ $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") }}
-{{ "<!-- Item -->" | safeHTML }}
-{{ $bg := $table.background | default "light"}}
-{{ $align := $table.align | default "center" }}
-
+{{- $table := .self.Params -}}
+{{- $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") -}}
+{{ "<!-- Table -->" | safeHTML }}
+{{- $bg := $table.background | default "light" -}}
+{{- $align := $table.align | default "center" }}
 <section id="{{ $name }}">
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
@@ -11,7 +10,7 @@
     <div class="container py-5">
       <div class="row align-items-center text-center justify-content-end">
         <div class="col-12 order-lg-1 text-center">
-          {{ if $table.title }}
+          {{- if $table.title }}
             <div class="row pb-3">
               <div class="col-12
                 {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
@@ -25,8 +24,8 @@
                 </h2>
               </div>
             </div>
-          {{ end }}
-          {{ if $table.subtitle }}
+          {{- end -}}
+          {{- if $table.subtitle }}
             <div class="row pb-2
               {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
                 {{- printf " text-%s" "dark" -}}
@@ -40,8 +39,8 @@
                 </h5>
               </div>
             </div>
-          {{ end }}
-          {{ if $table.rows }}
+          {{- end -}}
+          {{- if $table.rows }}
             <div class="row justify-content-center">
               <div class="col table-responsive">
                 <table class="table table-bordered
@@ -51,8 +50,8 @@
                 ">
                   <thead>
                     <tr>
-                      {{ $.Scratch.Set "col" 0 }}
-                      {{ range $table.header.values }}
+                      {{- $.Scratch.Set "col" 0 -}}
+                      {{- range $table.header.values }}
                         <th class="
                           {{- if .center -}}
                             {{- printf " text-center" -}}
@@ -63,22 +62,22 @@
                         ">
                           {{- .text | markdownify -}}
                         </th>
-                        {{ $.Scratch.Add "col" 1 }}
-                      {{ end }}
+                        {{- $.Scratch.Add "col" 1 -}}
+                      {{- end }}
                     </tr>
                   </thead>
                   <tbody>
-                    {{ range $table.rows }}
-                      {{ $.Scratch.Set "col" 0 }}
+                    {{- range $table.rows -}}
+                      {{- $.Scratch.Set "col" 0 }}
                       <tr>
-                        {{ range $i, $s := .values }}
-                          {{ if .header }}
+                        {{- range $i, $s := .values -}}
+                          {{- if .header }}
                           <th class="align-middle
                             {{- if (index $table.header.values $i).hide_on_mobile -}}
                               {{- print " hide-on-mobile" }}
                             {{- end -}}
                           ">{{ .header | markdownify }}</th>
-                          {{ else if .button }}
+                          {{- else if .button }}
                             <td class="align-middle
                               {{- if (index $table.header.values $i).hide_on_mobile -}}
                                 {{- print " hide-on-mobile" }}
@@ -92,7 +91,7 @@
                               {{- .button -}}
                             </a>
                           </td>
-                        {{ else if .icon }}
+                        {{- else if .icon }}
                           <td class="align-middle
                             {{- if .center -}}
                               {{- printf " text-center" -}}
@@ -105,7 +104,7 @@
                               <i class="fas {{ .icon }} fa-2x"></i>
                             </a>
                           </td>
-                        {{ else }}
+                        {{- else }}
                           <td class="align-middle
                             {{- if .center -}}
                               {{- printf " text-center" -}}
@@ -114,16 +113,16 @@
                               {{- print " hide-on-mobile" }}
                             {{- end -}}
                           ">{{ .text | markdownify }}</td>
-                        {{ end }}
-                        {{ $.Scratch.Add "col" 1 }}
-                      {{ end }}
+                        {{- end -}}
+                        {{- $.Scratch.Add "col" 1 -}}
+                      {{- end }}
                     </tr>
-                  {{ end }}
+                  {{- end }}
                 </tbody>
               </table>
             </div>
           </div>
-        {{ end }}
+        {{- end }}
       </div>
     </div>
   </div>
