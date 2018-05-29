@@ -20,15 +20,7 @@
           <h4>
             {{- .title -}}
           </h4>
-          {{ if .image }}
-          <a href="{{ .link }}">
-            <img src="{{ (printf "images/%s" .image) | relURL }}" class="img-fluid w-50" alt="{{ .text }}">
-          </a>
-          {{ else }}
-          <div>
-            {{- .text -}}
-          </div>
-          {{ end }}
+          {{ partial "shortcodes/logo.html" (dict "src" ((printf "images/%s" .image) | relURL) "text" .text "url" .link "image_class" "img-fluid w-50") }}
         {{ end }}
 
         {{ if $menus.footer_social }}

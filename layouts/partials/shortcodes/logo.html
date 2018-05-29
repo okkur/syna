@@ -1,0 +1,16 @@
+{{ $image := .src }}
+{{ $text := .text }}
+{{ $class := .class }}
+{{ $height := .height }}
+{{ $image_class := .image_class }}
+{{ $url := .url }}
+
+{{ if $image }}
+<a class="{{ $class }}" href="{{ $url }}">
+  <img src="{{ $image }}" {{ if $height -}} height="35" {{ end -}} class="{{ $image_class }}" alt="{{ $text }}">
+</a>
+{{ else }}
+<a class="{{ $class }}" href="{{ $url }}">
+  {{- $text -}}
+</a>
+{{ end }}

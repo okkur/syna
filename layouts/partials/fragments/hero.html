@@ -23,32 +23,10 @@
   {{ end }}
 
   {{ if $hero.logo }}
-    {{/* fallback to global resource */}}
-    {{ $tmp_full.Scratch.Set "image" (printf "images/%s" $hero.logo.image) }}
-    {{ range .resources.ByType "image" }}
-
-      {{/* try for page specific resource */}}
-      {{ $location := (printf "%s/%s" $page_path $hero.logo.image) }}
-      {{ if (fileExists $location) }}
-        {{/* special case index: trim index/ from url */}}
-        {{ $location := strings.TrimPrefix "index/" $location }}
-        {{ $tmp_full.Scratch.Set "image" $location }}
-      {{ end }}
-
-      {{/* try for fragment specific resource */}}
-      {{ $location := (printf "%s/%s" $path $hero.logo.image) }}
-      {{ if (fileExists $location) }}
-        {{/* special case index: trim index/ from url */}}
-        {{ $location := strings.TrimPrefix "index/" $location }}
-        {{ $tmp_full.Scratch.Set "image" $location }}
-      {{ end }}
-    {{ end }}
+    {{ $resources := .resources }}
     {{ with $hero.logo }}
       <div class="row justify-content-center align-items-start">
-        <img class="overlay img-fluid" src="{{ $tmp_full.Scratch.Get "image" | relURL }}"
-          {{- if .height -}} height="{{ .height }}"{{- end -}}
-          {{- if .width -}} width="{{ .width }}"{{- end -}}
-        ></img>
+        {{ partial "shortcodes/img.html" (dict "class" ("overlay img-fluid") "image" .image "height" .height "width" .width "tmp_full" $tmp_full "path" $path "page_path" $page_path "resources" $resources) }}
       </div>
     {{ end }}
     {{ with $hero.subtitle }}
