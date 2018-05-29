@@ -7,7 +7,8 @@
   "author": "Michael Grosser (stp-ip)",
   "license": "Apache",
   "scripts": {
-    "start": "webpack --watch --progress"
+    "start": "webpack --watch --progress",
+    "build": "webpack --progress"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
