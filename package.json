@@ -7,7 +7,13 @@
   "author": "Michael Grosser (stp-ip)",
   "license": "Apache",
   "scripts": {
-    "start": "webpack --watch --progress"
+    "build-js": "webpack --progress",
+    "build-hugo": "cd exampleSite && hugo -c content --config config.toml",
+    "watch-js": "webpack --watch --progress",
+    "watch-hugo": "cd exampleSite && hugo -c content --config config.toml server -D",
+    "dev": "nf start",
+    "start": "npm run watch-js",
+    "build": "npm run build-js && npm run build-hugo"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -25,6 +31,7 @@
   },
   "dependencies": {
     "bootstrap": "^4.1.1",
+    "foreman": "^3.0.0",
     "form-validator-simple": "^0.0.11",
     "particles.js": "^2.0.0",
     "popper.js": "^1.14.3"
