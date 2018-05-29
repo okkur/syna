@@ -67,7 +67,7 @@ Currently the following fragments are available. Their [usage example](https://g
 
 ### Creating new fragments
 
-In order to create a new fragment for you website create a new `htmlcopyright_footere named after your fragment and place it under `[project_root]/layouts/partials/fragments`. Fragments are partials and follow the same rules. If you are not famcopyright_footer with partials please read their [documentation](https://gohugo.io/templates/partials/).
+In order to create a new fragment for you website create a new `html` named after your fragment and place it under `[project_root]/layouts/partials/fragments`. Fragments are partials and follow the same rules. If you are not familiar with partials please read their [documentation](https://gohugo.io/templates/partials/).
 
 ### Image resource fallthrough
 
