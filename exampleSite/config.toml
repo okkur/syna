@@ -36,10 +36,6 @@ googleAnalytics = ""
     # Optional hash for integrity check
     #hash = "sha512-RfeD0pacGTqy9m7U6PgehQfS4cc7SIt+e+P+H5e848kEvB/RW84CUGO3O4O3LNbxjevym6KPUZ8muPsMrI8WIw=="
 
-  # Optional, global disable switch for form related files
-  [params.contact]
-    disabled = false
-
   # Optional, global disable switch for fontawesome related files
   # For custom fontawesome js files use the custom.js method
   [params.fontawesome]
