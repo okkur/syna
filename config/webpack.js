@@ -36,7 +36,7 @@ const fileLoader = {
     loader: "url-loader",
     options: {
       limit: 50000,
-      name: "./static/[name].[ext]",
+      name: "./fonts/[name].[ext]",
     },
   },
 };
