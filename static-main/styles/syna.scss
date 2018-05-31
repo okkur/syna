@@ -96,14 +96,16 @@
   }
 }
 
-.navbar-collapse {
-  max-height: 0px;
-  transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
-  overflow: hidden;
-  display: block;
-}
+@include media-breakpoint-down(md) {
+  .navbar-collapse {
+    max-height: 0px;
+    transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+    overflow: hidden;
+    display: block;
+  }
 
-.navbar-collapse.in {
-  max-height: 65em;
-  transition: max-height 1s ease-in-out;
+  .navbar-collapse.in {
+    max-height: 65em;
+    transition: max-height 1s ease-in-out;
+  }
 }
