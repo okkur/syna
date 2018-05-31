@@ -71,6 +71,18 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./static-main/js/helpers/bootstrap-helper.js":
+/*!****************************************************!*\
+  !*** ./static-main/js/helpers/bootstrap-helper.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nvar _jqHelpers = __webpack_require__(/*! ./jq-helpers */ \"./static-main/js/helpers/jq-helpers.js\");\n\nvar _jqHelpers2 = _interopRequireDefault(_jqHelpers);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar toggle = document.querySelectorAll('.navbar-toggler'); // Updated the script from https://stackoverflow.com/questions/43417452/animate-navbar-collapse-using-pure-js-css/43434017#43434017\n\nvar collapse = document.querySelectorAll('.navbar-collapse');\nvar dropdowns = document.querySelectorAll('.dropdown') || [];\n\nfunction toggleMenu(node) {\n  var menu = document.querySelector(node.dataset.target);\n  menu.classList.toggle('in');\n}\n\nfunction closeMenus() {\n  Array.from(dropdowns || []).forEach(function (node) {\n    node.querySelector('.dropdown-toggle').classList.remove('dropdown-open');\n    node.classList.remove('open');\n  });\n}\n\nfunction closeMenusOnResize() {\n  if (document.body.clientWidth >= 768) {\n    closeMenus();\n    collapse.classList.remove('in');\n  }\n}\n\nfunction toggleDropdown() {\n  if (document.body.clientWidth < 768) {\n    var open = this.classList.contains('open');\n    closeMenus();\n    if (!open) {\n      this.querySelector('.dropdown-toggle').classList.toggle('dropdown-open');\n      this.classList.toggle('open');\n    }\n  }\n}\n\nwindow.addEventListener('resize', closeMenusOnResize, false);\nArray.from(dropdowns || []).forEach(function (node) {\n  return node.addEventListener('click', toggleDropdown);\n});\nArray.from(toggle || []).forEach(function (node) {\n  return node.addEventListener('click', function (e) {\n    return toggleMenu(node);\n  }, false);\n});\n\n//# sourceURL=webpack:///./static-main/js/helpers/bootstrap-helper.js?");
+
+/***/ }),
+
 /***/ "./static-main/js/helpers/jq-helpers.js":
 /*!**********************************************!*\
   !*** ./static-main/js/helpers/jq-helpers.js ***!
@@ -103,7 +115,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\n__webpack_require__(/*! ./scroll */ \"./static-main/js/scroll.js\");\n\n__webpack_require__(/*! ../styles */ \"./static-main/styles/index.scss\");\n\n//# sourceURL=webpack:///./static-main/js/index.js?");
+eval("\n\n__webpack_require__(/*! ./helpers/bootstrap-helper */ \"./static-main/js/helpers/bootstrap-helper.js\");\n\n__webpack_require__(/*! ./scroll */ \"./static-main/js/scroll.js\");\n\n__webpack_require__(/*! ../styles */ \"./static-main/styles/index.scss\");\n\n//# sourceURL=webpack:///./static-main/js/index.js?");
 
 /***/ }),
 
