@@ -2,7 +2,7 @@
   title = "Huge Gopher"
   weight = 0
   joined = "2017-10-17"
-  image = "hugegopher.png"
+  image = "member/hugegopher.png"
   position = "Lead Gopherineer"
 
   reports_to = "CTO"

@@ -1,8 +1,35 @@
 {{- $item := .self.Params -}}
 {{- $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") -}}
+{{- $tmp_full := .tmp_full -}}
 {{ "<!-- Item -->" | safeHTML }}
 {{- $bg := $item.background | default "light" -}}
-{{- $align := $item.align | default "center" }}
+{{- $align := $item.align | default "center" -}}
+
+{{- if $item.image -}}
+  {{- $image := $item.image -}}
+  {{- $path := .self.File.Path -}}
+  {{- $path := replace $path "/index.md" "" -}}
+  {{- $path := strings.TrimSuffix ".md" $path -}}
+  {{- $page_path := replace $path (printf "/%s" $name) "" -}}
+  {{/* fallback to global resource */}}
+  {{- $tmp_full.Scratch.Set "image" (printf "images/%s" $image) -}}
+
+  {{/* try for page specific resource */}}
+  {{- $location := (printf "%s/%s" $page_path $image) -}}
+  {{- if (fileExists (printf "content/%s" $location)) -}}
+    {{/* special case index: trim index/ from url */}}
+    {{- $location := strings.TrimPrefix "index/" $location -}}
+    {{- $tmp_full.Scratch.Set "image" $location -}}
+  {{- end -}}
+
+  {{/* try for fragment specific resource */}}
+  {{- $location := (printf "%s/%s" $path $image) -}}
+  {{- if (fileExists (printf "content/%s" $location)) -}}
+    {{/* special case index: trim index/ from url */}}
+    {{- $location := strings.TrimPrefix "index/" $location -}}
+    {{- $tmp_full.Scratch.Set "image" $location -}}
+  {{- end -}}
+{{- end }}
 <section id="{{ $name }}">
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
@@ -97,8 +124,7 @@
                     <i class="fas {{ $item.icon }} fa-stack-1x fa-inverse"></i>
                   </span>
                 {{- else if $item.image -}}
-                  {{- $url := printf "images/row/%s" $item.image }}
-                  <img src="{{ $url | absURL }}" class="img-fluid p-2" alt="{{ $item.name }}">
+                  <img src="{{ $tmp_full.Scratch.Get "image" | absURL }}" class="img-fluid p-2" alt="{{ $item.name }}">
                 {{- end -}}
                 {{- if and (not $item.icon) (not $item.image) -}}
                   {{- range $item.buttons }}
@@ -281,9 +307,8 @@
                 </span>
               </div>
             {{- else if $item.image }}
-              {{- $url := printf "images/row/%s" $item.image }}
               <div class="col-12 text-center d-none d-lg-inline">
-                <img src="{{ $url | absURL }}" class="img-fluid p-2" alt="{{ $item.name }}">
+                <img src="{{ $tmp_full.Scratch.Get "image" | absURL }}" class="img-fluid p-2" alt="{{ $item.name }}">
               </div>
             {{- end -}}
             {{- if and (not $item.icon) (not $item.image) }}

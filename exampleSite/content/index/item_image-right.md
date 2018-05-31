@@ -13,7 +13,7 @@ subtitle= "Easily right align the item fragment even with an image"
 pre = "Awesome screenshot"
 post = "Showcasing Syna"
 
-image = "screenshot.png"
+image = "row/screenshot.png"
 +++
 
 Easily left align the item fragment even with an image and buttons at the same time.

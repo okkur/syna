@@ -2,7 +2,7 @@
   title = "Tiny Gopher 4"
   weight = 30
   joined = "2017-10-17"
-  image = "tinygopher.png"
+  image = "member/tinygopher.png"
   position = "Gopherineer"
 
   lives_in = "[Iceland](https://www.google.com/maps/place/Iceland/)"
