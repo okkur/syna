@@ -12808,7 +12808,10 @@ div.form-error ul li {
 
 @media screen and (max-width: 767px) {
   .hide-on-mobile {
-    display: none; } }
+    display: none; }
+  .mobile-flex-center {
+    display: flex;
+    justify-content: center; } }
 
 @media screen and (min-width: 768px) {
   .grecaptcha-badge {

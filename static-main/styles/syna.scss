@@ -78,6 +78,11 @@
   .hide-on-mobile {
     display: none;
   }
+
+  .mobile-flex-center {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 @media screen and (min-width: 768px) {
