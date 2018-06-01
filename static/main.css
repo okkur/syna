@@ -12820,13 +12820,13 @@ div.form-error ul li {
     display: block;
     width: 256px; } }
 
-.navbar-collapse {
-  max-height: 0px;
-  transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
-  overflow: hidden;
-  display: block; }
-
-.navbar-collapse.in {
-  max-height: 65em;
-  transition: max-height 1s ease-in-out; }
+@media (max-width: 991px) {
+  .navbar-collapse {
+    max-height: 0px;
+    transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+    overflow: hidden;
+    display: block; }
+  .navbar-collapse.in {
+    max-height: 65em;
+    transition: max-height 1s ease-in-out; } }
 

@@ -20,7 +20,7 @@ function closeMenus() {
 function closeMenusOnResize() {
   if (document.body.clientWidth >= 768) {
     closeMenus();
-    collapse.classList.remove('in');
+    Array.from(collapse || []).forEach(node => node.classList.remove('in'));
   }
 }
 
