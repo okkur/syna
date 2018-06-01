@@ -1,27 +1,29 @@
 +++
-  title = "Tiny Gopher 2"
-  weight = 20
-  joined = "2017-10-17"
-  image = "tinygopher.png"
-  position = "Gopherineer"
+title = "Tiny Gopher 2"
+weight = 20
+joined = "2017-10-17"
 
-  reports_to = "Lead Gophineer"
-  lives_in = "[Iceland](https://www.google.com/maps/place/Iceland/)"
-  scope = [
-    "Gopherineering for various tasks",
-    "Contributor for [Goper Team A](#)",
-    "Gopher Community Member"
-  ]
+image = "tinygopher.png"
+position = "Gopherineer"
+reports_to = "Lead Gophineer"
+lives_in = "[Iceland](https://www.google.com/maps/place/Iceland/)"
+scope = [
+  "Gopherineering for various tasks",
+  "Contributor for [Goper Team A](#)",
+  "Gopher Community Member"
+]
 
-  [[icons]]
-    icon = "fa-twitter"
-    link = "#"
-  [[icons]]
-    icon = "fa-facebook-f"
-    link = "#"
-  [[icons]]
-    icon = "fa-linkedin-in"
-    link = "#"
+[[icons]]
+  icon = "fa-twitter"
+  link = "#"
+
+[[icons]]
+  icon = "fa-facebook-f"
+  link = "#"
+
+[[icons]]
+  icon = "fa-linkedin-in"
+  link = "#"
 +++
 
 Really tiny Gopher

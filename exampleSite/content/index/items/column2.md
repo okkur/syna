@@ -1,8 +1,8 @@
 +++
-  name = "Column 2"
-  weight = 20
-  icon = "fa-code"
-  #link = "#"
+name = "Column 2"
+weight = 20
+icon = "fa-code"
+#link = "#"
 +++
  
 Showcasing descriptions for column based items
