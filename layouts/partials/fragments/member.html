@@ -1,6 +1,7 @@
 {{- $memberf := .self.Params -}}
 {{- $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") -}}
-{{- $members := .resources.Match (printf "%s/*" $name) -}}
+{{- $members := .resources.Match (printf "%s/*.md" $name) -}}
+{{- $tmp_full := .tmp_full -}}
 {{ "<!-- Member -->" | safeHTML }}
 {{- $bg := $memberf.background | default "light" }}
 <section id="{{ $name }}">
@@ -39,11 +40,36 @@
         </div>
       {{- end }}
       <div class="row justify-content-center align-items-start">
+        {{- $path := .self.File.Path -}}
+        {{- $path := replace $path "/index.md" "" -}}
+        {{- $path := strings.TrimSuffix ".md" $path -}}
+        {{- $page_path := replace $path (printf "/%s" $name) "" -}}
         {{- range $members -}}
-          {{- $member := .Params }}
+          {{- $member := .Params -}}
+
+          {{- $image := $member.image -}}
+          {{- $tmp_full.Scratch.Delete "image" -}}
+          {{/* fallback to global resource */}}
+          {{- $tmp_full.Scratch.Set "image" (printf "images/%s" $image) -}}
+        
+          {{/* try for page specific resource */}}
+          {{- $location := (printf "%s/%s" $page_path $image) -}}
+          {{- if (fileExists (printf "content/%s" $location)) -}}
+            {{/* special case index: trim index/ from url */}}
+            {{- $location := strings.TrimPrefix "index/" $location -}}
+            {{- $tmp_full.Scratch.Set "image" $location -}}
+          {{- end -}}
+        
+          {{/* try for fragment specific resource */}}
+          {{- $location := (printf "%s/%s" $path $image) -}}
+          {{- if (fileExists (printf "content/%s" $location)) -}}
+            {{/* special case index: trim index/ from url */}}
+            {{- $location := strings.TrimPrefix "index/" $location -}}
+            {{- $tmp_full.Scratch.Set "image" $location -}}
+          {{- end }}
           <div class="col-lg-4 col-md-6 col-sm-12 pt-3 pb-5 text-left text-sm-center">
             <div class="text-center m-2">
-              <img src="/images/member/{{ $member.image }}" class="img-fluid rounded-circle w-75 border
+              <img src="{{ $tmp_full.Scratch.Get "image" | absURL }}" class="img-fluid rounded-circle w-75 border
                 {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
                   {{- printf " border-%s" "dark" -}}
                 {{- else -}}

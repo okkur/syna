@@ -2,7 +2,7 @@
   title = "Tiny Gopher 2"
   weight = 20
   joined = "2017-10-17"
-  image = "tinygopher.png"
+  image = "member/tinygopher.png"
   position = "Gopherineer"
 
   reports_to = "Lead Gophineer"

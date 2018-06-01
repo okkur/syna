@@ -1,9 +1,5 @@
 {{- $hero := .self.Params -}}
 {{- $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") -}}
-{{- $path := .self.File.Path -}}
-{{- $path := replace $path "/index.md" "" -}}
-{{- $path := strings.TrimSuffix ".md" $path -}}
-{{- $page_path := replace $path (printf "/%s" $name) "" -}}
 {{- $tmp_full := .tmp_full -}}
 {{ "<!-- hero -->" | safeHTML }}
 {{- $bg := $hero.background | default "secondary" }}
@@ -22,25 +18,27 @@
   {{- end -}}
 
   {{- if $hero.logo -}}
+    {{- $path := .self.File.Path -}}
+    {{- $path := replace $path "/index.md" "" -}}
+    {{- $path := strings.TrimSuffix ".md" $path -}}
+    {{- $page_path := replace $path (printf "/%s" $name) "" -}}
     {{/* fallback to global resource */}}
     {{- $tmp_full.Scratch.Set "image" (printf "images/%s" $hero.logo.image) -}}
-    {{- range .resources.ByType "image" -}}
 
-      {{/* try for page specific resource */}}
-      {{- $location := (printf "%s/%s" $page_path $hero.logo.image) -}}
-      {{- if (fileExists $location) -}}
-        {{/* special case index: trim index/ from url */}}
-        {{- $location := strings.TrimPrefix "index/" $location -}}
-        {{- $tmp_full.Scratch.Set "image" $location -}}
-      {{- end -}}
+    {{/* try for page specific resource */}}
+    {{- $location := (printf "%s/%s" $page_path $hero.logo.image) -}}
+    {{- if (fileExists (printf "content/%s" $location)) -}}
+      {{/* special case index: trim index/ from url */}}
+      {{- $location := strings.TrimPrefix "index/" $location -}}
+      {{- $tmp_full.Scratch.Set "image" $location -}}
+    {{- end -}}
 
-      {{/* try for fragment specific resource */}}
-      {{- $location := (printf "%s/%s" $path $hero.logo.image) -}}
-      {{- if (fileExists $location) -}}
-        {{/* special case index: trim index/ from url */}}
-        {{- $location := strings.TrimPrefix "index/" $location -}}
-        {{- $tmp_full.Scratch.Set "image" $location -}}
-      {{- end -}}
+    {{/* try for fragment specific resource */}}
+    {{- $location := (printf "%s/%s" $path $hero.logo.image) -}}
+    {{- if (fileExists (printf "content/%s" $location)) -}}
+      {{/* special case index: trim index/ from url */}}
+      {{- $location := strings.TrimPrefix "index/" $location -}}
+      {{- $tmp_full.Scratch.Set "image" $location -}}
     {{- end -}}
     {{- with $hero.logo }}
       <div class="row justify-content-center align-items-start">
