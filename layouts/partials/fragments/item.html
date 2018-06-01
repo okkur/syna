@@ -98,7 +98,7 @@
                   </span>
                 {{- else if $item.image -}}
                   {{- $url := printf "images/row/%s" $item.image }}
-                  <img src="{{ $url | absURL }}" class="img-fluid p-2" alt="{{ $item.name }}">
+                  <img src="{{ $url | absURL }}" class="img-fluid p-2" alt="{{ $item.title }}">
                 {{- end -}}
                 {{- if and (not $item.icon) (not $item.image) -}}
                   {{- range $item.buttons }}
@@ -283,7 +283,7 @@
             {{- else if $item.image }}
               {{- $url := printf "images/row/%s" $item.image }}
               <div class="col-12 text-center d-none d-lg-inline">
-                <img src="{{ $url | absURL }}" class="img-fluid p-2" alt="{{ $item.name }}">
+                <img src="{{ $url | absURL }}" class="img-fluid p-2" alt="{{ $item.title }}">
               </div>
             {{- end -}}
             {{- if and (not $item.icon) (not $item.image) }}

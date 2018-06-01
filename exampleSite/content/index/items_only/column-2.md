@@ -1,5 +1,5 @@
 +++
-  name = "Column 2"
+  title = "Column 2"
   weight = 20
   icon = "fa-random"
   #link = "#"

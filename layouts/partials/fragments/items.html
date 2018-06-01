@@ -64,9 +64,9 @@
                   {{- if eq $bg "primary" -}}
                     {{- printf " text-%s" "dark" -}}
                   {{- end -}}
-                ">{{ $items.name | markdownify }}</a>
+                ">{{ $items.title | markdownify }}</a>
               {{- else }}
-                {{- $items.name | markdownify -}}
+                {{- $items.title | markdownify -}}
               {{- end }}
             </h4>
             <div class="
