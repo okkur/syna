@@ -5,12 +5,11 @@ date = "2017-09-09"
 weight = 1010
 background = "dark"
 
-#title = ""
-#subtitle = ""
+title = "logos"
 
 [[logos]]
   name = "syna"
   weight = 10
-  image = "syna.svg"
+  image = "resource_logo.svg"
   #link = "#"
 +++

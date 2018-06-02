@@ -42,6 +42,29 @@
           {{- range $members -}}
             {{/* Handle special case of index.md being considered a member */}}
             {{- if not (in .Name "/index.md") -}}
+              {{/* Global resource fallback - can also be used within loops */}}
+              {{- $image := .Params.image -}}
+
+              {{/* Do not change the following snippet */}}
+              {{/* Code is duplicated throughout the code */}}
+              {{- $.root.Scratch.Set "image" (printf "images/%s" $image) -}}
+
+              {{/* Page specific resource */}}
+              {{- $location := (printf "%s/%s" $.fallthrough.page_path $image) -}}
+              {{- if (fileExists (printf "content/%s" $location)) -}}
+              {{/* special case index: trim index/ from url */}}
+              {{- $location := strings.TrimPrefix "index/" $location -}}
+              {{- $.root.Scratch.Set "image" $location -}}
+              {{- end -}}
+
+              {{/* Fragment specific resource */}}
+              {{- $location := (printf "%s/%s" $.fallthrough.file_path $image) -}}
+              {{- if (fileExists (printf "content/%s" $location)) -}}
+              {{/* special case index: trim index/ from url */}}
+              {{- $location := strings.TrimPrefix "index/" $location -}}
+              {{- $.root.Scratch.Set "image" $location -}}
+              {{- end -}}
+              {{/* End of do not change */}}
               {{- $member := .Params -}}
               <div class="col-lg-4 col-md-6 col-sm-12 pt-3 pb-5 text-left text-sm-center">
                 <div class="text-center m-2">
@@ -130,6 +153,29 @@
             {{- range $members -}}
               {{/* Handle special case of index.md being considered a member */}}
               {{- if not (in .Name "/index.md") -}}
+                {{/* Global resource fallback - can also be used within loops */}}
+                {{- $image := .Params.image -}}
+
+                {{/* Do not change the following snippet */}}
+                {{/* Code is duplicated throughout the code */}}
+                {{- $.root.Scratch.Set "image" (printf "images/%s" $image) -}}
+
+                {{/* Page specific resource */}}
+                {{- $location := (printf "%s/%s" $.fallthrough.page_path $image) -}}
+                {{- if (fileExists (printf "content/%s" $location)) -}}
+                {{/* special case index: trim index/ from url */}}
+                {{- $location := strings.TrimPrefix "index/" $location -}}
+                {{- $.root.Scratch.Set "image" $location -}}
+                {{- end -}}
+
+                {{/* Fragment specific resource */}}
+                {{- $location := (printf "%s/%s" $.fallthrough.file_path $image) -}}
+                {{- if (fileExists (printf "content/%s" $location)) -}}
+                {{/* special case index: trim index/ from url */}}
+                {{- $location := strings.TrimPrefix "index/" $location -}}
+                {{- $.root.Scratch.Set "image" $location -}}
+                {{- end -}}
+                {{/* End of do not change */}}
                 {{- $member := .Params -}}
                 <div class="col-lg-6 col-md-6 col-sm-10 pt-3 pb-3 text-center text-sm-center">
                   <div class="text-center m-0">
