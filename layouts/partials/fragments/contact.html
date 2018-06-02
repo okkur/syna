@@ -1,7 +1,7 @@
-{{- $contact := .self.Params -}}
 {{- $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") -}}
+{{- $bg := .Params.background | default "secondary" }}
+
 {{ "<!-- Contact -->" | safeHTML }}
-{{- $bg := $contact.background | default "secondary" }}
 <section id="{{ $name }}">
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
@@ -15,10 +15,10 @@
           {{- printf " text-%s" "dark" -}}
         {{- end -}}
       ">
-        {{- with $contact.title }}
+        {{- with .Params.title }}
           <h2>{{- . | markdownify -}}</h2>
         {{- end -}}
-        {{- with $contact.subtitle }}
+        {{- with .Params.subtitle }}
           <h3 class="
             {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
               {{- printf " text-%s" "dark" -}}
@@ -36,16 +36,16 @@
         <form
           class="contact"
           method="POST"
-          name="{{ $contact.form_name | default "contactForm" }}"
+          name="{{ .Params.form_name | default "contactForm" }}"
           id="contactForm
-          {{- if $contact.netlify -}}
+          {{- if .Params.netlify -}}
             " netlify
           {{- else -}}
-            " action="{{- $contact.post_url | default (printf "https://formspree.io/%s" $contact.email) -}}"
+            " action="{{- .Params.post_url | default (printf "https://formspree.io/%s" .Params.email) -}}"
           {{- end -}}>
             <div class="row py-3">
               <div class="col-md-6">
-                {{- with $contact.fields.name }}
+                {{- with .Params.fields.name }}
                   <div class="form-group">
                     <input
                       id="name"
@@ -59,7 +59,7 @@
                     <div class="px-2" data-error id="name-error"></div>
                   </div>
                 {{- end -}}
-                {{- with $contact.fields.email }}
+                {{- with .Params.fields.email }}
                   <div class="form-group">
                     <input
                       id="email"
@@ -73,7 +73,7 @@
                     <div class="px-2" data-error id="email-error"></div>
                   </div>
                 {{- end -}}
-                {{- with $contact.fields.phone }}
+                {{- with .Params.fields.phone }}
                   <div class="form-group">
                     <input
                       id="phone"
@@ -89,7 +89,7 @@
                 {{- end }}
               </div>
               <div class="col-md-6">
-                {{- with $contact.fields.message }}
+                {{- with .Params.fields.message }}
                   <div class="form-group">
                     <textarea
                       id="message"
@@ -107,28 +107,28 @@
               </div>
               <div class="col-lg-12 text-center">
                 <div class="generic-success text-success d-none" id="generic-success">
-                  {{- with $contact.message.success -}}
+                  {{- with .Params.message.success -}}
                     {{- . | markdownify -}}
                   {{- else -}}
                     {{- i18n "contact.defaultGenericSuccess" -}}
                   {{- end -}}
                 </div>
                 <div class="captcha-error text-danger d-none" id="captcha-error">
-                    {{- i18n "contact.defaultCaptchaError" }} {{ $contact.email -}}.
+                    {{- i18n "contact.defaultCaptchaError" }} {{ .Params.email -}}.
                 </div>
                 <div class="generic-error text-danger d-none" id="generic-error">
-                  {{- with $contact.message.error -}}
+                  {{- with .Params.message.error -}}
                     {{- . | markdownify -}}
                   {{- else -}}
-                    {{- i18n "contact.defaultGenericError" }} {{ $contact.email -}}.
+                    {{- i18n "contact.defaultGenericError" }} {{ .Params.email -}}.
                   {{- end -}}
                 </div><br />
                 <noscript>
                   <div class="text-danger py-2" id="js-error">
-                    {{- i18n "contact.defaultJsError" }} {{ $contact.email -}}.
+                    {{- i18n "contact.defaultJsError" }} {{ .Params.email -}}.
                   </div>
                 </noscript>
-                {{- with $contact.recaptcha }}
+                {{- with .Params.recaptcha }}
                   <div class="g-recaptcha-container">
                     <span class="g-recaptcha-filler"></span>
                     <button
@@ -139,7 +139,7 @@
                       data-badge="inline"
                       data-callback="onContactCaptcha"
                       disabled>
-                      {{- $contact.button | default (i18n "contact.defaultButton") -}}
+                      {{- .Params.button | default (i18n "contact.defaultButton") -}}
                     </button>
                     <span class="filler"></span>
                   </div>
@@ -153,12 +153,12 @@
                       {{- end -}}
                     "
                     type="submit">
-                    {{- $contact.button | default (i18n "contact.defaultButton") -}}
+                    {{- .Params.button | default (i18n "contact.defaultButton") -}}
                   </button>
                 {{- end }}
               </div>
             </div>
-            {{- range $contact.fields.hidden -}}
+            {{- range .Params.fields.hidden -}}
               {{- if eq .name "site" }}
                 <input type="hidden" name="{{ .name }}" value="{{ $.Page.Permalink }}"/>
               {{- else if eq .name "page" }}
@@ -174,7 +174,7 @@
   </div>
 </section>
 
-{{- if $contact.recaptcha }}
+{{- if .Params.recaptcha }}
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 {{- end }}
 <script src="{{ "contact.js" | relURL }}" defer async></script>

@@ -1,8 +1,8 @@
-{{- $table := .self.Params -}}
 {{- $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") -}}
+{{- $bg := .Params.background | default "light" -}}
+{{- $align := .Params.align | default "center" }}
+
 {{ "<!-- Table -->" | safeHTML }}
-{{- $bg := $table.background | default "light" -}}
-{{- $align := $table.align | default "center" }}
 <section id="{{ $name }}">
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
@@ -10,7 +10,7 @@
     <div class="container py-5">
       <div class="row align-items-center text-center justify-content-end">
         <div class="col-12 order-lg-1 text-center">
-          {{- if $table.title }}
+          {{- if .Params.title }}
             <div class="row pb-3">
               <div class="col-12
                 {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
@@ -20,12 +20,12 @@
                 {{- end -}}
               ">
                 <h2>
-                  {{- $table.title | markdownify -}}
+                  {{- .Params.title | markdownify -}}
                 </h2>
               </div>
             </div>
           {{- end -}}
-          {{- if $table.subtitle }}
+          {{- if .Params.subtitle }}
             <div class="row pb-2
               {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
                 {{- printf " text-%s" "dark" -}}
@@ -35,12 +35,12 @@
             ">
               <div class="col-12">
                 <h5>
-                  {{- $table.subtitle | markdownify -}}
+                  {{- .Params.subtitle | markdownify -}}
                 </h5>
               </div>
             </div>
           {{- end -}}
-          {{- if $table.rows }}
+          {{- if .Params.rows }}
             <div class="row justify-content-center">
               <div class="col table-responsive">
                 <table class="table table-bordered
@@ -51,7 +51,7 @@
                   <thead>
                     <tr>
                       {{- $.Scratch.Set "col" 0 -}}
-                      {{- range $table.header.values }}
+                      {{- range .Params.header.values }}
                         <th class="
                           {{- if .center -}}
                             {{- printf " text-center" -}}
@@ -67,19 +67,19 @@
                     </tr>
                   </thead>
                   <tbody>
-                    {{- range $table.rows -}}
+                    {{- range .Params.rows -}}
                       {{- $.Scratch.Set "col" 0 }}
                       <tr>
                         {{- range $i, $s := .values -}}
                           {{- if .header }}
                           <th class="align-middle
-                            {{- if (index $table.header.values $i).hide_on_mobile -}}
+                            {{- if (index $.Params.header.values $i).hide_on_mobile -}}
                               {{- print " hide-on-mobile" }}
                             {{- end -}}
                           ">{{ .header | markdownify }}</th>
                           {{- else if .button }}
                             <td class="align-middle
-                              {{- if (index $table.header.values $i).hide_on_mobile -}}
+                              {{- if (index $.Params.header.values $i).hide_on_mobile -}}
                                 {{- print " hide-on-mobile" }}
                               {{- end -}}
                             ">
@@ -96,7 +96,7 @@
                             {{- if .center -}}
                               {{- printf " text-center" -}}
                             {{- end -}}
-                            {{- if (index $table.header.values $i).hide_on_mobile -}}
+                            {{- if (index $.Params.header.values $i).hide_on_mobile -}}
                               {{- print " hide-on-mobile" }}
                             {{- end -}}
                           ">
@@ -109,7 +109,7 @@
                             {{- if .center -}}
                               {{- printf " text-center" -}}
                             {{- end -}}
-                            {{- if (index $table.header.values $i).hide_on_mobile -}}
+                            {{- if (index $.Params.header.values $i).hide_on_mobile -}}
                               {{- print " hide-on-mobile" }}
                             {{- end -}}
                           ">{{ .text | markdownify }}</td>

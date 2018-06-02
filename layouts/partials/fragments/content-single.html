@@ -1,15 +1,15 @@
-{{- $self := .self -}}
 {{- $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") -}}
-{{- $content_single := .self.Params -}}
+{{- $self := .self -}}
+{{- $bg := .Params.background | default "light" }}
+
 {{ "<!-- Content -->" | safeHTML }}
-{{- $bg :=  $content_single.background | default "light" }}
 <section id="{{ $name }}">
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">
     <div class="container py-5">
       <div class="row">
-        {{- if $content_single.title }}
+        {{- if .Params.title }}
           <div class="col-12 pb-3
             {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
               {{- printf " text-%s" "dark" -}}
@@ -18,11 +18,11 @@
             {{- end -}}
           ">
             <h1>
-              {{- $content_single.title | markdownify -}}
+              {{- .Params.title | markdownify -}}
             </h1>
           </div>
         {{- end -}}
-        {{- if $content_single.subtitle }}
+        {{- if .Params.subtitle }}
           <div class="col-12 pb-2
             {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
               {{- printf " text-%s" "dark" -}}
@@ -31,7 +31,7 @@
             {{- end -}}
           ">
             <h3>
-              {{- $content_single.subtitle | markdownify -}}
+              {{- .Params.subtitle | markdownify -}}
             </h3>
           </div>
         {{- end }}

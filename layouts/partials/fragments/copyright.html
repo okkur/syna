@@ -1,8 +1,8 @@
-{{- $copyright := .self.Params -}}
 {{- $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") -}}
-{{- $menus := .menus -}}
+{{- $root := .root -}}
+{{- $bg := .Params.background | default "secondary" }}
+
 {{ "<!-- Copyright -->" | safeHTML }}
-{{- $bg := $copyright.background | default "secondary" }}
 <footer class="overlay container-fluid
   {{- printf " bg-%s" $bg -}}
 " id="{{ $name }}">
@@ -17,7 +17,7 @@
           {{- end -}}
         ">
           <div class="row mr-lg-auto">
-            {{- with $copyright.copyright }}
+            {{- with .Params.copyright }}
               <div class="col-auto">
                 {{- . | markdownify -}}
               </div>
@@ -26,13 +26,13 @@
                 {{- i18n "footerLegal.copyright" -}} &nbsp;{{ now.Format "2006" -}}
               </div>
               <div class="col-auto px-0">
-                {{- printf " %s %s" (i18n "footerLegal.by") $.Site.Params.name -}}
+                {{- printf " %s %s" (i18n "footerLegal.by") $root.Site.Params.name -}}
               </div>
             {{- end }}
           </div>
         </div>
       </div>
-      {{- if eq $copyright.attribution true }}
+      {{- if eq .Params.attribution true }}
         <div class="col-auto mx-auto">
           <div class="row navbar-text text-center
             {{- if eq $bg "dark" -}}

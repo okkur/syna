@@ -1,14 +1,14 @@
-{{- $itemf := .self.Params -}}
 {{- $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") -}}
 {{- $items := .resources.Match (printf "%s/*" $name) -}}
+{{- $bg := .Params.background | default "light" }}
+
 {{ "<!-- Items -->" | safeHTML }}
-{{- $bg := $itemf.background | default "light" }}
 <section id="{{ $name }}">
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">
     <div class="container py-5">
-      {{- with $itemf.title }}
+      {{- with .Params.title }}
         <div class="row">
           <div class="col text-center
             {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
@@ -23,7 +23,7 @@
           </div>
         </div>
       {{- end -}}
-      {{- with $itemf.subtitle -}}
+      {{- with .Params.subtitle -}}
         <div class="row">
           <div class="col text-center pt-4 pb-5
             {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
@@ -39,8 +39,8 @@
         </div>
       {{- end }}
       <div class="row justify-content-center align-items-start">
-         {{- range $items -}}
-           {{- $items:= .Params }}
+        {{- range $items -}}
+          {{- $item := .Params }}
           <div class="col-md-4 text-center">
             <span class="fa-stack fa-3x m-2">
               <i class="fas fa-circle fa-stack-2x
@@ -50,7 +50,7 @@
                   {{- printf " text-%s" "primary" -}}
                 {{- end -}}
               "></i>
-              <i class="fas {{ $items.icon }} fa-stack-1x fa-inverse"></i>
+              <i class="fas {{ $item.icon }} fa-stack-1x fa-inverse"></i>
             </span>
             <h4 class="mb-3
               {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
@@ -59,14 +59,14 @@
                 {{- printf " text-%s" "light" -}}
               {{- end -}}
             ">
-              {{- if $items.link }}
-                <a href="{{ $items.link | relLangURL }}" class="
+              {{- if $item.link }}
+                <a href="{{ $item.link | relLangURL }}" class="
                   {{- if eq $bg "primary" -}}
                     {{- printf " text-%s" "dark" -}}
                   {{- end -}}
-                ">{{ $items.Title | markdownify }}</a>
+                ">{{ $item.title | markdownify }}</a>
               {{- else }}
-                {{- $items.Title | markdownify -}}
+                {{- $item.title | markdownify -}}
               {{- end }}
             </h4>
             <div class="

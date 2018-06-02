@@ -31,7 +31,7 @@
 
   {{- range sort ($.Scratch.Get "fragments" | default slice) "Params.weight" -}}
     {{- if and (not .Params.disabled) (isset .Params "fragment") -}}
-      {{- partial (print "fragments/" .Params.fragment ".html") (dict "tmp_full" $ "Site" $.Site "menus" $.Site.Menus "resources" $.Resources "self" .) -}}
+      {{- partial (print "fragments/" .Params.fragment ".html") (dict "root" $ "Site" $.Site "resources" $.Resources "self" . "Params" .Params ) -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}

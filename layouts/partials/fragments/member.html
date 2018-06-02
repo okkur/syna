@@ -1,14 +1,14 @@
-{{- $memberf := .self.Params -}}
 {{- $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") -}}
 {{- $members := .resources.Match (printf "%s/*" $name) -}}
+{{- $bg := .Params.background | default "light" }}
+
 {{ "<!-- Member -->" | safeHTML }}
-{{- $bg := $memberf.background | default "light" }}
 <section id="{{ $name }}">
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">
     <div class="container py-5">
-      {{- with $memberf.title }}
+      {{- with .Params.title }}
         <div class="row">
           <div class="col text-center
             {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
@@ -23,7 +23,7 @@
           </div>
         </div>
       {{- end -}}
-      {{- with $memberf.subtitle }}
+      {{- with .Params.subtitle }}
         <div class="row">
           <div class="col text-center pt-2 pb-3
             {{- if or (eq $bg "secondary") (eq $bg "primary") -}}

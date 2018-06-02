@@ -1,13 +1,13 @@
-{{- $logos := .self.Params -}}
 {{- $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") -}}
+{{- $bg := .Params.background | default "white" }}
+
 {{ "<!-- Logos -->" | safeHTML }}
-{{- $bg := $logos.background | default "white" }}
 <section id="{{ $name }}">
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">
     <div class="container py-3">
-      {{- with $logos.title }}
+      {{- with .Params.title }}
         <div class="row">
           <div class="col text-center
             {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
@@ -22,7 +22,7 @@
           </div>
         </div>
       {{- end -}}
-      {{- with $logos.subtitle }}
+      {{- with .Params.subtitle }}
         <div class="row">
           <div class="col text-center
             {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
@@ -38,7 +38,7 @@
         </div>
       {{- end }}
       <div class="row justify-content-center align-items-center">
-        {{- range sort $logos.logos "weight" }}
+        {{- range sort .Params.logos "weight" }}
           <div class="col-7 col-sm-4 text-center py-2">
             {{- $url := printf "images/logos/%s" .logo -}}
             {{- if .link }}

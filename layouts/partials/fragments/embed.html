@@ -1,15 +1,15 @@
-{{- $embed := .self.Params -}}
 {{- $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") -}}
+{{- $bg := .Params.background | default "white" -}}
+{{- $ratio := .Params.ratio | default "4by3" -}}
+{{- $size := .Params.size | default "75" }}
+
 {{ "<!-- Embed -->" | safeHTML }}
-{{- $bg := $embed.background | default "white" -}}
-{{- $ratio := $embed.ratio | default "4by3" -}}
-{{- $size := $embed.size | default "75" }}
 <section id="{{ $name }}">
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">
     <div class="container py-5">
-      {{- with $embed.title }}
+      {{- with .Params.title }}
         <div class="row">
           <div class="col text-center py-3
             {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
@@ -24,7 +24,7 @@
           </div>
         </div>
       {{- end -}}
-      {{- with $embed.subtitle }}
+      {{- with .Params.subtitle }}
         <div class="row">
           <div class="col text-center pb-4
             {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
@@ -40,19 +40,19 @@
         </div>
       {{- end }}
       <div class="row justify-content-center">
-        {{- if eq $embed.responsive false }}
+        {{- if eq .Params.responsive false }}
           <div class="{{- printf "w-%s" $size -}}">
-            {{- $embed.media | safeHTML -}}
+            {{- .Params.media | safeHTML -}}
           </div>
         {{- else }}
           <div class="embed-responsive
             {{- printf " embed-responsive-%s" $ratio -}}
             {{- printf " h-%s w-%s" $size $size -}}
           ">
-            {{- if $embed.media }}
-              {{- $embed.media | safeHTML -}}
+            {{- if .Params.media }}
+              {{- .Params.media | safeHTML -}}
             {{- else }}
-              <iframe class="embed-responsive-item" src="{{ $embed.media_source }}" allowfullscreen></iframe>
+              <iframe class="embed-responsive-item" src="{{ .Params.media_source }}" allowfullscreen></iframe>
             {{- end }}
           </div>
         {{- end }}

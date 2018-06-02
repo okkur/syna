@@ -1,7 +1,7 @@
-{{- $nav := .self.Params -}}
 {{- $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") -}}
-{{- "<!-- Nav -->" | safeHTML -}}
-{{- $bg := $nav.background | default "dark" }}
+{{- $bg := .Params.background | default "dark" }}
+
+{{- "<!-- Navigation -->" | safeHTML -}}
 <nav class="overlay navbar navbar-expand-lg py-2
   {{- printf " bg-%s" $bg -}}
   {{- if or (eq $bg "light") (eq $bg "white") (eq $bg "secondary") -}}
@@ -11,13 +11,13 @@
   {{- end -}}
 " id="{{ $name }}">
   <div class="container">
-    {{- if $nav.branding.logo }}
+    {{- if .Params.branding.logo }}
       <a class="navbar-brand py-0" href="{{ "#page-top" | relLangURL }}">
-        <img src="{{ (printf "images/%s" $nav.branding.logo) | relURL }}" height="35" class="d-inline-block align-top" alt="{{ $nav.branding.text }}">
+        <img src="{{ (printf "images/%s" .Params.branding.logo) | relURL }}" height="35" class="d-inline-block align-top" alt="{{ .Params.branding.text }}">
       </a>
     {{- else }}
       <a class="navbar-brand py-0" href="{{ "#page-top" | relLangURL }}">
-        {{- $nav.branding.text -}}
+        {{- .Params.branding.text -}}
       </a>
     {{- end }}
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,8 +25,8 @@
     </button>
     <div class="navbar-collapse justify-content-end collapse show" id="navbarCollapse">
       <ul class="navbar-nav">
-        {{- if $nav.prepend -}}
-          {{- range sort $nav.prepend }}
+        {{- if .Params.prepend -}}
+          {{- range sort .Params.prepend }}
             <li class="nav-item">
               <a href="{{ .url | relLangURL }}" {{- if hasPrefix .url "#" }} class="anchor nav-link"{{ else }} class="nav-link"{{ end }}>
                 {{ .name }}
@@ -43,8 +43,8 @@
             </li>
           {{- end -}}
         {{- end }}
-        {{- if $nav.postpend -}}
-          {{- range sort $nav.postpend }}
+        {{- if .Params.postpend -}}
+          {{- range sort .Params.postpend }}
             <li class="nav-item">
               <a href="{{ .url | relLangURL }}" {{- if hasPrefix .URL "#" }} class="nav-link anchor"{{ else }} class="nav-link"{{ end }}>
                 {{ .name }}
@@ -62,11 +62,11 @@
       {{- end }}
     </div>
   </div>
-  {{- if $nav.repo_button }}
+  {{- if .Params.repo_button }}
     <div class="d-none d-lg-block pl-auto">
-      <a class="btn btn-light" href="{{ $nav.repo_button.url }}" role="button">
-        <i class="{{ printf "fab %s" $nav.repo_button.icon | default (printf "fab fa-github") }} mr-1"></i>
-        {{ $nav.repo_button.text | default "Star" }}
+      <a class="btn btn-light" href="{{ .Params.repo_button.url }}" role="button">
+        <i class="{{ printf "fab %s" .Params.repo_button.icon | default (printf "fab fa-github") }} mr-1"></i>
+        {{ .Params.repo_button.text | default "Star" }}
       </a>
     </div>
   {{- end }}
