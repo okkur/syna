@@ -1,7 +1,7 @@
 +++
   title = "Tiny Gopher"
   weight = 10
-  joined = "2017-10-17"
+  date = "2017-10-17"
   image = "tinygopher.png"
   position = "Gopherineer"
 
