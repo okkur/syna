@@ -12,8 +12,15 @@
     "Gopher Community Member"
   ]
 
+image = "tinygopher.png"
+position = "Gopherineer"
+lives_in = "[Iceland](https://www.google.com/maps/place/Iceland/)"
+scope = [
+  "Gopherineering for various tasks",
+  "Contributor for [Goper Team A](#)",
+  "Gopher Community Member"
+]
 +++
-
 
 Really tiny Gopher
 
