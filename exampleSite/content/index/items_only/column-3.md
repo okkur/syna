@@ -1,7 +1,7 @@
 +++
 title = "Column 3"
 weight = 30
-icon = "fa-code"
+icon = "fas fa-code"
 #link = "#"
 +++
 

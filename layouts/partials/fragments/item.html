@@ -94,7 +94,7 @@
                         {{- printf " text-%s" "primary" -}}
                       {{- end -}}
                     "></i>
-                    <i class="fas {{ .Params.icon }} fa-stack-1x fa-inverse"></i>
+                    <i class="{{ .Params.icon }} fa-stack-1x fa-inverse"></i>
                   </span>
                 {{- else if .Params.image -}}
                   {{- $url := printf "images/row/%s" .Params.image }}
@@ -222,7 +222,7 @@
                             {{- end -}}
                           ">
                             <a href="{{ .links }}">
-                              <i class="fas {{ .icon }} fa-2x"></i>
+                              <i class="{{ .icon }} fa-2x"></i>
                             </a>
                           </td>
                         {{- else }}
@@ -277,7 +277,7 @@
                       {{- printf " text-%s" "primary" -}}
                     {{- end -}}
                   "></i>
-                  <i class="fas {{ .Params.icon }} fa-stack-1x fa-inverse"></i>
+                  <i class="{{ .Params.icon }} fa-stack-1x fa-inverse"></i>
                 </span>
               </div>
             {{- else if .Params.image }}

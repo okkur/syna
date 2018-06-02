@@ -52,7 +52,7 @@
                     {{- printf " text-%s" "primary" -}}
                   {{- end -}}
                 "></i>
-                <i class="fas {{ $item.icon }} fa-stack-1x fa-inverse"></i>
+                <i class="{{ $item.icon }} fa-stack-1x fa-inverse"></i>
               </span>
               <h4 class="mb-3
                 {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}

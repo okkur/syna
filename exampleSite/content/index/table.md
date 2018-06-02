@@ -71,7 +71,7 @@ subtitle= "Tables are responsive by default"
     text = ""
 
   [[rows.values]]
-    icon = "fa-download"
+    icon = "fas fa-download"
     link = "#"
     center = true
 +++
