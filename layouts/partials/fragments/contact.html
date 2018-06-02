@@ -160,9 +160,9 @@
             </div>
             {{- range .Params.fields.hidden -}}
               {{- if eq .name "site" }}
-                <input type="hidden" name="{{ .name }}" value="{{ $.Page.Permalink }}"/>
+                <input type="hidden" name="{{ .name }}" value="{{ $.root.Page.Permalink }}"/>
               {{- else if eq .name "page" }}
-                <input type="hidden" name="{{ .name }}" value="{{ $.Page.URL }}"/>
+                <input type="hidden" name="{{ .name }}" value="{{ $.root.Page.URL }}"/>
               {{- else }}
                 <input type="hidden" name="{{ .name }}" value="{{ .value }}"/>
               {{- end }}
