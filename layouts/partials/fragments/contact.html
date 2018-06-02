@@ -1,8 +1,7 @@
-{{- $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") -}}
 {{- $bg := .Params.background | default "secondary" }}
 
 {{ "<!-- Contact -->" | safeHTML }}
-<section id="{{ $name }}">
+<section id="{{ .Name }}">
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">
