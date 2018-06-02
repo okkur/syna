@@ -1,8 +1,7 @@
-{{- $footer := .self.Params -}}
 {{- $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") -}}
-{{- $menus := .menus -}}
+{{- $bg := .Params.background | default "dark" }}
+
 {{ "<!-- Footer -->" | safeHTML }}
-{{- $bg := $footer.background | default "dark" }}
 <div class="overlay container-fluid
   {{- printf " bg-%s" $bg -}}
 " id="{{ $name }}">
@@ -15,7 +14,7 @@
           {{- printf " text-%s" "secondary" -}}
         {{- end -}}
       ">
-        {{- with $footer.logo }}
+        {{- with .Params.logo }}
           <h4>
             {{- .title -}}
           </h4>
@@ -30,9 +29,9 @@
           {{- end -}}
         {{- end -}}
 
-        {{- if $menus.footer_social }}
+        {{- if .Site.Menus.footer_social }}
           <div class="row justify-content-left ml-0">
-            {{- range sort $menus.footer_social }}
+            {{- range sort .Site.Menus.footer_social }}
               <span class="fa-stack fa-2x mt-3 mr-1">
                 <a href="{{ .URL | relLangURL }}" class="
                   {{- if eq $bg "primary" -}}
@@ -54,14 +53,14 @@
           {{- printf " text-%s" "secondary" -}}
         {{- end -}}
       ">
-        {{- with $footer.menu_title }}
+        {{- with .Params.menu_title }}
           <h4>
             {{- . -}}
           </h4>
         {{- end -}}
-        {{- if $menus.footer }}
+        {{- if .Site.Menus.footer }}
           <ul class="nav flex-column">
-              {{- range sort $menus.footer }}
+              {{- range sort .Site.Menus.footer }}
                 <li class="nav-item">
                   <a class="nav-link p-0 display-5
                     {{- if or (eq $bg "secondary") (eq $bg "primary") -}}

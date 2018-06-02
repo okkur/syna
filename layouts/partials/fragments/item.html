@@ -1,8 +1,8 @@
-{{- $item := .self.Params -}}
 {{- $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") -}}
+{{- $bg := .Params.background | default "light" -}}
+{{- $align := .Params.align | default "center" }}
+
 {{ "<!-- Item -->" | safeHTML }}
-{{- $bg := $item.background | default "light" -}}
-{{- $align := $item.align | default "center" }}
 <section id="{{ $name }}">
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
@@ -26,7 +26,7 @@
             {{- printf " order-lg-1 text-center" -}}
           {{- end -}}
         ">
-          {{- if $item.title }}
+          {{- if .Params.title }}
             <div class="row pb-3">
               <div class="col-12
                 {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
@@ -36,12 +36,12 @@
                 {{- end -}}
               ">
                 <h2>
-                  {{- $item.title | markdownify -}}
+                  {{- .Params.title | markdownify -}}
                 </h2>
               </div>
             </div>
           {{- end -}}
-          {{- if $item.subtitle }}
+          {{- if .Params.subtitle }}
             <div class="row pb-2">
               <div class="col-12
                 {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
@@ -51,7 +51,7 @@
                 {{- end -}}
               ">
                 <h5>
-                  {{- $item.subtitle | markdownify -}}
+                  {{- .Params.subtitle | markdownify -}}
                 </h5>
               </div>
             </div>
@@ -64,13 +64,13 @@
             {{- else -}}
               {{- printf " order-lg-12" -}}
             {{- end -}}
-            {{- if and (not $item.icon) (not $item.image) -}}
+            {{- if and (not .Params.icon) (not .Params.image) -}}
               {{- printf " " -}}
             {{- end -}}
           ">
             <div class="row">
               <div class="col-12">
-                {{- if $item.pre }}
+                {{- if .Params.pre }}
                   <div class="row">
                     <div class="col-12
                       {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
@@ -80,12 +80,12 @@
                       {{- end -}}
                     ">
                       <p class="mb-0">
-                        {{- $item.pre | markdownify -}}
+                        {{- .Params.pre | markdownify -}}
                       </p>
                     </div>
                   </div>
                 {{- end -}}
-                {{- if $item.icon }}
+                {{- if .Params.icon }}
                   <span class="fa-stack fa-4x">
                     <i class="fas fa-circle fa-stack-2x
                       {{- if eq $bg "primary" -}}
@@ -94,14 +94,14 @@
                         {{- printf " text-%s" "primary" -}}
                       {{- end -}}
                     "></i>
-                    <i class="fas {{ $item.icon }} fa-stack-1x fa-inverse"></i>
+                    <i class="fas {{ .Params.icon }} fa-stack-1x fa-inverse"></i>
                   </span>
-                {{- else if $item.image -}}
-                  {{- $url := printf "images/row/%s" $item.image }}
-                  <img src="{{ $url | absURL }}" class="img-fluid p-2" alt="{{ $item.title }}">
+                {{- else if .Params.image -}}
+                  {{- $url := printf "images/row/%s" .Params.image }}
+                  <img src="{{ $url | absURL }}" class="img-fluid p-2" alt="{{ .Params.title }}">
                 {{- end -}}
-                {{- if and (not $item.icon) (not $item.image) -}}
-                  {{- range $item.buttons }}
+                {{- if and (not .Params.icon) (not .Params.image) -}}
+                  {{- range .Params.buttons }}
                     <a class="btn btn-lg m-2 d-none d-lg-inline
                       {{ if hasPrefix .link "#" }} anchor{{ end }}
                       {{- $color := .color | default "primary" -}}
@@ -111,7 +111,7 @@
                     </a>
                   {{- end -}}
                 {{- end -}}
-                {{- if $item.post }}
+                {{- if .Params.post }}
                   <div class="row">
                     <div class="col-12 mb-0
                       {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
@@ -121,7 +121,7 @@
                       {{- end -}}
                     ">
                       <p class="mb-0">
-                        {{- $item.post | markdownify -}}
+                        {{- .Params.post | markdownify -}}
                       </p>
                     </div>
                   </div>
@@ -152,9 +152,9 @@
             </div>
           </div>
           {{- end -}}
-          {{- if or $item.icon $item.image }}
+          {{- if or .Params.icon .Params.image }}
             <div class="col-12 text-center text-lg-left">
-              {{- range $item.buttons }}
+              {{- range .Params.buttons }}
                 <a class="btn btn-lg m-2
                   {{ if hasPrefix .link "#" }} anchor{{ end }}
                   {{- $color := .color | default "primary" -}}
@@ -165,7 +165,7 @@
               {{- end }}
             </div>
           {{- end -}}
-          {{- if $item.rows }}
+          {{- if .Params.rows }}
             <div class="row justify-content-center">
               <div class="col col-lg-12 mr-lg-auto table-responsive">
                 <table class="table table-bordered
@@ -178,7 +178,7 @@
                   <thead>
                     <tr>
                       {{- $.Scratch.Set "col" 0 -}}
-                      {{- range $item.header.values }}
+                      {{- range .Params.header.values }}
                         <th class="
                           {{- if .center -}}
                             {{- printf " text-center" -}}
@@ -191,7 +191,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    {{- range $item.rows -}}
+                    {{- range .Params.rows -}}
                       {{- $.Scratch.Set "col" 0 }}
                       <tr>
                         {{- range .values -}}
@@ -252,7 +252,7 @@
           {{- end -}}
         ">
           <div class="row justify-content-center">
-            {{- if $item.pre }}
+            {{- if .Params.pre }}
               <div class="row">
                 <div class="col-12 mb-0 d-none d-lg-inline
                   {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
@@ -262,12 +262,12 @@
                   {{- end -}}
                 ">
                   <p class="mb-0">
-                    {{- $item.pre | markdownify -}}
+                    {{- .Params.pre | markdownify -}}
                   </p>
                 </div>
               </div>
             {{- end -}}
-            {{- if $item.icon }}
+            {{- if .Params.icon }}
               <div class="col-12 text-center d-none d-lg-inline">
                 <span class="fa-stack fa-4x">
                   <i class="fas fa-circle fa-stack-2x
@@ -277,18 +277,18 @@
                       {{- printf " text-%s" "primary" -}}
                     {{- end -}}
                   "></i>
-                  <i class="fas {{ $item.icon }} fa-stack-1x fa-inverse"></i>
+                  <i class="fas {{ .Params.icon }} fa-stack-1x fa-inverse"></i>
                 </span>
               </div>
-            {{- else if $item.image }}
-              {{- $url := printf "images/row/%s" $item.image }}
+            {{- else if .Params.image }}
+              {{- $url := printf "images/row/%s" .Params.image }}
               <div class="col-12 text-center d-none d-lg-inline">
-                <img src="{{ $url | absURL }}" class="img-fluid p-2" alt="{{ $item.title }}">
+                <img src="{{ $url | absURL }}" class="img-fluid p-2" alt="{{ .Params.title }}">
               </div>
             {{- end -}}
-            {{- if and (not $item.icon) (not $item.image) }}
+            {{- if and (not .Params.icon) (not .Params.image) }}
               <div class="col-12 text-center">
-                {{- range $item.buttons }}
+                {{- range .Params.buttons }}
                   <a class="btn btn-lg m-2
                     {{ if hasPrefix .link "#" }} anchor{{ end }}
                     {{- $color := .color | default "primary" -}}
@@ -299,7 +299,7 @@
                   {{- end }}
               </div>
             {{- end -}}
-            {{- if $item.post }}
+            {{- if .Params.post }}
               <div class="row">
                 <div class="col-12 mb-0 d-none d-lg-inline
                   {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
@@ -309,7 +309,7 @@
                   {{- end -}}
                 ">
                   <p class="mb-0">
-                    {{- $item.post | markdownify -}}
+                    {{- .Params.post | markdownify -}}
                   </p>
                 </div>
               </div>
