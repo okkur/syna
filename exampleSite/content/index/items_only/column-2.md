@@ -1,8 +1,8 @@
 +++
-  title = "Column 2"
-  weight = 20
-  icon = "fa-random"
-  #link = "#"
+title = "Column 2"
+weight = 20
+icon = "fa-random"
+#link = "#"
 +++
 
 Showcasing descriptions for column based items
