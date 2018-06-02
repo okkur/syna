@@ -1,8 +1,7 @@
 +++
-  title = "Tiny Gopher 5"
-  weight = 30
-  date = "2017-10-17"
-  image = "tinygopher.png"
+title = "Tiny Gopher 5"
+weight = 30
+date = "2017-10-17"
 
 image = "tinygopher.png"
 lives_in = "[Iceland](https://www.google.com/maps/place/Iceland/)"

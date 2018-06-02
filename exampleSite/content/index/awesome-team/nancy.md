@@ -1,9 +1,7 @@
 +++
-  title = "Tiny Gopher 2"
-  weight = 20
-  date = "2017-10-17"
-  image = "tinygopher.png"
-  position = "Gopherineer"
+title = "Tiny Gopher 2"
+weight = 20
+date = "2017-10-17"
 
 image = "tinygopher.png"
 position = "Gopherineer"

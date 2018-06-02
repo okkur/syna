@@ -1,9 +1,7 @@
 +++
-  title = "Huge Gopher"
-  weight = 0
-  date = "2017-10-17"
-  image = "hugegopher.png"
-  position = "Lead Gopherineer"
+title = "Huge Gopher"
+weight = 0
+date = "2017-10-17"
 
 image = "hugegopher.png"
 position = "Lead Gopherineer"

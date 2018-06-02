@@ -1,10 +1,8 @@
 +++
-  title = "Tiny Gopher 3"
-  weight = 30
-  date = "2017-10-17"
-  image = "tinygopher.png"
-  position = "Gopherineer"
-  
+title = "Tiny Gopher 3"
+weight = 30
+date = "2017-10-17"
+
 image = "tinygopher.png"
 position = "Gopherineer"
 reports_to = "Lead Gophineer"

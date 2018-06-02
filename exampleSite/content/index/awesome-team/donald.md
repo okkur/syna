@@ -1,16 +1,7 @@
 +++
-  title = "Tiny Gopher 4"
-  weight = 30
-  date = "2017-10-17"
-  image = "tinygopher.png"
-  position = "Gopherineer"
-
-  lives_in = "[Iceland](https://www.google.com/maps/place/Iceland/)"
-  scope = [
-    "Gopherineering for various tasks",
-    "Contributor for [Goper Team A](#)",
-    "Gopher Community Member"
-  ]
+title = "Tiny Gopher 4"
+weight = 30
+date = "2017-10-17"
 
 image = "tinygopher.png"
 position = "Gopherineer"
