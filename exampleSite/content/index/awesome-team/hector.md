@@ -1,20 +1,22 @@
 +++
-  title = "Tiny Gopher 5"
-  weight = 30
-  joined = "2017-10-17"
-  image = "tinygopher.png"
+title = "Tiny Gopher 5"
+weight = 30
+joined = "2017-10-17"
 
-  lives_in = "[Iceland](https://www.google.com/maps/place/Iceland/)"
+image = "tinygopher.png"
+lives_in = "[Iceland](https://www.google.com/maps/place/Iceland/)"
 
-  [[icons]]
-    icon = "fa-twitter"
-    link = "#"
-  [[icons]]
-    icon = "fa-facebook"
-    link = "#"
-  [[icons]]
-    icon = "fa-linkedin-in"
-    link = "#"
+[[icons]]
+  icon = "fa-twitter"
+  link = "#"
+
+[[icons]]
+  icon = "fa-facebook"
+  link = "#"
+
+[[icons]]
+  icon = "fa-linkedin-in"
+  link = "#"
 +++
 
 Really tiny Gopher

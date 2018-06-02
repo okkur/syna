@@ -8,13 +8,14 @@ weight = 1200
 menu_title = "Link Title"
 
 [logo]
-    title = "Logo Title"
-    image = "logo.svg"
-    text = "Logo Subtext"
-    link = "#"
+  title = "Logo Title"
+  image = "logo.svg"
+  text = "Logo Subtext"
+  link = "#"
 +++
 
 #### Description Title
+
 Project description such as:
 Open source theme for your next project
 Provided by Okkur Labs
