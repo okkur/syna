@@ -178,7 +178,7 @@
                 {{- $member := .Params -}}
                 <div class="col-lg-6 col-md-6 col-sm-10 pt-3 pb-3 text-center text-sm-center">
                   <div class="text-center m-0">
-                    <img src="/images/member/{{ $member.image }}" class="img-fluid rounded-circle w-75 border
+                    <img src="{{ $.root.Scratch.Get "image" | relURL }}" class="img-fluid rounded-circle w-75 border
                       {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
                         {{- printf " border-%s" "dark" -}}
                       {{- else -}}
