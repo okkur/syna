@@ -53,7 +53,7 @@ $.ajax = function ajax({
   xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
   xhr.send(data);
 
-  return new Promise((resove, reject) => {
+  return new Promise((resolve, reject) => {
     xhr.onreadystatechange = () => {
       if (xhr.readyState == 4) {
         if (xhr.status == 200) {
