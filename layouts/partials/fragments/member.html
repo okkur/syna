@@ -48,7 +48,6 @@
               {{/* Do not change the following snippet */}}
               {{/* Code is duplicated throughout the code */}}
               {{- $.root.Scratch.Set "image" (printf "images/%s" $image) -}}
-
               {{/* Page specific resource */}}
               {{- $location := (printf "%s/%s" $.fallthrough.page_path $image) -}}
               {{- if (fileExists (printf "content/%s" $location)) -}}
@@ -68,7 +67,7 @@
               {{- $member := .Params -}}
               <div class="col-lg-4 col-md-6 col-sm-12 pt-3 pb-5 text-left text-sm-center">
                 <div class="text-center m-2">
-                  <img src="/images/member/{{ $member.image }}" class="img-fluid rounded-circle w-75 border
+                  <img src="{{ $.root.Scratch.Get "image" | relURL }}" class="img-fluid rounded-circle w-75 border
                     {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
                       {{- printf " border-%s" "dark" -}}
                     {{- else -}}
