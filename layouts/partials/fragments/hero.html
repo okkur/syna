@@ -106,4 +106,6 @@
   {{- end }}
   </div>
 </header>
-<script src="{{ "hero.js" | relURL }}" defer async></script>
+{{- if .Params.particles }}
+  <script src="{{ "hero.js" | relURL }}" defer async></script>
+{{- end -}}
