@@ -1,39 +1,29 @@
 {{- $bg := .Params.background | default "secondary" }}
 
-{{/* Resource fallthrough path preparation */}}
-{{/* Do not change the following snippet */}}
-{{/* Code is duplicated throughout the code */}}
-{{- $path := .self.File.Path -}}
-{{- $path := replace $path "/index.md" "" -}}
-{{- $path := strings.TrimSuffix ".md" $path -}}
-{{- $page_path := replace $path (printf "/%s" .Name) "" -}}
-{{/* End of do not change */}}
-
 {{ "<!-- hero -->" | safeHTML }}
 <header id="{{ .Name }}">
   {{- if .Params.header }}
     {{/* Global resource fallback - can also be used within loops */}}
     {{- $image := .Params.header -}}
+
     {{/* Do not change the following snippet */}}
     {{/* Code is duplicated throughout the code */}}
     {{- $.root.Scratch.Set "image" (printf "images/%s" $image) -}}
-    {{- range $.resources.ByType "image" -}}
 
-      {{/* Page specific resource */}}
-      {{- $location := (printf "%s/%s" $page_path $image) -}}
-      {{- if (fileExists (printf "content/%s" $location)) -}}
-        {{/* special case index: trim index/ from url */}}
-        {{- $location := strings.TrimPrefix "index/" $location -}}
-        {{- $.root.Scratch.Set "image" $location -}}
-      {{- end -}}
+    {{/* Page specific resource */}}
+    {{- $location := (printf "%s/%s" $.fallthrough.page_path $image) -}}
+    {{- if (fileExists (printf "content/%s" $location)) -}}
+      {{/* special case index: trim index/ from url */}}
+      {{- $location := strings.TrimPrefix "index/" $location -}}
+      {{- $.root.Scratch.Set "image" $location -}}
+    {{- end -}}
 
-      {{/* Fragment specific resource */}}
-      {{- $location := (printf "%s/%s" $path $image) -}}
-      {{- if (fileExists (printf "content/%s" $location)) -}}
-        {{/* special case index: trim index/ from url */}}
-        {{- $location := strings.TrimPrefix "index/" $location -}}
-        {{- $.root.Scratch.Set "image" $location -}}
-      {{- end -}}
+    {{/* Fragment specific resource */}}
+    {{- $location := (printf "%s/%s" $.fallthrough.file_path $image) -}}
+    {{- if (fileExists (printf "content/%s" $location)) -}}
+      {{/* special case index: trim index/ from url */}}
+      {{- $location := strings.TrimPrefix "index/" $location -}}
+      {{- $.root.Scratch.Set "image" $location -}}
     {{- end -}}
     {{/* End of do not change */}}
     <div style="background-image:url({{ $.root.Scratch.Get "image" | relURL }})"
@@ -51,26 +41,25 @@
   {{- if .Params.logo -}}
     {{/* Global resource fallback - can also be used within loops */}}
     {{- $image := .Params.logo.image -}}
+
     {{/* Do not change the following snippet */}}
     {{/* Code is duplicated throughout the code */}}
     {{- $.root.Scratch.Set "image" (printf "images/%s" $image) -}}
-    {{- range $.resources.ByType "image" -}}
 
-      {{/* Page specific resource */}}
-      {{- $location := (printf "%s/%s" $page_path $image) -}}
-      {{- if (fileExists (printf "content/%s" $location)) -}}
-        {{/* special case index: trim index/ from url */}}
-        {{- $location := strings.TrimPrefix "index/" $location -}}
-        {{- $.root.Scratch.Set "image" $location -}}
-      {{- end -}}
+    {{/* Page specific resource */}}
+    {{- $location := (printf "%s/%s" $.fallthrough.page_path $image) -}}
+    {{- if (fileExists (printf "content/%s" $location)) -}}
+      {{/* special case index: trim index/ from url */}}
+      {{- $location := strings.TrimPrefix "index/" $location -}}
+      {{- $.root.Scratch.Set "image" $location -}}
+    {{- end -}}
 
-      {{/* Fragment specific resource */}}
-      {{- $location := (printf "%s/%s" $path $image) -}}
-      {{- if (fileExists (printf "content/%s" $location)) -}}
-        {{/* special case index: trim index/ from url */}}
-        {{- $location := strings.TrimPrefix "index/" $location -}}
-        {{- $.root.Scratch.Set "image" $location -}}
-      {{- end -}}
+    {{/* Fragment specific resource */}}
+    {{- $location := (printf "%s/%s" $.fallthrough.file_path $image) -}}
+    {{- if (fileExists (printf "content/%s" $location)) -}}
+      {{/* special case index: trim index/ from url */}}
+      {{- $location := strings.TrimPrefix "index/" $location -}}
+      {{- $.root.Scratch.Set "image" $location -}}
     {{- end -}}
     {{/* End of do not change */}}
     {{- with .Params.logo }}
