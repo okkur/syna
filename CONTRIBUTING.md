@@ -19,18 +19,27 @@ This guide helps make contributing to Syna Theme simple and efficient for everyo
 If you are starting out contributing to Syna Theme, there might be smaller scoped "starter issues" available:
 [Current starter issues](https://github.com/okkur/syna/labels/starter%20issue)
 
-If you're about to change JS or CSS files, you are going to need Webpack. Please run the following commands:
+Any changes in CSS/JS files or fonts require webpack which is managed with `package.json`'s npm scripts. You need to run the following commands which would install the required dependencies for building the changed files and start webpack for the build process itself.
 
 ```
 yarn install
 yarn start
 ```
 
-Of course you need to have `node` and `yarn` installed beforehand.
+Prerequisites: node and yarn need to be installed on your system.
 
 `yarn start` would start webpack and any change you make to JS or CSS files would result in a build that is located in `static/`.
 
-Keep in mind that files JS and CSS files located in `static/` are bundles that created automatically that reflect files from `static-main/` directory.
+Keep in mind that JS and CSS files located in `static/` are bundled automatically reflecting the current state of the `static-main/` directory. Any file required in JS or style files (css, scss) is also bundled and put in `static/` directory from `static-main/`. Font files or images loaded in style files that have a relative path follow this rule.
+
+On the other hand changes to layout files only need hugo. There is a demo available that we use to test as well as a demo. Any change to the entire site needs to be tested in the demo. If there is a new fragment it needs to be added to the demo as well. Demo is located in `exampleSite/` directory and it can be built using the following commands:
+
+```
+cd exampleSite
+hugo -c content --config config.toml server -D
+```
+
+These commands will change the working directory to the demo directory and build that directory in watch mode (so any changes are reflected) with Syna as the theme.
 
 ### Report bug
 
