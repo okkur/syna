@@ -89,7 +89,7 @@ googleAnalytics = ""
 [[menu.footer_social]]
   weight = 30
   name = "linkedin"
-  pre = "fa-linkedin-in"
+  pre = "fab fa-linkedin-in"
   url = "#"
 
 [[menu.copyright_footer]]
@@ -105,5 +105,5 @@ googleAnalytics = ""
 [[menu.footer_social]]
   weight = 20
   name = "facebook"
-  pre = "fa-facebook-f"
+  pre = "fab fa-facebook-f"
   url = "#"

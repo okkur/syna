@@ -14,7 +14,7 @@ scope = [
 ]
 
 [[icons]]
-  icon = "fa-linkedin-in"
+  icon = "fab fa-linkedin-in"
   link = "#"
 +++
 

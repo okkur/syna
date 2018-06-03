@@ -13,7 +13,7 @@ title = "Item Fragment Icon Left"
 pre = "Awesome icon"
 post = "Using Fontawesome icons"
 
-icon = "fa-random"
+icon = "fas fa-random"
 +++
 
 Easily left align item fragments even with an icon.

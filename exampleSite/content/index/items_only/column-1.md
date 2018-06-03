@@ -1,7 +1,7 @@
 +++
 title = "Column 1"
 weight = 10
-icon = "fa-random"
+icon = "fas fa-random"
 #link = "#"
 +++
 
