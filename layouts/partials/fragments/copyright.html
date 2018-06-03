@@ -1,11 +1,10 @@
-{{- $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") -}}
 {{- $root := .root -}}
 {{- $bg := .Params.background | default "secondary" }}
 
 {{ "<!-- Copyright -->" | safeHTML }}
 <footer class="overlay container-fluid
   {{- printf " bg-%s" $bg -}}
-" id="{{ $name }}">
+" id="{{ .Name }}">
   <div class="container">
     <div class="row py-3">
       <div class="col-md">

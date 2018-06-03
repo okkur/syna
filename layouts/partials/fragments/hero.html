@@ -1,4 +1,3 @@
-{{- $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") -}}
 {{- $root := .root -}}
 {{- $bg := .Params.background | default "secondary" }}
 
@@ -6,10 +5,10 @@
 {{- $path := .self.File.Path -}}
 {{- $path := replace $path "/index.md" "" -}}
 {{- $path := strings.TrimSuffix ".md" $path -}}
-{{- $page_path := replace $path (printf "/%s" $name) "" -}}
+{{- $page_path := replace $path (printf "/%s" .Name) "" -}}
 
 {{ "<!-- hero -->" | safeHTML }}
-<header id="{{ $name }}">
+<header id="{{ .Name }}">
   {{- if .Params.header }}
     <div class="jumbotron text-center header-image mb-0
      {{- printf " bg-%s" $bg -}}

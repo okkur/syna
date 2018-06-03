@@ -1,9 +1,8 @@
-{{- $name := strings.TrimSuffix ".md" (replace .self.Name "/index.md" "") -}}
-{{- $members := .resources.Match (printf "%s/*" $name) -}}
+{{- $members := .resources.Match (printf "%s/*" .Name) -}}
 {{- $bg := .Params.background | default "light" }}
 
 {{ "<!-- Member -->" | safeHTML }}
-<section id="{{ $name }}">
+<section id="{{ .Name }}">
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">
