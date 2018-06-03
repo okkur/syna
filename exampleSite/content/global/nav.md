@@ -7,7 +7,7 @@ weight = 0
 
 # Branding options
 [branding]
-  logo = "logo.svg"
+  image = "logo.svg"
   text = "Syna"
 
 [repo_button]

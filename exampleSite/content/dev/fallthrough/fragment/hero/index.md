@@ -8,7 +8,7 @@ particles = true
 
 title = "Syna Theme"
 subtitle = "Showcase your next project"
-header = "resource_header.jpg"
+header = "resource_logo.svg"
 
 [logo]
   image = "resource_logo.svg"

@@ -1,51 +1,70 @@
-{{- $root := .root -}}
 {{- $bg := .Params.background | default "secondary" }}
-
-{{/* Resource fallthrough preparation */}}
-{{- $path := .self.File.Path -}}
-{{- $path := replace $path "/index.md" "" -}}
-{{- $path := strings.TrimSuffix ".md" $path -}}
-{{- $page_path := replace $path (printf "/%s" .Name) "" -}}
 
 {{ "<!-- hero -->" | safeHTML }}
 <header id="{{ .Name }}">
   {{- if .Params.header }}
-    <div class="jumbotron text-center header-image mb-0
-     {{- printf " bg-%s" $bg -}}
+    {{/* Global resource fallback - can also be used within loops */}}
+    {{- $image := .Params.header -}}
+
+    {{/* Do not change the following snippet */}}
+    {{/* Code is duplicated throughout the code */}}
+    {{- $.root.Scratch.Set "image" (printf "images/%s" $image) -}}
+
+    {{/* Page specific resource */}}
+    {{- $location := (printf "%s/%s" $.fallthrough.page_path $image) -}}
+    {{- if (fileExists (printf "content/%s" $location)) -}}
+      {{/* special case index: trim index/ from url */}}
+      {{- $location := strings.TrimPrefix "index/" $location -}}
+      {{- $.root.Scratch.Set "image" $location -}}
+    {{- end -}}
+
+    {{/* Fragment specific resource */}}
+    {{- $location := (printf "%s/%s" $.fallthrough.file_path $image) -}}
+    {{- if (fileExists (printf "content/%s" $location)) -}}
+      {{/* special case index: trim index/ from url */}}
+      {{- $location := strings.TrimPrefix "index/" $location -}}
+      {{- $.root.Scratch.Set "image" $location -}}
+    {{- end -}}
+    {{/* End of do not change */}}
+    <div style="background-image:url({{ $.root.Scratch.Get "image" | relURL }})"
+      class="jumbotron text-center header-image mb-0
+      {{- printf " bg-%s" $bg -}}
     ">
   {{- else }}
     <div class="jumbotron text-center mb-0
-     {{- printf " bg-%s" $bg -}}
+      {{- printf " bg-%s" $bg -}}
     ">
   {{- end }}
   {{- if .Params.particles }}
     <div id="particles-js"></div>
   {{- end -}}
-
   {{- if .Params.logo -}}
-    {{/* fallback to global resource */}}
-    {{- $root.Scratch.Set "image" (printf "images/%s" .Params.logo.image) -}}
-    {{- range .resources.ByType "image" -}}
+    {{/* Global resource fallback - can also be used within loops */}}
+    {{- $image := .Params.logo.image -}}
 
-      {{/* try for page specific resource */}}
-      {{- $location := (printf "%s/%s" $page_path .Params.logo.image) -}}
-      {{- if (fileExists $location) -}}
-        {{/* special case index: trim index/ from url */}}
-        {{- $location := strings.TrimPrefix "index/" $location -}}
-        {{- $root.Scratch.Set "image" $location -}}
-      {{- end -}}
+    {{/* Do not change the following snippet */}}
+    {{/* Code is duplicated throughout the code */}}
+    {{- $.root.Scratch.Set "image" (printf "images/%s" $image) -}}
 
-      {{/* try for fragment specific resource */}}
-      {{- $location := (printf "%s/%s" $path .Params.logo.image) -}}
-      {{- if (fileExists $location) -}}
-        {{/* special case index: trim index/ from url */}}
-        {{- $location := strings.TrimPrefix "index/" $location -}}
-        {{- $root.Scratch.Set "image" $location -}}
-      {{- end -}}
+    {{/* Page specific resource */}}
+    {{- $location := (printf "%s/%s" $.fallthrough.page_path $image) -}}
+    {{- if (fileExists (printf "content/%s" $location)) -}}
+      {{/* special case index: trim index/ from url */}}
+      {{- $location := strings.TrimPrefix "index/" $location -}}
+      {{- $.root.Scratch.Set "image" $location -}}
     {{- end -}}
+
+    {{/* Fragment specific resource */}}
+    {{- $location := (printf "%s/%s" $.fallthrough.file_path $image) -}}
+    {{- if (fileExists (printf "content/%s" $location)) -}}
+      {{/* special case index: trim index/ from url */}}
+      {{- $location := strings.TrimPrefix "index/" $location -}}
+      {{- $.root.Scratch.Set "image" $location -}}
+    {{- end -}}
+    {{/* End of do not change */}}
     {{- with .Params.logo }}
       <div class="row justify-content-center align-items-start">
-        <img class="overlay img-fluid" src="{{ $root.Scratch.Get "image" | relURL }}"
+        <img class="overlay img-fluid" src="{{ $.root.Scratch.Get "image" | relURL }}"
           {{- if .height -}} height="{{ .height }}"{{- end -}}
           {{- if .width -}} width="{{ .width }}"{{- end -}}
         ></img>

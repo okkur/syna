@@ -38,14 +38,37 @@
       {{- end }}
       <div class="row justify-content-center align-items-center">
         {{- range sort .Params.logos "weight" }}
+          {{/* Global resource fallback - can also be used within loops */}}
+          {{- $image := .image -}}
+
+          {{/* Do not change the following snippet */}}
+          {{/* Code is duplicated throughout the code */}}
+          {{- $.root.Scratch.Set "image" (printf "images/%s" $image) -}}
+
+          {{/* Page specific resource */}}
+          {{- $location := (printf "%s/%s" $.fallthrough.page_path $image) -}}
+          {{- if (fileExists (printf "content/%s" $location)) -}}
+            {{/* special case index: trim index/ from url */}}
+            {{- $location := strings.TrimPrefix "index/" $location -}}
+            {{- $.root.Scratch.Set "image" $location -}}
+          {{- end -}}
+
+          {{/* Fragment specific resource */}}
+          {{- $location := (printf "%s/%s" $.fallthrough.file_path $image) -}}
+          {{- if (fileExists (printf "content/%s" $location)) -}}
+            {{/* special case index: trim index/ from url */}}
+            {{- $location := strings.TrimPrefix "index/" $location -}}
+            {{- $.root.Scratch.Set "image" $location -}}
+          {{- end -}}
+          {{/* End of do not change */}}
+
           <div class="col-7 col-sm-4 text-center py-2">
-            {{- $url := printf "images/logos/%s" .logo -}}
             {{- if .link }}
               <a href="{{ .link }}">
-                <img src="{{ $url | absURL }}" class="p-2 w-75" alt="{{ .name }}">
+                <img src="{{ $.root.Scratch.Get "image" | relURL }}" class="p-2 w-75" alt="{{ .name }}">
               </a>
             {{- else }}
-              <img src="{{ $url | absURL }}" class="p-2 w-75" alt="{{ .name }}">
+              <img src="{{ $.root.Scratch.Get "image" | relURL }}" class="p-2 w-75" alt="{{ .name }}">
             {{- end }}
           </div>
         {{- end }}
