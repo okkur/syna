@@ -22,13 +22,13 @@ If you are starting out contributing to Syna Theme, there might be smaller scope
 Any changes in CSS/JS files or fonts require webpack which is managed with `package.json`'s npm scripts. You need to run the following commands which would install the required dependencies for building the changed files and start webpack for the build process itself.
 
 ```
-yarn install
-yarn start
+make dep # Would install package.json's dependencies
+make dev # Would start the build process for development
 ```
 
 Prerequisites: node and yarn need to be installed on your system.
 
-`yarn start` would start webpack and any change you make to JS or CSS files would result in a build that is located in `static/`.
+`make dev` would start webpack and any change you make to JS or CSS files would result in a build that is located in `static/`.
 
 Keep in mind that JS and CSS files located in `static/` are bundled automatically reflecting the current state of the `static-main/` directory. Any file required in JS or style files (css, scss) is also bundled and put in `static/` directory from `static-main/`. Font files or images loaded in style files that have a relative path follow this rule.
 
