@@ -16,12 +16,12 @@ subtitle= "Easily center align the item fragment even with some buttons"
 
 [[buttons]]
   text = "Long Button"
-  link = "#"
+  url = "#"
   color = "primary"
 
 [[buttons]]
   text = "Button"
-  link = "#"
+  url = "#"
   color = "secondary"
 +++
 

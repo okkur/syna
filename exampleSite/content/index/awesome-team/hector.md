@@ -8,15 +8,15 @@ lives_in = "[Iceland](https://www.google.com/maps/place/Iceland/)"
 
 [[icons]]
   icon = "fab fa-twitter"
-  link = "#"
+  url = "#"
 
 [[icons]]
   icon = "fab fa-facebook"
-  link = "#"
+  url = "#"
 
 [[icons]]
   icon = "fab fa-linkedin-in"
-  link = "#"
+  url = "#"
 +++
 
 Really tiny Gopher

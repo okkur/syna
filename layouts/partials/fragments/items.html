@@ -60,8 +60,8 @@
                   {{- printf " text-%s" "light" -}}
                 {{- end -}}
               ">
-                {{- if $item.link }}
-                  <a href="{{ $item.link | relLangURL }}" class="
+                {{- if $item.url }}
+                  <a href="{{ $item.url | relLangURL }}" class="
                     {{- if eq $bg "primary" -}}
                       {{- printf " text-%s" "dark" -}}
                     {{- end -}}

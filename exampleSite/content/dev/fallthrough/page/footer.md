@@ -9,7 +9,7 @@ weight = 1200
   title = "Logo Title"
   image = "resource_logo.svg"
   text = "Logo Subtext"
-  link = "#"
+  url = "#"
 +++
 
 Content \o/

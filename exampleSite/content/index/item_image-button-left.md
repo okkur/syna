@@ -17,12 +17,12 @@ image = "screenshot.png"
 
 [[buttons]]
   text = "Button"
-  link = "#"
+  url = "#"
   color = "primary"
 
 [[buttons]]
   text = "Long Button"
-  link = "#"
+  url = "#"
   color = "secondary"
 +++
 

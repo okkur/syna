@@ -125,10 +125,10 @@
                 {{- if and (not .Params.icon) (not .Params.image) -}}
                   {{- range .Params.buttons }}
                     <a class="btn btn-lg m-2 d-none d-lg-inline
-                      {{ if hasPrefix .link "#" }} anchor{{ end }}
+                      {{ if hasPrefix .url "#" }} anchor{{ end }}
                       {{- $color := .color | default "primary" -}}
                       {{- printf " btn-%s" $color -}}
-                    " href="{{ .link | relLangURL }}">
+                    " href="{{ .url | relLangURL }}">
                       {{- .text -}}
                     </a>
                   {{- end -}}
@@ -178,10 +178,10 @@
             <div class="col-12 text-center text-lg-left">
               {{- range .Params.buttons }}
                 <a class="btn btn-lg m-2
-                  {{ if hasPrefix .link "#" }} anchor{{ end }}
+                  {{ if hasPrefix .url "#" }} anchor{{ end }}
                   {{- $color := .color | default "primary" -}}
                   {{- printf " btn-%s" $color -}}
-                " href="{{ .link | relLangURL }}">
+                " href="{{ .url | relLangURL }}">
                   {{- .text -}}
                 </a>
               {{- end }}
@@ -230,10 +230,10 @@
                               {{- end -}}
                             ">
                               <a class="btn
-                              {{ if hasPrefix .link "#" }} anchor{{ end }}
+                              {{ if hasPrefix .url "#" }} anchor{{ end }}
                               {{- $color := .color | default "primary" -}}
                               {{- printf " btn-%s" $color -}}
-                            " href="{{ .link | relLangURL }}">
+                            " href="{{ .url | relLangURL }}">
                               {{- .button -}}
                             </a>
                           </td>
@@ -243,7 +243,7 @@
                               {{- printf " text-center" -}}
                             {{- end -}}
                           ">
-                            <a href="{{ .links }}">
+                            <a href="{{ .urls }}">
                               <i class="{{ .icon }} fa-2x"></i>
                             </a>
                           </td>
@@ -311,10 +311,10 @@
               <div class="col-12 text-center">
                 {{- range .Params.buttons }}
                   <a class="btn btn-lg m-2
-                    {{ if hasPrefix .link "#" }} anchor{{ end }}
+                    {{ if hasPrefix .url "#" }} anchor{{ end }}
                     {{- $color := .color | default "primary" -}}
                     {{- printf " btn-%s" $color -}}
-                  " href="{{ .link | relLangURL }}">
+                  " href="{{ .url | relLangURL }}">
                     {{- .text -}}
                   </a>
                   {{- end }}

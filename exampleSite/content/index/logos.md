@@ -12,17 +12,17 @@ subtitle = "Even linking is possible"
   name = "hugo"
   weight = 20
   image = "hugo.svg"
-  link = "#"
+  url = "#"
 
 [[logos]]
   name = "go"
   weight = 10
   image = "go.svg"
-  link = "#"
+  url = "#"
 
 [[logos]]
   name = "caddy"
   weight = 30
   image = "caddy.svg"
-  link = "#"
+  url = "#"
 +++
