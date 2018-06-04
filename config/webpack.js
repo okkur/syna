@@ -30,7 +30,18 @@ const jsLoader = {
   },
 };
 
+const fileLoader = {
+  test: /\.(woff|woff2|eot|svg|ttf)$/,
+  use: {
+    loader: "url-loader",
+    options: {
+      limit: 50000,
+      name: "./fonts/[name].[ext]",
+    },
+  },
+};
+
 module.exports = {
-  rules: [sassLoader, jsLoader],
+  rules: [sassLoader, jsLoader, fileLoader],
   plugins: [extractSass, ],
 };

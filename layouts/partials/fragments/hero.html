@@ -1,58 +1,57 @@
-{{ $hero := .self.Params }}
-{{ $name := .self.Name }}
-{{ $name := replace $name "/index.md" "" }}
-{{ $name := strings.TrimSuffix ".md" $name }}
-{{ $path := .self.File.Path }}
-{{ $path := replace $path "/index.md" "" }}
-{{ $path := strings.TrimSuffix ".md" $path }}
-{{ $page_path := replace $path (printf "/%s" $name) "" }} {{ $tmp_full := .tmp_full }}
-{{ "<!-- hero -->" | safeHTML }}
-{{ $bg := $hero.background | default "secondary" }}
+{{- $root := .root -}}
+{{- $bg := .Params.background | default "secondary" }}
 
-<header>
-  {{ if $hero.header }}
+{{/* Resource fallthrough preparation */}}
+{{- $path := .self.File.Path -}}
+{{- $path := replace $path "/index.md" "" -}}
+{{- $path := strings.TrimSuffix ".md" $path -}}
+{{- $page_path := replace $path (printf "/%s" .Name) "" -}}
+
+{{ "<!-- hero -->" | safeHTML }}
+<header id="{{ .Name }}">
+  {{- if .Params.header }}
     <div class="jumbotron text-center header-image mb-0
      {{- printf " bg-%s" $bg -}}
     ">
-  {{ else }}
+  {{- else }}
     <div class="jumbotron text-center mb-0
      {{- printf " bg-%s" $bg -}}
     ">
-  {{ end }}
-  {{ if $hero.particles }}
+  {{- end }}
+  {{- if .Params.particles }}
     <div id="particles-js"></div>
-  {{ end }}
+  {{- end -}}
 
-  {{ if $hero.logo }}
+  {{- if .Params.logo -}}
     {{/* fallback to global resource */}}
-    {{ $tmp_full.Scratch.Set "image" (printf "images/%s" $hero.logo.image) }}
-    {{ range .resources.ByType "image" }}
+    {{- $root.Scratch.Set "image" (printf "images/%s" .Params.logo.image) -}}
+    {{- range .resources.ByType "image" -}}
 
       {{/* try for page specific resource */}}
-      {{ $location := (printf "%s/%s" $page_path $hero.logo.image) }}
-      {{ if (fileExists $location) }}
+      {{- $location := (printf "%s/%s" $page_path .Params.logo.image) -}}
+      {{- if (fileExists $location) -}}
         {{/* special case index: trim index/ from url */}}
-        {{ $location := strings.TrimPrefix "index/" $location }}
-        {{ $tmp_full.Scratch.Set "image" $location }}
-      {{ end }}
+        {{- $location := strings.TrimPrefix "index/" $location -}}
+        {{- $root.Scratch.Set "image" $location -}}
+      {{- end -}}
 
       {{/* try for fragment specific resource */}}
-      {{ $location := (printf "%s/%s" $path $hero.logo.image) }}
-      {{ if (fileExists $location) }}
+      {{- $location := (printf "%s/%s" $path .Params.logo.image) -}}
+      {{- if (fileExists $location) -}}
         {{/* special case index: trim index/ from url */}}
-        {{ $location := strings.TrimPrefix "index/" $location }}
-        {{ $tmp_full.Scratch.Set "image" $location }}
-      {{ end }}
-    {{ end }}
-    {{ with $hero.logo }}
+        {{- $location := strings.TrimPrefix "index/" $location -}}
+        {{- $root.Scratch.Set "image" $location -}}
+      {{- end -}}
+    {{- end -}}
+    {{- with .Params.logo }}
       <div class="row justify-content-center align-items-start">
-        <img class="overlay img-fluid" src="{{ $tmp_full.Scratch.Get "image" | relURL }}"
+        <img class="overlay img-fluid" src="{{ $root.Scratch.Get "image" | relURL }}"
           {{- if .height -}} height="{{ .height }}"{{- end -}}
           {{- if .width -}} width="{{ .width }}"{{- end -}}
         ></img>
       </div>
-    {{ end }}
-    {{ with $hero.subtitle }}
+    {{- end }}
+    {{- with .Params.subtitle }}
     <div class="row justify-content-center align-items-start">
       <h1 class="overlay jumbotron-heading my-4
         {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
@@ -64,9 +63,9 @@
         {{- . | markdownify -}}
       </h1>
     </div>
-    {{ end }}
-  {{ else }}
-    {{ with $hero.title }}
+    {{- end -}}
+  {{- else }}
+    {{- with .Params.title }}
     <div class="row justify-content-center align-items-start">
       <h1 class="overlay jumbotron-heading
         {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
@@ -78,8 +77,8 @@
         {{- . -}}
       </h1>
     </div>
-    {{ end }}
-    {{ with $hero.subtitle }}
+    {{- end -}}
+    {{- with .Params.subtitle }}
     <div class="row justify-content-center align-items-start">
       <div class="overlay lead
         {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
@@ -91,11 +90,11 @@
         {{- . | markdownify -}}
       </div>
     </div>
-    {{ end }}
-  {{ end }}
-  {{ range $hero.buttons }}
+    {{- end -}}
+  {{- end -}}
+  {{- range .Params.buttons }}
     <a class="overlay btn btn-lg m-2{{ if hasPrefix .link " # " }} anchor{{ end }}
-          {{- $color := .color | default "primary " -}}
+          {{- $color := .color | default "primary" -}}
           {{- printf " btn-%s " $color -}}
         " href="{{ .link | relLangURL }}">
     <div class="column justify-content-center align-content-center">
@@ -103,7 +102,9 @@
     </div>
     </a>
 
-  {{ end }}
+  {{- end }}
   </div>
 </header>
-<script src="{{ "hero.js" | relURL }}" defer async></script>
+{{- if .Params.particles }}
+  <script src="{{ "hero.js" | relURL }}" defer async></script>
+{{- end -}}

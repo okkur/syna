@@ -1,15 +1,14 @@
-{{ $self := .self }}
-{{ $content_single := .self.Params }}
-{{ "<!-- Content -->" | safeHTML }}
-{{ $bg :=  $content_single.background | default "light"}}
+{{- $self := .self -}}
+{{- $bg := .Params.background | default "light" }}
 
-<section>
+{{ "<!-- Content -->" | safeHTML }}
+<section id="{{ .Name }}">
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">
     <div class="container py-5">
       <div class="row">
-        {{ if $content_single.title }}
+        {{- if .Params.title }}
           <div class="col-12 pb-3
             {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
               {{- printf " text-%s" "dark" -}}
@@ -18,11 +17,11 @@
             {{- end -}}
           ">
             <h1>
-              {{- $content_single.title | markdownify -}}
+              {{- .Params.title | markdownify -}}
             </h1>
           </div>
-        {{ end }}
-        {{ if $content_single.subtitle }}
+        {{- end -}}
+        {{- if .Params.subtitle }}
           <div class="col-12 pb-2
             {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
               {{- printf " text-%s" "dark" -}}
@@ -31,10 +30,10 @@
             {{- end -}}
           ">
             <h3>
-              {{- $content_single.subtitle | markdownify -}}
+              {{- .Params.subtitle | markdownify -}}
             </h3>
           </div>
-        {{ end }}
+        {{- end }}
         <div class="col-12
           {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
             {{- printf " text-%s" "dark" -}}

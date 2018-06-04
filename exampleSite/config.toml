@@ -4,8 +4,11 @@ languageCode = "en-us"
 title = "Okkur - Syna"
 theme = "syna"
 themesDir = "../.."
-copyright = "" # default: Copyright $Year $params.name
 enableGitInfo = true
+
+[frontmatter]
+date = ["date", "lastmod"]
+lastmod = ["lastmod", ":git", "date"]
 
 # Google Analytics tracking
 googleAnalytics = ""
@@ -16,7 +19,6 @@ googleAnalytics = ""
 
   [params.style]
     #background = "secondary"
-    #background_navigation = "light" # white, light, secondary, primary, dark - default: dark
 
   # Theme customizations
   # Assets relative to 'static/'
@@ -36,18 +38,10 @@ googleAnalytics = ""
     # Optional hash for integrity check
     #hash = "sha512-RfeD0pacGTqy9m7U6PgehQfS4cc7SIt+e+P+H5e848kEvB/RW84CUGO3O4O3LNbxjevym6KPUZ8muPsMrI8WIw=="
 
-  # Optional, global disable switch for form related files
-  [params.contact]
-    disabled = false
-
   # Optional, global disable switch for fontawesome related files
   # For custom fontawesome js files use the custom.js method
   [params.fontawesome]
     disabled = false
-
-[frontmatter]
-date = ["date", "lastmod"]
-lastmod = ["lastmod", ":git", "date"]
 
 # main/prepend/postpend menus are displayed in nav fragment.
 # Keep an eye out for updates. These will be moved out to make navbar more
@@ -68,7 +62,7 @@ lastmod = ["lastmod", ":git", "date"]
   weight = 30
 
 [[menu.main]]
-  url = "#contact-fragment"
+  url = "#contact"
   name = "Contact"
   weight = 50
 
@@ -92,6 +86,12 @@ lastmod = ["lastmod", ":git", "date"]
   name = "Tiny Link"
   weight = 30
 
+[[menu.footer_social]]
+  weight = 30
+  name = "linkedin"
+  pre = "fab fa-linkedin-in"
+  url = "#"
+
 [[menu.copyright_footer]]
   url = "/about"
   name = "About Us"
@@ -105,11 +105,5 @@ lastmod = ["lastmod", ":git", "date"]
 [[menu.footer_social]]
   weight = 20
   name = "facebook"
-  pre = "fa-facebook-f"
-  url = "#"
-
-[[menu.footer_social]]
-  weight = 30
-  name = "linkedin"
-  pre = "fa-linkedin-in"
+  pre = "fab fa-facebook-f"
   url = "#"

@@ -4,7 +4,6 @@ fragment = "item"
 date = "2017-10-04"
 weight = 350
 background = "secondary"
-self_link = "item-fragment-image-center"
 align = "center"
 
 title = "Item Fragment Image Center"

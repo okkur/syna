@@ -4,7 +4,6 @@ fragment = "item"
 date = "2017-10-04"
 weight = 300
 #background = ""
-self_link = "item-fragment-icon-left"
 align = "left"
 
 title = "Item Fragment Icon Left"
@@ -14,7 +13,7 @@ title = "Item Fragment Icon Left"
 pre = "Awesome icon"
 post = "Using Fontawesome icons"
 
-icon = "fa-random"
+icon = "fas fa-random"
 +++
 
 Easily left align item fragments even with an icon.

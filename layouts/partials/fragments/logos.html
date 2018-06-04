@@ -1,13 +1,12 @@
-{{ $logos := .self.Params }}
-{{ "<!-- Logos -->" | safeHTML }}
-{{ $bg := $logos.background | default "white" }}
+{{- $bg := .Params.background | default "white" }}
 
-<section {{ with $logos.self_link }}id="{{ . }}"{{ end }}>
+{{ "<!-- Logos -->" | safeHTML }}
+<section id="{{ .Name }}">
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">
     <div class="container py-3">
-      {{ with $logos.title }}
+      {{- with .Params.title }}
         <div class="row">
           <div class="col text-center
             {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
@@ -21,8 +20,8 @@
             </h4>
           </div>
         </div>
-      {{ end }}
-      {{ with $logos.subtitle }}
+      {{- end -}}
+      {{- with .Params.subtitle }}
         <div class="row">
           <div class="col text-center
             {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
@@ -36,20 +35,20 @@
             </h5>
           </div>
         </div>
-      {{ end }}
+      {{- end }}
       <div class="row justify-content-center align-items-center">
-        {{ range sort $logos.logos "weight" }}
+        {{- range sort .Params.logos "weight" }}
           <div class="col-7 col-sm-4 text-center py-2">
-            {{ $url := printf "images/logos/%s" .logo }}
-            {{ if .link }}
+            {{- $url := printf "images/logos/%s" .logo -}}
+            {{- if .link }}
               <a href="{{ .link }}">
                 <img src="{{ $url | absURL }}" class="p-2 w-75" alt="{{ .name }}">
               </a>
-            {{ else }}
+            {{- else }}
               <img src="{{ $url | absURL }}" class="p-2 w-75" alt="{{ .name }}">
-            {{ end }}
+            {{- end }}
           </div>
-        {{ end }}
+        {{- end }}
       </div>
     </div>
   </div>

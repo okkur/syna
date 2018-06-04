@@ -1,21 +1,21 @@
 +++
-  title = "Huge Gopher"
-  weight = 0
-  joined = "2017-10-17"
-  image = "hugegopher.png"
-  position = "Lead Gopherineer"
+title = "Huge Gopher"
+weight = 0
+date = "2017-10-17"
 
-  reports_to = "CTO"
-  lives_in = "[Munich, Germany](https://www.google.com/maps/place/Munich,+Germany/)"
-  scope = [
-    "UX for [Food Dashboard](#)",
-    "Maintainer for [Goper Team A](#)",
-    "Gopher [Community Administration](#)"
-  ]
+image = "hugegopher.png"
+position = "Lead Gopherineer"
+reports_to = "CTO"
+lives_in = "[Munich, Germany](https://www.google.com/maps/place/Munich,+Germany/)"
+scope = [
+  "UX for [Food Dashboard](#)",
+  "Maintainer for [Goper Team A](#)",
+  "Gopher [Community Administration](#)"
+]
 
-  [[icons]]
-    icon = "fa-linkedin-in"
-    link = "#"
+[[icons]]
+  icon = "fab fa-linkedin-in"
+  link = "#"
 +++
 
 Hugely huge Gopher

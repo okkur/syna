@@ -4,7 +4,6 @@ fragment = "item"
 date = "2017-10-04"
 weight = 310
 background = "secondary"
-self_link = "item-fragment-icon-center"
 align = "center"
 
 title = "Item Fragment Icon Center"
@@ -14,7 +13,7 @@ title = "Item Fragment Icon Center"
 #pre = ""
 #post = ""
 
-icon = "fa-random"
+icon = "fas fa-random"
 +++
 
 Easily center item fragments even with an icon.

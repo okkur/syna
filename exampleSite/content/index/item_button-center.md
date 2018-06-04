@@ -4,7 +4,6 @@ fragment = "item"
 date = "2017-10-04"
 weight = 420
 background = "dark"
-self_link = "item-fragment-button-center"
 align = "center"
 
 title = "Item Fragment Button Center"

@@ -13,5 +13,5 @@ weight = 0
 [repo_button]
   url = "https://github.com/okkur/syna"
   text = "Star" # default: "Star"
-  icon = "fa-github" # defaults: "fa-github"
+  icon = "fab fa-github" # defaults: "fab fa-github"
 +++

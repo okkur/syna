@@ -1,4 +1,4 @@
-{{ define "main" }}
+{{- define "main" -}}
   {{/*
     This code may not be understandable immediately. This is trying to find all
     the resources (read fragments) for each page and all the global fragments.
@@ -10,28 +10,29 @@
     check for presence of local fragments since multiple files can use a single
     fragment.
     */}}
-  {{ $global := .Site.GetPage "page" "global" }}
-  {{ $.Scratch.Delete "global_fragments" }}
-  {{ if $global }}
-    {{ $.Scratch.Set "global_fragments" ($global.Resources.ByType "page") }}
-  {{ end }}
-  {{ $local_fragments := .Resources.ByType "page" }}
+  {{- $global := .Site.GetPage "page" "global" -}}
+  {{- $.Scratch.Delete "global_fragments" -}}
+  {{- if $global -}}
+    {{- $.Scratch.Set "global_fragments" ($global.Resources.ByType "page") -}}
+  {{- end -}}
+  {{- $local_fragments := .Resources.ByType "page" -}}
 
-  {{ $.Scratch.Set "fragments" slice }}
-  {{ range $local_fragments }}
-    {{ $.Scratch.Add "fragments" (slice .) }}
-  {{ end }}
-  {{ if $.Scratch.Get "global_fragments" }}
-    {{ range ($.Scratch.Get "global_fragments") }}
-      {{ if not (where ($.Scratch.Get "fragments") ".Name" .Name) }}
-        {{ $.Scratch.Add "fragments" (slice .) }}
-      {{ end }}
-    {{ end }}
-  {{ end }}
+  {{- $.Scratch.Set "fragments" slice -}}
+  {{- range $local_fragments -}}
+    {{- $.Scratch.Add "fragments" (slice .) -}}
+  {{- end -}}
+  {{- if $.Scratch.Get "global_fragments" -}}
+    {{- range ($.Scratch.Get "global_fragments") -}}
+      {{- if not (where ($.Scratch.Get "fragments") ".Name" .Name) -}}
+        {{- $.Scratch.Add "fragments" (slice .) -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
 
-  {{ range sort ($.Scratch.Get "fragments" | default slice) "Params.weight" }}
-    {{ if and (not .Params.disabled) (isset .Params "fragment") }}
-      {{ partial (print "fragments/" .Params.fragment ".html") (dict "tmp_full" $ "Site" $.Site "menus" $.Site.Menus "resources" $.Resources "self" .) }}
-    {{ end }}
-  {{ end }}
-{{ end }}
+  {{- range sort ($.Scratch.Get "fragments" | default slice) "Params.weight" -}}
+    {{- if and (not .Params.disabled) (isset .Params "fragment") -}}
+      {{- $name := strings.TrimSuffix ".md" (replace .Name "/index.md" "") -}}
+      {{- partial (print "fragments/" .Params.fragment ".html") (dict "root" $ "Site" $.Site "resources" $.Resources "self" . "Params" .Params "Name" $name) -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}

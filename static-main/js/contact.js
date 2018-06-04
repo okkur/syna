@@ -63,5 +63,5 @@ function checkReCaptcha() {
 }
 
 window.onContactCaptcha = function($form) {
-  $('form.contact').submit();
+  document.querySelector('form.contact').dispatchEvent(new Event('submit'))
 }

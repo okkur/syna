@@ -1,17 +1,13 @@
-{{ $itemf := .self.Params }}
-{{ $name := .self.Name }}
-{{ $name_t := strings.TrimSuffix ".md" $name }}
-{{ $items:= .resources.Match (printf "%s/*" $name_t) }}
+{{- $items := .resources.Match (printf "%s/*" .Name) -}}
+{{- $bg := .Params.background | default "light" }}
+
 {{ "<!-- Items -->" | safeHTML }}
-{{ $bg := $itemf.background | default "light"}}
-
-
-<section {{ with $itemf.self_link }}id="{{ . }}"{{ end }}>
+<section id="{{ .Name }}">
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">
     <div class="container py-5">
-      {{ with $itemf.title }}
+      {{- with .Params.title }}
         <div class="row">
           <div class="col text-center
             {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
@@ -25,8 +21,8 @@
             </h2>
           </div>
         </div>
-      {{ end }}
-      {{ with $itemf.subtitle }}
+      {{- end -}}
+      {{- with .Params.subtitle -}}
         <div class="row">
           <div class="col text-center pt-4 pb-5
             {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
@@ -40,47 +36,50 @@
             </h5>
           </div>
         </div>
-      {{ end }}
+      {{- end }}
       <div class="row justify-content-center align-items-start">
-         {{ range $items}}
-           {{ $items:= .Params }}
-          <div class="col-md-4 text-center">
-            <span class="fa-stack fa-3x m-2">
-              <i class="fas fa-circle fa-stack-2x
-                {{- if eq $bg "primary" -}}
-                  {{- printf " text-%s" "dark" -}}
-                {{- else -}}
-                  {{- printf " text-%s" "primary" -}}
-                {{- end -}}
-              "></i>
-              <i class="fas {{ $items.icon }} fa-stack-1x fa-inverse"></i>
-            </span>
-            <h4 class="mb-3
-              {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
-                {{- printf " text-%s" "dark" -}}
-              {{- else -}}
-                {{- printf " text-%s" "light" -}}
-              {{- end -}}
-            ">
-              {{ if $items.link }}
-                <a href="{{ $items.link | relLangURL }}" class="
+        {{- range $items -}}
+          {{/* Handle special case of index.md being considered an item */}}
+          {{- if not (in .Name "/index.md") -}}
+            {{- $item := .Params }}
+            <div class="col-md-4 text-center">
+              <span class="fa-stack fa-3x m-2">
+                <i class="fas fa-circle fa-stack-2x
                   {{- if eq $bg "primary" -}}
                     {{- printf " text-%s" "dark" -}}
+                  {{- else -}}
+                    {{- printf " text-%s" "primary" -}}
                   {{- end -}}
-                ">{{ $items.name | markdownify }}</a>
-              {{ else }}
-                {{- $items.name | markdownify -}}
-              {{ end }}
-            </h4>
-            <div class="
-              {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                {{- printf " text-%s" "dark" -}}
-              {{- else -}}
-                {{- printf " text-muted text-%s" "secondary" -}}
-              {{- end -}}
-            ">{{ .Content }}</div>
-          </div>
-        {{ end }}
+                "></i>
+                <i class="{{ $item.icon }} fa-stack-1x fa-inverse"></i>
+              </span>
+              <h4 class="mb-3
+                {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
+                  {{- printf " text-%s" "dark" -}}
+                {{- else -}}
+                  {{- printf " text-%s" "light" -}}
+                {{- end -}}
+              ">
+                {{- if $item.link }}
+                  <a href="{{ $item.link | relLangURL }}" class="
+                    {{- if eq $bg "primary" -}}
+                      {{- printf " text-%s" "dark" -}}
+                    {{- end -}}
+                  ">{{ $item.title | markdownify }}</a>
+                {{- else }}
+                  {{- $item.title | markdownify -}}
+                {{- end }}
+              </h4>
+              <div class="
+                {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                  {{- printf " text-%s" "dark" -}}
+                {{- else -}}
+                  {{- printf " text-muted text-%s" "secondary" -}}
+                {{- end -}}
+              ">{{ .Content }}</div>
+            </div>
+          {{- end -}}
+        {{- end }}
       </div>
     </div>
   </div>

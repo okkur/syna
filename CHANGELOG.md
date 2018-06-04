@@ -1,6 +1,6 @@
-<!--
+
 # v0.11.0
-_2017_
+_2018-05-28_
   - [Downloads for v0.11.0](https://github.com/okkur/syna/releases/tag/v0.11.0)
   - [Changelog since v0.10.0](#changes-since-v010)
 
@@ -15,16 +15,19 @@ _2017_
   - Default attribution to opt-in
   - Settable jumbotron background
   - Auto hide navbar (no menu items ) with optional overwrite
-  -
+  - Single member mode for Member Fragment
+  - Migrate frontmatter to nesting
 
 ## Fixes since v0.10.0
   - Recaptcha support
   - Jumbotron corners
-  - 
+  - Fix Scroll-to-top bgcolor
+  - Add links support for logo in footer fragment
+  - Fix full width coverage for particle.js
 
 ---
 
--->
+
 # v0.10.0
 _2018-03-09_
   - [Downloads for v0.10.0](https://github.com/okkur/syna/releases/tag/v0.10.0)
