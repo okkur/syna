@@ -52,7 +52,7 @@ Fragments themselves are [partials](https://gohugo.io/templates/partials/) that 
   - The layout will sort all the fragments based on their `weight` attribute
 - `js.html` partial is rendered from `baseof.html` layout
 
-![This is how fragments are rendered in the single layout](docs/fragments-01.png)
+![This is how fragments are rendered in the single layout](/docs/fragments-01.png)
 
 Each fragment is controlled by a content file, which is usually located next to the page's index.md file.  
 For bundling images a fragment can also be created as a subdirectory next to the page's index.md file.  
@@ -132,7 +132,7 @@ Syna is using Bootstrap v4 with customized set of colors. You can change these c
 
 Syna uses code spliting to get bundles for each fragment. This allows us to have lighter pages in most cases. In `static-main/js/` directory there is an `index.js` file that is the main script and is needed in all the pages. Every other script directly in this directory is needed by the fragment of the same name. For example `hero.js` is needed by `hero` fragment.
 
-If you want to add an extra script for an specific fragment, you need to add that script as an entry point in the [webpack configuration file](webpack.config.js). Then import that script inside the fragment (using the `script` tag).
+If you want to add an extra script for an specific fragment, you need to add that script as an entry point in the [webpack configuration file](/webpack.config.js). Then import that script inside the fragment (using the `script` tag).
 
 ## Further reading
 
