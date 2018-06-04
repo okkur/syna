@@ -83,10 +83,10 @@
                               {{- end -}}
                             ">
                               <a class="btn
-                              {{ if hasPrefix .link "#" }} anchor{{ end }}
+                              {{ if hasPrefix .url "#" }} anchor{{ end }}
                               {{- $color := .color | default "primary" -}}
                               {{- printf " btn-%s" $color -}}
-                            " href="{{ .link | relLangURL }}">
+                            " href="{{ .url | relLangURL }}">
                               {{- .button -}}
                             </a>
                           </td>

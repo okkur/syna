@@ -15,7 +15,7 @@ scope = [
 
 [[icons]]
   icon = "fab fa-linkedin-in"
-  link = "#"
+  url = "#"
 +++
 
 Hugely huge Gopher

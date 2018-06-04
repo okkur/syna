@@ -12,5 +12,5 @@ background = "dark"
   name = "syna"
   weight = 10
   image = "syna.svg"
-  #link = "#"
+  #url = "#"
 +++

@@ -2,7 +2,7 @@
 title = "Column 2"
 weight = 20
 icon = "fas fa-random"
-#link = "#"
+#url = "#"
 +++
 
 Showcasing descriptions for column based items

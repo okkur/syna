@@ -112,10 +112,10 @@
     {{- end -}}
   {{- end -}}
   {{- range .Params.buttons }}
-    <a class="overlay btn btn-lg m-2{{ if hasPrefix .link " # " }} anchor{{ end }}
+    <a class="overlay btn btn-lg m-2{{ if hasPrefix .url " # " }} anchor{{ end }}
           {{- $color := .color | default "primary" -}}
           {{- printf " btn-%s " $color -}}
-        " href="{{ .link | relLangURL }}">
+        " href="{{ .url | relLangURL }}">
     <div class="column justify-content-center align-content-center">
       {{- .text -}}
     </div>

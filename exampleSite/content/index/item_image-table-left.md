@@ -50,13 +50,13 @@ image = "screenshot.png"
 
   [[rows.values]]
     button = "Button"
-    link = "#"
+    url = "#"
     color = "success"
     center = true
 
   [[rows.values]]
     button = "Long Button"
-    link = "#"
+    url = "#"
     color = "danger"
 
 [[rows]]
@@ -77,6 +77,6 @@ image = "screenshot.png"
 
   [[rows.values]]
     icon = "fa-download"
-    link = "#"
+    url = "#"
     center = true
 +++

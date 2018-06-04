@@ -45,12 +45,12 @@ subtitle= "Tables are responsive by default"
 
   [[rows.values]]
     button = "Long Button"
-    link = "#"
+    url = "#"
     color = "success"
 
   [[rows.values]]
     button = "Button"
-    link = "#"
+    url = "#"
     color = "danger"
     center = true
 
@@ -72,6 +72,6 @@ subtitle= "Tables are responsive by default"
 
   [[rows.values]]
     icon = "fas fa-download"
-    link = "#"
+    url = "#"
     center = true
 +++

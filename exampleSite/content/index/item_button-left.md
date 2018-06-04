@@ -15,7 +15,7 @@ title = "Item Fragment Button Left"
 
 [[buttons]]
   text = "Button"
-  link = "#"
+  url = "#"
   color = "success"
 +++
 

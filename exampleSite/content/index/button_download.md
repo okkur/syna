@@ -10,6 +10,6 @@ subtitle = "Using secondary background"
 
 [[buttons]]
   text = "Button"
-  link = "#"
+  url = "#"
   color = "info"
 +++

@@ -11,7 +11,7 @@ menu_title = "Link Title"
   title = "Logo Title"
   image = "logo.svg"
   text = "Logo Subtext"
-  link = "#"
+  url = "#"
 +++
 
 #### Description Title

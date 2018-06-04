@@ -121,7 +121,7 @@
                   <div class="row justify-content-center pt-4">
                     {{- range $member.icons -}}
                       <span class="fa-stack fa-2x m-2">
-                        <a href="{{ .link }}">
+                        <a href="{{ .url }}">
                           <i class="fas fa-circle fa-stack-2x
                             {{- if eq $bg "primary" -}}
                               {{- printf " text-%s" "dark" -}}
@@ -234,7 +234,7 @@
                     <div class="row justify-content-center pt-4">
                       {{- range $member.icons -}}
                         <span class="fa-stack fa-2x m-2">
-                          <a href="{{ .link }}">
+                          <a href="{{ .url }}">
                             <i class="fas fa-circle fa-stack-2x
                               {{- if eq $bg "primary" -}}
                                 {{- printf " text-%s" "dark" -}}

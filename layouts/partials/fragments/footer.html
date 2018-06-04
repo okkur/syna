@@ -42,7 +42,7 @@
             {{- .title -}}
           </h4>
           {{- if .image }}
-          <a href="{{ .link }}">
+          <a href="{{ .url }}">
             <img src="{{ $.root.Scratch.Get "image" | relURL }}" class="img-fluid w-50" alt="{{ .text }}">
           </a>
           {{- else }}

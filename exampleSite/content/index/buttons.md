@@ -10,11 +10,11 @@ subtitle = "Using primary background"
 
 [[buttons]]
   text = "Button"
-  link = "#"
+  url = "#"
   color = "success" # primary, secondary, success, danger, warning, info, light, dark, link - default: primary
 
 [[buttons]]
   text = "Danger Button"
-  link = "#"
+  url = "#"
   color = "danger"
 +++

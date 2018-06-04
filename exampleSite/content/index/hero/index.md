@@ -17,16 +17,16 @@ header = "header.jpg"
 
 [[buttons]]
   text = "Button"
-  link = "#"
+  url = "#"
   color = "info" # primary, secondary, success, danger, warning, info, light, dark, link - default: primary
 
 [[buttons]]
   text = "Download"
-  link = "https://github.com/okkur/syna/releases"
+  url = "https://github.com/okkur/syna/releases"
   color = "primary"
 
 [[buttons]]
   text = "Button"
-  link = "#"
+  url = "#"
   color = "success"
 +++

@@ -15,11 +15,11 @@ scope = [
 
 [[icons]]
   icon = "fab fa-twitter"
-  link = "#"
+  url = "#"
 
 [[icons]]
   icon = "fab fa-linkedin-in"
-  link = "#"
+  url = "#"
 +++
 
 Really tiny Gopher

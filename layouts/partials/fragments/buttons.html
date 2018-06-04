@@ -38,10 +38,10 @@
       {{- end }}
       <div class="row text-center justify-content-center">
         {{- range .Params.buttons }}
-          <a class="btn btn-lg m-2{{ if hasPrefix .link "#" }} anchor{{ end }}
+          <a class="btn btn-lg m-2{{ if hasPrefix .url "#" }} anchor{{ end }}
             {{- $color := .color | default "primary" -}}
             {{- printf " btn-%s" $color -}}
-          " href="{{ .link | relLangURL }}">
+          " href="{{ .url | relLangURL }}">
             {{- .text -}}
           </a>
         {{- end }}

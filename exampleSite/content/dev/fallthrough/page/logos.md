@@ -11,5 +11,5 @@ title = "logos"
   name = "syna"
   weight = 10
   image = "resource_logo.svg"
-  #link = "#"
+  #url = "#"
 +++
