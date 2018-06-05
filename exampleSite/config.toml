@@ -52,6 +52,11 @@ googleAnalytics = ""
   weight = 10
 
 [[menu.main]]
+  url = "/blog/latest"
+  name = "Blog"
+  weight = 20
+
+[[menu.main]]
   url = "/about-split"
   name = "Page-split"
   weight = 30
@@ -62,14 +67,14 @@ googleAnalytics = ""
   weight = 30
 
 [[menu.main]]
-  url = "#contact"
-  name = "Contact"
-  weight = 50
-
-[[menu.main]]
   url = "#"
   name = "Link"
   weight = 30
+
+[[menu.main]]
+  url = "#contact"
+  name = "Contact"
+  weight = 50
 
 [[menu.footer]]
   url = "#"
