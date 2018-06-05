@@ -10,19 +10,24 @@
     check for presence of local fragments since multiple files can use a single
     fragment.
     */}}
+  {{- $.Scratch.Set "fragments" (slice .) -}}
+  {{- range .Resources.ByType "page" -}}
+    {{- $.Scratch.Add "fragments" (slice .) -}}
+  {{- end -}}
+
+  {{- $section_globals := .Site.GetPage "page" (printf "%s/global" .Section) -}}
+  {{- if $section_globals -}}
+    {{- range ($section_globals.Resources.ByType "page") -}}
+      {{- if not (where ($.Scratch.Get "fragments") ".Name" .Name) -}}
+        {{- $.Scratch.Add "fragments" (slice .) -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+
   {{- $global := .Site.GetPage "page" "global" -}}
   {{- $.Scratch.Delete "global_fragments" -}}
   {{- if $global -}}
-    {{- $.Scratch.Set "global_fragments" ($global.Resources.ByType "page") -}}
-  {{- end -}}
-  {{- $local_fragments := .Resources.ByType "page" -}}
-
-  {{- $.Scratch.Set "fragments" slice -}}
-  {{- range $local_fragments -}}
-    {{- $.Scratch.Add "fragments" (slice .) -}}
-  {{- end -}}
-  {{- if $.Scratch.Get "global_fragments" -}}
-    {{- range ($.Scratch.Get "global_fragments") -}}
+    {{- range ($global.Resources.ByType "page") -}}
       {{- if not (where ($.Scratch.Get "fragments") ".Name" .Name) -}}
         {{- $.Scratch.Add "fragments" (slice .) -}}
       {{- end -}}
