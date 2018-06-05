@@ -37,12 +37,11 @@
           </div>
         </div>
       {{ end }}
-      {{- if eq $members 0 -}}
+      {{- if eq (len $members) 0 -}}
         <div class="alert alert-danger text-center">
           {{- printf "Currently there is no configured member content files present. To add new members add a content file within %s" $.fallthrough.file_path -}}
         </div>
-      {{- else -}}
-      {{- if gt $members 1 -}}
+      {{- else if gt $members 1 -}}
         <div class="row justify-content-center align-items-start">
           {{- range $members -}}
             {{/* Handle special case of index.md being considered a member */}}
@@ -150,8 +149,7 @@
             {{- end -}}
           {{- end }}
         </div>
-      {{- end -}}
-      {{- if le $members 1 -}}
+      {{- else if le $members 1 -}}
         <div class="card p-2 m-2">
           <div class="row justify-content-start align-items-start">
             {{- range $members -}}
@@ -264,7 +262,6 @@
             {{- end }}
           </div>
         </div>
-      {{- end -}}
       {{- end -}}
     </div>
   </div>

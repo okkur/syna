@@ -38,55 +38,54 @@
         </div>
       {{- end }}
       <div class="row justify-content-center align-items-start">
-        {{- if eq $items 0 -}}
+        {{- if eq (len $items) 0 -}}
         <div class="alert alert-danger">
             {{- printf "Currently there is no configured items content files present. To add new items add a content file within %s"  $.fallthrough.file_path -}}
         </div>
         {{- else -}}
-        {{- range $items -}}
-          {{/* Handle special case of index.md being considered an item */}}
-          {{- if not (in .Name "/index.md") -}}
-            {{- $item := .Params }}
-            <div class="col-md-4 text-center">
-              <span class="fa-stack fa-3x m-2">
-                <i class="fas fa-circle fa-stack-2x
-                  {{- if eq $bg "primary" -}}
-                    {{- printf " text-%s" "dark" -}}
-                  {{- else -}}
-                    {{- printf " text-%s" "primary" -}}
-                  {{- end -}}
-                "></i>
-                <i class="{{ $item.icon }} fa-stack-1x fa-inverse"></i>
-              </span>
-              <h4 class="mb-3
-                {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
-                  {{- printf " text-%s" "dark" -}}
-                {{- else -}}
-                  {{- printf " text-%s" "light" -}}
-                {{- end -}}
-              ">
-                {{- if $item.url }}
-                  <a href="{{ $item.url | relLangURL }}" class="
+          {{- range $items -}}
+            {{/* Handle special case of index.md being considered an item */}}
+            {{- if not (in .Name "/index.md") -}}
+              {{- $item := .Params }}
+              <div class="col-md-4 text-center">
+                <span class="fa-stack fa-3x m-2">
+                  <i class="fas fa-circle fa-stack-2x
                     {{- if eq $bg "primary" -}}
                       {{- printf " text-%s" "dark" -}}
+                    {{- else -}}
+                      {{- printf " text-%s" "primary" -}}
                     {{- end -}}
-                  ">{{ $item.title | markdownify }}</a>
-                {{- else }}
-                  {{- $item.title | markdownify -}}
-                {{- end }}
-              </h4>
-              <div class="
-                {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                  {{- printf " text-%s" "dark" -}}
-                {{- else -}}
-                  {{- printf " text-muted text-%s" "secondary" -}}
-                {{- end -}}
-              ">{{ .Content }}</div>
-            </div>
+                  "></i>
+                  <i class="{{ $item.icon }} fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 class="mb-3
+                  {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
+                    {{- printf " text-%s" "dark" -}}
+                  {{- else -}}
+                    {{- printf " text-%s" "light" -}}
+                  {{- end -}}
+                ">
+                  {{- if $item.url }}
+                    <a href="{{ $item.url | relLangURL }}" class="
+                      {{- if eq $bg "primary" -}}
+                        {{- printf " text-%s" "dark" -}}
+                      {{- end -}}
+                    ">{{ $item.title | markdownify }}</a>
+                  {{- else }}
+                    {{- $item.title | markdownify -}}
+                  {{- end }}
+                </h4>
+                <div class="
+                  {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                    {{- printf " text-%s" "dark" -}}
+                  {{- else -}}
+                    {{- printf " text-muted text-%s" "secondary" -}}
+                  {{- end -}}
+                ">{{ .Content }}</div>
+              </div>
+            {{- end -}}
           {{- end -}}
         {{- end -}}
-        {{- end -}}
-
       </div>
     </div>
   </div>
