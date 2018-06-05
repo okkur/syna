@@ -19,11 +19,34 @@
           {{- end -}}
         ">
           {{- range first .Params.article_count $articles }}
-            <a href="{{ .URL }}">
-              <h3>
-                {{ .Name }}
-              </h3>
-            </a>
+            <div class="col-12">
+              <a href="{{ .URL }}">
+                <h3>{{ .Name }}</h3>
+              </a>
+              <div class="col-12 mb-2 pl-0
+                {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                  {{- printf " text-%s" "dark" -}}
+                {{- else -}}
+                  {{- printf " text-muted text-%s" "secondary" -}}
+                {{- end -}}
+              ">
+                {{- if .Summary }}
+                  {{ .Summary }}
+                {{- else }}
+                  {{- range first 1 (where (.Resources.ByType "page") "Params.fragment" "content") }}
+                    {{ .Summary }}
+                  {{- end -}}
+                {{- end -}}
+                {{- if .Truncated -}}
+                  <a class="ml-2 badge
+                  {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                    {{- printf " badge-%s" "dark" -}}
+                  {{- else -}}
+                    {{- printf " badge-%s" "secondary" -}}
+                  {{- end -}}" href="{{ .URL }}">{{ i18n "content.readmore" }}</a>
+                {{- end }}
+              </div>
+            </div>
           {{- end -}}
         </div>
       </div>
