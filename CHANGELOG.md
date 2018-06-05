@@ -8,6 +8,7 @@ _2018-05-28_
 [Examples](/tree/v0.11.0/exampleSite)
 
 ## Changes since v0.10.0
+
   - Scroll to top button
   - Netlify contact form support
   - Use snake_case variable names
@@ -17,13 +18,21 @@ _2018-05-28_
   - Auto hide navbar (no menu items ) with optional overwrite
   - Single member mode for Member Fragment
   - Migrate frontmatter to nesting
+  - Makefile to build and run a development server
+  - Add resource fallthrough to all fragments with image
+  - Remove extra whitespace in layout files
+  - Automatically set lastmod for content files
+  - Upgrade to Bootstrap v4
 
 ## Fixes since v0.10.0
+
   - Recaptcha support
   - Jumbotron corners
   - Fix Scroll-to-top bgcolor
   - Add links support for logo in footer fragment
   - Fix full width coverage for particle.js
+  - Fontawesome icons now need to declare the full icon class: `fab fa-facebook` instead of `fa-facebook`
+  - Fix the default hidden contact fields.
 
 ---
 
