@@ -17,6 +17,7 @@ limitations under the License.
 > Highly customizable open source theme for Hugo based static websites
 
 Syna is a Hugo template built to be customizable and easy to use. To achieve this we have built it in a way that all the pages would be created by using building blocks called fragments. Each page of a website using Syna is created using fragments.
+
 <!-- TOC -->
 
 - [Documentation](#documentation)
@@ -92,7 +93,6 @@ Currently the following fragments are available. Their [usage example](https://g
 
 In order to create a new fragment for you website create a new `html` named after your fragment and place it under `[project_root]/layouts/partials/fragments`. Fragments are partials and follow the same rules. If you are not familiar with partials please read their [documentation](https://gohugo.io/templates/partials/).
 
-
 ### Short-comings
 
 As mentioned, fragments are controlled by content files. There is one exception and that is menus. Hugo does not allow menus to be defined in content files. In order to customize menu options for a fragment you need to configure them `config.toml` of your website. As of right now there are three fragments using menus:
@@ -133,6 +133,23 @@ Syna is using Bootstrap v4 with customized set of colors. You can change these c
 Syna uses code spliting to get bundles for each fragment. This allows us to have lighter pages in most cases. In `static-main/js/` directory there is an `index.js` file that is the main script and is needed in all the pages. Every other script directly in this directory is needed by the fragment of the same name. For example `hero.js` is needed by `hero` fragment.
 
 If you want to add an extra script for an specific fragment, you need to add that script as an entry point in the [webpack configuration file](/webpack.config.js). Then import that script inside the fragment (using the `script` tag).
+
+### Supported Colors
+
+Syna makes use of it's own customized color available within the `static-main/styles/bootstrap-overwrite`.
+
+| class     | colors  |
+| --------- | ------- |
+| primary   | #00838F |
+| secondary | #868e96 |
+| success   | #008f54 |
+| info      | #00838F |
+| warning   | #fdf314 |
+| danger    | #dc1200 |
+| light     | #f8f9fa |
+| dark      | #343a40 |
+
+The same classes applies for when you want to style text, button, background and link. These colors can also be overwritten by specifying your custom colors in `static-main/styles/bootstrap-overwrite/_variables.scss`
 
 ## Further reading
 
