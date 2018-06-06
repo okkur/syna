@@ -9,26 +9,31 @@ _2018-05-28_
 
 ## Changes since v0.10.0
 
+  - BREAKING: Remove split layout in favour of content-split fragment
+  - BREAKING: Change all frontmatter variables named `link` to `url`
+  - BREAKING: Contact fragment configuration are loaded within the fragment controller
+  - NOTE: jQuery and jQuery Form Validator and BootstrapJS have been replaced with much smaller replacements
+  - NOTE: Nav and Footer are now fragments and should be configured
+  - Add support for global fragments
   - Scroll to top button
   - Netlify contact form support
   - Use snake_case variable names
-  - Use nesting for variables
+  - Use nesting for frontmatter variables
   - Default attribution to opt-in
   - Settable jumbotron background
-  - Auto hide navbar (no menu items ) with optional overwrite
-  - Single member mode for Member Fragment
-  - Migrate frontmatter to nesting
+  - Auto hide navbar (no menu items) with optional overwrite
+  - Single member mode for Member fragment
   - Makefile to build and run a development server
   - Add resource fallthrough to all fragments with image
   - Remove extra whitespace in layout files
   - Automatically set lastmod for content files
   - Upgrade to Bootstrap v4
+  - Load all assets locally and remove usage of CDNs
 
 ## Fixes since v0.10.0
 
   - Recaptcha support
   - Jumbotron corners
-  - Fix Scroll-to-top bgcolor
   - Add links support for logo in footer fragment
   - Fix full width coverage for particle.js
   - Fontawesome icons now need to declare the full icon class: `fab fa-facebook` instead of `fa-facebook`
