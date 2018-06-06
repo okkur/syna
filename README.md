@@ -38,6 +38,8 @@ Best place to start is our [contribution guide](/CONTRIBUTING.md).
 
 *The Syna logo was created by [Florin Luca](https://99designs.com/profiles/florinluca)*
 
+*The Syna theme originated from [David Miller](https://github.com/davidtmiller) Startbootstrap's Agency theme  and [Digitalcraftsman](https://github.com/digitalcraftsman) Hugo-Agency-theme*
+
 ---
 
 Copyright 2017 - The Syna Theme Authors
