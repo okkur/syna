@@ -48,9 +48,9 @@ These can be a navigation fragment, a content fragment or more.
 
 Multiple pre-bundled fragments are available.
 You can add your own custom fragment by creating a new layout file within your websites's `layouts/partials/fragments/` directory.
-If it this path doesn't exist yet, you can create it beforehand.
+If this path doesn't exist yet, you can create it beforehand.
 
-Fragments of a website, that need to show up on every page, we have global fragments.
+For fragments of a website, that need to show up on every page, we have global fragments.
 Global fragments are located in a special content directory `content/global/`.
 All fragments within this directory are rendered on all pages by default.
 *To not render the whole page as a subpath of your website the index.md file defines the whole directory as a `headless` bundle*
@@ -137,6 +137,9 @@ As mentioned, fragments are controlled by content files. There is one exception 
 
 > Whenever Hugo allows for resource menus or when we figure out a way to have menu features with frontmatter arrays this would change and menus would be configurable with resource variables like everything else. The change would be breaking. So when updating the theme please read the changelog and check for breaking changes.
 
+Furthermore we use two keywords, that can't be used to create pages.
+Both `ìndex` and `global` have a special meaning within the Syna fragment and using them separately might lead to issues.
+
 ## Front-end development and design
 
 We develop our front-end code in the `static-main/` directory which allows us to have a development directory that would be built to be production ready and put inside the `static/` directory (which is the directory Hugo looks into for front-end files) using [Webpack](https://webpack.js.org/).
@@ -169,7 +172,6 @@ Then import that script inside the fragment (using the `script` tag).
 
 ### Fragment implementation
 
-**Implementation**
 Fragments themselves are [Hugo partials](https://gohugo.io/templates/partials/) that are located in `layouts/partials/fragments/`.
 Partials built into Syna are stored within the theme's layout directory.
 Hugo enables local or per website overwrites of layouts and partials.
