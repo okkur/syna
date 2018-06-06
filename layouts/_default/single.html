@@ -10,7 +10,7 @@
     check for presence of local fragments since multiple files can use a single
     fragment.
     */}}
-  {{- $global := .Site.GetPage "page" "global" -}}
+  {{- $global := .Site.GetPage "page" "_global" -}}
   {{- $.Scratch.Delete "global_fragments" -}}
   {{- if $global -}}
     {{- $.Scratch.Set "global_fragments" ($global.Resources.ByType "page") -}}
