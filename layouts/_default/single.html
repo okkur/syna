@@ -24,7 +24,7 @@
     {{- end -}}
   {{- end -}}
 
-  {{- $global := .Site.GetPage "page" "global" -}}
+  {{- $global := .Site.GetPage "page" "_global" -}}
   {{- $.Scratch.Delete "global_fragments" -}}
   {{- if $global -}}
     {{- range ($global.Resources.ByType "page") -}}

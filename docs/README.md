@@ -16,49 +16,52 @@ limitations under the License.
 
 > Highly customizable open source theme for Hugo based static websites
 
-Syna is a Hugo template built to be customizable and easy to use. To achieve this we have built it in a way that all the pages would be created by using building blocks called fragments. Each page of a website using Syna is created using fragments.
+Syna is a Hugo template built to be customizable and easy to use.
+To achieve this we have built it in a way that all pages are created using building blocks called fragments.
+Each page within a Syna based website is created using fragments.
 
 <!-- TOC -->
 
 - [Documentation](#documentation)
-  - [Fragments](#fragments)
+  - [Usage and concepts](#usage-and-concepts)
+    - [Fragments](#fragments)
     - [Built-in fragments](#built-in-fragments)
-    - [Creating new fragments](#creating-new-fragments)
+    - [Image resource fallthrough](#image-resource-fallthrough)
+    - [Supported Colors](#supported-colors)
     - [Short-comings](#short-comings)
-  - [Image resource fallthrough](#image-resource-fallthrough)
-  - [Front-End development and design](#front-end-development-and-design)
+  - [Front-end development and design](#front-end-development-and-design)
     - [Styles](#styles)
     - [JavaScript](#javascript)
+    - [Fragment implementation](#fragment-implementation)
+    - [Creating new fragments](#creating-new-fragments)
   - [Further reading](#further-reading)
 
 <!-- /TOC -->
 
-## Fragments
+## Usage and concepts
 
-Fragments are the way you build your site. Each site is made up of one or multiple fragments. These can be a navigation fragment, a content fragment and more.
+### Fragments
 
-Multiple pre-bundled fragments are available. You can add your own custom fragment by creating a new file in `layouts/partials/fragments` directory (create the path if it does not exist) in your website's working directory.
+Fragments are the base building block of your website.
+Each page is made up of one or multiple fragments. 
+These can be a navigation fragment, a content fragment or more.
 
-For fragments of a site, that need to show up on every page, we have global fragments. These fragments are controlled with page resources or fragments defined in a headless page called global which would be rendered in all pages.  
-You can selectively overwrite a global fragment on each page. Create a fragment with the same filename as the global one and it will be overwritten within this page.
+Multiple pre-bundled fragments are available.
+You can add your own custom fragment by creating a new layout file within your websites's `layouts/partials/fragments/` directory.
+If this path doesn't exist yet, you can create it beforehand.
 
-Fragments themselves are [partials](https://gohugo.io/templates/partials/) that are located in `layouts/partials/fragments` (whether in your website's working directory or Syna's directory, checkout [Hugo's template lookup order](https://gohugo.io/templates/lookup-order/)). When a page is being rendered and is using the default layout `single` (no need to be explicitly mentioned in the page bundle), Syna would do the following:
-
-- `head.html` partial is rendered from `baseof.html` layout
-- `single.html` layout is rendered
-  - The layout will find all the page resources and collect the fragments (located in `content/[page]`)
-  - The layout will find all the global page's resources and collect the fragments (located in `content/global`)
-  - The layout will render global fragments if there is no local fragment with the same file name
-  - The layout will render all the local fragments
-  - The layout will sort all the fragments based on their `weight` attribute
-- `js.html` partial is rendered from `baseof.html` layout
-
-![This is how fragments are rendered in the single layout](/docs/fragments-01.png)
+For fragments of a website, that need to show up on every page, we have global fragments.
+Global fragments are located in a special content directory `content/_global/`.
+All fragments within this directory are rendered on all pages by default.
+*To not render the whole page as a subpath of your website the index.md file defines the whole directory as a `headless` bundle*
+To overwrite a global fragment create a per page fragment with the same filename.
+This would overwrite the global one.
 
 Each fragment is controlled by a content file, which is usually located next to the page's index.md file.  
-For bundling images a fragment can also be created as a subdirectory next to the page's index.md file.  
-That file should contain at least the following:
+**content/my-page/index.md** *defines the page and a few attributes such as page title*  
+**content/my-page/my-fragment.md** *content file for a fragment specified as attribute `fragment = "content-single"`*
 
+That file should contain at least the following:
 ```
 +++
 date = "1970-01-01"
@@ -67,43 +70,35 @@ weight = 10
 +++
 ```
 
-The parameters and content of this file are passed to the fragment you mention within the fragment variable. The content will therefore be rendered in the page using the specified fragment.  
-Using the weight variable you can specify the place on the page the fragment is rendered.
+For image bundling or data that is separate such as member and item (`items` fragment) files a subdirectory can be used.  
+**content/my-page/index.md** *defines the page and a few attributes such as page title*  
+**content/my-page/my-fragment.md** *content file for a fragment specified as attribute `fragment = "content-single"`*  
+**content/my-page/my-fragment/my-teammate.md** *individual content file per member*  
+**content/my-page/my-fragment/my-teammate.png**
+
+The attributes and content of this file are passed to the specified fragment (`fragment = "content-single"`).
+Using the `weight` attribute you can specify the place on the page the fragment is rendered.
 
 ### Built-in fragments
 
-Currently the following fragments are available. Their [usage example](https://github.com/okkur/syna/tree/master/exampleSite/content/index) is available as well.
+Currently the following fragments are available. Their [usage example](https://github.com/okkur/syna/tree/master/exampleSite/content/_index) is available as well.
 
-- buttons
-- contact
-- content-single
-- content-split
-- copyright
-- embed
-- footer
-- hero
-- item
-- items
-- logos
-- member
-- nav
-- table
+- **content-single**: markdown content
+- **content-split**: markdown content with an additional sidebar
+- **nav**: navigation including logo, menu and repository button
+- **copyright**: copyright notice including attribution and menu
+- **footer**: small description including social buttons, menu and a logo
+- **hero**: huge header image including logo, call to action and more
+- **contact**: contact form including recaptcha and netlify support
+- **buttons**: call to action buttons
+- **embed**: embed media such as newsletters, forms, videos or other iframes
+- **item**: single item rendering content including an image, buttons or icons
+- **items**: multiple items rendered horizontally including icons
+- **logos**: images/logos for references, users or more
+- **member**: team members including avatar, location, position, scope and social icons
+- **table**: responsive table including hiding elements on mobile, buttons, icons and more
 
-### Creating new fragments
-
-In order to create a new fragment for you website create a new `html` named after your fragment and place it under `[project_root]/layouts/partials/fragments`. Fragments are partials and follow the same rules. If you are not familiar with partials please read their [documentation](https://gohugo.io/templates/partials/).
-
-### Short-comings
-
-As mentioned, fragments are controlled by content files. There is one exception and that is menus. Hugo does not allow menus to be defined in content files. In order to customize menu options for a fragment you need to configure them `config.toml` of your website. As of right now there are three fragments using menus:
-
-- nav fragment: Uses `menu.prepend`, `menu.main` and `menu.postpend`
-- footer fragment: Uses `menu.footer` and `menu.footer_social`
-- copyright fragment: Uses `menu.copyright_footer`
-
-> Whenever Hugo allows for resource menus or when we figure out a way to have menu features with frontmatter arrays this would change and menus would be configurable with resource variables like everything else. The change would be breaking. So when updating the theme please read the changelog and check for breaking changes.
-
-## Image resource fallthrough
+### Image resource fallthrough
 
 Some fragments (`hero` fragment for example) may display images, if configured in their content files. The configuration always accepts a filename and the fragment would look for a file with that name in the following order.
 
@@ -111,32 +106,12 @@ Some fragments (`hero` fragment for example) may display images, if configured i
 - If the specified file is not found in that directory or the controlling content is in page directory, fragment will look in that page directory as well.
 - If the file is not found in the page directory the fragment will look in images directory for that file.
 
-So the fragment will look in the following order `fragment > page > images (global)`. If you need to use an image in several pages you can put it in the `static/images` directory and the image would be available globally. But if an image may differ between two pages or even two fragments of same type, it's possible to have it using this mechanism.
-
-## Front-End development and design
-
-We develop out front-end code in the `static-main/` directory which allows us to have a development directory that would be built to be production ready and put inside the `static/` directory (which is the directory Hugo looks into for front-end files) using [Webpack](https://webpack.js.org/). To start the build process for development run the following commands:
-
-```
-make dep
-make dev # Or make build for production build
-```
-
-Prerequisites: node and yarn need to be installed on your system.
-
-### Styles
-
-Syna is using Bootstrap v4 with customized set of colors. You can change these colors by editing files in `static-main/styles/bootstrap-overwrite`. It's also possible to change any Bootstrap variable in these files. We also use some extra styles to customize some parts of the theme which are available in `static-main/styles` directory.
-
-### JavaScript
-
-Syna uses code spliting to get bundles for each fragment. This allows us to have lighter pages in most cases. In `static-main/js/` directory there is an `index.js` file that is the main script and is needed in all the pages. Every other script directly in this directory is needed by the fragment of the same name. For example `hero.js` is needed by `hero` fragment.
-
-If you want to add an extra script for an specific fragment, you need to add that script as an entry point in the [webpack configuration file](/webpack.config.js). Then import that script inside the fragment (using the `script` tag).
+So the fragment will look in the following order `fragment > page > images (global)`. If you need to use an image in several pages you can put it in the `static/images/` directory and the image would be available globally. But if an image may differ between two pages or even two fragments of same type, it's possible to have it using this mechanism.
 
 ### Supported Colors
 
-Syna makes use of it's own customized color available within the `static-main/styles/bootstrap-overwrite`.
+Fragments and various elements can be customized further using Bootstrap color classes.
+These colors are customized within `static-main/styles/bootstrap-overwrite/` to fit the Syna theme.
 
 | class     | colors  |
 | --------- | ------- |
@@ -149,11 +124,83 @@ Syna makes use of it's own customized color available within the `static-main/st
 | light     | #f8f9fa |
 | dark      | #343a40 |
 
-The same classes applies for when you want to style text, button, background and link. These colors can also be overwritten by specifying your custom colors in `static-main/styles/bootstrap-overwrite/_variables.scss`
+Classes can be applied to style text, buttons and fragment backgrounds and links.
+These colors can also be overwritten for more details see our [style documentation](#styles).
+
+### Short-comings
+
+As mentioned, fragments are controlled by content files. There is one exception and that is menus. Hugo does not allow menus to be defined in content files. In order to customize menu options for a fragment you need to configure them `config.toml` of your website. As of right now there are three fragments using menus:
+
+- **nav**: `menu.prepend`, `menu.main` and `menu.postpend`
+- **footer**: `menu.footer` and `menu.footer_social`
+- **copyright**: `menu.copyright_footer`
+
+> Whenever Hugo allows for resource menus or when we figure out a way to have menu features with frontmatter arrays this would change and menus would be configurable with resource variables like everything else. The change would be breaking. So when updating the theme please read the changelog and check for breaking changes.
+
+Furthermore we use two keywords, that can't be used to create pages.
+Both `ìndex` and `global` have a special meaning within the Syna fragment and using them separately might lead to issues.
+
+## Front-end development and design
+
+We develop our front-end code in the `static-main/` directory which allows us to have a development directory that would be built to be production ready and put inside the `static/` directory (which is the directory Hugo looks into for front-end files) using [Webpack](https://webpack.js.org/).
+To start the build process for development run the following commands:
+
+```
+make dep
+make dev # Or make build for production build
+```
+
+> Prerequisites: node and yarn need to be installed on your system.
+
+### Styles
+
+Syna is using Bootstrap v4.1 with a customized set of colors.
+You can change these colors by editing the them in `static-main/styles/bootstrap-overwrite/_variables.scss`.
+It's also possible to change any Bootstrap variable in these files.
+We also use some extra styles to customize some parts of the theme which are available in the `static-main/styles` directory.
+
+### JavaScript
+
+Syna uses code spliting to get bundles for each fragment.
+This allows us to have lighter pages in most cases.
+Within the `static-main/js/` directory there is an `index.js` file that is the main script, which is necessary on all pages.
+Every other script is needed by the fragment of the same name.
+For example `hero.js` is needed by the `hero` fragment.
+
+If you want to add an extra script for an specific fragment, you need to add that script as an entry point in the [webpack configuration file](/webpack.config.js).
+Then import that script inside the fragment (using the `script` tag).
+
+### Fragment implementation
+
+Fragments themselves are [Hugo partials](https://gohugo.io/templates/partials/) that are located in `layouts/partials/fragments/`.
+Partials built into Syna are stored within the theme's layout directory.
+Hugo enables local or per website overwrites of layouts and partials.
+For more details checkout [Hugo's template lookup order](https://gohugo.io/templates/lookup-order/)).
+
+The default layout `single.html` is used to render each page.
+**no need to be explicitly mentioned it**
+
+The rendering code flow of Syna would do the following:
+
+- `head.html` partial is rendered from `baseof.html` layout
+- `single.html` layout is rendered
+  - It checks for global fragment content files located in `content/_global/`
+  - It finds all per page fragment content files located in `content/[page]/`(using [Hugo resources](https://gohugo.io/content-management/page-resources/#readout)) on the page
+  - It renders global fragments if there is no per page fragment with the same file name
+  - It renders all remaining per page fragments
+  - Fragments are ordered based on their `weight` attribute
+- `js.html` partial is rendered from `baseof.html` layout
+
+![This is how fragments are rendered in the single layout](/docs/fragments-01.png)
+
+### Creating new fragments
+
+In order to create a new fragment for you website create a new layout file named after your fragment and place it under `[project_root]/layouts/partials/fragments/`.
+Fragments are partials and follow the same rules. If you are not familiar with partials more details are available in the [Hugo documentation](https://gohugo.io/templates/partials/).
 
 ## Further reading
 
-In order to deploy a website using Syna follow the instruction on [Hugo documentation](https://gohugo.io/hosting-and-deployment/) which describes the process of deployment on various hosts or host agnostic approaches.
+In order to deploy your website using Syna follow the [Hugo documentation](https://gohugo.io/hosting-and-deployment/) which describes the process of deploying on various hosts or host agnostic approaches.
 
 ```
 If there is something that's not documented, create a new issue or contribute it.

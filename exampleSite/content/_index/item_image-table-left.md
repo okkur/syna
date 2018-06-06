@@ -76,7 +76,7 @@ image = "screenshot.png"
     text = ""
 
   [[rows.values]]
-    icon = "fas fa-download"
+    icon = "fa-download"
     url = "#"
     center = true
 +++
