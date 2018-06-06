@@ -11,16 +11,16 @@
 {{/* Page specific resource */}}
 {{- $location := (printf "%s/%s" $.fallthrough.page_path $image) -}}
 {{- if (fileExists (printf "content/%s" $location)) -}}
-  {{/* special case index: trim index/ from url */}}
-  {{- $location := strings.TrimPrefix "index/" $location -}}
+  {{/* special case index: trim _index/ from url */}}
+  {{- $location := strings.TrimPrefix "_index/" $location -}}
   {{- $.root.Scratch.Set "image" $location -}}
 {{- end -}}
 
 {{/* Fragment specific resource */}}
 {{- $location := (printf "%s/%s" $.fallthrough.file_path $image) -}}
 {{- if (fileExists (printf "content/%s" $location)) -}}
-  {{/* special case index: trim index/ from url */}}
-  {{- $location := strings.TrimPrefix "index/" $location -}}
+  {{/* special case index: trim _index/ from url */}}
+  {{- $location := strings.TrimPrefix "_index/" $location -}}
   {{- $.root.Scratch.Set "image" $location -}}
 {{- end -}}
 {{/* End of do not change */}}
