@@ -23,13 +23,13 @@ Each page within a Syna based website is created using fragments.
 <!-- TOC -->
 
 - [Documentation](#documentation)
-  - [Usage and concepts](#usage-concepts)
+  - [Usage and concepts](#usage-and-concepts)
     - [Fragments](#fragments)
     - [Built-in fragments](#built-in-fragments)
     - [Image resource fallthrough](#image-resource-fallthrough)
-    - [Supported colors](#supported-colors)
+    - [Supported Colors](#supported-colors)
     - [Short-comings](#short-comings)
-  - [Development](#front-end-development-and-design)
+  - [Front-end development and design](#front-end-development-and-design)
     - [Styles](#styles)
     - [JavaScript](#javascript)
     - [Fragment implementation](#fragment-implementation)
@@ -51,7 +51,7 @@ You can add your own custom fragment by creating a new layout file within your w
 If this path doesn't exist yet, you can create it beforehand.
 
 For fragments of a website, that need to show up on every page, we have global fragments.
-Global fragments are located in a special content directory `content/global/`.
+Global fragments are located in a special content directory `content/_global/`.
 All fragments within this directory are rendered on all pages by default.
 *To not render the whole page as a subpath of your website the index.md file defines the whole directory as a `headless` bundle*
 To overwrite a global fragment create a per page fragment with the same filename.
@@ -81,7 +81,7 @@ Using the `weight` attribute you can specify the place on the page the fragment 
 
 ### Built-in fragments
 
-Currently the following fragments are available. Their [usage example](https://github.com/okkur/syna/tree/master/exampleSite/content/index) is available as well.
+Currently the following fragments are available. Their [usage example](https://github.com/okkur/syna/tree/master/exampleSite/content/_index) is available as well.
 
 - **content-single**: markdown content
 - **content-split**: markdown content with an additional sidebar
@@ -184,7 +184,7 @@ The rendering code flow of Syna would do the following:
 
 - `head.html` partial is rendered from `baseof.html` layout
 - `single.html` layout is rendered
-  - It checks for global fragment content files located in `content/global/`
+  - It checks for global fragment content files located in `content/_global/`
   - It finds all per page fragment content files located in `content/[page]/`(using [Hugo resources](https://gohugo.io/content-management/page-resources/#readout)) on the page
   - It renders global fragments if there is no per page fragment with the same file name
   - It renders all remaining per page fragments
