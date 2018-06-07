@@ -3,14 +3,14 @@
   where functions achieving this. First where gets all the pages in blog
   section, the second one removes current page from the mix and the last one
   removes the section (.Site.Pages returns the current section as a page). */}}
-{{- $articles := where (where (where .Site.Pages "Section" "blog") "File.Path" "ne" .root.File.Path) "File.Path" "ne" "" -}}
+{{- $articles := where (where (where .Site.Pages "Section" "blog") "Params.fragment" "ne" "blog") "File.Path" "ne" "" -}}
 {{- $bg := .Params.background | default "light" }}
 
 {{ "<!-- Blog -->" | safeHTML }}
 <section id="{{ .Name }}">
   <div class="overlay container-fluid {{- printf " bg-%s" $bg -}}">
     <div class="container py-5">
-      <div class="row">
+      <l class="row">
         <div class="col-12
           {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
             {{- printf " text-%s" "dark" -}}
@@ -18,36 +18,66 @@
             {{- printf " text-muted text-%s" "secondary" -}}
           {{- end -}}
         ">
-          {{- range first .Params.article_count $articles }}
-            <div class="col-12">
-              <a href="{{ .URL }}">
-                <h3>{{ .Name }}</h3>
-              </a>
-              <div class="col-12 mb-2 pl-0
+          {{- if .Params.list_category -}}
+            <h2 id="list">Categories</h2>
+            {{- range $name, $items := .Site.Taxonomies.categories }}
+              <a
+                href="#category-{{ $name | urlize | lower }}"
+                class="category badge
                 {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                  {{- printf " text-%s" "dark" -}}
+                  {{- printf " badge-%s" "dark" -}}
                 {{- else -}}
-                  {{- printf " text-muted text-%s" "secondary" -}}
-                {{- end -}}
-              ">
-                {{- if .Summary }}
-                  {{ .Summary }}
-                {{- else }}
-                  {{- range first 1 (where (.Resources.ByType "page") "Params.fragment" "content") }}
-                    {{ .Summary }}
+                  {{- printf " badge-%s" "secondary" -}}
+                {{- end -}}">
+                {{ $name }}
+              </a>
+            {{- end -}}
+            {{- range $name, $items := .Site.Taxonomies.categories }}
+              <div class="col-12 mt-5 mb-2 pl-0">
+                <h3 id="category-{{ $name | urlize | lower }}">{{ $name }}</h3>
+                <ul>
+                  {{- range $items }}
+                    <li>
+                      <a href="{{ .URL }}">
+                        <h5>{{ .Name }}</h5>
+                      </a>
+                    </li>
                   {{- end -}}
-                {{- end -}}
-                {{- if .Truncated -}}
-                  <a class="ml-2 badge
-                  {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                    {{- printf " badge-%s" "dark" -}}
-                  {{- else -}}
-                    {{- printf " badge-%s" "secondary" -}}
-                  {{- end -}}" href="{{ .URL }}">{{ i18n "content.readmore" }}</a>
-                {{- end }}
+                </ul>
               </div>
-            </div>
-          {{- end -}}
+            {{- end -}}
+          {{- else -}}
+            {{- range first .Params.article_count $articles }}
+              <div class="col-12">
+                <a href="{{ .URL }}">
+                  <h3>{{ .Name }}</h3>
+                </a>
+                <div class="col-12 mb-2 pl-0
+                  {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                    {{- printf " text-%s" "dark" -}}
+                  {{- else -}}
+                    {{- printf " text-muted text-%s" "secondary" -}}
+                  {{- end -}}
+                ">
+                  {{- if .Summary }}
+                    {{ .Summary }}
+                  {{- else }}
+                    {{- range first 1 (where (.Resources.ByType "page") "Params.fragment" "content") }}
+                      {{ .Summary }}
+                    {{- end -}}
+                  {{- end -}}
+                  {{- if .Truncated -}}
+                    <a class="ml-2 badge
+                    {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                      {{- printf " badge-%s" "dark" -}}
+                    {{- else -}}
+                      {{- printf " badge-%s" "secondary" -}}
+                    {{- end -}}" href="{{ .URL }}">{{ i18n "content.readmore" }}</a>
+                  {{- end }}
+                </div>
+              </div>
+            {{- end -}}
+          {{- end }}
         </div>
       </div>
     </div>

@@ -34,6 +34,20 @@
             </h3>
           </div>
         {{- end }}
+        <div class="col-12 mb-2 categories">
+          {{- range .Params.categories }}
+            <a
+              href="{{ printf "/blog/categories/#category-%s" (. | urlize | lower) }}"
+              class="category badge
+              {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                {{- printf " badge-%s" "dark" -}}
+              {{- else -}}
+                {{- printf " badge-%s" "secondary" -}}
+              {{- end -}}">
+              {{ . }}
+            </a>
+          {{- end -}}
+        </div>
         <div class="col-12
           {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
             {{- printf " text-%s" "dark" -}}
