@@ -3,7 +3,7 @@
   where functions achieving this. First where gets all the pages in blog
   section, the second one removes current page from the mix and the last one
   removes the section (.Site.Pages returns the current section as a page). */}}
-{{- $articles := where (where (where .Site.Pages "Section" "blog") "Params.fragment" "ne" "blog") "File.Path" "ne" "" -}}
+{{- $articles := where (where (where .Site.Pages "Section" .Params.section) "Params.fragment" "ne" .Params.section) "File.Path" "ne" "" -}}
 {{- $bg := .Params.background | default "light" }}
 
 {{ "<!-- Blog -->" | safeHTML }}

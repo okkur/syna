@@ -1,9 +1,10 @@
 +++
 date = "2018-06-05"
-fragment = "blog"
+fragment = "list"
 weight = 50
 url = "/blog"
 
+section = "blog"
 #background = ""
 title = "Latest articles"
 
