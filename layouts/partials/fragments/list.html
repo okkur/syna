@@ -64,19 +64,6 @@
                     </a>
                   </div>
                 {{- end -}}
-                {{- if .Params.subtitle }}
-                  <div class="col-12 pb-2 pl-0
-                    {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                      {{- printf " text-%s" "dark" -}}
-                    {{- else -}}
-                      {{- printf " text-muted text-%s" "secondary" -}}
-                    {{- end -}}
-                  ">
-                    <h4>
-                      {{- .Params.subtitle | markdownify -}}
-                    </h4>
-                  </div>
-                {{- end -}}
                 {{- if .Params.image -}}
                   {{/* Global resource fallback - can also be used within loops */}}
                   {{- $image := .Params.image -}}

@@ -1,6 +1,6 @@
 +++
 date = "2018-06-07"
-fragment = "blog"
+fragment = "list"
 weight = 50
 
 #background = ""
