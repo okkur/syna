@@ -64,6 +64,20 @@
                     </a>
                   </div>
                 {{- end -}}
+                <div class="col-12 mb-2 pl-0 categories">
+                  {{- range .Params.categories }}
+                    <a
+                      href="{{ printf "/blog/categories/#category-%s" (. | urlize | lower) }}"
+                      class="category badge
+                      {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                        {{- printf " badge-%s" "dark" -}}
+                      {{- else -}}
+                        {{- printf " badge-%s" "secondary" -}}
+                      {{- end -}}">
+                      {{ . }}
+                    </a>
+                  {{- end -}}
+                </div>
                 {{- if .Params.image -}}
                   {{/* Global resource fallback - can also be used within loops */}}
                   {{- $image := .Params.image -}}
