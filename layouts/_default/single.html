@@ -15,7 +15,7 @@
     {{- $.Scratch.Add "fragments" (slice .) -}}
   {{- end -}}
 
-  {{- $section_globals := .Site.GetPage "page" (printf "%s/global" .Section) -}}
+  {{- $section_globals := .Site.GetPage "page" (printf "%s/_global" .Section) -}}
   {{- if $section_globals -}}
     {{- range ($section_globals.Resources.ByType "page") -}}
       {{- if not (where ($.Scratch.Get "fragments") ".Name" .Name) -}}
