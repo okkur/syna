@@ -75,21 +75,29 @@
                   {{- printf " text-muted text-%s" "secondary" -}}
                 {{- end -}}
               ">
-                {{- if and (isset .Params "fragment") (eq .Params.fragment "content") }}
+                {{- if and (isset .Params "fragment") (in (slice "content-split" "content") .Params.fragment) }}
                   {{ .Summary }}
+                  {{- if .Truncated -}}
+                    <a class="ml-2 badge
+                    {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                      {{- printf " badge-%s" "dark" -}}
+                    {{- else -}}
+                      {{- printf " badge-%s" "secondary" -}}
+                    {{- end -}}" href="{{ .URL }}">{{ i18n "content.readmore" }}</a>
+                  {{- end }}
                 {{- else }}
-                  {{- range first 1 (where (.Resources.ByType "page") "Params.fragment" "content") }}
+                  {{- range first 1 (where (.Resources.ByType "page") "Params.fragment" "in" (slice "content-split" "content")) }}
                     {{ .Summary }}
+                    {{- if .Truncated -}}
+                      <a class="ml-2 badge
+                      {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                        {{- printf " badge-%s" "dark" -}}
+                      {{- else -}}
+                        {{- printf " badge-%s" "secondary" -}}
+                      {{- end -}}" href="{{ .URL }}">{{ i18n "content.readmore" }}</a>
+                    {{- end }}
                   {{- end -}}
                 {{- end -}}
-                {{- if .Truncated -}}
-                  <a class="ml-2 badge
-                  {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                    {{- printf " badge-%s" "dark" -}}
-                  {{- else -}}
-                    {{- printf " badge-%s" "secondary" -}}
-                  {{- end -}}" href="{{ .URL }}">{{ i18n "content.readmore" }}</a>
-                {{- end }}
               </div>
             </article>
           {{- end -}}
