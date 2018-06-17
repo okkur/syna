@@ -8,8 +8,8 @@
   ">
     <div class="container py-5">
       <div class="row">
-        <div class="col-md-3">
-          {{- with .Params.sidebar -}}
+        {{- with .Params.sidebar -}}
+          <div class="col-md-3">
             {{- if .title }}
               <div class="col-12 pb-3
                 {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}

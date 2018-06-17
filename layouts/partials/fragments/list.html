@@ -18,125 +18,81 @@
             {{- printf " text-muted text-%s" "secondary" -}}
           {{- end -}}
         ">
-          {{- if .Params.list_category -}}
-            <h2 id="list">Categories</h2>
-            {{- range $name, $items := .Site.Taxonomies.categories }}
-              <a
-                href="#category-{{ $name | urlize | lower }}"
-                class="category badge
-                {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                  {{- printf " badge-%s" "dark" -}}
-                {{- else -}}
-                  {{- printf " badge-%s" "secondary" -}}
-                {{- end -}}">
-                {{ $name }}
-              </a>
-            {{- end -}}
-            {{- range $name, $items := .Site.Taxonomies.categories }}
-              <div class="col-12 mt-5 mb-2 pl-0">
-                <h3 id="category-{{ $name | urlize | lower }}">{{ $name }}</h3>
-                <ul>
-                  {{- range $items }}
-                    <li>
-                      <a href="{{ .URL }}">
-                        <h5>{{ .Name }}</h5>
-                      </a>
-                    </li>
-                  {{- end -}}
-                </ul>
-              </div>
-            {{- end -}}
-          {{- else -}}
-            {{- range first .Params.article_count $articles }}
-              <article class="col-12 mb-4">
-                {{- if .Params.title }}
-                  <div class="col-12 pl-0
-                    {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
-                      {{- printf " text-%s" "dark" -}}
-                    {{- else -}}
-                      {{- printf " text-%s" "light" -}}
-                    {{- end -}}
-                  ">
-                    <a href="{{ .URL }}">
-                      <h3>
-                        {{- .Params.title | markdownify -}}
-                      </h3>
-                    </a>
-                  </div>
-                {{- end -}}
-                <div class="col-12 mb-2 pl-0 categories">
-                  {{- range .Params.categories }}
-                    <a
-                      href="{{ printf "/blog/categories/#category-%s" (. | urlize | lower) }}"
-                      class="category badge
-                      {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                        {{- printf " badge-%s" "dark" -}}
-                      {{- else -}}
-                        {{- printf " badge-%s" "secondary" -}}
-                      {{- end -}}">
-                      {{ . }}
-                    </a>
-                  {{- end -}}
-                </div>
-                {{- if .Params.image -}}
-                  {{/* Global resource fallback - can also be used within loops */}}
-                  {{- $image := .Params.image -}}
-
-                  {{- $name := strings.TrimSuffix ".md" (replace .Name "/index.md" "") -}}
-                  {{- $file_path := strings.TrimSuffix ".md" (replace .File.Path "/index.md" "") -}}
-                  {{- $page_path := replace $file_path (printf "/%s" $name) "" -}}
-                  {{- $fallthrough := (dict "file_path" $file_path "page_path" $page_path ) -}}
-
-                  {{/* Do not change the following snippet */}}
-                  {{/* Code is duplicated throughout the code */}}
-                  {{- $.root.Scratch.Set "image" (printf "images/%s" $image) -}}
-
-                  {{/* Page specific resource */}}
-                  {{- $location := (printf "%s/%s" $fallthrough.page_path $image) -}}
-                  {{- if (fileExists (printf "content/%s" $location)) -}}
-                    {{/* special case index: trim _index/ from url */}}
-                    {{- $location := strings.TrimPrefix "_index/" $location -}}
-                    {{- $.root.Scratch.Set "image" $location -}}
-                  {{- end -}}
-              
-                  {{/* Fragment specific resource */}}
-                  {{- $location := (printf "%s/%s" $fallthrough.file_path $image) -}}
-                  {{- if (fileExists (printf "content/%s" $location)) -}}
-                    {{/* special case index: trim _index/ from url */}}
-                    {{- $location := strings.TrimPrefix "_index/" $location -}}
-                    {{- $.root.Scratch.Set "image" $location -}}
-                  {{- end -}}
-                  {{/* End of do not change */}}
-                  <a href="{{ .URL }}">
-                    <img src="{{ $.root.Scratch.Get "image" | relURL }}" alt="{{ .Params.subtitle | default .Params.title }}" class="img-fluid mb-4">
-                  </a>
-                {{- end -}}
+          {{- range first .Params.article_count $articles }}
+            <article class="col-12 mb-4">
+              {{- if .Params.title }}
                 <div class="col-12 pl-0
-                  {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                  {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
                     {{- printf " text-%s" "dark" -}}
                   {{- else -}}
-                    {{- printf " text-muted text-%s" "secondary" -}}
+                    {{- printf " text-%s" "light" -}}
                   {{- end -}}
                 ">
-                  {{- if and (isset .Params "fragment") (eq .Params.fragment "content") }}
-                    {{ .Summary }}
-                  {{- else }}
-                    {{- range first 1 (where (.Resources.ByType "page") "Params.fragment" "content") }}
-                      {{ .Summary }}
-                    {{- end -}}
-                  {{- end -}}
-                  {{- if .Truncated -}}
-                    <a class="ml-2 badge
-                    {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                      {{- printf " badge-%s" "dark" -}}
-                    {{- else -}}
-                      {{- printf " badge-%s" "secondary" -}}
-                    {{- end -}}" href="{{ .URL }}">{{ i18n "content.readmore" }}</a>
-                  {{- end }}
+                  <a href="{{ .URL }}">
+                    <h3>
+                      {{- .Params.title | markdownify -}}
+                    </h3>
+                  </a>
                 </div>
-              </article>
-            {{- end -}}
-          {{- end }}
+              {{- end -}}
+              {{- if .Params.image -}}
+                {{/* Global resource fallback - can also be used within loops */}}
+                {{- $image := .Params.image -}}
+
+                {{- $name := strings.TrimSuffix ".md" (replace .Name "/index.md" "") -}}
+                {{- $file_path := strings.TrimSuffix ".md" (replace .File.Path "/index.md" "") -}}
+                {{- $page_path := replace $file_path (printf "/%s" $name) "" -}}
+                {{- $fallthrough := (dict "file_path" $file_path "page_path" $page_path ) -}}
+
+                {{/* Do not change the following snippet */}}
+                {{/* Code is duplicated throughout the code */}}
+                {{- $.root.Scratch.Set "image" (printf "images/%s" $image) -}}
+
+                {{/* Page specific resource */}}
+                {{- $location := (printf "%s/%s" $fallthrough.page_path $image) -}}
+                {{- if (fileExists (printf "content/%s" $location)) -}}
+                  {{/* special case index: trim _index/ from url */}}
+                  {{- $location := strings.TrimPrefix "_index/" $location -}}
+                  {{- $.root.Scratch.Set "image" $location -}}
+                {{- end -}}
+            
+                {{/* Fragment specific resource */}}
+                {{- $location := (printf "%s/%s" $fallthrough.file_path $image) -}}
+                {{- if (fileExists (printf "content/%s" $location)) -}}
+                  {{/* special case index: trim _index/ from url */}}
+                  {{- $location := strings.TrimPrefix "_index/" $location -}}
+                  {{- $.root.Scratch.Set "image" $location -}}
+                {{- end -}}
+                {{/* End of do not change */}}
+                <a href="{{ .URL }}">
+                  <img src="{{ $.root.Scratch.Get "image" | relURL }}" alt="{{ .Params.subtitle | default .Params.title }}" class="img-fluid mb-4">
+                </a>
+              {{- end -}}
+              <div class="col-12 pl-0
+                {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                  {{- printf " text-%s" "dark" -}}
+                {{- else -}}
+                  {{- printf " text-muted text-%s" "secondary" -}}
+                {{- end -}}
+              ">
+                {{- if and (isset .Params "fragment") (eq .Params.fragment "content") }}
+                  {{ .Summary }}
+                {{- else }}
+                  {{- range first 1 (where (.Resources.ByType "page") "Params.fragment" "content") }}
+                    {{ .Summary }}
+                  {{- end -}}
+                {{- end -}}
+                {{- if .Truncated -}}
+                  <a class="ml-2 badge
+                  {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                    {{- printf " badge-%s" "dark" -}}
+                  {{- else -}}
+                    {{- printf " badge-%s" "secondary" -}}
+                  {{- end -}}" href="{{ .URL }}">{{ i18n "content.readmore" }}</a>
+                {{- end }}
+              </div>
+            </article>
+          {{- end -}}
         </div>
       </div>
     </div>

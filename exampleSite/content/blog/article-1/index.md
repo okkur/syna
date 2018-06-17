@@ -4,7 +4,6 @@ fragment = "content"
 weight = 50
 
 title = "Hello World!"
-categories = ["Blog Example", "Lorem Ipsum"]
 image = "mac.png"
 +++
 
