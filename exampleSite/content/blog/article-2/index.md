@@ -5,6 +5,7 @@ weight = 50
 
 title = "Second Article"
 subtitle = "Served from a nested directory"
+image = "mac.png"
 
 [sidebar]
   title = "Sidebar"

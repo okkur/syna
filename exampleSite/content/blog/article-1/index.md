@@ -4,7 +4,6 @@ fragment = "content"
 weight = 50
 
 title = "Hello World!"
-image = "mac.png"
 +++
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a libero tincidunt, ornare nisl at, porttitor orci. Donec vitae arcu vehicula, pharetra justo ac, dapibus dui. Donec ut risus vitae lacus tempus laoreet. Cras felis lacus, fringilla tristique porta at, lobortis id sapien. Donec sit amet auctor purus, vitae ornare justo. In euismod maximus quam nec maximus. Donec mattis tortor egestas est volutpat tempus. Ut in tincidunt purus, sed congue enim. Curabitur lacus libero, interdum ac sodales et, laoreet vitae erat. Morbi vel accumsan libero. Donec vulputate lacinia elementum. Nam aliquet erat ex, vel ornare ipsum condimentum tempor. Ut ac venenatis metus. Nunc imperdiet sagittis orci aliquet hendrerit. Phasellus facilisis ipsum nibh, vel sagittis mauris volutpat gravida.
