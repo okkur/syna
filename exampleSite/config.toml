@@ -5,6 +5,7 @@ title = "Okkur - Syna"
 theme = "syna"
 themesDir = "../.."
 enableGitInfo = true
+version = "0.11.0"
 
 [frontmatter]
 date = ["date", "lastmod"]
