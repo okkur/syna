@@ -29,6 +29,8 @@
     {{- end -}}
   {{- end -}}
 
+  {{- $page := . -}}
+
   {{- range sort ($.Scratch.Get "fragments" | default slice) "Params.weight" -}}
     {{- if and (not .Params.disabled) (isset .Params "fragment") -}}
       {{/* Cleanup .Name to be more useful within fragments */}}
@@ -39,7 +41,7 @@
       {{- $page_path := replace $file_path (printf "/%s" $name) "" -}}
       {{- $fallthrough := (dict "file_path" $file_path "page_path" $page_path ) -}}
 
-      {{- partial (print "fragments/" .Params.fragment ".html") (dict "root" $ "Site" $.Site "resources" $.Resources "self" . "Params" .Params "Name" $name "fallthrough" $fallthrough) -}}
+      {{- partial (print "fragments/" .Params.fragment ".html") (dict "root" $ "Site" $.Site "resources" $.Resources "page" $page "self" . "Params" .Params "Name" $name "fallthrough" $fallthrough) -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}
