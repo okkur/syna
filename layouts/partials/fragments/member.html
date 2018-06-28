@@ -196,13 +196,7 @@
                       {{- printf " text-muted text-%s" "secondary" -}}
                     {{- end -}}
                   ">
-                    <div class="mb-3
-                      {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
-                        {{- printf " text-%s" "dark" -}}
-                      {{- else -}}
-                        {{- printf " text-%s" "light" -}}
-                      {{- end -}}
-                    ">
+                    <div class="mb-3 text-dark">
                       <h1>
                         {{- $member.title -}}
                       </h1>
