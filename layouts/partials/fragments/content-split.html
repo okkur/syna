@@ -8,8 +8,8 @@
   ">
     <div class="container py-5">
       <div class="row">
-        <div class="col-md-3">
-          {{- with .Params.sidebar -}}
+        {{- with .Params.sidebar -}}
+          <div class="col-md-3">
             {{- if .title }}
               <div class="col-12 pb-3
                 {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
@@ -59,6 +59,36 @@
               <h3>
                 {{- .Params.subtitle | markdownify -}}
               </h3>
+            </div>
+          {{- end }}
+          {{- if .Params.image }}
+            {{/* Global resource fallback - can also be used within loops */}}
+            {{- $image := .Params.image -}}
+        
+            {{/* Do not change the following snippet */}}
+            {{/* Code is duplicated throughout the code */}}
+            {{- $.root.Scratch.Set "image" (printf "images/%s" $image) -}}
+        
+            {{/* Page specific resource */}}
+            {{- $location := (printf "%s/%s" $.fallthrough.page_path $image) -}}
+            {{- if (fileExists (printf "content/%s" $location)) -}}
+              {{/* special case index: trim _index/ from url */}}
+              {{- $location := strings.TrimPrefix "_index/" $location -}}
+              {{- $.root.Scratch.Set "image" $location -}}
+            {{- end -}}
+        
+            {{/* Fragment specific resource */}}
+            {{- $location := (printf "%s/%s" $.fallthrough.file_path $image) -}}
+            {{- if (fileExists (printf "content/%s" $location)) -}}
+              {{/* special case index: trim _index/ from url */}}
+              {{- $location := strings.TrimPrefix "_index/" $location -}}
+              {{- $.root.Scratch.Set "image" $location -}}
+            {{- end -}}
+            {{/* End of do not change */}}
+            <div class="col-12 mt-2 mb-4">
+              <a href="{{ $.root.Scratch.Get "image" | relURL }}">
+                <img class="img-fluid" src="{{ $.root.Scratch.Get "image" | relURL }}" alt="{{ .Params.subtitle | default .Params.title }}">
+              </a>
             </div>
           {{- end }}
           <div class="col-12
