@@ -1,4 +1,4 @@
-{{- $editor_data := index (index $.Site.Data (replace .page.Dir "/" "")) .Name -}}
+{{- $editor_data := .Params.form -}}
 {{- $bg := .Params.background | default "light" }}
 {{ "<!-- Editor -->" | safeHTML }}
 
