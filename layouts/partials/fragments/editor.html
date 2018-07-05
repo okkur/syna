@@ -1,0 +1,86 @@
+{{- $editor_data := .Params.form -}}
+{{- $self := $ -}}
+{{- $bg := .Params.background | default "light" }}
+{{ "<!-- Editor -->" | safeHTML }}
+
+<div class="overlay container-fluid
+  {{- printf " bg-%s" $bg -}}
+" id="{{ .Name }}">
+  <div class="container py-5">
+    {{- with .Params.title }}
+      <div class="row">
+        <div class="col text-center
+          {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
+            {{- printf " text-%s" "dark" -}}
+          {{- else -}}
+            {{- printf " text-%s" "light" -}}
+          {{- end -}}
+        ">
+          <h2>
+            {{- . | markdownify -}}
+          </h2>
+        </div>
+      </div>
+    {{- end -}}
+    {{- with $editor_data -}}
+      <form id="{{ printf "%s-form" $self.Name }}" {{ if .endpoint }}action="{{ .endpoint }}" {{ end }}{{ if .netlify }}netlify{{ end }}>
+        {{- range $editor_data.fields -}}
+          <div class="form-group">
+            {{- $name := .name -}}
+            {{- with .label -}}
+              <label for="{{ $name }}">{{ . }}</label>
+            {{- end -}}
+            {{- if eq .type "textarea" -}}
+              <textarea
+                class="form-control"
+                placeholder="{{ .placeholder }}"
+                name="{{ .name }}"
+                id="{{ .name }}"
+                {{if .required }}required{{ end }}
+                {{ if isset . "validation" -}}
+                data-validation="{{ .validation }}"
+                data-validation-error-msg="{{ .validation_msg }}"
+                {{- end }}>
+                {{- .default -}}
+              </textarea>
+            {{- else -}}
+              <input
+                class="form-control"
+                type="{{ .type | default "text" }}"
+                placeholder="{{ .placeholder }}"
+                name="{{ .name }}"
+                id="{{ .name }}"
+                value="{{ .default }}"
+                {{if .required }}required{{ end }}
+                {{ if isset . "validation" -}}
+                data-validation="{{ .validation }}"
+                data-validation-regex="{{ .validation_regex }}"
+                data-validation-error-msg="{{ .validation_msg }}"
+                {{- end }} />
+            {{- end -}}
+            <div class="px-2" data-error></div>
+          </div>
+        {{- end -}}
+        {{- with .recaptcha -}}
+          <div class="g-recaptcha-container">
+            <span class="g-recaptcha-filler"></span>
+            <button
+              class="g-recaptcha btn btn-primary"
+              type="submit"
+              data-sitekey="{{ .sitekey }}"
+              data-size="invisible"
+              data-badge="inline"
+              data-callback="onContactCaptcha"
+              disabled>
+              {{- .Params.button | default (i18n "contact.defaultButton") -}}
+            </button>
+            <span class="filler"></span>
+          </div>
+        {{- else -}}
+          <button class="btn btn-primary">{{ .submit_label }}</button>
+        {{- end -}}
+      </form>
+    {{- end -}}
+  </div>
+</div>
+<script src="{{ "contact.js" | relURL }}" defer async></script>
