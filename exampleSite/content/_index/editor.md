@@ -2,7 +2,7 @@
   "date": "2018-6-27",
   "weight": 310,
   "fragment": "editor",
-  "title": "Login",
+  "title": "Contact form using Editor fragment",
   "form": {
     "endpoint": "http://example.com",
     "netlify": false,
