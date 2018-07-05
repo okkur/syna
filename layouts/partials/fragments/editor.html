@@ -1,4 +1,5 @@
 {{- $editor_data := .Params.form -}}
+{{- $self := $ -}}
 {{- $bg := .Params.background | default "light" }}
 {{ "<!-- Editor -->" | safeHTML }}
 
@@ -22,7 +23,7 @@
       </div>
     {{- end -}}
     {{- with $editor_data -}}
-      <form {{ if .endpoint }}action="{{ .endpoint }}" {{ end }}{{ if .netlify }}netlify{{ end }}>
+      <form id="{{ printf "%s-form" $self.Name }}" {{ if .endpoint }}action="{{ .endpoint }}" {{ end }}{{ if .netlify }}netlify{{ end }}>
         {{- range $editor_data.fields -}}
           <div class="form-group">
             {{- $name := .name -}}
@@ -60,7 +61,24 @@
             <div class="px-2" data-error></div>
           </div>
         {{- end -}}
-        <button class="btn btn-primary">{{ .submit_label }}</button>
+        {{- with .recaptcha -}}
+          <div class="g-recaptcha-container">
+            <span class="g-recaptcha-filler"></span>
+            <button
+              class="g-recaptcha btn btn-primary"
+              type="submit"
+              data-sitekey="{{ .sitekey }}"
+              data-size="invisible"
+              data-badge="inline"
+              data-callback="onContactCaptcha"
+              disabled>
+              {{- .Params.button | default (i18n "contact.defaultButton") -}}
+            </button>
+            <span class="filler"></span>
+          </div>
+        {{- else -}}
+          <button class="btn btn-primary">{{ .submit_label }}</button>
+        {{- end -}}
       </form>
     {{- end -}}
   </div>

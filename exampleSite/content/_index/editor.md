@@ -7,6 +7,9 @@
     "endpoint": "http://example.com",
     "netlify": false,
     "submit_label": "Submit",
+    "recaptcha": {
+      "sitekey": ""
+    },
     "fields": [
       {
         "type": "text",
