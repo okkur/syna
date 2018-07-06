@@ -53,6 +53,11 @@ googleAnalytics = ""
   weight = 10
 
 [[menu.main]]
+  url = "/article"
+  name = "Article"
+  weight = 20
+
+[[menu.main]]
   url = "/about-split"
   name = "Page-split"
   weight = 30
