@@ -7,8 +7,6 @@ weight = 100
 
 title = "About Syna"
 #subtitle = ""
-
-categories = ["about"]
 +++
 
 Open Source Theme from Okkur for your next project.
