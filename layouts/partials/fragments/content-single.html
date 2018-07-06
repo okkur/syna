@@ -38,10 +38,10 @@
           <div class="col-12 pb-4">
             {{- range . }}
               <div class="badge
-              {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                {{- printf " badge-%s" "primary" -}}
-              {{- else -}}
+              {{- if (eq $bg "dark") -}}
                 {{- printf " badge-%s" "light" -}}
+              {{- else -}}
+                {{- printf " badge-%s" "primary" -}}
               {{- end -}}">{{ . }}</div>
             {{- end }}
           </div>
