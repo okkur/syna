@@ -61,6 +61,18 @@
               </h3>
             </div>
           {{- end }}
+          {{- with .Params.categories }}
+            <div class="col-12 pb-4">
+              {{- range . }}
+                <div class="badge
+                {{- if (eq $bg "dark") -}}
+                  {{- printf " badge-%s" "light" -}}
+                {{- else -}}
+                  {{- printf " badge-%s" "primary" -}}
+                {{- end -}}">{{ . }}</div>
+              {{- end }}
+            </div>
+          {{- end }}
           <div class="col-12
             {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
               {{- printf " text-%s" "dark" -}}

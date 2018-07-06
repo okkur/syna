@@ -33,6 +33,18 @@
               {{- .Params.subtitle | markdownify -}}
             </h3>
           </div>
+        {{- end -}}
+        {{- with .Params.categories }}
+          <div class="col-12 pb-4">
+            {{- range . }}
+              <div class="badge
+              {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                {{- printf " badge-%s" "primary" -}}
+              {{- else -}}
+                {{- printf " badge-%s" "light" -}}
+              {{- end -}}">{{ . }}</div>
+            {{- end }}
+          </div>
         {{- end }}
         <div class="col-12
           {{- if or (eq $bg "secondary") (eq $bg "primary") -}}

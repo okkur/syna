@@ -8,6 +8,8 @@ weight = 100
 title = "About Syna"
 subtitle = "Split in two!"
 
+categories = ["about"]
+
 [sidebar]
   title = "Sidebar"
   content = """
