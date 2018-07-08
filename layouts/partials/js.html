@@ -1,10 +1,9 @@
 {{ "<!-- Theme Code -->" | safeHTML }}
-<script src="{{ "main.js" | relURL }}"></script>
+{{- partial "custom/js.html" . -}}
+<script src="{{ "syna-main.js" | relURL }}"></script>
 
 {{- template "_internal/google_analytics_async.html" . -}}
 
 {{- if .Site.Params.analytics.piwik -}}
   {{- partial "_analytics/piwik.html" . -}}
 {{- end -}}
-
-{{- partial "custom/js.html" . -}}

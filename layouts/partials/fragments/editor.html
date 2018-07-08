@@ -1,0 +1,8 @@
+{{- $bg := .Params.background | default "secondary" }}
+{{ "<!-- Editor -->" | safeHTML }}
+
+<section id="{{ .Name }}">
+  <div id="editor-react" class="overlay container-fluid
+    {{- printf " bg-%s" $bg -}}
+  "></div>
+</section>

@@ -12767,6 +12767,10 @@ div.form-error ul li {
   margin-top: -4rem;
   overflow: hidden; }
 
+#editor-react {
+  padding-bottom: 1px;
+  box-sizing: border-box; }
+
 .scroll-to-top {
   position: fixed;
   right: 32px;

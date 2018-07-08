@@ -1,6 +1,6 @@
 {{- $bg := .Params.background | default "secondary" }}
-
 {{ "<!-- Contact -->" | safeHTML }}
+
 <section id="{{ .Name }}">
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
@@ -176,4 +176,4 @@
 {{- if .Params.recaptcha }}
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 {{- end }}
-<script src="{{ "contact.js" | relURL }}" defer async></script>
+<script src="{{ "syna-contact.js" | relURL }}" defer async></script>

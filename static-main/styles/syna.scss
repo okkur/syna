@@ -27,6 +27,11 @@
   overflow: hidden;
 }
 
+#editor-react {
+  padding-bottom: 1px;
+  box-sizing: border-box;
+}
+
 .scroll-to-top {
   position: fixed;
   right: 32px;

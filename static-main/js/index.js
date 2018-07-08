@@ -1,6 +1,11 @@
-// JS files
-import './helpers/bootstrap-helper';
-import './scroll';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-// CSS/SCSS files
+import './helpers/bootstrap-helper';
+import './editor';
+import './scroll';
+import Portals from './portals';
+
 import '../styles';
+
+ReactDOM.render(<Portals />, document.querySelector('#react'));
