@@ -1,0 +1,55 @@
+{{- $items := where (.resources.Match (printf "%s/*" .Name)) ".Name" "ne" .self.Name -}}
+{{- $bg := .Params.background | default "light" }}
+
+{{ "<!-- Porfolio -->" | safeHTML }}
+<section id="{{ .Name }}">
+  <div class="overlay container-fluid
+    {{- printf " bg-%s" $bg -}}
+  ">
+    <div class="container py-5">
+      {{- with .Params.title }}
+        <div class="row">
+          <div class="col text-center
+            {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
+              {{- printf " text-%s" "dark" -}}
+            {{- else -}}
+              {{- printf " text-%s" "light" -}}
+            {{- end -}}
+          ">
+            <h2>
+              {{- . | markdownify -}}
+            </h2>
+          </div>
+        </div>
+      {{- end -}}
+      {{- with .Params.subtitle -}}
+        <div class="row">
+          <div class="col text-center pt-4 pb-5
+            {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+              {{- printf " text-%s" "dark" -}}
+            {{- else -}}
+              {{- printf " text-muted text-%s" "secondary" -}}
+            {{- end -}}
+          ">
+            <h5>
+              {{- . | markdownify -}}
+            </h5>
+          </div>
+        </div>
+      {{- end }}
+      <div class="row">
+        {{- range $items }}
+          <div class="col-lg-4 col-md-6 col-12 py-2">
+            <div class="border rounded position-relative portfolio-item">
+              <img src="{{ printf "images/%s" .Params.image | relURL }}" class="img-fluid" alt="{{ .Params.title }}">
+              <div class="description text-light bg-dark p-2 rounded position-absolute text-center">
+                <h5>{{ .Params.title }}</h5>
+                <h6>{{ .Params.subtitle }}</h6>
+              </div>
+            </div>
+          </div>
+        {{- end }}
+      </div>
+    </div>
+  </div>
+</section>

@@ -12805,6 +12805,12 @@ div.form-error ul li {
 .generic-success, .generic-error, .captcha-error {
   margin-bottom: 10px; }
 
+.portfolio-item .description {
+  bottom: 8px;
+  left: 8px;
+  width: calc(100% - 16px);
+  background-color: rgba(52, 58, 64, 0.8) !important; }
+
 @media screen and (max-width: 767px) {
   .hide-on-mobile {
     display: none; } }
