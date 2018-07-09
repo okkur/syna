@@ -4,6 +4,7 @@
   date = "2017-10-17"
   image = "hugegopher.png"
   position = "Lead Gopherineer"
+  company = "Okkur Labs"
 
   reports_to = "CTO"
   lives_in = "[Munich, Germany](https://www.google.com/maps/place/Munich,+Germany/)"
