@@ -12827,22 +12827,10 @@ div.form-error ul li {
   border-radius: 0;
   background-color: rgba(52, 58, 64, 0.8); }
 
-body.has-modal {
-  overflow: hidden; }
+body.modal-open {
+  padding-right: 15px; }
 
-.modal-portal {
-  box-shadow: 2px 2px 6px rgba(52, 58, 64, 0.4);
-  width: 400px;
-  transition: all 0.2s ease-in-out; }
-  .modal-portal.md {
-    width: 600px; }
-  .modal-portal.lg {
-    width: 800px; }
-
-.modal-content {
-  border: none; }
-
-.modal-overlay {
+.modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -12854,10 +12842,18 @@ body.has-modal {
   justify-content: center;
   align-items: center;
   transition: all 0.2s ease-in-out; }
-  .modal-overlay.hide {
+  .modal-dialog {
+    box-shadow: 2px 2px 6px rgba(52, 58, 64, 0.4);
+    width: 400px;
+    transition: all 0.2s ease-in-out; }
+    .modal-dialog.md {
+      width: 600px; }
+    .modal-dialog.lg {
+      width: 800px; }
+  .modal:not(.show) {
     opacity: 0;
     visibility: hidden; }
-    .modal-overlay.hide.modal-portal {
+    .modal:not(.show).modal-dialog {
       transform: translateY(-10000px); }
 
 .jumbotron {

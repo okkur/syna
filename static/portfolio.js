@@ -118,7 +118,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _jqHelpers = __webpack_require__(/*! ./helpers/jq-helpers */ \"./static-main/js/helpers/jq-helpers.js\");\n\nvar _jqHelpers2 = _interopRequireDefault(_jqHelpers);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar modal = (0, _jqHelpers2.default)('.modal-overlay');\nvar modalPortal = (0, _jqHelpers2.default)('.modal-overlay .modal-portal');\nvar portfolioItem = (0, _jqHelpers2.default)('.portfolio-item:not(.has-link)');\n\nportfolioItem.on('click', function () {\n  window.syna.showModal({\n    title: this.querySelector('.title').innerHTML,\n    subtitle: this.querySelector('.subtitle').innerHTML,\n    content: this.querySelector('.content').innerHTML,\n    size: 'md'\n  });\n  modal.removeClass('hide');\n});\n\n//# sourceURL=webpack:///./static-main/js/portfolio.js?");
+eval("\n\nvar _jqHelpers = __webpack_require__(/*! ./helpers/jq-helpers */ \"./static-main/js/helpers/jq-helpers.js\");\n\nvar _jqHelpers2 = _interopRequireDefault(_jqHelpers);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar portfolioItem = (0, _jqHelpers2.default)('.portfolio-item:not(.has-link)');\n\nportfolioItem.on('click', function () {\n  window.syna.showModal({\n    title: this.querySelector('.title').innerHTML,\n    subtitle: this.querySelector('.subtitle').innerHTML,\n    content: this.querySelector('.content').innerHTML,\n    size: 'md'\n  });\n});\n\n//# sourceURL=webpack:///./static-main/js/portfolio.js?");
 
 /***/ })
 
