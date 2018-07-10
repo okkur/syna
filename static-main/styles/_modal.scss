@@ -34,7 +34,7 @@ body.modal-open {
     visibility: hidden;
 
     &.modal-dialog {
-      transform: translateY(-10000px);
+      transform: translateY(-64px);
     }
   }
 }

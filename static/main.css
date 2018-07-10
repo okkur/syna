@@ -12854,7 +12854,7 @@ body.modal-open {
     opacity: 0;
     visibility: hidden; }
     .modal:not(.show).modal-dialog {
-      transform: translateY(-10000px); }
+      transform: translateY(-64px); }
 
 .jumbotron {
   border-radius: 0rem !important; }
