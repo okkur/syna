@@ -12807,6 +12807,8 @@ div.form-error ul li {
     left: 8px;
     width: calc(100% - 16px);
     transform: translateY(-50%); }
+  .portfolio-item .description .title {
+    font-weight: bold; }
 
 .portfolio-item .hover-overlay {
   top: 50%;

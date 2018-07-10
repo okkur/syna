@@ -9,6 +9,10 @@
       width: calc(100% - 16px);
       transform: translateY(-50%);
     }
+
+    .title {
+      font-weight: bold;
+    }
   }
 
   .hover-overlay {
