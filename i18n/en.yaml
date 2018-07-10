@@ -4,6 +4,10 @@
 - id: en
   translation: "English"
 
+# Content
+- id: content.readmore
+  translation: "Read more..."
+
 # Contact Form
 - id: contact.defaultNameError
   translation: "Please enter your name"

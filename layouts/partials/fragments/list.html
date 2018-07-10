@@ -1,0 +1,108 @@
+{{/*
+  This variable stores all the page bundles in the blog section. There are three
+  where functions achieving this. First where gets all the pages in blog
+  section, the second one removes current page from the mix and the last one
+  removes the section (.Site.Pages returns the current section as a page). */}}
+{{- $pages := where (where .Site.Pages "Section" (.Params.section | default .page.Section)) "Params.fragment" "in" (slice "content-single" "content-split") -}}
+{{- $bg := .Params.background | default "light" }}
+
+{{ "<!-- Blog -->" | safeHTML }}
+<section id="{{ .Name }}">
+  <div class="overlay container-fluid {{- printf " bg-%s" $bg -}}">
+    <div class="container py-5">
+      <l class="row">
+        <div class="col-12
+          {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+            {{- printf " text-%s" "dark" -}}
+          {{- else -}}
+            {{- printf " text-muted text-%s" "secondary" -}}
+          {{- end -}}
+        ">
+          {{- range first (.Params.count | default 10) $pages }}
+            <article class="col-12 mb-4">
+              {{- if .Params.title }}
+                <div class="col-12 pl-0
+                  {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
+                    {{- printf " text-%s" "dark" -}}
+                  {{- else -}}
+                    {{- printf " text-%s" "light" -}}
+                  {{- end -}}
+                ">
+                  <a href="{{ .URL }}">
+                    <h3>
+                      {{- .Params.title | markdownify -}}
+                    </h3>
+                  </a>
+                </div>
+              {{- end -}}
+              {{- if .Params.image -}}
+                {{/* Global resource fallback - can also be used within loops */}}
+                {{- $image := .Params.image -}}
+
+                {{- $name := strings.TrimSuffix ".md" (replace .Name "/index.md" "") -}}
+                {{- $file_path := strings.TrimSuffix ".md" (replace .File.Path "/index.md" "") -}}
+                {{- $page_path := replace $file_path (printf "/%s" $name) "" -}}
+                {{- $fallthrough := (dict "file_path" $file_path "page_path" $page_path ) -}}
+
+                {{/* Do not change the following snippet */}}
+                {{/* Code is duplicated throughout the code */}}
+                {{- $.root.Scratch.Set "image" (printf "images/%s" $image) -}}
+
+                {{/* Page specific resource */}}
+                {{- $location := (printf "%s/%s" $fallthrough.page_path $image) -}}
+                {{- if (fileExists (printf "content/%s" $location)) -}}
+                  {{/* special case index: trim _index/ from url */}}
+                  {{- $location := strings.TrimPrefix "_index/" $location -}}
+                  {{- $.root.Scratch.Set "image" $location -}}
+                {{- end -}}
+            
+                {{/* Fragment specific resource */}}
+                {{- $location := (printf "%s/%s" $fallthrough.file_path $image) -}}
+                {{- if (fileExists (printf "content/%s" $location)) -}}
+                  {{/* special case index: trim _index/ from url */}}
+                  {{- $location := strings.TrimPrefix "_index/" $location -}}
+                  {{- $.root.Scratch.Set "image" $location -}}
+                {{- end -}}
+                {{/* End of do not change */}}
+                <a href="{{ .URL }}">
+                  <img src="{{ $.root.Scratch.Get "image" | relURL }}" alt="{{ .Params.subtitle | default .Params.title }}" class="img-fluid mb-4">
+                </a>
+              {{- end -}}
+              <div class="col-12 pl-0
+                {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                  {{- printf " text-%s" "dark" -}}
+                {{- else -}}
+                  {{- printf " text-muted text-%s" "secondary" -}}
+                {{- end -}}
+              ">
+                {{- if and (isset .Params "fragment") (in (slice "content-split" "content-single") .Params.fragment) }}
+                  {{ .Summary }}
+                  {{- if .Truncated -}}
+                    <a class="ml-2 badge
+                    {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                      {{- printf " badge-%s" "dark" -}}
+                    {{- else -}}
+                      {{- printf " badge-%s" "secondary" -}}
+                    {{- end -}}" href="{{ .URL }}">{{ i18n "content.readmore" | default "Read more..." }}</a>
+                  {{- end }}
+                {{- else }}
+                  {{- range first 1 (where (.Resources.ByType "page") "Params.fragment" "in" (slice "content-split" "content-single")) }}
+                    {{ .Summary }}
+                    {{- if .Truncated -}}
+                      <a class="ml-2 badge
+                      {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                        {{- printf " badge-%s" "dark" -}}
+                      {{- else -}}
+                        {{- printf " badge-%s" "secondary" -}}
+                      {{- end -}}" href="{{ .URL }}">{{ i18n "content.readmore" }}</a>
+                    {{- end }}
+                  {{- end -}}
+                {{- end -}}
+              </div>
+            </article>
+          {{- end -}}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
