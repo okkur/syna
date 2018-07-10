@@ -1,0 +1,30 @@
+.header-image {
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: bottom center;
+  background-size: cover;
+  border-radius: 0rem;
+}
+
+#particles-js {
+  position: absolute;
+  width: 100%;
+  margin-left: -2rem;
+  height: 550px;
+  margin-top: -4rem;
+  overflow: hidden;
+}
+
+@include media-breakpoint-down(md) {
+  .navbar-collapse {
+    max-height: 0px;
+    transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+    overflow: hidden;
+    display: block;
+  }
+
+  .navbar-collapse.in {
+    max-height: 65em;
+    transition: max-height 1s ease-in-out;
+  }
+}

@@ -1,4 +1,5 @@
 +++
+weight = 40
 title = "Forth Title"
 subtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing"
 image = "dog-2.jpeg"

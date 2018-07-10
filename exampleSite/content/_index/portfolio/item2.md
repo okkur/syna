@@ -1,4 +1,5 @@
 +++
+weight = 20
 title = "Second Title"
 subtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing"
 image = "cat-2.jpeg"

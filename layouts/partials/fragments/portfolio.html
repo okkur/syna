@@ -38,14 +38,23 @@
         </div>
       {{- end }}
       <div class="row">
-        {{- range $items }}
+        {{- range (sort $items ".Params.weight") }}
           <div class="col-lg-4 col-md-6 col-12 py-2">
-            <div class="border rounded position-relative portfolio-item">
+            <div class="border rounded position-relative portfolio-item overflow-hidden {{- if .Params.link }} has-link {{- else }} pointer {{- end -}}">
               <img src="{{ printf "images/%s" .Params.image | relURL }}" class="img-fluid" alt="{{ .Params.title }}">
-              <div class="description text-light bg-dark p-2 rounded position-absolute text-center">
-                <h5>{{ .Params.title }}</h5>
-                <h6>{{ .Params.subtitle }}</h6>
+              <div class="position-absolute hover-overlay"></div>
+              <div class="position-absolute description-container col">
+                <div class="row justify-content-center description text-light p-2 rounded text-center {{- if .Params.link }} mb-2 {{- end -}}">
+                  <h5 class="title">{{ .Params.title }}</h5>
+                  <h6 class="subtitle">{{ .Params.subtitle }}</h6>
+                </div>
+                {{- if .Params.link }}
+                  <div class="row justify-content-center">
+                    <a href="{{ .Params.link }}" class="btn btn-light text-dark link">{{ .Params.link_title }}</a>
+                  </div>
+                {{- end }}
               </div>
+              <div class="content hidden">{{ .Content }}</div>
             </div>
           </div>
         {{- end }}
@@ -53,3 +62,5 @@
     </div>
   </div>
 </section>
+
+<script src="{{ "portfolio.js" | relURL }}" defer async></script>

@@ -1,0 +1,35 @@
+.jumbotron {
+  border-radius: 0rem !important;
+}
+
+.overlay {
+  position: relative;
+  z-index: 100;
+}
+
+.scroll-to-top {
+  position: fixed;
+  right: 32px;
+  bottom: 32px;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 999;
+}
+
+.scroll-to-top.has-font-icon {
+  font-size: 24px;
+}
+
+.scroll-to-top.d-none {
+  display: flex !important;
+  visibility: hidden;
+  opacity: 0;
+}

@@ -81,22 +81,10 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./static-main/js/index.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./static-main/js/portfolio.js");
 /******/ })
 /************************************************************************/
 /******/ ({
-
-/***/ "./static-main/js/helpers/bootstrap-helper.js":
-/*!****************************************************!*\
-  !*** ./static-main/js/helpers/bootstrap-helper.js ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nvar _jqHelpers = __webpack_require__(/*! ./jq-helpers */ \"./static-main/js/helpers/jq-helpers.js\");\n\nvar _jqHelpers2 = _interopRequireDefault(_jqHelpers);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar toggle = document.querySelectorAll('.navbar-toggler'); // Updated the script from https://stackoverflow.com/questions/43417452/animate-navbar-collapse-using-pure-js-css/43434017#43434017\n\nvar collapse = document.querySelectorAll('.navbar-collapse');\nvar dropdowns = document.querySelectorAll('.dropdown') || [];\n\nfunction toggleMenu(node) {\n  var menu = document.querySelector(node.dataset.target);\n  menu.classList.toggle('in');\n}\n\nfunction closeMenus() {\n  Array.from(dropdowns || []).forEach(function (node) {\n    node.querySelector('.dropdown-toggle').classList.remove('dropdown-open');\n    node.classList.remove('open');\n  });\n}\n\nfunction closeMenusOnResize() {\n  if (document.body.clientWidth >= 768) {\n    closeMenus();\n    Array.from(collapse || []).forEach(function (node) {\n      return node.classList.remove('in');\n    });\n  }\n}\n\nfunction toggleDropdown() {\n  if (document.body.clientWidth < 768) {\n    var open = this.classList.contains('open');\n    closeMenus();\n    if (!open) {\n      this.querySelector('.dropdown-toggle').classList.toggle('dropdown-open');\n      this.classList.toggle('open');\n    }\n  }\n}\n\nwindow.addEventListener('resize', closeMenusOnResize, false);\nArray.from(dropdowns || []).forEach(function (node) {\n  return node.addEventListener('click', toggleDropdown);\n});\nArray.from(toggle || []).forEach(function (node) {\n  return node.addEventListener('click', function (e) {\n    return toggleMenu(node);\n  }, false);\n});\n\n//# sourceURL=webpack:///./static-main/js/helpers/bootstrap-helper.js?");
-
-/***/ }),
 
 /***/ "./static-main/js/helpers/jq-helpers.js":
 /*!**********************************************!*\
@@ -122,50 +110,15 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 
 /***/ }),
 
-/***/ "./static-main/js/index.js":
-/*!*********************************!*\
-  !*** ./static-main/js/index.js ***!
-  \*********************************/
+/***/ "./static-main/js/portfolio.js":
+/*!*************************************!*\
+  !*** ./static-main/js/portfolio.js ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\n__webpack_require__(/*! ./helpers/bootstrap-helper */ \"./static-main/js/helpers/bootstrap-helper.js\");\n\n__webpack_require__(/*! ./scroll */ \"./static-main/js/scroll.js\");\n\n__webpack_require__(/*! ./modal */ \"./static-main/js/modal.js\");\n\n__webpack_require__(/*! ../styles */ \"./static-main/styles/index.scss\");\n\n//# sourceURL=webpack:///./static-main/js/index.js?");
-
-/***/ }),
-
-/***/ "./static-main/js/modal.js":
-/*!*********************************!*\
-  !*** ./static-main/js/modal.js ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nvar _jqHelpers = __webpack_require__(/*! ./helpers/jq-helpers */ \"./static-main/js/helpers/jq-helpers.js\");\n\nvar _jqHelpers2 = _interopRequireDefault(_jqHelpers);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar modalOverlay = (0, _jqHelpers2.default)('.modal-overlay');\nvar modalPortal = (0, _jqHelpers2.default)('.modal-overlay .modal-portal');\n\nmodalOverlay.on('click', function (e) {\n  if (!modalPortal[0].contains(e.target)) {\n    this.classList.add('hide');\n    (0, _jqHelpers2.default)('body').removeClass('has-modal');\n  }\n});\n\n(window.syna || (window.syna = {})).showModal = function (_ref) {\n  var title = _ref.title,\n      subtitle = _ref.subtitle,\n      content = _ref.content,\n      _ref$size = _ref.size,\n      size = _ref$size === undefined ? '' : _ref$size;\n\n  modalOverlay.removeClass('hide');\n  modalPortal.$('.title').html(title || '');\n  modalPortal.$('.subtitle').html(subtitle || '');\n  if (content) {\n    modalPortal.$('.modal-content').html(content);\n    modalPortal.$('.modal-content').removeClass('hidden');\n  } else {\n    modalPortal.$('.modal-content').addClass('hidden');\n  }\n  modalPortal.removeClass('md').removeClass('lg').addClass(size);\n  (0, _jqHelpers2.default)('body').addClass('has-modal');\n};\n\n//# sourceURL=webpack:///./static-main/js/modal.js?");
-
-/***/ }),
-
-/***/ "./static-main/js/scroll.js":
-/*!**********************************!*\
-  !*** ./static-main/js/scroll.js ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nvar _jqHelpers = __webpack_require__(/*! ./helpers/jq-helpers */ \"./static-main/js/helpers/jq-helpers.js\");\n\nvar _jqHelpers2 = _interopRequireDefault(_jqHelpers);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n(function () {\n  handleScroll();\n  window.onscroll = handleScroll;\n  (0, _jqHelpers2.default)('.scroll-to-top').on('click', scrollToTop);\n})();\n\nfunction handleScroll() {\n  if (window.scrollY > window.innerHeight / 2) {\n    (0, _jqHelpers2.default)('.scroll-to-top').removeClass('d-none');\n  } else {\n    (0, _jqHelpers2.default)('.scroll-to-top').addClass('d-none');\n  }\n}\n\nfunction scrollToTop() {\n  _jqHelpers2.default.scrollTo(document.body, 0, 250);\n}\n\n//# sourceURL=webpack:///./static-main/js/scroll.js?");
-
-/***/ }),
-
-/***/ "./static-main/styles/index.scss":
-/*!***************************************!*\
-  !*** ./static-main/styles/index.scss ***!
-  \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./static-main/styles/index.scss?");
+eval("\n\nvar _jqHelpers = __webpack_require__(/*! ./helpers/jq-helpers */ \"./static-main/js/helpers/jq-helpers.js\");\n\nvar _jqHelpers2 = _interopRequireDefault(_jqHelpers);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar modal = (0, _jqHelpers2.default)('.modal-overlay');\nvar modalPortal = (0, _jqHelpers2.default)('.modal-overlay .modal-portal');\nvar portfolioItem = (0, _jqHelpers2.default)('.portfolio-item:not(.has-link)');\n\nportfolioItem.on('click', function () {\n  window.syna.showModal({\n    title: this.querySelector('.title').innerHTML,\n    subtitle: this.querySelector('.subtitle').innerHTML,\n    content: this.querySelector('.content').innerHTML,\n    size: 'md'\n  });\n  modal.removeClass('hide');\n});\n\n//# sourceURL=webpack:///./static-main/js/portfolio.js?");
 
 /***/ })
 

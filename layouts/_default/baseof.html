@@ -8,6 +8,18 @@
       <!-- The part of the page that begins to differ between templates -->
     {{ end }}
 
+    <div class="modal-overlay hide">
+      <div class="modal-portal rounded bg-light text-dark border">
+        <div class="modal-header row mx-0">
+          <div class="col px-0">
+            <h4 class="text-dark title"></h4>
+            <h5 class="text-secondary subtitle"></h5>
+          </div>
+        </div>
+        <div class="modal-content p-2"></div>
+      </div>
+    </div>
+
     {{ partial "js.html" . }}
 
   </body>
