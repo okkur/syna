@@ -40,21 +40,26 @@
       <div class="row">
         {{- range (sort $items ".Params.weight") }}
           <div class="col-lg-4 col-md-6 col-12 py-2">
-            <div class="border rounded position-relative portfolio-item overflow-hidden {{- if .Params.link }} has-link {{- else }} pointer {{- end -}}">
-              <img src="{{ printf "images/%s" .Params.image | relURL }}" class="img-fluid" alt="{{ .Params.title }}">
-              <div class="position-absolute hover-overlay"></div>
-              <div class="position-absolute description-container col">
-                <div class="row justify-content-center description text-light p-2 rounded text-center {{- if .Params.link }} mb-2 {{- end -}}">
-                  <h5 class="title">{{ .Params.title }}</h5>
-                  <h6 class="subtitle">{{ .Params.subtitle }}</h6>
-                </div>
-                {{- if .Params.link }}
-                  <div class="row justify-content-center">
-                    <a href="{{ .Params.link }}" class="btn btn-light text-dark link">{{ .Params.link_title }}</a>
-                  </div>
-                {{- end }}
-              </div>
-              <div class="content hidden">{{ .Content }}</div>
+            <div class="border rounded position-relative portfolio-item overflow-hidden 
+              {{- if and (or .Params.title .Params.subtitle) (not .Params.link) }} has-modal {{- end -}}
+            ">
+              {{- if .Params.link }}
+                <a href="{{ .Params.link }}" target="_blank">
+              {{- end }}
+                  <img src="{{ printf "images/%s" .Params.image | relURL }}" class="img-fluid" alt="{{ .Params.title }}">
+                  <div class="position-absolute hover-overlay"></div>
+                  {{- if or .Params.title .Params.subtitle }}
+                    <div class="position-absolute description-container col">
+                      <div class="row justify-content-center description text-light p-2 rounded text-center">
+                        {{ if .Params.title }}<h5 class="title">{{ .Params.title }}</h5>{{ end }}
+                        {{ if .Params.subtitle }}<h6 class="subtitle">{{ .Params.subtitle }}</h6>{{ end }}
+                      </div>
+                    </div>
+                  {{- end }}
+                  <div class="content hidden">{{ .Content }}</div>
+              {{- if .Params.link }}
+                </a>
+              {{- end }}
             </div>
           </div>
         {{- end }}

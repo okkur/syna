@@ -3,10 +3,16 @@ import $ from './helpers/jq-helpers';
 const modal = $('.modal');
 const dialog = $('.modal .modal-dialog');
 
-modal.on('click', function(e) {
+function closeDialog() {
+  $('body').removeClass('modal-open');
+  modal.removeClass('show');
+}
+
+$('[data-dismiss="modal"]').on('click', closeDialog);
+
+modal.on('click', e => { 
   if (!dialog[0].contains(e.target)) {
-    $('body').removeClass('modal-open');
-    this.classList.remove('show');
+    closeDialog()
   }
 });
 

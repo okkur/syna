@@ -1,7 +1,7 @@
 import serialize from './serialize';
 
 function $(selector) {
-  const nodes = Array.from((this && !Array.isArray(this) ? this : document).querySelectorAll(selector));
+  const nodes = Array.from((this && Array.isArray(this) ? this[0] : document).querySelectorAll(selector));
 
   const _returnee = {
     $nodes: nodes,
@@ -30,7 +30,7 @@ function $(selector) {
       }
     },
     html: innerHTML => {
-      if (!innerHTML) {
+      if (innerHTML === undefined) {
         if (nodes.length > 1) {
           throw new Error('Can\'t get several nodes innerHTML at once');
         }
@@ -41,7 +41,7 @@ function $(selector) {
       nodes.forEach(node => node.innerHTML = innerHTML);
     },
     text: innerText => {
-      if (!innerText) {
+      if (innerText === undefined) {
         if (nodes.length > 1) {
           throw new Error('Can\'t get several nodes innerText at once');
         }

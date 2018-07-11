@@ -1,6 +1,6 @@
 import $ from './helpers/jq-helpers';
 
-const portfolioItem = $('.portfolio-item:not(.has-link)');
+const portfolioItem = $('.portfolio-item.has-modal');
 
 portfolioItem.on('click', function() {
   window.syna.showModal({
