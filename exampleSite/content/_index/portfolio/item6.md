@@ -1,7 +1,5 @@
 +++
 weight = 60
-title = "Sixth Title"
-subtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing"
 image = "bird-1.jpeg"
 +++
 

@@ -16,16 +16,17 @@ modal.on('click', e => {
   }
 });
 
-(window.syna || (window.syna = {})).showModal = function({ title, subtitle, content, size = '' }) {
+(window.syna || (window.syna = {})).showModal = function({ title, subtitle, image, content, size = '' }) {
   $('body').addClass('modal-open');
   modal.addClass('show');
   dialog.$('.title').html(title || '');
   dialog.$('.subtitle').html(subtitle || '');
+  dialog.$('img')[0].src = image;
   if (content) {
-    dialog.$('.modal-body').html(content);
-    dialog.$('.modal-body').removeClass('hidden');
+    dialog.$('.modal-body .content').html(content);
+    dialog.$('.modal-body .content').removeClass('hidden');
   } else {
-    dialog.$('.modal-body').addClass('hidden');
+    dialog.$('.modal-body .content').addClass('hidden');
   }
   dialog.removeClass('md').removeClass('lg').addClass(size);
 }

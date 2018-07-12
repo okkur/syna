@@ -1,7 +1,5 @@
 +++
 weight = 50
-title = "Fifth Title"
-subtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing"
 image = "dog-3.jpeg"
 +++
 
