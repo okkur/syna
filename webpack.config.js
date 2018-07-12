@@ -10,6 +10,7 @@ module.exports = {
     main: './static-main/js/index.js',
     contact: './static-main/js/contact.js',
     hero: './static-main/js/hero.js',
+    portfolio: './static-main/js/portfolio.js',
   },
   output: {
     path: path.resolve('./static/'),
