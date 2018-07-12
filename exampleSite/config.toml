@@ -17,6 +17,7 @@ googleAnalytics = ""
 [params]
   name = "Okkur Labs"
   description = "Open Source Theme for your next project"
+  display_theme_commit = true
 
   [params.style]
     #background = "secondary"
