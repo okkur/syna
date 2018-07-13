@@ -3,7 +3,7 @@
   where functions achieving this. First where gets all the pages in blog
   section, the second one removes current page from the mix and the last one
   removes the section (.Site.Pages returns the current section as a page). */}}
-{{- $pages := where (where .Site.Pages "Section" (.Params.section | default .page.Section)) "Params.fragment" "in" (slice "content-single" "content-split") -}}
+{{- $pages := where (where .Site.Pages "Section" (.Params.section | default .page.Section)) "Params.fragment" "eq" "content" -}}
 {{- $bg := .Params.background | default "light" }}
 
 {{ "<!-- Blog -->" | safeHTML }}
@@ -75,7 +75,7 @@
                   {{- printf " text-muted text-%s" "secondary" -}}
                 {{- end -}}
               ">
-                {{- if and (isset .Params "fragment") (in (slice "content-split" "content-single") .Params.fragment) }}
+                {{- if and (isset .Params "fragment") (in "content" .Params.fragment) }}
                   {{ .Summary }}
                   {{- if .Truncated -}}
                     <a class="ml-2 badge
@@ -86,7 +86,7 @@
                     {{- end -}}" href="{{ .URL }}">{{ i18n "content.readmore" | default "Read more..." }}</a>
                   {{- end }}
                 {{- else }}
-                  {{- range first 1 (where (.Resources.ByType "page") "Params.fragment" "in" (slice "content-split" "content-single")) }}
+                  {{- range first 1 (where (.Resources.ByType "page") "Params.fragment" "in" "content") }}
                     {{ .Summary }}
                     {{- if .Truncated -}}
                       <a class="ml-2 badge
