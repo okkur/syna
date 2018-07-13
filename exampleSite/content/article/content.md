@@ -1,5 +1,5 @@
 +++
-fragment = "content-single"
+fragment = "content"
 #disabled = true
 date = "2018-07-06"
 weight = 100
