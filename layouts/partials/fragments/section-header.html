@@ -1,0 +1,41 @@
+{{- $bg := .Params.background | default "light" }}
+
+{{ "<!-- Section Header -->" | safeHTML }}
+<section id="{{ .Name }}">
+  <div class="overlay container-fluid
+    {{- printf " bg-%s" $bg -}}
+  ">
+    <div class="container py-3">
+      {{- with .Params.title }}
+        <div class="row">
+          <div class="col text-center
+            {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
+              {{- printf " text-%s" "dark" -}}
+            {{- else -}}
+              {{- printf " text-%s" "light" -}}
+            {{- end -}}
+          ">
+            <h2>
+              {{- . | markdownify -}}
+            </h2>
+          </div>
+        </div>
+      {{- end -}}
+      {{- with .Params.subtitle -}}
+        <div class="row">
+          <div class="col text-center pt-4 pb-0
+            {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+              {{- printf " text-%s" "dark" -}}
+            {{- else -}}
+              {{- printf " text-muted text-%s" "secondary" -}}
+            {{- end -}}
+          ">
+            <h5>
+              {{- . | markdownify -}}
+            </h5>
+          </div>
+        </div>
+      {{- end }}
+    </div>
+  </div>
+</section>
