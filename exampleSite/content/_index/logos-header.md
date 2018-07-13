@@ -4,6 +4,6 @@ fragment = "section-header"
 weight = 990
 
 background = "white"
-title = "Logo Fragmeasdnt"
+title = "Logo Fragment"
 subtitle = "Even linking is possible"
 +++

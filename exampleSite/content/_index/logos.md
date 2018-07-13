@@ -5,6 +5,9 @@ date = "2017-09-09"
 weight = 1000
 #background = ""
 
+title = "Logo Fragment"
+subtitle = "Even linking is possible"
+
 [[logos]]
   name = "hugo"
   weight = 20
