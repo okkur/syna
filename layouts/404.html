@@ -1,36 +1,36 @@
 <html lang="{{ .Site.LanguageCode | default (printf "en-us") }}">
 
-  {{- partial "head.html" . -}}
+  {{ partial "head.html" . }}
 
   <body class="bg-white">
-    {{- $global := .Site.GetPage "page" "_global" -}}
-    {{- if $global -}}
-      {{- range ($global.Resources.ByType "page") -}}
-        {{- if and (not .Params.disabled) (isset .Params "fragment") (eq .Params.fragment "nav") -}}
-          {{- partial (print "fragments/" .Params.fragment ".html") (dict "tmp_full" $ "Site" $.Site "menus" $.Site.Menus "resources" $.Resources "self" .) -}}
-        {{- end -}}
-      {{- end -}}
-    {{- end -}}
+    {{ $global := .Site.GetPage "page" "global" }}
+    {{ if $global }}
+      {{ range ($global.Resources.ByType "page") }}
+        {{ if and (not .Params.disabled) (isset .Params "fragment") (eq .Params.fragment "nav") }}
+          {{ partial (print "fragments/" .Params.fragment ".html") (dict "tmp_full" $ "Site" $.Site "menus" $.Site.Menus "resources" $.Resources "self" .) }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
 
     <section>
           <div class="jumbotron text-center mb-0">
             <img class="img-fluid" src="{{ printf "images/logo.svg" | relURL }}"></img>
             <h1 class="jumbotron-heading my-5">
-              {{- i18n "404.title" -}}
+              {{ i18n "404.title" }}
             </h1>
             <h3 class="my-4">
-              {{- i18n "404.subtitle" -}}
+              {{ i18n "404.subtitle" }}
             </h3>
             <h5 class="my-4">
-              {{- i18n "404.direction" -}}
+              {{ i18n "404.direction" }}
             </h5>
             <a class="btn btn-primary btn-lg my-4" href="/">
-              {{- i18n "404.button" -}}
+              {{ i18n "404.button" }}
             </a>
           </div>
     </section>
 
-    {{- partial "js.html" . -}}
+    {{ partial "js.html" . }}
 
   </body>
 </html>

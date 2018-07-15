@@ -9,19 +9,19 @@ title = "Logo Fragment"
 subtitle = "Even linking is possible"
 
 [[logos]]
-  name = "hugo"
+  text = "hugo"
   weight = 20
   image = "hugo.svg"
   url = "#"
 
 [[logos]]
-  name = "go"
+  text = "go"
   weight = 10
   image = "go.svg"
   url = "#"
 
 [[logos]]
-  name = "caddy"
+  text = "caddy"
   weight = 30
   image = "caddy.svg"
   url = "#"
