@@ -4,8 +4,8 @@ Syna comes with a set of prebuilt fragments. These fragments are just to make de
 
 You can add other fragments and override the default fragments using Hugo's [Template lookup order](https://gohugo.io/templates/lookup-order/) strategy. You can create a new file in your website's `/layouts/partials/fragments` and name it after the fragment you want to override or the fragment you want to create and develop the fragment yourself. Although we don't recommend overriding the default fragments since that would cause you to miss the updates.
 
-The following is the documentation of the default fragments. To understand how fragments work please read our guide to [getting started](https://github.com/okkur/syna/tree/master/docs/README.md#fragments).
+The following is the documentation of the default fragments. To understand how fragments work please read our guide to [getting started](../README.md#fragments).
 
 ## Fragments
 
-- [Contact fragment](https://github.com/okkur/syna/tree/master/docs/fragments/contact.md)
+- [Contact fragment](./contact.md)
