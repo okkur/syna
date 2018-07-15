@@ -1,16 +1,16 @@
 <html lang="{{ .Site.LanguageCode | default (printf "en-us") }}">
 
-  {{ partial "head.html" . }}
+  {{- partial "head.html" . -}}
 
   <body class="bg-white">
-    {{ $global := .Site.GetPage "page" "global" }}
-    {{ if $global }}
-      {{ range ($global.Resources.ByType "page") }}
-        {{ if and (not .Params.disabled) (isset .Params "fragment") (eq .Params.fragment "nav") }}
-          {{ partial (print "fragments/" .Params.fragment ".html") (dict "tmp_full" $ "Site" $.Site "menus" $.Site.Menus "resources" $.Resources "self" .) }}
-        {{ end }}
-      {{ end }}
-    {{ end }}
+    {{- $global := .Site.GetPage "page" "_global" -}}
+    {{- if $global -}}
+      {{- range ($global.Resources.ByType "page") -}}
+        {{- if and (not .Params.disabled) (isset .Params "fragment") (eq .Params.fragment "nav") -}}
+          {{- partial (print "fragments/" .Params.fragment ".html") (dict "tmp_full" $ "Site" $.Site "menus" $.Site.Menus "resources" $.Resources "self" .) -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
 
     <section>
           <div class="jumbotron text-center mb-0">
@@ -30,7 +30,7 @@
           </div>
     </section>
 
-    {{ partial "js.html" . }}
+    {{- partial "js.html" . -}}
 
   </body>
 </html>
