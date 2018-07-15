@@ -8,7 +8,7 @@ background = "dark"
 title = "logos"
 
 [[logos]]
-  name = "syna"
+  text = "syna"
   weight = 10
   image = "resource_logo.svg"
   #url = "#"
