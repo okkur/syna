@@ -14,7 +14,7 @@ Highly customizable with modular per-page fragments.
 
 ## Using Syna Theme
 
-Check out our [demo](https://syna-demo.okkur.io)
+Check out our [demo](https://syna-demo.okkur.io). To start using Syna please read the [installation guide](./docs/README.md#installation).
 
 ## Documentation
 
