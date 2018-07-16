@@ -57,7 +57,7 @@ git checkout v0.11.0 # Latest release as of now is v0.11.0
 
 ### Using starter
 
-If you don't have a site yet, you can use our starter.
+If you don't have a site yet, you can use our [starter](https://github.com/okkur/syna-start).
 Using the starter you will have a sample page with several fragment examples and you can use them to start building your own website.
 
 ```bash
