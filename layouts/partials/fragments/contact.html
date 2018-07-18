@@ -53,7 +53,7 @@
                       type="text"
                       data-validation
                       data-validation-error-msg="{{ .error | default (i18n "contact.defaultNameError") }}"
-                      placeholder="{{ with .text }}{{ . | markdownify }}{{ end }}"
+                      placeholder="{{ with .button_text }}{{ . | markdownify }}{{ end }}"
                       required>
                     <div class="px-2" data-error id="name-error"></div>
                   </div>
@@ -67,7 +67,7 @@
                       type="text"
                       data-validation="email"
                       data-validation-error-msg="{{ .error | default (i18n "contact.defaultEmailError") }}"
-                      placeholder="{{ with .text }}{{ . | markdownify }}{{ end }}"
+                      placeholder="{{ with .button_text }}{{ . | markdownify }}{{ end }}"
                       required>
                     <div class="px-2" data-error id="email-error"></div>
                   </div>
@@ -82,7 +82,7 @@
                       data-validation="regex"
                       data-validation-regex="^([0-9,\+]+)$"
                       data-validation-error-msg="{{ .error | default (i18n "contact.defaultPhoneError") }}"
-                      placeholder="{{ with .text }}{{ . | markdownify }}{{ end }}">
+                      placeholder="{{ with .button_text }}{{ . | markdownify }}{{ end }}">
                     <div class="px-2" data-error id="phone-error"></div>
                   </div>
                 {{- end }}
@@ -97,7 +97,7 @@
                       type="text"
                       data-validation
                       data-validation-error-msg="{{ .error | default (i18n "contact.defaultButton") }}"
-                      placeholder="{{ with .text }}{{ . | markdownify }}{{ end }}"
+                      placeholder="{{ with .button_text }}{{ . | markdownify }}{{ end }}"
                       rows="4"
                       required></textarea>
                     <div class="px-2" data-error id="message-error"></div>
@@ -138,7 +138,7 @@
                       data-badge="inline"
                       data-callback="onContactCaptcha"
                       disabled>
-                      {{- .Params.button | default (i18n "contact.defaultButton") -}}
+                      {{- .Params.button_text | default (i18n "contact.defaultButton") -}}
                     </button>
                     <span class="filler"></span>
                   </div>
@@ -152,7 +152,7 @@
                       {{- end -}}
                     "
                     type="submit">
-                    {{- .Params.button | default (i18n "contact.defaultButton") -}}
+                    {{- .Params.button_text | default (i18n "contact.defaultButton") -}}
                   </button>
                 {{- end }}
               </div>

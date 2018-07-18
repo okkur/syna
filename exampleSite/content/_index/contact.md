@@ -12,7 +12,7 @@ subtitle  = "*not working on demo page*"
 # PostURL can be used with backends such as mailout from caddy
 post_url = "https://example.com/mailout" #default: formspree.io
 email = "mail@example.com"
-button = "Send Button" # defaults to theme default
+button_text = "Send Button" # defaults to theme default
 #netlify = false
 
 # Optional google captcha
