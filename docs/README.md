@@ -137,6 +137,8 @@ Some fragments (`hero` fragment for example) may display images, if configured i
 
 So the fragment will look in the following order `fragment > page > images (global)`. If you need to use an image in several pages you can put it in the `static/images/` directory and the image would be available globally. But if an image may differ between two pages or even two fragments of same type, it's possible to have it using this mechanism.
 
+Syna supports custom favicons in config.toml allowing for ICO, PNG or SVG image formats. In order to use one of the custom favicon formats, you can specify the image file name in config.toml and save the image file in the '/static' directory.
+
 ### Supported Colors
 
 Fragments and various elements can be customized further using Bootstrap color classes.
