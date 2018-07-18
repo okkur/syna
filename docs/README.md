@@ -23,6 +23,9 @@ Each page within a Syna based website is created using fragments.
 <!-- TOC -->
 
 - [Documentation](#documentation)
+  - [Installation](#installation)
+    - [Adding Syna to your site](#adding-syna-to-your-site)
+    - [Using starter](#using-starter)
   - [Usage and concepts](#usage-and-concepts)
     - [Fragments](#fragments)
     - [Built-in fragments](#built-in-fragments)
@@ -37,6 +40,31 @@ Each page within a Syna based website is created using fragments.
   - [Further reading](#further-reading)
 
 <!-- /TOC -->
+
+## Installation
+
+### Adding Syna to your site
+
+You can use Syna by adding it as a submodule to your website repository and pointing the submodule to the latest release.
+This way whenever you want to update the theme you can just pull the updates and checkout to the latest tag.
+
+```bash
+git submodule init # If you haven't initialized before
+git submodule add https://github.com/okkur/syna.git themes/syna
+cd themes/syna
+git checkout v0.11.0 # Latest release as of now is v0.11.0
+```
+
+### Using starter
+
+If you don't have a site yet, you can use our [starter](https://github.com/okkur/syna-start).
+Using the starter you will have a sample page with several fragment examples and you can use them to start building your own website.
+
+```bash
+git clone --recurse-submodules https://github.com/okkur/syna-start.git # --recurse-submodules will clone the theme
+cd syna-start
+hugo server -D # to build your website, run hugo instead
+```
 
 ## Usage and concepts
 
@@ -82,6 +110,7 @@ Using the `weight` attribute you can specify the place on the page the fragment 
 ### Built-in fragments
 
 Currently the following fragments are available. Their [usage example](https://github.com/okkur/syna/tree/master/exampleSite/content/_index) is available as well.
+*Documentation for the fragments is WIP*
 
 - **content-single**: markdown content
 - **content-split**: markdown content with an additional sidebar
@@ -89,7 +118,7 @@ Currently the following fragments are available. Their [usage example](https://g
 - **copyright**: copyright notice including attribution and menu
 - **footer**: small description including social buttons, menu and a logo
 - **hero**: huge header image including logo, call to action and more
-- **contact**: contact form including recaptcha and netlify support
+- [**contact**](./fragments/contact.md): contact form including recaptcha and netlify support
 - **buttons**: call to action buttons
 - **embed**: embed media such as newsletters, forms, videos or other iframes
 - **item**: single item rendering content including an image, buttons or icons
