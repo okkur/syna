@@ -50,7 +50,7 @@ This way whenever you want to update the theme you can just pull the updates and
 
 ```bash
 git submodule init # If you haven't initialized before
-git submodule add git@github.com:okkur/syna.git themes/syna
+git submodule add https://github.com/okkur/syna.git themes/syna
 cd themes/syna
 git checkout v0.11.0 # Latest release as of now is v0.11.0
 ```
@@ -61,9 +61,9 @@ If you don't have a site yet, you can use our [starter](https://github.com/okkur
 Using the starter you will have a sample page with several fragment examples and you can use them to start building your own website.
 
 ```bash
-git clone --recurse-submodules git@github.com:okkur/syna-start.git # --recurse-submodules will clone the theme
+git clone --recurse-submodules https://github.com/okkur/syna-start.git # --recurse-submodules will clone the theme
 cd syna-start
-hugo server -D # to bulid your website, run hugo instead
+hugo server -D # to build your website, run hugo instead
 ```
 
 ## Usage and concepts
