@@ -9,12 +9,10 @@
     {{/* Do not change the following snippet */}}
     {{/* Code is duplicated throughout the code */}}
     {{- $.root.Scratch.Set "image" (printf "images/%s" $image) -}}
-
     {{/* Page specific resource */}}
     {{- $location := (printf "%s/%s" $.fallthrough.page_path $image) -}}
     {{- if (fileExists (printf "content/%s" $location)) -}}
       {{/* special case index: trim _index/ from url */}}
-      {{- $location := strings.TrimPrefix "_index/" $location -}}
       {{- $.root.Scratch.Set "image" $location -}}
     {{- end -}}
 
@@ -22,7 +20,6 @@
     {{- $location := (printf "%s/%s" $.fallthrough.file_path $image) -}}
     {{- if (fileExists (printf "content/%s" $location)) -}}
       {{/* special case index: trim _index/ from url */}}
-      {{- $location := strings.TrimPrefix "_index/" $location -}}
       {{- $.root.Scratch.Set "image" $location -}}
     {{- end -}}
     {{/* End of do not change */}}
@@ -50,7 +47,6 @@
     {{- $location := (printf "%s/%s" $.fallthrough.page_path $image) -}}
     {{- if (fileExists (printf "content/%s" $location)) -}}
       {{/* special case index: trim _index/ from url */}}
-      {{- $location := strings.TrimPrefix "_index/" $location -}}
       {{- $.root.Scratch.Set "image" $location -}}
     {{- end -}}
 
@@ -58,7 +54,6 @@
     {{- $location := (printf "%s/%s" $.fallthrough.file_path $image) -}}
     {{- if (fileExists (printf "content/%s" $location)) -}}
       {{/* special case index: trim _index/ from url */}}
-      {{- $location := strings.TrimPrefix "_index/" $location -}}
       {{- $.root.Scratch.Set "image" $location -}}
     {{- end -}}
     {{/* End of do not change */}}

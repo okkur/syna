@@ -1,4 +1,4 @@
-{{- $items := where (.resources.Match (printf "%s/*.md" .Name)) ".Name" "ne" .self.Name -}}
+{{- $items := where (.page.Resources.Match (printf "%s/*.md" .Name)) ".Name" "ne" .self.Name -}}
 {{- $bg := .Params.background | default "light" }}
 
 {{ "<!-- Items -->" | safeHTML }}
@@ -40,7 +40,7 @@
       <div class="row justify-content-center align-items-start">
         {{- if eq (len $items) 0 -}}
         <div class="alert alert-danger">
-            {{- printf "Currently there is no configured items content files present. To add new items add a content file within %s"  $.fallthrough.file_path -}}
+          {{- printf "Currently there is no configured items content files present. To add new items add a content file within %s"  $.fallthrough.file_path -}}
         </div>
         {{- else -}}
           {{- range $items -}}
