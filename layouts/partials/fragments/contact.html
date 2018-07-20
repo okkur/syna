@@ -142,8 +142,9 @@
                     </button>
                     <span class="filler"></span>
                   </div>
+                  <div data-netlify-recaptcha></div>
                 {{- else }}
-                  <button
+                    <button
                     class="btn
                       {{- if eq $bg "primary" -}}
                         {{- printf " btn-%s" "dark" -}}
