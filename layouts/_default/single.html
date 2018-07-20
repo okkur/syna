@@ -10,11 +10,6 @@
     check for presence of local fragments since multiple files can use a single
     fragment.
     */}}
-  {{- $global := .Site.GetPage "page" "_global" -}}
-  {{- $.Scratch.Delete "global_fragments" -}}
-  {{- if $global -}}
-    {{- $.Scratch.Set "global_fragments" ($global.Resources.ByType "page") -}}
-  {{- end -}}
   {{- $local_fragments := .Resources.ByType "page" -}}
 
   {{- $.Scratch.Set "fragments" (slice .) -}}
@@ -23,6 +18,21 @@
     {{- $.Scratch.Add "fragments" (slice .) -}}
     {{- $.Scratch.Add "local_fragments_dirs" .Dir -}}
   {{- end -}}
+
+  {{- $section_global := .Site.GetPage "page" (printf "%s/%s" .Section "_global") -}}
+  {{- $global := .Site.GetPage "page" "_global" -}}
+  {{- $.Scratch.Set "global_fragments" (slice) -}}
+  {{- if $section_global -}}
+    {{- range ($section_global.Resources.ByType "page") -}}
+      {{- $.Scratch.Add "global_fragments" . -}}
+    {{- end -}}
+  {{- end -}}
+  {{- if $global -}}
+    {{- range ($global.Resources.ByType "page") -}}
+      {{- $.Scratch.Add "global_fragments" . -}}
+    {{- end -}}
+  {{- end -}}
+
   {{- if $.Scratch.Get "global_fragments" -}}
     {{- range ($.Scratch.Get "global_fragments") -}}
       {{- $name := replace .Name "/index" "" -}}
