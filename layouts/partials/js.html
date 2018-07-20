@@ -1,6 +1,9 @@
 {{ "<!-- Theme Code -->" | safeHTML }}
 <script src="{{ "main.js" | relURL }}"></script>
 
+{{- range $.Scratch.Get "js" }}
+  <script src="{{ . | relURL }}" async defer></script>
+{{- end -}}
 {{- template "_internal/google_analytics_async.html" . -}}
 
 {{- if .Site.Params.analytics.piwik -}}

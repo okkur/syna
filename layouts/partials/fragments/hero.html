@@ -1,4 +1,7 @@
-{{- $bg := .Params.background | default "secondary" }}
+{{- $bg := .Params.background | default "secondary" -}}
+{{- if .Params.particles }}
+  {{- .page_scratch.Add "js" "hero.js" }}
+{{- end }}
 
 {{ "<!-- hero -->" | safeHTML }}
 <header id="{{ .Name }}">
@@ -124,6 +127,3 @@
   {{- end }}
   </div>
 </header>
-{{- if .Params.particles }}
-  <script src="{{ "hero.js" | relURL }}" defer async></script>
-{{- end -}}
