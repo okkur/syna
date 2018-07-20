@@ -1,4 +1,8 @@
 {{- $bg := .Params.background | default "secondary" }}
+{{- if .Params.recaptcha -}}
+  {{- .page_scratch.Add "js" "https://www.google.com/recaptcha/api.js" -}}
+{{- end }}
+{{- .page_scratch.Add "js" "contact.js" }}
 
 {{ "<!-- Contact -->" | safeHTML }}
 <section id="{{ .Name }}">
@@ -173,7 +177,3 @@
   </div>
 </section>
 
-{{- if .Params.recaptcha }}
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-{{- end }}
-<script src="{{ "contact.js" | relURL }}" defer async></script>
