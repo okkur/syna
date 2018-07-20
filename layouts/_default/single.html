@@ -18,12 +18,17 @@
   {{- $local_fragments := .Resources.ByType "page" -}}
 
   {{- $.Scratch.Set "fragments" (slice .) -}}
+  {{- $.Scratch.Set "local_fragments_dirs" (slice) -}}
   {{- range $local_fragments -}}
     {{- $.Scratch.Add "fragments" (slice .) -}}
+    {{- $.Scratch.Add "local_fragments_dirs" .Dir -}}
   {{- end -}}
   {{- if $.Scratch.Get "global_fragments" -}}
     {{- range ($.Scratch.Get "global_fragments") -}}
-      {{- if not (where ($.Scratch.Get "fragments") ".Name" .Name) -}}
+      {{- $name := replace .Name "/index" "" -}}
+      {{- $directory_same_name := in ($.Scratch.Get "local_fragments_dirs") (printf "%s%s/" $.Dir (replace $name ".md" "")) -}}
+      {{- $file_same_name := where ($.Scratch.Get "fragments") ".Name" $name -}}
+      {{- if and (not $file_same_name) (not $directory_same_name) -}}
         {{- $.Scratch.Add "fragments" (slice .) -}}
       {{- end -}}
     {{- end -}}
