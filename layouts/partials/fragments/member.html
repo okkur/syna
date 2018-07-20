@@ -1,4 +1,4 @@
-{{- $members := .resources.Match (printf "%s/*" .Name) -}}
+{{- $members := where (.resources.Match (printf "%s/*.md" .Name)) ".Name" "ne" .self.Name -}}
 {{- $bg := .Params.background | default "light" }}
 
 {{ "<!-- Member -->" | safeHTML }}
