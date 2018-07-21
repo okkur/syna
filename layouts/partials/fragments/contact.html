@@ -131,7 +131,7 @@
                     {{- i18n "contact.defaultJsError" }} {{ .Params.email -}}.
                   </div>
                 </noscript>
-                {{- with .Params.recaptcha }}
+                {{- if .Params.recaptcha -}}
                   <div class="g-recaptcha-container">
                     <span class="g-recaptcha-filler"></span>
                     <button
@@ -146,8 +146,9 @@
                     </button>
                     <span class="filler"></span>
                   </div>
+                {{- else if .Params.netlify -}}
                   <div data-netlify-recaptcha></div>
-                {{- else }}
+                {{- else -}}
                   <button
                     class="btn
                       {{- if eq $bg "primary" -}}
@@ -159,18 +160,18 @@
                     type="submit">
                     {{- .Params.button_text | default (i18n "contact.defaultButton") -}}
                   </button>
-                {{- end }}
+                {{- end -}}
               </div>
             </div>
             {{- range .Params.fields.hidden -}}
-              {{- if eq .name "site" }}
+              {{- if eq .name "site" -}}
                 <input type="hidden" name="{{ .name }}" value="{{ $.root.Page.Permalink }}"/>
-              {{- else if eq .name "page" }}
+              {{- else if eq .name "page" -}}
                 <input type="hidden" name="{{ .name }}" value="{{ $.root.Page.URL }}"/>
-              {{- else }}
+              {{- else -}}
                 <input type="hidden" name="{{ .name }}" value="{{ .value }}"/>
-              {{- end }}
-            {{- end }}
+              {{- end -}}
+            {{- end -}}
           </form>
         </div>
       </div>
