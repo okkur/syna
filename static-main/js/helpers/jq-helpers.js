@@ -1,13 +1,23 @@
 import serialize from './serialize';
 
 function $(selector) {
-  const nodes = Array.from(document.querySelectorAll(selector));
+  const nodes = Array.from((this && Array.isArray(this) ? this[0] : document).querySelectorAll(selector));
 
-  return {
+  const _returnee = {
     $nodes: nodes,
-    on: (event, callback) => nodes.forEach(node => node[`on${event}`] = callback),
-    addClass: className => nodes.forEach(node => node.classList.add(className)),
-    removeClass: className => nodes.forEach(node => node.classList.remove(className)),
+    $: $.bind(nodes),
+    on: (event, callback) => {
+      nodes.forEach(node => node[`on${event}`] = callback.bind(node));
+      return _returnee;
+    },
+    addClass: className => {
+      nodes.forEach(node => node.classList.add(className));
+      return _returnee;
+    },
+    removeClass: className => {
+      nodes.forEach(node => node.classList.remove(className));
+      return _returnee;
+    },
     attr: (attribute, value) => {
       if (value === undefined && nodes.length > 1) {
         throw new Error('Can\'t access value of several nodes\' attributes');
@@ -19,6 +29,28 @@ function $(selector) {
         nodes.forEach(node => node.setAttribute(attribute, value));
       }
     },
+    html: innerHTML => {
+      if (innerHTML === undefined) {
+        if (nodes.length > 1) {
+          throw new Error('Can\'t get several nodes innerHTML at once');
+        }
+
+        return nodes[0].innerHTML;
+      }
+
+      nodes.forEach(node => node.innerHTML = innerHTML);
+    },
+    text: innerText => {
+      if (innerText === undefined) {
+        if (nodes.length > 1) {
+          throw new Error('Can\'t get several nodes innerText at once');
+        }
+
+        return nodes[0].innerText;
+      }
+
+      nodes.forEach(node => node.innerText = innerText);
+    },
     submit: () => nodes.forEach(node => node.submit()),
     serialize: () => {
       if (nodes.length > 1) {
@@ -29,6 +61,10 @@ function $(selector) {
     },
     length: nodes.length,
   }
+
+  nodes.forEach((node, index) => _returnee[index] = node);
+
+  return _returnee;
 }
 
 $.scrollTo = function scrollTo(element, to, duration) {

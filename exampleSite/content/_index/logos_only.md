@@ -9,7 +9,7 @@ background = "dark"
 #subtitle = ""
 
 [[logos]]
-  name = "syna"
+  text = "syna"
   weight = 10
   image = "syna.svg"
   #url = "#"

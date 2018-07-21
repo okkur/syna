@@ -7,6 +7,7 @@ module.exports = {
     contact: './static-main/js/contact.js',
     editor: './static-main/js/editor.js',
     hero: './static-main/js/hero.js',
+    portfolio: './static-main/js/portfolio.js',
   },
   output: {
     path: path.resolve('./static/'),

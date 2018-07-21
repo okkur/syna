@@ -1,4 +1,4 @@
-{{- $items := .resources.Match (printf "%s/*" .Name) -}}
+{{- $items := where (.resources.Match (printf "%s/*.md" .Name)) ".Name" "ne" .self.Name -}}
 {{- $bg := .Params.background | default "light" }}
 
 {{ "<!-- Items -->" | safeHTML }}
@@ -48,16 +48,18 @@
             {{- if not (in .Name "/index.md") -}}
               {{- $item := .Params }}
               <div class="col-md-4 text-center">
-                <span class="fa-stack fa-3x m-2">
-                  <i class="fas fa-circle fa-stack-2x
-                    {{- if eq $bg "primary" -}}
-                      {{- printf " text-%s" "dark" -}}
-                    {{- else -}}
-                      {{- printf " text-%s" "primary" -}}
-                    {{- end -}}
-                  "></i>
-                  <i class="{{ $item.icon }} fa-stack-1x fa-inverse"></i>
-                </span>
+                {{- if $item.icon }}
+                  <span class="fa-stack fa-3x m-2">
+                    <i class="fas fa-circle fa-stack-2x
+                      {{- if eq $bg "primary" -}}
+                        {{- printf " text-%s" "dark" -}}
+                      {{- else -}}
+                        {{- printf " text-%s" "primary" -}}
+                      {{- end -}}
+                    "></i>
+                    <i class="{{ $item.icon }} fa-stack-1x fa-inverse"></i>
+                  </span>
+                {{- end }}
                 <h4 class="mb-3
                   {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
                     {{- printf " text-%s" "dark" -}}

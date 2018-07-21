@@ -52,7 +52,7 @@ subtitle= "Tables are responsive by default"
     button = "Button"
     url = "#"
     color = "danger"
-    center = true
+    align = "center"
 
 [[rows]]
   [[rows.values]]
@@ -73,5 +73,5 @@ subtitle= "Tables are responsive by default"
   [[rows.values]]
     icon = "fas fa-download"
     url = "#"
-    center = true
+    align = "center"
 +++

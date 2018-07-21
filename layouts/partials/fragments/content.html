@@ -1,0 +1,91 @@
+{{- $self := .self -}}
+{{- $bg := .Params.background | default "light" }}
+
+{{ "<!-- Content -->" | safeHTML }}
+<section id="{{ .Name }}">
+  <div class="overlay container-fluid
+    {{- printf " bg-%s" $bg -}}
+  ">
+    <div class="container py-5">
+      <div class="row">
+        {{- with .Params.sidebar -}}
+          <div class="col-md-3 pb-4 {{- if (eq .align "right") }} order-1 {{- else }} order-0 {{- end -}}">
+            {{- if .title }}
+              <div class="col-12 pb-3
+                {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
+                  {{- printf " text-%s" "dark" -}}
+                {{- else -}}
+                  {{- printf " text-%s" "light" -}}
+                {{- end -}}
+              ">
+                <h1>
+                  {{- .title | markdownify -}}
+                </h1>
+              </div>
+            {{- end }}
+            <div class="col-12
+              {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                {{- printf " text-%s" "dark" -}}
+              {{- else -}}
+                {{- printf " text-muted text-%s" "secondary" -}}
+              {{- end -}}
+            ">
+              {{- .content | markdownify -}}
+            </div>
+          </div>
+          <div class="col-md-9">
+        {{- else }}
+          <div class="col-md-12">
+        {{- end }}
+          {{- if .Params.title }}
+            <div class="col-12 pb-3
+              {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
+                {{- printf " text-%s" "dark" -}}
+              {{- else -}}
+                {{- printf " text-%s" "light" -}}
+              {{- end -}}
+            ">
+              <h1>
+                {{- .Params.title | markdownify -}}
+              </h1>
+            </div>
+          {{- end -}}
+          {{- if .Params.subtitle }}
+            <div class="col-12 pb-2
+              {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                {{- printf " text-%s" "dark" -}}
+              {{- else -}}
+                {{- printf " text-muted text-%s" "secondary" -}}
+              {{- end -}}
+            ">
+              <h3>
+                {{- .Params.subtitle | markdownify -}}
+              </h3>
+            </div>
+          {{- end }}
+          {{- with .Params.categories }}
+            <div class="col-12 pb-4">
+              {{- range . }}
+                <div class="badge
+                {{- if (eq $bg "dark") -}}
+                  {{- printf " badge-%s" "light" -}}
+                {{- else -}}
+                  {{- printf " badge-%s" "primary" -}}
+                {{- end -}}">{{ . }}</div>
+              {{- end }}
+            </div>
+          {{- end }}
+          <div class="col-12
+            {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+              {{- printf " text-%s" "dark" -}}
+            {{- else -}}
+              {{- printf " text-muted text-%s" "secondary" -}}
+            {{- end -}}
+          ">
+            {{ $self.Content | markdownify }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

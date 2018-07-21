@@ -169,13 +169,13 @@
                   {{- printf " text-muted text-%s" "secondary" -}}
                 {{- end -}}
               ">
-                {{- .self.Content  | markdownify -}}
+                {{- .self.Content | markdownify -}}
               </div>
             </div>
           </div>
           {{- end -}}
           {{- if or .Params.icon .Params.image }}
-            <div class="col-12 text-center text-lg-left">
+            <div class="col-12 text-center mb-2 {{ printf "text-lg-%s" $align }}">
               {{- range .Params.buttons }}
                 <a class="btn btn-lg m-2
                   {{ if hasPrefix .url "#" }} anchor{{ end }}
@@ -243,7 +243,7 @@
                               {{- printf " text-center" -}}
                             {{- end -}}
                           ">
-                            <a href="{{ .urls }}">
+                            <a href="{{ .url }}">
                               <i class="{{ .icon }} fa-2x"></i>
                             </a>
                           </td>

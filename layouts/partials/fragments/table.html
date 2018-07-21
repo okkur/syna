@@ -1,5 +1,4 @@
 {{- $bg := .Params.background | default "light" -}}
-{{- $align := .Params.align | default "center" }}
 
 {{ "<!-- Table -->" | safeHTML }}
 <section id="{{ .Name }}">
@@ -52,8 +51,8 @@
                       {{- $.Scratch.Set "col" 0 -}}
                       {{- range .Params.header.values }}
                         <th class="
-                          {{- if .center -}}
-                            {{- printf " text-center" -}}
+                          {{- if (in (slice "left" "center" "right") .align) -}}
+                            {{- printf " text-%s" .align -}}
                           {{- end -}}
                           {{- if .hide_on_mobile -}}
                             {{- print " hide-on-mobile" }}
@@ -78,12 +77,15 @@
                           ">{{ .header | markdownify }}</th>
                           {{- else if .button }}
                             <td class="align-middle
+                              {{- if (in (slice "left" "center" "right") .align) -}}
+                                {{- printf " text-%s" .align -}}
+                              {{- end -}}
                               {{- if (index $.Params.header.values $i).hide_on_mobile -}}
                                 {{- print " hide-on-mobile" }}
                               {{- end -}}
                             ">
                               <a class="btn
-                              {{ if hasPrefix .url "#" }} anchor{{ end }}
+                              {{- if hasPrefix .url "#" }} anchor{{- end -}}
                               {{- $color := .color | default "primary" -}}
                               {{- printf " btn-%s" $color -}}
                             " href="{{ .url | relLangURL }}">
@@ -92,21 +94,21 @@
                           </td>
                         {{- else if .icon }}
                           <td class="align-middle
-                            {{- if .center -}}
-                              {{- printf " text-center" -}}
+                            {{- if (in (slice "left" "center" "right") .align) -}}
+                              {{- printf " text-%s" .align -}}
                             {{- end -}}
                             {{- if (index $.Params.header.values $i).hide_on_mobile -}}
                               {{- print " hide-on-mobile" }}
                             {{- end -}}
                           ">
-                            <a href="{{ .links }}">
+                            <a href="{{ .url }}">
                               <i class="{{ .icon }} fa-2x"></i>
                             </a>
                           </td>
                         {{- else }}
                           <td class="align-middle
-                            {{- if .center -}}
-                              {{- printf " text-center" -}}
+                            {{- if (in (slice "left" "center" "right") .align) -}}
+                              {{- printf " text-%s" .align -}}
                             {{- end -}}
                             {{- if (index $.Params.header.values $i).hide_on_mobile -}}
                               {{- print " hide-on-mobile" }}
