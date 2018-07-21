@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactJsonschemaForm from 'react-jsonschema-form';
 
-if (!window.synaEditorPortal) {
+if (!window.synaPortals.editorDefault) {
   class Editor extends React.PureComponent {
     render() {
       return (
@@ -19,5 +19,8 @@ if (!window.synaEditorPortal) {
     }
   }
 
-  window.synaEditorPortal = Editor;
+  window.synaPortals.editorDefault = {
+    component: Editor,
+    container: '#editor [data-portal]',
+  };
 }

@@ -2,7 +2,12 @@
 {{ "<!-- Editor -->" | safeHTML }}
 
 <section id="{{ .Name }}">
-  <div id="editor-react" class="overlay container-fluid
+  <div data-portal class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   "></div>
 </section>
+<script>
+  if (!window.synaPortals) {
+    window.synaPortals = {};
+  }
+</script>

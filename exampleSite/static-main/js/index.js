@@ -4,7 +4,7 @@ class Editor extends React.PureComponent {
   render() {
     return (
       <div className="container py-4 text-center">
-        <h3 className="text-dark">Editor Fragment</h3>
+        <h3 className="text-dark">Editor Fragment filled with custom React Component</h3>
         <h4 className="text-dark">This fragment supports React Portals. Here you are looking at a React Component.</h4>
         <form action="#">
           <div className="row pt-3">
@@ -33,4 +33,7 @@ class Editor extends React.PureComponent {
   }
 }
 
-window.synaEditorPortal = Editor;
+window.synaPortals.editor = {
+  component: Editor,
+  container: '#editor-custom [data-portal]',
+};

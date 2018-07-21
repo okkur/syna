@@ -9719,7 +9719,7 @@ body.modal-open {
   visibility: hidden;
   opacity: 0; }
 
-#editor-react {
+[data-portal] {
   padding-bottom: 1px;
   box-sizing: border-box; }
 
