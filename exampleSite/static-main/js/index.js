@@ -7,13 +7,13 @@ class Editor extends React.PureComponent {
         <h3 className="text-dark">Editor Fragment</h3>
         <h4 className="text-dark">This fragment supports React Portals. Here you are looking at a React Component.</h4>
         <form action="#">
-          <div class="row pt-3">
-            <div class="col-md-6">
+          <div className="row pt-3">
+            <div className="col-md-6">
               <div className="form-group">
                 <input type="text" className="form-control" placeholder="Enter your name" />
               </div>
             </div>
-            <div class="col-md-6">
+            <div className="col-md-6">
               <div className="form-group">
                 <input type="email" className="form-control" placeholder="Enter your email" />
               </div>
