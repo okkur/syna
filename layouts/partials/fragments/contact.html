@@ -1,4 +1,8 @@
 {{- $bg := .Params.background | default "secondary" }}
+{{- if .Params.recaptcha -}}
+  {{- .page_scratch.Add "js" "https://www.google.com/recaptcha/api.js" -}}
+{{- end }}
+{{- .page_scratch.Add "js" "contact.js" }}
 
 {{ "<!-- Contact -->" | safeHTML }}
 <section id="{{ .Name }}">
@@ -53,7 +57,7 @@
                       type="text"
                       data-validation
                       data-validation-error-msg="{{ .error | default (i18n "contact.defaultNameError") }}"
-                      placeholder="{{ with .button_text }}{{ . | markdownify }}{{ end }}"
+                      placeholder="{{ with .text }}{{ . | markdownify }}{{ end }}"
                       required>
                     <div class="px-2" data-error id="name-error"></div>
                   </div>
@@ -67,7 +71,7 @@
                       type="text"
                       data-validation="email"
                       data-validation-error-msg="{{ .error | default (i18n "contact.defaultEmailError") }}"
-                      placeholder="{{ with .button_text }}{{ . | markdownify }}{{ end }}"
+                      placeholder="{{ with .text }}{{ . | markdownify }}{{ end }}"
                       required>
                     <div class="px-2" data-error id="email-error"></div>
                   </div>
@@ -82,7 +86,7 @@
                       data-validation="regex"
                       data-validation-regex="^([0-9,\+]+)$"
                       data-validation-error-msg="{{ .error | default (i18n "contact.defaultPhoneError") }}"
-                      placeholder="{{ with .button_text }}{{ . | markdownify }}{{ end }}">
+                      placeholder="{{ with .text }}{{ . | markdownify }}{{ end }}">
                     <div class="px-2" data-error id="phone-error"></div>
                   </div>
                 {{- end }}
@@ -97,7 +101,7 @@
                       type="text"
                       data-validation
                       data-validation-error-msg="{{ .error | default (i18n "contact.defaultButton") }}"
-                      placeholder="{{ with .button_text }}{{ . | markdownify }}{{ end }}"
+                      placeholder="{{ with .text }}{{ . | markdownify }}{{ end }}"
                       rows="4"
                       required></textarea>
                     <div class="px-2" data-error id="message-error"></div>
@@ -172,8 +176,3 @@
     </div>
   </div>
 </section>
-
-{{- if .Params.recaptcha }}
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-{{- end }}
-<script src="{{ "contact.js" | relURL }}" defer async></script>

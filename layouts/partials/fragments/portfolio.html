@@ -1,5 +1,6 @@
 {{- $items := where (.resources.Match (printf "%s/*.md" .Name)) ".Name" "ne" .self.Name -}}
-{{- $bg := .Params.background | default "light" }}
+{{- $bg := .Params.background | default "light" -}}
+{{- .page_scratch.Add "js" "portfolio.js" }}
 
 {{ "<!-- Porfolio -->" | safeHTML }}
 <section id="{{ .Name }}">
@@ -67,5 +68,3 @@
     </div>
   </div>
 </section>
-
-<script src="{{ "portfolio.js" | relURL }}" defer async></script>
