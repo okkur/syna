@@ -5,7 +5,7 @@
   {{- $.Scratch.Add "resources" $js -}}
 {{- end -}}
 {{- range $.Scratch.Get "resources" }}
-  <script src="{{ (. | resources.Minify).RelPermalink }}" async defer></script>
+  <script src="{{ (. | resources.Minify | resources.Fingerprint).RelPermalink }}" async defer></script>
 {{- end -}}
 
 {{- template "_internal/google_analytics_async.html" . -}}
