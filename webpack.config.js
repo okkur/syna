@@ -13,7 +13,7 @@ module.exports = {
     portfolio: './static-main/js/portfolio.js',
   },
   output: {
-    path: path.resolve('./static/'),
+    path: path.resolve('./assets'),
     filename: '[id].js'
   },
   resolve: {

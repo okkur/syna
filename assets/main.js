@@ -36,32 +36,17 @@
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
 /******/ 		}
 /******/ 	};
 /******/
 /******/ 	// define __esModule on exports
 /******/ 	__webpack_require__.r = function(exports) {
-/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 		}
 /******/ 		Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 	};
-/******/
-/******/ 	// create a fake namespace object
-/******/ 	// mode & 1: value is a module id, require it
-/******/ 	// mode & 2: merge all properties of value into the ns
-/******/ 	// mode & 4: return value when already ns object
-/******/ 	// mode & 8|1: behave like require
-/******/ 	__webpack_require__.t = function(value, mode) {
-/******/ 		if(mode & 1) value = __webpack_require__(value);
-/******/ 		if(mode & 8) return value;
-/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
-/******/ 		var ns = Object.create(null);
-/******/ 		__webpack_require__.r(ns);
-/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
-/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
-/******/ 		return ns;
 /******/ 	};
 /******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
@@ -81,10 +66,22 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./static-main/js/portfolio.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./static-main/js/index.js");
 /******/ })
 /************************************************************************/
 /******/ ({
+
+/***/ "./static-main/js/helpers/bootstrap-helper.js":
+/*!****************************************************!*\
+  !*** ./static-main/js/helpers/bootstrap-helper.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nvar _jqHelpers = __webpack_require__(/*! ./jq-helpers */ \"./static-main/js/helpers/jq-helpers.js\");\n\nvar _jqHelpers2 = _interopRequireDefault(_jqHelpers);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar toggle = document.querySelectorAll('.navbar-toggler'); // Updated the script from https://stackoverflow.com/questions/43417452/animate-navbar-collapse-using-pure-js-css/43434017#43434017\n\nvar collapse = document.querySelectorAll('.navbar-collapse');\nvar dropdowns = document.querySelectorAll('.dropdown') || [];\n\nfunction toggleMenu(node) {\n  var menu = document.querySelector(node.dataset.target);\n  menu.classList.toggle('in');\n}\n\nfunction closeMenus() {\n  Array.from(dropdowns || []).forEach(function (node) {\n    node.querySelector('.dropdown-toggle').classList.remove('dropdown-open');\n    node.classList.remove('open');\n  });\n}\n\nfunction closeMenusOnResize() {\n  if (document.body.clientWidth >= 768) {\n    closeMenus();\n    Array.from(collapse || []).forEach(function (node) {\n      return node.classList.remove('in');\n    });\n  }\n}\n\nfunction toggleDropdown() {\n  if (document.body.clientWidth < 768) {\n    var open = this.classList.contains('open');\n    closeMenus();\n    if (!open) {\n      this.querySelector('.dropdown-toggle').classList.toggle('dropdown-open');\n      this.classList.toggle('open');\n    }\n  }\n}\n\nwindow.addEventListener('resize', closeMenusOnResize, false);\nArray.from(dropdowns || []).forEach(function (node) {\n  return node.addEventListener('click', toggleDropdown);\n});\nArray.from(toggle || []).forEach(function (node) {\n  return node.addEventListener('click', function (e) {\n    return toggleMenu(node);\n  }, false);\n});\n\n//# sourceURL=webpack:///./static-main/js/helpers/bootstrap-helper.js?");
+
+/***/ }),
 
 /***/ "./static-main/js/helpers/jq-helpers.js":
 /*!**********************************************!*\
@@ -110,15 +107,50 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 
 /***/ }),
 
-/***/ "./static-main/js/portfolio.js":
-/*!*************************************!*\
-  !*** ./static-main/js/portfolio.js ***!
-  \*************************************/
+/***/ "./static-main/js/index.js":
+/*!*********************************!*\
+  !*** ./static-main/js/index.js ***!
+  \*********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _jqHelpers = __webpack_require__(/*! ./helpers/jq-helpers */ \"./static-main/js/helpers/jq-helpers.js\");\n\nvar _jqHelpers2 = _interopRequireDefault(_jqHelpers);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar portfolioItem = (0, _jqHelpers2.default)('.portfolio-item.has-modal');\nvar _default = { innerHTML: '' };\n\nportfolioItem.on('click', function () {\n  window.syna.showModal({\n    title: (this.querySelector('.title') || _default).innerHTML,\n    subtitle: (this.querySelector('.subtitle') || _default).innerHTML,\n    content: this.querySelector('.content').innerHTML,\n    image: this.querySelector('img').src,\n    size: 'md'\n  });\n});\n\n//# sourceURL=webpack:///./static-main/js/portfolio.js?");
+eval("\n\n__webpack_require__(/*! ./helpers/bootstrap-helper */ \"./static-main/js/helpers/bootstrap-helper.js\");\n\n__webpack_require__(/*! ./scroll */ \"./static-main/js/scroll.js\");\n\n__webpack_require__(/*! ./modal */ \"./static-main/js/modal.js\");\n\n__webpack_require__(/*! ../styles */ \"./static-main/styles/index.scss\");\n\n//# sourceURL=webpack:///./static-main/js/index.js?");
+
+/***/ }),
+
+/***/ "./static-main/js/modal.js":
+/*!*********************************!*\
+  !*** ./static-main/js/modal.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nvar _jqHelpers = __webpack_require__(/*! ./helpers/jq-helpers */ \"./static-main/js/helpers/jq-helpers.js\");\n\nvar _jqHelpers2 = _interopRequireDefault(_jqHelpers);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar modal = (0, _jqHelpers2.default)('.modal');\nvar dialog = (0, _jqHelpers2.default)('.modal .modal-dialog');\n\nfunction closeDialog() {\n  (0, _jqHelpers2.default)('body').removeClass('modal-open');\n  modal.removeClass('show');\n}\n\n(0, _jqHelpers2.default)('[data-dismiss=\"modal\"]').on('click', closeDialog);\n\nmodal.on('click', function (e) {\n  if (!dialog[0].contains(e.target)) {\n    closeDialog();\n  }\n});\n\n(window.syna || (window.syna = {})).showModal = function (_ref) {\n  var title = _ref.title,\n      subtitle = _ref.subtitle,\n      image = _ref.image,\n      content = _ref.content,\n      _ref$size = _ref.size,\n      size = _ref$size === undefined ? '' : _ref$size;\n\n  (0, _jqHelpers2.default)('body').addClass('modal-open');\n  modal.addClass('show');\n  dialog.$('.title').html(title || '');\n  dialog.$('.subtitle').html(subtitle || '');\n  dialog.$('img')[0].src = image;\n  if (content) {\n    dialog.$('.modal-body .content').html(content);\n    dialog.$('.modal-body .content').removeClass('hidden');\n  } else {\n    dialog.$('.modal-body .content').addClass('hidden');\n  }\n  dialog.removeClass('md').removeClass('lg').addClass(size);\n};\n\n//# sourceURL=webpack:///./static-main/js/modal.js?");
+
+/***/ }),
+
+/***/ "./static-main/js/scroll.js":
+/*!**********************************!*\
+  !*** ./static-main/js/scroll.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nvar _jqHelpers = __webpack_require__(/*! ./helpers/jq-helpers */ \"./static-main/js/helpers/jq-helpers.js\");\n\nvar _jqHelpers2 = _interopRequireDefault(_jqHelpers);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n(function () {\n  handleScroll();\n  window.onscroll = handleScroll;\n  (0, _jqHelpers2.default)('.scroll-to-top').on('click', scrollToTop);\n})();\n\nfunction handleScroll() {\n  if (window.scrollY > window.innerHeight / 2) {\n    (0, _jqHelpers2.default)('.scroll-to-top').removeClass('d-none');\n  } else {\n    (0, _jqHelpers2.default)('.scroll-to-top').addClass('d-none');\n  }\n}\n\nfunction scrollToTop() {\n  _jqHelpers2.default.scrollTo(document.body, 0, 250);\n}\n\n//# sourceURL=webpack:///./static-main/js/scroll.js?");
+
+/***/ }),
+
+/***/ "./static-main/styles/index.scss":
+/*!***************************************!*\
+  !*** ./static-main/styles/index.scss ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./static-main/styles/index.scss?");
 
 /***/ })
 
