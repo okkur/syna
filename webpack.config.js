@@ -5,7 +5,6 @@ module.exports = {
   entry: {
     main: './static-main/js/index.js',
     contact: './static-main/js/contact.js',
-    editor: './static-main/js/editor.js',
     hero: './static-main/js/hero.js',
     portfolio: './static-main/js/portfolio.js',
     react: './static-main/js/react.js',
@@ -53,8 +52,8 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[id].css'
+      filename: 'syna-[name].css',
+      chunkFilename: 'syna-[id].css'
     }),
   ],
 };

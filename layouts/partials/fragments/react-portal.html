@@ -1,7 +1,7 @@
 {{- $bg := .Params.background | default "secondary" -}}
 {{- .page_scratch.Add "js" ("syna-react.js" | relURL) -}}
 {{- .page_scratch.Set "react" true }}
-{{ "<!-- Editor -->" | safeHTML }}
+{{ "<!-- React Portal -->" | safeHTML }}
 
 <section id="{{ .Name }}">
   <div data-portal class="overlay container-fluid
