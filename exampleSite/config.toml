@@ -29,7 +29,7 @@ googleAnalytics = ""
     favicon_png = "favicon.png"
     favicon_svg = "favicon.svg"
     css = []
-    js  = ["main.js"]
+    js  = ["counter.js"]
 
   # Piwik tracking
   [params.analytics.piwik]

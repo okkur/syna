@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import './editor';
+
 const Portal = ({ component: Component, container }) => {
   return ReactDOM.createPortal(
     <div>
@@ -20,4 +22,4 @@ class Portals extends React.PureComponent {
   }
 }
 
-export default Portals;
+ReactDOM.render(<Portals />, document.querySelector('#react'));

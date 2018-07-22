@@ -8,6 +8,7 @@ module.exports = {
     editor: './static-main/js/editor.js',
     hero: './static-main/js/hero.js',
     portfolio: './static-main/js/portfolio.js',
+    react: './static-main/js/react.js',
   },
   output: {
     path: path.resolve('./static/'),

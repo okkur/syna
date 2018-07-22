@@ -1,4 +1,6 @@
-{{- $bg := .Params.background | default "secondary" }}
+{{- $bg := .Params.background | default "secondary" -}}
+{{- .page_scratch.Add "js" ("syna-react.js" | relURL) -}}
+{{- .page_scratch.Set "react" true }}
 {{ "<!-- Editor -->" | safeHTML }}
 
 <section id="{{ .Name }}">
@@ -6,8 +8,3 @@
     {{- printf " bg-%s" $bg -}}
   "></div>
 </section>
-<script>
-  if (!window.synaPortals) {
-    window.synaPortals = {};
-  }
-</script>
