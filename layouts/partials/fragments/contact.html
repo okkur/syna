@@ -1,6 +1,6 @@
 {{- $bg := .Params.background | default "secondary" }}
 {{- if .Params.recaptcha -}}
-  {{- .page_scratch.Add "js" "https://www.google.com/recaptcha/api.js" -}}
+  {{- .page_scratch.Add "cor-js" "https://www.google.com/recaptcha/api.js" -}}
 {{- end }}
 {{- .page_scratch.Add "js" "contact.js" }}
 

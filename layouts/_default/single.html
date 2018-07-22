@@ -35,7 +35,8 @@
   {{- end -}}
 
   {{- $page := . }}
-  {{ $.Scratch.Set "js" (slice) }}
+  {{- $.Scratch.Set "js" (slice) -}}
+  {{- $.Scratch.Set "cor-js" (slice) -}}
   {{- range sort ($.Scratch.Get "fragments" | default slice) "Params.weight" -}}
     {{- if and (not .Params.disabled) (isset .Params "fragment") -}}
       {{/* Cleanup .Name to be more useful within fragments */}}
