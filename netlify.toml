@@ -1,5 +1,5 @@
 [build]
-  publish = "exampleSite/public"
+  publish = "public"
   command = "mkdir -p exampleSite/themes/syna; cp -R . /tmp/syna; cp -R /tmp/syna exampleSite/themes/syna; cd exampleSite; hugo --debug --themesDir themes"
 
 [context.production.environment]
@@ -7,7 +7,7 @@
   HUGO_ENV = "production"
 
 [context.deploy-preview]
-  command = "mkdir -p exampleSite/themes/syna; cp -R . /tmp/syna; cp -R /tmp/syna exampleSite/themes/syna; cd exampleSite; hugo -l exampleSite/themes/syna/layouts/ --debug --themesDir themes; cd themes; ls -la"
+  command = "hugo -s exampleSite -d public --debug"
 
 [context.deploy-preview.environment]
   HUGO_VERSION = "0.45.1"
