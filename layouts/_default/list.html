@@ -39,7 +39,7 @@
       {{- $name := replace .Name "/index" "" -}}
       {{- $directory_same_name := in ($.Scratch.Get "local_fragments_dirs") (printf "%s%s/" $.Dir (replace $name ".md" "")) -}}
       {{- $file_same_name := where ($.Scratch.Get "fragments") ".Name" $name -}}
-      {{- if and (not $file_same_name) (not $directory_same_name) -}}
+      {{- if and (not $file_same_name) (not $directory_same_name) (ne .Params.fragment "404") -}}
         {{- $.Scratch.Add "fragments" (slice .) -}}
       {{- end -}}
     {{- end -}}
