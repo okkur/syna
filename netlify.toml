@@ -11,7 +11,7 @@
   command = "hugo version; hugo --themesDir ../.. --debug; cd ../../ && ls -la;"
 
 [context.deploy-preview.environment]
-  HUGO_VERSION = "0.45.1"
+  HUGO_VERSION = "0.44"
 
 [context.branch-deploy]
   command = "ls -la; hugo -t repo"
