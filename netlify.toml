@@ -1,19 +1,19 @@
 [build]
   publish = "exampleSite/public"
-  command = "mkdir -p exampleSite/themes/syna; cp -R . /tmp/syna; cp -R /tmp/syna exampleSite/themes/syna; cd exampleSite; hugo --themesDir themes"
+  command = "mkdir -p exampleSite/themes/syna; cp -R . /tmp/syna; cp -R /tmp/syna exampleSite/themes/syna; cd exampleSite; hugo --debug --themesDir themes"
 
 [context.production.environment]
   HUGO_VERSION = "0.45.1"
   HUGO_ENV = "production"
 
 [context.deploy-preview]
-  command = "mkdir -p exampleSite/themes/syna; cp -R . /tmp/syna; cp -R /tmp/syna exampleSite/themes/syna; cd exampleSite; hugo --themesDir themes"
+  command = "mkdir -p exampleSite/themes/syna; cp -R . /tmp/syna; cp -R /tmp/syna exampleSite/themes/syna; cd exampleSite; hugo --debug --themesDir themes"
 
 [context.deploy-preview.environment]
   HUGO_VERSION = "0.45.1"
 
 [context.branch-deploy]
-  command = "mkdir -p exampleSite/themes/syna; cp -R . /tmp/syna; cp -R /tmp/syna exampleSite/themes/syna; cd exampleSite; hugo --themesDir themes"
+  command = "mkdir -p exampleSite/themes/syna; cp -R . /tmp/syna; cp -R /tmp/syna exampleSite/themes/syna; cd exampleSite; hugo --debug --themesDir themes"
 
 [context.branch-deploy.environment]
   HUGO_VERSION = "0.45.1"
