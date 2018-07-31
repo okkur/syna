@@ -1,7 +1,7 @@
 [build]
   base    = "exampleSite"
   publish = "exampleSite/public"
-  command = "hugo -t repo"
+  command = "ls -la; hugo -t repo"
 
 [context.production.environment]
   HUGO_VERSION = "0.45.1"
