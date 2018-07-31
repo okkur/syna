@@ -1,6 +1,6 @@
 [build]
   publish = "exampleSite/public"
-  command = "cp -R . exampleSite/themes/syna; cd exampleSite; hugo"
+  command = "mkdir -p exampleSite/themes/syna && cp -R . exampleSite/themes/syna && cd exampleSite && hugo"
 
 [context.production.environment]
   HUGO_VERSION = "0.45.1"
