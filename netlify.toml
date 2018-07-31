@@ -7,13 +7,13 @@
   HUGO_ENV = "production"
 
 [context.deploy-preview]
-  command = "cp -R . exampleSite/themes/syna; cd exampleSite; hugo"
+  command = "mkdir -p exampleSite/themes/syna && cp -R . exampleSite/themes/syna && cd exampleSite && hugo"
 
 [context.deploy-preview.environment]
   HUGO_VERSION = "0.45.1"
 
 [context.branch-deploy]
-  command = "cp -R . exampleSite/themes/syna; cd exampleSite; hugo"
+  command = "mkdir -p exampleSite/themes/syna && cp -R . exampleSite/themes/syna && cd exampleSite && hugo"
 
 [context.branch-deploy.environment]
   HUGO_VERSION = "0.45.1"
