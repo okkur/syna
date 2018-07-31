@@ -8,7 +8,7 @@
   HUGO_ENV = "production"
 
 [context.deploy-preview]
-  command = "hugo version; hugo -t repo --debug; cd ../../ && ls -la;"
+  command = "hugo version; hugo --themesDir repo --debug; cd ../../ && ls -la;"
 
 [context.deploy-preview.environment]
   HUGO_VERSION = "0.45.1"
