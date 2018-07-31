@@ -7,10 +7,10 @@
   HUGO_ENV = "production"
 
 [context.deploy-preview]
-  command = "hugo -s exampleSite -d public --debug"
+  command = "hugo -s exampleSite -d ../public --debug"
 
 [context.deploy-preview.environment]
-  HUGO_VERSION = "0.45.1"
+  HUGO_VERSION = "0.42"
 
 [context.branch-deploy]
   command = "mkdir -p exampleSite/themes/syna; cp -R . /tmp/syna; cp -R /tmp/syna exampleSite/themes/syna; cd exampleSite; hugo --debug --themesDir themes"
