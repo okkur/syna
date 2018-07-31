@@ -1,19 +1,20 @@
 [build]
+  base = "exampleSite
   publish = "public"
-  command = "mkdir -p exampleSite/themes/syna; cp -R . /tmp/syna; cp -R /tmp/syna exampleSite/themes/syna; cd exampleSite; hugo --debug --themesDir themes"
+  command = "HUGO_THEME=repo hugo -d ../public"
 
 [context.production.environment]
   HUGO_VERSION = "0.45.1"
   HUGO_ENV = "production"
 
 [context.deploy-preview]
-  command = "mkdir -p exampleSite/themes/syna; cp -R . /tmp/syna; cp -R /tmp/syna exampleSite/themes/syna; cd exampleSite; hugo -d ../public --themesDir themes --debug"
+  command = "HUGO_THEME=repo hugo -d ../public"
 
 [context.deploy-preview.environment]
-  HUGO_VERSION = "0.42"
+  HUGO_VERSION = "0.45.1"
 
 [context.branch-deploy]
-  command = "mkdir -p exampleSite/themes/syna; cp -R . /tmp/syna; cp -R /tmp/syna exampleSite/themes/syna; cd exampleSite; hugo --debug --themesDir themes"
+  command = "HUGO_THEME=repo hugo -d ../public"
 
 [context.branch-deploy.environment]
   HUGO_VERSION = "0.45.1"
