@@ -1,7 +1,10 @@
 # Site settings
+baseurl = "/"
 languageCode = "en-us"
+languageLang = "en"
 title = "Okkur - Syna"
 theme = "syna"
+themeDir = "../.."
 enableGitInfo = true
 version = "0.11.0"
 
