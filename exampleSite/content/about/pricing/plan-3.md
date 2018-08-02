@@ -9,14 +9,24 @@ price = "Custom"
 
 button_text = "Contact us"
 link = "http://example.com"
+
+[[feature]]
+  text = "**Basic** feature"
+  icon = "fas fa-check"
+
+[[feature]]
+  text = "**Premium** feature"
+  icon = "fas fa-check"
+
+[[feature]]
+  text = "**Email** support"
+  icon = "fas fa-check"
+
+[[feature]]
+  text = "**Chat** support"
+  icon = "fas fa-check"
+
+[[feature]]
+  text = "**Additional enterprise stuff**"
+  icon = "fas fa-check"
 +++
-
-**Basic** feature
-
-**Premium** feature
-
-**Email** support
-
-**Chat** support
-
-**Additional enterprise stuff**

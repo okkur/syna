@@ -1,4 +1,5 @@
 {{- $items := where (.resources.Match (printf "%s/*.md" .Name)) ".Name" "ne" .self.Name -}}
+{{- $self := . -}}
 {{- $bg := .Params.background | default "light" }}
 
 {{ "<!-- Pricing -->" | safeHTML }}
@@ -15,6 +16,9 @@
             {{- else -}}
               {{- printf " text-%s" "light" -}}
             {{- end -}}
+            {{- if and (not (isset $self.Params "subtitle")) (not $self.Content) -}}
+              {{- printf " pb-4" -}}
+            {{- end -}}
           ">
             <h2>
               {{- . | markdownify -}}
@@ -24,6 +28,21 @@
       {{- end -}}
       {{- with .Params.subtitle -}}
         <div class="row">
+          <div class="col text-center pt-2 pb-4
+            {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+              {{- printf " text-%s" "dark" -}}
+            {{- else -}}
+              {{- printf " text-muted text-%s" "secondary" -}}
+            {{- end -}}
+          ">
+            <h6>
+              {{- . | markdownify -}}
+            </h6>
+          </div>
+        </div>
+      {{- end }}
+      {{- with .Content -}}
+        <div class="row">
           <div class="col text-center pt-4 pb-5
             {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
               {{- printf " text-%s" "dark" -}}
@@ -31,9 +50,7 @@
               {{- printf " text-muted text-%s" "secondary" -}}
             {{- end -}}
           ">
-            <h5>
-              {{- . | markdownify -}}
-            </h5>
+            {{- . -}}
           </div>
         </div>
       {{- end }}
@@ -50,9 +67,11 @@
               </div>
               <div class="card-body {{ printf "bg-%s" (.Params.bg | default "light") }}">
                 <div class="mb-4 features">
-                  {{ .Content }}
+                  {{- range .Params.feature }}
+                    <p><i class="{{ .icon }}"></i>{{ .text | markdownify }}</p>
+                  {{- end }}
                 </div>
-                <a href="{{ .Params.link }}" class="btn btn-lg btn-block btn-primary">{{ .Params.button_text }}</a>
+                <a href="{{ .Params.button_url }}" class="btn btn-lg btn-block btn-primary">{{ .Params.button_text }}</a>
               </div>
             </div>
           </div>

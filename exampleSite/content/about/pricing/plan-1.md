@@ -8,8 +8,13 @@ price = "Free"
 # highlight = true
 
 button_text = "Start for free"
-link = "http://example.com"
-+++
-**Basic** feature
+button_url = "http://example.com"
 
-**Email** support
+[[feature]]
+  text = "**Basic** feature"
+  icon = "fas fa-check"
+
+[[feature]]
+  text = "**Email** support"
+  icon = "fas fa-check"
++++
