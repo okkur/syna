@@ -40,24 +40,19 @@
       <div class="row">
         {{- range (sort $items ".Params.weight") }}
           <div class="col-lg-4 col-md-6 col-12 py-2 pricing-plan {{- if .Params.highlight }} pricing-plan-highlight {{- end -}}">
-            <div class="border rounded position-relative portfolio-item overflow-hidden 
-              {{- if not .Params.url }} has-modal {{- end -}}
-            ">
-              <div class="card">
-                <div class="card-header
-                  {{- if not .Params.subtitle }} py-4 {{- end -}}
-                  {{- printf " bg-%s" (.Params.header_bg | default "primary") -}}
-                  {{- printf " text-%s" (.Params.header_text_color | default "light") -}}">
-                  <h4 class="mt-0 font-weight-normal text-center">{{ .Title }}</h4>
-                  <div class="mt-0 h6 font-weight-normal text-center">{{ (.Params.subtitle | default "") | markdownify }}</div>
-                  <h2 class="card-title mb-0 pricing-card-title text-center">{{ .Params.price }}</h2>
+            <div class="card">
+              <div class="card-header
+                {{- printf " bg-%s" (.Params.header_bg | default "primary") -}}
+                {{- printf " text-%s" (.Params.header_text_color | default "light") -}}">
+                <h4 class="mt-0 font-weight-normal text-center">{{ .Title }}</h4>
+                <div class="mt-0 h6 font-weight-normal text-center">{{ (.Params.subtitle | default "") | markdownify }}</div>
+                <h2 class="card-title mb-0 pricing-card-title text-center">{{ .Params.price }}</h2>
+              </div>
+              <div class="card-body {{ printf "bg-%s" (.Params.bg | default "light") }}">
+                <div class="mb-4 features">
+                  {{ .Content }}
                 </div>
-                <div class="card-body {{ printf "bg-%s" (.Params.bg | default "light") }}">
-                  <div class="mb-4">
-                    {{ .Content }}
-                  </div>
-                  <a href="{{ .Params.link }}" class="btn btn-lg btn-block btn-primary">{{ .Params.button_text }}</a>
-                </div>
+                <a href="{{ .Params.link }}" class="btn btn-lg btn-block btn-primary">{{ .Params.button_text }}</a>
               </div>
             </div>
           </div>
