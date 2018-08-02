@@ -1,0 +1,24 @@
+.pricing-plan {
+  &-highlight {
+    margin: -15px;
+  }
+
+  .card-body {
+    p {
+      margin-bottom: 0;
+
+      &:before {
+        content: '\F00C';
+        color: #7ed321;
+        margin-right: 10px;
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        display: inline-block;
+        font-style: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        line-height: 1;
+      }
+    }
+  }
+}
