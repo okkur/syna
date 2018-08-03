@@ -1,9 +1,35 @@
-$fa-font-path: 'fonts';
+$fa-font-path:        'fonts';
+
+$white:               {{ .Site.Params.colors.white | default "#fff" }};
+$gray-100:            {{ .Site.Params.colors.gray100 | default "#f8f9fa" }};
+$gray-200:            {{ .Site.Params.colors.gray200 | default "#e9ecef" }};
+$gray-300:            {{ .Site.Params.colors.gray300 | default "#dee2e6" }};
+$gray-400:            {{ .Site.Params.colors.gray400 | default "#ced4da" }};
+$gray-500:            {{ .Site.Params.colors.gray500 | default "#adb5bd" }};
+$gray-600:            {{ .Site.Params.colors.gray600 | default "#868e96" }};
+$gray-700:            {{ .Site.Params.colors.gray700 | default "#495057" }};
+$gray-800:            {{ .Site.Params.colors.gray800 | default "#343a40" }};
+$gray-900:            {{ .Site.Params.colors.gray900 | default "#212529" }};
+$black:               {{ .Site.Params.colors.black | default "#000" }};
+
+$blue:                {{ .Site.Params.colors.blue | default "#00838F" }};
+$indigo:              {{ .Site.Params.colors.indigo | default "#54008f" }};
+$purple:              {{ .Site.Params.colors.purple | default "#8f0083" }};
+$pink:                {{ .Site.Params.colors.pink | default "#c77fc1" }};
+$red:                 {{ .Site.Params.colors.red | default "#dc1200" }};
+$orange:              {{ .Site.Params.colors.orange | default "#fd9742" }};
+$yellow:              {{ .Site.Params.colors.yellow | default "#fdf314" }};
+$green:               {{ .Site.Params.colors.green | default "#008f54" }};
+$teal:                {{ .Site.Params.colors.teal | default "#4cb087" }};
+$cyan:                {{ .Site.Params.colors.cyan | default "#00c9dc" }};
+
+$border-color:        $gray-200;
+$list-inline-padding: 5px;
+
 @import '@fortawesome/fontawesome-free-webfonts/scss/fontawesome.scss';
 @import '@fortawesome/fontawesome-free-webfonts/scss/fa-regular.scss';
 @import '@fortawesome/fontawesome-free-webfonts/scss/fa-solid.scss';
 @import '@fortawesome/fontawesome-free-webfonts/scss/fa-brands.scss';
-@import './variables';
 @import 'bootstrap/scss/bootstrap.scss';
 @import './helpers';
 @import './header';
