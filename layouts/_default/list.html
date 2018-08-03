@@ -10,7 +10,8 @@
     check for presence of local fragments since multiple files can use a single
     fragment.
     */}}
-  {{- $local_fragments := .Resources.ByType "page" -}}
+  {{- $list_page := (.Site.GetPage "page" (printf "%s/%s" .Section "_index")) | default (.Site.GetPage "page" "_index") -}}
+  {{- $local_fragments := $list_page.Resources.ByType "page" -}}
 
   {{- $.Scratch.Set "fragments" (slice .) -}}
   {{- $.Scratch.Set "local_fragments_dirs" (slice) -}}
@@ -45,7 +46,6 @@
   {{- end -}}
 
   {{- $page := . }}
-  {{ $.Scratch.Set "js" (slice) }}
   {{- range sort ($.Scratch.Get "fragments" | default slice) "Params.weight" -}}
     {{- if and (not .Params.disabled) (isset .Params "fragment") -}}
       {{/* Cleanup .Name to be more useful within fragments */}}
@@ -56,7 +56,7 @@
       {{- $page_path := replace $file_path (printf "/%s" $name) "" -}}
       {{- $fallthrough := (dict "file_path" $file_path "page_path" $page_path ) -}}
 
-      {{- partial (print "fragments/" .Params.fragment ".html") (dict "page_scratch" $.Scratch "root" $ "Site" $.Site "page" $page "resources" $.Resources "self" . "Params" .Params "Name" $name "fallthrough" $fallthrough) -}}
+      {{- partial (print "fragments/" .Params.fragment ".html") (dict "root" $ "Site" $.Site "page" $list_page "resources" $.Resources "self" . "Params" .Params "Name" $name "fallthrough" $fallthrough) -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}
