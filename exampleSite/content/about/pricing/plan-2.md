@@ -8,7 +8,7 @@ price = "$9.99/mo"
 highlight = true
 
 button_text = "Get started"
-button_url = "http://example.com"
+button_url = "#"
 
 [[feature]]
   text = "**Basic** feature"

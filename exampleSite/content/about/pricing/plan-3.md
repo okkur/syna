@@ -8,7 +8,7 @@ price = "Custom"
 # highlight = true
 
 button_text = "Contact us"
-button_url = "http://example.com"
+button_url = "#"
 
 [[feature]]
   text = "**Basic** feature"
