@@ -67,7 +67,7 @@
               </div>
               <div class="card-body {{ printf "bg-%s" (.Params.bg | default "light") }}">
                 <div class="mb-4 features">
-                  {{- range .Params.feature }}
+                  {{- range .Params.features }}
                     <p><i class="{{ .icon }}"></i>{{ .text | markdownify }}</p>
                   {{- end }}
                 </div>

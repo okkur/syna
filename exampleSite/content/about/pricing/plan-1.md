@@ -10,11 +10,11 @@ price = "Free"
 button_text = "Start for free"
 button_url = "#"
 
-[[feature]]
+[[features]]
   text = "**Basic** feature"
   icon = "fas fa-check"
 
-[[feature]]
+[[features]]
   text = "**Email** support"
   icon = "fas fa-check"
 +++

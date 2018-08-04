@@ -10,19 +10,19 @@ highlight = true
 button_text = "Get started"
 button_url = "#"
 
-[[feature]]
+[[features]]
   text = "**Basic** feature"
   icon = "fas fa-check"
 
-[[feature]]
+[[features]]
   text = "**Premium** feature"
   icon = "fas fa-check"
 
-[[feature]]
+[[features]]
   text = "**Email** support"
   icon = "fas fa-check"
 
-[[feature]]
+[[features]]
   text = "**Chat** support"
   icon = "fas fa-check"
 +++
