@@ -9657,6 +9657,37 @@ div.form-error ul li {
   border-radius: 0;
   background-color: rgba(52, 58, 64, 0.6); }
 
+.pricing-plan {
+  display: flex; }
+  .pricing-plan .card {
+    flex: 1 0 auto; }
+  .pricing-plan .card-header {
+    height: 125px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; }
+  @media (min-width: 768px) {
+    .pricing-plan-highlight {
+      margin: -20px -10px 0; }
+      .pricing-plan-highlight .card-header {
+        height: 145px; } }
+  @media (max-width: 991.98px) {
+    .pricing-plan-highlight {
+      order: -1; } }
+  .pricing-plan .card-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto; }
+    .pricing-plan .card-body .features {
+      display: flex;
+      flex-direction: column;
+      flex: 1 0 auto; }
+    .pricing-plan .card-body p {
+      margin-bottom: 0; }
+      .pricing-plan .card-body p i {
+        color: #008f54;
+        margin-right: 10px; }
+
 body.modal-open {
   padding-right: 15px; }
 
