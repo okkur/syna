@@ -4,6 +4,7 @@
   section, the second one removes current page from the mix and the last one
   removes the section (.Site.Pages returns the current section as a page). */}}
 {{- $pages := where (where .Site.Pages.ByDate "Section" (.Params.section | default .page.Section)) "Params.fragment" "eq" "content" -}}
+{{- $self := . -}}
 {{- $bg := .Params.background | default "light" }}
 
 {{ "<!-- Blog -->" | safeHTML }}
@@ -68,25 +69,15 @@
                   <img src="{{ $.root.Scratch.Get "image" | relURL }}" alt="{{ .Params.subtitle | default .Params.title }}" class="img-fluid mb-4">
                 </a>
               {{- end -}}
-              <div class="col-12 pl-0
-                {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                  {{- printf " text-%s" "dark" -}}
-                {{- else -}}
-                  {{- printf " text-muted text-%s" "secondary" -}}
-                {{- end -}}
-              ">
-                {{- if and (isset .Params "fragment") (in "content" .Params.fragment) }}
-                  {{ .Summary }}
-                  {{- if .Truncated -}}
-                    <a class="ml-2 badge
-                    {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                      {{- printf " badge-%s" "dark" -}}
-                    {{- else -}}
-                      {{- printf " badge-%s" "secondary" -}}
-                    {{- end -}}" href="{{ .URL }}">{{ i18n "content.readmore" | default "Read more..." }}</a>
-                  {{- end }}
-                {{- else }}
-                  {{- range first 1 (where (.Resources.ByType "page") "Params.fragment" "in" "content") }}
+              {{- if or (not (isset $self.Params "disable_summary")) (ne $self.Params.disable_summary true) }}
+                <div class="col-12 pl-0
+                  {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                    {{- printf " text-%s" "dark" -}}
+                  {{- else -}}
+                    {{- printf " text-muted text-%s" "secondary" -}}
+                  {{- end -}}
+                ">
+                  {{- if and (isset .Params "fragment") (in "content" .Params.fragment) }}
                     {{ .Summary }}
                     {{- if .Truncated -}}
                       <a class="ml-2 badge
@@ -94,11 +85,23 @@
                         {{- printf " badge-%s" "dark" -}}
                       {{- else -}}
                         {{- printf " badge-%s" "secondary" -}}
-                      {{- end -}}" href="{{ .URL }}">{{ i18n "content.readmore" }}</a>
+                      {{- end -}}" href="{{ .URL }}">{{ i18n "content.readmore" | default "Read more..." }}</a>
                     {{- end }}
+                  {{- else }}
+                    {{- range first 1 (where (.Resources.ByType "page") "Params.fragment" "in" "content") }}
+                      {{ .Summary }}
+                      {{- if .Truncated -}}
+                        <a class="ml-2 badge
+                        {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                          {{- printf " badge-%s" "dark" -}}
+                        {{- else -}}
+                          {{- printf " badge-%s" "secondary" -}}
+                        {{- end -}}" href="{{ .URL }}">{{ i18n "content.readmore" }}</a>
+                      {{- end }}
+                    {{- end -}}
                   {{- end -}}
-                {{- end -}}
-              </div>
+                </div>
+              {{- end -}}
             </article>
           {{- end -}}
         </div>

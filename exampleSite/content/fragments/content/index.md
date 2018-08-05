@@ -1,0 +1,14 @@
++++
+fragment = "content"
+weight = 100
+
+title = "Content"
++++
+
+Content fragment can show rich text content converted from [Github styled
+Markdown](https://guides.github.com/features/mastering-markdown) with an
+optional sidebar.
+
+- [Without sidebar](#content)
+- [With sidebar](#content-sidebar)
+- [With sidebar aligned right](#content-sidebar-right)
