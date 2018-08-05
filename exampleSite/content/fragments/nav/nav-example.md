@@ -2,7 +2,7 @@
 fragment = "nav"
 #disabled = true
 date = "2018-05-17"
-weight = 150
+weight = 110
 #background = ""
 
 # Branding options

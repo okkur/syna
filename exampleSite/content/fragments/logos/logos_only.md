@@ -2,7 +2,7 @@
 fragment = "logos"
 #disabled = false
 date = "2017-09-09"
-weight = 1000
+weight = 110
 background = "dark"
 
 #title = ""

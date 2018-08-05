@@ -2,7 +2,7 @@
 fragment = "embed"
 #disabled = false
 date = "2017-09-09"
-weight = 800
+weight = 110
 background = "secondary"
 
 title = "Embed Fragment"

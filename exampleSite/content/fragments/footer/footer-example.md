@@ -2,7 +2,7 @@
 fragment = "footer"
 #disabled = true
 date = "2016-09-07"
-weight = 150
+weight = 110
 #background = ""
 
 menu_title = "Link Title"
