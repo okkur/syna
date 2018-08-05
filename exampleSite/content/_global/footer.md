@@ -14,8 +14,6 @@ menu_title = "Link Title"
   url = "#"
 +++
 
-#### Description Title
+#### Syna Theme
 
-Project description such as:
-Open source theme for your next project
-Provided by Okkur Labs
+Highly customizable open source theme for Hugo based static websites
