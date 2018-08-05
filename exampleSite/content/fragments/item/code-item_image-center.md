@@ -1,4 +1,11 @@
 +++
+fragment = "content"
+weight = 146
++++
+
+<details><summary>Code</summary>
+```
++++
 fragment = "item"
 #disabled = false
 date = "2017-10-04"
@@ -28,3 +35,6 @@ Morbi efficitur dui sit amet orci porttitor, nec tincidunt turpis elementum.
 Suspendisse rutrum, mi ac sollicitudin blandit, eros sem tincidunt enim, vitae feugiat turpis eros ut diam.
 Nunc hendrerit, nibh vitae dignissim pretium, magna nulla lacinia massa, et interdum lacus purus ultricies lacus.
 Nulla tincidunt quis lacus in posuere.
+```
+</details>
+
