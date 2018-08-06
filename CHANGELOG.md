@@ -1,15 +1,51 @@
 <!--
-# v0.12.0
+# v0.13.0
 _2018_
+  - [Downloads for v0.13.0](https://github.com/okkur/syna/releases/tag/v0.13.0)
+  - [Changelog since v0.12.0](#changes-since-v012)
+
+## Documentation for v0.13.0
+[Documentation](/tree/v0.13.0/docs)
+
+## Changes since v0.12.0
+
+## Fixes since v0.12.0
+
+---
+
+-->
+
+# v0.12.0
+_2018-08-06_
   - [Downloads for v0.12.0](https://github.com/okkur/syna/releases/tag/v0.12.0)
   - [Changelog since v0.11.0](#changes-since-v011)
 
 ## Documentation for v0.12.0
-[Documentation](/tree/v0.11.0/docs)
+[Documentation](/tree/v0.12.0/docs)
+[Getting started](/tree/v0.12.0/docs#using-starter)
 
 ## Changes since v0.11.0
+  - BREAKING: `content-single` and `content-split` merged into `content` fragment
+  - BREAKING: Moving to `_index` and `_global` as special directories and headless bundles
+  - BREAKING: Subpath handling made consistent with Hugo
+  - New: `header` fragment for easier section bundling and linking
+  - New: `portfolio` fragment to showcase projects etc.
+  - New: Categories for `content` fragment
+  - `member`: Company affiliation for single member mode
+  - `member`: Redesign single member mode
+  - Getting started guide
+  - Update documentation
+  - Bundle JS files and register them within each fragment
+  - `404`: Refactor 404 to be fragment based
 
 ## Fixes since v0.11.0
+  - Improve naming consistency
+  - Cleanup bootstrap files
+  - Add attribution for inspiration
+  - `table`: Align table cells using `align` variable
+  - `items`: Remove icon, if not set
+  - `item/table`: Fix icon + url
+  - `item`: Fix align = center
 
 ---
 
