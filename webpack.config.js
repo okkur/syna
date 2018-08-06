@@ -5,6 +5,7 @@ module.exports = {
   entry: {
     main: './static-main/js/index.js',
     contact: './static-main/js/contact.js',
+    editor: './static-main/js/editor.js',
     hero: './static-main/js/hero.js',
     portfolio: './static-main/js/portfolio.js',
     react: './static-main/js/react.js',
