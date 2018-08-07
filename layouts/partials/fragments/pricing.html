@@ -1,0 +1,82 @@
+{{- $items := where (.resources.Match (printf "%s/*.md" .Name)) ".Name" "ne" .self.Name -}}
+{{- $self := . -}}
+{{- $bg := .Params.background | default "light" }}
+
+{{ "<!-- Pricing -->" | safeHTML }}
+<section id="{{ .Name }}">
+  <div class="overlay container-fluid
+    {{- printf " bg-%s" $bg -}}
+  ">
+    <div class="container py-5">
+      {{- with .Params.title }}
+        <div class="row">
+          <div class="col text-center
+            {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
+              {{- printf " text-%s" "dark" -}}
+            {{- else -}}
+              {{- printf " text-%s" "light" -}}
+            {{- end -}}
+            {{- if and (not (isset $self.Params "subtitle")) (not $self.Content) -}}
+              {{- printf " pb-4" -}}
+            {{- end -}}
+          ">
+            <h2>
+              {{- . | markdownify -}}
+            </h2>
+          </div>
+        </div>
+      {{- end -}}
+      {{- with .Params.subtitle -}}
+        <div class="row">
+          <div class="col text-center pt-2 pb-4
+            {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+              {{- printf " text-%s" "dark" -}}
+            {{- else -}}
+              {{- printf " text-muted text-%s" "secondary" -}}
+            {{- end -}}
+          ">
+            <h6>
+              {{- . | markdownify -}}
+            </h6>
+          </div>
+        </div>
+      {{- end }}
+      {{- with .Content -}}
+        <div class="row">
+          <div class="col text-center pt-4 pb-5
+            {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+              {{- printf " text-%s" "dark" -}}
+            {{- else -}}
+              {{- printf " text-muted text-%s" "secondary" -}}
+            {{- end -}}
+          ">
+            {{- . -}}
+          </div>
+        </div>
+      {{- end }}
+      <div class="row">
+        {{- range (sort $items ".Params.weight") }}
+          <div class="col-lg-4 col-md-6 col-12 py-2 pricing-plan {{- if .Params.highlight }} pricing-plan-highlight {{- end -}}">
+            <div class="card">
+              <div class="card-header
+                {{- printf " bg-%s" (.Params.header_bg | default "primary") -}}
+                {{- printf " text-%s" (.Params.header_text_color | default "light") -}}">
+                <h4 class="mt-0 font-weight-normal text-center">{{ .Title }}</h4>
+                <div class="mt-0 h6 font-weight-normal text-center">{{ (.Params.subtitle | default "") | markdownify }}</div>
+                <h2 class="card-title mb-0 pricing-card-title text-center">{{ .Params.price }}</h2>
+              </div>
+              <div class="card-body {{ printf "bg-%s" (.Params.bg | default "light") }}">
+                <div class="mb-4 features">
+                  {{- range .Params.features }}
+                    <p><i class="{{ .icon }}"></i>{{ .text | markdownify }}</p>
+                  {{- end }}
+                </div>
+                <a href="{{ .Params.button_url }}" class="btn btn-lg btn-block btn-primary">{{ .Params.button_text }}</a>
+              </div>
+            </div>
+          </div>
+        {{- end }}
+      </div>
+    </div>
+  </div>
+</section>
