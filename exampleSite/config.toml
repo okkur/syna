@@ -6,7 +6,7 @@ title = "Okkur - Syna"
 theme = "syna"
 themesDir = "../.."
 enableGitInfo = true
-version = "0.11.0"
+version = "0.12.0"
 disableKinds = ["RSS", "taxonomy", "taxonomyTerm"]
 
 [frontmatter]
@@ -31,7 +31,7 @@ googleAnalytics = ""
     favicon_png = "favicon.png"
     favicon_svg = "favicon.svg"
     css = []
-    js  = []
+    js  = ["counter.js"]
 
   # Piwik tracking
   [params.analytics.piwik]

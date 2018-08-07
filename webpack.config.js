@@ -1,28 +1,34 @@
 const path = require('path');
-const { plugins, rules } = require('./config/webpack');
-
-if (process.env === 'production') {
-  plugins.push(extractSass);
-}
 
 module.exports = {
   entry: {
     main: './assets/js/index.js',
     contact: './assets/js/contact.js',
+    editor: './assets/js/editor.js',
     hero: './assets/js/hero.js',
     portfolio: './assets/js/portfolio.js',
+    react: './assets/js/react.js',
   },
   output: {
     path: path.resolve('./static/'),
-    filename: '[id].js'
+    filename: 'syna-[id].js'
   },
   resolve: {
-    extensions: ['.js'],
+    extensions: ['.js', '.jsx'],
     modules: [path.join(process.cwd(), 'src'), 'node_modules'],
   },
   mode: process.env === 'production' ? 'production' : 'development',
   module: {
-    rules,
+    rules: [{
+      test: /\.jsx?$/,
+      exclude: /node_modules/,
+      use: {
+        loader: 'babel-loader',
+        options: {
+          presets: ['env', 'react'],
+        },
+      },
+    }],
   },
-  plugins,
+  plugins: [],
 };

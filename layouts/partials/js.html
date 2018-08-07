@@ -1,6 +1,14 @@
 {{ "<!-- Theme Code -->" | safeHTML }}
-<script src="{{ "main.js" | relURL }}"></script>
+{{- partial "custom/js.html" . -}}
+<script src="{{ "syna-main.js" | relURL }}"></script>
 
+{{- if $.Scratch.Get "react" }}
+  <script>
+    if (!window.synaPortals) {
+      window.synaPortals = {};
+    }
+  </script>
+{{- end -}}
 {{- range uniq ($.Scratch.Get "js") }}
   <script src="{{ . | relURL }}" async defer></script>
 {{- end -}}
@@ -9,5 +17,3 @@
 {{- if .Site.Params.analytics.piwik -}}
   {{- partial "_analytics/piwik.html" . -}}
 {{- end -}}
-
-{{- partial "custom/js.html" . -}}
