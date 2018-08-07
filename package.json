@@ -1,6 +1,6 @@
 {
   "name": "syna",
-  "version": "0.8.0",
+  "version": "0.12.0",
   "description": "Highly customizable open source theme for Hugo based static websites",
   "main": "static-main",
   "repository": "git@github.com:okkur/syna.git",
@@ -16,9 +16,10 @@
     "build": "npm run build-js && npm run build-hugo"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.4",
-    "babel-preset-env": "^1.6.1",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
     "concurrently": "^3.5.1",
     "css-loader": "^0.28.11",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
@@ -28,8 +29,8 @@
     "sass-loader": "^7.0.0",
     "style-loader": "^0.20.3",
     "url-loader": "^1.0.1",
-    "webpack": "^4.5.0",
-    "webpack-cli": "^2.0.14"
+    "webpack": "^4.15.1",
+    "webpack-cli": "^3.0.8"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free-webfonts": "^1.0.9",
@@ -37,8 +38,10 @@
     "foreman": "^3.0.0",
     "form-validator-simple": "^0.0.11",
     "i": "^0.3.6",
-    "npm": "^6.1.0",
     "particles.js": "^2.0.0",
-    "popper.js": "^1.14.3"
+    "popper.js": "^1.14.3",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-jsonschema-form": "^1.0.3"
   }
 }

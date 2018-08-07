@@ -9660,7 +9660,8 @@ div.form-error ul li {
 .pricing-plan {
   display: flex; }
   .pricing-plan .card {
-    flex: 1 0 auto; }
+    flex: 1 0 auto;
+    overflow: hidden; }
   .pricing-plan .card-header {
     height: 125px;
     display: flex;
@@ -9749,4 +9750,8 @@ body.modal-open {
   display: flex !important;
   visibility: hidden;
   opacity: 0; }
+
+[data-portal] {
+  padding-bottom: 1px;
+  box-sizing: border-box; }
 
