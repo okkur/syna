@@ -3,16 +3,11 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: {
-    main: './static-main/js/index.js',
-    contact: './static-main/js/contact.js',
-    editor: './static-main/js/editor.js',
-    hero: './static-main/js/hero.js',
-    portfolio: './static-main/js/portfolio.js',
-    react: './static-main/js/react.js',
+    counter: './static-main/js/counter.js',
   },
   output: {
     path: path.resolve('./static/'),
-    filename: 'syna-[id].js'
+    filename: '[id].js'
   },
   resolve: {
     extensions: ['.js', '.jsx', '.css', '.sass', '.scss'],
@@ -53,8 +48,8 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'syna-[name].css',
-      chunkFilename: 'syna-[id].css'
+      filename: '[name].css',
+      chunkFilename: '[id].css'
     }),
   ],
 };

@@ -35,6 +35,7 @@ Each page within a Syna based website is created using fragments.
   - [Front-end development and design](#front-end-development-and-design)
     - [Styles](#styles)
     - [JavaScript](#javascript)
+      - [React support](#react-support)
     - [Fragment implementation](#fragment-implementation)
     - [Creating new fragments](#creating-new-fragments)
   - [Further reading](#further-reading)
@@ -200,6 +201,32 @@ For example `hero.js` is needed by the `hero` fragment.
 
 If you want to add an extra script for an specific fragment, you need to add that script as an entry point in the [webpack configuration file](/webpack.config.js).
 Then import that script inside the fragment (using the `script` tag).
+
+#### React support
+
+Syna has built-in support for React. We use React portal API inside the `react-portal` fragment. This allows us to render an empty container that is able to render components inside it.  
+To use this feature you can add a new `react-portal` to your page, write your component and expose it inside the `window.synaPortals` object.
+
+```jsx
+import * as React from 'react';
+
+class Hello extends React.Component {
+  render() {
+    return (
+      <h1>Hello World</h1>
+    );
+  }
+}
+
+(window.synaPortals || (window.synaPortals = {})).hello = {
+  component: Hello,
+  container: '#hello [data-portal]',
+};
+```
+
+The `#hello [data-portal]` is where your component renders. `[data-portal]` is a `div` tag inside your `react-portal` fragment and `hello` in this example, is the fragment's filename.
+
+Keep in mind that JSX is not supported by browsers. Please checkout our [example Webpack config](https://github.com/okkur/syna/blob/master/exampleSite/webpack.config.js) and the required [dependencies and commands](https://github.com/okkur/syna/blob/master/exampleSite/package.json).
 
 ### Fragment implementation
 
