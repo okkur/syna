@@ -7,7 +7,7 @@ import ReactJsonschemaForm from 'react-jsonschema-form';
       render() {
         return (
           <div className="container editor-container">
-            <ReactJsonschemaForm schema={editor.schema} ui={editor.ui} />
+            <ReactJsonschemaForm schema={editor.schema} uiSchema={editor.ui} />
           </div>
         );
       }

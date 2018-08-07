@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import './editor';
-
 const Portal = ({ component: Component, container }) => {
   return ReactDOM.createPortal(
     <div>

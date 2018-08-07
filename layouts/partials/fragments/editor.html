@@ -11,8 +11,8 @@
 </section>
 <script>
   (window.editors || (window.editors = [])).push({
-    ui: JSON.parse({{ readFile (printf "%s%s/ui.md" .page.Dir .Name) | safeHTML }}),
-    schema: JSON.parse({{ readFile (printf "%s%s/schema.md" .page.Dir .Name) | safeHTML }}),
+    ui: JSON.parse({{ readFile (printf "%s%s/ui.json" .page.Dir .Name) | safeHTML }}),
+    schema: JSON.parse({{ readFile (printf "%s%s/schema.json" .page.Dir .Name) | safeHTML }}),
     container: {{ printf "#%s [data-portal]" .Name }}
   });
 </script>
