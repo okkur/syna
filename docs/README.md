@@ -52,7 +52,7 @@ This way whenever you want to update the theme you can just pull the updates and
 git submodule init # If you haven't initialized before
 git submodule add https://github.com/okkur/syna.git themes/syna
 cd themes/syna
-git checkout v0.11.0 # Latest release as of now is v0.11.0
+git checkout v0.12.0 # Latest release as of now is v0.12.0
 ```
 
 ### Using starter
