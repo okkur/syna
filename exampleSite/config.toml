@@ -1,11 +1,13 @@
 # Site settings
 baseurl = "/"
 languageCode = "en-us"
+languageLang = "en"
 title = "Okkur - Syna"
 theme = "syna"
 themesDir = "../.."
 enableGitInfo = true
 version = "0.11.0"
+disableKinds = ["RSS", "taxonomy", "taxonomyTerm"]
 
 [frontmatter]
 date = ["date", "lastmod"]

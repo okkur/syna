@@ -30,7 +30,7 @@
               {{- printf " text-muted text-%s" "secondary" -}}
             {{- end -}}
           ">
-            {{- . | markdownify -}}
+            {{- . | markdownify }}
           </h3>
         {{- end }}
       </div>
@@ -40,13 +40,13 @@
         <form
           class="contact"
           method="POST"
-          name="{{ .Params.form_name | default "contactForm" }}"
+          name="{{- .Params.form_name | default "contactForm" }}"
           id="contactForm
           {{- if .Params.netlify -}}
-            " netlify
+            " netlify-recaptcha netlify
           {{- else -}}
             " action="{{- .Params.post_url | default (printf "https://formspree.io/%s" .Params.email) -}}"
-          {{- end -}}>
+          {{- end }}>
             <div class="row py-3">
               <div class="col-md-6">
                 {{- with .Params.fields.name }}
@@ -115,24 +115,24 @@
                     {{- . | markdownify -}}
                   {{- else -}}
                     {{- i18n "contact.defaultGenericSuccess" -}}
-                  {{- end -}}
+                  {{- end }}
                 </div>
                 <div class="captcha-error text-danger d-none" id="captcha-error">
-                    {{- i18n "contact.defaultCaptchaError" }} {{ .Params.email -}}.
+                    {{- i18n "contact.defaultCaptchaError" }} {{ .Params.email }}.
                 </div>
                 <div class="generic-error text-danger d-none" id="generic-error">
                   {{- with .Params.message.error -}}
                     {{- . | markdownify -}}
                   {{- else -}}
                     {{- i18n "contact.defaultGenericError" }} {{ .Params.email -}}.
-                  {{- end -}}
+                  {{- end }}
                 </div><br />
                 <noscript>
                   <div class="text-danger py-2" id="js-error">
-                    {{- i18n "contact.defaultJsError" }} {{ .Params.email -}}.
+                    {{- i18n "contact.defaultJsError" }} {{ .Params.email }}.
                   </div>
                 </noscript>
-                {{- with .Params.recaptcha }}
+                {{- if .Params.recaptcha }}
                   <div class="g-recaptcha-container">
                     <span class="g-recaptcha-filler"></span>
                     <button
@@ -143,10 +143,12 @@
                       data-badge="inline"
                       data-callback="onContactCaptcha"
                       disabled>
-                      {{- .Params.button_text | default (i18n "contact.defaultButton") -}}
+                      {{- .Params.button_text | default (i18n "contact.defaultButton") }}
                     </button>
                     <span class="filler"></span>
                   </div>
+                {{- else if .Params.netlify }}
+                  <div data-netlify-recaptcha></div>
                 {{- else }}
                   <button
                     class="btn
@@ -157,7 +159,7 @@
                       {{- end -}}
                     "
                     type="submit">
-                    {{- .Params.button_text | default (i18n "contact.defaultButton") -}}
+                    {{- .Params.button_text | default (i18n "contact.defaultButton") }}
                   </button>
                 {{- end }}
               </div>
@@ -169,8 +171,8 @@
                 <input type="hidden" name="{{ .name }}" value="{{ $.root.Page.URL }}"/>
               {{- else }}
                 <input type="hidden" name="{{ .name }}" value="{{ .value }}"/>
-              {{- end }}
-            {{- end }}
+              {{- end -}}
+            {{- end -}}
           </form>
         </div>
       </div>

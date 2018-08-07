@@ -1,0 +1,40 @@
+{{ "<!-- 404 -->" | safeHTML }}
+<section>
+  <div class="jumbotron text-center mb-0">
+    {{/* Global resource fallback - can also be used within loops */}}
+    {{- $image := .Params.image | default "logo.svg" -}}
+
+    {{/* Do not change the following snippet */}}
+    {{/* Code is duplicated throughout the code */}}
+    {{- $.root.Scratch.Set "image" (printf "images/%s" $image) -}}
+    {{/* Page specific resource */}}
+    {{- $location := (printf "%s/%s" $.fallthrough.page_path $image) -}}
+    {{- if (fileExists (printf "content/%s" $location)) -}}
+    {{/* special case index: trim _index/ from url */}}
+    {{- $location := strings.TrimPrefix "_index/" $location -}}
+    {{- $.root.Scratch.Set "image" $location -}}
+    {{- end -}}
+
+    {{/* Fragment specific resource */}}
+    {{- $location := (printf "%s/%s" $.fallthrough.file_path $image) -}}
+    {{- if (fileExists (printf "content/%s" $location)) -}}
+    {{/* special case index: trim _index/ from url */}}
+    {{- $location := strings.TrimPrefix "_index/" $location -}}
+    {{- $.root.Scratch.Set "image" $location -}}
+    {{- end -}}
+    {{/* End of do not change */}}
+    <img class="img-fluid" src="{{ $.root.Scratch.Get "image" | relURL }}" alt="{{ .Site.Title }}"></img>
+    <h1 class="jumbotron-heading my-5">
+      {{ .Params.title | default (i18n "404.title") }}
+    </h1>
+    <h3 class="my-4">
+      {{ .Params.subtitle | default (i18n "404.subtitle") }}
+    </h3>
+    <h5 class="my-4">
+      {{ .Params.redirect_text | default (i18n "404.direction") }}
+    </h5>
+    <a class="btn btn-primary btn-lg my-4" href="{{ .Params.redirect_url | default "/" }}">
+      {{ .Params.button_text | default (i18n "404.button") }}
+    </a>
+  </div>
+</section>
