@@ -14,7 +14,7 @@
   check for presence of local fragments since multiple files can use a single
   fragment.
   */}}
-{{- $local_fragments := $page.Resources.ByType "page" -}}
+{{- $local_fragments := $real_page.Resources.ByType "page" -}}
 
 {{- $page_scratch.Set "fragments" (slice $real_page) -}}
 {{- $page_scratch.Set "local_fragments_dirs" (slice) -}}
@@ -23,17 +23,33 @@
   {{- $page_scratch.Add "local_fragments_dirs" .Dir -}}
 {{- end -}}
 
-{{- $section_global := $real_page.Site.GetPage "page" (printf "%s%s" $real_page.CurrentSection.Dir "_global") -}}
-{{- $global := $real_page.Site.GetPage "page" "_global" -}}
-{{- $page_scratch.Set "global_fragments" (slice) -}}
-{{- if $section_global -}}
-  {{- range ($section_global.Resources.ByType "page") -}}
-    {{- $page_scratch.Add "global_fragments" . -}}
-  {{- end -}}
+{{- $page_scratch.Set "sections" (slice "/") -}}
+{{- $sections := findRE "[^\\/]+" $real_page.CurrentSection.Dir -}}
+{{- range ($sections | default (slice)) -}}
+  {{- $page_scratch.Add "sections" . -}}
 {{- end -}}
-{{- if $global -}}
-  {{- range ($global.Resources.ByType "page") -}}
-    {{- $page_scratch.Add "global_fragments" . -}}
+{{- $page_scratch.Add "sections" $real_page -}}
+{{- $page_scratch.Set "fragment_directories" (slice) -}}
+{{- range $index, $section := $page_scratch.Get "sections" -}}
+  {{- $directory := $section -}}
+  {{- $page_scratch.Set "active_page" ($real_page.Site.GetPage "page" (printf "%s/%s" $directory "_global")) -}}
+  {{- if (eq (add $index 1) (len ($page_scratch.Get "sections"))) -}}
+    {{- if ne $real_page.Kind "page" -}}
+      {{- $page_scratch.Set "active_page" ($real_page.Site.GetPage "page" (printf "%s%s" $real_page.Dir "_index")) -}}
+    {{- end -}}
+  {{- else if gt $index 1 -}}
+    {{- $directory := (delimit (first (add $index 1) $sections) "/") -}}
+    {{- $page_scratch.Set "active_page" ($real_page.Site.GetPage "page" (printf "%s/%s" $directory "_global")) -}}
+  {{- end -}}
+  {{- $page_scratch.Add "fragment_directories" ($page_scratch.Get "active_page") -}}
+{{- end -}}
+
+{{- $page_scratch.Set "global_fragments" (slice) -}}
+{{- range $directory := sort ($page_scratch.Get "fragment_directories") -}}
+  {{- if $directory -}}
+    {{- range ($directory.Resources.ByType "page") -}}
+      {{- $page_scratch.Add "global_fragments" . -}}
+    {{- end -}}
   {{- end -}}
 {{- end -}}
 
@@ -48,7 +64,7 @@
   {{- end -}}
 {{- end -}}
 
-{{ $page_scratch.Set "js" (slice) }}
+{{- $page_scratch.Set "js" (slice) -}}
 {{- range sort ($page_scratch.Get "fragments" | default slice) "Params.weight" -}}
   {{- if and (not .Params.disabled) (isset .Params "fragment") -}}
     {{/* Cleanup .Name to be more useful within fragments */}}
