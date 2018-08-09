@@ -77,7 +77,7 @@ googleAnalytics = ""
 [[menu.footer_social]]
   weight = 30
   name = "github"
-  pre = "fab fa-github"
+  pre = "fab fa-github fa-stack-2x"
   url = "https://github.com/okkur/syna"
 
 [[menu.copyright_footer]]
