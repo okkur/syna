@@ -3,6 +3,7 @@ fragment = "content"
 weight = 100
 
 title = "Hero"
+background = "light"
 +++
 
 Hero fragment can be used in your website's landing page or as first call to

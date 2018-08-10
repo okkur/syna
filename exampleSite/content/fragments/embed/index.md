@@ -3,6 +3,7 @@ fragment = "content"
 weight = 100
 
 title = "Embed"
+background = "light"
 +++
 
 Embed fragment can either embed a media source url such as youtube videos or set

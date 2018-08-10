@@ -10,7 +10,7 @@ fragment = "item"
 #disabled = false
 date = "2017-10-04"
 weight = 110
-background = "dark"
+background = "secondary"
 align = "right"
 
 title = "Item Fragment Image Right"
@@ -36,4 +36,3 @@ Nunc hendrerit, nibh vitae dignissim pretium, magna nulla lacinia massa, et inte
 Nulla tincidunt quis lacus in posuere.
 ```
 </details>
-

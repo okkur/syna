@@ -3,6 +3,7 @@ fragment = "content"
 weight = 100
 
 title = "Member"
+background = "light"
 +++
 
 Member fragment can be used to display your team members, their contact

@@ -3,7 +3,7 @@ fragment = "buttons"
 #disabled = false
 date = "2016-09-07"
 weight = 110
-#background = ""
+background = "secondary"
 
 title = "Buttons Fragment"
 #subtitle = ""
@@ -11,7 +11,7 @@ title = "Buttons Fragment"
 [[buttons]]
   text = "Button"
   url = "#"
-  color = "outline-secondary" # primary, secondary, success, danger, warning, info, light, dark, link - default: primary
+  color = "info" # primary, secondary, success, danger, warning, info, light, dark, link - default: primary
 
 [[buttons]]
   text = "Button"
@@ -21,5 +21,5 @@ title = "Buttons Fragment"
 [[buttons]]
   text = "Long Button"
   url = "#"
-  color = "secondary" # primary, secondary, success, danger, warning, info, light, dark, link - default: primary
+  color = "primary" # primary, secondary, success, danger, warning, info, light, dark, link - default: primary
 +++

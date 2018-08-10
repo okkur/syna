@@ -10,7 +10,7 @@ fragment = "table"
 #disabled = false
 date = "2017-10-10"
 weight = 110
-background = "light"
+background = "secondary"
 
 title = "Table Fragment"
 subtitle= "Tables are responsive by default"
@@ -84,4 +84,3 @@ subtitle= "Tables are responsive by default"
 +++
 ```
 </details>
-

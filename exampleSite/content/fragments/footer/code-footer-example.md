@@ -10,7 +10,7 @@ fragment = "footer"
 #disabled = true
 date = "2016-09-07"
 weight = 110
-#background = ""
+background = "secondary"
 
 menu_title = "Link Title"
 
@@ -28,4 +28,3 @@ Open source theme for your next project
 Provided by Okkur Labs
 ```
 </details>
-

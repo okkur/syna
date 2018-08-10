@@ -3,7 +3,7 @@ fragment = "logos"
 #disabled = false
 date = "2017-09-09"
 weight = 120
-#background = ""
+background = "secondary"
 
 title = "Logo Fragment"
 subtitle = "Even linking is possible"

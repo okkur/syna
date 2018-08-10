@@ -3,6 +3,7 @@ fragment = "content"
 weight = 100
 
 title = "Content"
+background = "light"
 +++
 
 Content fragment can show rich text content converted from [Github styled

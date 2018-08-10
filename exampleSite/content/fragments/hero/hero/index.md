@@ -3,7 +3,7 @@ fragment = "hero"
 #disabled = true
 date = "2016-09-07"
 weight = 110
-background = "light" # can influence the text color
+background = "secondary"
 particles = true
 
 title = "Syna Theme"

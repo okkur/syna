@@ -10,7 +10,7 @@ fragment = "embed"
 #disabled = true
 date = "2017-10-07"
 weight = 120
-background = "light"
+background = "secondary"
 form_name = "subscribe"
 
 #title = ""
@@ -26,4 +26,3 @@ responsive = false # prevent responsive behaviour
 +++
 ```
 </details>
-

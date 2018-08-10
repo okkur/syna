@@ -3,7 +3,7 @@ fragment = "item"
 #disabled = false
 date = "2017-10-04"
 weight = 190
-#background = ""
+background = "secondary"
 align = "left"
 
 title = "Item Fragment Icon Left"

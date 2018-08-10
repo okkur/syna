@@ -24,4 +24,3 @@ image = "screenshot.png"
 +++
 ```
 </details>
-

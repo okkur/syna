@@ -3,6 +3,7 @@ fragment = "content"
 weight = 100
 
 title = "Item"
+background = "light"
 +++
 
 Item fragment can be used to display a lot of different formats of data. It

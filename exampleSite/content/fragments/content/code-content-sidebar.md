@@ -10,7 +10,7 @@ fragment = "content"
 #disabled = true
 date = "2016-09-07"
 weight = 120
-background = "dark"
+background = "secondary"
 
 title = "Content with sidebar"
 subtitle = "Split in two!"

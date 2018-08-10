@@ -10,7 +10,7 @@ fragment = "item"
 #disabled = false
 date = "2017-10-04"
 weight = 170
-background = "dark"
+background = "secondary"
 align = "center"
 
 title = "Item Fragment Button Center"
@@ -45,4 +45,3 @@ Nunc hendrerit, nibh vitae dignissim pretium, magna nulla lacinia massa, et inte
 Nulla tincidunt quis lacus in posuere.
 ```
 </details>
-

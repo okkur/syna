@@ -3,6 +3,7 @@ fragment = "content"
 weight = 100
 
 title = "Table"
+background = "light"
 +++
 
 Table fragment is to display a table in the page containing as many rows and

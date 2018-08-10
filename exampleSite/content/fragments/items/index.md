@@ -3,6 +3,7 @@ fragment = "content"
 weight = 100
 
 title = "Items"
+background = "light"
 +++
 
 Items fragment can be used to display a list of features, testimonials and

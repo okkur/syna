@@ -3,6 +3,7 @@ fragment = "content"
 weight = 100
 
 title = "Portfolio"
+background = "light"
 +++
 
 

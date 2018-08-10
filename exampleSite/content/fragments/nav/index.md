@@ -3,6 +3,7 @@ fragment = "content"
 weight = 100
 
 title = "Nav"
+background = "light"
 +++
 
 Navbar fragment can show a logo/image, a menu with support for external links

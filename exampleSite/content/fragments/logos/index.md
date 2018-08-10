@@ -3,6 +3,7 @@ fragment = "content"
 weight = 100
 
 title = "Logos"
+background = "light"
 +++
 
 List of logos/images usable for references, used projects and more.

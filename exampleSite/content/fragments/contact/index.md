@@ -3,6 +3,7 @@ fragment = "content"
 weight = 100
 
 title = "Contact"
+background = "light"
 +++
 
 Contact fragment renders a form with a maximum of 4 fields:

@@ -10,7 +10,7 @@ fragment = "nav"
 #disabled = true
 date = "2018-05-17"
 weight = 110
-#background = ""
+background = "secondary"
 
 # Branding options
 [branding]
@@ -24,4 +24,3 @@ weight = 110
 +++
 ```
 </details>
-
