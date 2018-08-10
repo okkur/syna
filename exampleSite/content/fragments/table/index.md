@@ -6,5 +6,5 @@ title = "Table"
 +++
 
 Table fragment is to display a table in the page containing as many rows and
-columns as you want and make them responsive. Table cells can contain text, icon
-and button which can also be linked.
+columns as you want and make them responsive. Table cells can contain text,
+icons and buttons which can also be linked.

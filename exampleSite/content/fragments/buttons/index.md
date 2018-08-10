@@ -5,4 +5,4 @@ weight = 100
 title = "Buttons"
 +++
 
-This simple fragment displays a row of buttons that can be linked.
+Flexible call to action buttons making external or on site links actionable.

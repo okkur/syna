@@ -6,7 +6,8 @@ title = "Portfolio"
 +++
 
 
-Portfolio fragment displays maximum of 3 images in a row with some information
-optionally shown on each one. It can also link an item to some place else or
-contain more information which would be shown in a dialog upon clicking on the
-item.
+Portfolio fragment can display up to 3 images in a row, which get realigned
+responsively. Title and subtitle are shown as overlays. An additional
+description can be provided and shown as a modal upon clicking the portfolio. In
+the case a `url` is provided the portfolio will redirect to the specified url
+instead of opening the modal.

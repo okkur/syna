@@ -3,117 +3,147 @@ fragment = "table"
 weight = 100
 
 title = "Syna is flexible and powerful"
-subtitle = "You can customize your page with our various fragments"
+subtitle = "Customize your page with our various fragments"
 
 [header]
   [[header.values]]
-    text = "Fragment Name"
+    text = "Fragment"
 
   [[header.values]]
     text = "Description"
 
 [[rows]]
   [[rows.values]]
-    text = "Buttons"
+    button = "Buttons"
+    color = "link p-0"
+    url = "fragments/buttons"
 
   [[rows.values]]
-    text = "Row of buttons to link to different places"
-
-[[rows]]
-  [[rows.values]]
-    text = "Contact"
-
-  [[rows.values]]
-    text = "Contact form for help, contact and comments"
+    text = "Flexible call to action buttons making external or on site links actionable"
 
 [[rows]]
   [[rows.values]]
-    text = "Content"
+    button = "Contact"
+    color = "link p-0"
+    url = "fragments/contact"
 
   [[rows.values]]
-    text = "Write documents and articles using Markdown and Hugo shortcodes"
+    text = "Contact form for help, contact and feedback"
 
 [[rows]]
   [[rows.values]]
-    text = "Copyright"
+    button = "Content"
+    color = "link p-0"
+    url = "fragments/content"
+
+  [[rows.values]]
+    text = "Write pages and articles using Markdown and Hugo shortcodes"
+
+[[rows]]
+  [[rows.values]]
+    button = "Copyright"
+    color = "link p-0"
+    url = "fragments/copyright"
 
   [[rows.values]]
     text = "Copyright section of the page"
 
 [[rows]]
   [[rows.values]]
-    text = "Embed"
+    button = "Embed"
+    color = "link p-0"
+    url = "fragments/embed"
 
   [[rows.values]]
-    text = "Embed anything from anywhere"
-
-[[rows]]
-  [[rows.values]]
-    text = "Footer"
-
-  [[rows.values]]
-    text = "Footer section of the page with social links, description and links to different places of the website"
+    text = "Embed anything from anywhere such as videos, slides, forms and more"
 
 [[rows]]
   [[rows.values]]
-    text = "Hero"
+    button = "Footer"
+    color = "link p-0"
+    url = "fragments/footer"
 
   [[rows.values]]
-    text = "With support for particles, your page logo and links"
+    text = "Footer section with description, social links and footer navigation"
 
 [[rows]]
   [[rows.values]]
-    text = "Item"
+    button = "Hero"
+    color = "link p-0"
+    url = "fragments/hero"
+
+  [[rows.values]]
+    text = "Showcase your logo, header and most important call to actions"
+
+[[rows]]
+  [[rows.values]]
+    button = "Item"
+    color = "link p-0"
+    url = "fragments/item"
 
   [[rows.values]]
     text = "Showcase your projects, features and more"
 
 [[rows]]
   [[rows.values]]
-    text = "Items"
+    button = "Items"
+    color = "link p-0"
+    url = "fragments/items"
 
   [[rows.values]]
     text = "List your project's features and services"
 
 [[rows]]
   [[rows.values]]
-    text = "Logos"
+    button = "Logos"
+    color = "link p-0"
+    url = "fragments/logos"
 
   [[rows.values]]
-    text = "List of logos of the projects you use"
-
-[[rows]]
-  [[rows.values]]
-    text = "Member"
-
-  [[rows.values]]
-    text = "Show off your team"
+    text = "List of logos/images usable for references, used projects and more"
 
 [[rows]]
   [[rows.values]]
-    text = "Nav"
+    button = "Member"
+    color = "link p-0"
+    url = "fragments/member"
+
+  [[rows.values]]
+    text = "Show off your team or showcase yourself on your personal website"
+
+[[rows]]
+  [[rows.values]]
+    button = "Nav"
+    color = "link p-0"
+    url = "fragments/nav"
 
   [[rows.values]]
     text = "The navbar of your website"
 
 [[rows]]
   [[rows.values]]
-    text = "Portfolio"
+    button = "Portfolio"
+    color = "link p-0"
+    url = "fragments/portfolio"
 
   [[rows.values]]
-    text = "List of images and description of what you work on"
+    text = "List of images and descriptions of what you work on"
 
 [[rows]]
   [[rows.values]]
-    text = "Header"
+    button = "Header"
+    color = "link p-0"
+    url = "fragments/header"
 
   [[rows.values]]
     text = "Add a customizable header for different sections"
 
 [[rows]]
   [[rows.values]]
-    text = "Table"
+    button = "Table"
+    color = "link p-0"
+    url = "fragments/table"
 
   [[rows.values]]
-    text = "Customizable table with fully responsive support"
+    text = "Fully responsive and customizable table"
 +++

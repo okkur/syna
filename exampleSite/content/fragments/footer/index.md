@@ -5,4 +5,4 @@ weight = 100
 title = "Footer"
 +++
 
-Footer fragment shows two lists of links, website logo and social links.
+Footer section with description, social links and footer navigation.

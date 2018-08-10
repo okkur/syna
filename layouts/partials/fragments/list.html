@@ -69,7 +69,7 @@
                   <img src="{{ $.root.Scratch.Get "image" | relURL }}" alt="{{ .Params.subtitle | default .Params.title }}" class="img-fluid mb-4">
                 </a>
               {{- end -}}
-              {{- if or (not (isset $self.Params "disable_summary")) (ne $self.Params.disable_summary true) }}
+              {{- if or (not (isset $self.Params "summary")) (eq $self.Params.summary true) }}
                 <div class="col-12 pl-0
                   {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
                     {{- printf " text-%s" "dark" -}}

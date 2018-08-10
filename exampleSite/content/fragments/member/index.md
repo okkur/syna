@@ -5,12 +5,11 @@ weight = 100
 title = "Member"
 +++
 
-Member fragment can be used to display important people in your team, display
-their contact information, a small resume and some description or bio.
+Member fragment can be used to display your team members, their contact
+information, achievements, a bio and more.
 
-This fragment should always be placed in a subdirectory that contains a
-definition of the fragment and definition of each item displayed in the
-fragment.
+This fragment need to always be placed in a subdirectory that contains the
+fragment content file and the specific content files of each member.
 
 Since member fragment can display an image per member, it has support for [image
 resource
