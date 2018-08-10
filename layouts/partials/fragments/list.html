@@ -96,7 +96,7 @@
                           {{- printf " badge-%s" "dark" -}}
                         {{- else -}}
                           {{- printf " badge-%s" "secondary" -}}
-                        {{- end -}}" href="{{ .URL }}">{{ i18n "content.readmore" }}</a>
+                        {{- end -}}" href="{{ .URL }}">{{ i18n "content.readmore" | default "Read more..." }}</a>
                       {{- end }}
                     {{- end -}}
                   {{- end -}}
