@@ -1,6 +1,6 @@
 +++
 date = "2018-07-07"
-fragment = "react-portal"
-weight = "1120"
+fragment = "editor"
+weight = "110"
 background = "secondary"
 +++

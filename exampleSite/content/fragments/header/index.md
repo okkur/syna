@@ -2,7 +2,7 @@
 fragment = "content"
 weight = 100
 
-title = "Section header"
+title = "Header"
 background = "light"
 +++
 
