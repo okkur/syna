@@ -13,5 +13,5 @@ displayed.
 This fragment need to always be placed in a subdirectory that contains the
 fragment content file and the specific content files of each member.
 
-- [Item fragment - No title](#items_only)
 - [Item fragment - Simple](#items)
+- [Item fragment - No title](#items_only)
