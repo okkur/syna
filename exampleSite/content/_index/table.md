@@ -15,7 +15,7 @@ subtitle = "Customize your page with our various fragments"
 [[rows]]
   [[rows.values]]
     button = "Buttons"
-    color = "link p-0"
+    color = "link"
     url = "fragments/buttons"
 
   [[rows.values]]
@@ -24,7 +24,7 @@ subtitle = "Customize your page with our various fragments"
 [[rows]]
   [[rows.values]]
     button = "Contact"
-    color = "link p-0"
+    color = "link"
     url = "fragments/contact"
 
   [[rows.values]]
@@ -33,7 +33,7 @@ subtitle = "Customize your page with our various fragments"
 [[rows]]
   [[rows.values]]
     button = "Content"
-    color = "link p-0"
+    color = "link"
     url = "fragments/content"
 
   [[rows.values]]
@@ -42,7 +42,7 @@ subtitle = "Customize your page with our various fragments"
 [[rows]]
   [[rows.values]]
     button = "Copyright"
-    color = "link p-0"
+    color = "link"
     url = "fragments/copyright"
 
   [[rows.values]]
@@ -51,7 +51,7 @@ subtitle = "Customize your page with our various fragments"
 [[rows]]
   [[rows.values]]
     button = "Embed"
-    color = "link p-0"
+    color = "link"
     url = "fragments/embed"
 
   [[rows.values]]
@@ -60,7 +60,7 @@ subtitle = "Customize your page with our various fragments"
 [[rows]]
   [[rows.values]]
     button = "Footer"
-    color = "link p-0"
+    color = "link"
     url = "fragments/footer"
 
   [[rows.values]]
@@ -69,7 +69,7 @@ subtitle = "Customize your page with our various fragments"
 [[rows]]
   [[rows.values]]
     button = "Hero"
-    color = "link p-0"
+    color = "link"
     url = "fragments/hero"
 
   [[rows.values]]
@@ -78,7 +78,7 @@ subtitle = "Customize your page with our various fragments"
 [[rows]]
   [[rows.values]]
     button = "Item"
-    color = "link p-0"
+    color = "link"
     url = "fragments/item"
 
   [[rows.values]]
@@ -87,7 +87,7 @@ subtitle = "Customize your page with our various fragments"
 [[rows]]
   [[rows.values]]
     button = "Items"
-    color = "link p-0"
+    color = "link"
     url = "fragments/items"
 
   [[rows.values]]
@@ -96,7 +96,7 @@ subtitle = "Customize your page with our various fragments"
 [[rows]]
   [[rows.values]]
     button = "Logos"
-    color = "link p-0"
+    color = "link"
     url = "fragments/logos"
 
   [[rows.values]]
@@ -105,7 +105,7 @@ subtitle = "Customize your page with our various fragments"
 [[rows]]
   [[rows.values]]
     button = "Member"
-    color = "link p-0"
+    color = "link"
     url = "fragments/member"
 
   [[rows.values]]
@@ -114,7 +114,7 @@ subtitle = "Customize your page with our various fragments"
 [[rows]]
   [[rows.values]]
     button = "Nav"
-    color = "link p-0"
+    color = "link"
     url = "fragments/nav"
 
   [[rows.values]]
@@ -123,7 +123,7 @@ subtitle = "Customize your page with our various fragments"
 [[rows]]
   [[rows.values]]
     button = "Portfolio"
-    color = "link p-0"
+    color = "link"
     url = "fragments/portfolio"
 
   [[rows.values]]
@@ -132,7 +132,7 @@ subtitle = "Customize your page with our various fragments"
 [[rows]]
   [[rows.values]]
     button = "Header"
-    color = "link p-0"
+    color = "link"
     url = "fragments/header"
 
   [[rows.values]]
@@ -141,7 +141,7 @@ subtitle = "Customize your page with our various fragments"
 [[rows]]
   [[rows.values]]
     button = "Table"
-    color = "link p-0"
+    color = "link"
     url = "fragments/table"
 
   [[rows.values]]
