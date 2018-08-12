@@ -65,6 +65,7 @@
 {{- end -}}
 
 {{- $page_scratch.Set "js" (slice) -}}
+{{- $.Scratch.Set "react" false -}}
 {{- range sort ($page_scratch.Get "fragments" | default slice) "Params.weight" -}}
   {{- if and (not .Params.disabled) (isset .Params "fragment") -}}
     {{/* Cleanup .Name to be more useful within fragments */}}
