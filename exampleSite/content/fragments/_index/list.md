@@ -5,5 +5,5 @@ weight = 150
 
 count = 1000
 section = "fragments"
-#summary = true
+#summary = false # Default value is true
 +++
