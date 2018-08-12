@@ -1,0 +1,11 @@
++++
+date = "2018-07-13"
+fragment = "header"
+weight = 500
+
+background = "white"
+title = "Section Header Fragment"
+subtitle = "Even linking is possible. This fragment can be used for related sections so linking is easier."
+#align = "left" # Default center, available values: left, center, right, with bootstrap breakpoint variables (default: xs, sm, md, lg, xl)
+#subtitle_align = "left" # Default to align value, available values: left, center, right, with bootstrap breakpoint variables (default: xs, sm, md, lg, xl)
++++
