@@ -131,6 +131,15 @@ subtitle = "Customize your page with our various fragments"
 
 [[rows]]
   [[rows.values]]
+    button = "Pricing"
+    color = "link"
+    url = "fragments/pricing"
+
+  [[rows.values]]
+    text = "List of pricing plans for the project"
+
+[[rows]]
+  [[rows.values]]
     button = "Header"
     color = "link"
     url = "fragments/header"
