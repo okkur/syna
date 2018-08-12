@@ -50,6 +50,15 @@ subtitle = "Customize your page with our various fragments"
 
 [[rows]]
   [[rows.values]]
+    button = "Editor"
+    color = "link"
+    url = "fragments/editor"
+
+  [[rows.values]]
+    text = "JSONSchema compatible editor using React"
+
+[[rows]]
+  [[rows.values]]
     button = "Embed"
     color = "link"
     url = "fragments/embed"
@@ -65,6 +74,15 @@ subtitle = "Customize your page with our various fragments"
 
   [[rows.values]]
     text = "Footer section with description, social links and footer navigation"
+
+[[rows]]
+  [[rows.values]]
+    button = "Header"
+    color = "link"
+    url = "fragments/header"
+
+  [[rows.values]]
+    text = "Add a customizable header for different sections"
 
 [[rows]]
   [[rows.values]]
@@ -131,12 +149,21 @@ subtitle = "Customize your page with our various fragments"
 
 [[rows]]
   [[rows.values]]
-    button = "Header"
+    button = "Pricing"
     color = "link"
-    url = "fragments/header"
+    url = "fragments/pricing"
 
   [[rows.values]]
-    text = "Add a customizable header for different sections"
+    text = "List of pricing plans for the project"
+
+[[rows]]
+  [[rows.values]]
+    button = "React Portal"
+    color = "link"
+    url = "fragments/react-portal"
+
+  [[rows.values]]
+    text = "Container for a React Component"
 
 [[rows]]
   [[rows.values]]

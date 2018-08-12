@@ -73,8 +73,7 @@
 
     {{/* Resource fallthrough path preparation */}}
     {{- $file_path := strings.TrimSuffix ".md" (replace .File.Path "/index.md" "") -}}
-    {{- $page_path := replace $file_path (printf "/%s" $name) "" -}}
-    {{- $fallthrough := (dict "file_path" $file_path "page_path" $page_path ) -}}
+    {{- $fallthrough := (dict "file_path" $file_path "page_path" $page.Dir) -}}
 
     {{- partial (print "fragments/" .Params.fragment ".html") (dict "page_scratch" $page_scratch "root" $real_page "Site" $real_page.Site "page" $page "resources" $real_page.Resources "self" . "Params" .Params "Name" $name "fallthrough" $fallthrough) -}}
   {{- end -}}
