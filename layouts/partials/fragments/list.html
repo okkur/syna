@@ -101,7 +101,7 @@
                       {{- if and (isset .Params "fragment") (in "content" .Params.fragment) }}
                         {{ .Summary }}
                         {{- if not $self.Params.tiled -}}
-                          {{- if .Truncated }}
+                          {{- if or $self.Params.read_more .Truncated }}
                             <a class="ml-2 badge
                             {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
                               {{- printf " badge-%s" "dark" -}}
@@ -114,7 +114,7 @@
                         {{- range first 1 (where (.Resources.ByType "page") "Params.fragment" "in" "content") }}
                           {{ .Summary }}
                           {{- if not $self.Params.tiled -}}
-                            {{- if .Truncated }}
+                            {{- if or $self.Params.read_more .Truncated }}
                               <a class="ml-2 badge
                               {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
                                 {{- printf " badge-%s" "dark" -}}
@@ -130,14 +130,14 @@
                 {{- if $self.Params.tiled }}
                   </div>
                   {{- if and (isset .Params "fragment") (in "content" .Params.fragment) -}}
-                      {{- if .Truncated }}
+                      {{- if or $self.Params.read_more .Truncated }}
                         <div class="card-footer">
                           <a href="{{ .URL }}">{{ i18n "content.readmore" | default "Read more..." }}</a>
                         </div>
                       {{- end -}}
                     {{- else -}}
                       {{- range first 1 (where (.Resources.ByType "page") "Params.fragment" "in" "content") -}}
-                        {{- if .Truncated }}
+                        {{- if or $self.Params.read_more .Truncated }}
                           <div class="card-footer">
                             <a href="{{ .URL }}">{{ i18n "content.readmore" }}</a>
                           </div>
