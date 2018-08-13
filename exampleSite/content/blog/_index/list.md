@@ -6,4 +6,5 @@ weight = 100
 #count = 10 # Default value is 10
 #section = "" # Default value is current section
 #tiled = true # Default value is false
+#summary = false # Default value is true
 +++

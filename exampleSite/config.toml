@@ -50,73 +50,37 @@ googleAnalytics = ""
 # Keep an eye out for updates. These will be moved out to make navbar more
 # configurable.
 [[menu.main]]
-  url = "#"
-  name = "Long Link"
+  url = "/"
+  name = "Home"
   weight = 10
 
 [[menu.main]]
-  url = "/blog"
-  name = "Blog"
-  weight = 15
-
-[[menu.main]]
-  url = "/article"
-  name = "Article"
+  url = "/fragments"
+  name = "Fragments"
   weight = 20
 
 [[menu.main]]
-  url = "/about-split"
-  name = "Page-split"
-  weight = 30
-
-[[menu.main]]
   url = "/about"
-  name = "Page-single"
-  weight = 30
-
-[[menu.main]]
-  url = "#contact"
-  name = "Contact"
-  weight = 50
-
-[[menu.main]]
-  url = "#"
-  name = "Link"
+  name = "About"
   weight = 30
 
 [[menu.footer]]
-  url = "#"
-  name = "Link"
+  url = "https://github.com/okkur/syna/blob/master/docs/README.md"
+  name = "Getting Started"
   weight = 10
 
 [[menu.footer]]
-  url = "#"
-  name = "Long Link"
-  weight = 30
-
-[[menu.footer]]
-  url = "#"
-  name = "Tiny Link"
-  weight = 30
+  url = "https://about.okkur.io/"
+  name = "About Okkur Labs"
+  weight = 20
 
 [[menu.footer_social]]
   weight = 30
-  name = "linkedin"
-  pre = "fab fa-linkedin-in"
-  url = "#"
+  name = "github"
+  pre = "fab fa-github fa-stack-2x"
+  url = "https://github.com/okkur/syna"
 
 [[menu.copyright_footer]]
   url = "/about"
   name = "About Us"
   weight = 10
-
-[[menu.copyright_footer]]
-  url = "#"
-  name = "Another Link"
-  weight = 30
-
-[[menu.footer_social]]
-  weight = 20
-  name = "facebook"
-  pre = "fab fa-facebook-f"
-  url = "#"
