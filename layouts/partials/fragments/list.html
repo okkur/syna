@@ -139,7 +139,7 @@
                       {{- range first 1 (where (.Resources.ByType "page") "Params.fragment" "in" "content") -}}
                         {{- if or $self.Params.read_more .Truncated }}
                           <div class="card-footer">
-                            <a href="{{ .URL }}">{{ i18n "content.readmore" }}</a>
+                            <a href="{{ .URL }}">{{ i18n "content.readmore" | default "Read more..." }}</a>
                           </div>
                         {{- end -}}
                       {{- end -}}
