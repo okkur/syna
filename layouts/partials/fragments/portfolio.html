@@ -56,7 +56,7 @@
                   <a href="{{ .Params.url | relURL }}">
                 {{- end }}
                     {{- if .Params.asset -}}
-                      <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset) }}" class="img-fluid" alt="{{ .Params.asset.title }}">
+                      <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset) }}" class="img-fluid" alt="{{ .Params.asset.text }}">
                     {{- end }}
                     <div class="position-absolute hover-overlay"></div>
                     {{- if or .Params.title .Params.subtitle }}
