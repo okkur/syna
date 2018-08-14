@@ -98,11 +98,15 @@
                         {{- printf " text-muted text-%s" "secondary" -}}
                       {{- end -}}
                     ">
-                      {{- if and (isset .Params "fragment") (in "content" .Params.fragment) }}
+                      {{ $self.page_scratch.Set "pages" (slice .) }}
+                      {{ range .Resources.ByType "page" }}
+                        {{ $self.page_scratch.Add "pages" . }}
+                      {{ end }}
+                      {{- range first 1 (where ($self.page_scratch.Get "pages") "Params.fragment" "in" "content") }}
                         {{ .Summary }}
-                        {{- if not $self.Params.tiled -}}
+                        {{- if and (not $self.Params.tiled) (ne $self.Params.read_more false) -}}
                           {{- if or $self.Params.read_more .Truncated }}
-                            <a class="ml-2 badge
+                            <a class="badge
                             {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
                               {{- printf " badge-%s" "dark" -}}
                             {{- else -}}
@@ -110,40 +114,22 @@
                             {{- end -}}" href="{{ .URL }}">{{ i18n "content.readmore" | default "Read more..." }}</a>
                           {{- end -}}
                         {{- end -}}
-                      {{- else -}}
-                        {{- range first 1 (where (.Resources.ByType "page") "Params.fragment" "in" "content") }}
-                          {{ .Summary }}
-                          {{- if not $self.Params.tiled -}}
-                            {{- if or $self.Params.read_more .Truncated }}
-                              <a class="ml-2 badge
-                              {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                                {{- printf " badge-%s" "dark" -}}
-                              {{- else -}}
-                                {{- printf " badge-%s" "secondary" -}}
-                              {{- end -}}" href="{{ .URL }}">{{ i18n "content.readmore" | default "Read more..." }}</a>
-                            {{- end -}}
-                          {{- end -}}
-                        {{- end -}}
                       {{- end -}}
                     </div>
                   {{- end -}}
                 {{- if $self.Params.tiled }}
                   </div>
-                  {{- if and (isset .Params "fragment") (in "content" .Params.fragment) -}}
-                      {{- if or $self.Params.read_more .Truncated }}
-                        <div class="card-footer">
-                          <a href="{{ .URL }}">{{ i18n "content.readmore" | default "Read more..." }}</a>
-                        </div>
-                      {{- end -}}
-                    {{- else -}}
-                      {{- range first 1 (where (.Resources.ByType "page") "Params.fragment" "in" "content") -}}
-                        {{- if or $self.Params.read_more .Truncated }}
-                          <div class="card-footer">
-                            <a href="{{ .URL }}">{{ i18n "content.readmore" | default "Read more..." }}</a>
-                          </div>
-                        {{- end -}}
-                      {{- end -}}
+                  {{ $self.page_scratch.Set "pages" (slice .) }}
+                  {{ range .Resources.ByType "page" }}
+                    {{ $self.page_scratch.Add "pages" . }}
+                  {{ end }}
+                  {{- range first 1 (where ($self.page_scratch.Get "pages") "Params.fragment" "in" "content") }}
+                    {{- if and (ne $self.Params.read_more false) (or $self.Params.read_more .Truncated) }}
+                      <div class="card-footer">
+                        <a href="{{ .URL }}">{{ i18n "content.readmore" | default "Read more..." }}</a>
+                      </div>
                     {{- end -}}
+                  {{- end -}}
                 {{- end }}
               </article>
             {{- if $self.Params.tiled }}
