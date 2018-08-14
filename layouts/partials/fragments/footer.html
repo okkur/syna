@@ -1,3 +1,4 @@
+{{- $self := . -}}
 {{- $bg := .Params.background | default "dark" }}
 
 {{/* Global resource fallback - can also be used within loops */}}
@@ -39,7 +40,7 @@
       ">
         {{- with .Params.logo }}
           <h4>
-            {{- .title -}}
+            {{- $self.Params.title -}}
           </h4>
           {{- if .image }}
           <a href="{{ .url }}">
