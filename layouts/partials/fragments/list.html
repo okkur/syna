@@ -90,6 +90,10 @@
                       <img src="{{ $.root.Scratch.Get "image" | relURL }}" alt="{{ .Params.subtitle | default .Params.title }}" class="img-fluid mb-4">
                     </a>
                   {{- end -}}
+                  {{ $self.page_scratch.Set "pages" (slice .) }}
+                  {{ range .Resources.ByType "page" }}
+                    {{ $self.page_scratch.Add "pages" . }}
+                  {{ end }}
                   {{- if or (not (isset $self.Params "summary")) (eq $self.Params.summary true) }}
                     <div class="col-12 pl-0
                       {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
@@ -98,10 +102,6 @@
                         {{- printf " text-muted text-%s" "secondary" -}}
                       {{- end -}}
                     ">
-                      {{ $self.page_scratch.Set "pages" (slice .) }}
-                      {{ range .Resources.ByType "page" }}
-                        {{ $self.page_scratch.Add "pages" . }}
-                      {{ end }}
                       {{- range first 1 (where ($self.page_scratch.Get "pages") "Params.fragment" "in" "content") }}
                         {{ .Summary }}
                         {{- if and (not $self.Params.tiled) (ne $self.Params.read_more false) -}}
@@ -119,10 +119,6 @@
                   {{- end -}}
                 {{- if $self.Params.tiled }}
                   </div>
-                  {{ $self.page_scratch.Set "pages" (slice .) }}
-                  {{ range .Resources.ByType "page" }}
-                    {{ $self.page_scratch.Add "pages" . }}
-                  {{ end }}
                   {{- range first 1 (where ($self.page_scratch.Get "pages") "Params.fragment" "in" "content") }}
                     {{- if and (ne $self.Params.read_more false) (or $self.Params.read_more .Truncated) }}
                       <div class="card-footer">
