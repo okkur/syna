@@ -47,7 +47,9 @@
           </a>
           {{- else }}
           <div>
-            {{- .text -}}
+            <a href="{{ .url }}">
+              {{- .text -}}
+            </a>
           </div>
           {{- end -}}
         {{- end -}}
