@@ -78,7 +78,7 @@
                       {{- else -}}
                         {{- printf " border-%s" "white" -}}
                       {{- end -}}
-                    " alt=""></img>
+                    " alt="{{ $member.title }}"></img>
                   </div>
                 {{- end -}}
                 <div class="mt-5 mb-0
@@ -192,7 +192,7 @@
                       {{- else -}}
                         {{- printf " border-%s" "white" -}}
                       {{- end -}}
-                    " alt=""></img>
+                    " alt="{{ $member.title }}"></img>
                   </div>
                 {{- end -}}
                 <div class="col-12 text-lg-left

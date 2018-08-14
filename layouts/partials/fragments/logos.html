@@ -63,12 +63,18 @@
           {{/* End of do not change */}}
 
           <div class="col-7 col-sm-4 text-center py-2">
-            {{- if .url }}
-              <a href="{{ .url }}">
+            {{- if .image -}}
+              {{- if .url }}
+                <a href="{{ .url }}">
+                  <img src="{{ $.root.Scratch.Get "image" | relURL }}" class="p-2 w-75" alt="{{ .text }}">
+                </a>
+              {{- else }}
                 <img src="{{ $.root.Scratch.Get "image" | relURL }}" class="p-2 w-75" alt="{{ .text }}">
-              </a>
+              {{- end }}
             {{- else }}
-              <img src="{{ $.root.Scratch.Get "image" | relURL }}" class="p-2 w-75" alt="{{ .text }}">
+              <div class="col-12 mb-0 d-none d-lg-inline text-muted text-secondary">
+                <p class="mb-0">{{ .text }}</p>
+              </div>
             {{- end }}
           </div>
         {{- end }}

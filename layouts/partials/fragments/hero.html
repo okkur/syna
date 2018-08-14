@@ -1,6 +1,7 @@
 {{- $bg := .Params.background | default "secondary" -}}
-{{- if .Params.particles }}
-  {{- .page_scratch.Add "js" ("syna-hero.js" | relURL) }}
+{{- $self := . -}}
+{{- if .Params.particles -}}
+  {{- .page_scratch.Add "js" ("syna-hero.js" | relURL) -}}
 {{- end }}
 
 {{ "<!-- hero -->" | safeHTML }}
@@ -62,7 +63,7 @@
     {{/* End of do not change */}}
     {{- with .Params.logo }}
       <div class="row justify-content-center align-items-start">
-        <img class="overlay img-fluid" src="{{ $.root.Scratch.Get "image" | relURL }}"
+        <img class="overlay img-fluid" src="{{ $.root.Scratch.Get "image" | relURL }}" alt="{{ $self.Params.title }}"
           {{- if .height -}} height="{{ .height }}"{{- end -}}
           {{- if .width -}} width="{{ .width }}"{{- end -}}
         ></img>
