@@ -11,7 +11,8 @@ subtitle= "image right"
 pre = "pre"
 post = "post"
 
-image = "404.png"
+[asset]
+  image = "404.png"
 +++
 
 Some more text to showcase the description capabilities:

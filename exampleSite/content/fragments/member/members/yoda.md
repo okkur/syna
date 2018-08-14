@@ -3,7 +3,9 @@ title = "Tiny Gopher 3"
 weight = 30
 date = "2017-10-17"
 
-image = "tinygopher.png"
+[asset]
+  image = "tinygopher.png"
+
 position = "Gopherineer"
 reports_to = "Lead Gophineer"
 lives_in = "[Iceland](https://www.google.com/maps/place/Iceland/)"

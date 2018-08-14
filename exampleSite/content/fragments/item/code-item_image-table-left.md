@@ -20,7 +20,8 @@ title = "Item Fragment Image Table Left"
 #pre = ""
 #post = ""
 
-image = "screenshot.png"
+[asset]
+  image = "screenshot.png"
 
 [header]
   [[header.values]]

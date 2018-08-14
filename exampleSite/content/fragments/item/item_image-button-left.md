@@ -13,7 +13,8 @@ title = "Item Fragment Image Button Left"
 #pre = ""
 #post = ""
 
-image = "screenshot.png"
+[asset]
+  image = "screenshot.png"
 
 [[buttons]]
   text = "Button"
