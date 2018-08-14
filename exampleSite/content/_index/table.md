@@ -14,6 +14,15 @@ subtitle = "Customize your page with our various fragments"
 
 [[rows]]
   [[rows.values]]
+    button = "404"
+    color = "link"
+    url = "fragments/404"
+
+  [[rows.values]]
+    text = "Call to action and description for the 404 (page not found) page"
+
+[[rows]]
+  [[rows.values]]
     button = "Buttons"
     color = "link"
     url = "fragments/buttons"
