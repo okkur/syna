@@ -22,7 +22,7 @@
   {{- if .Params.asset -}}
     {{- with .Params.asset }}
       <div class="row justify-content-center align-items-start">
-        <img class="overlay img-fluid" src="{{ partial "helpers/image.html" (dict "root" $self "asset" .) }}" alt="{{ $self.Params.title }}"
+        <img class="overlay img-fluid" src="{{ partial "helpers/image.html" (dict "root" $self "asset" .) }}" alt="{{ .title }}"
           {{- if .height -}} height="{{ .height }}"{{- end -}}
           {{- if .width -}} width="{{ .width }}"{{- end -}}
         ></img>

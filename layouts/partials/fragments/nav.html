@@ -13,11 +13,11 @@
   <div class="container">
     {{- if .Params.asset.image }}
       <a class="navbar-brand py-0" href="{{ "#page-top" | relLangURL }}">
-        <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset) }}" height="35" class="d-inline-block align-top" alt="{{ .Params.branding.text }}">
+        <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset) }}" height="35" class="d-inline-block align-top" alt="{{ .Params.asset.text }}">
       </a>
     {{- else }}
       <a class="navbar-brand py-0" href="{{ "#page-top" | relLangURL }}">
-        {{- .Params.branding.text -}}
+        {{- .Params.asset.text -}}
       </a>
     {{- end }}
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">

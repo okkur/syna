@@ -97,7 +97,7 @@
                     <i class="{{ .Params.icon }} fa-stack-1x fa-inverse"></i>
                   </span>
                 {{- else if .Params.asset -}}
-                  <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset) }}" class="img-fluid p-2" alt="{{ .Params.title }}">
+                  <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset) }}" class="img-fluid p-2" alt="{{ .Params.asset.title }}">
                 {{- end -}}
                 {{- if and (not .Params.icon) (not .Params.asset) -}}
                   {{- range .Params.buttons }}
@@ -281,7 +281,7 @@
               </div>
             {{- else if .Params.asset }}
               <div class="col-12 text-center d-none d-lg-inline">
-                <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset) }}" class="img-fluid p-2" alt="{{ .Params.title }}">
+                <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset) }}" class="img-fluid p-2" alt="{{ .Params.asset.title }}">
               </div>
             {{- end -}}
             {{- if and (not .Params.icon) (not .Params.asset) }}
