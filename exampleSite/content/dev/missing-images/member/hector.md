@@ -3,7 +3,9 @@ title = "Tiny Gopher 5"
 weight = 30
 date = "2017-10-17"
 
-image = "404.png"
+[asset]
+  image = "404.png"
+
 lives_in = "[Iceland](https://www.google.com/maps/place/Iceland/)"
 
 [[icons]]

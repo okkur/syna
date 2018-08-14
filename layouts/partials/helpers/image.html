@@ -1,0 +1,19 @@
+{{/* Global resource fallback */}}
+{{- $image := .asset.image -}}
+{{- .root.page_scratch.Set "image" (printf "images/%s" $image) -}}
+
+{{/* Page specific resource */}}
+{{- $location := (printf "%s/%s" .root.fallthrough.page_path $image) -}}
+{{- if (fileExists (printf "content/%s" $location)) -}}
+  {{/* special case index: trim _index/ from url */}}
+  {{- .root.page_scratch.Set "image" $location -}}
+{{- end -}}
+
+{{/* Fragment specific resource */}}
+{{- $location := (printf "%s/%s" .root.fallthrough.file_path $image) -}}
+{{- if (fileExists (printf "content/%s" $location)) -}}
+  {{/* special case index: trim _index/ from url */}}
+  {{- .root.page_scratch.Set "image" $location -}}
+{{- end -}}
+
+{{- .root.page_scratch.Get "image" | relURL -}}

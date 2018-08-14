@@ -13,7 +13,8 @@ title = "Item Fragment Image Center"
 #pre = ""
 #post = ""
 
-image = "screenshot.png"
+[asset]
+  image = "screenshot.png"
 +++
 
 

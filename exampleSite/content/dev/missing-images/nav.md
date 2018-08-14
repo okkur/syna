@@ -4,7 +4,7 @@ date = "2018-05-17"
 weight = 0
 
 # Branding options
-[branding]
+[asset]
   image = "404.png"
   text = "Syna"
 

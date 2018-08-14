@@ -3,7 +3,7 @@ fragment = "footer"
 date = "2016-09-07"
 weight = 1200
 
-[logo]
+[asset]
   title = "Logo Title"
   image = "404.png"
   text = "Logo Subtext"

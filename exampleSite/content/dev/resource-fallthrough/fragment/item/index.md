@@ -6,5 +6,6 @@ align = "center"
 
 title = "item"
 
-image = "resource_logo.svg"
+[asset]
+  image = "resource_logo.svg"
 +++

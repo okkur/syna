@@ -3,7 +3,8 @@ title = "Tiny Gopher"
 weight = 10
 date = "2017-10-17"
 
-image = "resource_logo.svg"
+[asset]
+  image = "resource_logo.svg"
 +++
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.

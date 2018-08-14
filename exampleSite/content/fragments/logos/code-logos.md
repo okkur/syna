@@ -15,19 +15,19 @@ background = "secondary"
 title = "Logo Fragment"
 subtitle = "Even linking is possible"
 
-[[logos]]
+[[assets]]
   text = "hugo"
   weight = 20
   image = "hugo.svg"
   url = "#"
 
-[[logos]]
+[[assets]]
   text = "go"
   weight = 10
   image = "go.svg"
   url = "#"
 
-[[logos]]
+[[assets]]
   text = "caddy"
   weight = 30
   image = "caddy.svg"

@@ -8,7 +8,7 @@ background = "secondary"
 #title = ""
 #subtitle = ""
 
-[[logos]]
+[[assets]]
   text = "syna"
   weight = 10
   image = "syna.svg"

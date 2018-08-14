@@ -3,7 +3,9 @@ title = "Huge Gopher"
 weight = 0
 date = "2017-10-17"
 
-image = "404.png"
+[asset]
+  image = "404.png"
+
 position = "Lead Gopherineer"
 reports_to = "CTO"
 lives_in = "[Munich, Germany](https://www.google.com/maps/place/Munich,+Germany/)"

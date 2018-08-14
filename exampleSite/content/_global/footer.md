@@ -7,7 +7,7 @@ background = "secondary"
 
 menu_title = "Further Resources"
 
-[logo]
+[asset]
   image = "logo.svg"
   text = "Logo Subtext"
 +++
