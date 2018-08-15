@@ -1,30 +1,6 @@
 {{- $self := . -}}
 {{- $bg := .Params.background | default "dark" }}
 
-{{/* Global resource fallback - can also be used within loops */}}
-{{- $image := .Params.logo.image -}}
-
-{{/* Do not change the following snippet */}}
-{{/* Code is duplicated throughout the code */}}
-{{- $.root.Scratch.Set "image" (printf "images/%s" $image) -}}
-
-{{/* Page specific resource */}}
-{{- $location := (printf "%s/%s" $.fallthrough.page_path $image) -}}
-{{- if (fileExists (printf "content/%s" $location)) -}}
-  {{/* special case index: trim _index/ from url */}}
-  {{- $location := strings.TrimPrefix "_index/" $location -}}
-  {{- $.root.Scratch.Set "image" $location -}}
-{{- end -}}
-
-{{/* Fragment specific resource */}}
-{{- $location := (printf "%s/%s" $.fallthrough.file_path $image) -}}
-{{- if (fileExists (printf "content/%s" $location)) -}}
-  {{/* special case index: trim _index/ from url */}}
-  {{- $location := strings.TrimPrefix "_index/" $location -}}
-  {{- $.root.Scratch.Set "image" $location -}}
-{{- end -}}
-{{/* End of do not change */}}
-
 {{ "<!-- Footer -->" | safeHTML }}
 <div class="overlay container-fluid
   {{- printf " bg-%s" $bg -}}
@@ -38,13 +14,13 @@
           {{- printf " text-%s" "secondary" -}}
         {{- end -}}
       ">
-        {{- with .Params.logo }}
+        {{- with .Params.asset }}
           <h4>
             {{- $self.Params.title -}}
           </h4>
           {{- if .image }}
           <a href="{{ .url }}">
-            <img src="{{ $.root.Scratch.Get "image" | relURL }}" class="img-fluid w-50" alt="{{ .text }}">
+            <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .) }}" class="img-fluid w-50" alt="{{ .text }}">
           </a>
           {{- else }}
           <div>

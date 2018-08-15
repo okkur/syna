@@ -15,7 +15,7 @@ background = "secondary"
 
 menu_title = "Link Title"
 
-[logo]
+[asset]
   image = "logo.svg"
   text = "Logo Subtext"
   url = "#"

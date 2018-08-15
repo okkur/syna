@@ -1,3 +1,4 @@
+{{- $self := . -}}
 {{- $members := where (.page.Resources.Match (printf "%s/*.md" .Name)) ".Name" "ne" .self.Name -}}
 {{- $bg := .Params.background | default "light" }}
 
@@ -48,37 +49,15 @@
             {{- if not (in .Name "/index.md") -}}
               {{- $member := .Params -}}
               <div class="col-lg-4 col-md-6 col-sm-12 pt-3 pb-5 text-left text-sm-center">
-                {{- if .Params.image -}}
-                  {{/* Global resource fallback - can also be used within loops */}}
-                  {{- $image := .Params.image -}}
-    
-                  {{/* Do not change the following snippet */}}
-                  {{/* Code is duplicated throughout the code */}}
-                  {{- $.root.Scratch.Set "image" (printf "images/%s" $image) -}}
-                  {{/* Page specific resource */}}
-                  {{- $location := (printf "%s/%s" $.fallthrough.page_path $image) -}}
-                  {{- if (fileExists (printf "content/%s" $location)) -}}
-                  {{/* special case index: trim _index/ from url */}}
-                  {{- $location := strings.TrimPrefix "_index/" $location -}}
-                  {{- $.root.Scratch.Set "image" $location -}}
-                  {{- end -}}
-    
-                  {{/* Fragment specific resource */}}
-                  {{- $location := (printf "%s/%s" $.fallthrough.file_path $image) -}}
-                  {{- if (fileExists (printf "content/%s" $location)) -}}
-                  {{/* special case index: trim _index/ from url */}}
-                  {{- $location := strings.TrimPrefix "_index/" $location -}}
-                  {{- $.root.Scratch.Set "image" $location -}}
-                  {{- end -}}
-                  {{/* End of do not change */}}
+                {{- if .Params.asset -}}
                   <div class="text-center m-2">
-                    <img src="{{ $.root.Scratch.Get "image" | relURL }}" class="img-fluid rounded-circle w-75 border
+                    <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset) }}" class="img-fluid rounded-circle w-75 border
                       {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
                         {{- printf " border-%s" "dark" -}}
                       {{- else -}}
                         {{- printf " border-%s" "white" -}}
                       {{- end -}}
-                    " alt=""></img>
+                    " alt="{{ $member.title }}"></img>
                   </div>
                 {{- end -}}
                 <div class="mt-5 mb-0
@@ -154,49 +133,26 @@
       {{- else if le $members 1 -}}
         <div class="card p-2">
           <div class="row m-0 justify-content-center 
-            {{- if .Params.image -}}
+            {{- if .Params.asset -}}
               {{- printf " align-items-center" -}}
             {{- end -}}">
             {{- range $members -}}
               {{/* Handle special case of index.md being considered a member */}}
               {{- if not (in .Name "/index.md") -}}
                 {{- $member := .Params -}}
-                {{- if .Params.image -}}
-                  {{/* Global resource fallback - can also be used within loops */}}
-                  {{- $image := .Params.image -}}
-
-                  {{/* Do not change the following snippet */}}
-                  {{/* Code is duplicated throughout the code */}}
-                  {{- $.root.Scratch.Set "image" (printf "images/%s" $image) -}}
-
-                  {{/* Page specific resource */}}
-                  {{- $location := (printf "%s/%s" $.fallthrough.page_path $image) -}}
-                  {{- if (fileExists (printf "content/%s" $location)) -}}
-                  {{/* special case index: trim _index/ from url */}}
-                  {{- $location := strings.TrimPrefix "_index/" $location -}}
-                  {{- $.root.Scratch.Set "image" $location -}}
-                  {{- end -}}
-
-                  {{/* Fragment specific resource */}}
-                  {{- $location := (printf "%s/%s" $.fallthrough.file_path $image) -}}
-                  {{- if (fileExists (printf "content/%s" $location)) -}}
-                  {{/* special case index: trim _index/ from url */}}
-                  {{- $location := strings.TrimPrefix "_index/" $location -}}
-                  {{- $.root.Scratch.Set "image" $location -}}
-                  {{- end -}}
-                  {{/* End of do not change */}}
+                {{- if .Params.asset -}}
                   <div class="col-12 col-lg-4 p-4 text-center">
-                    <img src="{{ $.root.Scratch.Get "image" | relURL }}" class="img-fluid rounded-circle border
+                    <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset) }}" class="img-fluid rounded-circle border
                       {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
                         {{- printf " border-%s" "dark" -}}
                       {{- else -}}
                         {{- printf " border-%s" "white" -}}
                       {{- end -}}
-                    " alt=""></img>
+                    " alt="{{ $member.title }}"></img>
                   </div>
                 {{- end -}}
                 <div class="col-12 text-lg-left
-                  {{- if .Params.image -}}
+                  {{- if .Params.asset -}}
                     {{- printf " col-lg-8 pb-4 pt-0 pl-lg-5 pt-lg-4 text-center" -}}
                   {{- else -}}
                     {{- printf " col-lg-4" -}}
@@ -264,7 +220,7 @@
                 </div>
                 {{- if .Content -}}
                   <div class="col-12 text-center text-lg-left
-                    {{- if .Params.image -}}
+                    {{- if .Params.asset -}}
                       {{- printf " p-4" -}}
                     {{- else -}}
                       {{- printf " col-lg-8 pt-0 pl-lg-5 text-center" -}}

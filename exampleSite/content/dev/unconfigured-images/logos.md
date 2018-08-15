@@ -5,17 +5,17 @@ weight = 300
 
 title = "logo"
 
-[[logos]]
+[[assets]]
   text = "1"
   weight = 10
   url = "#"
 
-[[logos]]
+[[assets]]
   text = "2"
   weight = 20
   url = "#"
 
-[[logos]]
+[[assets]]
   text = "3"
   weight = 30
   url = "#"

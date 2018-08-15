@@ -4,7 +4,7 @@ date = "2016-09-07"
 title = "Logo Title"
 weight = 1200
 
-[logo]
+[asset]
   image = "404.png"
   text = "Logo Subtext"
   url = "#"

@@ -6,9 +6,11 @@ particles = true
 
 title = "title"
 subtitle = "subtitle"
-header = "404.png"
 
-[logo]
+[header]
+  image = "404.png"
+
+[asset]
   image = "404.png"
 
 [[buttons]]

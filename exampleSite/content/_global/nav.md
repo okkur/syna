@@ -6,7 +6,7 @@ weight = 0
 #background = ""
 
 # Branding options
-[branding]
+[asset]
   image = "logo.svg"
   text = "Syna"
 

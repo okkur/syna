@@ -1,4 +1,11 @@
 +++
+fragment = "content"
+weight = 120
++++
+
+<details><summary>Code</summary>
+```
++++
 date = "2018-07-22"
 fragment = "404"
 weight = 150
@@ -9,8 +16,10 @@ weight = 150
 #button_text = "" # default i18n "404.button"
 #redirect_url = "" # default /
 
-[asset]
+[logo]
   image = "logo.svg"
   width = "500px" # optional - will default to image width
   #height = "150px" # optional - will default to image height
 +++
+```
+</details>
