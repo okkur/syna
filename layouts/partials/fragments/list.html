@@ -70,7 +70,7 @@
                 {{- end -}}
                 {{/* End of do not change */}}
                 <a href="{{ .URL }}">
-                  <img src="{{ $.root.Scratch.Get "image" | relURL }}" alt="{{ .Params.subtitle | default .Params.title }}" class="img-fluid mb-4">
+                  <img src="{{ $.root.Scratch.Get "image" | relLangURL }}" alt="{{ .Params.subtitle | default .Params.title }}" class="img-fluid mb-4">
                 </a>
               {{- end -}}
               {{- if or (not (isset $self.Params "summary")) (eq $self.Params.summary true) }}

@@ -1,6 +1,6 @@
 {{ "<!-- Theme Code -->" | safeHTML }}
 {{- partial "custom/js.html" . -}}
-<script src="{{ "syna-main.js" | relURL }}"></script>
+<script src="{{ "syna-main.js" | relLangURL }}"></script>
 
 {{- if $.Scratch.Get "react" }}
   <script>
@@ -10,7 +10,7 @@
   </script>
 {{- end -}}
 {{- range uniq ($.Scratch.Get "js") }}
-  <script src="{{ . | relURL }}" async defer></script>
+  <script src="{{ . | relLangURL }}" async defer></script>
 {{- end -}}
 {{- template "_internal/google_analytics_async.html" . -}}
 
