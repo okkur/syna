@@ -4,11 +4,11 @@ fragment = "footer"
 date = "2016-09-07"
 weight = 110
 background = "secondary"
+title = "Logo Title"
 
 menu_title = "Link Title"
 
 [asset]
-  title = "Logo Title"
   image = "logo.svg"
   text = "Logo Subtext"
   url = "#"

@@ -1,10 +1,10 @@
 +++
 fragment = "footer"
 date = "2016-09-07"
+title = "Logo Title"
 weight = 1200
 
 [asset]
-  title = "Logo Title"
   text = "Logo Subtext"
   url = "#"
 +++

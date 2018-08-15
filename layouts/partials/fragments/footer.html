@@ -16,7 +16,7 @@
       ">
         {{- with .Params.asset }}
           <h4>
-            {{- .title -}}
+            {{- $self.Params.title -}}
           </h4>
           {{- if .image }}
           <a href="{{ .url }}">
@@ -24,7 +24,9 @@
           </a>
           {{- else }}
           <div>
-            {{- .text -}}
+            <a href="{{ .url }}">
+              {{- .text -}}
+            </a>
           </div>
           {{- end -}}
         {{- end -}}
