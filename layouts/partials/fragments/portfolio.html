@@ -1,7 +1,7 @@
 {{- $self := . -}}
 {{- $items := where (.page.Resources.Match (printf "%s/*.md" .Name)) ".Name" "ne" .self.Name -}}
 {{- $bg := .Params.background | default "light" -}}
-{{- .page_scratch.Add "js" ("syna-portfolio.js" | relURL) }}
+{{- .page_scratch.Add "js" ("syna-portfolio.js" | relLangURL) }}
 
 {{ "<!-- Porfolio -->" | safeHTML }}
 <section id="{{ .Name }}">
@@ -53,7 +53,7 @@
                 {{- if not .Params.url }} has-modal {{- end -}}
               ">
                 {{- if .Params.url }}
-                  <a href="{{ .Params.url | relURL }}">
+                  <a href="{{ .Params.url | relLangURL }}">
                 {{- end }}
                     {{- if .Params.asset -}}
                       <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset) }}" class="img-fluid" alt="{{ .Params.asset.text }}">

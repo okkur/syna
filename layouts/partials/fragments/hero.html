@@ -1,7 +1,7 @@
 {{- $bg := .Params.background | default "secondary" -}}
 {{- $self := . -}}
 {{- if .Params.particles -}}
-  {{- .page_scratch.Add "js" ("syna-hero.js" | relURL) -}}
+  {{- .page_scratch.Add "js" ("syna-hero.js" | relLangURL) -}}
 {{- end }}
 
 {{ "<!-- hero -->" | safeHTML }}
