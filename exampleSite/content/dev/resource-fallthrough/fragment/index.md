@@ -1,5 +1,5 @@
 +++
-title = "Resource fallthrough - Fragment"
+title = "Fragment"
 date = "2017-09-07"
 description = "Dev demo for fragment level resource fallthrough"
 
