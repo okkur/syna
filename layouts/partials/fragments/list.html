@@ -24,7 +24,7 @@
   <div class="overlay container-fluid {{- printf " bg-%s" $bg -}}">
     <div class="container py-5">
       <l class="row">
-        <div class="col-12
+        <div class="row
           {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
             {{- printf " text-%s" "dark" -}}
           {{- else -}}
@@ -32,90 +32,86 @@
           {{- end -}}
         ">
           {{- range first (.Params.count | default 10) (.page_scratch.Get "pages") }}
-            <article class="col-12 mb-4">
-              {{- if .Params.title }}
-                <div class="col-12 pl-0
-                  {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
-                    {{- printf " text-%s" "dark" -}}
-                  {{- else -}}
-                    {{- printf " text-%s" "light" -}}
-                  {{- end -}}
-                ">
-                  <a href="{{ .URL }}">
-                    <h3>
-                      {{- .Params.title | markdownify -}}
-                    </h3>
-                  </a>
-                </div>
-              {{- end -}}
-              {{- if .Params.image -}}
-                {{/* Global resource fallback - can also be used within loops */}}
-                {{- $image := .Params.image -}}
-
-                {{- $name := strings.TrimSuffix ".md" (replace .Name "/index.md" "") -}}
-                {{- $file_path := strings.TrimSuffix ".md" (replace .File.Path "/index.md" "") -}}
-                {{- $page_path := replace $file_path (printf "/%s" $name) "" -}}
-                {{- $fallthrough := (dict "file_path" $file_path "page_path" $page_path ) -}}
-
-                {{/* Do not change the following snippet */}}
-                {{/* Code is duplicated throughout the code */}}
-                {{- $.root.Scratch.Set "image" (printf "images/%s" $image) -}}
-
-                {{/* Page specific resource */}}
-                {{- $location := (printf "%s/%s" $fallthrough.page_path $image) -}}
-                {{- if (fileExists (printf "content/%s" $location)) -}}
-                  {{/* special case index: trim _index/ from url */}}
-                  {{- $location := strings.TrimPrefix "_index/" $location -}}
-                  {{- $.root.Scratch.Set "image" $location -}}
+            {{- if $self.Params.tiled -}}
+              <div class="col-lg-6 col-12 mb-2 d-flex">
+            {{- end -}}
+              <article class="
+                {{- if $self.Params.tiled -}}
+                  {{- printf "card w-100" -}}
+                {{- else -}}
+                  {{- printf "col-12 mb-4" -}}
+                {{- end -}}">
+                {{- if $self.Params.tiled }}
+                  <div class="card-body">
                 {{- end -}}
-            
-                {{/* Fragment specific resource */}}
-                {{- $location := (printf "%s/%s" $fallthrough.file_path $image) -}}
-                {{- if (fileExists (printf "content/%s" $location)) -}}
-                  {{/* special case index: trim _index/ from url */}}
-                  {{- $location := strings.TrimPrefix "_index/" $location -}}
-                  {{- $.root.Scratch.Set "image" $location -}}
-                {{- end -}}
-                {{/* End of do not change */}}
-                <a href="{{ .URL }}">
-                  <img src="{{ $.root.Scratch.Get "image" | relLangURL }}" alt="{{ .Params.subtitle | default .Params.title }}" class="img-fluid mb-4">
-                </a>
-              {{- end -}}
-              {{- if or (not (isset $self.Params "summary")) (eq $self.Params.summary true) }}
-                <div class="col-12 pl-0
-                  {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                    {{- printf " text-%s" "dark" -}}
-                  {{- else -}}
-                    {{- printf " text-muted text-%s" "secondary" -}}
-                  {{- end -}}
-                ">
-                  {{- if and (isset .Params "fragment") (in "content" .Params.fragment) }}
-                    {{ .Summary }}
-                    {{- if .Truncated -}}
-                      <a class="ml-2 badge
-                      {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                        {{- printf " badge-%s" "dark" -}}
-                      {{- else -}}
-                        {{- printf " badge-%s" "secondary" -}}
-                      {{- end -}}" href="{{ .URL }}">{{ i18n "content.readmore" | default "Read more..." }}</a>
+                  {{- if .Params.title -}}
+                    {{- if $self.Params.tiled }}
+                      <div class="card-title">
                     {{- end }}
-                  {{- else }}
-                    {{- range first 1 (where (.Resources.ByType "page") "Params.fragment" "in" "content") }}
-                      {{ .Summary }}
-                      {{- if .Truncated -}}
-                        <a class="ml-2 badge
-                        {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                          {{- printf " badge-%s" "dark" -}}
+                      <div class="col-12 pl-0
+                        {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
+                          {{- printf " text-%s" "dark" -}}
                         {{- else -}}
-                          {{- printf " badge-%s" "secondary" -}}
-                        {{- end -}}" href="{{ .URL }}">{{ i18n "content.readmore" | default "Read more..." }}</a>
-                      {{- end }}
+                          {{- printf " text-%s" "light" -}}
+                        {{- end -}}
+                      ">
+                        <a href="{{ .URL }}">
+                          <h3>
+                            {{- .Params.title | markdownify -}}
+                          </h3>
+                        </a>
+                      </div>
+                    {{- if $self.Params.tiled }}
+                      </div>
                     {{- end -}}
                   {{- end -}}
-                </div>
-              {{- end -}}
-            </article>
-          {{- end -}}
+                  {{- if .Params.asset -}}
+                    <a href="{{ .URL }}">
+                      <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset) }}" alt="{{ .Params.subtitle | default .Params.title }}" class="img-fluid mb-4">
+                    </a>
+                  {{- end -}}
+                  {{ $self.page_scratch.Set "pages" (slice .) }}
+                  {{ range .Resources.ByType "page" }}
+                    {{ $self.page_scratch.Add "pages" . }}
+                  {{ end }}
+                  {{- if or (not (isset $self.Params "summary")) (eq $self.Params.summary true) }}
+                    <div class="col-12 pl-0
+                      {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                        {{- printf " text-%s" "dark" -}}
+                      {{- else -}}
+                        {{- printf " text-muted text-%s" "secondary" -}}
+                      {{- end -}}
+                    ">
+                      {{- range first 1 (where ($self.page_scratch.Get "pages") "Params.fragment" "in" "content") }}
+                        {{ .Summary }}
+                        {{- if and (not $self.Params.tiled) (ne $self.Params.read_more false) -}}
+                          {{- if or $self.Params.read_more .Truncated }}
+                            <a class="badge
+                            {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                              {{- printf " badge-%s" "dark" -}}
+                            {{- else -}}
+                              {{- printf " badge-%s" "secondary" -}}
+                            {{- end -}}" href="{{ .URL }}">{{ i18n "content.readmore" | default "Read more..." }}</a>
+                          {{- end -}}
+                        {{- end -}}
+                      {{- end -}}
+                    </div>
+                  {{- end -}}
+                {{- if $self.Params.tiled }}
+                  </div>
+                  {{- range first 1 (where ($self.page_scratch.Get "pages") "Params.fragment" "in" "content") }}
+                    {{- if and (ne $self.Params.read_more false) (or $self.Params.read_more .Truncated) }}
+                      <div class="card-footer">
+                        <a href="{{ .URL }}">{{ i18n "content.readmore" | default "Read more..." }}</a>
+                      </div>
+                    {{- end -}}
+                  {{- end -}}
+                {{- end }}
+              </article>
+            {{- if $self.Params.tiled }}
+              </div>
+            {{- end -}}
+          {{- end }}
         </div>
       </div>
     </div>
