@@ -1,5 +1,6 @@
 +++
 fragment = "content"
+weight = 100
 
 title = "Page 1 in the list/section-1/inner-section-1 section"
 +++

@@ -1,5 +1,6 @@
 +++
 fragment = "content"
+weight = 100
 
 title = "Page 2 in the list section"
 +++
