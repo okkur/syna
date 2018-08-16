@@ -14,13 +14,18 @@
   check for presence of local fragments since multiple files can use a single
   fragment.
   */}}
-{{- $local_fragments := $real_page.Resources.ByType "page" -}}
+{{- if $page -}}
+  {{- $local_fragments := $page.Resources.ByType "page" -}}
 
-{{- $page_scratch.Set "fragments" (slice $page) -}}
-{{- $page_scratch.Set "local_fragments_dirs" (slice) -}}
-{{- range $local_fragments -}}
-  {{- $page_scratch.Add "fragments" (slice .) -}}
-  {{- $page_scratch.Add "local_fragments_dirs" .Dir -}}
+  {{- $page_scratch.Set "fragments" (slice $page) -}}
+  {{- $page_scratch.Set "local_fragments_dirs" (slice) -}}
+  {{- range $local_fragments -}}
+    {{- $page_scratch.Add "fragments" (slice .) -}}
+    {{- $page_scratch.Add "local_fragments_dirs" .Dir -}}
+  {{- end -}}
+{{- else -}}
+  {{- $page_scratch.Set "fragments" (slice) -}}
+  {{- $page_scratch.Set "local_fragments_dirs" (slice) -}}
 {{- end -}}
 
 {{- $page_scratch.Set "sections" (slice "/") -}}
@@ -57,8 +62,7 @@
   {{- range ($page_scratch.Get "global_fragments") -}}
     {{- $name := replace .Name "/index" "" -}}
     {{- $directory_same_name := in ($page_scratch.Get "local_fragments_dirs") (printf "%s%s/" $root.Dir (replace $name ".md" "")) -}}
-    {{- $file_same_name := where ($page_scratch.Get "fragments") ".Name" $name -}}
-    {{- if and (not $file_same_name) (not $directory_same_name) (ne .Params.fragment "404") -}}
+    {{- if and (and ($page_scratch.Get "fragments") (not (where ($page_scratch.Get "fragments") ".Name" $name))) (not $directory_same_name) (ne .Params.fragment "404") -}}
       {{- $page_scratch.Add "fragments" (slice .) -}}
     {{- end -}}
   {{- end -}}
