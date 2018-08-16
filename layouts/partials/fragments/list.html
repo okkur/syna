@@ -7,7 +7,6 @@
 {{- if and (not .Params.section) (eq .root.CurrentSection.Kind "section") -}}
   {{- .page_scratch.Set "pages" (.root.CurrentSection.Pages) -}}
 {{- end -}}
-{{- $pages := where (.page_scratch.Get "pages") "Params.fragment" "eq" "content" -}}
 {{- $self := . -}}
 {{- $bg := .Params.background | default "light" }}
 
@@ -23,7 +22,7 @@
             {{- printf " text-muted text-%s" "secondary" -}}
           {{- end -}}
         ">
-          {{- range first (.Params.count | default 10) $pages }}
+          {{- range first (.Params.count | default 10) (.page_scratch.Get "pages") }}
             <article class="col-12 mb-4">
               {{- if .Params.title }}
                 <div class="col-12 pl-0
