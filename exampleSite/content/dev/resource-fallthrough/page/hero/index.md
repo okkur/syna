@@ -6,8 +6,10 @@ particles = true
 
 title = "title"
 subtitle = "subtitle"
-header = "resource_logo.svg"
 
-[logo]
+[header]
+  image = "resource_logo.svg"
+
+[asset]
   image = "resource_logo.svg"
 +++

@@ -1,6 +1,7 @@
+{{- $self := . -}}
 {{- $items := where (.page.Resources.Match (printf "%s/*.md" .Name)) ".Name" "ne" .self.Name -}}
 {{- $bg := .Params.background | default "light" -}}
-{{- .page_scratch.Add "js" ("syna-portfolio.js" | relURL) }}
+{{- .page_scratch.Add "js" ("syna-portfolio.js" | relLangURL) }}
 
 {{ "<!-- Porfolio -->" | safeHTML }}
 <section id="{{ .Name }}">
@@ -52,32 +53,11 @@
                 {{- if not .Params.url }} has-modal {{- end -}}
               ">
                 {{- if .Params.url }}
-                  <a href="{{ .Params.url | relURL }}">
+                  <a href="{{ .Params.url | relLangURL }}">
                 {{- end }}
-                    {{/* Global resource fallback - can also be used within loops */}}
-                    {{- $image := .Params.image -}}
-          
-                    {{/* Do not change the following snippet */}}
-                    {{/* Code is duplicated throughout the code */}}
-                    {{- $.root.Scratch.Set "image" (printf "images/%s" $image) -}}
-          
-                    {{/* Page specific resource */}}
-                    {{- $location := (printf "%s/%s" $.fallthrough.page_path $image) -}}
-                    {{- if (fileExists (printf "content/%s" $location)) -}}
-                      {{/* special case index: trim _index/ from url */}}
-                      {{- $location := strings.TrimPrefix "_index/" $location -}}
-                      {{- $.root.Scratch.Set "image" $location -}}
-                    {{- end -}}
-          
-                    {{/* Fragment specific resource */}}
-                    {{- $location := (printf "%s/%s" $.fallthrough.file_path $image) -}}
-                    {{- if (fileExists (printf "content/%s" $location)) -}}
-                      {{/* special case index: trim _index/ from url */}}
-                      {{- $location := strings.TrimPrefix "_index/" $location -}}
-                      {{- $.root.Scratch.Set "image" $location -}}
-                    {{- end -}}
-                    {{/* End of do not change */}}
-                    <img src="{{ $.root.Scratch.Get "image" | relURL }}" class="img-fluid" alt="{{ .Params.title }}">
+                    {{- if .Params.asset -}}
+                      <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset) }}" class="img-fluid" alt="{{ .Params.asset.text }}">
+                    {{- end }}
                     <div class="position-absolute hover-overlay"></div>
                     {{- if or .Params.title .Params.subtitle }}
                       <div class="position-absolute description-container col">

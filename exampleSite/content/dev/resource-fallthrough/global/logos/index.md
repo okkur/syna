@@ -6,7 +6,7 @@ background = "dark"
 
 title = "logos"
 
-[[logos]]
+[[assets]]
   name = "syna"
   weight = 10
   image = "resource_logo.svg"

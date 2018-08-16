@@ -6,7 +6,7 @@ weight = 110
 background = "secondary"
 
 # Branding options
-[branding]
+[asset]
   image = "logo.svg"
   text = "Syna"
 

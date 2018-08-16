@@ -1,4 +1,4 @@
 {{- range .Site.Params.custom.js }}
   {{ "<!-- Custom JS -->" | safeHTML }}
-  <script src="{{ . | relURL }}"></script>
+  <script src="{{ . | relLangURL }}"></script>
 {{- end }}

@@ -2,7 +2,7 @@
 {{- if .Params.recaptcha -}}
   {{- .page_scratch.Add "js" "https://www.google.com/recaptcha/api.js" -}}
 {{- end }}
-{{- .page_scratch.Add "js" ("syna-contact.js" | relURL) }}
+{{- .page_scratch.Add "js" ("syna-contact.js" | relLangURL) }}
 
 {{ "<!-- Contact -->" | safeHTML }}
 

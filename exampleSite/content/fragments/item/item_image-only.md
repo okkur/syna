@@ -13,5 +13,6 @@ title = "Item Fragment Image Only"
 #pre = ""
 #post = ""
 
-image = "screenshot.png"
+[asset]
+  image = "screenshot.png"
 +++
