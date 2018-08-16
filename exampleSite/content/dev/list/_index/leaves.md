@@ -4,5 +4,5 @@ weight = 250
 
 summary = false
 subsections = true
-subsections_leaves = true
+subsection_leaves = true
 +++
