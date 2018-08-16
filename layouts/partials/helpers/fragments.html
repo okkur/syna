@@ -16,7 +16,7 @@
   */}}
 {{- $local_fragments := $real_page.Resources.ByType "page" -}}
 
-{{- $page_scratch.Set "fragments" (slice $real_page) -}}
+{{- $page_scratch.Set "fragments" (slice $page) -}}
 {{- $page_scratch.Set "local_fragments_dirs" (slice) -}}
 {{- range $local_fragments -}}
   {{- $page_scratch.Add "fragments" (slice .) -}}
