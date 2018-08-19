@@ -14,20 +14,9 @@
   check for presence of local fragments since multiple files can use a single
   fragment.
   */}}
-{{- if $page -}}
-  {{- $local_fragments := $page.Resources.ByType "page" -}}
 
-  {{- $page_scratch.Set "fragments" (slice $page) -}}
-  {{- $page_scratch.Set "local_fragments_dirs" (slice) -}}
-  {{- range $local_fragments -}}
-    {{- $page_scratch.Add "fragments" (slice .) -}}
-    {{- $page_scratch.Add "local_fragments_dirs" .Dir -}}
-  {{- end -}}
-{{- else -}}
-  {{- $page_scratch.Set "fragments" (slice) -}}
-  {{- $page_scratch.Set "local_fragments_dirs" (slice) -}}
-{{- end -}}
-
+{{/* We try to find every global directory from the parent directories and the 
+  local fragments */}}
 {{- $page_scratch.Set "sections" (slice "/") -}}
 {{- $sections := findRE "[^\\/]+" $real_page.CurrentSection.Dir -}}
 {{- range ($sections | default (slice)) -}}
@@ -37,48 +26,56 @@
 {{- $page_scratch.Set "fragment_directories" (slice) -}}
 {{- range $index, $section := $page_scratch.Get "sections" -}}
   {{- $directory := $section -}}
-  {{- $page_scratch.Set "active_page" ($real_page.Site.GetPage "page" (printf "%s/%s" $directory "_global")) -}}
   {{- if (eq (add $index 1) (len ($page_scratch.Get "sections"))) -}}
     {{- if ne $real_page.Kind "page" -}}
+      {{/* Last item is the page being rendered. If it's a section or homepage,
+        fragments must be at _index directory */}}
       {{- $page_scratch.Set "active_page" ($real_page.Site.GetPage "page" (printf "%s%s" $real_page.Dir "_index")) -}}
+    {{- else -}}
+      {{- $page_scratch.Set "active_page" $page -}}
     {{- end -}}
   {{- else if gt $index 1 -}}
+    {{/* Sections between the first and last are found and their _global directories
+      are taken into account */}}
     {{- $directory := (delimit (first (add $index 1) $sections) "/") -}}
+    {{- $page_scratch.Set "active_page" ($real_page.Site.GetPage "page" (printf "%s/%s" $directory "_global")) -}}
+  {{- else -}}
+    {{/* First section is always the root directory and we look for it's _global
+      directory */}}
     {{- $page_scratch.Set "active_page" ($real_page.Site.GetPage "page" (printf "%s/%s" $directory "_global")) -}}
   {{- end -}}
   {{- $page_scratch.Add "fragment_directories" ($page_scratch.Get "active_page") -}}
 {{- end -}}
 
-{{- $page_scratch.Set "global_fragments" (slice) -}}
+{{- $page_scratch.Set "fragments" (slice) -}}
 {{- range $directory := sort ($page_scratch.Get "fragment_directories") -}}
   {{- if $directory -}}
+    {{- $page_scratch.Add "fragments" . -}}
     {{- range ($directory.Resources.ByType "page") -}}
-      {{- $page_scratch.Add "global_fragments" . -}}
+      {{- $page_scratch.Add "fragments" . -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}
 
-{{- if $page_scratch.Get "global_fragments" -}}
-  {{- range ($page_scratch.Get "global_fragments") -}}
+{{- $page_scratch.Set "page_fragments" (slice) -}}
+{{- if $page_scratch.Get "fragments" -}}
+  {{- range ($page_scratch.Get "fragments") -}}
     {{- $name := replace .Name "/index" "" -}}
     {{- $directory_same_name := in ($page_scratch.Get "local_fragments_dirs") (printf "%s%s/" $root.Dir (replace $name ".md" "")) -}}
-    {{- if and (and ($page_scratch.Get "fragments") (not (where ($page_scratch.Get "fragments") ".Name" $name))) (not $directory_same_name) (ne .Params.fragment "404") -}}
-      {{- $page_scratch.Add "fragments" (slice .) -}}
+    {{- if and (not (where ($page_scratch.Get "page_fragments") ".Name" $name)) (not $directory_same_name) (ne .Params.fragment "404") -}}
+      {{- $page_scratch.Add "page_fragments" . -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}
 
 {{- $page_scratch.Set "js" (slice) -}}
 {{- $.Scratch.Set "react" false -}}
-{{- range sort ($page_scratch.Get "fragments" | default slice) "Params.weight" -}}
+{{- range sort ($page_scratch.Get "page_fragments") "Params.weight" -}}
   {{- if and (not .Params.disabled) (isset .Params "fragment") -}}
     {{/* Cleanup .Name to be more useful within fragments */}}
     {{- $name := strings.TrimSuffix ".md" (replace .Name "/index.md" "") -}}
 
-    {{/* Resource fallthrough path preparation */}}
     {{- $file_path := strings.TrimSuffix ".md" (replace .File.Path "/index.md" "") -}}
-    {{- $fallthrough := (dict "file_path" $file_path "page_path" $page.Dir) -}}
-
-    {{- partial (print "fragments/" .Params.fragment ".html") (dict "page_scratch" $page_scratch "root" $real_page "Site" $real_page.Site "page" $page "resources" $real_page.Resources "self" . "Params" .Params "Name" $name "fallthrough" $fallthrough) -}}
+    {{- partial (print "fragments/" .Params.fragment ".html") (dict "page_scratch" $page_scratch "root" $real_page "Site" $real_page.Site "page" $page "resources" $real_page.Resources "self" . "Params" .Params "Name" $name "file_path" $file_path) -}}
   {{- end -}}
 {{- end -}}

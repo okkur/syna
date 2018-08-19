@@ -3,10 +3,12 @@
 {{- .root.page_scratch.Set "image" (printf "images/%s" $image) -}}
 
 {{/* Page specific resource */}}
-{{- $location := (printf "%s/%s" .root.fallthrough.page_path $image) -}}
-{{- if (fileExists (printf "content/%s" $location)) -}}
-  {{/* special case index: trim _index/ from url */}}
-  {{- .root.page_scratch.Set "image" $location -}}
+{{- if .root.page -}}
+  {{- $location := (printf "%s/%s" .root.page.Dir $image) -}}
+  {{- if (fileExists (printf "content/%s" $location)) -}}
+    {{/* special case index: trim _index/ from url */}}
+    {{- .root.page_scratch.Set "image" $location -}}
+  {{- end -}}
 {{- end -}}
 
 {{/* Fragment specific resource */}}
