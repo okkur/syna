@@ -23,8 +23,8 @@
 <section id="{{ .Name }}">
   <div class="overlay container-fluid {{- printf " bg-%s" $bg -}}">
     <div class="container py-5">
-      <l class="row">
-        <div class="row
+      <div class="row mx-0">
+        <div class="row mx-0
           {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
             {{- printf " text-%s" "dark" -}}
           {{- else -}}
