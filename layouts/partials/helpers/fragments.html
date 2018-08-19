@@ -15,7 +15,7 @@
   fragment.
   */}}
 
-{{/* We try to find every global directory from the parent directories and the 
+{{/* We try to find every global directory from the parent directories and the
   local fragments */}}
 {{- $page_scratch.Set "sections" (slice "/") -}}
 {{- $sections := findRE "[^\\/]+" $real_page.CurrentSection.Dir -}}
