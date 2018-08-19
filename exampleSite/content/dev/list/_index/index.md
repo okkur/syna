@@ -1,4 +1,5 @@
 +++
+headless = true
 fragment = "content"
 weight = 100
 
