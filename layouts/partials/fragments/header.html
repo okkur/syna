@@ -9,7 +9,7 @@
   ">
     <div class="container py-3">
       {{- with .Params.title }}
-        <div class="row">
+        <div class="row mx-0">
           <div class="col
             {{- printf " text-%s" $align -}}
             {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
@@ -25,7 +25,7 @@
         </div>
       {{- end -}}
       {{- with .Params.subtitle -}}
-        <div class="row">
+        <div class="row mx-0">
           <div class="col pt-4 pb-0
             {{- printf " text-%s" $subtitle_align -}}
             {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
