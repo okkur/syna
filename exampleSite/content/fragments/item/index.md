@@ -6,6 +6,10 @@ title = "Item"
 background = "light"
 +++
 
+Showcase your projects, features and more
+
+<!--more-->
+
 Item fragment can be used to display a lot of different formats of data. It
 supports a button, image, table and icon.
 

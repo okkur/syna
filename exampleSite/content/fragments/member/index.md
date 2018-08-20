@@ -6,6 +6,10 @@ title = "Member"
 background = "light"
 +++
 
+Show off your team or showcase yourself on your personal website
+
+<!--more-->
+
 Member fragment can be used to display your team members, their contact
 information, achievements, a bio and more.
 
