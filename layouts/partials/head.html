@@ -25,7 +25,8 @@
   </title>
 
   {{ "<!-- Bootstrap Style -->" | safeHTML }}
-  <link href="{{ "syna-main.css" | relLangURL }}" rel="stylesheet">
+  {{ printf "<style>.mx-0{margin-left:0!important;margin-right:0!important;}%s</style>" (readFile "/static/syna-grid.css") | safeHTML }}
+  <link href="{{ "syna-styles.css" | relLangURL }}" rel="stylesheet">
 
   {{- with .Site.Params.favicon }}
     <link rel="shortcut icon" type="image/x-icon" href="{{ . | relLangURL }}">
