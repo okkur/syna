@@ -6,6 +6,10 @@ title = "Contact"
 background = "light"
 +++
 
+Contact form for help, contact and feedback
+
+<!--more-->
+
 Contact fragment renders a form with a maximum of 4 fields:
 
 - Name
