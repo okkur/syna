@@ -41,8 +41,7 @@
       {{- end }}
       <div class="row">
         {{- if eq (len $items) 0 }}
-            {{- $msg := printf "Currently there is no configured portfolio content files present. To add new item add a content file within %s" $.fallthrough.file_path -}}
-            {{- partial "helpers/warning.html" (dict "msg" $msg) -}}
+          {{- partial "helpers/empty-subpath.html" (dict "context" "portfolio" "root" $) -}}
         {{- else -}}
           {{- range (sort $items ".Params.weight") }}
             <div class="col-lg-4 col-md-6 col-12 py-2">

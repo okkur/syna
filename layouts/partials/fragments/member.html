@@ -39,8 +39,7 @@
         </div>
       {{ end }}
       {{- if eq (len $members) 0 -}}
-        {{- $msg := printf "Currently there is no configured member content files present. To add new members add a content file within %s" $.fallthrough.file_path -}}
-        {{- partial "helpers/warning.html" (dict "msg" $msg) -}}
+        {{- partial "helpers/empty-subpath.html" (dict "context" "member" "root" $) -}}
       {{- else if gt $members 1 -}}
         <div class="row justify-content-center align-items-start">
           {{- range $members -}}
