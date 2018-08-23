@@ -41,90 +41,12 @@
           {{- if .Params.rows }}
             <div class="row justify-content-center">
               <div class="col table-responsive">
-                <table class="table table-bordered
-                  {{- if and (ne $bg "white") (ne $bg "light") -}}
-                    {{- printf " table-inverse" -}}
-                  {{- end -}}
-                ">
-                  <thead>
-                    <tr>
-                      {{- $.Scratch.Set "col" 0 -}}
-                      {{- range .Params.header.values }}
-                        <th class="
-                          {{- if (in (slice "left" "center" "right") .align) -}}
-                            {{- printf " text-%s" .align -}}
-                          {{- end -}}
-                          {{- if .hide_on_mobile -}}
-                            {{- print " hide-on-mobile" }}
-                          {{- end -}}
-                        ">
-                          {{- .text | markdownify -}}
-                        </th>
-                        {{- $.Scratch.Add "col" 1 -}}
-                      {{- end }}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {{- range .Params.rows -}}
-                      {{- $.Scratch.Set "col" 0 }}
-                      <tr>
-                        {{- range $i, $s := .values -}}
-                          {{- if .header }}
-                          <th class="align-middle
-                            {{- if (index $.Params.header.values $i).hide_on_mobile -}}
-                              {{- print " hide-on-mobile" }}
-                            {{- end -}}
-                          ">{{ .header | markdownify }}</th>
-                          {{- else if .button }}
-                            <td class="align-middle
-                              {{- if (in (slice "left" "center" "right") .align) -}}
-                                {{- printf " text-%s" .align -}}
-                              {{- end -}}
-                              {{- if (index $.Params.header.values $i).hide_on_mobile -}}
-                                {{- print " hide-on-mobile" }}
-                              {{- end -}}
-                            ">
-                              <a class="btn
-                              {{- if hasPrefix .url "#" }} anchor{{- end -}}
-                              {{- $color := .color | default "primary" -}}
-                              {{- printf " btn-%s" $color -}}
-                            " href="{{ .url | relLangURL }}">
-                              {{- .button -}}
-                            </a>
-                          </td>
-                        {{- else if .icon }}
-                          <td class="align-middle
-                            {{- if (in (slice "left" "center" "right") .align) -}}
-                              {{- printf " text-%s" .align -}}
-                            {{- end -}}
-                            {{- if (index $.Params.header.values $i).hide_on_mobile -}}
-                              {{- print " hide-on-mobile" }}
-                            {{- end -}}
-                          ">
-                            <a href="{{ .url }}">
-                              <i class="{{ .icon }} fa-2x"></i>
-                            </a>
-                          </td>
-                        {{- else }}
-                          <td class="align-middle
-                            {{- if (in (slice "left" "center" "right") .align) -}}
-                              {{- printf " text-%s" .align -}}
-                            {{- end -}}
-                            {{- if (index $.Params.header.values $i).hide_on_mobile -}}
-                              {{- print " hide-on-mobile" }}
-                            {{- end -}}
-                          ">{{ .text | markdownify }}</td>
-                        {{- end -}}
-                        {{- $.Scratch.Add "col" 1 -}}
-                      {{- end }}
-                    </tr>
-                  {{- end }}
-                </tbody>
-              </table>
+                {{ partial "helpers/table.html" (dict "header" .Params.header "rows" .Params.rows "page_scratch" .page_scratch "background" $bg) }}
+              </div>
             </div>
-          </div>
-        {{- end }}
+          {{- end }}
+        </div>
       </div>
     </div>
-  </div>
+    </div>
 </section>
