@@ -3,6 +3,19 @@ import Fuse from 'fuse.js';
 import $ from './helpers/jq-helpers';
 
 const summaryInclude = 60;
+let indexCache = null;
+
+function getIndex(callback) {
+  if (indexCache) {
+    return callback(indexCache);
+  }
+
+  $.ajax({ method: 'get', url: '/index.json' }).then(data => {
+    indexCache = data;
+    callback(data);
+  });
+}
+
 const fuseOptions = {
   shouldSort: true,
   includeMatches: true,
@@ -35,18 +48,17 @@ function search(query) {
 }
 
 function executeSearch(query) {
-  $.ajax({ method: 'get', url: '/index.json' })
-    .then(data => {
-      const pages = data;
-      const fuse = new Fuse(pages, fuseOptions);
-      const matches = fuse.search(query);
-      console.log(matches)
-      if (matches.length > 0) {
-        populateResults(matches, query);
-      } else {
-        $('#search-results').html('<p>No matches found</p>');
-      }
-    });
+  getIndex(data => {
+    const pages = data;
+    const fuse = new Fuse(pages, fuseOptions);
+    const matches = fuse.search(query);
+    console.log(matches)
+    if (matches.length > 0) {
+      populateResults(matches, query);
+    } else {
+      $('#search-results').html('<p>No matches found</p>');
+    }
+  });
 }
 
 function populateResults(result, query) {
