@@ -8,11 +8,13 @@ class SynaSearch {
     this.template = template;
     this.fuseOptions = {
       shouldSort: true,
+      tokenize: true,
+      includeMatches: true,
       threshold: 0.6,
       location: 0,
       distance: 100,
       maxPatternLength: 32,
-      minMatchCharLength: 1,
+      minMatchCharLength: 4,
       keys: [
         { name: 'title', weight: 0.8 },
         { name: 'contents', weight: 0.5 },
