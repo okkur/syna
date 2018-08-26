@@ -27,30 +27,30 @@ searchInput.on('input', e => search(e.target.value));
 search(searchQuery);
 
 function search(query) {
-  if (searchQuery) {
-    $('#search-results').html('');
-    executeSearch(query);
-  } else {
-    $('#search-results').append('<p>Please enter a word or phrase above</p>');
+  if (!query) {
+    return $('#search-results').html('<p>Please enter a word or phrase above</p>');
   }
+
+  executeSearch(query);
 }
 
-function executeSearch(searchQuery) {
+function executeSearch(query) {
   $.ajax({ method: 'get', url: '/index.json' })
     .then(data => {
       const pages = data;
       const fuse = new Fuse(pages, fuseOptions);
-      const matches = fuse.search(searchQuery);
-      console.log({ matches });
+      const matches = fuse.search(query);
+      console.log(matches)
       if (matches.length > 0) {
-        populateResults(matches);
+        populateResults(matches, query);
       } else {
-        $('#search-results').append('<p>No matches found</p>');
+        $('#search-results').html('<p>No matches found</p>');
       }
     });
 }
 
-function populateResults(result) {
+function populateResults(result, query) {
+  let finalHTML = '';
   result.forEach((value, key) => {
     const { contents } = value.item;
     if (!contents) return;
@@ -58,12 +58,12 @@ function populateResults(result) {
     let snippet = '';
     const snippetHighlights = [];
     if (fuseOptions.tokenize) {
-      snippetHighlights.push(searchQuery);
+      snippetHighlights.push(query);
     } else {
       value.matches.forEach(mvalue => {
-        if (mvalue.key == 'tags' || mvalue.key == 'categories') {
+        if (mvalue.key === 'tags' || mvalue.key === 'categories') {
           snippetHighlights.push(mvalue.value);
-        } else if (mvalue.key == 'contents') {
+        } else if (mvalue.key === 'contents') {
           start =
             mvalue.indices[0][0] - summaryInclude > 0
               ? mvalue.indices[0][0] - summaryInclude
@@ -89,7 +89,7 @@ function populateResults(result) {
     //pull template from hugo templarte definition
     const templateDefinition = $('#search-result-template').html();
     //replace values
-    const output = render(templateDefinition, {
+    let output = render(templateDefinition, {
       key: key,
       title: value.item.title,
       link: value.item.permalink,
@@ -97,15 +97,16 @@ function populateResults(result) {
       categories: value.item.categories,
       snippet: snippet
     });
-    $('#search-results').append(output);
 
     snippetHighlights.forEach(snipvalue => {
       const node = $('#summary-' + key);
       if (!node.length) return;
 
-      node.html(node.html().replace(new RegExp(snipvalue, 'img'), `<mark>${snipvalue}</mark>`));
+      output = output.replace(new RegExp(snipvalue, 'img'), `<mark>${snipvalue}</mark>`);
     });
+    finalHTML += output;
   });
+  $('#search-results').html(finalHTML);
 }
 
 function param(name) {
