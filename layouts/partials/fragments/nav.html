@@ -24,10 +24,13 @@
       </a>
     {{- end }}
     {{- if .Params.search }}
-      <div class="search-container">
+      <div class="search-container mr-3">
         <form action="{{ "search" | absURL }}" class="my-0">
-          <div class="form-group my-0">
-            <input type="text" class="form-control" id="search-query-{{ .Name }}" name="s" placeholder="Search...">
+          <div class="input-group my-0">
+            <input type="text" class="form-control py-1" id="search-query-{{ .Name }}" name="s" placeholder="Search...">
+            <div class="input-group-append">
+              <button class="btn btn-primary"><i class="fa fa-search"></i></button>
+            </div>
           </div>
         </form>
         <div class="search-results-container">

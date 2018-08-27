@@ -13,7 +13,7 @@
 .search-results-container {
   position: absolute;
   top: 100%;
-  width: 500px;
+  width: 400px;
   background-color: white;
   box-shadow: 1px 1px 10px rgba(#000000, 0.2);
   border-radius: 0 0 5px 5px;
@@ -33,6 +33,14 @@
   height: 550px;
   margin-top: -4rem;
   overflow: hidden;
+}
+
+@include media-breakpoint-down(md) {
+  .search-results-container {
+    &.show {
+      display: none;
+    }
+  }
 }
 
 @include media-breakpoint-down(md) {

@@ -9496,7 +9496,7 @@ a.text-dark:hover, a.text-dark:focus {
 .search-results-container {
   position: absolute;
   top: 100%;
-  width: 500px;
+  width: 400px;
   background-color: white;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
   border-radius: 0 0 5px 5px;
@@ -9513,6 +9513,10 @@ a.text-dark:hover, a.text-dark:focus {
   height: 550px;
   margin-top: -4rem;
   overflow: hidden; }
+
+@media (max-width: 991.98px) {
+  .search-results-container.show {
+    display: none; } }
 
 @media (max-width: 991.98px) {
   .navbar-collapse {
