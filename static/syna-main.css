@@ -9490,6 +9490,22 @@ a.text-dark:hover, a.text-dark:focus {
   background-size: cover;
   border-radius: 0rem; }
 
+.navbar {
+  z-index: 1000 !important; }
+
+.search-results-container {
+  position: absolute;
+  top: 100%;
+  width: 500px;
+  background-color: white;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 5px 5px;
+  padding: 10px;
+  z-index: 5000;
+  display: none; }
+  .search-results-container.show {
+    display: block; }
+
 #particles-js {
   position: absolute;
   width: 100%;
