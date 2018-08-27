@@ -4,8 +4,9 @@ import $ from './helpers/jq-helpers';
 
 class SynaSearch {
   constructor({ queryParam, searchInput, resultsContainer, template }) {
-    this.resultsContainer = resultsContainer;
-    this.template = template;
+    this.searchInput = $(searchInput);
+    this.resultsContainer = $(resultsContainer);
+    this.template = $(template);
     this.fuseOptions = {
       shouldSort: true,
       matchAllTokens: true,
@@ -28,8 +29,8 @@ class SynaSearch {
     this.indexCache = null;
 
     const searchQuery = this.param(queryParam) || '';
-    searchInput.val(searchQuery.trim());
-    searchInput.on('input', e => this.search(e.target.value.trim()));
+    this.searchInput.val(searchQuery.trim());
+    this.searchInput.on('input', e => this.search(e.target.value.trim()));
     this.search(searchQuery);
   }
 
@@ -156,9 +157,11 @@ class SynaSearch {
   }
 }
 
-new SynaSearch({
-  queryParam: 's',
-  searchInput: $('#search-query'),
-  resultsContainer: $('#search-results'),
-  template: $('#search-result-template'),
+((window.syna || {}).search || []).forEach(search => {
+  new SynaSearch({
+    queryParam: 's',
+    searchInput: search.searchInput,
+    resultsContainer: search.resultsContainer,
+    template: search.template,
+  });
 });

@@ -44,7 +44,7 @@
         <div class="col-md-6 col-12">
           <div class="form-group row">
             <label for="search-query" class="col-2 pl-0 pt-2">Search:</label>
-            <input type="text" class="form-control col-10 col-md-8" id="search-query" name="s" placeholder="Search for something...">
+            <input type="text" class="form-control col-10 col-md-8" id="search-query-{{ .Name }}" name="s" placeholder="Search for something...">
           </div>
         </div>
       </form>
@@ -52,18 +52,25 @@
     <div class="row">
       <div class="col px-0">
         <h3>Matching pages</h3>
-        <div id="search-results" class="col px-0">
+        <div id="search-results-{{ .Name }}" class="col px-0">
         </div>
       </div>
     </div>
   </div>
 </section>
 <!-- this template is sucked in by search.js and appended to the search-results div above. So editing here will adjust style -->
-<script id="search-result-template" type="text/x-js-template">
+<script id="search-result-template-{{ .Name }}" type="text/x-js-template">
   <div id="summary-${key}">
     <h4><a href="${link}">${title}</a></h4>
     <p>${snippet}</p>
     ${ isset tags }<p>Tags: ${tags}</p>${ end }
     ${ isset categories }<p>Categories: ${categories}</p>${ end }
   </div>
+</script>
+<script>
+  (window.syna.search || (window.syna.search = [])).push({
+    searchInput: '#search-query-{{ .Name }}',
+    resultsContainer: '#search-results-{{ .Name }}',
+    template: '#search-result-template-{{ .Name }}',
+  })
 </script>
