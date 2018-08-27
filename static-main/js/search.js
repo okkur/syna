@@ -8,9 +8,10 @@ class SynaSearch {
     this.template = template;
     this.fuseOptions = {
       shouldSort: true,
-      tokenize: true,
+      matchAllTokens: true,
       includeMatches: true,
-      threshold: 0.6,
+      tokenize: true,
+      threshold: 0.2,
       location: 0,
       distance: 100,
       maxPatternLength: 32,
@@ -26,9 +27,9 @@ class SynaSearch {
     this.summaryInclude = 60;
     this.indexCache = null;
 
-    const searchQuery = this.param(queryParam);
-    searchInput.val(searchQuery);
-    searchInput.on('input', e => this.search(e.target.value));
+    const searchQuery = this.param(queryParam) || '';
+    searchInput.val(searchQuery.trim());
+    searchInput.on('input', e => this.search(e.target.value.trim()));
     this.search(searchQuery);
   }
 
@@ -64,7 +65,7 @@ class SynaSearch {
   populateResults(result, query) {
     let finalHTML = '';
     result.forEach((value, key) => {
-      const { contents } = value.item;
+      const contents = value.contents || value.item.contents;
       if (!contents) return;
 
       let snippet = '';
