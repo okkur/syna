@@ -54,7 +54,6 @@ class SynaSearch {
       const pages = data;
       const fuse = new Fuse(pages, this.fuseOptions);
       const matches = fuse.search(query);
-      console.log(matches)
       if (matches.length > 0) {
         this.populateResults(matches, query);
       } else {
