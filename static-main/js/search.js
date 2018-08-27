@@ -104,22 +104,22 @@ class SynaSearch {
       //replace values
       let output = this.render(templateDefinition, {
         key: key,
-        title: value.item.title,
+        title: this.highlight(snippetHighlights, value.item.title),
         link: value.item.permalink,
         tags: value.item.tags,
         categories: value.item.categories,
-        snippet: snippet
+        snippet: this.highlight(snippetHighlights, snippet)
       });
 
-      snippetHighlights.forEach(snipvalue => {
-        const node = $('#summary-' + key);
-        if (!node.length) return;
-
-        output = output.replace(new RegExp(snipvalue, 'img'), `<mark>${snipvalue}</mark>`);
-      });
       finalHTML += output;
     });
     this.resultsContainer.html(finalHTML);
+  }
+
+  highlight(highlights, text) {
+    return highlights.reduce((tmp, snipvalue) => {
+      return tmp.replace(new RegExp(snipvalue, 'im'), `<mark>${snipvalue}</mark>`);
+    }, text)
   }
 
   param(name) {
