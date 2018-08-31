@@ -2,7 +2,7 @@
 {{- $self := . -}}
 {{- .page_scratch.Add "js" ("syna-search.js" | relLangURL) }}
 
-{{ "<!-- Pricing -->" | safeHTML }}
+{{ "<!-- Search -->" | safeHTML }}
 <section id="{{ .Name }}">
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}

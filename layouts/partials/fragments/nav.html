@@ -4,7 +4,7 @@
   {{- .page_scratch.Add "js" ("syna-search.js" | relLangURL) -}}
 {{- end }}
 
-{{- "<!-- Search -->" | safeHTML -}}
+{{- "<!-- Navigation -->" | safeHTML -}}
 <nav class="overlay navbar navbar-expand-lg py-2
   {{- printf " bg-%s" $bg -}}
   {{- if or (eq $bg "light") (eq $bg "white") (eq $bg "secondary") -}}
