@@ -3,10 +3,12 @@ import Fuse from 'fuse.js';
 import $ from './helpers/jq-helpers';
 
 class SynaSearch {
-  constructor({ queryParam, searchInput, resultsContainer, template }) {
+  constructor({ queryParam, searchInput, resultsContainer, template, noResults, empty }) {
     this.searchInput = $(searchInput);
     this.resultsContainer = $(resultsContainer);
     this.template = $(template);
+    this.noResults = $(noResults);
+    this.empty = $(empty);
     this.fuseOptions = {
       shouldSort: true,
       matchAllTokens: true,
@@ -47,7 +49,7 @@ class SynaSearch {
 
   search(query) {
     if (!query) {
-      return this.resultsContainer.html('<p>Please enter a word or phrase above</p>');
+      return this.resultsContainer.html(this.render(this.empty.html(), {}));
     }
 
     this.getIndex(data => {
@@ -57,7 +59,7 @@ class SynaSearch {
       if (matches.length > 0) {
         this.populateResults(matches, query);
       } else {
-        this.resultsContainer.html('<p>No matches found</p>');
+        this.resultsContainer.html(this.render(this.noResults.html(), {}));
       }
     });
   }
@@ -162,5 +164,7 @@ class SynaSearch {
     searchInput: search.searchInput,
     resultsContainer: search.resultsContainer,
     template: search.template,
+    noResults: search.noResults,
+    empty: search.empty,
   });
 });

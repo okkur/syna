@@ -12,17 +12,25 @@
 
 .search-results-container {
   position: absolute;
-  top: 100%;
+  right: 0;
+  top: calc(100% + 11px);
   width: 400px;
   background-color: white;
   box-shadow: 1px 1px 10px rgba(#000000, 0.2);
   border-radius: 0 0 5px 5px;
-  padding: 10px;
   z-index: 5000;
   display: none;
 
   &.show {
     display: block;
+  }
+
+  .result {
+    color: inherit;
+
+    &:hover {
+      background-color: lighten($primary, 1);
+    }
   }
 }
 
