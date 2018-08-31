@@ -126,14 +126,14 @@
               {{ if ne $paginator.PageNumber 1 }}
                 <li class="page-item">
                   <a class="page-link" href="{{ $paginator.First.URL }}">
-                    First
+                    {{ i18n "list.first" | default "First" }}
                   </a>
                 </li>
               {{ end }}
               {{ if $paginator.HasPrev }}
                 <li class="page-item">
                   <a href="{{ $paginator.Prev.URL }}" class="page-link">
-                    Previous
+                    {{ i18n "list.previous" | default "Previous" }}
                   </a>
                 </li>
               {{ else }}
@@ -187,7 +187,7 @@
               {{ if $paginator.HasNext }}
                 <li class="page-item">
                   <a href="{{ $paginator.Next.URL }}" class="page-link">
-                    Next
+                    {{ i18n "list.next" | default "Next" }}
                   </a>
                 </li>
               {{ else }}
@@ -198,7 +198,7 @@
               {{ if ne $paginator.PageNumber $paginator.TotalPages }}
                 <li class="page-item">
                   <a class="page-link" href="{{ $paginator.Last.URL }}">
-                    Last
+                    {{ i18n "list.last" | default "Last" }}
                   </a>
                 </li>
               {{ end }}
