@@ -1,4 +1,4 @@
 {{- define "main" -}}
   {{- $list_page := .Site.GetPage "page" (printf "%s%s" .CurrentSection.Dir "_index") -}}
-  {{- partial "helpers/fragments.html" (dict "root" $ "real_page" . "page" $list_page "page_scratch" $.Scratch) -}}
+  {{- partial "helpers/fragments.html" (dict "root" $ "real_page" . "page" $list_page "page_scratch" $.Scratch "is_list" true) -}}
 {{- end -}}

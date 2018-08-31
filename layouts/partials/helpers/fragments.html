@@ -1,6 +1,7 @@
 {{- $page := .page -}}
 {{- $real_page := .real_page -}}
 {{- $page_scratch := .page_scratch -}}
+{{- $is_list := .is_list -}}
 {{- $root := .root -}}
 
 {{/*
@@ -75,6 +76,6 @@
     {{- $file_path := strings.TrimSuffix ".md" (replace .File.Path "/index.md" "") -}}
     {{- $fallthrough := (dict "file_path" $file_path "page_path" $page.Dir) -}}
 
-    {{- partial (print "fragments/" .Params.fragment ".html") (dict "page_scratch" $page_scratch "root" $real_page "Site" $real_page.Site "page" $page "resources" $real_page.Resources "self" . "Params" .Params "Name" $name "fallthrough" $fallthrough) -}}
+    {{- partial (print "fragments/" .Params.fragment ".html") (dict "is_list" $is_list "page_scratch" $page_scratch "root" $real_page "Site" $real_page.Site "page" $page "resources" $real_page.Resources "self" . "Params" .Params "Name" $name "fallthrough" $fallthrough) -}}
   {{- end -}}
 {{- end -}}
