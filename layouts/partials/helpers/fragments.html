@@ -1,4 +1,4 @@
-{/*
+{{/*
   The following code is used to fetch the fragments for each page and calling
   them. The code is complicated and written in Go Template so it's even more
   complicated. Hopefully the comments would help.
@@ -68,7 +68,7 @@
   The following code looks for each _global directory in upper sections, removes
   duplicates (with priority given to closest fragments to the actual page) and
   call the partials.
-  */}
+  */}}
 {{- $page := .page -}}
 {{- $real_page := .real_page -}}
 {{- $page_scratch := .page_scratch -}}
