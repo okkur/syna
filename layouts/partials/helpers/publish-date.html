@@ -1,0 +1,8 @@
+<span class="text-muted mr-2">
+  {{- if ne $.root.Params.Lastmod $.root.Params.Date -}}
+    {{- i18n "last_updated" | default "Last updated:" -}}
+  {{- end -}}
+  <time datetime="{{ $.root.Date }}" itemprop="datePublished dateModified">
+    {{- $.root.Lastmod.Format ($.site.Params.date_format | default "2006 January 26") -}}
+  </time>
+</span>

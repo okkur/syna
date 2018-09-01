@@ -63,11 +63,12 @@
               </h3>
             </div>
           {{- end }}
-          {{- with .Params.categories }}
-            <div class="col-12 pb-4">
+          <div class="col-12 pb-4">
+            {{- partial "helpers/publish-date.html" (dict "root" $.root "site" $.Site) -}}
+            {{- with .Params.categories }}
               {{- partial "helpers/categories.html" (dict "categories" . "background" $bg) -}}
-            </div>
-          {{- end }}
+            {{- end }}
+          </div>
           <div class="col-12
             {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
               {{- printf " text-%s" "dark" -}}
