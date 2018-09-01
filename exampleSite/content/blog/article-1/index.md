@@ -3,6 +3,7 @@ date = "2018-07-06"
 fragment = "content"
 weight = 100
 #background = ""
+categories = ["Sample", "Blog", "Lorem Ipsum"]
 
 title = "First sample blog"
 #subtitle = ""

@@ -61,6 +61,11 @@
                           </h3>
                         </a>
                       </div>
+                      {{- with .Params.categories }}
+                        <div class="col-12 pb-2 px-0">
+                          {{- partial "helpers/categories.html" (dict "categories" . "background" $bg) -}}
+                        </div>
+                      {{- end -}}
                     {{- if $self.Params.tiled }}
                       </div>
                     {{- end -}}

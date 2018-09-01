@@ -65,14 +65,7 @@
           {{- end }}
           {{- with .Params.categories }}
             <div class="col-12 pb-4">
-              {{- range . }}
-                <div class="badge
-                {{- if (eq $bg "dark") -}}
-                  {{- printf " badge-%s" "light" -}}
-                {{- else -}}
-                  {{- printf " badge-%s" "primary" -}}
-                {{- end -}}">{{ . }}</div>
-              {{- end }}
+              {{- partial "helpers/categories.html" (dict "categories" . "background" $bg) -}}
             </div>
           {{- end }}
           <div class="col-12
