@@ -1,3 +1,5 @@
 {{- define "main" -}}
+  {{/* real_page and page are different in list layout. To keep the fragments
+  partial ignorant of the layout, we define both of them here. */}}
   {{- partial "helpers/fragments.html" (dict "root" $ "real_page" . "page" . "page_scratch" $.Scratch) -}}
 {{- end -}}
