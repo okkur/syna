@@ -64,7 +64,9 @@
             </div>
           {{- end }}
           <div class="col-12 pb-4">
-            {{- partial "helpers/publish-date.html" (dict "root" $.root "site" $.Site) -}}
+            {{- if .Params.display_date -}}
+              {{- partial "helpers/publish-date.html" (dict "root" $self "background" $bg) -}}
+            {{- end -}}
             {{- with .Params.categories }}
               {{- partial "helpers/categories.html" (dict "categories" . "background" $bg) -}}
             {{- end }}

@@ -1,8 +1,11 @@
-<span class="text-muted mr-2">
-  {{- if ne $.root.Params.Lastmod $.root.Params.Date -}}
-    {{- i18n "last_updated" | default "Last updated:" -}}
-  {{- end -}}
-  <time datetime="{{ $.root.Date }}" itemprop="datePublished dateModified">
-    {{- $.root.Lastmod.Format ($.site.Params.date_format | default "2006 January 26") -}}
+{{- $date := .root.Date | default .root.Lastmod }}
+<span class="badge
+  {{- if (eq $.background "dark") -}}
+    {{- printf " badge-%s" "light" -}}
+  {{- else -}}
+    {{- printf " badge-%s" "primary" -}}
+  {{- end -}}">
+  <time datetime="{{ $date }}" class="ml-1" itemprop="datePublished dateModified">
+    {{- $date.Format ($.site.Params.date_format | default "2006 January 06") -}}
   </time>
 </span>
