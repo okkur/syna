@@ -75,7 +75,7 @@
                         </a>
                       </div>
                       <div class="col-12 pb-2 px-0">
-                        {{- if .Params.display_date -}}
+                        {{- if $self.Params.display_date -}}
                           {{- range first 1 (where ($self.page_scratch.Get "pages") "Params.fragment" "in" "content") -}}
                             {{- partial "helpers/publish-date.html" (dict "root" . "background" $bg) -}}
                           {{- end -}}
