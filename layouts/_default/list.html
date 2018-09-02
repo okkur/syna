@@ -8,7 +8,7 @@
         calling this list.html layout. We need this file to find the path of the
         page more easily. page indicates the _index headless page in this layout
         where we can find the fragments for the homepage or section pages. */}}
-      {{- partial "helpers/fragments.html" (dict "root" $ "real_page" . "page" $list_page "page_scratch" $.Scratch "is_list" true) -}}
+      {{- partial "helpers/fragments.html" (dict "root" $ "real_page" . "page" $list_page "page_scratch" $.Scratch) -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}

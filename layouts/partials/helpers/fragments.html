@@ -72,7 +72,6 @@
 {{- $page := .page -}}
 {{- $real_page := .real_page -}}
 {{- $page_scratch := .page_scratch -}}
-{{- $is_list := .is_list -}}
 {{- $root := .root -}}
 
 {{/* Lookup the directory of the file, split the path by slashes and find each
@@ -157,7 +156,7 @@
     {{- $name := strings.TrimSuffix ".md" (replace .Name "/index.md" "") -}}
 
     {{- $file_path := strings.TrimSuffix ".md" (replace .File.Path "/index.md" "") -}}
-    {{- $context := dict "is_list" $is_list "page_scratch" $page_scratch "root" $real_page "Site" $real_page.Site "page" $page "resources" $real_page.Resources "self" . "Params" .Params "Name" $name "file_path" $file_path }}
+    {{- $context := dict "page_scratch" $page_scratch "root" $real_page "Site" $real_page.Site "page" $page "resources" $real_page.Resources "self" . "Params" .Params "Name" $name "file_path" $file_path }}
     {{- partial (print "fragments/" .Params.fragment ".html") $context -}}
   {{- end -}}
 {{- end -}}
