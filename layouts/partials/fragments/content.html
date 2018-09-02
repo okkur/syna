@@ -33,9 +33,9 @@
               {{- .content | markdownify -}}
             </div>
           </div>
-          <div class="col-md-9">
+          <article class="col-md-9">
         {{- else }}
-          <div class="col-md-12">
+          <article class="col-md-12">
         {{- end }}
           {{- if .Params.title }}
             <div class="col-12 pb-3
@@ -75,7 +75,7 @@
               {{- end }}
             </div>
           {{- end }}
-          <div class="col-12
+          <div class="col-12 content
             {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
               {{- printf " text-%s" "dark" -}}
             {{- else -}}
@@ -84,7 +84,7 @@
           ">
             {{ $self.Content | markdownify }}
           </div>
-        </div>
+        </article>
       </div>
     </div>
   </div>
