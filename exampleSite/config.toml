@@ -8,6 +8,7 @@ themesDir = "../.."
 enableGitInfo = true
 version = "0.12.0"
 disableKinds = ["RSS", "taxonomy", "taxonomyTerm"]
+paginate = 2
 
 [frontmatter]
 date = ["date", "lastmod"]
