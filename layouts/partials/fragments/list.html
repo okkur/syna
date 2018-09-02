@@ -1,16 +1,18 @@
 {{- $self := . -}}
-{{/*
-  This variable stores all the page bundles in the blog section. There are three
-  where functions achieving this. First where gets all the pages in blog
-  section, the second one removes current page from the mix and the last one
-  removes the section (.Site.Pages returns the current section as a page). */}}
+{{- $renderPagination := and .is_list (or (not (isset .Params "count")) (eq .Params.count 0)) -}}
+{{/* This fragment will display every page and section under current or given
+  section. The following code is only to retrieve all the pages, paginate through
+  them if it's in a list layout. */}}
 {{- .page_scratch.Set "pages" (.Site.GetPage "Section" (.Params.section | default .root.Section)).Pages -}}
 {{- .page_scratch.Add "pages" (.Site.GetPage "Section" (.Params.section | default .root.Section)).Sections -}}
-{{- if and .is_list (not .Params.count) -}}
+{{- if $renderPagination -}}
   {{- $paginator := .root.Paginate (.page_scratch.Get "pages") -}}
   {{- .page_scratch.Set "pages" $paginator.Pages -}}
-  {{- .page_scratch.Set "paginator" $paginator}}
+  {{- .page_scratch.Set "paginator" $paginator -}}
 {{- else -}}
+  {{/* If there is no given section in the frontmatter and the current page is
+    a section, then we can just lookup the pages in the CurrentSection,
+    kindly provided by Hugo. */}}
   {{- if and (not .Params.section) (eq .root.CurrentSection.Kind "section") -}}
     {{- .page_scratch.Set "pages" (.root.CurrentSection.Pages) -}}
     {{- if (ne .Params.subsections false) -}}
@@ -20,17 +22,6 @@
       {{- range .root.CurrentSection.Sections -}}
         {{- $self.page_scratch.Add "pages" .Pages -}}
       {{- end -}}
-    {{- end -}}
-  {{- end -}}
-{{- else -}}
-  {{- $page := .Site.GetPage "Section" (.Params.section | default .root.Section) -}}
-  {{- .page_scratch.Set "pages" $page.Pages -}}
-  {{- if (ne .Params.subsections false) -}}
-    {{- .page_scratch.Add "pages" $page.Sections -}}
-  {{- end -}}
-  {{- if .Params.subsection_leaves -}}
-    {{- range $page.Sections -}}
-      {{- $self.page_scratch.Add "pages" .Pages -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}
@@ -130,7 +121,7 @@
             {{- end -}}
           {{- end }}
         </div>
-        {{- if .is_list -}}
+        {{- if $renderPagination -}}
           {{- $paginator := .root.Paginator -}}
           {{- if gt $paginator.TotalPages 1 }}
             <ul class="pagination justify-content-center w-100 mt-4">
