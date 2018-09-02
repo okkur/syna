@@ -18,7 +18,7 @@
 
 {{/* Pagination is used if paginate (default value is 10) is more than
   frontmatter count variable */}}
-{{- $renderPagination := and (in (slice "section" "home") .root.Kind) (or (not (isset .Params "count")) (eq .Params.count 0)) -}}
+{{- $renderPagination := and (in (slice "section" "home") .root.Kind) (or (not (isset .Params "count")) (le .Params.count 0)) -}}
 {{- if $renderPagination -}}
   {{- $paginator := .root.Paginate ($self.page_scratch.Get "pages") -}}
   {{- .page_scratch.Set "pages" $paginator.Pages -}}
