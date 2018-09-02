@@ -1,5 +1,4 @@
 {{- $self := . -}}
-{{- $renderPagination := and .is_list (or (not (isset .Params "count")) (eq .Params.count 0)) -}}
 
 {{- .page_scratch.Set "page" (.Site.GetPage "Section" (.Params.section | default .root.Section)) -}}
 {{- if and (not .Params.section) (eq .root.CurrentSection.Kind "section") -}}
@@ -16,6 +15,9 @@
   {{- end -}}
 {{- end -}}
 
+{{/* Pagination is used if paginate (default value is 10) is more than
+  frontmatter count variable */}}
+{{- $renderPagination := and .is_list (gt .root.Site.Params.paginate (.Params.count | default 0)) -}}
 {{- if $renderPagination -}}
   {{- $paginator := .root.Paginate ($self.page_scratch.Get "pages") -}}
   {{- .page_scratch.Set "pages" $paginator.Pages -}}
