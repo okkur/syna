@@ -124,6 +124,13 @@
     } else {
       resultsContainer.classList.remove('show');
     }
-  })
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!e.target.contains(resultsContainer)) {
+      document.querySelector('#search-query-{{ .Name }}').value = '';
+      resultsContainer.classList.remove('show');
+    }
+  });
 </script>
 {{- end -}}
