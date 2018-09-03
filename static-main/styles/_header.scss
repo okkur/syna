@@ -10,30 +10,6 @@
   z-index: 1000 !important;
 }
 
-.search-results-container {
-  position: absolute;
-  right: 0;
-  top: calc(100% + 11px);
-  width: 400px;
-  background-color: white;
-  box-shadow: 1px 1px 10px rgba(#000000, 0.2);
-  border-radius: 0 0 5px 5px;
-  z-index: 5000;
-  display: none;
-
-  &.show {
-    display: block;
-  }
-
-  .result {
-    color: inherit;
-
-    &:hover {
-      background-color: lighten($primary, 1);
-    }
-  }
-}
-
 #particles-js {
   position: absolute;
   width: 100%;

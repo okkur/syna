@@ -115,7 +115,11 @@ class SynaSearch {
 
       finalHTML += output;
     });
+
     this.resultsContainer.html(finalHTML);
+    this.resultsContainer.$('div[id^=summary]').on('click', function() {
+      window.location.href = this.querySelector('a').href
+    });
   }
 
   highlight(highlights, text) {

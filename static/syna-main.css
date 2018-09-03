@@ -9493,23 +9493,6 @@ a.text-dark:hover, a.text-dark:focus {
 .navbar {
   z-index: 1000 !important; }
 
-.search-results-container {
-  position: absolute;
-  right: 0;
-  top: calc(100% + 11px);
-  width: 400px;
-  background-color: white;
-  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
-  border-radius: 0 0 5px 5px;
-  z-index: 5000;
-  display: none; }
-  .search-results-container.show {
-    display: block; }
-  .search-results-container .result {
-    color: inherit; }
-    .search-results-container .result:hover {
-      background-color: #008894; }
-
 #particles-js {
   position: absolute;
   width: 100%;
@@ -9741,6 +9724,26 @@ body.modal-open {
     visibility: hidden; }
     .modal:not(.show).modal-dialog {
       transform: translateY(-64px); }
+
+.search-results-container {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 11px);
+  width: 400px;
+  background-color: white;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 5px 5px;
+  z-index: 5000;
+  display: none; }
+  .search-results-container, .search-results-container * {
+    transition: all 0.2s ease-in-out; }
+  .search-results-container.show {
+    display: block; }
+  .search-results-container .result {
+    color: inherit;
+    cursor: pointer; }
+    .search-results-container .result:hover {
+      background-color: rgba(0, 131, 143, 0.2); }
 
 .jumbotron {
   border-radius: 0rem !important; }
