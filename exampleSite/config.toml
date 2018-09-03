@@ -9,6 +9,9 @@ enableGitInfo = true
 version = "0.12.0"
 disableKinds = ["RSS", "taxonomy", "taxonomyTerm"]
 
+[outputs]
+  home = ["HTML", "JSON"]
+
 [frontmatter]
 date = ["date", "lastmod"]
 lastmod = ["lastmod", ":git", "date"]

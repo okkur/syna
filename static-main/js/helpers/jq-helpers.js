@@ -29,6 +29,9 @@ function $(selector) {
         nodes.forEach(node => node.setAttribute(attribute, value));
       }
     },
+    append: innerHTML => {
+      nodes.forEach(node => node.innerHTML += innerHTML);
+    },
     html: innerHTML => {
       if (innerHTML === undefined) {
         if (nodes.length > 1) {
@@ -50,6 +53,17 @@ function $(selector) {
       }
 
       nodes.forEach(node => node.innerText = innerText);
+    },
+    val: value => {
+      if (value === undefined) {
+        if (nodes.length > 1) {
+          throw new Error('Can\'t get several nodes value at once');
+        }
+
+        return nodes[0].value;
+      }
+
+      nodes.forEach(node => node.value = value);
     },
     submit: () => nodes.forEach(node => node.submit()),
     serialize: () => {
@@ -93,7 +107,7 @@ $.ajax = function ajax({
     xhr.onreadystatechange = () => {
       if (xhr.readyState == 4) {
         if (xhr.status == 200) {
-            resolve(JSON.parse(xhr.responseXML));
+            resolve(JSON.parse(xhr.responseXML || xhr.responseText));
         } else {
             reject(xhr.statusText);
         }

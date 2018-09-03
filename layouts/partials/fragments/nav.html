@@ -1,5 +1,8 @@
 {{- $self := . -}}
-{{- $bg := .Params.background | default "dark" }}
+{{- $bg := .Params.background | default "dark" -}}
+{{- if .Params.search -}}
+  {{- .page_scratch.Add "js" ("syna-search.js" | relLangURL) -}}
+{{- end }}
 
 {{- "<!-- Navigation -->" | safeHTML -}}
 <nav class="overlay navbar navbar-expand-lg py-2
@@ -23,7 +26,12 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="navbar-collapse justify-content-end collapse show" id="navbarCollapse">
+    <div class="navbar-collapse
+      {{- if .Params.search -}}
+        {{- printf " justify-content-between " -}}
+      {{- else -}}
+        {{- printf " justify-content-end " -}}
+      {{- end -}} collapse show" id="navbarCollapse">
       <ul class="navbar-nav">
         {{- if .Params.prepend -}}
           {{- range sort .Params.prepend }}
@@ -53,6 +61,23 @@
           {{- end -}}
         {{- end }}
       </ul>
+      {{- if .Params.search }}
+        <div class="search-container position-relative">
+          <form action="{{ "search" | absURL }}" class="my-0">
+            <div class="input-group my-0">
+              <input type="text" class="form-control py-1" id="search-query-{{ .Name }}" name="s" placeholder="{{- i18n "navbar.search" | default "Search..." -}}">
+              <div class="input-group-append">
+                <button class="btn btn-primary"><i class="fa fa-search"></i></button>
+              </div>
+            </div>
+          </form>
+          <div class="search-results-container">
+            <div class="col p-0">
+              <div id="search-results-{{ .Name }}" class="col px-0 results"></div>
+            </div>
+          </div>
+        </div>
+      {{- end }}
       {{- if .Site.IsMultiLingual -}}
         {{- range .Site.Languages }}
           <a class="btn btn-secondary p-1 m-1" href="{{ delimit (slice "/" .) "" }}" role="button">
@@ -81,3 +106,31 @@
     Top
   {{- end -}}
 </div>
+{{- if .Params.search }}
+{{ partial "helpers/search-result-template.html" (dict "name" .Name "message_class" "p-2") }}
+<script>
+  (window.syna.search || (window.syna.search = [])).push({
+    searchInput: '#search-query-{{ .Name }}',
+    resultsContainer: '#search-results-{{ .Name }}',
+    template: '#search-result-template-{{ .Name }}',
+    noResults: '#search-no-results-template-{{ .Name }}',
+    empty: '#search-empty-template-{{ .Name }}',
+  });
+
+  var resultsContainer = document.querySelector('.search-results-container');
+  document.querySelector('#search-query-{{ .Name }}').addEventListener('input', function(e) {
+    if (e.target.value.length) {
+      resultsContainer.classList.add('show');
+    } else {
+      resultsContainer.classList.remove('show');
+    }
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!document.querySelector('.search-container').contains(e.target)) {
+      document.querySelector('#search-query-{{ .Name }}').value = '';
+      resultsContainer.classList.remove('show');
+    }
+  });
+</script>
+{{- end -}}
