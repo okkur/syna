@@ -6,10 +6,12 @@
   <p class="{{ .message_class }}">{{- i18n "search.no_results" | default "No matches found" }}</p>
 </script>
 <script id="search-result-template-{{ .name }}" type="text/x-js-template">
-  <div id="summary-${key}" class="p-2 result">
-    <h5><a href="${link}">${title}</a></h5>
-    <p class="m-0">${snippet}</p>
-    ${ isset tags }<p>Tags: ${tags}</p>${ end }
-    ${ isset categories }<p>Categories: ${categories}</p>${ end }
-  </div>
+  <a href="${link}" id="summary-${key}" class="result">
+    <div class="p-2">
+      <h5>${title}</h5>
+      <p class="m-0">${snippet}</p>
+      ${ isset tags }<p>Tags: ${tags}</p>${ end }
+      ${ isset categories }<p>Categories: ${categories}</p>${ end }
+    </div>
+  </a>
 </script>

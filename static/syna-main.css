@@ -3324,22 +3324,22 @@ sub {
 sup {
   top: -.5em; }
 
-a {
+a, .search-results-container .result h5, .search-results-full-container .result h5 {
   color: #00838F;
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects; }
-  a:hover {
+  a:hover, .search-results-container .result h5:hover, .search-results-full-container .result h5:hover {
     color: #003d43;
     text-decoration: underline; }
 
-a:not([href]):not([tabindex]) {
+a:not([href]):not([tabindex]), .search-results-container .result h5:not([href]):not([tabindex]), .search-results-full-container .result h5:not([href]):not([tabindex]) {
   color: inherit;
   text-decoration: none; }
-  a:not([href]):not([tabindex]):hover, a:not([href]):not([tabindex]):focus {
+  a:not([href]):not([tabindex]):hover, .search-results-container .result h5:not([href]):not([tabindex]):hover, .search-results-full-container .result h5:not([href]):not([tabindex]):hover, a:not([href]):not([tabindex]):focus, .search-results-container .result h5:not([href]):not([tabindex]):focus, .search-results-full-container .result h5:not([href]):not([tabindex]):focus {
     color: inherit;
     text-decoration: none; }
-  a:not([href]):not([tabindex]):focus {
+  a:not([href]):not([tabindex]):focus, .search-results-container .result h5:not([href]):not([tabindex]):focus, .search-results-full-container .result h5:not([href]):not([tabindex]):focus {
     outline: 0; }
 
 pre,
@@ -3605,7 +3605,7 @@ code {
   font-size: 87.5%;
   color: #c77fc1;
   word-break: break-word; }
-  a > code {
+  a > code, .search-results-container .result h5 > code, .search-results-full-container .result h5 > code {
     color: inherit; }
 
 kbd {
@@ -4833,8 +4833,12 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   .btn:not(:disabled):not(.disabled):active, .btn:not(:disabled):not(.disabled).active {
     background-image: none; }
 
-a.btn.disabled,
-fieldset:disabled a.btn {
+a.btn.disabled, .search-results-container .result h5.btn.disabled, .search-results-full-container .result h5.btn.disabled,
+fieldset:disabled a.btn,
+fieldset:disabled .search-results-container .result h5.btn,
+.search-results-container .result fieldset:disabled h5.btn,
+fieldset:disabled .search-results-full-container .result h5.btn,
+.search-results-full-container .result fieldset:disabled h5.btn {
   pointer-events: none; }
 
 .btn-primary {
@@ -6184,9 +6188,9 @@ input[type="button"].btn-block {
 
 .navbar-light .navbar-text {
   color: rgba(0, 0, 0, 0.5); }
-  .navbar-light .navbar-text a {
+  .navbar-light .navbar-text a, .navbar-light .navbar-text .search-results-container .result h5, .search-results-container .result .navbar-light .navbar-text h5, .navbar-light .navbar-text .search-results-full-container .result h5, .search-results-full-container .result .navbar-light .navbar-text h5 {
     color: rgba(0, 0, 0, 0.9); }
-    .navbar-light .navbar-text a:hover, .navbar-light .navbar-text a:focus {
+    .navbar-light .navbar-text a:hover, .navbar-light .navbar-text .search-results-container .result h5:hover, .search-results-container .result .navbar-light .navbar-text h5:hover, .navbar-light .navbar-text .search-results-full-container .result h5:hover, .search-results-full-container .result .navbar-light .navbar-text h5:hover, .navbar-light .navbar-text a:focus, .navbar-light .navbar-text .search-results-container .result h5:focus, .search-results-container .result .navbar-light .navbar-text h5:focus, .navbar-light .navbar-text .search-results-full-container .result h5:focus, .search-results-full-container .result .navbar-light .navbar-text h5:focus {
       color: rgba(0, 0, 0, 0.9); }
 
 .navbar-dark .navbar-brand {
@@ -6216,9 +6220,9 @@ input[type="button"].btn-block {
 
 .navbar-dark .navbar-text {
   color: rgba(255, 255, 255, 0.5); }
-  .navbar-dark .navbar-text a {
+  .navbar-dark .navbar-text a, .navbar-dark .navbar-text .search-results-container .result h5, .search-results-container .result .navbar-dark .navbar-text h5, .navbar-dark .navbar-text .search-results-full-container .result h5, .search-results-full-container .result .navbar-dark .navbar-text h5 {
     color: #fff; }
-    .navbar-dark .navbar-text a:hover, .navbar-dark .navbar-text a:focus {
+    .navbar-dark .navbar-text a:hover, .navbar-dark .navbar-text .search-results-container .result h5:hover, .search-results-container .result .navbar-dark .navbar-text h5:hover, .navbar-dark .navbar-text .search-results-full-container .result h5:hover, .search-results-full-container .result .navbar-dark .navbar-text h5:hover, .navbar-dark .navbar-text a:focus, .navbar-dark .navbar-text .search-results-container .result h5:focus, .search-results-container .result .navbar-dark .navbar-text h5:focus, .navbar-dark .navbar-text .search-results-full-container .result h5:focus, .search-results-full-container .result .navbar-dark .navbar-text h5:focus {
       color: #fff; }
 
 .card {
@@ -7438,7 +7442,7 @@ button.close {
 .bg-primary {
   background-color: #00838F !important; }
 
-a.bg-primary:hover, a.bg-primary:focus,
+a.bg-primary:hover, .search-results-container .result h5.bg-primary:hover, .search-results-full-container .result h5.bg-primary:hover, a.bg-primary:focus, .search-results-container .result h5.bg-primary:focus, .search-results-full-container .result h5.bg-primary:focus,
 button.bg-primary:hover,
 button.bg-primary:focus {
   background-color: #00545c !important; }
@@ -7446,7 +7450,7 @@ button.bg-primary:focus {
 .bg-secondary {
   background-color: #868e96 !important; }
 
-a.bg-secondary:hover, a.bg-secondary:focus,
+a.bg-secondary:hover, .search-results-container .result h5.bg-secondary:hover, .search-results-full-container .result h5.bg-secondary:hover, a.bg-secondary:focus, .search-results-container .result h5.bg-secondary:focus, .search-results-full-container .result h5.bg-secondary:focus,
 button.bg-secondary:hover,
 button.bg-secondary:focus {
   background-color: #6c757d !important; }
@@ -7454,7 +7458,7 @@ button.bg-secondary:focus {
 .bg-success {
   background-color: #008f54 !important; }
 
-a.bg-success:hover, a.bg-success:focus,
+a.bg-success:hover, .search-results-container .result h5.bg-success:hover, .search-results-full-container .result h5.bg-success:hover, a.bg-success:focus, .search-results-container .result h5.bg-success:focus, .search-results-full-container .result h5.bg-success:focus,
 button.bg-success:hover,
 button.bg-success:focus {
   background-color: #005c36 !important; }
@@ -7462,7 +7466,7 @@ button.bg-success:focus {
 .bg-info {
   background-color: #00c9dc !important; }
 
-a.bg-info:hover, a.bg-info:focus,
+a.bg-info:hover, .search-results-container .result h5.bg-info:hover, .search-results-full-container .result h5.bg-info:hover, a.bg-info:focus, .search-results-container .result h5.bg-info:focus, .search-results-full-container .result h5.bg-info:focus,
 button.bg-info:hover,
 button.bg-info:focus {
   background-color: #009aa9 !important; }
@@ -7470,7 +7474,7 @@ button.bg-info:focus {
 .bg-warning {
   background-color: #fdf314 !important; }
 
-a.bg-warning:hover, a.bg-warning:focus,
+a.bg-warning:hover, .search-results-container .result h5.bg-warning:hover, .search-results-full-container .result h5.bg-warning:hover, a.bg-warning:focus, .search-results-container .result h5.bg-warning:focus, .search-results-full-container .result h5.bg-warning:focus,
 button.bg-warning:hover,
 button.bg-warning:focus {
   background-color: #dcd302 !important; }
@@ -7478,7 +7482,7 @@ button.bg-warning:focus {
 .bg-danger {
   background-color: #dc1200 !important; }
 
-a.bg-danger:hover, a.bg-danger:focus,
+a.bg-danger:hover, .search-results-container .result h5.bg-danger:hover, .search-results-full-container .result h5.bg-danger:hover, a.bg-danger:focus, .search-results-container .result h5.bg-danger:focus, .search-results-full-container .result h5.bg-danger:focus,
 button.bg-danger:hover,
 button.bg-danger:focus {
   background-color: #a90e00 !important; }
@@ -7486,7 +7490,7 @@ button.bg-danger:focus {
 .bg-light {
   background-color: #f8f9fa !important; }
 
-a.bg-light:hover, a.bg-light:focus,
+a.bg-light:hover, .search-results-container .result h5.bg-light:hover, .search-results-full-container .result h5.bg-light:hover, a.bg-light:focus, .search-results-container .result h5.bg-light:focus, .search-results-full-container .result h5.bg-light:focus,
 button.bg-light:hover,
 button.bg-light:focus {
   background-color: #dae0e5 !important; }
@@ -7494,7 +7498,7 @@ button.bg-light:focus {
 .bg-dark {
   background-color: #343a40 !important; }
 
-a.bg-dark:hover, a.bg-dark:focus,
+a.bg-dark:hover, .search-results-container .result h5.bg-dark:hover, .search-results-full-container .result h5.bg-dark:hover, a.bg-dark:focus, .search-results-container .result h5.bg-dark:focus, .search-results-full-container .result h5.bg-dark:focus,
 button.bg-dark:hover,
 button.bg-dark:focus {
   background-color: #1d2124 !important; }
@@ -9342,49 +9346,49 @@ button.bg-dark:focus {
 .text-primary {
   color: #00838F !important; }
 
-a.text-primary:hover, a.text-primary:focus {
+a.text-primary:hover, .search-results-container .result h5.text-primary:hover, .search-results-full-container .result h5.text-primary:hover, a.text-primary:focus, .search-results-container .result h5.text-primary:focus, .search-results-full-container .result h5.text-primary:focus {
   color: #00545c !important; }
 
 .text-secondary {
   color: #868e96 !important; }
 
-a.text-secondary:hover, a.text-secondary:focus {
+a.text-secondary:hover, .search-results-container .result h5.text-secondary:hover, .search-results-full-container .result h5.text-secondary:hover, a.text-secondary:focus, .search-results-container .result h5.text-secondary:focus, .search-results-full-container .result h5.text-secondary:focus {
   color: #6c757d !important; }
 
 .text-success {
   color: #008f54 !important; }
 
-a.text-success:hover, a.text-success:focus {
+a.text-success:hover, .search-results-container .result h5.text-success:hover, .search-results-full-container .result h5.text-success:hover, a.text-success:focus, .search-results-container .result h5.text-success:focus, .search-results-full-container .result h5.text-success:focus {
   color: #005c36 !important; }
 
 .text-info {
   color: #00c9dc !important; }
 
-a.text-info:hover, a.text-info:focus {
+a.text-info:hover, .search-results-container .result h5.text-info:hover, .search-results-full-container .result h5.text-info:hover, a.text-info:focus, .search-results-container .result h5.text-info:focus, .search-results-full-container .result h5.text-info:focus {
   color: #009aa9 !important; }
 
 .text-warning {
   color: #fdf314 !important; }
 
-a.text-warning:hover, a.text-warning:focus {
+a.text-warning:hover, .search-results-container .result h5.text-warning:hover, .search-results-full-container .result h5.text-warning:hover, a.text-warning:focus, .search-results-container .result h5.text-warning:focus, .search-results-full-container .result h5.text-warning:focus {
   color: #dcd302 !important; }
 
 .text-danger {
   color: #dc1200 !important; }
 
-a.text-danger:hover, a.text-danger:focus {
+a.text-danger:hover, .search-results-container .result h5.text-danger:hover, .search-results-full-container .result h5.text-danger:hover, a.text-danger:focus, .search-results-container .result h5.text-danger:focus, .search-results-full-container .result h5.text-danger:focus {
   color: #a90e00 !important; }
 
 .text-light {
   color: #f8f9fa !important; }
 
-a.text-light:hover, a.text-light:focus {
+a.text-light:hover, .search-results-container .result h5.text-light:hover, .search-results-full-container .result h5.text-light:hover, a.text-light:focus, .search-results-container .result h5.text-light:focus, .search-results-full-container .result h5.text-light:focus {
   color: #dae0e5 !important; }
 
 .text-dark {
   color: #343a40 !important; }
 
-a.text-dark:hover, a.text-dark:focus {
+a.text-dark:hover, .search-results-container .result h5.text-dark:hover, .search-results-full-container .result h5.text-dark:hover, a.text-dark:focus, .search-results-container .result h5.text-dark:focus, .search-results-full-container .result h5.text-dark:focus {
   color: #1d2124 !important; }
 
 .text-body {
@@ -9418,7 +9422,7 @@ a.text-dark:hover, a.text-dark:focus {
   *::after {
     text-shadow: none !important;
     box-shadow: none !important; }
-  a:not(.btn) {
+  a:not(.btn), .search-results-container .result h5:not(.btn), .search-results-full-container .result h5:not(.btn) {
     text-decoration: underline; }
   abbr[title]::after {
     content: " (" attr(title) ")"; }
@@ -9735,15 +9739,19 @@ body.modal-open {
   border-radius: 0 0 5px 5px;
   z-index: 5000;
   display: none; }
-  .search-results-container, .search-results-container * {
-    transition: all 0.2s ease-in-out; }
   .search-results-container.show {
     display: block; }
-  .search-results-container .result {
-    color: inherit;
-    cursor: pointer; }
-    .search-results-container .result:hover {
-      background-color: rgba(0, 131, 143, 0.2); }
+
+.search-results-container .result, .search-results-full-container .result {
+  cursor: pointer;
+  text-decoration: inherit; }
+  .search-results-container .result p, .search-results-full-container .result p {
+    text-decoration: none !important;
+    color: #868e96 !important; }
+  .search-results-container .result div:hover, .search-results-full-container .result div:hover {
+    background-color: rgba(0, 131, 143, 0.2); }
+    .search-results-container .result div:hover h5, .search-results-full-container .result div:hover h5 {
+      text-decoration: underline !important; }
 
 .jumbotron {
   border-radius: 0rem !important; }

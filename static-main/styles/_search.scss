@@ -9,20 +9,33 @@
   z-index: 5000;
   display: none;
 
-  &, * {
-    transition: $transition-base;
-  }
-
   &.show {
     display: block;
   }
+}
 
+.search-results-container, .search-results-full-container {
   .result {
-    color: inherit;
     cursor: pointer;
+    text-decoration: inherit;
 
-    &:hover {
-      background-color: rgba($primary, 0.2);
+    h5 {
+      @extend a;
+    }
+
+    p {
+      text-decoration: none !important;
+      color: $secondary !important;
+    }
+
+    div {
+      &:hover {
+        background-color: rgba($primary, 0.2);
+
+        h5 {
+          text-decoration: underline !important;
+        }
+      }
     }
   }
 }
