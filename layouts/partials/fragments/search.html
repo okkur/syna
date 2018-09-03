@@ -41,13 +41,13 @@
     {{- end }}
     <div class="row w-100 justify-content-center mx-0">
       <form action="{{ "search" | absURL }}" class="my-0">
-          <div class="input-group my-0">
-            <input type="text" class="form-control py-1" id="search-query-{{ .Name }}" name="s" placeholder="{{- i18n "navbar.search" | default "Search..." -}}">
-            <div class="input-group-append">
-              <button class="btn btn-primary"><i class="fa fa-search"></i></button>
-            </div>
+        <div class="input-group my-0">
+          <input type="text" class="form-control py-1" id="search-query-{{ .Name }}" name="s" placeholder="{{- i18n "navbar.search" | default "Search..." -}}">
+          <div class="input-group-append">
+            <button class="btn btn-primary"><i class="fa fa-search"></i></button>
           </div>
-        </form>
+        </div>
+      </form>
     </div>
     <div class="search-results-full-container row">
       <div class="col px-0">

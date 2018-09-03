@@ -127,7 +127,7 @@
   });
 
   document.addEventListener('click', function(e) {
-    if (!e.target.contains(resultsContainer)) {
+    if (!document.querySelector('.search-container').contains(e.target)) {
       document.querySelector('#search-query-{{ .Name }}').value = '';
       resultsContainer.classList.remove('show');
     }
