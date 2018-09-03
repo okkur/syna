@@ -9777,3 +9777,6 @@ body.modal-open {
   padding-bottom: 1px;
   box-sizing: border-box; }
 
+article .content img {
+  max-width: 100%; }
+

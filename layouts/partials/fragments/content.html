@@ -33,9 +33,9 @@
               {{- .content | markdownify -}}
             </div>
           </div>
-          <div class="col-md-9">
+          <article class="col-md-9">
         {{- else }}
-          <div class="col-md-12">
+          <article class="col-md-12">
         {{- end }}
           {{- if .Params.title }}
             <div class="col-12 pb-3
@@ -63,18 +63,14 @@
               </h3>
             </div>
           {{- end }}
-          {{- with .Params.categories }}
-            <div class="col-12 pb-4">
-              {{- range . }}
-                <div class="badge
-                {{- if (eq $bg "dark") -}}
-                  {{- printf " badge-%s" "light" -}}
-                {{- else -}}
-                  {{- printf " badge-%s" "primary" -}}
-                {{- end -}}">{{ . }}</div>
-              {{- end }}
-            </div>
-          {{- end }}
+          <div class="col-12 pb-4">
+            {{- if .Params.display_date -}}
+              {{- partial "helpers/publish-date.html" (dict "root" $self "background" $bg) -}}
+            {{- end -}}
+            {{- with .Params.categories }}
+              {{- partial "helpers/categories.html" (dict "categories" . "background" $bg) -}}
+            {{- end }}
+          </div>
           <div class="col-12
             {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
               {{- printf " text-%s" "dark" -}}
@@ -84,7 +80,7 @@
           ">
             {{ $self.Content | markdownify }}
           </div>
-        </div>
+        </article>
       </div>
     </div>
   </div>

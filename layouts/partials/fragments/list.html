@@ -4,15 +4,24 @@
   where functions achieving this. First where gets all the pages in blog
   section, the second one removes current page from the mix and the last one
   removes the section (.Site.Pages returns the current section as a page). */}}
-{{- .page_scratch.Set "pages" (.Site.GetPage "Section" (.Params.section | default .root.Section)).Pages -}}
-{{- .page_scratch.Add "pages" (.Site.GetPage "Section" (.Params.section | default .root.Section)).Sections -}}
 {{- if and (not .Params.section) (eq .root.CurrentSection.Kind "section") -}}
-  {{- .page_scratch.Set "pages" (.root.CurrentSection.Pages) -}}
+  {{- .page_scratch.Set "pages" .root.CurrentSection.Pages -}}
   {{- if (ne .Params.subsections false) -}}
     {{- .page_scratch.Add "pages" .root.CurrentSection.Sections -}}
   {{- end -}}
   {{- if .Params.subsection_leaves -}}
     {{- range .root.CurrentSection.Sections -}}
+      {{- $self.page_scratch.Add "pages" .Pages -}}
+    {{- end -}}
+  {{- end -}}
+{{- else -}}
+  {{- $page := .Site.GetPage "Section" (.Params.section | default .root.Section) -}}
+  {{- .page_scratch.Set "pages" $page.Pages -}}
+  {{- if (ne .Params.subsections false) -}}
+    {{- .page_scratch.Add "pages" $page.Sections -}}
+  {{- end -}}
+  {{- if .Params.subsection_leaves -}}
+    {{- range $page.Sections -}}
       {{- $self.page_scratch.Add "pages" .Pages -}}
     {{- end -}}
   {{- end -}}
@@ -31,7 +40,11 @@
             {{- printf " text-muted text-%s" "secondary" -}}
           {{- end -}}
         ">
-          {{- range first (.Params.count | default 10) (.page_scratch.Get "pages") }}
+          {{- range first (.Params.count | default 10) (.page_scratch.Get "pages") -}}
+            {{ $self.page_scratch.Set "pages" (slice .) }}
+            {{ range .Resources.ByType "page" }}
+              {{ $self.page_scratch.Add "pages" . }}
+            {{ end }}
             {{- if $self.Params.tiled -}}
               <div class="col-lg-6 col-12 mb-2 d-flex">
             {{- end -}}
@@ -61,6 +74,16 @@
                           </h3>
                         </a>
                       </div>
+                      <div class="col-12 pb-2 px-0">
+                        {{- if $self.Params.display_date -}}
+                          {{- range first 1 (where ($self.page_scratch.Get "pages") "Params.fragment" "in" "content") -}}
+                            {{- partial "helpers/publish-date.html" (dict "root" . "background" $bg) -}}
+                          {{- end -}}
+                        {{- end -}}
+                        {{- with .Params.categories }}
+                          {{- partial "helpers/categories.html" (dict "categories" . "background" $bg) -}}
+                        {{- end -}}
+                      </div>
                     {{- if $self.Params.tiled }}
                       </div>
                     {{- end -}}
@@ -70,10 +93,6 @@
                       <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset) }}" alt="{{ .Params.subtitle | default .Params.title }}" class="img-fluid mb-4">
                     </a>
                   {{- end -}}
-                  {{ $self.page_scratch.Set "pages" (slice .) }}
-                  {{ range .Resources.ByType "page" }}
-                    {{ $self.page_scratch.Add "pages" . }}
-                  {{ end }}
                   {{- if or (not (isset $self.Params "summary")) (eq $self.Params.summary true) }}
                     <div class="col-12 pl-0
                       {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
