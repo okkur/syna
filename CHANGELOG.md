@@ -1,6 +1,22 @@
 <!--
-# v0.13.0
+# v0.14.0
 _2018_
+  - [Downloads for v0.14.0](https://github.com/okkur/syna/releases/tag/v0.14.0)
+  - [Changelog since v0.13.0](#changes-since-v013)
+
+## Documentation for v0.14.0
+[Documentation](/tree/v0.14.0/docs)
+
+## Changes since v0.13.0
+
+## Fixes since v0.13.0
+
+---
+
+-->
+
+# v0.13.0
+_2018-09-05_
   - [Downloads for v0.13.0](https://github.com/okkur/syna/releases/tag/v0.13.0)
   - [Changelog since v0.12.0](#changes-since-v012)
 
@@ -8,12 +24,31 @@ _2018_
 [Documentation](/tree/v0.13.0/docs)
 
 ## Changes since v0.12.0
+  - BREAKING: Image declaration changed to using consistent `[asset]`
+  - New: `list` fragment for section pages and page lists
+  - New: `pricing` fragment to show pricing and features
+  - New: `react-portal` fragment to embed react based features
+  - New: `editor` fragment to create an editor from JSON schemas
+  - New: `search` fragment enabling search as part of a page
+  - `search`: Support search in navbar
+  - `list`: Supports tiled mode
+  - `list`: Optionally show date and category for pages
+  - `content`: Optionally show date and category in content fragment
+  - `footer`: `asset.title` is moved to `.Params.title`
+  - `portfolio`: Support image fallthrough
+  - `404`: Add ability to change and resize image
+  - `member`, `items`, `portfolio`: Display error messages, when no item is configured
+  - Refactor fragment lookup strategy
+  - Restructure exampleSite (showcase fragments and use as actual page for Syna)
+  - Add `/dev/` section to exampleSite for testing and development
+  - Extract code into helper partials
 
 ## Fixes since v0.12.0
-
+  - `footer`: Subtitle is now linked when there is no logo
+  - Use relLangURL for all links
+  - Fix recaptcha support for Netlify contact form
+  - Optimize asset sizes in exampleSite
 ---
-
--->
 
 # v0.12.0
 _2018-08-06_
@@ -48,8 +83,6 @@ _2018-08-06_
   - `item`: Fix align = center
 
 ---
-
--->
 
 # v0.11.0
 
