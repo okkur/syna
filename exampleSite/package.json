@@ -1,6 +1,6 @@
 {
   "name": "example-site",
-  "version": "1.0.0",
+  "version": "0.13.0",
   "description": "Example Site for Syna theme for Hugo",
   "main": "static-main/js/index.js",
   "author": "Michael Grosser",
