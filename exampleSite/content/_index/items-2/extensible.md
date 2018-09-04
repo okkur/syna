@@ -1,6 +1,6 @@
 +++
-title = "Extendible"
-weight = 10
+title = "Extensible"
+weight = 20
 icon = "fas fa-boxes"
 +++
 

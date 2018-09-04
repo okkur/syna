@@ -4,4 +4,4 @@ weight = 20
 icon = "fas fa-cubes"
 +++
 
-Everything in a website using Syna theme from navigation links to different sections of each page is configurable
+High flexibility to easily configure navigation, sections or whole pages
