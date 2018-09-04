@@ -16,7 +16,7 @@ weight = 150
 #button_text = "" # default i18n "404.button"
 #redirect_url = "" # default /
 
-[logo]
+[asset]
   image = "logo.svg"
   width = "500px" # optional - will default to image width
   #height = "150px" # optional - will default to image height
