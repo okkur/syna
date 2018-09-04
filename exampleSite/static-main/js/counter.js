@@ -37,7 +37,7 @@ class Counter extends React.Component {
   }
 }
 
-(window.synaPortals || (window.synaPortals = {})).counter = {
+window.syna.portals.counter = {
   component: Counter,
   container: '#counter [data-portal]',
 };

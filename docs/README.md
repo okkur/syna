@@ -205,7 +205,7 @@ Then import that script inside the fragment (using the `script` tag).
 #### React support
 
 Syna has built-in support for React. We use React portal API inside the `react-portal` fragment. This allows us to render an empty container that is able to render components inside it.  
-To use this feature you can add a new `react-portal` to your page, write your component and expose it inside the `window.synaPortals` object.
+To use this feature you can add a new `react-portal` to your page, write your component and expose it inside the `window.syna.portals` object.
 
 ```jsx
 import * as React from 'react';
@@ -218,7 +218,7 @@ class Hello extends React.Component {
   }
 }
 
-(window.synaPortals || (window.synaPortals = {})).hello = {
+window.syna.portals.hello = {
   component: Hello,
   container: '#hello [data-portal]',
 };

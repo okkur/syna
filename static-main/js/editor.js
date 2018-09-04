@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactJsonschemaForm from 'react-jsonschema-form';
 
-(window.synaPortals || (window.synaPortals = {})).editors = (window.editors || []).map(editor => {
+window.syna.portals.editors = (window.editors || []).map(editor => {
   return {
     component: class Editor extends React.PureComponent {
       render() {

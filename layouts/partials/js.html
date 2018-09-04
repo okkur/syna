@@ -2,13 +2,6 @@
 {{- partial "custom/js.html" . -}}
 <script src="{{ "syna-main.js" | relLangURL }}"></script>
 
-{{- if $.Scratch.Get "react" }}
-  <script>
-    if (!window.synaPortals) {
-      window.synaPortals = {};
-    }
-  </script>
-{{- end -}}
 {{- range uniq ($.Scratch.Get "js") }}
   <script src="{{ . | relLangURL }}" async defer></script>
 {{- end -}}

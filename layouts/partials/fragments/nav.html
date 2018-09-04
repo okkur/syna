@@ -109,7 +109,7 @@
 {{- if .Params.search }}
 {{ partial "helpers/search-result-template.html" (dict "name" .Name "message_class" "p-2") }}
 <script>
-  (window.syna.search || (window.syna.search = [])).push({
+  window.syna.search.push({
     searchInput: '#search-query-{{ .Name }}',
     resultsContainer: '#search-results-{{ .Name }}',
     template: '#search-result-template-{{ .Name }}',

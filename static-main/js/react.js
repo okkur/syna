@@ -11,9 +11,9 @@ const Portal = ({ component: Component, container }) => {
 
 class Portals extends React.PureComponent {
   render() {
-    return Object.keys(window.synaPortals || {}).map(portal => {
-      if (Array.isArray(window.synaPortals[portal]) && window.synaPortals[portal].length > 0) {
-        return window.synaPortals[portal].map(innerPortal => {
+    return Object.keys(window.syna.portals).map(portal => {
+      if (Array.isArray(window.syna.portals[portal]) && window.syna.portals[portal].length > 0) {
+        return window.syna.portals[portal].map(innerPortal => {
           if (document.querySelector(innerPortal.container) === null) {
             return null;
           }
@@ -27,15 +27,15 @@ class Portals extends React.PureComponent {
         })
       }
 
-      if (document.querySelector(window.synaPortals[portal].container) === null) {
+      if (document.querySelector(window.syna.portals[portal].container) === null) {
         return null;
       }
 
       return (
         <Portal
-          key={window.synaPortals[portal].container}
-          component={window.synaPortals[portal].component}
-          container={window.synaPortals[portal].container} />
+          key={window.syna.portals[portal].container}
+          component={window.syna.portals[portal].component}
+          container={window.syna.portals[portal].container} />
       );
     });
   }

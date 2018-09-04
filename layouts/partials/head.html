@@ -44,7 +44,10 @@
   {{- partial "custom/css.html" . }}
 
   <script>
-    window.syna = {};
-    window.synaPortals = {};
+    window.syna = {
+      portals: {},
+      search: [],
+      particles: null,
+    };
   </script>
 </head>
