@@ -71,7 +71,7 @@
               {{- partial "helpers/categories.html" (dict "categories" . "background" $bg) -}}
             {{- end }}
           </div>
-          <div class="col-12
+          <div class="col-12 content
             {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
               {{- printf " text-%s" "dark" -}}
             {{- else -}}
