@@ -40,7 +40,7 @@
       </div>
     {{- end }}
     <div class="row w-100 justify-content-center mx-0">
-      <form action="{{ "search" | absURL }}" class="my-0">
+      <form action="{{ "search" | absURL }}" class="mt-0">
         <div class="input-group my-0">
           <input type="text" class="form-control py-1" id="search-query-{{ .Name }}" name="s" placeholder="{{- i18n "navbar.search" | default "Search..." -}}">
           <div class="input-group-append">
@@ -51,13 +51,18 @@
     </div>
     <div class="search-results-full-container row">
       <div class="col px-0">
-        <div id="search-results-{{ .Name }}" class="col px-0">
+        <div id="search-results-{{ .Name }}" class="col px-0
+        {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+          {{- printf " text-%s" "dark" -}}
+        {{- else -}}
+          {{- printf " text-muted text-%s" "secondary" -}}
+        {{- end -}}">
         </div>
       </div>
     </div>
   </div>
 </section>
-{{ partial "helpers/search-result-template.html" (dict "name" .Name "message_class" "text-center mt-4") }}
+{{ partial "helpers/search-result-template.html" (dict "name" .Name "message_class" "text-center mt-4" "background" $bg) }}
 {{ partial "helpers/search-result-template.html" . }}
 <script>
   (window.syna.search || (window.syna.search = [])).push({

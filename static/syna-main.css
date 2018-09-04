@@ -9746,8 +9746,7 @@ body.modal-open {
   cursor: pointer;
   text-decoration: inherit; }
   .search-results-container .result p, .search-results-full-container .result p {
-    text-decoration: none !important;
-    color: #868e96 !important; }
+    text-decoration: none !important; }
   .search-results-container .result div:hover, .search-results-full-container .result div:hover {
     background-color: rgba(0, 131, 143, 0.2); }
     .search-results-container .result div:hover h5, .search-results-full-container .result div:hover h5 {
