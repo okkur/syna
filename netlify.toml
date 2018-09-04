@@ -4,17 +4,17 @@
   command = "HUGO_THEME=repo hugo -d ../public"
 
 [context.production.environment]
-  HUGO_VERSION = "0.45.1"
+  HUGO_VERSION = "0.48"
   HUGO_ENV = "production"
 
 [context.deploy-preview]
   command = "HUGO_THEME=repo hugo -d ../public"
 
 [context.deploy-preview.environment]
-  HUGO_VERSION = "0.45.1"
+  HUGO_VERSION = "0.48"
 
 [context.branch-deploy]
   command = "HUGO_THEME=repo hugo -d ../public"
 
 [context.branch-deploy.environment]
-  HUGO_VERSION = "0.45.1"
+  HUGO_VERSION = "0.48"
