@@ -82,10 +82,13 @@
 
 {{- if .Params.particles -}}
   {{- .page_scratch.Add "js" ("syna-hero.js" | relLangURL) -}}
-  {{- $configPath := printf "%s%s/particles.json" .page.Dir .Name -}}
-  {{- if fileExists $configPath -}}
+  {{- .page_scratch.Set "config_path" (printf "%s%s/particles.json" .page.Dir .Name) -}}
+  {{- if not (fileExists (.page_scratch.Get "config_path")) -}}
+    {{- .page_scratch.Set "config_path" (printf "%s/particles.json" .page.Dir) -}}
+  {{- end -}}
+  {{- if fileExists (.page_scratch.Get "config_path") -}}
     <script>
-      window.syna.particles = JSON.parse({{ readFile $configPath }});
+      window.syna.particles = JSON.parse({{ readFile (.page_scratch.Get "config_path") }});
     </script>
   {{- else -}}
     <script>
