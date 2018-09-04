@@ -30,9 +30,7 @@ _2018-09-05_
   - New: `react-portal` fragment to embed react based features
   - New: `editor` fragment to create an editor from JSON schemas
   - New: `search` fragment enabling search as part of a page
-  - `search`: Support search in navbar
-  - `list`: Supports tiled mode
-  - `list`: Optionally show date and category for pages
+  - `navbar`: Support search in navbar
   - `content`: Optionally show date and category in content fragment
   - `footer`: `asset.title` is moved to `.Params.title`
   - `portfolio`: Support image fallthrough
