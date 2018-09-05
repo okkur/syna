@@ -147,9 +147,10 @@
                     </button>
                     <span class="filler"></span>
                   </div>
-                {{- else if .Params.netlify }}
-                  <div data-netlify-recaptcha></div>
                 {{- else }}
+                  {{- if .Params.netlify }}
+                    <div data-netlify-recaptcha></div>
+                  {{- end }}
                   <button
                     class="btn
                       {{- if eq $bg "primary" -}}
