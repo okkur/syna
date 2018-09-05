@@ -40,8 +40,8 @@
         <form
           class="contact"
           method="POST"
-          name="{{- .Params.form_name | default "contactForm" }}"
-          id="contactForm
+          name="{{- .Params.form_name | default (printf "contact-form-%s" .Name) }}"
+          id="{{ printf "contact-form-%s" .Name }}
           {{- if .Params.netlify -}}
             " netlify-recaptcha netlify
           {{- else -}}

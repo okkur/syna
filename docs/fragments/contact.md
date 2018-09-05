@@ -10,7 +10,7 @@ Disable the fragment. If set true, the fragment would not be rendered. (default 
 ### background *string*
 Background of the fragment. (default **secondary**)
 ### form_name *string*
-This value is used for the `name` property of the `form` tag. (default **contactForm**)
+This value is used for the `name` property of the `form` tag. (default **contact-form-[filename]**)
 ### title *string*
 Title of the form. This is displayed in the section that shows the form.
 ### subtitle *string*
