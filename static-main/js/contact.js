@@ -26,7 +26,7 @@ const validator = new Validator({
     }
 
     if (form.dataset.hasNetlify) {
-      return false;
+      return;
     }
 
     const id = form.getAttribute('id')
