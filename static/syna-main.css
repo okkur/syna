@@ -9790,3 +9790,6 @@ body.modal-open {
 article .content img {
   max-width: 100%; }
 
+.content-sidebar {
+  word-break: break-all; }
+
