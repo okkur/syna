@@ -1,25 +1,25 @@
 +++
-  title = "Huge Gopher"
-  weight = 0
-  date = "2017-10-17"
-  
-  [asset]
-    image = "hugegopher.png"
+title = "Huge Gopher"
+weight = 0
+date = "2017-10-17"
 
-  position = "Lead Gopherineer"
-  company = "Okkur Labs"
+position = "Lead Gopherineer"
+company = "Okkur Labs"
 
-  reports_to = "CTO"
-  lives_in = "[Munich, Germany](https://www.google.com/maps/place/Munich,+Germany/)"
-  scope = [
-    "UX for [Food Dashboard](#)",
-    "Maintainer for [Goper Team A](#)",
-    "Gopher [Community Administration](#)"
-  ]
+reports_to = "CTO"
+lives_in = "[Munich, Germany](https://www.google.com/maps/place/Munich,+Germany/)"
+scope = [
+  "UX for [Food Dashboard](#)",
+  "Maintainer for [Goper Team A](#)",
+  "Gopher [Community Administration](#)"
+]
 
-  [[icons]]
-    icon = "fab fa-linkedin-in"
-    url = "#"
+[[icons]]
+  icon = "fab fa-linkedin-in"
+  url = "#"
+
+[asset]
+  image = "hugegopher.png"
 +++
 
 Hugely huge Gopher
