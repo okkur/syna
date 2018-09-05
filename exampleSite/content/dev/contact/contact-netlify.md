@@ -15,10 +15,6 @@ email = "mail@example.com"
 button_text = "Send Button" # defaults to theme default
 netlify = true
 
-# Optional google captcha
-#[recaptcha]
-#  sitekey = ""
-
 [message]
   success = "Thank you for awesomely contacting us." # defaults to theme default
   error = "Message could not be send. Please contact us at mail@example.com instead." # defaults to theme default

@@ -16,6 +16,7 @@ button_text = "Send Button" # defaults to theme default
 #netlify = false
 
 # Optional google captcha
+# Won't be used if netlify is enabled
 #[recaptcha]
 #  sitekey = ""
 
