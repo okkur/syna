@@ -132,7 +132,7 @@
                     {{- i18n "contact.defaultJsError" }} {{ .Params.email }}.
                   </div>
                 </noscript>
-                {{- if .Params.recaptcha }}
+                {{- with .Params.recaptcha }}
                   <div class="g-recaptcha-container">
                     <span class="g-recaptcha-filler"></span>
                     <button
