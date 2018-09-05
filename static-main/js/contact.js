@@ -25,6 +25,10 @@ const validator = new Validator({
       return false;
     }
 
+    if (form.dataset.hasNetlify) {
+      return false;
+    }
+
     const id = form.getAttribute('id')
     const action = $(`#${id}`).attr('action')
     const genericSuccess = $(`form[id=${id}] .generic-success`)
