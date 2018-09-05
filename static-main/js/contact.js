@@ -18,8 +18,6 @@ const validator = new Validator({
     $(`form[id=${form.getAttribute('id')}] .generic-error`).removeClass('d-none');
   },
   onSuccess: function(e, form) {
-    e.preventDefault()
-
     if (selfCheck !== "checkSelf") {
       genericError.removeClass('d-none');
       return false;
@@ -29,6 +27,7 @@ const validator = new Validator({
       return;
     }
 
+    e.preventDefault()
     const id = form.getAttribute('id')
     const action = $(`#${id}`).attr('action')
     const genericSuccess = $(`form[id=${id}] .generic-success`)
