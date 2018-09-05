@@ -6,7 +6,7 @@ weight = 130
 background = "light"
 form_name = "defaultContact"
 
-title = "Contact fragment"
+title = "Contact fragment with Netlify support"
 subtitle  = "*not working on demo page*"
 
 # PostURL can be used with backends such as mailout from caddy
