@@ -4,7 +4,7 @@ fragment = "contact"
 date = "2017-09-10"
 weight = 130
 background = "light"
-form_name = "defaultContact"
+form_name = "contact-form-netlify"
 
 title = "Contact fragment with Netlify support"
 subtitle  = "*not working on demo page*"

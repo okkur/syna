@@ -4,7 +4,7 @@ fragment = "contact"
 date = "2017-09-10"
 weight = 120
 background = "light"
-form_name = "defaultContact"
+form_name = "contact-form-recaptcha"
 
 title = "Contact fragment with ReCaptcha support"
 subtitle  = "*not working on demo page*"

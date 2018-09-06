@@ -4,7 +4,7 @@ fragment = "contact"
 date = "2017-09-10"
 weight = 110
 background = "light"
-form_name = "defaultContact"
+form_name = "contact-form"
 
 title = "Contact fragment"
 subtitle  = "*not working on demo page*"
