@@ -11,7 +11,7 @@ module.exports = {
     search: './assets/js/search.js',
   },
   output: {
-    path: path.resolve('./static/'),
+    path: path.resolve('./assets/scripts/'),
     filename: 'syna-[id].js'
   },
   resolve: {
