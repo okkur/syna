@@ -1,29 +1,6 @@
+{{- $self := . -}}
 {{- $bg := .Params.background | default "light" -}}
-{{- $align := .Params.align | default "center" -}}
-
-{{/* Global resource fallback - can also be used within loops */}}
-{{- $image := .Params.image -}}
-
-{{/* Do not change the following snippet */}}
-{{/* Code is duplicated throughout the code */}}
-{{- $.root.Scratch.Set "image" (printf "images/%s" $image) -}}
-
-{{/* Page specific resource */}}
-{{- $location := (printf "%s/%s" $.fallthrough.page_path $image) -}}
-{{- if (fileExists (printf "content/%s" $location)) -}}
-  {{/* special case index: trim _index/ from url */}}
-  {{- $location := strings.TrimPrefix "_index/" $location -}}
-  {{- $.root.Scratch.Set "image" $location -}}
-{{- end -}}
-
-{{/* Fragment specific resource */}}
-{{- $location := (printf "%s/%s" $.fallthrough.file_path $image) -}}
-{{- if (fileExists (printf "content/%s" $location)) -}}
-  {{/* special case index: trim _index/ from url */}}
-  {{- $location := strings.TrimPrefix "_index/" $location -}}
-  {{- $.root.Scratch.Set "image" $location -}}
-{{- end -}}
-{{/* End of do not change */}}
+{{- $align := .Params.align | default "center" }}
 
 {{ "<!-- Item -->" | safeHTML }}
 <section id="{{ .Name }}">
@@ -87,7 +64,7 @@
             {{- else -}}
               {{- printf " order-lg-12" -}}
             {{- end -}}
-            {{- if and (not .Params.icon) (not .Params.image) -}}
+            {{- if and (not .Params.icon) (not .Params.asset) -}}
               {{- printf " " -}}
             {{- end -}}
           ">
@@ -119,10 +96,10 @@
                     "></i>
                     <i class="{{ .Params.icon }} fa-stack-1x fa-inverse"></i>
                   </span>
-                {{- else if .Params.image -}}
-                  <img src="{{ $.root.Scratch.Get "image" | relURL }}" class="img-fluid p-2" alt="{{ .Params.title }}">
+                {{- else if .Params.asset -}}
+                  <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset) }}" class="img-fluid p-2" alt="{{ .Params.asset.text }}">
                 {{- end -}}
-                {{- if and (not .Params.icon) (not .Params.image) -}}
+                {{- if and (not .Params.icon) (not .Params.asset) -}}
                   {{- range .Params.buttons }}
                     <a class="btn btn-lg m-2 d-none d-lg-inline
                       {{ if hasPrefix .url "#" }} anchor{{ end }}
@@ -174,7 +151,7 @@
             </div>
           </div>
           {{- end -}}
-          {{- if or .Params.icon .Params.image }}
+          {{- if or .Params.icon .Params.asset }}
             <div class="col-12 text-center mb-2 {{ printf "text-lg-%s" $align }}">
               {{- range .Params.buttons }}
                 <a class="btn btn-lg m-2
@@ -190,80 +167,11 @@
           {{- if .Params.rows }}
             <div class="row justify-content-center">
               <div class="col col-lg-12 mr-lg-auto table-responsive">
-                <table class="table table-bordered
-                  {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                    {{- printf " text-%s" "dark" -}}
-                  {{- else -}}
-                    {{- printf " text-muted text-%s" "secondary" -}}
-                  {{- end -}}
-                ">
-                  <thead>
-                    <tr>
-                      {{- $.Scratch.Set "col" 0 -}}
-                      {{- range .Params.header.values }}
-                        <th class="
-                          {{- if .center -}}
-                            {{- printf " text-center" -}}
-                          {{- end -}}
-                        ">
-                          {{- .text | markdownify -}}
-                        </th>
-                        {{- $.Scratch.Add "col" 1 -}}
-                      {{- end -}}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {{- range .Params.rows -}}
-                      {{- $.Scratch.Set "col" 0 }}
-                      <tr>
-                        {{- range .values -}}
-                          {{- if .header }}
-                          <th class="align-middle
-                            {{- if .center -}}
-                              {{- printf " text-center" -}}
-                            {{- end -}}
-                          ">{{ .header | markdownify }}</th>
-                          {{- else if .button }}
-                            <td class="align-middle
-                              {{- if .center -}}
-                                {{- printf " text-center" -}}
-                              {{- end -}}
-                            ">
-                              <a class="btn
-                              {{ if hasPrefix .url "#" }} anchor{{ end }}
-                              {{- $color := .color | default "primary" -}}
-                              {{- printf " btn-%s" $color -}}
-                            " href="{{ .url | relLangURL }}">
-                              {{- .button -}}
-                            </a>
-                          </td>
-                        {{- else if .icon }}
-                          <td class="align-middle
-                            {{- if .center -}}
-                              {{- printf " text-center" -}}
-                            {{- end -}}
-                          ">
-                            <a href="{{ .url }}">
-                              <i class="{{ .icon }} fa-2x"></i>
-                            </a>
-                          </td>
-                        {{- else }}
-                          <td class="align-middle
-                            {{- if .center -}}
-                              {{- printf " text-center" -}}
-                            {{- end -}}
-                          ">{{ .text | markdownify }}</td>
-                        {{- end -}}
-                        {{- $.Scratch.Add "col" 1 -}}
-                      {{- end -}}
-                    </tr>
-                  {{- end -}}
-                </tbody>
-              </table>
+                {{ partial "helpers/table.html" (dict "header" .Params.header "rows" .Params.rows "page_scratch" .page_scratch "background" $bg)}}
+              </div>
             </div>
-          </div>
-        {{- end -}}
-      </div>
+          {{- end -}}
+        </div>
         <div class="col-12
           {{- if eq $align "left" -}}
             {{- printf " order-lg-12 ml-lg-auto col-lg-4" -}}
@@ -302,12 +210,12 @@
                   <i class="{{ .Params.icon }} fa-stack-1x fa-inverse"></i>
                 </span>
               </div>
-            {{- else if .Params.image }}
+            {{- else if .Params.asset }}
               <div class="col-12 text-center d-none d-lg-inline">
-                <img src="{{ $.root.Scratch.Get "image" | relURL }}" class="img-fluid p-2" alt="{{ .Params.title }}">
+                <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset) }}" class="img-fluid p-2" alt="{{ .Params.asset.text }}">
               </div>
             {{- end -}}
-            {{- if and (not .Params.icon) (not .Params.image) }}
+            {{- if and (not .Params.icon) (not .Params.asset) }}
               <div class="col-12 text-center">
                 {{- range .Params.buttons }}
                   <a class="btn btn-lg m-2

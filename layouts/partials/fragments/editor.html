@@ -1,6 +1,6 @@
 {{- $bg := .Params.background | default "secondary" -}}
-{{- .page_scratch.Add "js" ("syna-react.js" | relURL) -}}
-{{- .page_scratch.Add "js" ("syna-editor.js" | relURL) -}}
+{{- .page_scratch.Add "js" ("syna-react.js" | relLangURL) -}}
+{{- .page_scratch.Add "js" ("syna-editor.js" | relLangURL) -}}
 {{- .page_scratch.Set "react" true -}}
 {{ "<!-- Editor -->" | safeHTML }}
 

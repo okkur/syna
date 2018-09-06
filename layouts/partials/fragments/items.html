@@ -39,9 +39,7 @@
       {{- end }}
       <div class="row justify-content-center align-items-start">
         {{- if eq (len $items) 0 -}}
-        <div class="alert alert-danger">
-          {{- printf "Currently there is no configured items content files present. To add new items add a content file within %s"  $.fallthrough.file_path -}}
-        </div>
+          {{- partial "helpers/empty-subpath.html" (dict "context" "items" "root" $) -}}
         {{- else -}}
           {{- range $items -}}
             {{/* Handle special case of index.md being considered an item */}}

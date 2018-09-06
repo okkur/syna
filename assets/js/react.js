@@ -14,6 +14,10 @@ class Portals extends React.PureComponent {
     return Object.keys(window.synaPortals || {}).map(portal => {
       if (Array.isArray(window.synaPortals[portal]) && window.synaPortals[portal].length > 0) {
         return window.synaPortals[portal].map(innerPortal => {
+          if (document.querySelector(innerPortal.container) === null) {
+            return null;
+          }
+  
           return (
             <Portal
               key={innerPortal.container}
@@ -21,6 +25,10 @@ class Portals extends React.PureComponent {
               container={innerPortal.container} />
           );
         })
+      }
+
+      if (document.querySelector(window.synaPortals[portal].container) === null) {
+        return null;
       }
 
       return (

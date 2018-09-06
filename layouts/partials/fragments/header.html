@@ -1,14 +1,17 @@
+{{- $align := .Params.align | default "center" -}}
+{{- $subtitle_align := .Params.subtitle_align | default $align -}}
 {{- $bg := .Params.background | default "light" }}
 
-{{ "<!-- Section Header -->" | safeHTML }}
+{{ "<!-- Header -->" | safeHTML }}
 <section id="{{ .Name }}">
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">
     <div class="container py-3">
       {{- with .Params.title }}
-        <div class="row">
-          <div class="col text-center
+        <div class="row mx-0">
+          <div class="col
+            {{- printf " text-%s" $align -}}
             {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
               {{- printf " text-%s" "dark" -}}
             {{- else -}}
@@ -22,8 +25,9 @@
         </div>
       {{- end -}}
       {{- with .Params.subtitle -}}
-        <div class="row">
-          <div class="col text-center pt-4 pb-0
+        <div class="row mx-0">
+          <div class="col pt-4 pb-0
+            {{- printf " text-%s" $subtitle_align -}}
             {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
               {{- printf " text-%s" "dark" -}}
             {{- else -}}

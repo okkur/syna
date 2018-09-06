@@ -1,4 +1,6 @@
 .portfolio-item {
+  min-height: 110px;
+
   .description {
     background-color: rgba($dark, 0.6);
     transition: $transition-base;

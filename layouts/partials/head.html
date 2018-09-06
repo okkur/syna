@@ -32,19 +32,23 @@
   <link href="{{ $style.RelPermalink }}" rel="stylesheet">
 
   {{- with .Site.Params.favicon }}
-    <link rel="shortcut icon" type="image/x-icon" href="{{ . | relURL }}">
-    <link rel="icon" {{ with .Site.Params.favicon_ico_sizes }} sizes="{{ . }}"{{ end }} type="image/x-icon" href="{{ . | relURL }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ . | relLangURL }}">
+    <link rel="icon" {{ with .Site.Params.favicon_ico_sizes }}sizes="{{ . }}"{{ end }} type="image/x-icon" href="{{ . | relLangURL }}">
   {{- end }}
 
   {{- with .Site.Params.favicon_png }}
-    <link rel="icon" href="{{ . | relURL }}">
-    <link rel="apple-touch-icon-precomposed" href="{{ . | relURL }}">
+    <link rel="icon" href="{{ . | relLangURL }}">
+    <link rel="apple-touch-icon-precomposed" href="{{ . | relLangURL }}">
   {{- end }}
 
   {{- with .Site.Params.favicon_svg }}
-    <link rel="icon" type="image/svg+xml" href="{{ . | relURL }}">
+    <link rel="icon" type="image/svg+xml" href="{{ . | relLangURL }}">
   {{- end }}
 
   {{- partial "custom/css.html" . }}
 
+  <script>
+    window.syna = {};
+    window.synaPortals = {};
+  </script>
 </head>

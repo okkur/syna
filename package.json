@@ -1,6 +1,6 @@
 {
   "name": "syna",
-  "version": "0.12.0",
+  "version": "0.13.0",
   "description": "Highly customizable open source theme for Hugo based static websites",
   "main": "static-main",
   "repository": "git@github.com:okkur/syna.git",
@@ -32,6 +32,7 @@
     "bootstrap": "^4.1.1",
     "foreman": "^3.0.0",
     "form-validator-simple": "^0.0.11",
+    "fuse.js": "^3.2.1",
     "i": "^0.3.6",
     "particles.js": "^2.0.0",
     "popper.js": "^1.14.3",

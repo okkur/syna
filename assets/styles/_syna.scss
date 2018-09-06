@@ -38,3 +38,13 @@
   padding-bottom: 1px;
   box-sizing: border-box;
 }
+
+article .content {
+  img {
+    max-width: 100%;
+  }
+}
+
+.content-sidebar {
+  word-break: break-all;
+}

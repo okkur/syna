@@ -1,0 +1,75 @@
+{{- $bg := .Params.background | default "light" -}}
+{{- $self := . -}}
+{{- .page_scratch.Add "js" ("syna-search.js" | relLangURL) }}
+
+{{ "<!-- Search -->" | safeHTML }}
+<section id="{{ .Name }}">
+  <div class="overlay container-fluid
+    {{- printf " bg-%s" $bg -}}
+  ">
+  <div class="container py-5">
+    {{- with .Params.title }}
+      <div class="col text-center
+        {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
+          {{- printf " text-%s" "dark" -}}
+        {{- else -}}
+          {{- printf " text-%s" "light" -}}
+        {{- end -}}
+        {{- if and (not (isset $self.Params "subtitle")) (not $self.Content) -}}
+          {{- printf " pb-4" -}}
+        {{- end -}}
+      ">
+        <h2>
+          {{- . | markdownify -}}
+        </h2>
+      </div>
+    {{- end -}}
+    {{- with .Params.subtitle -}}
+      <div class="row">
+        <div class="col text-center pt-2 pb-4
+          {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+            {{- printf " text-%s" "dark" -}}
+          {{- else -}}
+            {{- printf " text-muted text-%s" "secondary" -}}
+          {{- end -}}
+        ">
+          <h6>
+            {{- . | markdownify -}}
+          </h6>
+        </div>
+      </div>
+    {{- end }}
+    <div class="row w-100 justify-content-center mx-0">
+      <form action="{{ "search" | absURL }}" class="mt-0">
+        <div class="input-group my-0">
+          <input type="text" class="form-control py-1" id="search-query-{{ .Name }}" name="s" placeholder="{{- i18n "navbar.search" | default "Search..." -}}">
+          <div class="input-group-append">
+            <button class="btn btn-primary"><i class="fa fa-search"></i></button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="search-results-full-container row">
+      <div class="col px-0">
+        <div id="search-results-{{ .Name }}" class="col px-0
+        {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+          {{- printf " text-%s" "dark" -}}
+        {{- else -}}
+          {{- printf " text-muted text-%s" "secondary" -}}
+        {{- end -}}">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{ partial "helpers/search-result-template.html" (dict "name" .Name "message_class" "text-center mt-4" "background" $bg) }}
+{{ partial "helpers/search-result-template.html" . }}
+<script>
+  (window.syna.search || (window.syna.search = [])).push({
+    searchInput: '#search-query-{{ .Name }}',
+    resultsContainer: '#search-results-{{ .Name }}',
+    template: '#search-result-template-{{ .Name }}',
+    noResults: '#search-no-results-template-{{ .Name }}',
+    empty: '#search-empty-template-{{ .Name }}',
+  })
+</script>
