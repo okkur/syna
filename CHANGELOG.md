@@ -24,7 +24,11 @@ _2018-09-05_
 [Documentation](/tree/v0.13.0/docs)
 
 ## Changes since v0.12.0
-  - BREAKING: Image declaration changed to using consistent `[asset]`
+  - BREAKING: Page declaration from `_index/index.md` needs to be moved to `content/_index.md`
+  - BREAKING: Page declaration for `_index/index.md` needs to be set to `headless = true`
+  - BREAKING: Image declaration changed from `[branding]`, `image = ""` to `[asset]` using consistent asset declaration
+  - BREAKING: Image declaration changed from `header = ""` to `[header]` using consistent asset declaration
+  - BREAKING: Image declaration changed from `[[logos]]` to `[[assets]]` using consistent asset declaration
   - New: `list` fragment for section pages and page lists
   - New: `pricing` fragment to show pricing and features
   - New: `react-portal` fragment to embed react based features
@@ -46,6 +50,7 @@ _2018-09-05_
   - Use relLangURL for all links
   - Fix recaptcha support for Netlify contact form
   - Optimize asset sizes in exampleSite
+
 ---
 
 # v0.12.0
