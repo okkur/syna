@@ -1,19 +1,12 @@
 +++
-fragment = "content"
-weight = 120
-+++
-
-<details><summary>Code</summary>
-```
-+++
 fragment = "contact"
 #disabled = true
 date = "2017-09-10"
-weight = 110
-background = "secondary"
-form_name = "defaultContact"
+weight = 120
+background = "light"
+form_name = "contact-form-recaptcha"
 
-title = "Contact fragment"
+title = "Contact fragment with ReCaptcha support"
 subtitle  = "*not working on demo page*"
 
 # PostURL can be used with backends such as mailout from caddy
@@ -24,8 +17,8 @@ button_text = "Send Button" # defaults to theme default
 
 # Optional google captcha
 # Won't be used if netlify is enabled
-#[recaptcha]
-#  sitekey = ""
+[recaptcha]
+  sitekey = "6LexiG4UAAAAANA0skNB2xTWOj8JDJpyQXwsZcVJ"
 
 [message]
   success = "Thank you for awesomely contacting us." # defaults to theme default
@@ -57,5 +50,3 @@ button_text = "Send Button" # defaults to theme default
   name = "someID"
   value = "example.com"
 +++
-```
-</details>
