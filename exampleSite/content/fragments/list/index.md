@@ -17,5 +17,5 @@ or tiled layout.
 List fragment can be used in normal pages as well as section pages. But if used
 in section pages, it has the ability to use pagination.
 
-- [List fragment - Normal layout](#item_image-right)
-- [List fragment - Tiled layout](#item_image-only)
+- [List fragment - Normal layout](#list)
+- [List fragment - Tiled layout](#list-tiled)
