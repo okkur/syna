@@ -8,13 +8,14 @@
 {{- end -}}
 
 {{- partial "custom/js.html" . -}}
-{{- $main_script_template := resources.Get "scripts/syna-main.js" -}}
-{{- $main_script := $main_script_template | resources.Minify | resources.Fingerprint -}}
-<script src="{{ $main_script.RelPermalink }}"></script>
 {{- range uniq ($.Scratch.Get "js") -}}
-  {{- $script_template := resources.Get (printf "scripts/%s" .) -}}
-  {{- $script := $script_template | resources.Minify | resources.Fingerprint }}
-  <script src="{{ $script.RelPermalink }}" async defer></script>
+  {{- if hasPrefix . "http" -}}
+    <script src="." async defer></script>
+  {{- else }}
+    {{- $script_template := resources.Get (printf "scripts/%s" .) -}}
+    {{- $script := $script_template | resources.Minify | resources.Fingerprint }}
+    <script src="{{ $script.RelPermalink }}" async defer></script>
+  {{- end -}}
 {{- end -}}
 {{- template "_internal/google_analytics_async.html" . -}}
 

@@ -8,7 +8,7 @@
   "license": "Apache",
   "scripts": {
     "build-js": "webpack --progress",
-    "build-hugo": "cd exampleSite && hugo -c content --config config.toml",
+    "build-hugo": "cd exampleSite && hugo -c content --config config.toml --minify",
     "watch-js": "webpack --watch --progress",
     "watch-hugo": "cd exampleSite && hugo -c content --config config.toml server -D",
     "dev": "nf start",

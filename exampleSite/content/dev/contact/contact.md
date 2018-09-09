@@ -1,17 +1,10 @@
 +++
-fragment = "content"
-weight = 120
-+++
-
-<details><summary>Code</summary>
-```
-+++
 fragment = "contact"
 #disabled = true
 date = "2017-09-10"
 weight = 110
-background = "secondary"
-form_name = "defaultContact"
+background = "light"
+form_name = "contact-form"
 
 title = "Contact fragment"
 subtitle  = "*not working on demo page*"
@@ -57,5 +50,3 @@ button_text = "Send Button" # defaults to theme default
   name = "someID"
   value = "example.com"
 +++
-```
-</details>
