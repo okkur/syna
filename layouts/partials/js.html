@@ -1,7 +1,4 @@
 {{ "<!-- Theme Code -->" | safeHTML }}
-{{- partial "custom/js.html" . -}}
-<script src="{{ "syna-main.js" | relLangURL }}"></script>
-
 {{- if $.Scratch.Get "react" }}
   <script>
     if (!window.synaPortals) {
@@ -9,8 +6,16 @@
     }
   </script>
 {{- end -}}
-{{- range uniq ($.Scratch.Get "js") }}
-  <script src="{{ . | relLangURL }}" async defer></script>
+
+{{- partial "custom/js.html" . -}}
+{{- range uniq ($.Scratch.Get "js") -}}
+  {{- if hasPrefix . "http" -}}
+    <script src="." async defer></script>
+  {{- else }}
+    {{- $script_template := resources.Get (printf "scripts/%s" .) -}}
+    {{- $script := $script_template | resources.Minify | resources.Fingerprint }}
+    <script src="{{ $script.RelPermalink }}" async defer></script>
+  {{- end -}}
 {{- end -}}
 {{- template "_internal/google_analytics_async.html" . -}}
 

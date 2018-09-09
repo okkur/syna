@@ -146,7 +146,7 @@
 
 {{/* This is the js script repository. Each fragment can register it's scripts
   and they are rendered at the end of the page. */}}
-{{- $page_scratch.Set "js" (slice) -}}
+{{- $page_scratch.Set "js" (slice "syna-main.js") -}}
 {{/* Disable React by default, we load the framework only if a fragment requires
   it. */}}
 {{- $.Scratch.Set "react" false -}}
