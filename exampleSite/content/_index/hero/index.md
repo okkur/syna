@@ -29,6 +29,6 @@ subtitle = "Showcase your next project"
 
 [[buttons]]
   text = "Fragments"
-  url = "/fragments"
+  url = "#fragments"
   color = "dark"
 +++
