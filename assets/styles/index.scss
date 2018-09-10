@@ -26,12 +26,12 @@ $cyan:                {{ .Site.Params.colors.cyan | default "#00c9dc" }};
 $border-color:        $gray-200;
 $list-inline-padding: 5px;
 {{ if not .Site.Params.fontawesome.disabled }}
-@import '@fortawesome/fontawesome-free-webfonts/scss/fontawesome.scss';
-@import '@fortawesome/fontawesome-free-webfonts/scss/fa-regular.scss';
-@import '@fortawesome/fontawesome-free-webfonts/scss/fa-solid.scss';
-@import '@fortawesome/fontawesome-free-webfonts/scss/fa-brands.scss';
+@import './fontawesome/fontawesome.scss';
+@import './fontawesome/fa-regular.scss';
+@import './fontawesome/fa-solid.scss';
+@import './fontawesome/fa-brands.scss';
 {{ end }}
-@import 'bootstrap/scss/bootstrap.scss';
+@import './bootstrap/bootstrap.scss';
 @import './helpers';
 @import './header';
 @import './form';
