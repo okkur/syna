@@ -10,7 +10,7 @@
 {{- partial "custom/js.html" . -}}
 {{- range uniq ($.Scratch.Get "js") -}}
   {{- if hasPrefix . "http" -}}
-    <script src="." async defer></script>
+    <script async defer src="{{ . }}"></script>
   {{- else }}
     {{- $script_template := resources.Get (printf "scripts/%s" .) -}}
     {{- $script := $script_template | resources.Minify | resources.Fingerprint }}
