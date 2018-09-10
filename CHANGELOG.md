@@ -29,6 +29,8 @@ _2018-09-05_
   - BREAKING: Image declaration changed from `[branding]`, `image = ""` to `[asset]` using consistent asset declaration
   - BREAKING: Image declaration changed from `header = ""` to `[header]` using consistent asset declaration
   - BREAKING: Image declaration changed from `[[logos]]` to `[[assets]]` using consistent asset declaration
+  - Hugo resource pipelines now builds sass files instead of Webpack
+  - Theme colors are now customizable through `config.toml`
   - New: `list` fragment for section pages and page lists
   - New: `pricing` fragment to show pricing and features
   - New: `react-portal` fragment to embed react based features
