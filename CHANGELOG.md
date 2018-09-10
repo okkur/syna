@@ -15,10 +15,23 @@ _2018_
 
 -->
 
+# v0.13.1
+_2018-09-10_
+  - [Downloads for v0.13.1](https://github.com/okkur/syna/releases/tag/v0.13.1)
+  - [Changelog since v0.13.0](#changes-since-v0130)
+
+## Documentation for v0.13.1
+[Documentation](/tree/v0.13.1/docs)
+
+## Fixes since v0.13.0
+  - `contact`: Fix recaptcha not working
+
+---
+
 # v0.13.0
 _2018-09-10_
   - [Downloads for v0.13.0](https://github.com/okkur/syna/releases/tag/v0.13.0)
-  - [Changelog since v0.12.0](#changes-since-v012)
+  - [Changelog since v0.12.0](#changes-since-v0120)
 
 ## Documentation for v0.13.0
 [Documentation](/tree/v0.13.0/docs)
@@ -58,7 +71,7 @@ _2018-09-10_
 # v0.12.0
 _2018-08-06_
   - [Downloads for v0.12.0](https://github.com/okkur/syna/releases/tag/v0.12.0)
-  - [Changelog since v0.11.0](#changes-since-v011)
+  - [Changelog since v0.11.0](#changes-since-v0110)
 
 ## Documentation for v0.12.0
 [Documentation](/tree/v0.12.0/docs)
@@ -98,7 +111,7 @@ _2018-08-06_
 
 _2018-06-06_
   - [Downloads for v0.11.0](https://github.com/okkur/syna/releases/tag/v0.11.0)
-  - [Changelog since v0.10.0](#changes-since-v010)
+  - [Changelog since v0.10.0](#changes-since-v0100)
 
 ## Documentation
 [Documentation](/tree/v0.11.0/docs)
