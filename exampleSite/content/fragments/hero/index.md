@@ -6,6 +6,10 @@ title = "Hero"
 background = "light"
 +++
 
+Showcase your logo, header and most important call to actions
+
+<!--more-->
+
 Hero fragment can be used in your website's landing page or as first call to
 action on various sub pages. It can display a logo/image, title, subtitle and
 various call to action buttons. Additionally a background image can be

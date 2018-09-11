@@ -9,7 +9,7 @@
     <div class="container py-5">
       <div class="row">
         {{- with .Params.sidebar -}}
-          <div class="col-md-3 pb-4 {{- if (eq .align "right") }} order-1 {{- else }} order-0 {{- end -}}">
+          <div class="content-sidebar col-md-3 pb-4 {{- if (eq .align "right") }} order-1 {{- else }} order-0 {{- end -}}">
             {{- if .title }}
               <div class="col-12 pb-3
                 {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
@@ -33,9 +33,9 @@
               {{- .content | markdownify -}}
             </div>
           </div>
-          <div class="col-md-9">
+          <article class="col-md-9">
         {{- else }}
-          <div class="col-md-12">
+          <article class="col-md-12">
         {{- end }}
           {{- if .Params.title }}
             <div class="col-12 pb-3
@@ -63,15 +63,13 @@
               </h3>
             </div>
           {{- end }}
-          {{- with .Params.categories }}
-            <div class="col-12 pb-4">
-              {{- range . }}
-                <div class="badge
-                {{- if (eq $bg "dark") -}}
-                  {{- printf " badge-%s" "light" -}}
-                {{- else -}}
-                  {{- printf " badge-%s" "primary" -}}
-                {{- end -}}">{{ . }}</div>
+          {{- if or .Params.display_date .Params.categories -}}
+            <div class="col-12 pb-4 mt-2">
+              {{- if .Params.display_date -}}
+                {{- partial "helpers/publish-date.html" (dict "root" $self "background" $bg) -}}
+              {{- end -}}
+              {{- with .Params.categories }}
+                {{- partial "helpers/categories.html" (dict "categories" . "background" $bg) -}}
               {{- end }}
             </div>
           {{- end }}
@@ -84,7 +82,7 @@
           ">
             {{ $self.Content | markdownify }}
           </div>
-        </div>
+        </article>
       </div>
     </div>
   </div>

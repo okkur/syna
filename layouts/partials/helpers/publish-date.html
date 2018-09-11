@@ -1,0 +1,11 @@
+{{- $date := .root.Date | default .root.Lastmod }}
+<span class="badge mr-1
+  {{- if (eq $.background "dark") -}}
+    {{- printf " badge-%s" "light" -}}
+  {{- else -}}
+    {{- printf " badge-%s" "primary" -}}
+  {{- end -}}">
+  <time datetime="{{ $date }}" itemprop="datePublished dateModified">
+    {{- $date.Format ($.site.Params.date_format | default "2006-01-06") -}}
+  </time>
+</span>

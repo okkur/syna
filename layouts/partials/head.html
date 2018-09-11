@@ -24,9 +24,15 @@
     {{- if not .IsHome }} &middot; {{ .Site.Title }}{{ end -}}
   </title>
 
-  {{ "<!-- Bootstrap Style -->" | safeHTML }}
-  {{ printf "<style>.mx-0{margin-left:0!important;margin-right:0!important;}%s</style>" (readFile "/static/syna-grid.css") | safeHTML }}
-  <link href="{{ "syna-styles.css" | relLangURL }}" rel="stylesheet">
+  {{ "<!-- Theme Styles -->" | safeHTML }}
+  {{- if fileExists "/static/syna-grid.css" }}
+    {{ printf "<style>.mx-0{margin-left:0!important;margin-right:0!important;}%s</style>" (readFile "/static/syna-grid.css") | safeHTML }}
+  {{- end -}}
+  {{- $sassTemplate := resources.Get "styles/index.scss" -}}
+  {{- $options := (dict "targetPath" "style.css" "outputStyle" "compressed" "enableSourceMap" true "includePaths" (slice "node_modules" "styles")) -}}
+  {{- $styleTemplated := $sassTemplate | resources.ExecuteAsTemplate "main.scss" . -}}
+  {{- $style := $styleTemplated | resources.ToCSS $options | resources.Minify | resources.Fingerprint }}
+  <link href="{{ $style.RelPermalink }}" rel="stylesheet">
 
   {{- with .Site.Params.favicon }}
     <link rel="shortcut icon" type="image/x-icon" href="{{ . | relLangURL }}">
@@ -44,4 +50,8 @@
 
   {{- partial "custom/css.html" . }}
 
+  <script>
+    window.syna = {};
+    window.synaPortals = {};
+  </script>
 </head>

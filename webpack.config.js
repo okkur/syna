@@ -1,38 +1,27 @@
 const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: {
-    main: './static-main/js/index.js',
-    contact: './static-main/js/contact.js',
-    editor: './static-main/js/editor.js',
-    hero: './static-main/js/hero.js',
-    portfolio: './static-main/js/portfolio.js',
-    react: './static-main/js/react.js',
+    main: './assets/js/index.js',
+    contact: './assets/js/contact.js',
+    editor: './assets/js/editor.js',
+    hero: './assets/js/hero.js',
+    portfolio: './assets/js/portfolio.js',
+    react: './assets/js/react.js',
+    search: './assets/js/search.js',
   },
   output: {
-    path: path.resolve('./static/'),
+    path: path.resolve('./assets/scripts/'),
     filename: 'syna-[id].js'
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.css', '.sass', '.scss'],
+    extensions: ['.js', '.jsx'],
     modules: [path.join(process.cwd(), 'src'), 'node_modules'],
   },
   mode: process.env === 'production' ? 'production' : 'development',
   module: {
     rules: [{
-      test: /\.scss$/,
-      use: [
-        MiniCssExtractPlugin.loader,
-        {
-          loader: 'css-loader'
-        },
-        {
-          loader: 'sass-loader'
-        }
-      ],
-    }, {
-      test: /\.js$/,
+      test: /\.jsx?$/,
       exclude: /node_modules/,
       use: {
         loader: 'babel-loader',
@@ -40,21 +29,7 @@ module.exports = {
           presets: ['env', 'react'],
         },
       },
-    }, {
-      test: /\.(woff|woff2|eot|svg|ttf)$/,
-      use: {
-        loader: "url-loader",
-        options: {
-          limit: 50000,
-          name: "./fonts/[name].[ext]",
-        },
-      },
     }],
   },
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: 'syna-[name].css',
-      chunkFilename: 'syna-[id].css'
-    }),
-  ],
+  plugins: [],
 };

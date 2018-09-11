@@ -3,9 +3,6 @@ title = "Huge Gopher"
 weight = 0
 date = "2017-10-17"
 
-[asset]
-  image = "hugegopher.png"
-
 position = "Lead Gopherineer"
 reports_to = "CTO"
 lives_in = "[Munich, Germany](https://www.google.com/maps/place/Munich,+Germany/)"
@@ -18,6 +15,9 @@ scope = [
 [[icons]]
   icon = "fab fa-linkedin-in"
   url = "#"
+
+[asset]
+  image = "hugegopher.png"
 +++
 
 Hugely huge Gopher

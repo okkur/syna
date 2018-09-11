@@ -6,6 +6,9 @@ title = "Portfolio"
 background = "light"
 +++
 
+List of images and descriptions of what you work on
+
+<!--more-->
 
 Portfolio fragment can display up to 3 images in a row, which get realigned
 responsively. Title and subtitle are shown as overlays. An additional

@@ -19,7 +19,7 @@ subtitle = "Showcase your next project"
 
 [[buttons]]
   text = "Features"
-  url = "#todo"
+  url = "#features"
   color = "dark" # primary, secondary, success, danger, warning, info, light, dark, link - default: primary
 
 [[buttons]]
@@ -29,6 +29,6 @@ subtitle = "Showcase your next project"
 
 [[buttons]]
   text = "Fragments"
-  url = "/fragments"
+  url = "#fragments"
   color = "dark"
 +++
