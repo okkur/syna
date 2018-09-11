@@ -102,7 +102,7 @@
                   {{- end -}}
                   {{- with $member.icons -}}
                     <div class="row justify-content-center pt-4">
-                      {{- range .icons -}}
+                      {{- range . -}}
                         <span class="fa-stack fa-2x m-2">
                           <a href="{{ .url }}">
                             <i class="fas fa-circle fa-stack-2x
@@ -199,7 +199,7 @@
                     {{- with $member.icons -}}
                       <div class="col-12 text-center">
                         <div class="row justify-content-lg-start justify-content-center py-2">
-                          {{- range .icons -}}
+                          {{- range . -}}
                             <span class="fa-stack fa-2x m-2">
                               <a href="{{ .url }}">
                                 <i class="fas fa-circle fa-stack-2x
