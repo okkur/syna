@@ -1,4 +1,5 @@
 {{- $items := where (.page.Resources.Match (printf "%s/*.md" .Name)) ".Name" "ne" .self.Name -}}
+{{- $self := . -}}
 {{- $bg := .Params.background | default "light" }}
 
 {{ "<!-- Items -->" | safeHTML }}
@@ -47,7 +48,15 @@
               {{- $item := .Params }}
               <div class="col-md-4 text-center">
                 {{- with $item.asset -}}
-                  {{- if .icon }}
+                  {{- if .image }}
+                    {{- if .url }}
+                      <a href="{{ .url }}">
+                        <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .) }}" class="p-2 w-75" alt="{{ .text }}">
+                      </a>
+                    {{- else }}
+                      <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .) }}" class="p-2 w-75" alt="{{ .text }}">
+                    {{- end }}
+                  {{- else if .icon }}
                     <span class="fa-stack fa-3x m-2">
                       <i class="fas fa-circle fa-stack-2x
                         {{- if eq $bg "primary" -}}
@@ -83,7 +92,9 @@
                   {{- else -}}
                     {{- printf " text-muted text-%s" "secondary" -}}
                   {{- end -}}
-                ">{{ .Content }}</div>
+                ">
+                  {{ .Content }}
+                </div>
               </div>
             {{- end -}}
           {{- end -}}
