@@ -1,6 +1,6 @@
 +++
 fragment = "content"
-weight = 181
+weight = 191
 +++
 
 <details><summary>Code</summary>
@@ -9,7 +9,7 @@ weight = 181
 fragment = "item"
 #disabled = false
 date = "2017-10-04"
-weight = 180
+weight = 190
 background = "secondary"
 align = "center"
 
@@ -20,7 +20,8 @@ title = "Item Fragment Icon Center"
 #pre = ""
 #post = ""
 
-icon = "fas fa-random"
+[asset]
+  icon = "fas fa-random"
 +++
 
 Easily center item fragments even with an icon.

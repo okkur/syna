@@ -1,19 +1,12 @@
 +++
-fragment = "content"
-weight = 181
-+++
-
-<details><summary>Code</summary>
-```
-+++
 fragment = "item"
 #disabled = false
 date = "2017-10-04"
-weight = 180
+weight = 175
 background = "secondary"
-align = "left"
+align = "right"
 
-title = "Item Fragment Icon Left"
+title = "Item Fragment Icon Right"
 #subtitle = ""
 
 # Subtitle pre and post item
@@ -24,7 +17,7 @@ post = "Using Fontawesome icons"
   icon = "fas fa-random"
 +++
 
-Easily left align item fragments even with an icon.
+Easily right align item fragments even with an icon.
 
 Some more text to showcase the description capabilities:
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -35,5 +28,3 @@ Morbi efficitur dui sit amet orci porttitor, nec tincidunt turpis elementum.
 Suspendisse rutrum, mi ac sollicitudin blandit, eros sem tincidunt enim, vitae feugiat turpis eros ut diam.
 Nunc hendrerit, nibh vitae dignissim pretium, magna nulla lacinia massa, et interdum lacus purus ultricies lacus.
 Nulla tincidunt quis lacus in posuere.
-```
-</details>

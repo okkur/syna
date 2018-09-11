@@ -24,5 +24,6 @@ fallthrough](https://github.com/okkur/syna/blob/master/docs/README.md#image-reso
 - [Item fragment - Button aligned right](#item_button-right)
 - [Item fragment - Button aligned left](#item_button-left)
 - [Item fragment - Button aligned center](#item_button-center)
-- [Item fragment - Icon aligned center](#item_icon-center)
+- [Item fragment - Icon aligned right](#item_icon-right)
 - [Item fragment - Icon aligned left](#item_icon-left)
+- [Item fragment - Icon aligned center](#item_icon-center)
