@@ -9756,13 +9756,17 @@ body.modal-open {
 article .content img {
   max-width: 100%; }
 
-.faq .collapse {
-  display: block;
-  max-height: 0;
-  transition: all 0.6s ease-out;
-  overflow: hidden;
-  height: auto; }
-  .faq .collapse.show {
-    max-height: 1000px;
-    transition: all 0.6s ease-in; }
+.faq {
+  text-align: left; }
+  .faq .card {
+    margin-bottom: 10px; }
+    .faq .card .collapse {
+      display: block;
+      max-height: 0;
+      transition: all 0.6s ease-out;
+      overflow: hidden;
+      height: auto; }
+      .faq .card .collapse.show {
+        max-height: 1000px;
+        transition: all 0.6s ease-in; }
 

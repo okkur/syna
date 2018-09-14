@@ -1,8 +1,14 @@
 +++
+fragment = "content"
+weight = 120
++++
+
+<details><summary>Code</summary>
++++
 fragment = "faq"
 date = "2018-09-14"
 weight = 102
-
+background = "secondary"
 
 [[questions]]
   title = "Sit on the laptop"
@@ -22,3 +28,4 @@ weight = 102
   dataTarget = "collapseThree"
   cardId = "firstQuestion"
 +++
+</details>
