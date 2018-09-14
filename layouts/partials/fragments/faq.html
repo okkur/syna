@@ -1,0 +1,63 @@
+{{- $bg := .Params.background | default "white" }}
+
+{{ "<!-- FAQ -->" | safeHTML }}
+<section id="{{ .Name }}">
+  <div class="overlay container-fluid
+    {{- printf " bg-%s" $bg -}}
+  ">
+    <div class="container py-4">
+      {{- with .Params.title }}
+      <div class="row">
+        <div class="col text-center
+          {{- if or (eq $bg "secondary") (eq $bg "white") (eq $bg "primary") -}}
+            {{- printf " text-%s" "dark" -}}
+          {{- else -}}
+            {{- printf " text-%s" "white" -}}
+          {{- end -}}
+        ">
+          <h4>
+            {{- . | markdownify -}}
+          </h4>
+        </div>
+      </div>
+      {{- end -}}
+      {{- with .Params.subtitle }}
+      <div class="row">
+        <div class="col text-center
+          {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+            {{- printf " text-%s" "dark" -}}
+          {{- else -}}
+            {{- printf " text-muted text-%s" "secondary" -}}
+          {{- end -}} 
+        ">
+          <h5>
+            {{- . | markdownify -}}
+          </h5>
+        </div>
+      </div>
+      {{- end }}
+      <div class="row text-center justify-content-center">
+        <div class="faq">
+          {{- range .Params.questions }}
+            <div class="card">
+              <div class="card-header" id="{{ .cardId }}">
+                <h5 class="mb-0">
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#{{ .dataTarget }}"
+                          aria-expanded="false" aria-controls="{{ .dataTarget }}">
+                    {{- .title -}}
+                  </button>
+                </h5>
+              </div>
+
+              <div id="{{ .dataTarget }}" class="collapse" aria-labelledby="{{ .cardId }}" data-parent="faq">
+                <div class="card-body">
+                {{- .answer -}}
+                </div>
+              </div>
+            </div>
+          {{- end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
