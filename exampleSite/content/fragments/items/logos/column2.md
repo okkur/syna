@@ -1,10 +1,10 @@
 +++
 title = "Column 2"
 weight = 20
-#url = "#"
 
 [asset]
   image = "go.svg"
+  #url = "#"
 +++
 
 Showcasing descriptions for column based items

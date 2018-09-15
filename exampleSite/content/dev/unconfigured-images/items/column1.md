@@ -1,9 +1,9 @@
 +++
 weight = 10
-url = "#"
 
 [asset]
   image = ""
+  url = "#"
 +++
 
 Showcasing descriptions for column based items
