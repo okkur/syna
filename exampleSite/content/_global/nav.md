@@ -4,6 +4,7 @@ fragment = "nav"
 date = "2018-05-17"
 weight = 0
 #background = ""
+search = true
 
 # Branding options
 [asset]

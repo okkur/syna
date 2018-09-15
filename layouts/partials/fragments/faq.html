@@ -1,4 +1,5 @@
-{{- $bg := .Params.background | default "white" }}
+{{- $bg := .Params.background | default "white" -}}
+{{- .page_scratch.Add "js" ("syna-collapse.js" | relLangURL) }}
 
 {{ "<!-- FAQ -->" | safeHTML }}
 <section id="{{ .Name }}">

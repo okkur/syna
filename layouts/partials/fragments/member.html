@@ -130,11 +130,11 @@
         </div>
       {{- else if le $members 1 -}}
         <div class="card p-2">
-          <div class="row m-0 justify-content-center 
-            {{- if .Params.asset -}}
-              {{- printf " align-items-center" -}}
-            {{- end -}}">
-            {{- range $members -}}
+          {{- range $members -}}
+            <div class="row m-0 justify-content-center 
+              {{- if .Params.asset -}}
+                {{- printf " align-items-center" -}}
+              {{- end -}}">
               {{/* Handle special case of index.md being considered a member */}}
               {{- if not (in .Name "/index.md") -}}
                 {{- $member := .Params -}}
@@ -229,8 +229,8 @@
                   </div>
                 {{- end -}}
               {{- end -}}
-            {{- end }}
-          </div>
+            </div>
+          {{- end }}
         </div>
       {{- end -}}
     </div>

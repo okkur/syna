@@ -9,6 +9,7 @@ weight = 111
 fragment = "list"
 weight = 150
 
+background = "secondary"
 count = 5 # Default value is 10
 section = "dev/blog" # Default value is current section
 #summary = false # Default value is true

@@ -3,9 +3,6 @@ title = "Tiny Gopher 3"
 weight = 30
 date = "2017-10-17"
 
-[asset]
-  image = "tinygopher.png"
-
 position = "Gopherineer"
 reports_to = "Lead Gophineer"
 lives_in = "[Iceland](https://www.google.com/maps/place/Iceland/)"
@@ -26,6 +23,9 @@ scope = [
 [[icons]]
   icon = "fab fa-linkedin-in"
   url = "#"
+
+[asset]
+  image = "tinygopher.png"
 +++
 
 Really tiny Gopher

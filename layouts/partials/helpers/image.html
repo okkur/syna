@@ -12,7 +12,7 @@
 {{- end -}}
 
 {{/* Fragment specific resource */}}
-{{- $location := (printf "%s/%s" .root.fallthrough.file_path $image) -}}
+{{- $location := (printf "%s/%s" .root.file_path $image) -}}
 {{- if (fileExists (printf "content/%s" $location)) -}}
   {{- .root.page_scratch.Set "image" $location -}}
 {{- end -}}
