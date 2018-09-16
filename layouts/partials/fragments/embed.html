@@ -8,36 +8,7 @@
     {{- printf " bg-%s" $bg -}}
   ">
     <div class="container py-5">
-      {{- with .Params.title }}
-        <div class="row">
-          <div class="col text-center py-3
-            {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-              {{- printf " text-%s" "dark" -}}
-            {{- else -}}
-              {{- printf " text-%s" "secondary" -}}
-            {{- end -}}
-          ">
-            <h2>
-              {{- . | markdownify -}}
-            </h2>
-          </div>
-        </div>
-      {{- end -}}
-      {{- with .Params.subtitle }}
-        <div class="row">
-          <div class="col text-center pb-4
-            {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-              {{- printf " text-%s" "dark" -}}
-            {{- else -}}
-              {{- printf " text-muted text-%s" "secondary" -}}
-            {{- end -}}
-          ">
-            <h5>
-              {{- . | markdownify -}}
-            </h5>
-          </div>
-        </div>
-      {{- end }}
+      {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
       <div class="row justify-content-center">
         {{- if eq .Params.responsive false }}
           <div class="{{- printf "w-%s" $size -}}">

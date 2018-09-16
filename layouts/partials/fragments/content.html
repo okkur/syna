@@ -37,32 +37,7 @@
         {{- else }}
           <article class="col-md-12">
         {{- end }}
-          {{- if .Params.title }}
-            <div class="col-12 pb-3
-              {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
-                {{- printf " text-%s" "dark" -}}
-              {{- else -}}
-                {{- printf " text-%s" "light" -}}
-              {{- end -}}
-            ">
-              <h1>
-                {{- .Params.title | markdownify -}}
-              </h1>
-            </div>
-          {{- end -}}
-          {{- if .Params.subtitle }}
-            <div class="col-12 pb-2
-              {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                {{- printf " text-%s" "dark" -}}
-              {{- else -}}
-                {{- printf " text-muted text-%s" "secondary" -}}
-              {{- end -}}
-            ">
-              <h3>
-                {{- .Params.subtitle | markdownify -}}
-              </h3>
-            </div>
-          {{- end }}
+          {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
           {{- if or .Params.display_date .Params.categories -}}
             <div class="col-12 pb-4 mt-2">
               {{- if .Params.display_date -}}
