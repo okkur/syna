@@ -51,7 +51,7 @@
                   {{- with $item.asset -}}
                     {{- if .image }}
                       {{- if .url }}
-                        <a href="{{ .url }}">
+                        <a href="{{ .url | relLangURL }}">
                       {{- end }}
                         <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .) }}" class="p-2 w-75 mb-2" alt="{{ .text }}">
                       {{- if .url }}
@@ -59,7 +59,7 @@
                       {{- end }}
                     {{- else if .icon }}
                       {{- if .url }}
-                        <a href="{{ .url }}">
+                        <a href="{{ .url | relLangURL }}">
                       {{- end }}
                         <span class="fa-stack fa-3x m-2">
                           <i class="fas fa-circle fa-stack-2x
@@ -87,7 +87,7 @@
                       {{- end -}}
                     ">
                       {{- if and $item.asset $item.asset.url }}
-                        <a href="{{ $item.url | relLangURL }}" class="
+                        <a href="{{ $item.asset.url | relLangURL }}" class="
                           {{- if eq $bg "primary" -}}
                             {{- printf " text-%s" "dark" -}}
                           {{- end -}}
