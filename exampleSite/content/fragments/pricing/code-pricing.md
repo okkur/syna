@@ -3,7 +3,8 @@ fragment = "content"
 weight = 111
 +++
 
-<details><summary>Code</summary>
+<details>
+<summary>Code (index)</summary>
 ```
 +++
 fragment = "pricing"
@@ -16,5 +17,31 @@ subtitle = "Can be linked to 3rd party payment services"
 
 Pricing fragment supports **markdown** as it's subtitle.  
 Supports feature listing of different plans and links to a payment service.
+```
+</details>
+
+<details>
+<summary>Code (subitem)</summary>
+```
++++
+weight = 10
+
+title = "Starting plan"
+subtitle = "starting at"
+
+price = "Free"
+# highlight = true
+
+button_text = "Start for free"
+button_url = "#"
+
+[[features]]
+  text = "**Basic** feature"
+  icon = "fas fa-check"
+
+[[features]]
+  text = "**Email** support"
+  icon = "fas fa-check"
++++
 ```
 </details>

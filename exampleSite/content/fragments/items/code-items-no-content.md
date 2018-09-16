@@ -3,7 +3,7 @@ fragment = "content"
 weight = 121
 +++
 
-<details><summary>Code</summary>
+<details><summary>Code (index)</summary>
 ```
 +++
 fragment = "items"
@@ -14,6 +14,19 @@ background = "secondary"
 
 title = "Items Fragment with no content"
 subtitle= "Column based items with icons"
++++
+```
+</details>
+
+<details>
+<summary>Code (subitem)</summary>
+```
++++
+weight = 10
+
+[asset]
+  icon = "fas fa-random"
+  url = "#"
 +++
 ```
 </details>
