@@ -48,3 +48,14 @@ article .content {
 .content-sidebar {
   word-break: break-all;
 }
+
+
+.items {
+  .image {
+    flex: 0 0 150px;
+
+    a {
+      display: contents;
+    }
+  }
+}
