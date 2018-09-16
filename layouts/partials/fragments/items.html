@@ -47,20 +47,20 @@
             {{- if not (in .Name "/index.md") -}}
               {{- $item := .Params }}
               <div class="col-md-4 d-flex flex-column">
-                <div class="row image justify-content-center align-items-center">
-                  {{- with $item.asset -}}
-                    {{- if .image }}
-                      {{- if .url }}
-                        <a href="{{ .url | relLangURL }}">
-                      {{- end }}
+                {{- if and $item.asset $item.asset.url }}
+                  <a href="{{ $item.asset.url | relLangURL }}" class="col justify-content-between d-flex flex-column header
+                    {{- if eq $bg "primary" -}}
+                      {{- printf " text-%s" "dark" -}}
+                    {{- end -}}
+                  ">
+                {{- else }}
+                  <div class="col justify-content-between d-flex flex-column header">
+                {{- end }}
+                  <div class="row image justify-content-center align-items-center">
+                    {{- with $item.asset -}}
+                      {{- if .image }}
                         <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .) }}" class="p-2 w-75 mb-2" alt="{{ .text }}">
-                      {{- if .url }}
-                        </a>
-                      {{- end }}
-                    {{- else if .icon }}
-                      {{- if .url }}
-                        <a href="{{ .url | relLangURL }}">
-                      {{- end }}
+                      {{- else if .icon }}
                         <span class="fa-stack fa-3x m-2">
                           <i class="fas fa-circle fa-stack-2x
                             {{- if eq $bg "primary" -}}
@@ -71,35 +71,27 @@
                           "></i>
                           <i class="{{ .icon }} fa-stack-1x fa-inverse"></i>
                         </span>
-                      {{- if .url }}
-                        </a>
-                      {{- end }}
-                    {{- end -}}
-                  {{- end }}
-                </div>
-                <div class="row justify-content-center text-center">
-                  {{- if $item.title }}
-                    <h4 class="mb-3
-                      {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
-                        {{- printf " text-%s" "dark" -}}
-                      {{- else -}}
-                        {{- printf " text-%s" "light" -}}
                       {{- end -}}
-                    ">
-                      {{- if and $item.asset $item.asset.url }}
-                        <a href="{{ $item.asset.url | relLangURL }}" class="
-                          {{- if eq $bg "primary" -}}
-                            {{- printf " text-%s" "dark" -}}
-                          {{- end -}}
-                        ">
-                          {{- $item.title | markdownify -}}
-                        </a>
-                      {{- else }}
+                    {{- end }}
+                  </div>
+                  <div class="row justify-content-center text-center">
+                    {{- if $item.title }}
+                      <h4 class="mb-3
+                        {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
+                          {{- printf " text-%s" "dark" -}}
+                        {{- else -}}
+                          {{- printf " text-%s" "light" -}}
+                        {{- end -}}
+                      ">
                         {{- $item.title | markdownify -}}
-                      {{- end }}
-                    </h4>
-                  {{- end -}}
-                </div>
+                      </h4>
+                    {{- end -}}
+                  </div>
+                {{- if and $item.asset $item.asset.url }}
+                  </a>
+                {{- else }}
+                  </div>
+                {{- end }}
                 <div class="row justify-content-center text-center">
                   {{- if .Content }}
                     <div class="

@@ -51,8 +51,12 @@ article .content {
 
 
 .items {
+  .header {
+    flex: 0 1 200px;
+  }
+
   .image {
-    flex: 0 0 150px;
+    flex: 1;
 
     a {
       display: contents;
