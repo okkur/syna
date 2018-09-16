@@ -55,6 +55,9 @@
         </div>
       {{- end }}
       <div class="row">
+        {{- if eq (len $items) 0 -}}
+          {{- partial "helpers/empty-subpath.html" (dict "context" "pricing" "root" $) -}}
+        {{- end -}}
         {{- range (sort $items ".Params.weight") }}
           <div class="col-lg-4 col-md-6 col-12 py-2 pricing-plan {{- if .Params.highlight }} pricing-plan-highlight {{- end -}}">
             <div class="card">
