@@ -1,11 +1,14 @@
 {{- $bg := .bg -}}
+{{- $align := .params.align | default "center" -}}
+{{- $subtitle_align := .params.subtitle_align | default $align -}}
 {{- with .params.title }}
-  <div class="row">
-    <div class="col text-center py-3
-      {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+  <div class="row mx-0">
+    <div class="col
+      {{- printf " text-%s" $align -}}
+      {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
         {{- printf " text-%s" "dark" -}}
       {{- else -}}
-        {{- printf " text-%s" "secondary" -}}
+        {{- printf " text-%s" "light" -}}
       {{- end -}}
     ">
       <h2>
@@ -14,9 +17,10 @@
     </div>
   </div>
 {{- end -}}
-{{- with .params.subtitle }}
-  <div class="row">
-    <div class="col text-center pb-4
+{{- with .params.subtitle -}}
+  <div class="row mx-0">
+    <div class="col pt-4 pb-0
+      {{- printf " text-%s" $subtitle_align -}}
       {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
         {{- printf " text-%s" "dark" -}}
       {{- else -}}
