@@ -76,13 +76,7 @@
                   </div>
                   <div class="row justify-content-center text-center">
                     {{- if $item.title }}
-                      <h4 class="mb-3
-                        {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
-                          {{- printf " text-%s" "dark" -}}
-                        {{- else -}}
-                          {{- printf " text-%s" "light" -}}
-                        {{- end -}}
-                      ">
+                      <h4 class="mb-3">
                         {{- $item.title | markdownify -}}
                       </h4>
                     {{- end -}}
