@@ -71,7 +71,7 @@
                     <p><i class="{{ .icon }}"></i>{{ .text | markdownify }}</p>
                   {{- end }}
                 </div>
-                <a href="{{ .Params.button_url }}" class="btn btn-lg btn-block btn-primary">{{ .Params.button_text }}</a>
+                <a href="{{ .Params.button_url | relLangURL }}" class="btn btn-lg btn-block btn-primary">{{ .Params.button_text }}</a>
               </div>
             </div>
           </div>
