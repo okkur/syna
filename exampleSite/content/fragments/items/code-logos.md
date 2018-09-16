@@ -3,7 +3,7 @@ fragment = "content"
 weight = 131
 +++
 
-<details><summary>Code</summary>
+<details><summary>Code (index)</summary>
 ```
 +++
 fragment = "items"
@@ -15,5 +15,22 @@ background = "secondary"
 title = "Items Fragment with images"
 subtitle= "Column based items with images"
 +++
+```
+</details>
+
+<details>
+<summary>Code (subitem)</summary>
+```
++++
+title = "Column 1"
+weight = 10
+
+[asset]
+  image = "caddy.svg"
+  url = "#"
++++
+
+Showcasing descriptions for column based items
+
 ```
 </details>

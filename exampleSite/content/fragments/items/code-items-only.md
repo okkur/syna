@@ -3,7 +3,7 @@ fragment = "content"
 weight = 126
 +++
 
-<details><summary>Code</summary>
+<details><summary>Code (index)</summary>
 ```
 +++
 fragment = "items"
@@ -14,6 +14,19 @@ background = "secondary"
 
 #title = ""
 #subtitle = ""
++++
+```
+</details>
+
+<details>
+<summary>Code (subitem)</summary>
+```
++++
+weight = 10
+
+[asset]
+  icon = "fas fa-random"
+  url = "#"
 +++
 ```
 </details>
