@@ -8,7 +8,6 @@ themesDir = "../.."
 enableGitInfo = true
 version = "0.13.0"
 disableKinds = ["RSS", "taxonomy", "taxonomyTerm"]
-paginate = 2
 
 [outputs]
   home = ["HTML", "JSON"]
@@ -74,6 +73,8 @@ googleAnalytics = ""
     cyan = "#00c9dc" # info
 
 # main/prepend/postpend menus are displayed in nav fragment.
+# footer/footer_social menus are displayed in footer fragment.
+# copyright_footer menus are displayed in copyright fragment
 # Keep an eye out for updates. These will be moved out to make navbar more
 # configurable.
 [[menu.main]]
@@ -104,8 +105,8 @@ googleAnalytics = ""
 [[menu.footer_social]]
   weight = 30
   name = "github"
-  pre = "fab fa-github fa-stack-2x"
   url = "https://github.com/okkur/syna"
+  pre = "fab fa-github fa-stack-2x"
 
 [[menu.copyright_footer]]
   url = "/about"

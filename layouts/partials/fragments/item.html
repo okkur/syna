@@ -64,9 +64,6 @@
             {{- else -}}
               {{- printf " order-lg-12" -}}
             {{- end -}}
-            {{- if and (not .Params.icon) (not .Params.asset) -}}
-              {{- printf " " -}}
-            {{- end -}}
           ">
             <div class="row">
               <div class="col-12">
@@ -85,21 +82,22 @@
                     </div>
                   </div>
                 {{- end -}}
-                {{- if .Params.icon }}
-                  <span class="fa-stack fa-4x">
-                    <i class="fas fa-circle fa-stack-2x
-                      {{- if eq $bg "primary" -}}
-                        {{- printf " text-%s" "dark" -}}
-                      {{- else -}}
-                        {{- printf " text-%s" "primary" -}}
-                      {{- end -}}
-                    "></i>
-                    <i class="{{ .Params.icon }} fa-stack-1x fa-inverse"></i>
-                  </span>
-                {{- else if .Params.asset -}}
-                  <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset) }}" class="img-fluid p-2" alt="{{ .Params.asset.text }}">
-                {{- end -}}
-                {{- if and (not .Params.icon) (not .Params.asset) -}}
+                {{- with .Params.asset -}}
+                  {{- if isset . "image" }}
+                    <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .) }}" class="img-fluid p-2" alt="{{ .Params.asset.text }}">
+                  {{- else if isset . "icon" }}
+                    <span class="fa-stack fa-4x">
+                      <i class="fas fa-circle fa-stack-2x
+                        {{- if eq $bg "primary" -}}
+                          {{- printf " text-%s" "dark" -}}
+                        {{- else -}}
+                          {{- printf " text-%s" "primary" -}}
+                        {{- end -}}
+                      "></i>
+                      <i class="{{ .icon }} fa-stack-1x fa-inverse"></i>
+                    </span>
+                  {{- end -}}
+                {{- else -}}
                   {{- range .Params.buttons }}
                     <a class="btn btn-lg m-2 d-none d-lg-inline
                       {{ if hasPrefix .url "#" }} anchor{{ end }}
@@ -151,7 +149,7 @@
             </div>
           </div>
           {{- end -}}
-          {{- if or .Params.icon .Params.asset }}
+          {{- if and .Params.asset .Params.buttons }}
             <div class="col-12 text-center mb-2 {{ printf "text-lg-%s" $align }}">
               {{- range .Params.buttons }}
                 <a class="btn btn-lg m-2
@@ -197,36 +195,39 @@
                 </div>
               </div>
             {{- end -}}
-            {{- if .Params.icon }}
-              <div class="col-12 text-center d-none d-lg-inline">
-                <span class="fa-stack fa-4x">
-                  <i class="fas fa-circle fa-stack-2x
-                    {{- if eq $bg "primary" -}}
-                      {{- printf " text-%s" "dark" -}}
-                    {{- else -}}
-                      {{- printf " text-%s" "primary" -}}
-                    {{- end -}}
-                  "></i>
-                  <i class="{{ .Params.icon }} fa-stack-1x fa-inverse"></i>
-                </span>
-              </div>
-            {{- else if .Params.asset }}
-              <div class="col-12 text-center d-none d-lg-inline">
-                <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset) }}" class="img-fluid p-2" alt="{{ .Params.asset.text }}">
-              </div>
-            {{- end -}}
-            {{- if and (not .Params.icon) (not .Params.asset) }}
-              <div class="col-12 text-center">
-                {{- range .Params.buttons }}
-                  <a class="btn btn-lg m-2
-                    {{ if hasPrefix .url "#" }} anchor{{ end }}
-                    {{- $color := .color | default "primary" -}}
-                    {{- printf " btn-%s" $color -}}
-                  " href="{{ .url | relLangURL }}">
-                    {{- .text -}}
-                  </a>
-                  {{- end }}
-              </div>
+            {{- with .Params.asset -}}
+              {{- if isset . "image" }}
+                <div class="col-12 text-center d-none d-lg-inline">
+                  <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .) }}" class="img-fluid p-2" alt="{{ .Params.asset.text }}">
+                </div>
+              {{- else if isset . "icon" }}
+                <div class="col-12 text-center d-none d-lg-inline">
+                  <span class="fa-stack fa-4x">
+                    <i class="fas fa-circle fa-stack-2x
+                      {{- if eq $bg "primary" -}}
+                        {{- printf " text-%s" "dark" -}}
+                      {{- else -}}
+                        {{- printf " text-%s" "primary" -}}
+                      {{- end -}}
+                    "></i>
+                    <i class="{{ .icon }} fa-stack-1x fa-inverse"></i>
+                  </span>
+                </div>
+              {{- end -}}
+            {{- else -}}
+              {{- if .Params.buttons }}
+                <div class="col-12 text-center">
+                  {{- range .Params.buttons }}
+                    <a class="btn btn-lg m-2
+                      {{ if hasPrefix .url "#" }} anchor{{ end }}
+                      {{- $color := .color | default "primary" -}}
+                      {{- printf " btn-%s" $color -}}
+                    " href="{{ .url | relLangURL }}">
+                      {{- .text -}}
+                    </a>
+                    {{- end }}
+                </div>
+              {{- end -}}
             {{- end -}}
             {{- if .Params.post }}
               <div class="row">
@@ -243,7 +244,6 @@
                 </div>
               </div>
             {{- end }}
-            </div>
           </div>
         </div>
       </div>
