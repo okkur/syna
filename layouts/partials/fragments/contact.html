@@ -11,30 +11,7 @@
     {{- printf " bg-%s" $bg -}}
   ">
   <div class="container py-5">
-    <div class="row">
-      <div class="col-12 text-center
-        {{- if eq $bg "dark" -}}
-          {{- printf " text-%s" "light" -}}
-        {{- else -}}
-          {{- printf " text-%s" "dark" -}}
-        {{- end -}}
-      ">
-        {{- with .Params.title }}
-          <h2>{{- . | markdownify -}}</h2>
-        {{- end -}}
-        {{- with .Params.subtitle }}
-          <h3 class="
-            {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-              {{- printf " text-%s" "dark" -}}
-            {{- else -}}
-              {{- printf " text-muted text-%s" "secondary" -}}
-            {{- end -}}
-          ">
-            {{- . | markdownify }}
-          </h3>
-        {{- end }}
-      </div>
-    </div>
+    {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
     <div class="row">
       <div class="col-12">
         <form

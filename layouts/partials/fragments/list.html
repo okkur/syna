@@ -31,6 +31,7 @@
 <section id="{{ .Name }}">
   <div class="overlay container-fluid {{- printf " bg-%s" $bg -}}">
     <div class="container py-5">
+      {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
       <div class="row mx-0">
         <div class="row mx-0
           {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
