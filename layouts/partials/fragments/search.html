@@ -8,7 +8,7 @@
     {{- printf " bg-%s" $bg -}}
   ">
   <div class="container py-5">
-      {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
+    {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
     <div class="row w-100 justify-content-center mx-0">
       <form action="{{ "search" | absURL }}" class="mt-0">
         <div class="input-group my-0">

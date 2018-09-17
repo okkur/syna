@@ -22,7 +22,7 @@
           </div>
         </div>
       {{- end }}
-      <div class="row">
+      <div class="row {{- if not .Content -}}{{ print " pt-4" }}{{ end }}">
         {{- if eq (len $items) 0 -}}
           {{- partial "helpers/empty-subpath.html" (dict "context" "pricing" "root" $) -}}
         {{- end -}}

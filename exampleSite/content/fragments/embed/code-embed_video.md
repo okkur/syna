@@ -14,6 +14,7 @@ background = "secondary"
 
 title = "Embed Fragment"
 subtitle = "Easily embed media (videos, iframes etc.)"
+#title_align = "left" # Default is center, can be left, right or center
 
 media_source = "https://www.youtube-nocookie.com/embed/lXpf4kIxygU?rel=0&amp;showinfo=0"
 #media = '<iframe class="embed-responsive-item" src="https://www.youtube-nocookie.com/embed/lXpf4kIxygU?rel=0&amp;showinfo=0" allowfullscreen></iframe>'
@@ -22,4 +23,3 @@ media_source = "https://www.youtube-nocookie.com/embed/lXpf4kIxygU?rel=0&amp;sho
 +++
 ```
 </details>
-

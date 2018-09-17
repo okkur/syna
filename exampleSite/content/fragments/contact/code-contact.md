@@ -15,6 +15,7 @@ form_name = "defaultContact"
 
 title = "Contact fragment"
 subtitle  = "*not working on demo page*"
+#title_align = "left" # Default is center, can be left, right or center
 
 # PostURL can be used with backends such as mailout from caddy
 post_url = "https://example.com/mailout" #default: formspree.io
