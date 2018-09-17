@@ -1,10 +1,9 @@
-{{- $bg := .Params.background | default "light" -}}
-
 {{ "<!-- Table -->" | safeHTML }}
 <section id="{{ .Name }}">
   <div class="overlay container-fluid
-    {{- printf " bg-%s" $bg -}}
+    {{- partial "helpers/background.html" .self -}}
   ">
+    {{- $bg := .self.Scratch.Get "bg" }}
     <div class="container py-5">
       {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
       <div class="row align-items-center text-center justify-content-end">

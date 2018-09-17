@@ -1,0 +1,6 @@
+{{- $bg := .Scratch.Get "bg" }}
+{{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
+  {{- printf " text-%s" "dark" -}}
+{{- else -}}
+  {{- printf " text-%s" "light" -}}
+{{- end -}}

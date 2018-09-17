@@ -1,22 +1,18 @@
 {{- $self := .self -}}
-{{- $bg := .Params.background | default "light" }}
 
 {{ "<!-- Content -->" | safeHTML }}
 <section id="{{ .Name }}">
   <div class="overlay container-fluid
-    {{- printf " bg-%s" $bg -}}
+    {{- partial "helpers/background.html" $self -}}
   ">
+    {{- $bg := $self.Scratch.Get "bg" }}
     <div class="container py-5">
       <div class="row">
         {{- with .Params.sidebar -}}
           <div class="content-sidebar col-md-3 pb-4 {{- if (eq .align "right") }} order-1 {{- else }} order-0 {{- end -}}">
             {{- if .title }}
               <div class="col-12 pb-3
-                {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
-                  {{- printf " text-%s" "dark" -}}
-                {{- else -}}
-                  {{- printf " text-%s" "light" -}}
-                {{- end -}}
+                {{- partial "helpers/text-color.html" $self -}}
               ">
                 <h1>
                   {{- .title | markdownify -}}
@@ -24,11 +20,7 @@
               </div>
             {{- end }}
             <div class="col-12
-              {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                {{- printf " text-%s" "dark" -}}
-              {{- else -}}
-                {{- printf " text-muted text-%s" "secondary" -}}
-              {{- end -}}
+              {{- partial "helpers/text-color.html" $self -}}
             ">
               {{- .content | markdownify -}}
             </div>
@@ -49,11 +41,7 @@
             </div>
           {{- end }}
           <div class="col-12
-            {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-              {{- printf " text-%s" "dark" -}}
-            {{- else -}}
-              {{- printf " text-muted text-%s" "secondary" -}}
-            {{- end -}}
+            {{- partial "helpers/text-color.html" $self -}}
           ">
             {{ $self.Content | markdownify }}
           </div>

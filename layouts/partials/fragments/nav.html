@@ -1,12 +1,12 @@
 {{- $self := . -}}
-{{- $bg := .Params.background | default "dark" -}}
 {{- if .Params.search -}}
   {{- .page_scratch.Add "js" ("syna-search.js" | relLangURL) -}}
 {{- end }}
 
 {{- "<!-- Navigation -->" | safeHTML -}}
 <nav class="overlay navbar navbar-expand-lg py-2
-  {{- printf " bg-%s" $bg -}}
+  {{- partial "helpers/background.html" $self.self -}}
+  {{- $bg := $self.self.Scratch.Get "bg" }}
   {{- if or (eq $bg "light") (eq $bg "white") (eq $bg "secondary") -}}
     {{- printf " navbar-%s" "light" -}}
   {{- else -}}

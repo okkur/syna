@@ -23,22 +23,19 @@
   {{- $paginator := .root.Paginate ($self.page_scratch.Get "pages") -}}
   {{- .page_scratch.Set "pages" $paginator.Pages -}}
   {{- .page_scratch.Set "paginator" $paginator -}}
-{{- end -}}
-
-{{- $bg := .Params.background | default "light" }}
+{{- end }}
 
 {{ "<!-- Blog -->" | safeHTML }}
 <section id="{{ .Name }}">
-  <div class="overlay container-fluid {{- printf " bg-%s" $bg -}}">
+  <div class="overlay container-fluid
+    {{- partial "helpers/background.html" $self.self -}}
+  ">
+    {{- $bg := $self.self.Scratch.Get "bg" }}
     <div class="container py-5">
       {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
       <div class="row mx-0">
         <div class="row mx-0
-          {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-            {{- printf " text-%s" "dark" -}}
-          {{- else -}}
-            {{- printf " text-muted text-%s" "secondary" -}}
-          {{- end -}}
+          {{- partial "helpers/text-color.html" $self.self -}}
         ">
           {{- range first (.Params.count | default 10) (.page_scratch.Get "pages") -}}
             {{ $self.page_scratch.Set "pages" (slice .) }}
@@ -62,11 +59,7 @@
                       <div class="card-title">
                     {{- end }}
                       <div class="col-12 pl-0
-                        {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
-                          {{- printf " text-%s" "dark" -}}
-                        {{- else -}}
-                          {{- printf " text-%s" "light" -}}
-                        {{- end -}}
+                {{- partial "helpers/text-color.html" $self.self -}}
                       ">
                         <a href="{{ .URL }}">
                           <h3>
@@ -95,22 +88,15 @@
                   {{- end -}}
                   {{- if or (not (isset $self.Params "summary")) (eq $self.Params.summary true) }}
                     <div class="col-12 pl-0
-                      {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                        {{- printf " text-%s" "dark" -}}
-                      {{- else -}}
-                        {{- printf " text-muted text-%s" "secondary" -}}
-                      {{- end -}}
+                      {{- partial "helpers/text-color.html" $self.self -}}
                     ">
                       {{- range first 1 (where ($self.page_scratch.Get "pages") "Params.fragment" "in" "content") }}
                         {{ .Summary }}
                         {{- if and (not $self.Params.tiled) (ne $self.Params.read_more false) -}}
                           {{- if or $self.Params.read_more .Truncated }}
                             <a class="badge
-                            {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                              {{- printf " badge-%s" "dark" -}}
-                            {{- else -}}
-                              {{- printf " badge-%s" "secondary" -}}
-                            {{- end -}}" href="{{ .URL }}">{{ i18n "content.readmore" | default "Read more..." }}</a>
+                              {{- partial "helpers/text-color.html" $self.self -}}
+                            " href="{{ .URL }}">{{ i18n "content.readmore" | default "Read more..." }}</a>
                           {{- end -}}
                         {{- end -}}
                       {{- end -}}

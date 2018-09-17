@@ -1,4 +1,4 @@
-{{- $bg := .Params.background | default "secondary" }}
+{{- $self := .self -}}
 {{- if .Params.recaptcha -}}
   {{- .page_scratch.Add "js" "https://www.google.com/recaptcha/api.js" -}}
 {{- end }}
@@ -8,8 +8,9 @@
 
 <section id="{{ .Name }}">
   <div class="overlay container-fluid
-    {{- printf " bg-%s" $bg -}}
+    {{- partial "helpers/background.html" $self -}}
   ">
+  {{- $bg := $self.Scratch.Get "bg" }}
   <div class="container py-5">
     {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
     <div class="row">

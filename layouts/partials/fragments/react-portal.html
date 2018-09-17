@@ -1,10 +1,9 @@
-{{- $bg := .Params.background | default "secondary" -}}
 {{- .page_scratch.Add "js" ("syna-react.js" | relLangURL) -}}
 {{- .page_scratch.Set "react" true }}
 {{ "<!-- React Portal -->" | safeHTML }}
 
 <section id="{{ .Name }}">
   <div data-portal class="overlay container-fluid
-    {{- printf " bg-%s" $bg -}}
+    {{- partial "helpers/background.html" .self -}}
   "></div>
 </section>

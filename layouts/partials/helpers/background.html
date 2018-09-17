@@ -1,0 +1,3 @@
+{{- $bg := .Params.background | default "light" }}
+{{- .Scratch.Set "bg" $bg -}}
+{{- printf " bg-%s" $bg -}}
