@@ -20,7 +20,7 @@
               <div class="col-md-4 d-flex flex-column">
                 {{- if and $item.asset $item.asset.url }}
                   <a href="{{ $item.asset.url | relLangURL }}" class="col justify-content-between d-flex flex-column header
-                    {{- partial "helpers/text-color.html" $self.self -}}
+                    {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "") -}}
                   ">
                 {{- else }}
                   <div class="col justify-content-between d-flex flex-column header">
@@ -32,7 +32,7 @@
                       {{- else if .icon }}
                         <span class="fa-stack fa-3x m-2">
                           <i class="fas fa-circle fa-stack-2x
-                            {{- partial "helpers/text-color.html" $self.self -}}
+                            {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "primary") -}}
                           "></i>
                           <i class="{{ .icon }} fa-stack-1x fa-inverse"></i>
                         </span>
@@ -54,7 +54,7 @@
                 <div class="row justify-content-center text-center">
                   {{- if .Content }}
                     <div class="
-                      {{- partial "helpers/text-color.html" $self.self -}}
+                      {{- partial "helpers/text-color.html" (dict "self" $self.self "muted" true "light" "secondary") -}}
                     ">
                       {{ .Content }}
                     </div>

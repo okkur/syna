@@ -7,7 +7,7 @@
   <div class="container py-5">
     <div class="row">
       <div class="col-md m-2
-        {{- partial "helpers/text-color.html" $self.self -}}
+        {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
       ">
         {{- with .Params.asset }}
           <h4>
@@ -31,7 +31,7 @@
             {{- range sort .Site.Menus.footer_social }}
               <span class="fa-stack fa-2x mt-3 mr-1">
                 <a href="{{ .URL | relLangURL }}" class="
-                  {{- partial "helpers/text-color.html" $self.self -}}
+                  {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "") -}}
                 ">
                   <i class="fas fa-circle fa-stack-2x"></i>
                   <i class="{{ .Pre }} fa-stack-1x fa-fw text-light"></i>
@@ -42,7 +42,7 @@
         {{- end }}
       </div>
       <div class="col-md m-2
-        {{- partial "helpers/text-color.html" $self.self -}}
+        {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
       ">
         {{- with .Params.menu_title }}
           <h4>
@@ -54,7 +54,7 @@
               {{- range sort .Site.Menus.footer }}
                 <li class="nav-item">
                   <a class="nav-link p-0 display-5
-                    {{- partial "helpers/text-color.html" $self.self -}}
+                    {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
                   " href="{{ .URL | relLangURL }}"
                     {{- if hasPrefix .URL "#" }}
                       class="anchor"
@@ -67,7 +67,7 @@
         {{- end }}
       </div>
       <div class="col-md m-2
-        {{- partial "helpers/text-color.html" $self.self -}}
+        {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
       ">
         {{- with .self.Content }}
           <div>

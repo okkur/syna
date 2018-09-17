@@ -30,7 +30,7 @@
     {{- with .Params.subtitle }}
     <div class="row justify-content-center align-items-start">
       <h1 class="overlay jumbotron-heading my-4
-        {{- partial "helpers/text-color.html" $self.self -}}
+        {{- partial "helpers/text-color.html" (dict "self" $self.self) -}}
       ">
         {{- . | markdownify -}}
       </h1>
@@ -40,7 +40,7 @@
     {{- with .Params.title }}
     <div class="row justify-content-center align-items-start">
       <h1 class="overlay jumbotron-heading
-        {{- partial "helpers/text-color.html" $self.self -}}
+        {{- partial "helpers/text-color.html" (dict "self" $self.self) -}}
       ">
         {{- . -}}
       </h1>
@@ -49,7 +49,7 @@
     {{- with .Params.subtitle }}
     <div class="row justify-content-center align-items-start">
       <div class="overlay lead
-        {{- partial "helpers/text-color.html" $self.self -}}
+        {{- partial "helpers/text-color.html" (dict "self" $self.self) -}}
       ">
         {{- . | markdownify -}}
       </div>

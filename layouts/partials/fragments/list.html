@@ -35,7 +35,7 @@
       {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
       <div class="row mx-0">
         <div class="row mx-0
-          {{- partial "helpers/text-color.html" $self.self -}}
+          {{- partial "helpers/text-color.html" (dict "self" $self.self "muted" true "light" "secondary") -}}
         ">
           {{- range first (.Params.count | default 10) (.page_scratch.Get "pages") -}}
             {{ $self.page_scratch.Set "pages" (slice .) }}
@@ -59,7 +59,7 @@
                       <div class="card-title">
                     {{- end }}
                       <div class="col-12 pl-0
-                {{- partial "helpers/text-color.html" $self.self -}}
+                {{- partial "helpers/text-color.html" (dict "self" $self.self) -}}
                       ">
                         <a href="{{ .URL }}">
                           <h3>
@@ -88,14 +88,18 @@
                   {{- end -}}
                   {{- if or (not (isset $self.Params "summary")) (eq $self.Params.summary true) }}
                     <div class="col-12 pl-0
-                      {{- partial "helpers/text-color.html" $self.self -}}
+                      {{- partial "helpers/text-color.html" (dict "self" $self.self "muted" true "light" "secondary") -}}
                     ">
                       {{- range first 1 (where ($self.page_scratch.Get "pages") "Params.fragment" "in" "content") }}
                         {{ .Summary }}
                         {{- if and (not $self.Params.tiled) (ne $self.Params.read_more false) -}}
                           {{- if or $self.Params.read_more .Truncated }}
-                            <a class="badge
-                              {{- partial "helpers/text-color.html" $self.self -}}
+                            <a class="badge 
+                              {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                                {{- printf " badge-%s" "dark" -}}
+                              {{- else -}}
+                                {{- printf " badge-%s" "secondary" -}}
+                              {{- end -}}
                             " href="{{ .URL }}">{{ i18n "content.readmore" | default "Read more..." }}</a>
                           {{- end -}}
                         {{- end -}}

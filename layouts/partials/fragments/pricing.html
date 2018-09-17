@@ -12,7 +12,7 @@
       {{- with .Content -}}
         <div class="row">
           <div class="col text-center pt-4 pb-5
-            {{- partial "helpers/text-color.html" $self.self -}}
+            {{- partial "helpers/text-color.html" (dict "self" $self.self "muted" true "light" "secondary") -}}
           ">
             {{- . -}}
           </div>

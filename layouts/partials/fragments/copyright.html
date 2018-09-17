@@ -9,7 +9,7 @@
     <div class="row py-3">
       <div class="col-md">
         <div class="row mx-0 my-2 justify-content-center text-center text-lg-none
-          {{- partial "helpers/text-color.html" $self -}}
+          {{- partial "helpers/text-color.html" (dict "self" $self "light" "secondary") -}}
         ">
           <div class="row mx-0 mr-lg-auto">
             {{- with .Params.copyright }}
@@ -30,7 +30,7 @@
       {{- if eq .Params.attribution true }}
         <div class="col-auto mx-auto">
           <div class="row mx-0 navbar-text text-center
-            {{- partial "helpers/text-color.html" $self -}}
+            {{- partial "helpers/text-color.html" (dict "self" $self "light" "secondary") -}}
           ">
             {{- i18n "attribution" -}}
             <a href="https://syna.okkur.io" class="ml-1">
@@ -46,7 +46,7 @@
               {{- range sort .Site.Menus.copyright_footer }}
                 <li class="nav-item">
                   <a class="nav-link py-0
-                    {{- partial "helpers/text-color.html" $self -}}
+                    {{- partial "helpers/text-color.html" (dict "self" $self "light" "secondary") -}}
                   " href="{{ .URL | relLangURL }}"
                   {{ if hasPrefix .URL "#" }}
                     class="anchor"

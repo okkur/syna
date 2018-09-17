@@ -21,19 +21,23 @@
                 {{- if .Params.asset -}}
                   <div class="text-center m-2">
                     <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset) }}" class="img-fluid rounded-circle w-75 border
-                      {{- partial "helpers/text-color.html" $self.self -}}
+                      {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary"
+                        {{- print " border-dark" -}}
+                      {{- else -}}
+                        {{- print " border-white" -}}
+                      {{- end -}}
                     " alt="{{ $member.title }}"></img>
                   </div>
                 {{- end -}}
                 <div class="mt-5 mb-0
-                  {{- partial "helpers/text-color.html" $self.self -}}
+                  {{- partial "helpers/text-color.html" (dict "self" $self.self) -}}
                 ">
                   <h2>
                     {{- $member.title -}}
                   </h2>
                 </div>
                 <div class="member
-                  {{- partial "helpers/text-color.html" $self.self -}}
+                  {{- partial "helpers/text-color.html" (dict "self" $self.self "muted" true "light" "secondary") -}}
                 ">
                   {{- with $member.position -}}
                     <h5 class="mb-3">
@@ -65,7 +69,7 @@
                         <span class="fa-stack fa-2x m-2">
                           <a href="{{ .url }}">
                             <i class="fas fa-circle fa-stack-2x
-                              {{- partial "helpers/text-color.html" $self.self -}}
+                              {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "") -}}
                             "></i>
                             <i class="{{ .icon }} fa-stack-1x fa-inverse"></i>
                           </a>
@@ -98,7 +102,7 @@
                 {{- if .Params.asset -}}
                   <div class="col-12 col-lg-4 p-4 text-center">
                     <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset) }}" class="img-fluid rounded-circle border
-                      {{- partial "helpers/text-color.html" $self.self -}}
+                      {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "white") -}}
                     " alt="{{ $member.title }}"></img>
                   </div>
                 {{- end -}}
@@ -109,7 +113,7 @@
                     {{- printf " col-lg-4" -}}
                   {{- end -}}">
                   <div class="member text-center text-lg-left
-                    {{- partial "helpers/text-color.html" $self.self -}}
+                    {{- partial "helpers/text-color.html" (dict "self" $self.self "muted" true "light" "secondary") -}}
                   ">
                     <div class="mb-3 text-dark">
                       <h1>
@@ -152,7 +156,7 @@
                             <span class="fa-stack fa-2x m-2">
                               <a href="{{ .url }}">
                                 <i class="fas fa-circle fa-stack-2x
-                                  {{- partial "helpers/text-color.html" $self.self -}}
+                                  {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "") -}}
                                 "></i>
                                 <i class="{{ .icon }} fa-stack-1x fa-inverse"></i>
                               </a>

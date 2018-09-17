@@ -29,7 +29,7 @@
           {{- if .Params.title }}
             <div class="row pb-3">
               <div class="col-12
-                {{- partial "helpers/text-color.html" $self.self -}}
+                {{- partial "helpers/text-color.html" (dict "self" $self.self) -}}
               ">
                 <h2>
                   {{- .Params.title | markdownify -}}
@@ -40,7 +40,7 @@
           {{- if .Params.subtitle }}
             <div class="row pb-2">
               <div class="col-12
-                {{- partial "helpers/text-color.html" $self.self -}}
+                {{- partial "helpers/text-color.html" (dict "self" $self.self "muted" true "light" "secondary") -}}
               ">
                 <h5>
                   {{- .Params.subtitle | markdownify -}}
@@ -62,7 +62,7 @@
                 {{- if .Params.pre }}
                   <div class="row">
                     <div class="col-12
-                      {{- partial "helpers/text-color.html" $self.self -}}
+                      {{- partial "helpers/text-color.html" (dict "self" $self.self "muted" true "light" "secondary") -}}
                     ">
                       <p class="mb-0">
                         {{- .Params.pre | markdownify -}}
@@ -76,7 +76,7 @@
                   {{- else if isset . "icon" }}
                     <span class="fa-stack fa-4x">
                       <i class="fas fa-circle fa-stack-2x
-                        {{- partial "helpers/text-color.html" $self.self -}}
+                        {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "primary") -}}
                       "></i>
                       <i class="{{ .icon }} fa-stack-1x fa-inverse"></i>
                     </span>
@@ -95,7 +95,7 @@
                 {{- if .Params.post }}
                   <div class="row">
                     <div class="col-12 mb-0
-                      {{- partial "helpers/text-color.html" $self.self -}}
+                      {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
                     ">
                       <p class="mb-0">
                         {{- .Params.post | markdownify -}}
@@ -118,7 +118,7 @@
           ">
             <div class="col-12">
               <div class="mb-0
-                {{- partial "helpers/text-color.html" $self.self -}}
+                {{- partial "helpers/text-color.html" (dict "self" $self.self "muted" true "light" "secondary") -}}
               ">
                 {{- .self.Content | markdownify -}}
               </div>
@@ -159,7 +159,7 @@
             {{- if .Params.pre }}
               <div class="row">
                 <div class="col-12 mb-0 d-none d-lg-inline
-                  {{- partial "helpers/text-color.html" $self.self -}}
+                  {{- partial "helpers/text-color.html" (dict "self" $self.self "muted" true "light" "secondary") -}}
                 ">
                   <p class="mb-0">
                     {{- .Params.pre | markdownify -}}
@@ -176,7 +176,7 @@
                 <div class="col-12 text-center d-none d-lg-inline">
                   <span class="fa-stack fa-4x">
                     <i class="fas fa-circle fa-stack-2x
-                      {{- partial "helpers/text-color.html" $self.self -}}
+                      {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "primary") -}}
                     "></i>
                     <i class="{{ .icon }} fa-stack-1x fa-inverse"></i>
                   </span>
@@ -200,7 +200,7 @@
             {{- if .Params.post }}
               <div class="row">
                 <div class="col-12 mb-0 d-none d-lg-inline
-                  {{- partial "helpers/text-color.html" $self.self -}}
+                  {{- partial "helpers/text-color.html" (dict "self" $self.self "muted" true "light" "secondary") -}}
                 ">
                   <p class="mb-0">
                     {{- .Params.post | markdownify -}}

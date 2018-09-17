@@ -22,7 +22,7 @@
     <div class="search-results-full-container row">
       <div class="col px-0">
         <div id="search-results-{{ .Name }}" class="col px-0
-          {{- partial "helpers/text-color.html" $self -}}
+          {{- partial "helpers/text-color.html" (dict "self" $self "muted" true "light" "secondary") -}}
         "></div>
       </div>
     </div>
