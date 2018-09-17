@@ -1,6 +1,5 @@
 {{- $bg := .bg -}}
-{{- $align := .params.header_align | default "center" -}}
-{{- $subtitle_align := .params.subtitle_align | default $align -}}
+{{- $align := .params.title_align | default "center" -}}
 {{- with .params.title }}
   <div class="row mx-0">
     <div class="col
@@ -20,7 +19,7 @@
 {{- with .params.subtitle -}}
   <div class="row mx-0">
     <div class="col pt-4 pb-0
-      {{- printf " text-%s" $subtitle_align -}}
+      {{- printf " text-%s" $align -}}
       {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
         {{- printf " text-%s" "dark" -}}
       {{- else -}}

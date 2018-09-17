@@ -9,6 +9,10 @@ weight = 111
 fragment = "list"
 weight = 150
 
+title = "List fragment with list layout"
+#subtitle = ""
+title_align = "left" # Default is center, can be left, right or center
+
 background = "secondary"
 count = 5 # Default value is 10
 section = "dev/blog" # Default value is current section

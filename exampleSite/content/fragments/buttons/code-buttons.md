@@ -14,6 +14,7 @@ background = "secondary"
 
 title = "Buttons Fragment"
 #subtitle = ""
+#title_align = "left" # Default is center, can be left, right or center
 
 [[buttons]]
   text = "Button"

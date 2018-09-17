@@ -7,7 +7,8 @@ background = "secondary"
 form_name = "subscribe"
 
 #title = ""
-#subtitle  = ""
+#subtitle = ""
+#title_align = "left" # Default is center, can be left, right or center
 
 # Embed a form via an iframe
 # Mailerlite is one example of a working provider.
