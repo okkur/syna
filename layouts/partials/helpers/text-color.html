@@ -6,7 +6,7 @@
   {{- printf " text-%s" .overwrite -}}
 {{- else -}}
   {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
-    {{- printf " %s%s" $text_muted $text_dark -}}
+    {{- printf " %s%s" $text_dark -}}
   {{- else -}}
     {{- printf " %s%s" $text_muted $text_light -}}
   {{- end -}}
