@@ -21,7 +21,7 @@
                 {{- if .Params.asset -}}
                   <div class="text-center m-2">
                     <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset) }}" class="img-fluid rounded-circle w-75 border
-                      {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary"
+                      {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
                         {{- print " border-dark" -}}
                       {{- else -}}
                         {{- print " border-white" -}}

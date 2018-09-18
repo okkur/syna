@@ -1,12 +1,13 @@
 {{- $bg := .self.Scratch.Get "bg" }}
 {{- $text_muted := cond (.muted | default false) "text-muted " "" -}}
-
+{{- $text_dark := cond (.dark | default false) (printf "text-%s" (.dark | default "dark")) "" -}}
+{{- $text_light := cond (.light | default false) (printf "text-%s" (.light | default "light")) "" -}}
 {{- if .overwrite -}}
   {{- printf " text-%s" .overwrite -}}
 {{- else -}}
   {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
-    {{- printf " %stext-%s" $text_muted (.dark | default "dark") -}}
+    {{- printf " %s%s" $text_muted $text_dark -}}
   {{- else -}}
-    {{- printf " %stext-%s" $text_muted (.light | default "light") -}}
+    {{- printf " %s%s" $text_muted $text_light -}}
   {{- end -}}
 {{- end -}}
