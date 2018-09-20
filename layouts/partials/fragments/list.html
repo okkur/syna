@@ -133,7 +133,7 @@
           {{- end }}
         </div>
         {{- if $renderPagination -}}
-          {{- partial "helpers/pagination.html" (dict "paginator" .root.Paginator) -}}
+          {{- partial "helpers/pagination.html" (dict "paginator" .root.Paginator "page_scratch" .page_scratch) -}}
         {{- end }}
       </div>
     </div>
