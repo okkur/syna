@@ -1,5 +1,6 @@
 {{- $bg := .Params.background | default "white" -}}
 {{- .page_scratch.Add "js" ("syna-collapse.js" | relLangURL) }}
+{{- $items := where (.page.Resources.Match (printf "%s/*.md" .Name)) ".Name" "ne" .self.Name -}}
 
 {{ "<!-- FAQ -->" | safeHTML }}
 <section id="{{ .Name }}">
@@ -39,23 +40,33 @@
       {{- end }}
       <div class="row text-center justify-content-center">
         <div class="faq">
-          {{- range .Params.questions }}
-            <div class="card">
-              <div class="card-header" id="{{ .cardId }}">
-                <h5 class="mb-0">
-                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#{{ .dataTarget }}"
-                          aria-expanded="false" aria-controls="{{ .dataTarget }}">
-                    {{- .title -}}
-                  </button>
-                </h5>
-              </div>
+          {{- if eq (len $items) 0 -}}
+            {{- partial "helpers/empty-subpath.html" (dict "context" "faq" "root" $) -}}
+          {{- else -}}
+            {{- range $items -}}
+              {{/* Handle special case of index.md being considered an item */}}
+              {{- if not (in .Name "/index.md") -}}
+                {{- $item := .Params }}
+                {{- $card_header_id := printf "%s-%s" $.Name (strings.TrimSuffix ".md" (replace .Name (printf "%s/" $.Name) "")) }}
+                {{- $collapse_id := printf "%s-%s-collapse" $.Name (strings.TrimSuffix ".md" (replace .Name (printf "%s/" $.Name) "")) }}
+                  <div class="card">
+                    <div class="card-header" id="{{ $card_header_id }}">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#{{ $collapse_id }}"
+                                aria-expanded="false" aria-controls="{{ $collapse_id }}">
+                          {{ $item.title }}
+                        </button>
+                      </h5>
+                    </div>
 
-              <div id="{{ .dataTarget }}" class="collapse" aria-labelledby="{{ .cardId }}" data-parent="faq">
-                <div class="card-body">
-                {{- .answer -}}
-                </div>
-              </div>
-            </div>
+                    <div id="{{ $collapse_id }}" class="collapse" aria-labelledby="{{ $card_header_id }}" data-parent="faq">
+                      <div class="card-body">
+                        {{ .Content }}
+                      </div>
+                    </div>
+                  </div>
+                {{- end -}}
+            {{- end }}
           {{- end }}
         </div>
       </div>
