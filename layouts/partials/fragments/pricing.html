@@ -1,18 +1,18 @@
 {{- $items := where (.resources.Match (printf "%s/*.md" .Name)) ".Name" "ne" .self.Name -}}
 {{- $self := . -}}
+{{- $bg := .self.Scratch.Get "bg" }}
 
 {{ "<!-- Pricing -->" | safeHTML }}
 <section id="{{ .Name }}">
   <div class="overlay container-fluid
-    {{- partial "helpers/background.html" $self.self -}}
+    {{- printf " bg-%s" $bg -}}
   ">
-    {{- $bg := $self.self.Scratch.Get "bg" }}
     <div class="container py-5">
       {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
       {{- with .Content -}}
         <div class="row">
           <div class="col text-center pt-4 pb-5
-            {{- partial "helpers/text-color.html" (dict "self" $self.self "muted" true "light" "secondary") -}}
+            {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
           ">
             {{- . -}}
           </div>

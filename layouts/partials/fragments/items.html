@@ -1,12 +1,12 @@
 {{- $items := where (.page.Resources.Match (printf "%s/*.md" .Name)) ".Name" "ne" .self.Name -}}
 {{- $self := . -}}
+{{- $bg := .self.Scratch.Get "bg" }}
 
 {{ "<!-- Items -->" | safeHTML }}
 <section id="{{ .Name }}">
   <div class="overlay container-fluid
-    {{- partial "helpers/background.html" $self.self -}}
+    {{- printf " bg-%s" $bg -}}
   ">
-    {{- $bg := $self.self.Scratch.Get "bg" }}
     <div class="container py-5">
       {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
       <div class="row justify-content-center align-items-stretch items">
@@ -32,7 +32,11 @@
                       {{- else if .icon }}
                         <span class="fa-stack fa-3x m-2">
                           <i class="fas fa-circle fa-stack-2x
-                            {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "primary") -}}
+                            {{- if eq $bg "primary" -}}
+                              {{- print " text-dark" -}}
+                            {{- else -}}
+                              {{- print " text-primary" -}}
+                            {{- end -}}
                           "></i>
                           <i class="{{ .icon }} fa-stack-1x fa-inverse"></i>
                         </span>
@@ -54,7 +58,7 @@
                 <div class="row justify-content-center text-center">
                   {{- if .Content }}
                     <div class="
-                      {{- partial "helpers/text-color.html" (dict "self" $self.self "muted" true "light" "secondary") -}}
+                      {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
                     ">
                       {{ .Content }}
                     </div>

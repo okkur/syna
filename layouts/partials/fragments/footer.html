@@ -1,8 +1,9 @@
 {{- $self := . -}}
+{{- $bg := .self.Scratch.Get "bg" }}
 
 {{ "<!-- Footer -->" | safeHTML }}
 <div class="overlay container-fluid
-  {{- partial "helpers/background.html" $self.self -}}
+  {{- printf " bg-%s" $bg -}}
 " id="{{ .Name }}">
   <div class="container py-5">
     <div class="row">
@@ -31,8 +32,9 @@
             {{- range sort .Site.Menus.footer_social }}
               <span class="fa-stack fa-2x mt-3 mr-1">
                 <a href="{{ .URL | relLangURL }}" class="
-                  {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "") -}}
-                ">
+                  {{- if eq $bg "primary" -}}
+                    {{- print " text-dark" -}}
+                  {{- end -}}">
                   <i class="fas fa-circle fa-stack-2x"></i>
                   <i class="{{ .Pre }} fa-stack-1x fa-fw text-light"></i>
                 </a>

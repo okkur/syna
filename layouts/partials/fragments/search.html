@@ -1,12 +1,12 @@
 {{- $self := . -}}
-{{- .page_scratch.Add "js" ("syna-search.js" | relLangURL) }}
+{{- .page_scratch.Add "js" ("syna-search.js" | relLangURL) -}}
+{{- $bg := .self.Scratch.Get "bg" }}
 
 {{ "<!-- Search -->" | safeHTML }}
 <section id="{{ .Name }}">
   <div class="overlay container-fluid
-    {{- partial "helpers/background.html" $self.self -}}
+    {{- printf " bg-%s" $bg -}}
   ">
-  {{- $bg := $self.self.Scratch.Get "bg" }}
   <div class="container py-5">
     {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
     <div class="row w-100 justify-content-center mx-0">
@@ -22,7 +22,7 @@
     <div class="search-results-full-container row">
       <div class="col px-0">
         <div id="search-results-{{ .Name }}" class="col px-0
-          {{- partial "helpers/text-color.html" (dict "self" $self "muted" true "light" "secondary") -}}
+          {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
         "></div>
       </div>
     </div>

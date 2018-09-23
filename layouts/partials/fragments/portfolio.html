@@ -1,13 +1,13 @@
 {{- $self := . -}}
 {{- $items := where (.page.Resources.Match (printf "%s/*.md" .Name)) ".Name" "ne" .self.Name -}}
-{{- .page_scratch.Add "js" ("syna-portfolio.js" | relLangURL) }}
+{{- .page_scratch.Add "js" ("syna-portfolio.js" | relLangURL) -}}
+{{- $bg := .self.Scratch.Get "bg" }}
 
 {{ "<!-- Porfolio -->" | safeHTML }}
 <section id="{{ .Name }}">
   <div class="overlay container-fluid
-    {{- partial "helpers/background.html" $self.self -}}
+    {{- printf " bg-%s" $bg -}}
   ">
-    {{- $bg := $self.self.Scratch.Get "bg" }}
     <div class="container py-5">
       {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
       <div class="row">

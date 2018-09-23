@@ -1,9 +1,10 @@
 {{- .page_scratch.Add "js" ("syna-react.js" | relLangURL) -}}
-{{- .page_scratch.Set "react" true }}
-{{ "<!-- React Portal -->" | safeHTML }}
+{{- .page_scratch.Set "react" true -}}
+{{- $bg := .self.Scratch.Get "bg" }}
 
+{{ "<!-- React Portal -->" | safeHTML }}
 <section id="{{ .Name }}">
   <div data-portal class="overlay container-fluid
-    {{- partial "helpers/background.html" .self -}}
+    {{- printf " bg-%s" $bg -}}
   "></div>
 </section>

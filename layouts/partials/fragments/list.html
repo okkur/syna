@@ -23,19 +23,19 @@
   {{- $paginator := .root.Paginate ($self.page_scratch.Get "pages") -}}
   {{- .page_scratch.Set "pages" $paginator.Pages -}}
   {{- .page_scratch.Set "paginator" $paginator -}}
-{{- end }}
+{{- end -}}
+{{- $bg := .self.Scratch.Get "bg" }}
 
 {{ "<!-- Blog -->" | safeHTML }}
 <section id="{{ .Name }}">
   <div class="overlay container-fluid
-    {{- partial "helpers/background.html" $self.self -}}
+    {{- printf " bg-%s" $bg -}}
   ">
-    {{- $bg := $self.self.Scratch.Get "bg" }}
     <div class="container py-5">
       {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
       <div class="row mx-0">
         <div class="row mx-0
-          {{- partial "helpers/text-color.html" (dict "self" $self.self "muted" true "light" "secondary") -}}
+          {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
         ">
           {{- range first (.Params.count | default 10) (.page_scratch.Get "pages") -}}
             {{ $self.page_scratch.Set "pages" (slice .) }}
@@ -88,7 +88,7 @@
                   {{- end -}}
                   {{- if or (not (isset $self.Params "summary")) (eq $self.Params.summary true) }}
                     <div class="col-12 pl-0
-                      {{- partial "helpers/text-color.html" (dict "self" $self.self "muted" true "light" "secondary") -}}
+                      {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
                     ">
                       {{- range first 1 (where ($self.page_scratch.Get "pages") "Params.fragment" "in" "content") }}
                         {{ .Summary }}

@@ -1,9 +1,10 @@
 {{- $root := .root -}}
-{{- $self := .self }}
+{{- $self := .self -}}
+{{- $bg := .self.Scratch.Get "bg" }}
 
 {{ "<!-- Copyright -->" | safeHTML }}
 <footer class="overlay container-fluid
-  {{- partial "helpers/background.html" $self -}}
+  {{- printf " bg-%s" $bg -}}
 " id="{{ .Name }}">
   <div class="container">
     <div class="row py-3">

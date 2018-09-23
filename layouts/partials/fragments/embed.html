@@ -1,13 +1,13 @@
 {{- $self := .self -}}
 {{- $ratio := .Params.ratio | default "4by3" -}}
-{{- $size := .Params.size | default "75" }}
+{{- $size := .Params.size | default "75" -}}
+{{- $bg := .self.Scratch.Get "bg" }}
 
 {{ "<!-- Embed -->" | safeHTML }}
 <section id="{{ .Name }}">
   <div class="overlay container-fluid
-    {{- partial "helpers/background.html" $self -}}
+    {{- printf " bg-%s" $bg -}}
   ">
-    {{- $bg := $self.Scratch.Get "bg" }}
     <div class="container py-5">
       {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
       <div class="row justify-content-center">

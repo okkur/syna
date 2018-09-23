@@ -1,12 +1,12 @@
 {{- $self := . -}}
-{{- $align := .Params.align | default "center" }}
+{{- $align := .Params.align | default "center" -}}
+{{- $bg := .self.Scratch.Get "bg" }}
 
 {{ "<!-- Item -->" | safeHTML }}
 <section id="{{ .Name }}">
   <div class="overlay container-fluid
-    {{- partial "helpers/background.html" $self.self -}}
+    {{- printf " bg-%s" $bg -}}
   ">
-    {{- $bg := $self.self.Scratch.Get "bg" }}
     <div class="container py-5">
       <div class="row align-items-center text-center
         {{- if eq $align "left" -}}
@@ -40,7 +40,7 @@
           {{- if .Params.subtitle }}
             <div class="row pb-2">
               <div class="col-12
-                {{- partial "helpers/text-color.html" (dict "self" $self.self "muted" true "light" "secondary") -}}
+                {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
               ">
                 <h5>
                   {{- .Params.subtitle | markdownify -}}
@@ -62,7 +62,7 @@
                 {{- if .Params.pre }}
                   <div class="row">
                     <div class="col-12
-                      {{- partial "helpers/text-color.html" (dict "self" $self.self "muted" true "light" "secondary") -}}
+                      {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
                     ">
                       <p class="mb-0">
                         {{- .Params.pre | markdownify -}}
@@ -76,7 +76,11 @@
                   {{- else if isset . "icon" }}
                     <span class="fa-stack fa-4x">
                       <i class="fas fa-circle fa-stack-2x
-                        {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "primary") -}}
+                        {{- if eq $bg "primary" -}}
+                          {{- print " text-dark" -}}
+                        {{- else -}}
+                          {{- print " text-primary" -}}
+                        {{- end -}}
                       "></i>
                       <i class="{{ .icon }} fa-stack-1x fa-inverse"></i>
                     </span>
@@ -118,7 +122,7 @@
           ">
             <div class="col-12">
               <div class="mb-0
-                {{- partial "helpers/text-color.html" (dict "self" $self.self "muted" true "light" "secondary") -}}
+                {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
               ">
                 {{- .self.Content | markdownify -}}
               </div>
@@ -159,7 +163,7 @@
             {{- if .Params.pre }}
               <div class="row">
                 <div class="col-12 mb-0 d-none d-lg-inline
-                  {{- partial "helpers/text-color.html" (dict "self" $self.self "muted" true "light" "secondary") -}}
+                  {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
                 ">
                   <p class="mb-0">
                     {{- .Params.pre | markdownify -}}
@@ -176,7 +180,11 @@
                 <div class="col-12 text-center d-none d-lg-inline">
                   <span class="fa-stack fa-4x">
                     <i class="fas fa-circle fa-stack-2x
-                      {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "primary") -}}
+                      {{- if eq $bg "primary" -}}
+                        {{- print " text-dark" -}}
+                      {{- else -}}
+                        {{- print " text-primary" -}}
+                      {{- end -}}
                     "></i>
                     <i class="{{ .icon }} fa-stack-1x fa-inverse"></i>
                   </span>
@@ -200,7 +208,7 @@
             {{- if .Params.post }}
               <div class="row">
                 <div class="col-12 mb-0 d-none d-lg-inline
-                  {{- partial "helpers/text-color.html" (dict "self" $self.self "muted" true "light" "secondary") -}}
+                  {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
                 ">
                   <p class="mb-0">
                     {{- .Params.post | markdownify -}}

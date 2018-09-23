@@ -1,11 +1,11 @@
-{{- $self := .self }}
+{{- $self := .self -}}
+{{- $bg := .self.Scratch.Get "bg" }}
 
 {{ "<!-- Buttons -->" | safeHTML }}
 <section id="{{ .Name }}">
   <div class="overlay container-fluid
-    {{- partial "helpers/background.html" $self -}}
+    {{- printf " bg-%s" $bg -}}
   ">
-    {{- $bg := $self.Scratch.Get "bg" }}
     <div class="container py-4">
       {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
       <div class="row text-center justify-content-center">

@@ -1,9 +1,10 @@
-{{- $self := . }}
+{{- $self := . -}}
+{{- $bg := .self.Scratch.Get "bg" }}
 
 {{ "<!-- 404 -->" | safeHTML }}
 <section id="404">
   <div class="jumbotron text-center mb-0
-    {{- partial "helpers/background.html" $self.self -}}
+    {{- printf " bg-%s" $bg -}}
   ">
     {{- with (.Params.asset | default (dict "image" "logo.svg")) -}}
       <img class="img-fluid" src="{{ partial "helpers/image.html" (dict "root" $self "asset" .) }}" alt="{{ $self.Site.Title }}"

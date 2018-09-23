@@ -2,11 +2,12 @@
 {{- .page_scratch.Add "js" ("syna-react.js" | relLangURL) -}}
 {{- .page_scratch.Add "js" ("syna-editor.js" | relLangURL) -}}
 {{- .page_scratch.Set "react" true -}}
-{{ "<!-- Editor -->" | safeHTML }}
+{{- $bg := .self.Scratch.Get "bg" }}
 
+{{ "<!-- Editor -->" | safeHTML }}
 <section id="{{ .Name }}">
   <div data-portal class="overlay container-fluid
-    {{- partial "helpers/background.html" $self -}}
+    {{- printf " bg-%s" $bg -}}
   "></div>
 </section>
 <script>

@@ -2,15 +2,15 @@
 {{- if .Params.recaptcha -}}
   {{- .page_scratch.Add "js" "https://www.google.com/recaptcha/api.js" -}}
 {{- end }}
-{{- .page_scratch.Add "js" ("syna-contact.js" | relLangURL) }}
+{{- .page_scratch.Add "js" ("syna-contact.js" | relLangURL) -}}
+{{- $bg := .self.Scratch.Get "bg" }}
 
 {{ "<!-- Contact -->" | safeHTML }}
 
 <section id="{{ .Name }}">
   <div class="overlay container-fluid
-    {{- partial "helpers/background.html" $self -}}
+    {{- printf " bg-%s" $bg -}}
   ">
-  {{- $bg := $self.Scratch.Get "bg" }}
   <div class="container py-5">
     {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
     <div class="row">

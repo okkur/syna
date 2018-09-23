@@ -1,11 +1,11 @@
 {{- $self := .self -}}
+{{- $bg := .self.Scratch.Get "bg" }}
 
 {{ "<!-- Content -->" | safeHTML }}
 <section id="{{ .Name }}">
   <div class="overlay container-fluid
-    {{- partial "helpers/background.html" $self -}}
+    {{- printf " bg-%s" $bg -}}
   ">
-    {{- $bg := $self.Scratch.Get "bg" }}
     <div class="container py-5">
       <div class="row">
         {{- with .Params.sidebar -}}
@@ -20,7 +20,7 @@
               </div>
             {{- end }}
             <div class="col-12
-              {{- partial "helpers/text-color.html" (dict "self" $self "muted" true "light" "secondary") -}}
+              {{- partial "helpers/text-color.html" (dict "self" $self "light" "secondary") -}}
             ">
               {{- .content | markdownify -}}
             </div>
@@ -41,7 +41,7 @@
             </div>
           {{- end }}
           <div class="col-12
-            {{- partial "helpers/text-color.html" (dict "self" $self "muted" true "light" "secondary") -}}
+            {{- partial "helpers/text-color.html" (dict "self" $self "light" "muted") -}}
           ">
             {{ $self.Content | markdownify }}
           </div>
