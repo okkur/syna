@@ -41,18 +41,19 @@
           {{- end -}}
         ">
           {{- range first (.Params.count | default 10) (.page_scratch.Get "pages") -}}
-            {{ $self.page_scratch.Set "pages" (slice .) }}
-            {{ range .Resources.ByType "page" }}
-              {{ $self.page_scratch.Add "pages" . }}
-            {{ end }}
+            {{- $self.page_scratch.Set "pages" (slice .) -}}
+            {{- range .Resources.ByType "page" -}}
+              {{- $self.page_scratch.Add "pages" . -}}
+            {{- end -}}
+            {{- $display_summary := or (not (isset $self.Params "summary")) (eq $self.Params.summary true) -}}
             {{- if $self.Params.tiled -}}
               <div class="col-lg-6 col-12 mb-2 d-flex">
             {{- end -}}
               <article class="
                 {{- if $self.Params.tiled -}}
-                  {{- printf "card w-100" -}}
+                  {{- print "card w-100" -}}
                 {{- else -}}
-                  {{- printf "col-12 mb-4" -}}
+                  {{- printf "col-12 mb-%s" (cond $display_summary "4" "2") -}}
                 {{- end -}}">
                 {{- if $self.Params.tiled }}
                   <div class="card-body">
@@ -69,11 +70,19 @@
                         {{- end -}}
                       ">
                         <div class="row align-items-center justify-content-between mx-0">
-                          <h3 class="col-12 col-md px-0">
-                            <a href="{{ .URL }}">
-                              {{- .Params.title | markdownify -}}
-                            </a>
-                          </h3>
+                          {{- if $display_summary }}
+                            <h4 class="col-12 col-md px-0">
+                              <a href="{{ .URL }}">
+                                {{- .Params.title | markdownify -}}
+                              </a>
+                            </h4>
+                          {{- else }}
+                            <h5 class="col-12 col-md px-0">
+                              <a href="{{ .URL }}">
+                                {{- .Params.title | markdownify -}}
+                              </a>
+                            </h5>
+                          {{- end -}}
                           {{- if and ((not $self.Params.tiled) $self.Params.display_date) }}
                             {{- range first 1 (where ($self.page_scratch.Get "pages") "Params.fragment" "in" "content") -}}
                               {{- partial "helpers/publish-date.html" (dict "root" . "background" $bg "badge" false) -}}
@@ -102,7 +111,7 @@
                       <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset) }}" alt="{{ .Params.subtitle | default .Params.title }}" class="img-fluid mb-4">
                     </a>
                   {{- end -}}
-                  {{- if or (not (isset $self.Params "summary")) (eq $self.Params.summary true) }}
+                  {{- if $display_summary }}
                     <div class="col-12 pl-0
                       {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
                         {{- printf " text-%s" "dark" -}}
