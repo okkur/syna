@@ -14,7 +14,8 @@
     "watch-hugo": "cd exampleSite && hugo -c content --config config.toml server -D",
     "dev": "nf start",
     "start": "npm run watch-js",
-    "build": "npm run build-js && npm run build-hugo"
+    "build": "npm run build-js && npm run build-hugo",
+    "test:colors": "node _tests/colors-generator.js"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
