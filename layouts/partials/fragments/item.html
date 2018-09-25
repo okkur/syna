@@ -1,6 +1,6 @@
 {{- $self := . -}}
-{{- $bg := .Params.background | default "light" -}}
-{{- $align := .Params.align | default "center" }}
+{{- $align := .Params.align | default "center" -}}
+{{- $bg := .self.Scratch.Get "bg" }}
 
 {{ "<!-- Item -->" | safeHTML }}
 <section id="{{ .Name }}">
@@ -29,11 +29,7 @@
           {{- if .Params.title }}
             <div class="row pb-3">
               <div class="col-12
-                {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
-                  {{- printf " text-%s" "dark" -}}
-                {{- else -}}
-                  {{- printf " text-%s" "light" -}}
-                {{- end -}}
+                {{- partial "helpers/text-color.html" (dict "self" $self.self) -}}
               ">
                 <h2>
                   {{- .Params.title | markdownify -}}
@@ -44,11 +40,7 @@
           {{- if .Params.subtitle }}
             <div class="row pb-2">
               <div class="col-12
-                {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                  {{- printf " text-%s" "dark" -}}
-                {{- else -}}
-                  {{- printf " text-muted text-%s" "secondary" -}}
-                {{- end -}}
+                {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
               ">
                 <h5>
                   {{- .Params.subtitle | markdownify -}}
@@ -70,11 +62,7 @@
                 {{- if .Params.pre }}
                   <div class="row">
                     <div class="col-12
-                      {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                        {{- printf " text-%s" "dark" -}}
-                      {{- else -}}
-                        {{- printf " text-muted text-%s" "secondary" -}}
-                      {{- end -}}
+                      {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
                     ">
                       <p class="mb-0">
                         {{- .Params.pre | markdownify -}}
@@ -89,9 +77,9 @@
                     <span class="fa-stack fa-4x">
                       <i class="fas fa-circle fa-stack-2x
                         {{- if eq $bg "primary" -}}
-                          {{- printf " text-%s" "dark" -}}
+                          {{- print " text-dark" -}}
                         {{- else -}}
-                          {{- printf " text-%s" "primary" -}}
+                          {{- print " text-primary" -}}
                         {{- end -}}
                       "></i>
                       <i class="{{ .icon }} fa-stack-1x fa-inverse"></i>
@@ -111,11 +99,7 @@
                 {{- if .Params.post }}
                   <div class="row">
                     <div class="col-12 mb-0
-                      {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                        {{- printf " text-%s" "dark" -}}
-                      {{- else -}}
-                        {{- printf " text-muted text-%s" "secondary" -}}
-                      {{- end -}}
+                      {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
                     ">
                       <p class="mb-0">
                         {{- .Params.post | markdownify -}}
@@ -138,11 +122,7 @@
           ">
             <div class="col-12">
               <div class="mb-0
-                {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                  {{- printf " text-%s" "dark" -}}
-                {{- else -}}
-                  {{- printf " text-muted text-%s" "secondary" -}}
-                {{- end -}}
+                {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
               ">
                 {{- .self.Content | markdownify -}}
               </div>
@@ -183,11 +163,7 @@
             {{- if .Params.pre }}
               <div class="row">
                 <div class="col-12 mb-0 d-none d-lg-inline
-                  {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                    {{- printf " text-%s" "dark" -}}
-                  {{- else -}}
-                    {{- printf " text-muted text-%s" "secondary" -}}
-                  {{- end -}}
+                  {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
                 ">
                   <p class="mb-0">
                     {{- .Params.pre | markdownify -}}
@@ -205,9 +181,9 @@
                   <span class="fa-stack fa-4x">
                     <i class="fas fa-circle fa-stack-2x
                       {{- if eq $bg "primary" -}}
-                        {{- printf " text-%s" "dark" -}}
+                        {{- print " text-dark" -}}
                       {{- else -}}
-                        {{- printf " text-%s" "primary" -}}
+                        {{- print " text-primary" -}}
                       {{- end -}}
                     "></i>
                     <i class="{{ .icon }} fa-stack-1x fa-inverse"></i>
@@ -232,11 +208,7 @@
             {{- if .Params.post }}
               <div class="row">
                 <div class="col-12 mb-0 d-none d-lg-inline
-                  {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                    {{- printf " text-%s" "dark" -}}
-                  {{- else -}}
-                    {{- printf " text-muted text-%s" "secondary" -}}
-                  {{- end -}}
+                  {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
                 ">
                   <p class="mb-0">
                     {{- .Params.post | markdownify -}}

@@ -1,4 +1,4 @@
-{{- $bg := .Params.background | default "light" -}}
+{{- $bg := .self.Scratch.Get "bg" }}
 
 {{ "<!-- Table -->" | safeHTML }}
 <section id="{{ .Name }}">
