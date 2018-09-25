@@ -1,6 +1,6 @@
 {{- $items := where (.resources.Match (printf "%s/*.md" .Name)) ".Name" "ne" .self.Name -}}
 {{- $self := . -}}
-{{- $bg := .Params.background | default "light" }}
+{{- $bg := .self.Scratch.Get "bg" }}
 
 {{ "<!-- Pricing -->" | safeHTML }}
 <section id="{{ .Name }}">
@@ -12,11 +12,7 @@
       {{- with .Content -}}
         <div class="row">
           <div class="col text-center pt-4 pb-5
-            {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-              {{- printf " text-%s" "dark" -}}
-            {{- else -}}
-              {{- printf " text-muted text-%s" "secondary" -}}
-            {{- end -}}
+            {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
           ">
             {{- . -}}
           </div>

@@ -149,11 +149,13 @@
 {{- $page_scratch.Set "js" (slice "syna-main.js") -}}
 {{/* Disable React by default, we load the framework only if a fragment requires
   it. */}}
-{{- $.Scratch.Set "react" false -}}
+{{- $page_scratch.Set "react" false -}}
 {{- range sort ($page_scratch.Get "page_fragments") "Params.weight" -}}
   {{- if and (not .Params.disabled) (isset .Params "fragment") -}}
     {{/* Cleanup .Name to be more useful within fragments */}}
     {{- $name := strings.TrimSuffix ".md" (replace .Name "/index.md" "") -}}
+    {{- $bg := .Params.background | default "light" }}
+    {{- .Scratch.Set "bg" $bg -}}
 
     {{- $file_path := strings.TrimSuffix ".md" (replace .File.Path "/index.md" "") -}}
     {{- $context := dict "page_scratch" $page_scratch "root" $real_page "Site" $real_page.Site "page" $page "resources" $real_page.Resources "self" . "Params" .Params "Name" $name "file_path" $file_path }}
