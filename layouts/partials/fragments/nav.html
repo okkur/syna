@@ -1,5 +1,7 @@
 {{- $self := . -}}
 {{- $bg := .Params.background | default "dark" -}}
+{{- $page_scratch := .page_scratch -}}
+{{- $sections := $page_scratch.Get "sections" -}}
 {{- if .Params.search -}}
   {{- .page_scratch.Add "js" ("syna-search.js" | relLangURL) -}}
 {{- end }}
@@ -96,6 +98,51 @@
     </div>
   {{- end }}
 </nav>
+{{- if and .Params.breadcrumb (lt (.Params.breadcrumb_level | default 1) (sub (len ($sections | default slice)) (cond (eq $.root.Kind "home") 1 0))) }}
+  <nav aria-label="breadcrumb" class="overlay navbar navbar-expand-lg
+    {{- printf " bg-%s" $bg -}}
+    {{- if or (eq $bg "light") (eq $bg "white") (eq $bg "secondary") -}}
+      {{- printf " navbar-%s" "light" -}}
+    {{- else -}}
+      {{- printf " navbar-%s" "dark" -}}
+    {{- end -}}
+  " id="{{ .Name }}">
+    <div class="container">
+      <ol class="breadcrumb mb-0 px-0 p-1 {{- printf " bg-%s" $bg -}}">
+        {{- range $index, $section := $sections -}}
+          {{- $directory := $section -}}
+          {{- $page_scratch.Set "active_page" false -}}
+          {{- $isCurrentPage := eq (add $index 1) (len $sections) -}}
+          {{- if $isCurrentPage -}}
+            {{- if eq $.root.Kind "page" -}}
+              {{- $page_scratch.Set "active_page" $.page -}}
+            {{- end -}}
+          {{- else if ge $index 1 -}}
+            {{- $directory := (delimit (first (add $index 1) $sections) "/") -}}
+            {{- $page_scratch.Set "active_page" ($.root.Site.GetPage "page" (print $directory)) -}}
+          {{- else -}}
+            {{- $page_scratch.Set "active_page" ($.root.Site.GetPage "section" (print $directory)) -}}
+          {{- end -}}
+          {{- $crumb := $page_scratch.Get "active_page" }}
+          {{- if and (ge $index ($.Params.breadcrumb_level | default 1)) (ne $crumb false) -}}
+            <li class="breadcrumb-item active"
+              {{- if not $isCurrentPage }}
+                {{- print " aria-current=\"page\"" -}}
+              {{- end -}}>
+              {{- if not $isCurrentPage }}
+                <a href="{{ $crumb.URL -}}">
+                  {{- $crumb.Title -}}
+                </a>
+              {{- else }}
+                {{- $crumb.Title -}}
+              {{- end }}
+            </li>
+          {{- end -}}
+        {{- end -}}
+      </ol>
+    </div>
+  </nav>
+{{- end }}
 <div class="scroll-to-top bg-primary
   {{- if not .Site.Params.fontawesome.disabled -}}
     {{ print " has-font-icon" }}
