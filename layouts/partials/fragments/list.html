@@ -90,7 +90,7 @@
                     {{- end -}}
                   {{- end -}}
                   {{- range first 1 (where ($self.page_scratch.Get "page_fragments") "Params.fragment" "in" "content") }}
-                    {{- if .Params.asset -}}
+                    {{- if and (ne $self.Params.images false) .Params.asset -}}
                       {{- $file_path := strings.TrimSuffix ".md" (replace .File.Path "/index.md" "") -}}
                       {{- $page_scratch := $.page_scratch -}}
                       {{- $root := (dict "page" (dict "file_path" $file_path) "page_scratch" $page_scratch "page" $page) }}
