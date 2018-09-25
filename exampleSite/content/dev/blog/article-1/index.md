@@ -9,6 +9,9 @@ title = "First sample blog"
 
 display_date = true
 date = "2018-07-06"
+
+[asset]
+  image = "image.png"
 +++
 
 I have a 10 year old son. He has words. He is so good with these words it's unbelievable. I write the best placeholder text, and I'm the biggest developer on the web by far... While that's mock-ups and this is politics, are they really so different? He’s not a word hero. He’s a word hero because he was captured. I like text that wasn’t captured. Lorem Ipsum is unattractive, both inside and out. I fully understand why it’s former users left it for something else. They made a good decision.

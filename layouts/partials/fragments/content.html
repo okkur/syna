@@ -48,6 +48,11 @@
               {{- end }}
             </div>
           {{- end }}
+          {{- if .Params.asset -}}
+            <div class="col-12">
+              <img src="{{ partial "helpers/image.html" (dict "root" . "asset" .Params.asset) }}" alt="{{ .Params.subtitle | default .Params.title }}" class="img-fluid mb-4">
+            </div>
+          {{- end -}}
           <div class="col-12
             {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
               {{- printf " text-%s" "dark" -}}
