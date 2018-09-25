@@ -1,10 +1,10 @@
 {{- $self := . -}}
-{{- $bg := .Params.background | default "dark" -}}
 {{- $page_scratch := .page_scratch -}}
 {{- $sections := $page_scratch.Get "sections" -}}
 {{- if .Params.search -}}
   {{- .page_scratch.Add "js" ("syna-search.js" | relLangURL) -}}
-{{- end }}
+{{- end -}}
+{{- $bg := .self.Scratch.Get "bg" }}
 
 {{- "<!-- Navigation -->" | safeHTML -}}
 <nav class="overlay navbar navbar-expand-lg py-2
