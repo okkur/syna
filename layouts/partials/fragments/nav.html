@@ -101,9 +101,10 @@
 {{- $breadcrumb := .Params.breadcrumb -}}
 {{- $display_breadcrumb := and $breadcrumb $breadcrumb.display -}}
 {{- $level := $breadcrumb.level -}}
+{{- $nav_bg := $breadcrumb.background | default "light" -}}
 {{- if and $display_breadcrumb (lt ($level | default 1) (sub (len ($sections | default slice)) (cond (eq $.root.Kind "home") 1 0))) }}
-  <nav aria-label="breadcrumb" class="overlay navbar navbar-expand-lg
-    {{- printf " bg-%s" ($breadcrumb.background | default "light") -}}
+  <nav aria-label="breadcrumb" class="overlay navbar navbar-expand-lg pt-2
+    {{- printf " bg-%s" $nav_bg -}}
     {{- if or (eq $bg "light") (eq $bg "white") (eq $bg "secondary") -}}
       {{- printf " navbar-%s" "light" -}}
     {{- else -}}
@@ -111,9 +112,7 @@
     {{- end -}}
   " id="{{ .Name }}">
     <div class="container">
-      <ol class="breadcrumb mb-0 px-0 p-1
-        {{- printf " bg-%s" ($breadcrumb.background | default "light") -}}
-      ">
+      <ol class="breadcrumb mb-0 py-1">
         {{- range $index, $section := $sections -}}
           {{- $directory := $section -}}
           {{- $page_scratch.Set "active_page" false -}}
@@ -131,10 +130,10 @@
           {{- $crumb := $page_scratch.Get "active_page" }}
           {{- if and (ge $index ($level | default 1)) (ne $crumb false) -}}
             <li class="breadcrumb-item active"
-              {{- if not $isCurrentPage }}
+              {{- if and (not $isCurrentPage) (ne $.root ($page_scratch.Get "active_page")) }}
                 {{- print " aria-current=\"page\"" -}}
               {{- end -}}>
-              {{- if not $isCurrentPage }}
+              {{- if and (not $isCurrentPage) (ne $.root ($page_scratch.Get "active_page")) }}
                 <a href="{{ $crumb.URL -}}">
                   {{- $crumb.Title -}}
                 </a>

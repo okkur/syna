@@ -9,7 +9,7 @@ search = true
 [breadcrumb]
   display = true # Default value is false
   level = 0 # Default is 1
-  background = "secondary"
+  background = "light"
 
 # Branding options
 [asset]
