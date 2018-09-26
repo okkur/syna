@@ -5,8 +5,11 @@ date = "2018-05-17"
 weight = 0
 background = "dark"
 search = true
-breadcrumb = true # Default value is false
-#breadcrumb_level = 0 # Default is 1
+
+[breadcrumb]
+  display = true # Default value is false
+  level = 0 # Default is 1
+  background = "secondary"
 
 # Branding options
 [asset]
