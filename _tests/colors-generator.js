@@ -62,7 +62,8 @@ Different colors for %fragment% fragment
 if (!fs.existsSync(paths.devColors)) {
   const index = `+++
 title = "Colors"
-+++`;
++++
+`;
   const content = `+++
 title = "Colors"
 fragment = "content"
@@ -78,7 +79,8 @@ count = 1000
 summary = false
 tiled = true
 subsections = false
-+++`;
++++
+`;
 
   fs.mkdirSync(paths.devColors);
   fs.mkdirSync(`${paths.devColors}/_index`);
