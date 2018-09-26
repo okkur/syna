@@ -1,4 +1,5 @@
-{{- $bg := .Params.background | default "white" }}
+{{- $self := .self -}}
+{{- $bg := .self.Scratch.Get "bg" }}
 
 {{ "<!-- Buttons -->" | safeHTML }}
 <section id="{{ .Name }}">

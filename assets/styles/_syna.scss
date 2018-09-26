@@ -63,3 +63,13 @@ article .content {
     }
   }
 }
+
+pre {
+  padding: .75rem;
+}
+
+.bg-dark {
+  pre {
+    background-color: white;
+  }
+}
