@@ -8,7 +8,7 @@ search = true
 
 [breadcrumb]
   display = true # Default value is false
-  level = 0 # Default is 1
+  #level = 0 # Default is 1
   background = "light"
 
 # Branding options
