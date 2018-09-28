@@ -49,13 +49,11 @@
                 {{- $item := .Params }}
                 {{- $card_header_id := printf "%s-%s" $.Name (strings.TrimSuffix ".md" (replace .Name (printf "%s/" $.Name) "")) }}
                 {{- $collapse_id := printf "%s-%s-collapse" $.Name (strings.TrimSuffix ".md" (replace .Name (printf "%s/" $.Name) "")) }}
-                  <div class="card">
-                    <div class="card-header" id="{{ $card_header_id }}">
-                      <h5 class="mb-0">
-                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#{{ $collapse_id }}"
+                  <div class="card" id="{{ .Name }}">
+                    <div id="{{ $card_header_id }}" class="card-header" type="button" data-toggle="collapse" data-target="#{{ $collapse_id }}"
                                 aria-expanded="false" aria-controls="{{ $collapse_id }}">
+                      <h5 class="mb-0">
                           {{ $item.title }}
-                        </button>
                       </h5>
                     </div>
 
