@@ -7,6 +7,7 @@ background = "secondary"
 
 title = "Table Fragment"
 subtitle= "Tables are responsive by default"
+#title_align = "left" # Default is center, can be left, right or center
 
 [header]
   [[header.values]]

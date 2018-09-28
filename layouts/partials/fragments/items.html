@@ -1,5 +1,6 @@
 {{- $items := where (.page.Resources.Match (printf "%s/*.md" .Name)) ".Name" "ne" .self.Name -}}
-{{- $bg := .Params.background | default "light" }}
+{{- $self := . -}}
+{{- $bg := .self.Scratch.Get "bg" }}
 
 {{ "<!-- Items -->" | safeHTML }}
 <section id="{{ .Name }}">
@@ -7,37 +8,8 @@
     {{- printf " bg-%s" $bg -}}
   ">
     <div class="container py-5">
-      {{- with .Params.title }}
-        <div class="row">
-          <div class="col text-center
-            {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
-              {{- printf " text-%s" "dark" -}}
-            {{- else -}}
-              {{- printf " text-%s" "light" -}}
-            {{- end -}}
-          ">
-            <h2>
-              {{- . | markdownify -}}
-            </h2>
-          </div>
-        </div>
-      {{- end -}}
-      {{- with .Params.subtitle -}}
-        <div class="row">
-          <div class="col text-center pt-4 pb-5
-            {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-              {{- printf " text-%s" "dark" -}}
-            {{- else -}}
-              {{- printf " text-muted text-%s" "secondary" -}}
-            {{- end -}}
-          ">
-            <h5>
-              {{- . | markdownify -}}
-            </h5>
-          </div>
-        </div>
-      {{- end }}
-      <div class="row justify-content-center align-items-start">
+      {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
+      <div class="row justify-content-center align-items-stretch items">
         {{- if eq (len $items) 0 -}}
           {{- partial "helpers/empty-subpath.html" (dict "context" "items" "root" $) -}}
         {{- else -}}
@@ -45,43 +17,53 @@
             {{/* Handle special case of index.md being considered an item */}}
             {{- if not (in .Name "/index.md") -}}
               {{- $item := .Params }}
-              <div class="col-md-4 text-center">
-                {{- if $item.icon }}
-                  <span class="fa-stack fa-3x m-2">
-                    <i class="fas fa-circle fa-stack-2x
-                      {{- if eq $bg "primary" -}}
-                        {{- printf " text-%s" "dark" -}}
-                      {{- else -}}
-                        {{- printf " text-%s" "primary" -}}
-                      {{- end -}}
-                    "></i>
-                    <i class="{{ $item.icon }} fa-stack-1x fa-inverse"></i>
-                  </span>
+              <div class="col-md-4 d-flex flex-column">
+                {{- if and $item.asset $item.asset.url }}
+                  <a href="{{ $item.asset.url | relLangURL }}" class="col justify-content-between d-flex flex-column header
+                    {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "") -}}
+                  ">
+                {{- else }}
+                  <div class="col justify-content-between d-flex flex-column header">
                 {{- end }}
-                <h4 class="mb-3
-                  {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
-                    {{- printf " text-%s" "dark" -}}
-                  {{- else -}}
-                    {{- printf " text-%s" "light" -}}
-                  {{- end -}}
-                ">
-                  {{- if $item.url }}
-                    <a href="{{ $item.url | relLangURL }}" class="
-                      {{- if eq $bg "primary" -}}
-                        {{- printf " text-%s" "dark" -}}
+                  <div class="row image justify-content-center align-items-center">
+                    {{- with $item.asset -}}
+                      {{- if .image }}
+                        <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .) }}" class="p-2 w-75 mb-2" alt="{{ .text }}">
+                      {{- else if .icon }}
+                        <span class="fa-stack fa-3x m-2">
+                          <i class="fas fa-circle fa-stack-2x
+                            {{- if eq $bg "primary" -}}
+                              {{- print " text-dark" -}}
+                            {{- else -}}
+                              {{- print " text-primary" -}}
+                            {{- end -}}
+                          "></i>
+                          <i class="{{ .icon }} fa-stack-1x fa-inverse"></i>
+                        </span>
                       {{- end -}}
-                    ">{{ $item.title | markdownify }}</a>
-                  {{- else }}
-                    {{- $item.title | markdownify -}}
+                    {{- end }}
+                  </div>
+                  <div class="row justify-content-center text-center">
+                    {{- if $item.title }}
+                      <h4 class="mb-3">
+                        {{- $item.title | markdownify -}}
+                      </h4>
+                    {{- end -}}
+                  </div>
+                {{- if and $item.asset $item.asset.url }}
+                  </a>
+                {{- else }}
+                  </div>
+                {{- end }}
+                <div class="row justify-content-center text-center">
+                  {{- if .Content }}
+                    <div class="
+                      {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
+                    ">
+                      {{ .Content }}
+                    </div>
                   {{- end }}
-                </h4>
-                <div class="
-                  {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                    {{- printf " text-%s" "dark" -}}
-                  {{- else -}}
-                    {{- printf " text-muted text-%s" "secondary" -}}
-                  {{- end -}}
-                ">{{ .Content }}</div>
+                </div>
               </div>
             {{- end -}}
           {{- end -}}

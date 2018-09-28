@@ -1,5 +1,5 @@
 {{- $self := .self -}}
-{{- $bg := .Params.background | default "light" }}
+{{- $bg := .self.Scratch.Get "bg" }}
 
 {{ "<!-- Content -->" | safeHTML }}
 <section id="{{ .Name }}">
@@ -12,11 +12,7 @@
           <div class="content-sidebar col-md-3 pb-4 {{- if (eq .align "right") }} order-1 {{- else }} order-0 {{- end -}}">
             {{- if .title }}
               <div class="col-12 pb-3
-                {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
-                  {{- printf " text-%s" "dark" -}}
-                {{- else -}}
-                  {{- printf " text-%s" "light" -}}
-                {{- end -}}
+                {{- partial "helpers/text-color.html" (dict "self" $self) -}}
               ">
                 <h1>
                   {{- .title | markdownify -}}
@@ -24,11 +20,7 @@
               </div>
             {{- end }}
             <div class="col-12
-              {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                {{- printf " text-%s" "dark" -}}
-              {{- else -}}
-                {{- printf " text-muted text-%s" "secondary" -}}
-              {{- end -}}
+              {{- partial "helpers/text-color.html" (dict "self" $self "light" "secondary") -}}
             ">
               {{- .content | markdownify -}}
             </div>
@@ -37,32 +29,7 @@
         {{- else }}
           <article class="col-md-12">
         {{- end }}
-          {{- if .Params.title }}
-            <div class="col-12 pb-3
-              {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
-                {{- printf " text-%s" "dark" -}}
-              {{- else -}}
-                {{- printf " text-%s" "light" -}}
-              {{- end -}}
-            ">
-              <h1>
-                {{- .Params.title | markdownify -}}
-              </h1>
-            </div>
-          {{- end -}}
-          {{- if .Params.subtitle }}
-            <div class="col-12 pb-2
-              {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                {{- printf " text-%s" "dark" -}}
-              {{- else -}}
-                {{- printf " text-muted text-%s" "secondary" -}}
-              {{- end -}}
-            ">
-              <h3>
-                {{- .Params.subtitle | markdownify -}}
-              </h3>
-            </div>
-          {{- end }}
+          {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
           {{- if or .Params.display_date .Params.categories -}}
             <div class="col-12 pb-4 mt-2">
               {{- if .Params.display_date -}}
@@ -73,12 +40,13 @@
               {{- end }}
             </div>
           {{- end }}
+          {{- if .Params.asset -}}
+            <div class="col-12">
+              <img src="{{ partial "helpers/image.html" (dict "root" . "asset" .Params.asset) }}" alt="{{ .Params.subtitle | default .Params.title }}" class="img-fluid mb-4">
+            </div>
+          {{- end -}}
           <div class="col-12
-            {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-              {{- printf " text-%s" "dark" -}}
-            {{- else -}}
-              {{- printf " text-muted text-%s" "secondary" -}}
-            {{- end -}}
+            {{- partial "helpers/text-color.html" (dict "self" $self "light" "muted") -}}
           ">
             {{ $self.Content | markdownify }}
           </div>

@@ -1,6 +1,6 @@
-{{- $bg := .Params.background | default "light" -}}
 {{- $self := . -}}
-{{- .page_scratch.Add "js" ("syna-search.js" | relLangURL) }}
+{{- .page_scratch.Add "js" ("syna-search.js" | relLangURL) -}}
+{{- $bg := .self.Scratch.Get "bg" }}
 
 {{ "<!-- Search -->" | safeHTML }}
 <section id="{{ .Name }}">
@@ -8,37 +8,7 @@
     {{- printf " bg-%s" $bg -}}
   ">
   <div class="container py-5">
-    {{- with .Params.title }}
-      <div class="col text-center
-        {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
-          {{- printf " text-%s" "dark" -}}
-        {{- else -}}
-          {{- printf " text-%s" "light" -}}
-        {{- end -}}
-        {{- if and (not (isset $self.Params "subtitle")) (not $self.Content) -}}
-          {{- printf " pb-4" -}}
-        {{- end -}}
-      ">
-        <h2>
-          {{- . | markdownify -}}
-        </h2>
-      </div>
-    {{- end -}}
-    {{- with .Params.subtitle -}}
-      <div class="row">
-        <div class="col text-center pt-2 pb-4
-          {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-            {{- printf " text-%s" "dark" -}}
-          {{- else -}}
-            {{- printf " text-muted text-%s" "secondary" -}}
-          {{- end -}}
-        ">
-          <h6>
-            {{- . | markdownify -}}
-          </h6>
-        </div>
-      </div>
-    {{- end }}
+    {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
     <div class="row w-100 justify-content-center mx-0">
       <form action="{{ "search" | absURL }}" class="mt-0">
         <div class="input-group my-0">
@@ -52,12 +22,8 @@
     <div class="search-results-full-container row">
       <div class="col px-0">
         <div id="search-results-{{ .Name }}" class="col px-0
-        {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-          {{- printf " text-%s" "dark" -}}
-        {{- else -}}
-          {{- printf " text-muted text-%s" "secondary" -}}
-        {{- end -}}">
-        </div>
+          {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
+        "></div>
       </div>
     </div>
   </div>

@@ -17,5 +17,9 @@ displayed.
 This fragment need to always be placed in a subdirectory that contains the
 fragment content file and the specific content files of each member.
 
-- [Item fragment - Simple](#items)
-- [Item fragment - No title](#items_only)
+- [Items fragment - Icons](#items)
+- [Items fragment - Icons with no content](#items-no-content)
+- [Items fragment - Icons only](#items-only)
+- [Items fragment - Images](#logos)
+- [Items fragment - Images with no content](#logos-no-content)
+- [Items fragment - Images only](#logos-no-content)

@@ -1,10 +1,11 @@
 +++
 fragment = "pricing"
-weight = 100
+weight = 110
 background = "secondary"
 
 title = "Pricing fragment"
 subtitle = "Can be linked to 3rd party payment services"
+#title_align = "left" # Default is center, can be left, right or center
 +++
 
 Pricing fragment supports **markdown** as it's subtitle.  

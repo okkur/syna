@@ -1,6 +1,6 @@
 {{- $self := . -}}
-{{- $bg := .Params.background | default "light" -}}
-{{- $align := .Params.align | default "center" }}
+{{- $align := .Params.align | default "center" -}}
+{{- $bg := .self.Scratch.Get "bg" }}
 
 {{ "<!-- Item -->" | safeHTML }}
 <section id="{{ .Name }}">
@@ -29,11 +29,7 @@
           {{- if .Params.title }}
             <div class="row pb-3">
               <div class="col-12
-                {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
-                  {{- printf " text-%s" "dark" -}}
-                {{- else -}}
-                  {{- printf " text-%s" "light" -}}
-                {{- end -}}
+                {{- partial "helpers/text-color.html" (dict "self" $self.self) -}}
               ">
                 <h2>
                   {{- .Params.title | markdownify -}}
@@ -44,11 +40,7 @@
           {{- if .Params.subtitle }}
             <div class="row pb-2">
               <div class="col-12
-                {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                  {{- printf " text-%s" "dark" -}}
-                {{- else -}}
-                  {{- printf " text-muted text-%s" "secondary" -}}
-                {{- end -}}
+                {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
               ">
                 <h5>
                   {{- .Params.subtitle | markdownify -}}
@@ -64,20 +56,13 @@
             {{- else -}}
               {{- printf " order-lg-12" -}}
             {{- end -}}
-            {{- if and (not .Params.icon) (not .Params.asset) -}}
-              {{- printf " " -}}
-            {{- end -}}
           ">
             <div class="row">
               <div class="col-12">
                 {{- if .Params.pre }}
                   <div class="row">
                     <div class="col-12
-                      {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                        {{- printf " text-%s" "dark" -}}
-                      {{- else -}}
-                        {{- printf " text-muted text-%s" "secondary" -}}
-                      {{- end -}}
+                      {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
                     ">
                       <p class="mb-0">
                         {{- .Params.pre | markdownify -}}
@@ -85,21 +70,22 @@
                     </div>
                   </div>
                 {{- end -}}
-                {{- if .Params.icon }}
-                  <span class="fa-stack fa-4x">
-                    <i class="fas fa-circle fa-stack-2x
-                      {{- if eq $bg "primary" -}}
-                        {{- printf " text-%s" "dark" -}}
-                      {{- else -}}
-                        {{- printf " text-%s" "primary" -}}
-                      {{- end -}}
-                    "></i>
-                    <i class="{{ .Params.icon }} fa-stack-1x fa-inverse"></i>
-                  </span>
-                {{- else if .Params.asset -}}
-                  <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset) }}" class="img-fluid p-2" alt="{{ .Params.asset.text }}">
-                {{- end -}}
-                {{- if and (not .Params.icon) (not .Params.asset) -}}
+                {{- with .Params.asset -}}
+                  {{- if isset . "image" }}
+                    <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .) }}" class="img-fluid p-2" alt="{{ .Params.asset.text }}">
+                  {{- else if isset . "icon" }}
+                    <span class="fa-stack fa-4x">
+                      <i class="fas fa-circle fa-stack-2x
+                        {{- if eq $bg "primary" -}}
+                          {{- print " text-dark" -}}
+                        {{- else -}}
+                          {{- print " text-primary" -}}
+                        {{- end -}}
+                      "></i>
+                      <i class="{{ .icon }} fa-stack-1x fa-inverse"></i>
+                    </span>
+                  {{- end -}}
+                {{- else -}}
                   {{- range .Params.buttons }}
                     <a class="btn btn-lg m-2 d-none d-lg-inline
                       {{ if hasPrefix .url "#" }} anchor{{ end }}
@@ -113,11 +99,7 @@
                 {{- if .Params.post }}
                   <div class="row">
                     <div class="col-12 mb-0
-                      {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                        {{- printf " text-%s" "dark" -}}
-                      {{- else -}}
-                        {{- printf " text-muted text-%s" "secondary" -}}
-                      {{- end -}}
+                      {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
                     ">
                       <p class="mb-0">
                         {{- .Params.post | markdownify -}}
@@ -140,18 +122,14 @@
           ">
             <div class="col-12">
               <div class="mb-0
-                {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                  {{- printf " text-%s" "dark" -}}
-                {{- else -}}
-                  {{- printf " text-muted text-%s" "secondary" -}}
-                {{- end -}}
+                {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
               ">
                 {{- .self.Content | markdownify -}}
               </div>
             </div>
           </div>
           {{- end -}}
-          {{- if or .Params.icon .Params.asset }}
+          {{- if and .Params.asset .Params.buttons }}
             <div class="col-12 text-center mb-2 {{ printf "text-lg-%s" $align }}">
               {{- range .Params.buttons }}
                 <a class="btn btn-lg m-2
@@ -185,11 +163,7 @@
             {{- if .Params.pre }}
               <div class="row">
                 <div class="col-12 mb-0 d-none d-lg-inline
-                  {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                    {{- printf " text-%s" "dark" -}}
-                  {{- else -}}
-                    {{- printf " text-muted text-%s" "secondary" -}}
-                  {{- end -}}
+                  {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
                 ">
                   <p class="mb-0">
                     {{- .Params.pre | markdownify -}}
@@ -197,45 +171,44 @@
                 </div>
               </div>
             {{- end -}}
-            {{- if .Params.icon }}
-              <div class="col-12 text-center d-none d-lg-inline">
-                <span class="fa-stack fa-4x">
-                  <i class="fas fa-circle fa-stack-2x
-                    {{- if eq $bg "primary" -}}
-                      {{- printf " text-%s" "dark" -}}
-                    {{- else -}}
-                      {{- printf " text-%s" "primary" -}}
-                    {{- end -}}
-                  "></i>
-                  <i class="{{ .Params.icon }} fa-stack-1x fa-inverse"></i>
-                </span>
-              </div>
-            {{- else if .Params.asset }}
-              <div class="col-12 text-center d-none d-lg-inline">
-                <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset) }}" class="img-fluid p-2" alt="{{ .Params.asset.text }}">
-              </div>
-            {{- end -}}
-            {{- if and (not .Params.icon) (not .Params.asset) }}
-              <div class="col-12 text-center">
-                {{- range .Params.buttons }}
-                  <a class="btn btn-lg m-2
-                    {{ if hasPrefix .url "#" }} anchor{{ end }}
-                    {{- $color := .color | default "primary" -}}
-                    {{- printf " btn-%s" $color -}}
-                  " href="{{ .url | relLangURL }}">
-                    {{- .text -}}
-                  </a>
-                  {{- end }}
-              </div>
+            {{- with .Params.asset -}}
+              {{- if isset . "image" }}
+                <div class="col-12 text-center d-none d-lg-inline">
+                  <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .) }}" class="img-fluid p-2" alt="{{ .Params.asset.text }}">
+                </div>
+              {{- else if isset . "icon" }}
+                <div class="col-12 text-center d-none d-lg-inline">
+                  <span class="fa-stack fa-4x">
+                    <i class="fas fa-circle fa-stack-2x
+                      {{- if eq $bg "primary" -}}
+                        {{- print " text-dark" -}}
+                      {{- else -}}
+                        {{- print " text-primary" -}}
+                      {{- end -}}
+                    "></i>
+                    <i class="{{ .icon }} fa-stack-1x fa-inverse"></i>
+                  </span>
+                </div>
+              {{- end -}}
+            {{- else -}}
+              {{- if .Params.buttons }}
+                <div class="col-12 text-center">
+                  {{- range .Params.buttons }}
+                    <a class="btn btn-lg m-2
+                      {{ if hasPrefix .url "#" }} anchor{{ end }}
+                      {{- $color := .color | default "primary" -}}
+                      {{- printf " btn-%s" $color -}}
+                    " href="{{ .url | relLangURL }}">
+                      {{- .text -}}
+                    </a>
+                    {{- end }}
+                </div>
+              {{- end -}}
             {{- end -}}
             {{- if .Params.post }}
               <div class="row">
                 <div class="col-12 mb-0 d-none d-lg-inline
-                  {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                    {{- printf " text-%s" "dark" -}}
-                  {{- else -}}
-                    {{- printf " text-muted text-%s" "secondary" -}}
-                  {{- end -}}
+                  {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
                 ">
                   <p class="mb-0">
                     {{- .Params.post | markdownify -}}
@@ -243,7 +216,6 @@
                 </div>
               </div>
             {{- end }}
-            </div>
           </div>
         </div>
       </div>

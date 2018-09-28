@@ -1,6 +1,6 @@
 +++
 fragment = "content"
-weight = 191
+weight = 181
 +++
 
 <details><summary>Code</summary>
@@ -9,7 +9,7 @@ weight = 191
 fragment = "item"
 #disabled = false
 date = "2017-10-04"
-weight = 190
+weight = 180
 background = "secondary"
 align = "left"
 
@@ -20,7 +20,8 @@ title = "Item Fragment Icon Left"
 pre = "Awesome icon"
 post = "Using Fontawesome icons"
 
-icon = "fas fa-random"
+[asset]
+  icon = "fas fa-random"
 +++
 
 Easily left align item fragments even with an icon.

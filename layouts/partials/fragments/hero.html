@@ -1,16 +1,17 @@
-{{- $bg := .Params.background | default "secondary" -}}
 {{- $self := . -}}
 {{- if .Params.particles -}}
   {{- .page_scratch.Add "js" ("syna-hero.js" | relLangURL) -}}
-{{- end }}
+{{- end -}}
+{{- $bg := .self.Scratch.Get "bg" }}
 
 {{ "<!-- hero -->" | safeHTML }}
 <header id="{{ .Name }}">
   {{- if .Params.header }}
-    <div style="background-image:url({{ partial "helpers/image.html" (dict "root" $self "asset" .Params.header) }})"
+    <div
+      style="background-image:url({{ partial "helpers/image.html" (dict "root" $self "asset" .Params.header) }})"
       class="jumbotron text-center header-image mb-0
-      {{- printf " bg-%s" $bg -}}
-    ">
+        {{- printf " bg-%s" $bg -}}
+      ">
   {{- else }}
     <div class="jumbotron text-center mb-0
       {{- printf " bg-%s" $bg -}}
@@ -31,11 +32,7 @@
     {{- with .Params.subtitle }}
     <div class="row justify-content-center align-items-start">
       <h1 class="overlay jumbotron-heading my-4
-        {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
-          {{- printf " text-%s" "dark" -}}
-        {{- else -}}
-          {{- printf " text-%s" "light" -}}
-        {{- end -}}
+        {{- partial "helpers/text-color.html" (dict "self" $self.self) -}}
       ">
         {{- . | markdownify -}}
       </h1>
@@ -45,11 +42,7 @@
     {{- with .Params.title }}
     <div class="row justify-content-center align-items-start">
       <h1 class="overlay jumbotron-heading
-        {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
-          {{- printf " text-%s" "dark" -}}
-        {{- else -}}
-          {{- printf " text-%s" "light" -}}
-        {{- end -}}
+        {{- partial "helpers/text-color.html" (dict "self" $self.self) -}}
       ">
         {{- . -}}
       </h1>
@@ -58,11 +51,7 @@
     {{- with .Params.subtitle }}
     <div class="row justify-content-center align-items-start">
       <div class="overlay lead
-        {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
-          {{- printf " text-%s" "dark" -}}
-        {{- else -}}
-          {{- printf " text-%s" "light" -}}
-        {{- end -}}
+        {{- partial "helpers/text-color.html" (dict "self" $self.self) -}}
       ">
         {{- . | markdownify -}}
       </div>

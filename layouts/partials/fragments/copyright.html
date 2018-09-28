@@ -1,5 +1,6 @@
 {{- $root := .root -}}
-{{- $bg := .Params.background | default "secondary" }}
+{{- $self := .self -}}
+{{- $bg := .self.Scratch.Get "bg" }}
 
 {{ "<!-- Copyright -->" | safeHTML }}
 <footer class="overlay container-fluid
@@ -9,11 +10,7 @@
     <div class="row py-3">
       <div class="col-md">
         <div class="row mx-0 my-2 justify-content-center text-center text-lg-none
-          {{- if eq $bg "dark" -}}
-            {{- printf " text-%s" "secondary" -}}
-          {{- else -}}
-            {{- printf " text-%s" "dark" -}}
-          {{- end -}}
+          {{- partial "helpers/text-color.html" (dict "self" $self "light" "secondary") -}}
         ">
           <div class="row mx-0 mr-lg-auto">
             {{- with .Params.copyright }}
@@ -34,11 +31,7 @@
       {{- if eq .Params.attribution true }}
         <div class="col-auto mx-auto">
           <div class="row mx-0 navbar-text text-center
-            {{- if eq $bg "dark" -}}
-              {{- printf " text-%s" "secondary" -}}
-            {{- else -}}
-              {{- printf " text-%s" "dark" -}}
-            {{- end -}}
+            {{- partial "helpers/text-color.html" (dict "self" $self "light" "secondary") -}}
           ">
             {{- i18n "attribution" -}}
             <a href="https://syna.okkur.io" class="ml-1">
@@ -54,11 +47,7 @@
               {{- range sort .Site.Menus.copyright_footer }}
                 <li class="nav-item">
                   <a class="nav-link py-0
-                    {{- if eq $bg "dark" -}}
-                      {{- printf " text-%s" "secondary" -}}
-                    {{- else -}}
-                      {{- printf " text-%s" "dark" -}}
-                    {{- end -}}
+                    {{- partial "helpers/text-color.html" (dict "self" $self "light" "secondary") -}}
                   " href="{{ .URL | relLangURL }}"
                   {{ if hasPrefix .URL "#" }}
                     class="anchor"

@@ -48,3 +48,28 @@ article .content {
 .content-sidebar {
   word-break: break-all;
 }
+
+
+.items {
+  .header {
+    flex: 0 1 200px;
+  }
+
+  .image {
+    flex: 1;
+
+    a {
+      display: contents;
+    }
+  }
+}
+
+pre {
+  padding: .75rem;
+}
+
+.bg-dark {
+  pre {
+    background-color: white;
+  }
+}

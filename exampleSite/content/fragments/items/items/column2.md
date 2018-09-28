@@ -1,8 +1,10 @@
 +++
 title = "Column 2"
 weight = 20
-icon = "fas fa-code"
-#url = "#"
+
+[asset]
+  icon = "fas fa-code"
+  #url = "#"
 +++
 
 Showcasing descriptions for column based items
