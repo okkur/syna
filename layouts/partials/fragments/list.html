@@ -77,16 +77,16 @@
                             </a>
                           </h5>
                         {{- end -}}
-                        {{- if and (not $self.Params.tiled) (eq $self.Params.display_date false) }}
+                        {{- if and (not $self.Params.tiled) $self.Params.display_date }}
                           {{- range $content_page -}}
                             {{- partial "helpers/publish-date.html" (dict "root" . "background" $bg "badge" false) -}}
                           {{- end -}}
                         {{- end }}
                       </div>
                     </div>
-                    {{- if or (and $self.Params.tiled (eq $self.Params.display_date false)) .Params.categories -}}
+                    {{- if or (and $self.Params.tiled $self.Params.display_date) .Params.categories -}}
                       <div class="col-12 pb-1 px-0">
-                        {{- if and $self.Params.tiled (eq $self.Params.display_date false) -}}
+                        {{- if and $self.Params.tiled $self.Params.display_date -}}
                           {{- range $content_page -}}
                             {{- partial "helpers/publish-date.html" (dict "root" . "background" $bg) -}}
                           {{- end -}}
