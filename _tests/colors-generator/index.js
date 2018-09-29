@@ -1,11 +1,24 @@
 const fs = require("fs");
 const path = require("path");
+const { indexTemplate, index, content, list } = require('./templates');
+
+const root = path.resolve(`${__dirname}/../..`);
 const paths = {
-  root: path.resolve(`${__dirname}/..`),
-  content: path.resolve(`${__dirname}/../exampleSite/content`),
-  fragments: path.resolve(`${__dirname}/../exampleSite/content/fragments`),
-  devColors: path.resolve(`${__dirname}/../exampleSite/content/dev/colors`)
+  content: path.resolve(`${root}/exampleSite/content`),
+  fragments: path.resolve(`${root}/exampleSite/content/fragments`),
+  devColors: path.resolve(`${root}/exampleSite/content/dev/colors`)
 };
+
+const blacklist = {
+  items: ['items-no-content', 'items-only', 'logos-no-content', 'logos-only'],
+  embed: ['embed_video']
+};
+
+const backgrounds = ["white", "light", "secondary", "dark", "primary"];
+
+if (fs.existsSync(paths.devColors)) {
+  deleteFolderRecursive(paths.devColors);
+}
 
 const fragments = fs.readdirSync(paths.fragments).reduce((tmp, dir) => {
   if (["_index", "_index.md"].indexOf(dir) > -1) {
@@ -24,6 +37,7 @@ const fragments = fs.readdirSync(paths.fragments).reduce((tmp, dir) => {
       tmp[file.replace(".md", "")] = `${paths.fragments}/${dir}/${file}`;
       return tmp;
     }, {});
+
   const nested = inside
     .filter(file =>
       fs.lstatSync(`${paths.fragments}/${dir}/${file}`).isDirectory()
@@ -42,69 +56,45 @@ const fragments = fs.readdirSync(paths.fragments).reduce((tmp, dir) => {
         }, {});
       return tmp;
     }, {});
+
   tmp[dir] = {
     fragments,
     nested
   };
+
   return tmp;
 }, {});
 
-const backgrounds = ["white", "light", "secondary", "dark", "primary"];
-const indexTemplate = `+++
-title = "%fragment%"
-fragment = "content"
-weight = 100
-+++
+fs.mkdirSync(paths.devColors);
+fs.mkdirSync(`${paths.devColors}/_index`);
+fs.writeFile(`${paths.devColors}/_index.md`, index, "utf-8", () => {});
+fs.writeFile(
+  `${paths.devColors}/_index/index.md`,
+  content,
+  "utf-8",
+  () => {}
+);
+fs.writeFile(`${paths.devColors}/_index/list.md`, list, "utf-8", () => {});
 
-Different colors for %fragment% fragment
-
-`;
-if (!fs.existsSync(paths.devColors)) {
-  const index = `+++
-title = "Colors"
-+++
-`;
-  const content = `+++
-title = "Colors"
-fragment = "content"
-weight = 100
-headless = true
-+++
-`;
-  const list = `+++
-fragment = "list"
-weight = 110
-section = "dev/colors"
-count = 1000
-summary = false
-tiled = true
-subsections = false
-+++
-`;
-
-  fs.mkdirSync(paths.devColors);
-  fs.mkdirSync(`${paths.devColors}/_index`);
-  fs.writeFile(`${paths.devColors}/_index.md`, index, "utf-8", () => {});
-  fs.writeFile(
-    `${paths.devColors}/_index/index.md`,
-    content,
-    "utf-8",
-    () => {}
-  );
-  fs.writeFile(`${paths.devColors}/_index/list.md`, list, "utf-8", () => {});
-}
-
-Object.keys(fragments).forEach((fragment, i) => {
+Object.keys(fragments).forEach(fragment => {
+  let weight = 100;
   Object.keys(fragments[fragment].fragments).forEach(filename => {
+    weight += 20;
     parseBlackFriday(
       fragment,
+      weight,
       fs.readFileSync(fragments[fragment].fragments[filename], "utf-8"),
       filename
     );
   });
+
   Object.keys(fragments[fragment].nested).forEach(dir => {
     const index = fragments[fragment].nested[dir]["index.md"];
-    parseBlackFriday(fragment, fs.readFileSync(index, "utf-8"), "index", dir);
+    weight += 20;
+    if (parseBlackFriday(fragment, weight, fs.readFileSync(index, "utf-8"), "index", dir) === false) {
+      return;
+    }
+
     Object.keys(fragments[fragment].nested[dir]).forEach(filename => {
       if (filename === "index.md") {
         return;
@@ -121,7 +111,11 @@ Object.keys(fragments).forEach((fragment, i) => {
   });
 });
 
-function parseBlackFriday(fragment, content, filename, dir) {
+function parseBlackFriday(fragment, weight, content, filename, dir) {
+  if (blacklist[fragment] && typeof blacklist[fragment].find(f => f === filename || f === dir) !== 'undefined') {
+    return false;
+  }
+
   if (!content.match(/background\s?=\s".*"/im)) {
     return;
   }
@@ -129,6 +123,7 @@ function parseBlackFriday(fragment, content, filename, dir) {
   if (!fs.existsSync(`${paths.devColors}/${fragment}`)) {
     fs.mkdirSync(`${paths.devColors}/${fragment}`);
   }
+
   if (dir && !fs.existsSync(`${paths.devColors}/${fragment}/${dir}`)) {
     backgrounds.forEach(background => {
       const path = `${paths.devColors}/${fragment}/${dir}-${background}`;
@@ -137,6 +132,7 @@ function parseBlackFriday(fragment, content, filename, dir) {
       }
     });
   }
+
   fs.writeFile(
     `${paths.devColors}/${fragment}/index.md`,
     indexTemplate.replace(/%fragment%/g, fragment),
@@ -147,7 +143,7 @@ function parseBlackFriday(fragment, content, filename, dir) {
   backgrounds.forEach((background, i) => {
     const tmp = content
       .replace(/background\s?=\s".*"/im, `background = "${background}"`)
-      .replace(/weight\s?=\s?"?\d+"?/im, `weight = ${110 + i * 10}`);
+      .replace(/weight\s?=\s?"?\d+"?/im, `weight = ${weight + i}`);
     fs.writeFile(
       `${paths.devColors}/${fragment +
         (dir ? `/${dir}-${background}` : "")}/${filename +
@@ -158,3 +154,17 @@ function parseBlackFriday(fragment, content, filename, dir) {
     );
   });
 }
+
+function deleteFolderRecursive(path) {
+  if (fs.existsSync(path)) {
+    fs.readdirSync(path).forEach(file => {
+      const curPath = path + "/" + file;
+      if (fs.lstatSync(curPath).isDirectory()) {
+        deleteFolderRecursive(curPath);
+      } else {
+        fs.unlinkSync(curPath);
+      }
+    });
+    fs.rmdirSync(path);
+  }
+};
