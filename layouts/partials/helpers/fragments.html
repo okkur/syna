@@ -99,7 +99,7 @@
     {{- else -}}
       {{- $page_scratch.Set "active_page" $page -}}
     {{- end -}}
-  {{- else if gt $index 1 -}}
+  {{- else if ge $index 1 -}}
     {{/* Sections between the first and last are found and their _global directories
       are taken into account */}}
     {{- $directory := (delimit (first (add $index 1) $sections) "/") -}}
