@@ -2,7 +2,7 @@
 fragment = "nav"
 #disabled = true
 date = "2018-05-17"
-weight = 110
+weight = 120
 background = "white"
 search = true
 

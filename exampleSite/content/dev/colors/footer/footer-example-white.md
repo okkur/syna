@@ -2,7 +2,7 @@
 fragment = "footer"
 #disabled = true
 date = "2016-09-07"
-weight = 110
+weight = 120
 background = "white"
 title = "Logo Title"
 

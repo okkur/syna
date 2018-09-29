@@ -2,7 +2,7 @@
 fragment = "content"
 #disabled = true
 date = "2016-09-07"
-weight = 130
+weight = 142
 background = "secondary"
 
 title = "Content with sidebar"

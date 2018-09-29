@@ -2,7 +2,7 @@
 fragment = "contact"
 #disabled = true
 date = "2017-09-10"
-weight = 150
+weight = 124
 background = "primary"
 form_name = "defaultContact"
 

@@ -2,7 +2,7 @@
 fragment = "buttons"
 #disabled = false
 date = "2016-09-07"
-weight = 140
+weight = 143
 background = "dark"
 
 title = "Buttons Fragment"
@@ -12,15 +12,40 @@ subtitle = "Call to action buttons"
 [[buttons]]
   text = "Button"
   url = "#"
-  color = "info" # primary, secondary, success, danger, warning, info, light, dark, link - default: primary
-
-[[buttons]]
-  text = "Button"
-  url = "#"
-  color = "success"
+  color = "secondary" # primary, secondary, success, danger, warning, info, light, dark, link - default: primary
 
 [[buttons]]
   text = "Long Button"
   url = "#"
-  color = "primary"
+  color = "success"
+
+[[buttons]]
+  text = "Button"
+  url = "#"
+  color = "danger"
+
+[[buttons]]
+  text = "Button"
+  url = "#"
+  color = "warning"
+
+[[buttons]]
+  text = "Long Button"
+  url = "#"
+  color = "info"
+
+[[buttons]]
+  text = "Button"
+  url = "#"
+  color = "light"
+
+[[buttons]]
+  text = "Button"
+  url = "#"
+  color = "dark"
+
+[[buttons]]
+  text = "Long Button"
+  url = "#"
+  color = "link"
 +++

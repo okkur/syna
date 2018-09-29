@@ -1,6 +1,6 @@
 +++
 fragment = "pricing"
-weight = 150
+weight = 124
 background = "primary"
 
 title = "Pricing fragment"

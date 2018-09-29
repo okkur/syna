@@ -2,7 +2,7 @@
 fragment = "buttons"
 #disabled = false
 date = "2016-09-07"
-weight = 140
+weight = 123
 background = "dark"
 
 title = "Buttons Fragment Outlined"
@@ -12,15 +12,40 @@ subtitle = "Buttons with outlines"
 [[buttons]]
   text = "Button"
   url = "#"
-  color = "outline-info" # primary, secondary, success, danger, warning, info, light, dark, link - default: primary
-
-[[buttons]]
-  text = "Button"
-  url = "#"
-  color = "outline-success"
+  color = "outline-secondary" # primary, secondary, success, danger, warning, info, light, dark, link - default: primary
 
 [[buttons]]
   text = "Long Button"
   url = "#"
-  color = "outline-primary"
+  color = "outline-success"
+
+[[buttons]]
+  text = "Button"
+  url = "#"
+  color = "outline-danger"
+
+[[buttons]]
+  text = "Button"
+  url = "#"
+  color = "outline-warning"
+
+[[buttons]]
+  text = "Long Button"
+  url = "#"
+  color = "outline-info"
+
+[[buttons]]
+  text = "Button"
+  url = "#"
+  color = "outline-light"
+
+[[buttons]]
+  text = "Button"
+  url = "#"
+  color = "outline-dark"
+
+[[buttons]]
+  text = "Long Button"
+  url = "#"
+  color = "outline-link"
 +++

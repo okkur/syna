@@ -2,7 +2,7 @@
 fragment = "member"
 #disabled = false
 date = "2017-10-17"
-weight = 130
+weight = 122
 background = "secondary"
 
 title = "Members fragment - Multiple members"

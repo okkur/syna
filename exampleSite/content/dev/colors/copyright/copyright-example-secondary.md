@@ -2,7 +2,7 @@
 fragment = "copyright"
 #disabled = true
 date = "2016-09-07"
-weight = 130
+weight = 122
 background = "secondary"
 
 copyright = "" # default: Copyright $Year .Site.params.name

@@ -5,4 +5,3 @@ weight = 100
 +++
 
 Different colors for member fragment
-
