@@ -1,0 +1,36 @@
+.faq {
+  text-align: left;
+  
+  .card {
+    border: none;
+    margin-bottom: 10px;
+    
+    .card-header {
+      border: 1px solid transparent;
+      color: #00838f;
+      cursor: pointer;
+      display: inline-block;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      padding: 15px;
+      transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+      user-select: none;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+    
+    .collapse {
+      display: block;
+      height: auto;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.6s ease-out;
+  
+      &.show {
+        max-height: 1000px;
+        transition: all 0.6s ease-in;
+      }
+    }
+  }
+}

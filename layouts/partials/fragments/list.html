@@ -38,9 +38,10 @@
           {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
         ">
           {{- range first (.Params.count | default 10) (.page_scratch.Get "pages") -}}
-            {{ $self.page_scratch.Set "pages" (slice .) }}
+            {{- $page := . -}}
+            {{ $self.page_scratch.Set "page_fragments" (slice .) }}
             {{ range .Resources.ByType "page" }}
-              {{ $self.page_scratch.Add "pages" . }}
+              {{ $self.page_scratch.Add "page_fragments" . }}
             {{ end }}
             {{- if $self.Params.tiled -}}
               <div class="col-lg-6 col-12 mb-2 d-flex">
@@ -69,7 +70,7 @@
                       </div>
                       <div class="col-12 pb-2 px-0">
                         {{- if $self.Params.display_date -}}
-                          {{- range first 1 (where ($self.page_scratch.Get "pages") "Params.fragment" "in" "content") -}}
+                          {{- range first 1 (where ($self.page_scratch.Get "page_fragments") "Params.fragment" "in" "content") -}}
                             {{- partial "helpers/publish-date.html" (dict "root" . "background" $bg) -}}
                           {{- end -}}
                         {{- end -}}
@@ -81,16 +82,24 @@
                       </div>
                     {{- end -}}
                   {{- end -}}
-                  {{- if .Params.asset -}}
-                    <a href="{{ .URL }}">
-                      <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset) }}" alt="{{ .Params.subtitle | default .Params.title }}" class="img-fluid mb-4">
-                    </a>
+                  {{- range first 1 (where ($self.page_scratch.Get "page_fragments") "Params.fragment" "in" "content") }}
+                    {{- if and (ne $self.Params.images false) .Params.asset -}}
+                      {{- $file_path := strings.TrimSuffix ".md" (replace .File.Path "/index.md" "") -}}
+                      {{- $page_scratch := $.page_scratch -}}
+                      {{- $root := (dict "page" (dict "file_path" $file_path) "page_scratch" $page_scratch "page" $page) }}
+                      <div class="col-12 px-0">
+                        <img
+                          src="{{ partial "helpers/image.html" (dict "root" $root "asset" .Params.asset) }}"
+                          alt="{{ .Params.subtitle | default .Params.title }}"
+                          class="img-fluid mb-4">
+                      </div>
+                    {{- end -}}
                   {{- end -}}
                   {{- if or (not (isset $self.Params "summary")) (eq $self.Params.summary true) }}
                     <div class="col-12 pl-0
                       {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
                     ">
-                      {{- range first 1 (where ($self.page_scratch.Get "pages") "Params.fragment" "in" "content") }}
+                      {{- range first 1 (where ($self.page_scratch.Get "page_fragments") "Params.fragment" "in" "content") }}
                         {{ .Summary }}
                         {{- if and (not $self.Params.tiled) (ne $self.Params.read_more false) -}}
                           {{- if or $self.Params.read_more .Truncated }}
@@ -108,7 +117,7 @@
                   {{- end -}}
                 {{- if $self.Params.tiled }}
                   </div>
-                  {{- range first 1 (where ($self.page_scratch.Get "pages") "Params.fragment" "in" "content") }}
+                  {{- range first 1 (where ($self.page_scratch.Get "page_fragments") "Params.fragment" "in" "content") }}
                     {{- if and (ne $self.Params.read_more false) (or $self.Params.read_more .Truncated) }}
                       <div class="card-footer">
                         <a href="{{ .URL }}">{{ i18n "content.readmore" | default "Read more..." }}</a>

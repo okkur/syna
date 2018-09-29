@@ -7,6 +7,9 @@ title = "Lorem Ipsum is the single greatest threat"
 #subtitle = ""
 
 display_date = true
+
+[asset]
+  image = "image.png"
 +++
 
 Lorem Ipsum is the single greatest threat. We are not - we are not keeping up with other websites. You're telling the enemy exactly what you're going to do. No wonder you've been fighting Lorem Ipsum your entire adult life. Lorem Ipsum's father was with Lee Harvey Oswald prior to Oswald's being, you know, shot.

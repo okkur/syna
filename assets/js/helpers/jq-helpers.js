@@ -1,7 +1,7 @@
 import serialize from './serialize';
 
 function $(selector) {
-  const nodes = Array.from((this && Array.isArray(this) ? this[0] : document).querySelectorAll(selector));
+  const nodes = typeof selector === 'string' ? Array.from((this && Array.isArray(this) ? this[0] : document).querySelectorAll(selector)) : [selector];
 
   const _returnee = {
     $nodes: nodes,
