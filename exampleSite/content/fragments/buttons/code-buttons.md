@@ -1,6 +1,6 @@
 +++
 fragment = "content"
-weight = 120
+weight = 111
 +++
 
 <details><summary>Code</summary>
@@ -19,17 +19,42 @@ title = "Buttons Fragment"
 [[buttons]]
   text = "Button"
   url = "#"
-  color = "info" # primary, secondary, success, danger, warning, info, light, dark, link - default: primary
-
-[[buttons]]
-  text = "Button"
-  url = "#"
-  color = "success"
+  color = "secondary" # primary, secondary, success, danger, warning, info, light, dark, link - default: primary
 
 [[buttons]]
   text = "Long Button"
   url = "#"
-  color = "primary" # primary, secondary, success, danger, warning, info, light, dark, link - default: primary
+  color = "success"
+
+[[buttons]]
+  text = "Button"
+  url = "#"
+  color = "danger"
+
+[[buttons]]
+  text = "Button"
+  url = "#"
+  color = "warning"
+
+[[buttons]]
+  text = "Long Button"
+  url = "#"
+  color = "info"
+
+[[buttons]]
+  text = "Button"
+  url = "#"
+  color = "light"
+
+[[buttons]]
+  text = "Button"
+  url = "#"
+  color = "dark"
+
+[[buttons]]
+  text = "Long Button"
+  url = "#"
+  color = "link"
 +++
 ```
 </details>
