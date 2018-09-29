@@ -2,25 +2,25 @@
 fragment = "buttons"
 #disabled = false
 date = "2016-09-07"
-weight = 110
+weight = 120
 background = "secondary"
 
-title = "Buttons Fragment"
-subtitle = "Call to action buttons"
+title = "Buttons Fragment Outlined"
+subtitle = "Buttons with outlines"
 #title_align = "left" # Default is center, can be left, right or center
 
 [[buttons]]
   text = "Button"
   url = "#"
-  color = "info" # primary, secondary, success, danger, warning, info, light, dark, link - default: primary
+  color = "outline-info" # primary, secondary, success, danger, warning, info, light, dark, link - default: primary
 
 [[buttons]]
   text = "Button"
   url = "#"
-  color = "success"
+  color = "outline-success"
 
 [[buttons]]
   text = "Long Button"
   url = "#"
-  color = "primary"
+  color = "outline-primary"
 +++
