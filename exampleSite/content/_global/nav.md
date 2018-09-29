@@ -6,6 +6,11 @@ weight = 0
 background = "dark"
 search = true
 
+[breadcrumb]
+  display = true # Default value is false
+  #level = 0 # Default is 1
+  background = "light"
+
 # Branding options
 [asset]
   image = "logo.svg"
