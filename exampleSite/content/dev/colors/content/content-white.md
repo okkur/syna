@@ -6,7 +6,7 @@ weight = 110
 background = "white"
 
 title = "Content without sidebar"
-#subtitle = ""
+subtitle = "Full width content fragment"
 #title_align = "left" # Default is center, can be left, right or center
 +++
 
