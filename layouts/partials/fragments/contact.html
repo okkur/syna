@@ -1,8 +1,9 @@
-{{- $bg := .Params.background | default "secondary" }}
+{{- $self := .self -}}
 {{- if .Params.recaptcha -}}
   {{- .page_scratch.Add "js" "https://www.google.com/recaptcha/api.js" -}}
 {{- end }}
-{{- .page_scratch.Add "js" ("syna-contact.js" | relLangURL) }}
+{{- .page_scratch.Add "js" ("syna-contact.js" | relLangURL) -}}
+{{- $bg := .self.Scratch.Get "bg" }}
 
 {{ "<!-- Contact -->" | safeHTML }}
 

@@ -1,6 +1,7 @@
-{{- $bg := .Params.background | default "white" -}}
+{{- $self := .self -}}
 {{- $ratio := .Params.ratio | default "4by3" -}}
-{{- $size := .Params.size | default "75" }}
+{{- $size := .Params.size | default "75" -}}
+{{- $bg := .self.Scratch.Get "bg" }}
 
 {{ "<!-- Embed -->" | safeHTML }}
 <section id="{{ .Name }}">

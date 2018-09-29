@@ -1,7 +1,7 @@
 {{- $self := . -}}
 {{- $items := where (.page.Resources.Match (printf "%s/*.md" .Name)) ".Name" "ne" .self.Name -}}
-{{- $bg := .Params.background | default "light" -}}
-{{- .page_scratch.Add "js" ("syna-portfolio.js" | relLangURL) }}
+{{- .page_scratch.Add "js" ("syna-portfolio.js" | relLangURL) -}}
+{{- $bg := .self.Scratch.Get "bg" }}
 
 {{ "<!-- Porfolio -->" | safeHTML }}
 <section id="{{ .Name }}">

@@ -1,6 +1,6 @@
 {{- $self := . -}}
 {{- $members := where (.page.Resources.Match (printf "%s/*.md" .Name)) ".Name" "ne" .self.Name -}}
-{{- $bg := .Params.background | default "light" }}
+{{- $bg := .self.Scratch.Get "bg" }}
 
 {{ "<!-- Member -->" | safeHTML }}
 <section id="{{ .Name }}">
@@ -22,30 +22,22 @@
                   <div class="text-center m-2">
                     <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset) }}" class="img-fluid rounded-circle w-75 border
                       {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
-                        {{- printf " border-%s" "dark" -}}
+                        {{- print " border-dark" -}}
                       {{- else -}}
-                        {{- printf " border-%s" "white" -}}
+                        {{- print " border-white" -}}
                       {{- end -}}
                     " alt="{{ $member.title }}"></img>
                   </div>
                 {{- end -}}
                 <div class="mt-5 mb-0
-                  {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
-                    {{- printf " text-%s" "dark" -}}
-                  {{- else -}}
-                    {{- printf " text-%s" "light" -}}
-                  {{- end -}}
+                  {{- partial "helpers/text-color.html" (dict "self" $self.self) -}}
                 ">
                   <h2>
                     {{- $member.title -}}
                   </h2>
                 </div>
                 <div class="member
-                  {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                    {{- printf " text-%s" "dark" -}}
-                  {{- else -}}
-                    {{- printf " text-muted text-%s" "secondary" -}}
-                  {{- end -}}
+                  {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
                 ">
                   {{- with $member.position -}}
                     <h5 class="mb-3">
@@ -78,7 +70,7 @@
                           <a href="{{ .url }}">
                             <i class="fas fa-circle fa-stack-2x
                               {{- if eq $bg "primary" -}}
-                                {{- printf " text-%s" "dark" -}}
+                                {{- print " text-dark" -}}
                               {{- end -}}
                             "></i>
                             <i class="{{ .icon }} fa-stack-1x fa-inverse"></i>
@@ -112,11 +104,7 @@
                 {{- if .Params.asset -}}
                   <div class="col-12 col-lg-4 p-4 text-center">
                     <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset) }}" class="img-fluid rounded-circle border
-                      {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
-                        {{- printf " border-%s" "dark" -}}
-                      {{- else -}}
-                        {{- printf " border-%s" "white" -}}
-                      {{- end -}}
+                      {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "white") -}}
                     " alt="{{ $member.title }}"></img>
                   </div>
                 {{- end -}}
@@ -127,11 +115,7 @@
                     {{- printf " col-lg-4" -}}
                   {{- end -}}">
                   <div class="member text-center text-lg-left
-                    {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                      {{- printf " text-%s" "dark" -}}
-                    {{- else -}}
-                      {{- printf " text-muted text-%s" "secondary" -}}
-                    {{- end -}}
+                    {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
                   ">
                     <div class="mb-3 text-dark">
                       <h1>
@@ -175,7 +159,7 @@
                               <a href="{{ .url }}">
                                 <i class="fas fa-circle fa-stack-2x
                                   {{- if eq $bg "primary" -}}
-                                    {{- printf " text-%s" "dark" -}}
+                                    {{- print " text-dark" -}}
                                   {{- end -}}
                                 "></i>
                                 <i class="{{ .icon }} fa-stack-1x fa-inverse"></i>
