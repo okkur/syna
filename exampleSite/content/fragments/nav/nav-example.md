@@ -5,6 +5,7 @@ date = "2018-05-17"
 weight = 110
 background = "secondary"
 search = false
+#breadcrumb = true # Default is true
 
 # Branding options
 [asset]
