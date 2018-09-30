@@ -10,7 +10,7 @@ fragment = "list"
 weight = 150
 
 title = "List fragment with list layout"
-#subtitle = ""
+subtitle = "Displays pages from dev/blog section"
 title_align = "left" # Default is center, can be left, right or center
 
 background = "secondary"

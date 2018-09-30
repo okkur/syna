@@ -1,6 +1,7 @@
 +++
 title = "Contact"
 fragment = "content"
+weight = 100
 +++
 
 - [Contact](#contact)
