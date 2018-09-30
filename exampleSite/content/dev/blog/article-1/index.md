@@ -6,9 +6,13 @@ categories = ["Sample", "Blog", "Lorem Ipsum"]
 
 title = "First sample blog"
 #subtitle = ""
+title_align = "left"
 
 display_date = true
 date = "2018-07-06"
+
+[sidebar]
+  align = "right"
 
 [asset]
   image = "image.png"

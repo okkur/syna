@@ -1,4 +1,5 @@
 {{- $self := .self -}}
+{{- $root := . -}}
 {{- $bg := .self.Scratch.Get "bg" }}
 
 {{ "<!-- Content -->" | safeHTML }}
@@ -23,6 +24,7 @@
               {{- partial "helpers/text-color.html" (dict "self" $self "light" "secondary") -}}
             ">
               {{- .content | markdownify -}}
+              {{ partial "helpers/slot.html" (dict "root" $root "slot" "sidebar")}}
             </div>
           </div>
           <article class="col-md-9">

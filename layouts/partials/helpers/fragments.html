@@ -157,9 +157,9 @@
   it. */}}
 {{- $page_scratch.Set "react" false -}}
 {{- range sort ($page_scratch.Get "page_fragments") "Params.weight" -}}
-  {{- if and (not .Params.disabled) (isset .Params "fragment") -}}
+  {{- if and (not .Params.disabled) (isset .Params "fragment") (not (in .Params.fragment ":")) -}}
     {{/* Cleanup .Name to be more useful within fragments */}}
-    {{- $name := strings.TrimSuffix ".md" (replace .Name "/index.md" "") -}}
+    {{- $name := cond (eq $page .) .File.BaseFileName (strings.TrimSuffix ".md" (replace .Name "/index.md" "")) -}}
     {{- $bg := .Params.background | default "light" }}
     {{- .Scratch.Set "bg" $bg -}}
 

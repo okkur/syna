@@ -5,8 +5,12 @@ weight = 100
 
 title = "Lorem Ipsum is the single greatest threat"
 #subtitle = ""
+title_align = "left"
 
 display_date = true
+
+[sidebar]
+  align = "right"
 
 [asset]
   image = "image.png"
