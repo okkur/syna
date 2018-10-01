@@ -120,7 +120,7 @@
                     {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
                   ">
                     {{- range $content_page }}
-                      {{ .Summary }}
+                      {{ cond (isset .Params "summary") (.Params.summary | markdownify) .Summary }}
                       {{- if and (not $self.Params.tiled) (ne $self.Params.read_more false) -}}
                         {{- if or $self.Params.read_more .Truncated }}
                           <a class="badge 
