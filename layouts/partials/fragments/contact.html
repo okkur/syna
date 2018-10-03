@@ -19,11 +19,11 @@
           class="contact"
           method="POST"
           name="{{- .Params.form_name | default (printf "contact-form-%s" .Name) }}"
-          id="{{ printf "contact-form-%s" .Name }}
+          id="{{ printf "contact-form-%s" .Name }}"
           {{- if .Params.netlify -}}
-            " netlify-recaptcha netlify data-has-netlify="true"
+            {{- safeHTMLAttr (print " netlify-recaptcha netlify data-has-netlify=\"true\"") -}}
           {{- else -}}
-            " action="{{- .Params.post_url | default (printf "https://formspree.io/%s" .Params.email) -}}"
+            {{- safeHTMLAttr (printf " action=\"%s\"" (.Params.post_url | default (printf "https://formspree.io/%s" .Params.email))) -}}
           {{- end }}>
             <div class="row py-3">
               <div class="col-md-6">
