@@ -7,7 +7,7 @@ project:
   description: |
     Base your next personal, project or commercial website on Syna.  
     Highly customizable with modular per-page fragments.
-  version: "v0.13.0"
+  version: "v0.14.0"
 
 vision:
   type: "community"
