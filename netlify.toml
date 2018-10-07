@@ -4,17 +4,17 @@
   command = "HUGO_THEME=repo hugo -d ../public --minify"
 
 [context.production.environment]
-  HUGO_VERSION = "0.49"
+  HUGO_VERSION = "0.48"
   HUGO_ENV = "production"
 
 [context.deploy-preview]
   command = "HUGO_THEME=repo hugo -d ../public --minify"
 
 [context.deploy-preview.environment]
-  HUGO_VERSION = "0.49"
+  HUGO_VERSION = "0.48"
 
 [context.branch-deploy]
   command = "HUGO_THEME=repo hugo -d ../public --minify"
 
 [context.branch-deploy.environment]
-  HUGO_VERSION = "0.49"
+  HUGO_VERSION = "0.48"
