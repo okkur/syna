@@ -7,10 +7,10 @@ theme = "syna"
 themesDir = "../.."
 enableGitInfo = true
 version = "0.14.0"
-disableKinds = ["RSS", "taxonomy", "taxonomyTerm"]
+disableKinds = ["taxonomy", "taxonomyTerm"]
 
 [outputs]
-  home = ["HTML", "JSON"]
+  home = ["HTML", "JSON", "RSS"]
 
 [frontmatter]
 date = ["date", "lastmod"]
