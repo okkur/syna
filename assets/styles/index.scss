@@ -9,6 +9,7 @@ $danger:              {{ .Site.Params.colors.danger | default "#dc1200" }};
 $light:               {{ .Site.Params.colors.light | default "#f8f9fa" }};
 $dark:                {{ .Site.Params.colors.dark | default "#343a40" }};
 
+$gray-200:            #e9ecef !default;
 $border-color:        $gray-200;
 $list-inline-padding: 5px;
 {{ if not .Site.Params.fontawesome.disabled }}
