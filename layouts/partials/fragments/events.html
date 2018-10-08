@@ -1,0 +1,9 @@
+{{- .page_scratch.Add "js" ("syna-events.js" | relLangURL) -}}
+<script>
+  window.syna.fragments = [
+    {{- range .page_scratch.Get "page_fragments" -}}
+      {{- $name := strings.TrimSuffix ".md" (replace .Name "/index.md" "") -}}
+      {{- printf "'#%s'," $name | safeJS -}}
+    {{- end -}}
+  ];
+</script>

@@ -38,7 +38,14 @@
                     <p><i class="{{ .icon }}"></i>{{ .text | markdownify }}</p>
                   {{- end }}
                 </div>
-                <a href="{{ .Params.button_url | relLangURL }}" class="btn btn-lg btn-block btn-primary">{{ .Params.button_text }}</a>
+                <a
+                  href="{{ .Params.button_url | relLangURL }}"
+                  class="btn btn-lg btn-block btn-primary"
+                  {{- safeHTMLAttr (printf " data-event='click'") -}}
+                  {{- safeHTMLAttr (printf " data-event-name='price-change'") -}}
+                  {{- safeHTMLAttr (printf " data-event-data='{\"price\":\"%s\",\"url\":\"%s\"}'" .Params.price (.Params.button_url | relLangURL)) -}}>
+                  {{- .Params.button_text -}}
+                </a>
               </div>
             </div>
           </div>

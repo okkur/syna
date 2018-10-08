@@ -6,6 +6,7 @@ module.exports = {
     collapse: './assets/js/collapse.js',
     contact: './assets/js/contact.js',
     editor: './assets/js/editor.js',
+    events: './assets/js/events.js',
     hero: './assets/js/hero.js',
     portfolio: './assets/js/portfolio.js',
     react: './assets/js/react.js',
