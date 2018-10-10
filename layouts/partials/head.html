@@ -16,6 +16,11 @@
   <meta property="og:image" content="{{ .Site.Params.image }}">
   <meta property="og:site_name" content="{{ .Site.Title }}">
   <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ $title }}" />
+  <meta name="twitter:description" content="{{ .Site.Params.Description }}" />
+  <meta name="twitter:url" content="{{ .URL | absURL }}" />
+  <meta name="twitter:image" content="{{ .Site.Params.image }}">
   {{ with .Site.Params.name -}}<meta name="author" content="{{ . }}">{{- end }}
 
   {{ .Hugo.Generator }}
