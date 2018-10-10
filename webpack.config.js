@@ -6,11 +6,11 @@ module.exports = {
     collapse: './assets/js/collapse.js',
     contact: './assets/js/contact.js',
     editor: './assets/js/editor.js',
+    graph: './assets/js/graph.js',
     hero: './assets/js/hero.js',
     portfolio: './assets/js/portfolio.js',
     react: './assets/js/react.js',
     search: './assets/js/search.js',
-    stats: './assets/js/stats.js',
   },
   output: {
     path: path.resolve('./assets/scripts/'),

@@ -1,8 +1,8 @@
 {{- $self := . -}}
-{{- .page_scratch.Add "js" ("syna-stats.js" | relLangURL) -}}
+{{- .page_scratch.Add "js" ("syna-graph.js" | relLangURL) -}}
 {{- $bg := .self.Scratch.Get "bg" }}
 
-{{ "<!-- Stats -->" | safeHTML }}
+{{ "<!-- graph -->" | safeHTML }}
 <section id="{{ .Name }}">
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
@@ -19,7 +19,7 @@
   </div>
 </section>
 <script>
-  (window.syna.stats || (window.syna.stats = [])).push({
+  (window.syna.graph || (window.syna.graph = [])).push({
     selector: "{{ printf "#chart-%s" .Name }}",
     config: JSON.parse({{ readFile (printf "%s%s/config.json" .page.Dir .Name) | safeHTML }}),
   });

@@ -1,9 +1,9 @@
 +++
-fragment = "stats"
+fragment = "graph"
 weight = 110
 background = "secondary"
 
-title = "Stats Fragment"
+title = "Graph Fragment"
 #height = "400px"
 #width = "100%"
 +++

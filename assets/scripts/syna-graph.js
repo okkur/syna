@@ -81,10 +81,22 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./assets/js/stats.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./assets/js/graph.js");
 /******/ })
 /************************************************************************/
 /******/ ({
+
+/***/ "./assets/js/graph.js":
+/*!****************************!*\
+  !*** ./assets/js/graph.js ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nvar _chart = __webpack_require__(/*! chart.js */ \"./node_modules/chart.js/src/chart.js\");\n\nvar _chart2 = _interopRequireDefault(_chart);\n\nvar _jqHelpers = __webpack_require__(/*! ./helpers/jq-helpers */ \"./assets/js/helpers/jq-helpers.js\");\n\nvar _jqHelpers2 = _interopRequireDefault(_jqHelpers);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n(window.syna.graph || (window.syna.graph = [])).forEach(function (fragment) {\n  (window.syna.graphCharts || (window.syna.graphCharts = [])).push(new _chart2.default((0, _jqHelpers2.default)(fragment.selector), {\n    type: fragment.config.type || 'line',\n    options: Object.assign({\n      maintainAspectRatio: false\n    }, (fragment.config || {}).options),\n    data: (fragment.config || {}).data\n  }));\n});\n\n//# sourceURL=webpack:///./assets/js/graph.js?");
+
+/***/ }),
 
 /***/ "./assets/js/helpers/jq-helpers.js":
 /*!*****************************************!*\
@@ -107,18 +119,6 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 
 "use strict";
 eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = serialize;\n// From https://code.google.com/archive/p/form-serialize/\nfunction serialize(form) {\n  if (!form || form.nodeName !== \"FORM\") {\n    return;\n  }\n  var i,\n      j,\n      q = [];\n  for (i = form.elements.length - 1; i >= 0; i = i - 1) {\n    if (form.elements[i].name === \"\") {\n      continue;\n    }\n    switch (form.elements[i].nodeName) {\n      case 'INPUT':\n        switch (form.elements[i].type) {\n          case 'text':\n          case 'hidden':\n          case 'password':\n          case 'button':\n          case 'reset':\n          case 'submit':\n            q.push(form.elements[i].name + \"=\" + encodeURIComponent(form.elements[i].value));\n            break;\n          case 'checkbox':\n          case 'radio':\n            if (form.elements[i].checked) {\n              q.push(form.elements[i].name + \"=\" + encodeURIComponent(form.elements[i].value));\n            }\n            break;\n          case 'file':\n            break;\n        }\n        break;\n      case 'TEXTAREA':\n        q.push(form.elements[i].name + \"=\" + encodeURIComponent(form.elements[i].value));\n        break;\n      case 'SELECT':\n        switch (form.elements[i].type) {\n          case 'select-one':\n            q.push(form.elements[i].name + \"=\" + encodeURIComponent(form.elements[i].value));\n            break;\n          case 'select-multiple':\n            for (j = form.elements[i].options.length - 1; j >= 0; j = j - 1) {\n              if (form.elements[i].options[j].selected) {\n                q.push(form.elements[i].name + \"=\" + encodeURIComponent(form.elements[i].options[j].value));\n              }\n            }\n            break;\n        }\n        break;\n      case 'BUTTON':\n        switch (form.elements[i].type) {\n          case 'reset':\n          case 'submit':\n          case 'button':\n            q.push(form.elements[i].name + \"=\" + encodeURIComponent(form.elements[i].value));\n            break;\n        }\n        break;\n    }\n  }\n  return q.join(\"&\");\n}\n\n//# sourceURL=webpack:///./assets/js/helpers/serialize.js?");
-
-/***/ }),
-
-/***/ "./assets/js/stats.js":
-/*!****************************!*\
-  !*** ./assets/js/stats.js ***!
-  \****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nvar _chart = __webpack_require__(/*! chart.js */ \"./node_modules/chart.js/src/chart.js\");\n\nvar _chart2 = _interopRequireDefault(_chart);\n\nvar _jqHelpers = __webpack_require__(/*! ./helpers/jq-helpers */ \"./assets/js/helpers/jq-helpers.js\");\n\nvar _jqHelpers2 = _interopRequireDefault(_jqHelpers);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n(window.syna.stats || (window.syna.stats = [])).forEach(function (fragment) {\n  (window.syna.statsCharts || (window.syna.statsCharts = [])).push(new _chart2.default((0, _jqHelpers2.default)(fragment.selector), {\n    type: fragment.config.type || 'line',\n    options: Object.assign({\n      maintainAspectRatio: false\n    }, (fragment.config || {}).options),\n    data: (fragment.config || {}).data\n  }));\n});\n\n//# sourceURL=webpack:///./assets/js/stats.js?");
 
 /***/ }),
 
