@@ -1,0 +1,26 @@
+{{- $self := . -}}
+{{- .page_scratch.Add "js" ("syna-stats.js" | relLangURL) -}}
+{{- $bg := .self.Scratch.Get "bg" }}
+
+{{ "<!-- Stats -->" | safeHTML }}
+<section id="{{ .Name }}">
+  <div class="overlay container-fluid
+    {{- printf " bg-%s" $bg -}}
+  ">
+    <div class="container py-5">
+      {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
+      <div class="row chart-container position-relative" style="
+        {{- (cond (isset .Params "width") (printf "width: %s;" .Params.width) (print "width: 100%;")) | safeCSS -}}
+        {{- (cond (isset .Params "height") (printf "height: %s;" .Params.height) (print "height: 400px;")) | safeCSS -}}
+      ">
+        <canvas id="{{ printf "chart-%s" .Name }}" width="400" height="400"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  (window.syna.stats || (window.syna.stats = [])).push({
+    selector: "{{ printf "#chart-%s" .Name }}",
+    config: JSON.parse({{ readFile (printf "%s%s/config.json" .page.Dir .Name) | safeHTML }}),
+  });
+</script>
