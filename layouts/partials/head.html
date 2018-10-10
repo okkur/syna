@@ -1,3 +1,4 @@
+{{- $title := printf "%s%s" .Title (cond (not .IsHome) (printf " &middot; %s" .Site.Title) (print "")) -}}
 <head>
   <meta name="theme" content="Syna Theme - (https://github.com/okkur/syna)">
   <meta name="theme description" content="Highly modular open source theme for Hugo built with Bootstrap 4">
@@ -9,9 +10,9 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="description" content="{{ .Description }}">
-  <meta property="og:title" content="{{ .Title }}">
+  <meta property="og:title" content="{{ $title }}">
   <meta property="og:url" content="{{ .URL | absURL }}">
-  <meta property="og:description" content="{{ .Description }}">
+  <meta property="og:description" content="{{ .Site.Params.Description }}">
   <meta property="og:image" content="{{ .Site.Params.image }}">
   <meta property="og:site_name" content="{{ .Site.Title }}">
   <meta property="og:type" content="website">
@@ -20,8 +21,7 @@
   {{ .Hugo.Generator }}
 
   <title>
-    {{- .Title -}}
-    {{- if not .IsHome }} &middot; {{ .Site.Title }}{{ end -}}
+    {{- $title | safeHTML -}}
   </title>
 
   {{ "<!-- Theme Styles -->" | safeHTML }}
