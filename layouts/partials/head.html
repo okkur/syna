@@ -1,4 +1,9 @@
 {{- $title := printf "%s%s" .Title (cond (not .IsHome) (printf " &middot; %s" .Site.Title) (print "")) -}}
+{{- $content_fragment := first 1 ((where ((.Scratch.Get "page_fragments") | default (slice)) "Params.fragment" "in" "content") | default (slice)) -}}
+{{- .Scratch.Set "page_description" .Site.Params.Description -}}
+{{- range $content_fragment -}}
+  {{- .Scratch.Set "page_description" (.Params.summary | default .Summary) -}}
+{{- end -}}
 <head>
   <meta name="theme" content="Syna Theme - (https://github.com/okkur/syna)">
   <meta name="theme description" content="Highly modular open source theme for Hugo built with Bootstrap 4">
@@ -12,13 +17,13 @@
   <meta name="description" content="{{ .Description }}">
   <meta property="og:title" content="{{ $title }}">
   <meta property="og:url" content="{{ .URL | absURL }}">
-  <meta property="og:description" content="{{ .Site.Params.Description }}">
+  <meta property="og:description" content="{{- .Scratch.Get "page_description" -}}">
   <meta property="og:image" content="{{ .Site.Params.image }}">
   <meta property="og:site_name" content="{{ .Site.Title }}">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ $title }}" />
-  <meta name="twitter:description" content="{{ .Site.Params.Description }}" />
+  <meta name="twitter:description" content="{{- .Scratch.Get "page_description" -}}" />
   <meta name="twitter:url" content="{{ .URL | absURL }}" />
   <meta name="twitter:image" content="{{ .Site.Params.image }}">
   {{ with .Site.Params.name -}}<meta name="author" content="{{ . }}">{{- end }}
