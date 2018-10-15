@@ -4,8 +4,8 @@ _2018_
   - [Downloads for v0.15.0](https://github.com/okkur/syna/releases/tag/v0.15.0)
   - [Changelog since v0.14.0](#changes-since-v014)
 
-## Documentation for v0.15.0
-[Documentation](/tree/v0.15.0/docs)
+## Documentation for v0.15
+[Documentation](/tree/v0.15/docs)
 
 ## Changes since v0.14.0
 
@@ -20,8 +20,8 @@ _2018-10-15_
   - [Downloads for v0.14.0](https://github.com/okkur/syna/releases/tag/v0.14.0)
   - [Changelog since v0.13.0](#changes-since-v013)
 
-## Documentation for v0.14.0
-[Documentation](/tree/v0.14.0/docs)
+## Documentation for v0.14
+[Documentation](/tree/v0.14/docs)
 
 ## Changes since v0.13.0
   - BREAKING: Fragment lookup order was broken in v0.13. Please check your fragments are overwritten as expected.
