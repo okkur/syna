@@ -16,7 +16,7 @@ _2018_
 -->
 
 # v0.14.0
-_2018_
+_2018-10-15_
   - [Downloads for v0.14.0](https://github.com/okkur/syna/releases/tag/v0.14.0)
   - [Changelog since v0.13.0](#changes-since-v013)
 
