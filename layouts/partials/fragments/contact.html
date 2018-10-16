@@ -19,9 +19,9 @@
           class="contact"
           method="POST"
           name="{{- .Params.form_name | default (printf "contact-form-%s" .Name) }}"
-          id="{{ printf "contact-form-%s" .Name }}"
+          id="{{- .Params.form_name | default (printf "contact-form-%s" .Name) }}"
           {{- if .Params.netlify -}}
-            {{- safeHTMLAttr (print " netlify-recaptcha netlify data-has-netlify=\"true\"") -}}
+            {{- safeHTMLAttr (print " data-has-netlify=\"true\" netlify") -}}
           {{- else -}}
             {{- safeHTMLAttr (printf " action=\"%s\"" (.Params.post_url | default (printf "https://formspree.io/%s" .Params.email))) -}}
           {{- end }}>
@@ -110,13 +110,13 @@
                     {{- i18n "contact.defaultJsError" }} {{ .Params.email }}.
                   </div>
                 </noscript>
-                {{- with .Params.recaptcha }}
+                {{- if and .Params.recaptcha (not .Params.netlify) }}
                   <div class="g-recaptcha-container">
                     <span class="g-recaptcha-filler"></span>
                     <button
                       class="g-recaptcha btn btn-primary"
                       type="submit"
-                      data-sitekey="{{ .sitekey }}"
+                      data-sitekey="{{ .Params.recaptcha.sitekey }}"
                       data-size="invisible"
                       data-badge="inline"
                       data-callback="onContactCaptcha"
@@ -127,7 +127,7 @@
                   </div>
                 {{- else }}
                   {{- if .Params.netlify }}
-                    <div data-netlify-recaptcha></div>
+                    <div netlify-recaptcha></div>
                   {{- end }}
                   <button
                     class="btn
