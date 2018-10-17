@@ -21,14 +21,28 @@
   <meta property="og:title" content="{{ $title }}">
   <meta property="og:url" content="{{ .URL | absURL }}">
   <meta property="og:description" content="{{- .Scratch.Get "page_description" -}}">
-  <meta property="og:image" content="{{ .Site.Params.image }}">
   <meta property="og:site_name" content="{{ .Site.Title }}">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ $title }}" />
   <meta name="twitter:description" content="{{- .Scratch.Get "page_description" -}}" />
   <meta name="twitter:url" content="{{ .URL | absURL }}" />
-  <meta name="twitter:image" content="{{ .Site.Params.image }}">
+  {{- if $content_fragment -}}
+    {{- range $content_fragment -}}
+      {{- if and .Params.asset -}}
+        {{- $file_path := strings.TrimSuffix ".md" (replace .File.Path "/index.md" "") -}}
+        {{- $root := (dict "page" (dict "file_path" $file_path) "page_scratch" $.Scratch "page" .) }}
+        <meta property="og:image" content="{{ partial "helpers/image.html" (dict "root" $root "asset" .Params.asset) }}">
+        <meta name="twitter:image" content="{{ partial "helpers/image.html" (dict "root" $root "asset" .Params.asset) }}">
+      {{- else }}
+        <meta property="og:image" content="{{ $.Site.Params.image }}">
+        <meta name="twitter:image" content="{{ $.Site.Params.image }}">
+      {{- end -}}
+    {{- end -}}
+  {{- else }}
+    <meta property="og:image" content="{{ $.Site.Params.image }}">
+    <meta name="twitter:image" content="{{ $.Site.Params.image }}">
+  {{- end }}
   {{ with .Site.Params.name -}}<meta name="author" content="{{ . }}">{{- end }}
 
   {{ .Hugo.Generator }}
