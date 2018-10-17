@@ -17,7 +17,7 @@
   {{- .root.page_scratch.Set "image" $location -}}
 {{- end -}}
 
-{{- if .absolute -}}
+{{- if eq .absolute true -}}
   {{- .root.page_scratch.Get "image" | absURL -}}
 {{- else -}}
   {{- .root.page_scratch.Get "image" | relLangURL -}}
