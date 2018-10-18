@@ -69,10 +69,11 @@
   duplicates (with priority given to closest fragments to the actual page) and
   call the partials.
   */}}
-{{- $page := .page -}}
-{{- $real_page := .real_page -}}
 {{- $page_scratch := .page_scratch -}}
-{{- $root := .root -}}
+{{- $layout_info := $page_scratch.Get "layout_info" -}}
+{{- $page := $layout_info.page -}}
+{{- $real_page := $layout_info.real_page -}}
+{{- $root := $layout_info.root -}}
 
 {{/* Lookup the directory of the file, split the path by slashes and find each
   parent directory. Regex is used to split the path. First slash is an edge
@@ -96,7 +97,7 @@
       {{/* Last item is the page being rendered. If it's a section or homepage,
         fragments must be at _index directory */}}
       {{- $page_scratch.Set "active_page" ($real_page.Site.GetPage "page" (printf "%s%s" $real_page.Dir "_index")) -}}
-    {{- else -}}
+    {{- else if $page -}}
       {{- $page_scratch.Set "active_page" $page -}}
     {{- end -}}
   {{- else if ge $index 1 -}}
@@ -144,7 +145,7 @@
   {{- range ($page_scratch.Get "fragments") -}}
     {{- $name := replace .Name "/index" "" -}}
     {{- $directory_same_name := in ($page_scratch.Get "fragments_directory_name") (printf "%s%s/" $root.Dir (replace $name ".md" "")) -}}
-    {{- if and (not (where ($page_scratch.Get "page_fragments") ".Name" $name)) (not $directory_same_name) (ne .Params.fragment "404") -}}
+    {{- if and (not .Params.disabled) (isset .Params "fragment") (ne .Params.fragment "404") (not (where ($page_scratch.Get "page_fragments") ".Name" $name)) (not $directory_same_name) -}}
       {{- $page_scratch.Add "page_fragments" . -}}
       {{- $page_scratch.Add "fragments_directory_name" (printf "%s%s/" $root.Dir (replace $name ".md" "")) -}}
     {{- end -}}
@@ -156,15 +157,3 @@
 {{/* Disable React by default, we load the framework only if a fragment requires
   it. */}}
 {{- $page_scratch.Set "react" false -}}
-{{- range sort ($page_scratch.Get "page_fragments") "Params.weight" -}}
-  {{- if and (not .Params.disabled) (isset .Params "fragment") -}}
-    {{/* Cleanup .Name to be more useful within fragments */}}
-    {{- $name := strings.TrimSuffix ".md" (replace .Name "/index.md" "") -}}
-    {{- $bg := .Params.background | default "light" }}
-    {{- .Scratch.Set "bg" $bg -}}
-
-    {{- $file_path := strings.TrimSuffix ".md" (replace .File.Path "/index.md" "") -}}
-    {{- $context := dict "page_scratch" $page_scratch "root" $real_page "Site" $real_page.Site "page" $page "resources" $real_page.Resources "self" . "Params" .Params "Name" $name "file_path" $file_path }}
-    {{- partial (print "fragments/" .Params.fragment ".html") $context -}}
-  {{- end -}}
-{{- end -}}
