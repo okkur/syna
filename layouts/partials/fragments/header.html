@@ -3,13 +3,6 @@
 {{- $subtitle_align := .Params.subtitle_align | default $align -}}
 {{- $bg := .self.Scratch.Get "bg" }}
 
-{{ "<!-- Header -->" | safeHTML }}
-<section id="{{ .Name }}">
-  <div class="overlay container-fluid
-    {{- printf " bg-%s" $bg -}}
-  ">
-    <div class="container py-3">
-      {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
-    </div>
-  </div>
-</section>
+{{- partial "helpers/container.html" (dict "start" true "fragment" "Header" "in_slot" .in_slot "bg" $bg "Name" .Name "padding" .Params.padding) -}}
+  {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) -}}
+{{- partial "helpers/container.html" (dict "end" true "in_slot" .in_slot) -}}

@@ -2,75 +2,68 @@
 {{- $self := . -}}
 {{- $bg := .self.Scratch.Get "bg" }}
 
-{{ "<!-- Items -->" | safeHTML }}
-<section id="{{ .Name }}">
-  <div class="overlay container-fluid
-    {{- printf " bg-%s" $bg -}}
-  ">
-    <div class="container py-5">
-      {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
-      <div class="row justify-content-center align-items-stretch items">
-        {{- if eq (len $items) 0 -}}
-          {{- partial "helpers/empty-subpath.html" (dict "context" "items" "root" $) -}}
-        {{- else -}}
-          {{- range $items -}}
-            {{/* Handle special case of index.md being considered an item */}}
-            {{- if not (in .Name "/index.md") -}}
-              {{- $item := .Params }}
-              <div class="col-md-4 d-flex flex-column">
-                {{- if and $item.asset $item.asset.url }}
-                  <a href="{{ $item.asset.url | relLangURL }}" class="col justify-content-between d-flex flex-column header
-                    {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "") -}}
-                  ">
-                {{- else }}
-                  <div class="col justify-content-between d-flex flex-column header">
+{{- partial "helpers/container.html" (dict "start" true "fragment" "Items" "in_slot" .in_slot "bg" $bg "Name" .Name "padding" .Params.padding) -}}
+  {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
+  <div class="row justify-content-center align-items-stretch items">
+    {{- if eq (len $items) 0 -}}
+      {{- partial "helpers/empty-subpath.html" (dict "context" "items" "root" $) -}}
+    {{- else -}}
+      {{- range $items -}}
+        {{/* Handle special case of index.md being considered an item */}}
+        {{- if not (in .Name "/index.md") -}}
+          {{- $item := .Params }}
+          <div class="col-md-4 d-flex flex-column">
+            {{- if and $item.asset $item.asset.url }}
+              <a href="{{ $item.asset.url | relLangURL }}" class="col justify-content-between d-flex flex-column header
+                {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "") -}}
+              ">
+            {{- else }}
+              <div class="col justify-content-between d-flex flex-column header">
+            {{- end }}
+              <div class="row image justify-content-center align-items-center">
+                {{- with $item.asset -}}
+                  {{- if .image }}
+                    <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .) }}" class="p-2 w-75 mb-2" alt="{{ .text }}">
+                  {{- else if .icon }}
+                    <span class="fa-stack fa-3x m-2">
+                      <i class="fas fa-circle fa-stack-2x
+                        {{- if eq $bg "primary" -}}
+                          {{- print " text-dark" -}}
+                        {{- else -}}
+                          {{- print " text-primary" -}}
+                        {{- end -}}
+                      "></i>
+                      <i class="{{ .icon }} fa-stack-1x fa-inverse"></i>
+                    </span>
+                  {{- end -}}
                 {{- end }}
-                  <div class="row image justify-content-center align-items-center">
-                    {{- with $item.asset -}}
-                      {{- if .image }}
-                        <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .) }}" class="p-2 w-75 mb-2" alt="{{ .text }}">
-                      {{- else if .icon }}
-                        <span class="fa-stack fa-3x m-2">
-                          <i class="fas fa-circle fa-stack-2x
-                            {{- if eq $bg "primary" -}}
-                              {{- print " text-dark" -}}
-                            {{- else -}}
-                              {{- print " text-primary" -}}
-                            {{- end -}}
-                          "></i>
-                          <i class="{{ .icon }} fa-stack-1x fa-inverse"></i>
-                        </span>
-                      {{- end -}}
-                    {{- end }}
-                  </div>
-                  <div class="row justify-content-center text-center">
-                    {{- if $item.title }}
-                      <h4 class="mb-3
-                        {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
-                      ">
-                        {{- $item.title | markdownify -}}
-                      </h4>
-                    {{- end -}}
-                  </div>
-                {{- if and $item.asset $item.asset.url }}
-                  </a>
-                {{- else }}
-                  </div>
-                {{- end }}
-                <div class="row justify-content-center text-center p-2">
-                  {{- if .Content }}
-                    <div class="
-                      {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
-                    ">
-                      {{ .Content }}
-                    </div>
-                  {{- end }}
-                </div>
               </div>
-            {{- end -}}
-          {{- end -}}
+              <div class="row justify-content-center text-center">
+                {{- if $item.title }}
+                  <h4 class="mb-3
+                    {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
+                  ">
+                    {{- $item.title | markdownify -}}
+                  </h4>
+                {{- end -}}
+              </div>
+            {{- if and $item.asset $item.asset.url }}
+              </a>
+            {{- else }}
+              </div>
+            {{- end }}
+            <div class="row justify-content-center text-center p-2">
+              {{- if .Content }}
+                <div class="
+                  {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
+                ">
+                  {{ .Content }}
+                </div>
+              {{- end }}
+            </div>
+          </div>
         {{- end -}}
-      </div>
-    </div>
+      {{- end -}}
+    {{- end -}}
   </div>
-</section>
+{{- partial "helpers/container.html" (dict "end" true "in_slot" .in_slot) -}}

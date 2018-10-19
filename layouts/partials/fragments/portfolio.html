@@ -3,46 +3,39 @@
 {{- .page_scratch.Add "js" ("syna-portfolio.js" | relLangURL) -}}
 {{- $bg := .self.Scratch.Get "bg" }}
 
-{{ "<!-- Porfolio -->" | safeHTML }}
-<section id="{{ .Name }}">
-  <div class="overlay container-fluid
-    {{- printf " bg-%s" $bg -}}
-  ">
-    <div class="container py-5">
-      {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
-      <div class="row">
-        {{- if eq (len $items) 0 }}
-          {{- partial "helpers/empty-subpath.html" (dict "context" "portfolio" "root" $) -}}
-        {{- else -}}
-          {{- range (sort $items ".Params.weight") }}
-            <div class="col-lg-4 col-md-6 col-12 py-2">
-              <div class="border rounded position-relative portfolio-item overflow-hidden 
-                {{- if not .Params.url }} has-modal {{- end -}}
-              ">
-                {{- if .Params.url }}
-                  <a href="{{ .Params.url | relLangURL }}">
+{{- partial "helpers/container.html" (dict "start" true "fragment" "Portfolio" "in_slot" .in_slot "bg" $bg "Name" .Name "padding" .Params.padding) -}}
+  {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
+  <div class="row">
+    {{- if eq (len $items) 0 }}
+      {{- partial "helpers/empty-subpath.html" (dict "context" "portfolio" "root" $) -}}
+    {{- else -}}
+      {{- range (sort $items ".Params.weight") }}
+        <div class="col-lg-4 col-md-6 col-12 py-2">
+          <div class="border rounded position-relative portfolio-item overflow-hidden 
+            {{- if not .Params.url }} has-modal {{- end -}}
+          ">
+            {{- if .Params.url }}
+              <a href="{{ .Params.url | relLangURL }}">
+            {{- end }}
+                {{- if .Params.asset -}}
+                  <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset) }}" class="img-fluid" alt="{{ .Params.asset.text }}">
                 {{- end }}
-                    {{- if .Params.asset -}}
-                      <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset) }}" class="img-fluid" alt="{{ .Params.asset.text }}">
-                    {{- end }}
-                    <div class="position-absolute hover-overlay"></div>
-                    {{- if or .Params.title .Params.subtitle }}
-                      <div class="position-absolute description-container col">
-                        <div class="row justify-content-center description text-light p-2 rounded text-center">
-                          {{ if .Params.title }}<h5 class="title">{{ .Params.title }}</h5>{{ end }}
-                          {{ if .Params.subtitle }}<h6 class="subtitle">{{ .Params.subtitle }}</h6>{{ end }}
-                        </div>
-                      </div>
-                    {{- end }}
-                    <div class="content hidden">{{ .Content }}</div>
-                {{- if .Params.url }}
-                  </a>
+                <div class="position-absolute hover-overlay"></div>
+                {{- if or .Params.title .Params.subtitle }}
+                  <div class="position-absolute description-container col">
+                    <div class="row justify-content-center description text-light p-2 rounded text-center">
+                      {{ if .Params.title }}<h5 class="title">{{ .Params.title }}</h5>{{ end }}
+                      {{ if .Params.subtitle }}<h6 class="subtitle">{{ .Params.subtitle }}</h6>{{ end }}
+                    </div>
+                  </div>
                 {{- end }}
-              </div>
-            </div>
-          {{- end -}}
-        {{- end }}
-      </div>
-    </div>
+                <div class="content hidden">{{ .Content }}</div>
+            {{- if .Params.url }}
+              </a>
+            {{- end }}
+          </div>
+        </div>
+      {{- end -}}
+    {{- end }}
   </div>
-</section>
+{{- partial "helpers/container.html" (dict "end" true "in_slot" .in_slot) -}}

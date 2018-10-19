@@ -2,22 +2,15 @@
 {{- .page_scratch.Add "js" ("syna-graph.js" | relLangURL) -}}
 {{- $bg := .self.Scratch.Get "bg" }}
 
-{{ "<!-- graph -->" | safeHTML }}
-<section id="{{ .Name }}">
-  <div class="overlay container-fluid
-    {{- printf " bg-%s" $bg -}}
+{{- partial "helpers/container.html" (dict "start" true "fragment" "Graph" "in_slot" .in_slot "bg" $bg "Name" .Name "padding" .Params.padding) -}}
+  {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
+  <div class="row chart-container position-relative" style="
+    {{- (cond (isset .Params "width") (printf "width: %s;" .Params.width) (print "width: 100%;")) | safeCSS -}}
+    {{- (cond (isset .Params "height") (printf "height: %s;" .Params.height) (print "height: 400px;")) | safeCSS -}}
   ">
-    <div class="container py-5">
-      {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
-      <div class="row chart-container position-relative" style="
-        {{- (cond (isset .Params "width") (printf "width: %s;" .Params.width) (print "width: 100%;")) | safeCSS -}}
-        {{- (cond (isset .Params "height") (printf "height: %s;" .Params.height) (print "height: 400px;")) | safeCSS -}}
-      ">
-        <canvas id="{{ printf "chart-%s" .Name }}" width="400" height="400"></canvas>
-      </div>
-    </div>
+    <canvas id="{{ printf "chart-%s" .Name }}" width="400" height="400"></canvas>
   </div>
-</section>
+{{- partial "helpers/container.html" (dict "end" true "in_slot" .in_slot) -}}
 <script>
   (window.syna.graph || (window.syna.graph = [])).push({
     selector: "{{ printf "#chart-%s" .Name }}",
