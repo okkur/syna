@@ -6,7 +6,7 @@ title = "Okkur - Syna"
 theme = "syna"
 themesDir = "../.."
 enableGitInfo = true
-version = "0.13.0"
+version = "0.14.0"
 disableKinds = ["RSS", "taxonomy", "taxonomyTerm"]
 
 [outputs]
@@ -50,27 +50,14 @@ googleAnalytics = ""
     disabled = false
 
   [params.colors]
-    white = "#fff"
-    gray100 = "#f8f9fa" # light
-    gray200 = "#e9ecef"
-    gray300 = "#dee2e6"
-    gray400 = "#ced4da"
-    gray500 = "#adb5bd"
-    gray600 = "#868e96" # secondary
-    gray700 = "#495057"
-    gray800 = "#343a40" # dark
-    gray900 = "#212529"
-    black = "#000"
-    blue = "#00838F" # primary
-    indigo = "#54008f"
-    purple = "#8f0083"
-    pink = "#c77fc1"
-    red = "#dc1200" # danger
-    orange = "#fd9742"
-    yellow = "#fdf314" # warning
-    green = "#008f54" # success
-    teal = "#4cb087"
-    cyan = "#00c9dc" # info
+    primary = "#00838F"
+    secondary = "#868e96"
+    success = "#008f54"
+    info = "#00c9dc"
+    warning = "#fdf314"
+    danger = "#dc1200"
+    light = "#f8f9fa"
+    dark = "#343a40"
 
 # main/prepend/postpend menus are displayed in nav fragment.
 # footer/footer_social menus are displayed in footer fragment.

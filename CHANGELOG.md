@@ -1,19 +1,57 @@
 <!--
-# v0.14.0
+# v0.15.0
 _2018_
-  - [Downloads for v0.14.0](https://github.com/okkur/syna/releases/tag/v0.14.0)
-  - [Changelog since v0.13.0](#changes-since-v013)
+  - [Downloads for v0.15.0](https://github.com/okkur/syna/releases/tag/v0.15.0)
+  - [Changelog since v0.14.0](#changes-since-v014)
 
-## Documentation for v0.14.0
-[Documentation](/tree/v0.14.0/docs)
+## Documentation for v0.15
+[Documentation](/tree/v0.15/docs)
 
-## Changes since v0.13.0
+## Changes since v0.14.0
 
-## Fixes since v0.13.0
+## Fixes since v0.14.0
 
 ---
 
 -->
+
+# v0.14.0
+_2018-10-15_
+  - [Downloads for v0.14.0](https://github.com/okkur/syna/releases/tag/v0.14.0)
+  - [Changelog since v0.13.0](#changes-since-v013)
+
+## Documentation for v0.14
+[Documentation](/tree/v0.14/docs)
+
+## Changes since v0.13.0
+  - BREAKING: Fragment lookup order was broken in v0.13. Please check your fragments are overwritten as expected.
+  - BREAKING: `item`: Icons should be placed under `asset` table
+  - BREAKING: `items`: Icon for each column should be placed under `asset` table
+  - BREAKING: `logos`: Deprecated `logos` fragment in favor of `items` fragment
+  - BREAKING: `header`: `align` variable is changed to `header_align`
+  - Some colors have slightly changed. The change is a major internal overall. It's not considered a breaking change but please review your design.
+  - `nav`: Breadcrumb support added using `breadcrumb: false/true` and `breadcrumb_level: 1`
+  - `table`/`item`: Extract table into its own helper
+  - `list`: Display date and category for pages
+  - `list`: Pagination is now supported
+  - `list`: Change page title size based on visibility of summary
+  - `list`: Add ability to use a custom summary using `.Params.summary`
+  - `content`: `.Params.summary` added with markdown support
+  - `content`: Display date
+  - `content`: Fix max-width of images in the content
+  - `pricing`: Add warning message in case there are no items available
+  - `global`: All fragments now support alignment of the title and subtitle
+  - `faq`: Add `faq` fragment to list questions and answers
+  - Header (title and subtitle) code extracted into helper partial
+  - Text-color code extracted into helper partial
+  - Theme colors are now customizable through `config.toml`
+  - Hugo resource pipelines now builds sass files instead of Webpack
+  - Make build command minify by default
+
+## Fixes since v0.13.0
+  - `contact`: Fix contact form not submitting data to Netlify
+
+---
 
 # v0.13.0
 _2018-09-10_

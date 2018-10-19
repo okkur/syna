@@ -40,11 +40,11 @@
         {{- range first (.Params.count | default 10) (.page_scratch.Get "pages") -}}
           {{ partial "helpers/slot.html" (dict "root" $ "slot" "before-item")}}
           {{- $page := . -}}
-          {{- $self.page_scratch.Set "page_fragments" (slice .) -}}
+          {{- $self.page_scratch.Set "article_page_fragments" (slice .) -}}
           {{- range .Resources.ByType "page" -}}
-            {{- $self.page_scratch.Add "page_fragments" . -}}
+            {{- $self.page_scratch.Add "article_page_fragments" . -}}
           {{- end -}}
-          {{- $content_page := first 1 (where ($self.page_scratch.Get "page_fragments") "Params.fragment" "in" "content") -}}
+          {{- $content_page := first 1 (where ($self.page_scratch.Get "article_page_fragments") "Params.fragment" "in" "content") -}}
           {{- $display_summary := or (not (isset $self.Params "summary")) (eq $self.Params.summary true) -}}
           {{- if $self.Params.tiled -}}
             <div class="col-lg-6 col-12 mb-2 d-flex">
@@ -122,7 +122,7 @@
                     {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
                   ">
                     {{- range $content_page }}
-                      {{ .Summary }}
+                      {{ cond (isset .Params "summary") (.Params.summary | markdownify) .Summary }}
                       {{- if and (not $self.Params.tiled) (ne $self.Params.read_more false) -}}
                         {{- if or $self.Params.read_more .Truncated }}
                           <a class="badge 

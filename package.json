@@ -1,6 +1,6 @@
 {
   "name": "syna",
-  "version": "0.13.0",
+  "version": "0.14.0",
   "description": "Highly customizable open source theme for Hugo based static websites",
   "main": "static-main",
   "repository": "git@github.com:okkur/syna.git",
@@ -32,6 +32,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free-webfonts": "^1.0.9",
     "bootstrap": "^4.1.1",
+    "chart.js": "^2.7.2",
     "foreman": "^3.0.0",
     "form-validator-simple": "^0.0.11",
     "fuse.js": "^3.2.1",
