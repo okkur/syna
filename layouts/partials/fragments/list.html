@@ -38,7 +38,6 @@
       ">
         {{ partial "helpers/slot.html" (dict "root" $ "slot" "before-content")}}
         {{- range first (.Params.count | default 10) (.page_scratch.Get "pages") -}}
-          {{ partial "helpers/slot.html" (dict "root" $ "slot" "before-item")}}
           {{- $page := . -}}
           {{- $self.page_scratch.Set "article_page_fragments" (slice .) -}}
           {{- range .Resources.ByType "page" -}}
@@ -46,6 +45,7 @@
           {{- end -}}
           {{- $content_page := first 1 (where ($self.page_scratch.Get "article_page_fragments") "Params.fragment" "in" "content") -}}
           {{- $display_summary := or (not (isset $self.Params "summary")) (eq $self.Params.summary true) -}}
+          {{ partial "helpers/slot.html" (dict "root" $ "slot" "before-item" "data" (dict "page" $page "content_fragment" $content_page))}}
           {{- if $self.Params.tiled -}}
             <div class="col-lg-6 col-12 mb-2 d-flex">
           {{- end -}}
@@ -151,7 +151,7 @@
           {{- if $self.Params.tiled }}
             </div>
           {{- end -}}
-          {{ partial "helpers/slot.html" (dict "root" $ "slot" "after-item")}}
+          {{ partial "helpers/slot.html" (dict "root" $ "slot" "after-item" "data" (dict "page" $page "content_fragment" $content_page))}}
         {{- end }}
       </div>
       {{ partial "helpers/slot.html" (dict "root" $ "slot" "after-content")}}
