@@ -36,7 +36,7 @@
       <div class="row mx-0
         {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
       ">
-        {{ partial "helpers/slot.html" (dict "root" $ "slot" "before-all")}}
+        {{ partial "helpers/slot.html" (dict "root" $ "slot" "before-content")}}
         {{- range first (.Params.count | default 10) (.page_scratch.Get "pages") -}}
           {{ partial "helpers/slot.html" (dict "root" $ "slot" "before-item")}}
           {{- $page := . -}}
@@ -154,7 +154,7 @@
           {{ partial "helpers/slot.html" (dict "root" $ "slot" "after-item")}}
         {{- end }}
       </div>
-      {{ partial "helpers/slot.html" (dict "root" $ "slot" "after-all")}}
+      {{ partial "helpers/slot.html" (dict "root" $ "slot" "after-content")}}
       {{- if $renderPagination -}}
         {{- partial "helpers/pagination.html" (dict "paginator" .root.Paginator "page_scratch" .page_scratch) -}}
       {{- end }}
