@@ -157,3 +157,6 @@
 {{/* Disable React by default, we load the framework only if a fragment requires
   it. */}}
 {{- $page_scratch.Set "react" false -}}
+{{/* Empty page slots. This variable stores all the available slots on the
+  page. It can be used for debugging purposes. */}}
+{{ $page_scratch.Set "page_slots" (slice) }}
