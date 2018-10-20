@@ -30,7 +30,6 @@
   <div class="row mx-0
     {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
   ">
-    {{ partial "helpers/slot.html" (dict "root" $ "slot" "before-content")}}
     {{- range first (.Params.count | default 10) (.page_scratch.Get "pages") -}}
       {{- $page := . -}}
       {{- $self.page_scratch.Set "article_page_fragments" (slice .) -}}
@@ -150,7 +149,6 @@
       {{ partial "helpers/slot.html" (dict "root" $ "slot" "after-item" "data" (dict "page" $page "content_fragment" $content_page))}}
     {{- end }}
   </div>
-  {{ partial "helpers/slot.html" (dict "root" $ "slot" "after-content")}}
   {{- if $renderPagination -}}
     {{- partial "helpers/pagination.html" (dict "paginator" .root.Paginator "page_scratch" .page_scratch) -}}
   {{- end }}
