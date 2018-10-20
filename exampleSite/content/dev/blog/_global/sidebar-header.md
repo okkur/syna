@@ -1,7 +1,9 @@
 +++
 fragment = "header"
 slot = "index/sidebar"
+weight = 10
 
 title = "Recent pages"
-weight = 10
+title_align = "left"
+padding = "pb-2"
 +++
