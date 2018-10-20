@@ -12,7 +12,7 @@
 {{- end -}}
 
 {{ $page_scratch.Add "page_slots" (dict "slot" $slot_name "fragments" ($page_scratch.Get $slot_name)) }}
-{{- if lt $nested_level 3 -}}
+{{- if lt $nested_level 2 -}}
   {{- range sort ($page_scratch.Get $slot_name) "Params.weight" -}}
     {{/* Cleanup .Name to be more useful within fragments */}}
     {{- $name := cond (eq $.root.page .) .File.BaseFileName (strings.TrimSuffix ".md" (replace .Name "/index.md" "")) -}}
