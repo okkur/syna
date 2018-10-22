@@ -49,7 +49,9 @@
           <div class="col-12 content
             {{- partial "helpers/text-color.html" (dict "self" $self "light" "muted") -}}
           ">
+            {{- partial "helpers/slot.html" (dict "root" $ "slot" "before-content" "data" (dict "page" $.page "content_fragment" .self)) -}}
             {{ $self.Content | markdownify }}
+            {{- partial "helpers/slot.html" (dict "root" $ "slot" "after-content" "data" (dict "page" $.page "content_fragment" .self)) -}}
           </div>
         </article>
       </div>
