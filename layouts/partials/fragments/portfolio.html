@@ -3,7 +3,7 @@
 {{- .page_scratch.Add "js" ("syna-portfolio.js" | relLangURL) -}}
 {{- $bg := .self.Scratch.Get "bg" }}
 
-{{- partial "helpers/container.html" (dict "start" true "fragment" "portfolio" "in_slot" .in_slot "bg" $bg "Name" .Name "padding" .Params.padding) -}}
+{{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "Name" .Name "Params" .Params) -}}
   {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
   <div class="row">
     {{- if eq (len $items) 0 }}
