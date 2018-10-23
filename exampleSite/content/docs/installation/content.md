@@ -20,6 +20,8 @@ cd themes/syna
 git checkout v0.12.0 # Latest release as of now is v0.12.0
 ```
 
+*You can visit [Hugo's documentation](https://gohugo.io/themes/installing-and-using-themes/) on installing themes for more information.*
+
 ### Using starter
 
 If you don't have a site yet, you can use our [starter](https://github.com/okkur/syna-start).
