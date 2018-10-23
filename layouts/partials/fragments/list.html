@@ -25,7 +25,7 @@
   {{- .page_scratch.Set "paginator" $paginator -}}
 {{- end -}}
 {{- $bg := .self.Scratch.Get "bg" }}
-{{- partial "helpers/container.html" (dict "start" true "fragment" "List" "in_slot" .in_slot "bg" $bg "Name" .Name "padding" .Params.padding) -}}
+{{- partial "helpers/container.html" (dict "start" true "fragment" "list" "in_slot" .in_slot "bg" $bg "Name" .Name "padding" .Params.padding) -}}
   {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
   <div class="row mx-0
     {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}

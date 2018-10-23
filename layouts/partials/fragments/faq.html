@@ -2,7 +2,7 @@
 {{- .page_scratch.Add "js" ("syna-collapse.js" | relLangURL) }}
 {{- $items := where (.page.Resources.Match (printf "%s/*.md" .Name)) ".Name" "ne" .self.Name -}}
 
-{{- partial "helpers/container.html" (dict "start" true "fragment" "FAQ" "in_slot" .in_slot "bg" $bg "Name" .Name "padding" .Params.padding) -}}
+{{- partial "helpers/container.html" (dict "start" true "fragment" "faq" "in_slot" .in_slot "bg" $bg "Name" .Name "padding" .Params.padding) -}}
   {{- with .Params.title }}
   <div class="row">
     <div class="col text-center

@@ -1,5 +1,5 @@
 {{- if .start }}
-{{ (printf "<!-- %s -->" .fragment) | safeHTML }}
+{{ (printf "<!-- %s -->" (humanize .fragment)) | safeHTML }}
 {{- end }}
 {{- if .start }}
 <section id="{{ .Name }}">
