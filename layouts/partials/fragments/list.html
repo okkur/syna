@@ -25,135 +25,131 @@
   {{- .page_scratch.Set "paginator" $paginator -}}
 {{- end -}}
 {{- $bg := .self.Scratch.Get "bg" }}
-
-{{ "<!-- Blog -->" | safeHTML }}
-<section id="{{ .Name }}">
-  <div class="overlay container-fluid
-    {{- printf " bg-%s" $bg -}}
+{{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "Name" .Name "Params" .Params) -}}
+  {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
+  <div class="row mx-0
+    {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
   ">
-    <div class="container py-5">
-      {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
-      <div class="row mx-0
-        {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
-      ">
-        {{- range first (.Params.count | default 10) (.page_scratch.Get "pages") -}}
-          {{- $page := . -}}
-          {{- $self.page_scratch.Set "article_page_fragments" (slice .) -}}
-          {{- range .Resources.ByType "page" -}}
-            {{- $self.page_scratch.Add "article_page_fragments" . -}}
-          {{- end -}}
-          {{- $content_page := first 1 (where ($self.page_scratch.Get "article_page_fragments") "Params.fragment" "in" "content") -}}
-          {{- $display_summary := or (not (isset $self.Params "summary")) (eq $self.Params.summary true) -}}
+    {{- range first (.Params.count | default 10) (.page_scratch.Get "pages") -}}
+      {{- $page := . -}}
+      {{- $self.page_scratch.Set "article_page_fragments" (slice .) -}}
+      {{- range .Resources.ByType "page" -}}
+        {{- $self.page_scratch.Add "article_page_fragments" . -}}
+      {{- end -}}
+      {{- $content_page := first 1 (where ($self.page_scratch.Get "article_page_fragments") "Params.fragment" "in" "content") -}}
+      {{- $display_summary := or (not (isset $self.Params "summary")) (eq $self.Params.summary true) -}}
+      {{ partial "helpers/slot.html" (dict "root" $ "slot" "before-item" "data" (dict "page" $page "content_fragment" $content_page))}}
+      {{- if $self.Params.tiled -}}
+        <div class="col-lg-6 col-12 mb-2 d-flex">
+      {{- end -}}
+        <article class="
           {{- if $self.Params.tiled -}}
-            <div class="col-lg-6 col-12 mb-2 d-flex">
+            {{- print "card w-100" -}}
+          {{- else -}}
+            {{- printf "col-12 mb-%s" (cond $display_summary "4" "2") -}}
+          {{- end -}}">
+          {{- if $self.Params.tiled }}
+            <div class="card-body">
           {{- end -}}
-            <article class="
-              {{- if $self.Params.tiled -}}
-                {{- print "card w-100" -}}
-              {{- else -}}
-                {{- printf "col-12 mb-%s" (cond $display_summary "4" "2") -}}
-              {{- end -}}">
+            {{- if .Params.title -}}
               {{- if $self.Params.tiled }}
-                <div class="card-body">
-              {{- end -}}
-                {{- if .Params.title -}}
-                  {{- if $self.Params.tiled }}
-                    <div class="card-title">
-                  {{- end }}
-                    <div class="col-12 pl-0
-                      {{- partial "helpers/text-color.html" (dict "self" $self.self) -}}
-                    ">
-                      <div class="row align-items-center justify-content-between mx-0">
-                        {{- if $display_summary }}
-                          <h4 class="col-12 col-md px-0">
-                            <a href="{{ .URL }}">
-                              {{- .Params.title | markdownify -}}
-                            </a>
-                          </h4>
-                        {{- else }}
-                          <h5 class="col-12 col-md px-0">
-                            <a href="{{ .URL }}">
-                              {{- .Params.title | markdownify -}}
-                            </a>
-                          </h5>
-                        {{- end -}}
-                        {{- if and (not $self.Params.tiled) $self.Params.display_date }}
-                          {{- range $content_page -}}
-                            {{- partial "helpers/publish-date.html" (dict "root" . "background" $bg "badge" false) -}}
-                          {{- end -}}
-                        {{- end }}
-                      </div>
-                    </div>
-                    {{- if or (and $self.Params.tiled $self.Params.display_date) .Params.categories -}}
-                      <div class="col-12 pb-1 px-0">
-                        {{- if and $self.Params.tiled $self.Params.display_date -}}
-                          {{- range $content_page -}}
-                            {{- partial "helpers/publish-date.html" (dict "root" . "background" $bg) -}}
-                          {{- end -}}
-                        {{- end }}
-                        {{- with .Params.categories }}
-                          {{- partial "helpers/categories.html" (dict "categories" . "background" $bg) -}}
-                        {{- end }}
-                      </div>
-                    {{- end }}
-                  {{- if $self.Params.tiled }}
-                    </div>
-                  {{- end -}}
-                {{- end -}}
-                {{- range $content_page }}
-                  {{- if and (ne $self.Params.images false) .Params.asset -}}
-                    {{- $file_path := strings.TrimSuffix ".md" (replace .File.Path "/index.md" "") -}}
-                    {{- $page_scratch := $.page_scratch -}}
-                    {{- $root := (dict "page" (dict "file_path" $file_path) "page_scratch" $page_scratch "page" $page) }}
-                    <div class="col-12
-                      {{- printf " p%s-0" (cond (eq $self.Params.tiled true) "x" "l") -}}
-                    ">
-                      <img
-                        src="{{ partial "helpers/image.html" (dict "root" $root "asset" .Params.asset) }}"
-                        alt="{{ .Params.subtitle | default .Params.title }}"
-                        class="img-fluid mb-4">
-                    </div>
-                  {{- end -}}
-                {{- end -}}
-                {{- if $display_summary }}
-                  <div class="col-12 pl-0
-                    {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
-                  ">
-                    {{- range $content_page }}
-                      {{ cond (isset .Params "summary") (.Params.summary | markdownify) .Summary }}
-                      {{- if and (not $self.Params.tiled) (ne $self.Params.read_more false) -}}
-                        {{- if or $self.Params.read_more .Truncated }}
-                          <a class="badge 
-                            {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-                              {{- printf " badge-%s" "dark" -}}
-                            {{- else -}}
-                              {{- printf " badge-%s" "secondary" -}}
-                            {{- end -}}
-                          " href="{{ .URL }}">{{ i18n "content.readmore" | default "Read more..." }}</a>
-                        {{- end -}}
-                      {{- end -}}
+                <div class="card-title">
+              {{- end }}
+                <div class="col-12 pl-0
+                  {{- partial "helpers/text-color.html" (dict "self" $self.self) -}}
+                ">
+                  <div class="row align-items-center justify-content-between mx-0">
+                    {{- if $display_summary }}
+                      <h4 class="col-12 col-md px-0">
+                        <a href="{{ .URL }}">
+                          {{- .Params.title | markdownify -}}
+                        </a>
+                      </h4>
+                    {{- else }}
+                      <h5 class="col-12 col-md px-0">
+                        <a href="{{ .URL }}">
+                          {{- .Params.title | markdownify -}}
+                        </a>
+                      </h5>
                     {{- end -}}
+                    {{- if and (not $self.Params.tiled) $self.Params.display_date }}
+                      {{- range $content_page -}}
+                        {{- partial "helpers/publish-date.html" (dict "root" . "background" $bg "badge" false) -}}
+                      {{- end -}}
+                    {{- end }}
                   </div>
-                {{- end -}}
+                </div>
+                {{- if or (and $self.Params.tiled $self.Params.display_date) (and (ne $self.Params.display_categories false) .Params.categories) -}}
+                  <div class="col-12 pb-1 px-0">
+                    {{- if and $self.Params.tiled $self.Params.display_date -}}
+                      {{- range $content_page -}}
+                        {{- partial "helpers/publish-date.html" (dict "root" . "background" $bg) -}}
+                      {{- end -}}
+                    {{- end }}
+                    {{- if ne $self.Params.display_categories false -}}
+                      {{- with .Params.categories }}
+                        {{- partial "helpers/categories.html" (dict "categories" . "background" $bg) -}}
+                      {{- end -}}
+                    {{- end }}
+                  </div>
+                {{- end }}
               {{- if $self.Params.tiled }}
                 </div>
+              {{- end -}}
+            {{- end -}}
+            {{- range $content_page }}
+              {{- if and (ne $self.Params.images false) .Params.asset -}}
+                {{- $file_path := strings.TrimSuffix ".md" (replace .File.Path "/index.md" "") -}}
+                {{- $page_scratch := $.page_scratch -}}
+                {{- $root := (dict "page" (dict "file_path" $file_path) "page_scratch" $page_scratch "page" $page) }}
+                <div class="col-12
+                  {{- printf " p%s-0" (cond (eq $self.Params.tiled true) "x" "l") -}}
+                ">
+                  <img
+                    src="{{ partial "helpers/image.html" (dict "root" $root "asset" .Params.asset) }}"
+                    alt="{{ .Params.subtitle | default .Params.title }}"
+                    class="img-fluid mb-4">
+                </div>
+              {{- end -}}
+            {{- end -}}
+            {{- if $display_summary }}
+              <div class="col-12 pl-0
+                {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
+              ">
                 {{- range $content_page }}
-                  {{- if and (ne $self.Params.read_more false) (or $self.Params.read_more .Truncated) }}
-                    <div class="card-footer">
-                      <a href="{{ .URL }}">{{ i18n "content.readmore" | default "Read more..." }}</a>
-                    </div>
+                  {{ cond (isset .Params "summary") (.Params.summary | markdownify) .Summary }}
+                  {{- if and (not $self.Params.tiled) (ne $self.Params.read_more false) -}}
+                    {{- if or $self.Params.read_more .Truncated }}
+                      <a class="badge 
+                        {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+                          {{- printf " badge-%s" "dark" -}}
+                        {{- else -}}
+                          {{- printf " badge-%s" "secondary" -}}
+                        {{- end -}}
+                      " href="{{ .URL }}">{{ i18n "content.readmore" | default "Read more..." }}</a>
+                    {{- end -}}
                   {{- end -}}
                 {{- end -}}
-              {{- end }}
-            </article>
+              </div>
+            {{- end -}}
           {{- if $self.Params.tiled }}
             </div>
-          {{- end -}}
-        {{- end }}
-      </div>
-      {{- if $renderPagination -}}
-        {{- partial "helpers/pagination.html" (dict "paginator" .root.Paginator "page_scratch" .page_scratch) -}}
-      {{- end }}
-    </div>
+            {{- range $content_page }}
+              {{- if and (ne $self.Params.read_more false) (or $self.Params.read_more .Truncated) }}
+                <div class="card-footer">
+                  <a href="{{ .URL }}">{{ i18n "content.readmore" | default "Read more..." }}</a>
+                </div>
+              {{- end -}}
+            {{- end -}}
+          {{- end }}
+        </article>
+      {{- if $self.Params.tiled }}
+        </div>
+      {{- end -}}
+      {{ partial "helpers/slot.html" (dict "root" $ "slot" "after-item" "data" (dict "page" $page "content_fragment" $content_page))}}
+    {{- end }}
   </div>
-</section>
+  {{- if $renderPagination -}}
+    {{- partial "helpers/pagination.html" (dict "paginator" .root.Paginator "page_scratch" .page_scratch) -}}
+  {{- end }}
+{{- partial "helpers/container.html" (dict "end" true "in_slot" .in_slot) -}}

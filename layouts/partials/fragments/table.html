@@ -1,23 +1,16 @@
 {{- $bg := .self.Scratch.Get "bg" }}
 
-{{ "<!-- Table -->" | safeHTML }}
-<section id="{{ .Name }}">
-  <div class="overlay container-fluid
-    {{- printf " bg-%s" $bg -}}
-  ">
-    <div class="container py-5">
-      {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
-      <div class="row align-items-center text-center justify-content-end">
-        <div class="col-12 order-lg-1 text-center">
-          {{- if .Params.rows }}
-            <div class="row justify-content-center">
-              <div class="col table-responsive">
-                {{ partial "helpers/table.html" (dict "header" .Params.header "rows" .Params.rows "page_scratch" .page_scratch "background" $bg) }}
-              </div>
-            </div>
-          {{- end }}
+{{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "Name" .Name "Params" .Params) -}}
+  {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
+  <div class="row align-items-center text-center justify-content-end">
+    <div class="col-12 order-lg-1 text-center">
+      {{- if .Params.rows }}
+        <div class="row justify-content-center">
+          <div class="col table-responsive">
+            {{ partial "helpers/table.html" (dict "header" .Params.header "rows" .Params.rows "page_scratch" .page_scratch "background" $bg) }}
+          </div>
         </div>
-      </div>
+      {{- end }}
     </div>
-    </div>
-</section>
+  </div>
+{{- partial "helpers/container.html" (dict "end" true "in_slot" .in_slot) -}}

@@ -2,72 +2,65 @@
 {{- .page_scratch.Add "js" ("syna-collapse.js" | relLangURL) }}
 {{- $items := where (.page.Resources.Match (printf "%s/*.md" .Name)) ".Name" "ne" .self.Name -}}
 
-{{ "<!-- FAQ -->" | safeHTML }}
-<section id="{{ .Name }}">
-  <div class="overlay container-fluid
-    {{- printf " bg-%s" $bg -}}
-  ">
-    <div class="container py-4">
-      {{- with .Params.title }}
-      <div class="row">
-        <div class="col text-center
-          {{- if or (eq $bg "secondary") (eq $bg "white") (eq $bg "primary") -}}
-            {{- printf " text-%s" "dark" -}}
-          {{- else -}}
-            {{- printf " text-%s" "white" -}}
-          {{- end -}}
-        ">
-          <h4>
-            {{- . | markdownify -}}
-          </h4>
-        </div>
-      </div>
+{{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "Name" .Name "Params" .Params) -}}
+  {{- with .Params.title }}
+  <div class="row">
+    <div class="col text-center
+      {{- if or (eq $bg "secondary") (eq $bg "white") (eq $bg "primary") -}}
+        {{- printf " text-%s" "dark" -}}
+      {{- else -}}
+        {{- printf " text-%s" "white" -}}
       {{- end -}}
-      {{- with .Params.subtitle }}
-      <div class="row">
-        <div class="col text-center
-          {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-            {{- printf " text-%s" "dark" -}}
-          {{- else -}}
-            {{- printf " text-muted text-%s" "secondary" -}}
-          {{- end -}} 
-        ">
-          <h5>
-            {{- . | markdownify -}}
-          </h5>
-        </div>
-      </div>
-      {{- end }}
-      <div class="row text-center justify-content-center">
-        <div class="faq">
-          {{- if eq (len $items) 0 -}}
-            {{- partial "helpers/empty-subpath.html" (dict "context" "faq" "root" $) -}}
-          {{- else -}}
-            {{- range $items -}}
-              {{/* Handle special case of index.md being considered an item */}}
-              {{- if not (in .Name "/index.md") -}}
-                {{- $item := .Params }}
-                {{- $card_header_id := printf "%s" (strings.TrimSuffix ".md" (replace .Name (printf "%s/" $.Name) "")) }}
-                {{- $collapse_id := printf "%s-collapse" (strings.TrimSuffix ".md" (replace .Name (printf "%s/" $.Name) "")) }}
-                  <div class="card">
-                    <div id="{{ $card_header_id }}" class="card-header" data-toggle="collapse" data-target="#{{ $collapse_id }}"
-                                aria-expanded="false" aria-controls="{{ $collapse_id }}">
-                      <h5 class="mb-0">
-                          {{ $item.title }}
-                      </h5>
-                    </div>
-
-                    <div id="{{ $collapse_id }}" class="collapse" aria-labelledby="{{ $card_header_id }}" data-parent="faq">
-                      <div class="card-body">
-                        {{ .Content }}
-                      </div>
-                    </div>
-                  </div>
-                {{- end -}}
-            {{- end }}
-          {{- end }}
-        </div>
-      </div>
+    ">
+      <h4>
+        {{- . | markdownify -}}
+      </h4>
     </div>
   </div>
-</section>
+  {{- end -}}
+  {{- with .Params.subtitle }}
+  <div class="row">
+    <div class="col text-center
+      {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
+        {{- printf " text-%s" "dark" -}}
+      {{- else -}}
+        {{- printf " text-muted text-%s" "secondary" -}}
+      {{- end -}} 
+    ">
+      <h5>
+        {{- . | markdownify -}}
+      </h5>
+    </div>
+  </div>
+  {{- end }}
+  <div class="row text-center justify-content-center">
+    <div class="faq">
+      {{- if eq (len $items) 0 -}}
+        {{- partial "helpers/empty-subpath.html" (dict "context" "faq" "root" $) -}}
+      {{- else -}}
+        {{- range $items -}}
+          {{/* Handle special case of index.md being considered an item */}}
+          {{- if not (in .Name "/index.md") -}}
+            {{- $item := .Params }}
+            {{- $card_header_id := printf "%s" (strings.TrimSuffix ".md" (replace .Name (printf "%s/" $.Name) "")) }}
+            {{- $collapse_id := printf "%s-collapse" (strings.TrimSuffix ".md" (replace .Name (printf "%s/" $.Name) "")) }}
+              <div class="card">
+                <div id="{{ $card_header_id }}" class="card-header" data-toggle="collapse" data-target="#{{ $collapse_id }}"
+                            aria-expanded="false" aria-controls="{{ $collapse_id }}">
+                  <h5 class="mb-0">
+                      {{ $item.title }}
+                  </h5>
+                </div>
+
+                <div id="{{ $collapse_id }}" class="collapse" aria-labelledby="{{ $card_header_id }}" data-parent="faq">
+                  <div class="card-body">
+                    {{ .Content }}
+                  </div>
+                </div>
+              </div>
+            {{- end -}}
+        {{- end }}
+      {{- end }}
+    </div>
+  </div>
+{{- partial "helpers/container.html" (dict "end" true "in_slot" .in_slot) -}}

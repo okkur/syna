@@ -5,8 +5,12 @@ weight = 100
 
 title = "Zombie ipsum reversus ab viral inferno"
 #subtitle = ""
+title_align = "left"
 
 display_date = true
+
+[sidebar]
+  align = "right"
 
 [asset]
   image = "image.png"

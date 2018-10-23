@@ -9,7 +9,7 @@
     <div class="container py-5">
       <div class="row">
         {{- with .Params.sidebar -}}
-          <div class="content-sidebar col-md-3 pb-4 {{- if (eq .align "right") }} order-1 {{- else }} order-0 {{- end -}}">
+          <div class="content-sidebar col-md-3 pb-4 px-0 {{- if (eq .align "right") }} order-1 {{- else }} order-0 {{- end -}}">
             {{- if .title }}
               <div class="col-12 pb-3
                 {{- partial "helpers/text-color.html" (dict "self" $self) -}}
@@ -19,10 +19,11 @@
                 </h1>
               </div>
             {{- end }}
-            <div class="col-12
+            <div class="col-12 px-0
               {{- partial "helpers/text-color.html" (dict "self" $self "light" "secondary") -}}
             ">
               {{- .content | markdownify -}}
+              {{ partial "helpers/slot.html" (dict "root" $ "slot" "sidebar")}}
             </div>
           </div>
           <article class="col-md-9">
