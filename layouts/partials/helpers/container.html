@@ -1,5 +1,5 @@
 {{- if .start }}
-{{ (printf "<!-- %s -->" .fragment) | safeHTML }}
+{{ (printf "<!-- %s -->" (humanize .Params.fragment)) | safeHTML }}
 {{- end }}
 {{- if .start }}
 <section id="{{ .Name }}">
@@ -8,7 +8,7 @@
       {{- printf " bg-%s" .bg -}}
     ">
   {{- end }}
-    <div class="container {{ print (.padding | default (cond (eq .in_slot true) "p-0" "py-5")) -}}">
+    <div class="container {{ print (.Params.padding | default (cond (eq .in_slot true) "p-0" "py-5")) -}}">
 {{- end -}}
 {{- if .end }}
     </div>{{/* .container */}}
