@@ -22,5 +22,6 @@ These colors are customized within `config.toml` to fit the Syna theme.
 | light     | #f8f9fa |
 | dark      | #343a40 |
 
-Classes can be applied to style text, buttons and fragment backgrounds and links.
-These colors can also be overwritten for more details see our [style documentation](#styles).
+Classes are mainly used for backgrounds and button colors.  
+Links, inline code and other elements will also be changed.
+These colors can also be overwritten for more details see our [style documentation](/docs/development/#styles).

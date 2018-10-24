@@ -21,9 +21,9 @@ make dev # Or make build for production build
 ### Styles
 
 Syna is using Bootstrap v4.1 with a customized set of colors.
-You can change these colors by editing the them in `config.toml`.
-To change other Bootstrap variables visit `assets/styles/bootstrap/_variables.scss` file.
-We also use some extra styles to customize some parts of the theme which are available in the `assets/styles` directory.
+You can change these colors by editing them in `config.toml`.
+Change other Bootstrap variables using `assets/styles/bootstrap/_variables.scss`.
+Syna customizes some parts of the theme via custom css, which is available in the `assets/styles` directory.
 
 ### JavaScript
 
@@ -33,7 +33,7 @@ Within the `assets/js/` directory there is an `index.js` file that is the main s
 Every other script is needed by the fragment of the same name.
 For example `hero.js` is needed by the `hero` fragment.
 
-If you want to add an extra script for an specific fragment, you need to add that script as an entry point in the [webpack configuration file](/webpack.config.js).
+If you want to add an extra script for a specific fragment, you need to add that script as an entry point in the [webpack configuration file](/webpack.config.js).
 Then import that script inside the fragment (using the `script` tag).
 
 Transpiled and bundled JS files are located inside `assets/scripts/` directory and are generated using Webpack.

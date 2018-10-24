@@ -1,6 +1,6 @@
 +++
 fragment = "content"
-title = "Global variables"
+title = "Global Variables"
 weight = 100
 
 [sidebar]

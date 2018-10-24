@@ -11,7 +11,7 @@ title = "Fragments Implementation"
 Fragments themselves are [Hugo partials](https://gohugo.io/templates/partials/) that are located in `layouts/partials/fragments/`.
 Partials built into Syna are stored within the theme's layout directory.
 Hugo enables local or per website overwrites of layouts and partials.
-For more details checkout [Hugo's template lookup order](https://gohugo.io/templates/lookup-order/)).
+For more details checkout [Hugo's template lookup order](https://gohugo.io/templates/lookup-order/).
 
 The default layout `single.html` is used to render each page. For list pages we use `list.html` layout.
 **These layouts don't need to be explicitly mentioned**
@@ -37,5 +37,5 @@ The rendering code flow of Syna would do the following:
 
 ### Creating new fragments
 
-In order to create a new fragment for you website create a new layout file named after your fragment and place it under `[project_root]/layouts/partials/fragments/`.
+In order to create a custom fragment for your website create a new layout file named after your fragment and place it under `[project_root]/layouts/partials/fragments/`.
 Fragments are partials and follow the same rules. If you are not familiar with partials more details are available in the [Hugo documentation](https://gohugo.io/templates/partials/).

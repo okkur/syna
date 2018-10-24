@@ -12,8 +12,7 @@ Syna is a Hugo template built to be customizable and easy to use.
 To achieve this we have built it in a way that all pages are created using building blocks called fragments.
 Each page within a Syna based website is created using fragments.
 
-```
-If there is something that's not documented, create a new issue or contribute it.
 
-See how you can contribute with our [contribution guide](/CONTRIBUTING.md).
-```
+If anything is not documented or needs more details, feel free to open an issue or contribute by opening a pull request.
+
+*See how you can contribute with our [contribution guide](/CONTRIBUTING.md).*
