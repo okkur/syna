@@ -146,7 +146,7 @@
       {{- if $self.Params.tiled }}
         </div>
       {{- end -}}
-      {{ partial "helpers/slot.html" (dict "root" $ "slot" "after-item" "data" (dict "page" $page "content_fragment" $content_page))}}
+      {{ partial "helpers/slot.html" (dict "root" $ "slot" "after-item" "data" (dict "page" $page "content_fragment" (index $content_page 0))) }}
     {{- end }}
   </div>
   {{- if $renderPagination -}}
