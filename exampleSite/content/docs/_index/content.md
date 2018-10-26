@@ -6,7 +6,7 @@ weight = 100
   enable = true
 +++
 
-> Highly customizable open source theme for Hugo based static websites
+Highly customizable open source theme for Hugo based static websites
 
 Syna is a Hugo template built to be customizable and easy to use.
 To achieve this we have built it in a way that all pages are created using building blocks called fragments.

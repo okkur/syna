@@ -16,7 +16,7 @@ make dep
 make dev # Or make build for production build
 ```
 
-> Prerequisites: node and yarn need to be installed on your system.
+*Prerequisites: node and yarn need to be installed on your system.*
 
 ### Styles
 

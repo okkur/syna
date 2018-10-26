@@ -20,6 +20,8 @@
   {{/* count the number of remaining li tags and only display ToC if more than
     1, otherwise why bother */}}
   {{- if gt (len (split $toc "<li>")) 2 -}}
-    {{- safeHTML $toc -}}
+    <div class="toc">
+      {{- safeHTML $toc -}}
+    </div>
   {{- end -}}
 {{- partial "helpers/container.html" (dict "end" true "in_slot" .in_slot) -}}
