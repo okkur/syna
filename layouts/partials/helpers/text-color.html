@@ -1,8 +1,8 @@
 {{- $bg := .self.Scratch.Get "bg" }}
-{{- $text_dark := cond (isset . "dark") (cond (eq .dark "") "" (printf "text-%s" .dark)) "text-dark" -}}
-{{- $text_light := cond (isset . "light") (cond (eq .light "") "" (printf "text-%s" .light)) "text-light" -}}
+{{- $text_black := cond (isset . "dark") (cond (eq .dark "") "" (printf "text-%s" .dark)) "text-black" -}}
+{{- $text_white := cond (isset . "light") (cond (eq .light "") "" (printf "text-%s" .light)) "text-white" -}}
 {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
-  {{- printf " %s" $text_dark -}}
+  {{- printf " %s" $text_black -}}
 {{- else -}}
-  {{- printf " %s" $text_light -}}
+  {{- printf " %s" $text_white -}}
 {{- end -}}
