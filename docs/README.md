@@ -28,7 +28,6 @@ Each page within a Syna based website is created using fragments.
     - [Using starter](#using-starter)
   - [Usage and concepts](#usage-and-concepts)
     - [Fragments](#fragments)
-    - [Built-in fragments](#built-in-fragments)
     - [Image resource fallthrough](#image-resource-fallthrough)
     - [Supported Colors](#supported-colors)
     - [Short-comings](#short-comings)
@@ -108,26 +107,6 @@ For image bundling or data that is separate such as member and item (`items` fra
 The attributes and content of this file are passed to the specified fragment (`fragment = "content-single"`).
 Using the `weight` attribute you can specify the place on the page the fragment is rendered.
 
-### Built-in fragments
-
-Currently the following fragments are available. Their [usage example](https://github.com/okkur/syna/tree/master/exampleSite/content/_index) is available as well.
-*Documentation for the fragments is WIP*
-
-- **content-single**: markdown content
-- **content-split**: markdown content with an additional sidebar
-- **nav**: navigation including logo, menu and repository button
-- **copyright**: copyright notice including attribution and menu
-- **footer**: small description including social buttons, menu and a logo
-- **hero**: huge header image including logo, call to action and more
-- [**contact**](./fragments/contact.md): contact form including recaptcha and netlify support
-- **buttons**: call to action buttons
-- **embed**: embed media such as newsletters, forms, videos or other iframes
-- **item**: single item rendering content including an image, buttons or icons
-- **items**: multiple items rendered horizontally including icons
-- **logos**: images/logos for references, users or more
-- **member**: team members including avatar, location, position, scope and social icons
-- **table**: responsive table including hiding elements on mobile, buttons, icons and more
-
 ### Image resource fallthrough
 
 Some fragments (`hero` fragment for example) may display images, if configured in their content files. The configuration always accepts a filename and the fragment would look for a file with that name in the following order.
@@ -143,7 +122,7 @@ Syna supports custom favicons in config.toml allowing for ICO, PNG or SVG image 
 ### Supported Colors
 
 Fragments and various elements can be customized further using Bootstrap color classes.
-These colors are customized within `static-main/styles/bootstrap-overwrite/` to fit the Syna theme.
+These colors are customized within `config.toml` to fit the Syna theme.
 
 | class     | colors  |
 | --------- | ------- |
@@ -174,7 +153,7 @@ Both `ìndex` and `global` have a special meaning within the Syna fragment and u
 
 ## Front-end development and design
 
-We develop our front-end code in the `static-main/` directory which allows us to have a development directory that would be built to be production ready and put inside the `static/` directory (which is the directory Hugo looks into for front-end files) using [Webpack](https://webpack.js.org/).
+We develop our front-end code in the `assets/` directory which allows us to have a development directory that would be built to be production ready and put inside the `static/` and `resources/` directories (which are the directories Hugo looks into for front-end files) using [Webpack](https://webpack.js.org/) and Hugo's own resource pipelines.
 To start the build process for development run the following commands:
 
 ```
@@ -187,20 +166,22 @@ make dev # Or make build for production build
 ### Styles
 
 Syna is using Bootstrap v4.1 with a customized set of colors.
-You can change these colors by editing the them in `static-main/styles/bootstrap-overwrite/_variables.scss`.
-It's also possible to change any Bootstrap variable in these files.
-We also use some extra styles to customize some parts of the theme which are available in the `static-main/styles` directory.
+You can change these colors by editing the them in `config.toml`.
+To change other Bootstrap variables visit `assets/styles/bootstrap/_variables.scss` file.
+We also use some extra styles to customize some parts of the theme which are available in the `assets/styles` directory.
 
 ### JavaScript
 
 Syna uses code spliting to get bundles for each fragment.
 This allows us to have lighter pages in most cases.
-Within the `static-main/js/` directory there is an `index.js` file that is the main script, which is necessary on all pages.
+Within the `assets/js/` directory there is an `index.js` file that is the main script, which is necessary on all pages.
 Every other script is needed by the fragment of the same name.
 For example `hero.js` is needed by the `hero` fragment.
 
 If you want to add an extra script for an specific fragment, you need to add that script as an entry point in the [webpack configuration file](/webpack.config.js).
 Then import that script inside the fragment (using the `script` tag).
+
+Transpiled and bundled JS files are located inside `assets/scripts/` directory and are generated using Webpack.
 
 #### React support
 
@@ -235,18 +216,24 @@ Partials built into Syna are stored within the theme's layout directory.
 Hugo enables local or per website overwrites of layouts and partials.
 For more details checkout [Hugo's template lookup order](https://gohugo.io/templates/lookup-order/)).
 
-The default layout `single.html` is used to render each page.
-**no need to be explicitly mentioned it**
+The default layout `single.html` is used to render each page. For list pages we use `list.html` layout.
+**These layouts don't need to be explicitly mentioned**
 
 The rendering code flow of Syna would do the following:
 
+- `single.html` or `list.html` layout is called
+  - The layout decides where the page directory is located (for list pages, it would be a `_index` directory next to `index.md`)
+  - `helpers/fragments.html` would find all the global fragments and all the local fragments
+    - The process of finding all the fragments involved destructing the path to the page
+    - Locating all the `_global/` directories in the parent directories and the current directory if the current page is a list page
+    - Sorting the said directories from the closest to the page to the furthest, making the local fragments and nearest `_global` directories more important
+  - The helper would then remove duplicate fragments (fragments with the same name or the same directory name)
+  - All the page fragments are registered in a Scratch and can later be used for various reasons
 - `head.html` partial is rendered from `baseof.html` layout
-- `single.html` layout is rendered
-  - It checks for global fragment content files located in `content/_global/`
-  - It finds all per page fragment content files located in `content/[page]/`(using [Hugo resources](https://gohugo.io/content-management/page-resources/#readout)) on the page
-  - It renders global fragments if there is no per page fragment with the same file name
-  - It renders all remaining per page fragments
+- `helpers/fragments-renderer.html` is called
   - Fragments are ordered based on their `weight` attribute
+  - Fragments that are not disabled are rendered (404 fragment would not be rendered in any other page than 404)
+- A container for modal and React is added to the page in case there is any need for them
 - `js.html` partial is rendered from `baseof.html` layout
 
 ![This is how fragments are rendered in the single layout](/docs/fragments-01.png)
