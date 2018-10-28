@@ -1,9 +1,49 @@
 {{- if (isset . "data") -}}
+  {{- .page_scratch.Set "content_fragment_path" .data.content_fragment -}}
   {{- .page_scratch.Set "content_page" .data.content_fragment -}}
   {{- .page_scratch.Set "url" .data.page.URL -}}
 {{- else -}}
-  {{- .page_scratch.Set "content_page" .Params.content -}}
+  {{- .page_scratch.Set "content_fragment_path" .Params.content -}}
   {{- .page_scratch.Set "url" .root.URL -}}
+
+  {{/* The following code tries to find the page from the path provided. When
+    the page is found, the rest of the path would be extracted to later be
+    used to match the resources of the page. */}}
+  {{- $directories := findRE "[^\\/]+" .Params.content -}}
+  {{- .page_scratch.Set "page" "" -}}
+  {{- .page_scratch.Set "path" "" -}}
+  {{- .page_scratch.Set "fragment_path" "index.md" -}}
+  {{- range $index, $directory := $directories -}}
+    {{- $.page_scratch.Set "path" (printf "%s/%s" ($.page_scratch.Get "path") $directory) -}}
+    {{- $page := $.Site.GetPage ($.page_scratch.Get "path") -}}
+    {{- if $page -}}
+      {{- $.page_scratch.Set "page" $page -}}
+    {{- else -}}
+      {{- if (eq ($.page_scratch.Get "fragment_path") "index.md") -}}
+        {{- $.page_scratch.Set "fragment_path" "" -}}
+      {{- end -}}
+      {{- $.page_scratch.Set "fragment_path" (printf "%s/%s" ($.page_scratch.Get "fragment_path") $directory) -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- $page := cond (eq (.page_scratch.Get "page") "") $.page (.page_scratch.Get "page") -}}
+  {{- if $page -}}
+    {{- if (eq ($.page_scratch.Get "fragment_path") "index.md") -}}
+      {{- .page_scratch.Set "content_page" $page -}}
+    {{- else -}}
+      {{- .page_scratch.Set "toc_content_fragment" ($page.Resources.Match (strings.TrimPrefix "/" (.page_scratch.Get "fragment_path"))) -}}
+      {{- if gt (len (.page_scratch.Get "toc_content_fragment")) 0 -}}
+        {{- $fragment := index (.page_scratch.Get "toc_content_fragment") 0 -}}
+        {{- if (eq $fragment.Params.fragment "content") -}}
+          {{- .page_scratch.Set "content_page" $fragment -}}
+        {{- else -}}
+          {{- partial "helpers/warning.html" (dict "Site" $.Site "message" (printf "The fragment (path: %s) is not a content fragment." (.page_scratch.Get "content_fragment_path"))) -}}
+        {{- end -}}
+      {{- else -}}
+        {{- partial "helpers/warning.html" (dict "Site" $.Site "message" (printf "The content fragment (path: %s) could not be found." (.page_scratch.Get "content_fragment_path"))) -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
 {{- end -}}
 
 {{- $bg := .self.Scratch.Get "bg" }}
