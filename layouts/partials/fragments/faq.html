@@ -3,36 +3,7 @@
 {{- $items := where (.page.Resources.Match (printf "%s/*.md" .Name)) ".Name" "ne" .self.Name -}}
 
 {{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "Name" .Name "Params" .Params) -}}
-  {{- with .Params.title }}
-  <div class="row">
-    <div class="col text-center
-      {{- if or (eq $bg "secondary") (eq $bg "white") (eq $bg "primary") -}}
-        {{- printf " text-%s" "dark" -}}
-      {{- else -}}
-        {{- printf " text-%s" "white" -}}
-      {{- end -}}
-    ">
-      <h4>
-        {{- . | markdownify -}}
-      </h4>
-    </div>
-  </div>
-  {{- end -}}
-  {{- with .Params.subtitle }}
-  <div class="row">
-    <div class="col text-center
-      {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-        {{- printf " text-%s" "dark" -}}
-      {{- else -}}
-        {{- printf " text-muted text-%s" "secondary" -}}
-      {{- end -}} 
-    ">
-      <h5>
-        {{- . | markdownify -}}
-      </h5>
-    </div>
-  </div>
-  {{- end }}
+  {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
   <div class="row text-center justify-content-center">
     <div class="faq">
       {{- if eq (len $items) 0 -}}
