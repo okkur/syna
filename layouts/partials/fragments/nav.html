@@ -13,7 +13,7 @@
   {{- else -}}
     {{- printf " navbar-%s" "dark" -}}
   {{- end -}}
-" id="{{ .Name }}">
+" id="{{ .Name }}" role="navigation">
   <div class="container">
     {{- if .Params.asset.image }}
       <a class="navbar-brand py-0" href="{{ "#page-top" | relLangURL }}">
