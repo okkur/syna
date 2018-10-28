@@ -19,18 +19,5 @@
       vertical-align: middle;
       white-space: nowrap;
     }
-    
-    .collapse {
-      display: block;
-      height: auto;
-      max-height: 0;
-      overflow: hidden;
-      transition: all 0.6s ease-out;
-  
-      &.show {
-        max-height: 1000px;
-        transition: all 0.6s ease-in;
-      }
-    }
   }
 }
