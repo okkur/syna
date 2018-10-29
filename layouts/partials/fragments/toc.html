@@ -8,19 +8,21 @@
 
 {{- $bg := .self.Scratch.Get "bg" }}
 {{- $toc := (.page_scratch.Get "content_fragment").TableOfContents -}}
-{{- if gt (len (split $toc "<li>")) 1 -}}
+{{/* Remove empty lists and list items */}}
+{{- $toc := (replace $toc "<ul>\n<li>\n<ul>" "<ul>") -}}
+{{- $toc := (replace $toc "<ul>\n<li>\n<ul>" "<ul>") -}}
+{{- $toc := (replace $toc "<ul>\n<li>\n<ul>" "<ul>") -}}
+{{- $toc := (replace $toc "</ul></li>\n</ul>" "</ul>") -}}
+{{- $toc := (replace $toc "</ul></li>\n</ul>" "</ul>") -}}
+{{- $toc := (replace $toc "</ul></li>\n</ul>" "</ul>") -}}
+{{- if gt (len (split $toc "<li>")) 2 -}}
   {{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "Name" .Name "padding" .Params.padding) -}}
-    {{/* Remove empty lists and list items */}}
-    {{- $toc := (replace $toc "<ul>\n<li>\n<ul>" "<ul>") -}}
-    {{- $toc := (replace $toc "<ul>\n<li>\n<ul>" "<ul>") -}}
-    {{- $toc := (replace $toc "<ul>\n<li>\n<ul>" "<ul>") -}}
-    {{- $toc := (replace $toc "</ul></li>\n</ul>" "</ul>") -}}
-    {{- $toc := (replace $toc "</ul></li>\n</ul>" "</ul>") -}}
-    {{- $toc := (replace $toc "</ul></li>\n</ul>" "</ul>") -}}
-    {{- $toc := (replace $toc "<li><a href=\"" (printf "<li><a href=\"%s" (.page_scratch.Get "url"))) -}}
     {{/* count the number of remaining li tags and only display ToC if more than
-      1, otherwise why bother */}}
+      2, otherwise why bother */}}
     {{- if gt (len (split $toc "<li>")) 2 -}}
+      {{/* Correct the urls (default urls are relative to the page which
+        contains the content which might not be the case for us.) */}}
+      {{- $toc := (replace $toc "<li><a href=\"" (printf "<li><a href=\"%s" (.page_scratch.Get "url"))) -}}
       <div class="toc">
         {{- safeHTML $toc -}}
       </div>
