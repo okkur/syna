@@ -51,6 +51,8 @@
 window.syna.payment.push({
   form: "{{ (printf "#payment-form-%s" .Name) | safeJS }}",
   token: "{{ .Params.stripe_token | safeJS }}",
+  price: "{{ .Params.price | safeJS }}",
+  currency: "{{ .Params.currency | safeJS }}",
   options: {
     classes: {
       base: 'text-body form-control row mx-0 px-2',

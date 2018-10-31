@@ -23,7 +23,7 @@ window.syna.payment.forEach(config => {
         $('.invalid-feedback').text(result.error.message);
       } else {
         const action = form.attr('action');
-        const serializedForm = form.serialize() + `&stripeToken=${result.token.id}`;
+        const serializedForm = form.serialize() + `&stripeToken=${result.token.id}&price=${config.price}&currency=${config.currency}`;
         $.post(action, serializedForm, {
           contentType: 'application/x-www-form-urlencoded',
         });
