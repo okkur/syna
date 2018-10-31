@@ -4,36 +4,30 @@ window.syna.payment.forEach(config => {
   const stripe = Stripe(config.token);
   const elements = stripe.elements();
   const card = elements.create('card', config.options);
-  card.mount('#card-element');
-  card.addEventListener('change', function(event) {
-    const displayError = document.querySelector('.invalid-feedback');
+  card.mount(`${config.form} #card-element`);
+  card.addEventListener('change', e => {
+    const displayError = $('.invalid-feedback');
     if (event.error) {
-      displayError.textContent = event.error.message;
+      displayError.text(event.error.message);
     } else {
-      displayError.textContent = '';
+      displayError.text('');
     }
   });
 
-  const form = document.querySelector('#payment-form');
-  form.addEventListener('submit', function(event) {
-    event.preventDefault();
+  const form = $(config.form);
+  form.on('submit', e => {
+    e.preventDefault();
 
-    stripe.createToken(card).then(function(result) {
+    stripe.createToken(card).then(result => {
       if (result.error) {
-        const errorElement = document.querySelector('.invalid-feedback');
-        errorElement.textContent = result.error.message;
+        $('.invalid-feedback').text(result.error.message);
       } else {
-        stripeTokenHandler(result.token);
+        const action = form.attr('action');
+        const serializedForm = form.serialize() + `&stripeToken=${result.token.id}`;
+        $.post(action, serializedForm, {
+          contentType: 'application/x-www-form-urlencoded',
+        });
       }
     });
   });
-
-  function stripeTokenHandler(token) {
-    const form = $('#payment-form');
-    const action = form.attr('action');
-    const serializedForm = form.serialize() + `&stripeToken=${token.id}`;
-    $.post(action, serializedForm, {
-      contentType: 'application/x-www-form-urlencoded',
-    });
-  }
 });

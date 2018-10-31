@@ -49,3 +49,7 @@
   translation: "Lives in"
 - id: member.reportsTo
   translation: "Reports to"
+  
+# Payment
+- id: payment.email
+  translation: "Your email address"

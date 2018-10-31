@@ -15,11 +15,18 @@
     </div>
   {{- end }}
   <div class="row mt-3 justify-content-center">
-    <form action="
+    <form class="col-sm-12 col-md-8 col-xl-6" method="post" action="
       {{- print .Params.post_url -}}
-    " method="post" id="payment-form" class="col-sm-12 col-md-8 col-xl-6">
+    " id="
+      {{- printf "payment-form-%s" .Name -}}
+    ">
       <div class="form-group">
-        <input id="email" name="email" class="form-control" type="text" data-validation="email" required>
+        <input id="email" name="email" class="form-control" type="text" data-validation="email" required
+          {{- if .email -}}
+            {{- safeHTMLAttr (printf " placeholder=\"%s\"" .label) -}}
+          {{- else -}}
+            {{- safeHTMLAttr (printf " placeholder=\"%s\"" (i18n "payment.email")) -}}
+          {{- end -}}>
         <div class="px-2" data-error id="email-error"></div>
       </div>
       <div class="form-group">
@@ -34,6 +41,7 @@
 {{- partial "helpers/container.html" (dict "end" true "in_slot" .in_slot) -}}
 <script>
 window.syna.payment.push({
+  form: "{{ (printf "#payment-form-%s" .Name) | safeJS }}",
   token: "{{ .Params.stripe_token | safeJS }}",
   options: {
     classes: {
