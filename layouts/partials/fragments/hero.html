@@ -1,6 +1,6 @@
 {{- $self := . -}}
 {{- if .Params.particles -}}
-  {{- .page_scratch.Add "js" ("syna-hero.js" | relLangURL) -}}
+  {{- .page_scratch.Add "js" (dict "file" "syna-hero.js") -}}
 {{- end -}}
 {{- $bg := .self.Scratch.Get "bg" }}
 

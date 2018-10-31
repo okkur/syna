@@ -1,5 +1,5 @@
 {{- $bg := .Params.background | default "white" -}}
-{{- .page_scratch.Add "js" ("syna-collapse.js" | relLangURL) }}
+{{- .page_scratch.Add "js" (dict "file" "syna-collapse.js") }}
 {{- $items := where (.page.Resources.Match (printf "%s/*.md" .Name)) ".Name" "ne" .self.Name -}}
 
 {{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "Name" .Name "Params" .Params) -}}

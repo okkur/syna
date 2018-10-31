@@ -97,10 +97,13 @@ $.ajax = function ajax({
   method,
   url,
   data,
+  options = {
+    contentType: "application/json;charset=UTF-8"
+  }
 }) {
   const xhr = new XMLHttpRequest();
   xhr.open(method.toUpperCase(), url);
-  xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  xhr.setRequestHeader("Content-Type", options.contentType);
   xhr.send(data);
 
   return new Promise((resolve, reject) => {
@@ -116,6 +119,6 @@ $.ajax = function ajax({
   })
 }
 
-$.post = (url, data) => $.ajax({ method: 'post', url, data })
+$.post = (url, data, options) => $.ajax({ method: 'post', url, data, options })
 
 export default $;

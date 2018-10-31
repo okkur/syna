@@ -1,6 +1,6 @@
 {{- $self := . -}}
 {{- $items := where (.page.Resources.Match (printf "%s/*.md" .Name)) ".Name" "ne" .self.Name -}}
-{{- .page_scratch.Add "js" ("syna-portfolio.js" | relLangURL) -}}
+{{- .page_scratch.Add "js" (dict "file" "syna-portfolio.js") -}}
 {{- $bg := .self.Scratch.Get "bg" }}
 
 {{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "Name" .Name "Params" .Params) -}}

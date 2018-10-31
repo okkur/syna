@@ -1,5 +1,5 @@
 {{- $self := . -}}
-{{- .page_scratch.Add "js" ("syna-search.js" | relLangURL) -}}
+{{- .page_scratch.Add "js" (dict "file" "syna-search.js") -}}
 {{- $bg := .self.Scratch.Get "bg" }}
 
 {{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "Name" .Name "Params" .Params) -}}

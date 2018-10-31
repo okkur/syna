@@ -8,6 +8,7 @@ module.exports = {
     editor: './assets/js/editor.js',
     graph: './assets/js/graph.js',
     hero: './assets/js/hero.js',
+    payment: './assets/js/payment.js',
     portfolio: './assets/js/portfolio.js',
     react: './assets/js/react.js',
     search: './assets/js/search.js',

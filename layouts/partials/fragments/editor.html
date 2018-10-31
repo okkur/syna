@@ -1,6 +1,6 @@
 {{- $self := .self -}}
-{{- .page_scratch.Add "js" ("syna-react.js" | relLangURL) -}}
-{{- .page_scratch.Add "js" ("syna-editor.js" | relLangURL) -}}
+{{- .page_scratch.Add "js" (dict "file" "syna-react.js") -}}
+{{- .page_scratch.Add "js" (dict "file" "syna-editor.js") -}}
 {{- .page_scratch.Set "react" true -}}
 {{- $bg := .self.Scratch.Get "bg" }}
 

@@ -34,12 +34,16 @@ const validator = new Validator({
     const genericError = $(`form[id=${id}] .generic-error`)
     const serializedForm = $(`#${id}`).serialize()
     if ($('.g-recaptcha').length === 0) {
-      $.post(action, serializedForm)
+      $.post(action, serializedForm, {
+        contentType: 'application/x-www-form-urlencoded',
+      })
         .then(() => genericSuccess.removeClass('d-none'))
         .catch(() => genericError.removeClass('d-none'));
     } else if (typeof grecaptcha !== "undefined") {
       if (grecaptcha.getResponse() !== "") {
-        $.post(action, serializedForm)
+        $.post(action, serializedForm, {
+          contentType: 'application/x-www-form-urlencoded',
+        })
           .then(() => {
             genericSuccess.removeClass('d-none')
             $(`form[id=${id}] .success`).removeClass('d-none')

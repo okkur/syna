@@ -9,12 +9,26 @@
 
 {{- partial "custom/js.html" . -}}
 {{- range uniq ($.Scratch.Get "js") -}}
-  {{- if hasPrefix . "http" -}}
-    <script async defer src="{{ . }}"></script>
+  {{- if .url -}}
+    <script 
+      {{- if (.async | default true) -}}
+        {{- safeHTMLAttr (print " async") -}}
+      {{- end -}}
+      {{- if (.defer | default true) -}}
+        {{- safeHTMLAttr (print " defer") -}}
+      {{- end -}}
+      {{- safeHTMLAttr (printf " src=\"%s\"" .url) -}}></script>
   {{- else }}
-    {{- $script_template := resources.Get (printf "scripts/%s" .) -}}
+    {{- $script_template := resources.Get (printf "scripts/%s" .file) -}}
     {{- $script := $script_template | resources.Minify | resources.Fingerprint }}
-    <script src="{{ $script.RelPermalink }}" async defer></script>
+    <script 
+      {{- if (.async | default true) -}}
+        {{- safeHTMLAttr (print " async") -}}
+      {{- end -}}
+      {{- if (.defer | default true) -}}
+        {{- safeHTMLAttr (print " defer") -}}
+      {{- end -}}
+      {{- safeHTMLAttr (printf " src=\"%s\"" ($script.RelPermalink | relLangURL)) -}}></script>
   {{- end -}}
 {{- end -}}
 {{- template "_internal/google_analytics_async.html" . -}}
