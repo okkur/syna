@@ -1,4 +1,4 @@
-import serialize from './serialize';
+import serialize, { serializeJSON } from './serialize';
 
 function $(selector) {
   const nodes = typeof selector === 'string' ? Array.from((this && Array.isArray(this) ? this[0] : document).querySelectorAll(selector)) : [selector];
@@ -66,9 +66,13 @@ function $(selector) {
       nodes.forEach(node => node.value = value);
     },
     submit: () => nodes.forEach(node => node.submit()),
-    serialize: () => {
+    serialize: (json = false) => {
       if (nodes.length > 1) {
         throw new Error('Can\'t serialize forms at once');
+      }
+
+      if (json) {
+        return serializeJSON(nodes[0]);
       }
 
       return serialize(nodes[0]);

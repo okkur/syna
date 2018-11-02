@@ -23,10 +23,11 @@ window.syna.payment.forEach(config => {
         $('.invalid-feedback').text(result.error.message);
       } else {
         const action = form.attr('action');
-        const serializedForm = form.serialize() + `&stripeToken=${result.token.id}&price=${config.price}&currency=${config.currency}`;
-        $.post(action, serializedForm, {
-          contentType: 'application/x-www-form-urlencoded',
-        });
+        const serializedForm = JSON.parse(form.serialize(true));
+        serializedForm.stripeToken = result.token.id;
+        serializedForm.price = parseInt(config.price.match(/\w+/g).reduce((tmp, match) => tmp + match, ''), 10);
+        serializedForm.currency = config.currency;
+        $.post(action, JSON.stringify(serializedForm));
       }
     });
   });

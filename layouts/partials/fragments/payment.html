@@ -41,8 +41,26 @@
           </div>
         </div>
       </div>
-      <div class="row justify-content-end pr-3">
-        <button type="submit" class="btn btn-primary">Submit</button>
+      <div class="row justify-content-between pr-3">
+        <div class="col-auto px-0 d-flex flex-column justify-content-center">
+          <div class="generic-success mb-0 text-success d-none" id="generic-success">
+            {{- with .Params.message.success -}}
+              {{- . | markdownify -}}
+            {{- else -}}
+              {{- i18n "payment.defaultGenericSuccess" -}}
+            {{- end }}
+          </div>
+          <div class="generic-error mb-0 text-danger d-none" id="generic-error">
+            {{- with .Params.message.error -}}
+              {{- . | markdownify -}}
+            {{- else -}}
+              {{- i18n "payment.defaultGenericError" }}
+            {{- end }}
+          </div>
+        </div>
+        <div class="col-auto px-0 d-flex flex-column">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
       </div>
     </form>
   </div>
