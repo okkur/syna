@@ -6,7 +6,7 @@ background = "secondary"
 title = "Payment Fragment"
 subtitle = "Doesn't work in demo"
 
-post_url = "/payment"
+post_url = "#"
 stripe_token = "pk_test_TYooMQauvdEDq54NiTphI7jx"
 
 price = "20.00$"
