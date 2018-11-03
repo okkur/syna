@@ -22,3 +22,17 @@
 {{- if .Site.Params.analytics.piwik -}}
   {{- partial "_analytics/piwik.html" . -}}
 {{- end -}}
+
+{{- range (.Scratch.Get "page_config") -}}
+  {{- range .Params.link -}}
+    {{- if eq .block true -}}
+      {{ .html | safeHTML }}
+    {{- end -}}
+  {{- end -}}
+
+  {{- range .Params.script -}}
+    {{- if ne .block true -}}
+      {{ .html | safeHTML }}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}

@@ -81,4 +81,22 @@
     window.syna = {};
     window.synaPortals = {};
   </script>
+
+  {{- range (.Scratch.Get "page_config") -}}
+    {{- range .Params.meta -}}
+      {{ .html | safeHTML }}
+    {{- end -}}
+
+    {{- range .Params.link -}}
+      {{- if ne .block false -}}
+        {{ .html | safeHTML }}
+      {{- end -}}
+    {{- end -}}
+
+    {{- range .Params.script -}}
+      {{- if eq .block true -}}
+        {{ .html | safeHTML }}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
 </head>
