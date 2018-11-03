@@ -15,4 +15,6 @@ The decision on where to add links and scripts is based on usual HTML principles
 
 All three array (`meta`, `link`, `script`) accept an `html` variable. Please add content to them respectively since there is some logic bound to each variable.
 
-The example on this page contains a code to change the curstor (`script`) and a [Bootstrap color scheme](https://bootswatch.com/4/united/bootstrap.min.css) (`link`)
+The example on this page contains a code to change the cursor (`script`) and a [Bootstrap color scheme](https://bootswatch.com/4/united/bootstrap.min.css) (`link`).
+
+You can use this fragment to add custom scripts for different pages, or different sections or all of the pages together (through the [`_global`](/docs/fragments/#global-fragments) directories).
