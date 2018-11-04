@@ -20,11 +20,11 @@ You can also check out our [demo](https://syna.okkur.io/demo/).
 
 ## Documentation
 
-Take a look at our full [documentation](/docs/README.md).
+Take a look at our full [documentation](https://syna.okkur.io/docs/).
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes.](https://github.com/okkur/syna/releases)
+Detailed changes for each release are documented in the [release notes.](https://syna.okkur.io/releases/)
 
 ## Support
 For detailed information on support options see our [support guide](/SUPPORT.md).
