@@ -1,4 +1,4 @@
-{{- $self := .self -}}
+{{- $self := .self.self -}}
 {{- $bg := .background | default "dark" -}}
 <!-- this template is sucked in by search.js and appended to the search-results div above. So editing here will adjust style -->
 <script id="search-empty-template-{{ .name }}" type="text/x-js-template">
@@ -12,7 +12,7 @@
     <div class="p-2">
       <h5>${title}</h5>
       <p class="m-0 
-        {{- partial "helpers/text-color.html" (dict "self" $self) -}}
+        {{- partial "helpers/text-color.html" (dict "self" $self "light" "body" "dark" "white") -}}
       ">${snippet}</p>
       ${ isset tags }<p>Tags: ${tags}</p>${ end }
       ${ isset categories }<p>Categories: ${categories}</p>${ end }

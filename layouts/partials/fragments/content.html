@@ -30,7 +30,7 @@
         {{- else }}
           <article class="col-md-12">
         {{- end }}
-          {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
+          {{- partial "helpers/section-header.html" (dict "self" $self "bg" $bg "params" .Params) }}
           {{- if or .Params.display_date .Params.categories -}}
             <div class="col-12 pb-4 mt-2">
               {{- if .Params.display_date -}}
