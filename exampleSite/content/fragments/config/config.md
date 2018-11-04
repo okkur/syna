@@ -1,17 +1,14 @@
 +++
 fragment = "config"
 
-# Define meta tags
-[[meta]]
-  # html = "<meta meta charset="utf-8">"
+[[config]]
+  type = "css" # Acceptable values are icon, meta, link, css, js. Default is empty. Would not add anything on empty.
+  # block = true # If set to true, would inject the code to the <head> tag. Default is false
+  html = "<link rel='stylesheet' href='https://bootswatch.com/4/united/bootstrap.min.css'>" # HTML code injected directly to the page. Default is empty.
+  # file = "" # Path to file, can be on page or in static/ directory. Default is empty.
 
-# Define link tags
-[[link]]
-  # block = false # Default is true
-  html = "<link rel='stylesheet' href='https://bootswatch.com/4/united/bootstrap.min.css'>"
-
-# Define scripts
-[[script]]
+[[config]]
+  type = "js"
   # block = true # Default is false
   html = """
   <script>

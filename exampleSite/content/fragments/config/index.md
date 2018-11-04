@@ -10,11 +10,10 @@ Add additional `meta` tags, `link` tags and `script` tags to page.
 
 This fragment, unlike most other fragments, doesn't render anything (so it wouldn't need a `weight` variable).
 
-When this fragment is registered in a page, it's variables are taken into account and applied in the `head` tag and right before `</body>`.
-The decision on where to add links and scripts is based on usual HTML principles. `link` tags mostly contain stylesheets or links that need to be considered before page is rendered (styles, favicons, etc.). But scripts are added at the end of the page. You can change this behvaior by changing `block` variable.
+If a config fragment is registered on a page, it's configuration values are considered and added before the `</body>` tag (default) or at the end of `<head>` tag.
 
-All three array (`meta`, `link`, `script`) accept an `html` variable. Please add content to them respectively since there is some logic bound to each variable.
+Acceptable config type are `link`, `meta`, `icon`, `css` and `js`. Each config can contain either `html` or `file`.
 
-The example on this page contains a code to change the cursor (`script`) and a [Bootstrap color scheme](https://bootswatch.com/4/united/bootstrap.min.css) (`link`).
+The example adds [Bootstrap color scheme](https://bootswatch.com/4/united/bootstrap.min.css) (`link`) to the page.
 
 You can use this fragment to add custom scripts for different pages, or different sections or all of the pages together (through the [`_global`](/docs/fragments/#global-fragments) directories).
