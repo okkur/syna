@@ -52,22 +52,22 @@
 
 {{- if ne (.page_scratch.Get "content_page") "" -}}
   {{- $bg := .self.Scratch.Get "bg" }}
-  {{- partial "helpers/container.html" (dict "start" true "fragment" "TOC" "in_slot" .in_slot "bg" $bg "Name" .Name "padding" .Params.padding) -}}
-    {{- $toc := (.page_scratch.Get "content_page").TableOfContents -}}
-    {{/* Remove empty lists and list items */}}
-    {{- $toc := (replace $toc "<ul>\n<li>\n<ul>" "<ul>") -}}
-    {{- $toc := (replace $toc "<ul>\n<li>\n<ul>" "<ul>") -}}
-    {{- $toc := (replace $toc "<ul>\n<li>\n<ul>" "<ul>") -}}
-    {{- $toc := (replace $toc "</ul></li>\n</ul>" "</ul>") -}}
-    {{- $toc := (replace $toc "</ul></li>\n</ul>" "</ul>") -}}
-    {{- $toc := (replace $toc "</ul></li>\n</ul>" "</ul>") -}}
-    {{- $toc := (replace $toc "<li><a href=\"" (printf "<li><a href=\"%s" (.page_scratch.Get "url"))) -}}
-    {{/* count the number of remaining li tags and only display ToC if more than
-      1, otherwise why bother */}}
-    {{- if gt (len (split $toc "<li>")) 2 -}}
-      <div class="toc">
-        {{- safeHTML $toc -}}
-      </div>
-    {{- end -}}
-  {{- partial "helpers/container.html" (dict "end" true "in_slot" .in_slot) -}}
+  {{- $toc := (.page_scratch.Get "content_page").TableOfContents -}}
+  {{/* Remove empty lists and list items */}}
+  {{- $toc := (replace $toc "<ul>\n<li>\n<ul>" "<ul>") -}}
+  {{- $toc := (replace $toc "<ul>\n<li>\n<ul>" "<ul>") -}}
+  {{- $toc := (replace $toc "<ul>\n<li>\n<ul>" "<ul>") -}}
+  {{- $toc := (replace $toc "</ul></li>\n</ul>" "</ul>") -}}
+  {{- $toc := (replace $toc "</ul></li>\n</ul>" "</ul>") -}}
+  {{- $toc := (replace $toc "</ul></li>\n</ul>" "</ul>") -}}
+  {{- $toc := (replace $toc "<li><a href=\"" (printf "<li><a href=\"%s" (.page_scratch.Get "url"))) -}}
+  {{/* count the number of remaining li tags and only display ToC if more than
+    1, otherwise why bother */}}
+  {{- if gt (len (split $toc "<li>")) 2 -}}
+    {{- partial "helpers/container.html" (dict "start" true "fragment" "TOC" "in_slot" .in_slot "bg" $bg "Name" .Name "padding" .Params.padding) -}}
+        <div class="toc">
+          {{- safeHTML $toc -}}
+        </div>
+    {{- partial "helpers/container.html" (dict "end" true "in_slot" .in_slot) -}}
+  {{- end -}}
 {{- end -}}
