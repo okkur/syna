@@ -14,7 +14,7 @@
       {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
         {{- printf " text-%s" "dark" -}}
       {{- else -}}
-        {{- printf " text-muted text-%s" "secondary" -}}
+        {{- printf " text-%s" "secondary" -}}
       {{- end -}}">${snippet}</p>
       ${ isset tags }<p>Tags: ${tags}</p>${ end }
       ${ isset categories }<p>Categories: ${categories}</p>${ end }
