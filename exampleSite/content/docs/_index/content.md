@@ -15,4 +15,4 @@ Each page within a Syna based website is created using fragments.
 
 If anything is not documented or needs more details, feel free to open an issue or contribute by opening a pull request.
 
-*See how you can contribute with our [contribution guide](/CONTRIBUTING.md).*
+*See how you can contribute with our [contribution guide](https://github.com/okkur/syna/blob/master/CONTRIBUTING.md).*

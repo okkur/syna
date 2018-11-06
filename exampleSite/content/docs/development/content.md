@@ -33,7 +33,7 @@ Within the `assets/js/` directory there is an `index.js` file that is the main s
 Every other script is needed by the fragment of the same name.
 For example `hero.js` is needed by the `hero` fragment.
 
-If you want to add an extra script for a specific fragment, you need to add that script as an entry point in the [webpack configuration file](/webpack.config.js).
+If you want to add an extra script for a specific fragment, you need to add that script as an entry point in the [webpack configuration file](https://github.com/okkur/syna/blob/master/webpack.config.js).
 Then import that script inside the fragment (using the `script` tag).
 
 Transpiled and bundled JS files are located inside `assets/scripts/` directory and are generated using Webpack.
