@@ -1,0 +1,20 @@
+{{- if and (in (slice "meta" "icon" "css" "icon" "link" "js") .type) -}}
+  {{- if .data.html -}}
+    {{- if and (eq .type "meta") (eq .head true) }}
+      {{ print .data.html | safeHTML }}
+    {{- else if or (and (eq .head false) (ne .data.block true)) (and (eq .head true) (eq .data.block true)) }}
+      {{ print .data.html | safeHTML }}
+    {{- end -}}
+  {{- else if .data.file -}}
+    {{- if (in (slice "css" "icon" "js") .type) .data.file -}}
+      {{- $location := .data.file | relLangURL -}}
+      {{- if and (eq .type "icon") (eq .head true) }}
+        {{ printf "<link rel='icon' href='%s'>" $location | safeHTML }}
+      {{- else if eq .type "css" }}
+        {{ printf "<link rel='stylesheet' href='%s'>" $location | safeHTML }}
+      {{- else if eq .type "js" }}
+        {{ printf "<script src='%s'></script>" $location | safeHTML }}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
