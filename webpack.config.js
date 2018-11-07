@@ -5,7 +5,6 @@ module.exports = {
     main: './assets/js/index.js',
     collapse: './assets/js/collapse.js',
     contact: './assets/js/contact.js',
-    editor: './assets/js/editor.js',
     graph: './assets/js/graph.js',
     hero: './assets/js/hero.js',
     portfolio: './assets/js/portfolio.js',
