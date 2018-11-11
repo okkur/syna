@@ -10,6 +10,16 @@ weight = 100
 There are a few frontmatter variables that can be used for all fragments. The
 variables are as follows:
 
+#### fragment
+**Required for every fragment**
+
+Specifies what fragment the current file controls. Checkout [Fragment Implementation](/docs/fragments-implementation/) for more info.
+
+#### weight
+**Required for every fragment**
+
+This variable is used for ordering fragments in a page. It can be empty but it would cause the fragment to be sorted in an unexpected manner.
+
 #### background
 Set the background of the fragment.
 
