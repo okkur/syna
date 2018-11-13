@@ -15,26 +15,26 @@ In order to customize the fragment, which only appears in 404 page, you have to 
 ### Variables
 
 #### redirect_text
-*Type: string*
-*Default: i18n "404.direction"*
+*type: string*
+*default: i18n "404.direction"*
 
 Description of the page.
 
 #### button_text
-*Type: string*
-*Default: i18n "404.button"*
+*type: string*
+*default: i18n "404.button"*
 
 URL for the call to action button.
 
 #### redirect_url
-*Type: string*
-*Default: "/"*
+*type: string*
+*default: "/"*
 
 Title of the call to action button.
 
 #### asset
-*Type: object*
+*type: asset object*
 
-This fragment makes use of the asset variable. The asset will be displayed on top of the fragment, before title and subtitle.
+The asset will be displayed on top of the fragment, before title and subtitle.
 
 [Global variables](/docs/global-variables) are documented as well and have been omitted from this page.

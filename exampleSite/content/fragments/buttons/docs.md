@@ -11,24 +11,25 @@ title = "Documentation"
 ### Variables
 
 #### buttons
-*Type: array of objects*
+*type: array of objects*
 
 You can add as many buttons as you want.
+
 ##### buttons.text
-*Type: string*
-*Required*
+*type: string*
+*required*
 
 Title of the call to action button.
 
 ##### buttons.url
-*Type: string*
-*Default: "#"
+*type: string*
+*default: "#"*
 
 URL of the call to action button.
 
 ##### buttons.color
-*Type: primary, secondary, success, danger, warning, info, light, dark, link. Can be prefixed by `outline-` for outlined buttons.*
-*Default: "primary"*
+*type: primary, secondary, success, danger, warning, info, light, dark, link. Can be prefixed by `outline-` for outlined buttons.*
+*default: "primary"*
 
 Color class of the button, based on Bootstrap classes. 
 

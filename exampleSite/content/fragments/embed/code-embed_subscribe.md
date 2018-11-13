@@ -11,7 +11,6 @@ fragment = "embed"
 date = "2017-10-07"
 weight = 120
 background = "secondary"
-form_name = "subscribe"
 
 #title = ""
 #subtitle = ""
