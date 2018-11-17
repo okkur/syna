@@ -67,7 +67,7 @@
             {{- end -}}
             {{- with .Params.asset -}}
               {{- if isset . "image" }}
-                <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .) }}" class="img-fluid p-2" alt="{{ .Params.asset.text }}">
+                <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .) }}" class="img-fluid p-2" alt="{{ .text }}">
               {{- else if isset . "icon" }}
                 <span class="fa-stack fa-4x">
                   <i class="fas fa-circle fa-stack-2x
