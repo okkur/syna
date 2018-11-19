@@ -49,9 +49,9 @@
         <article
           {{- if $self.Params.collapsible -}}
             {{- safeHTMLAttr (print " data-toggle=\"collapse\"") -}}
-            {{- safeHTMLAttr (printf " id=\"list-page-%s\"" $page_id) -}}
-            {{- safeHTMLAttr (printf " data-target=\"#list-page-%s .collapse\"" $page_id) -}}
-            {{- safeHTMLAttr (printf " data-add-collapse=\"#list-page-%s .article-title\"" $page_id) -}}
+            {{- safeHTMLAttr (printf " id=\"list-page-%s\"" (anchorize $page_id)) -}}
+            {{- safeHTMLAttr (printf " data-target=\"#list-page-%s .collapse\"" (anchorize $page_id)) -}}
+            {{- safeHTMLAttr (printf " data-add-collapse=\"#list-page-%s .article-title\"" (anchorize $page_id)) -}}
           {{- end }}
           class="
             {{- if $self.Params.tiled -}}
