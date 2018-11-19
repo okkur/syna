@@ -27,7 +27,9 @@ window.syna.payment.forEach(config => {
         serializedForm.stripeToken = result.token.id;
         serializedForm.price = parseInt(config.price.match(/\w+/g).reduce((tmp, match) => tmp + match, ''), 10);
         serializedForm.currency = config.currency;
-        $.post(action, JSON.stringify(serializedForm));
+        $.post(action, JSON.stringify(serializedForm))
+          .then(() => form.$('#generic-success').removeClass('d-none'))
+          .catch(() => form.$('#generic-error').removeClass('d-none'));
       }
     });
   });

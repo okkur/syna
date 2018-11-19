@@ -21,11 +21,7 @@
       {{- printf "payment-form-%s" .Name -}}
     ">
       <div class="row">
-        <div class="col-sm-12 col-md-4 col-xl-2 align-items-center justify-content-center price d-flex flex-column mb-2">
-          <h5 class="mx-0">Price:</h5>
-          <h3 class="m-0">{{- .Params.price -}}</h3>
-        </div>
-        <div class="col-sm-12 col-md-8 col-xl-10">
+        <div class="col-sm-12">
           <div class="form-group">
             <input id="email" name="email" class="form-control" type="text" data-validation="email" required
               {{- if .email -}}
@@ -41,21 +37,27 @@
           </div>
         </div>
       </div>
+      <div class="row justify-content-between mx-0">
+        <div class="generic-success mb-0 text-success d-none" id="generic-success">
+          {{- with .Params.message.success -}}
+            {{- . | markdownify -}}
+          {{- else -}}
+            {{- i18n "payment.defaultGenericSuccess" -}}
+          {{- end }}
+        </div>
+        <div class="generic-error mb-0 text-danger d-none" id="generic-error">
+          {{- with .Params.message.error -}}
+            {{- . | markdownify -}}
+          {{- else -}}
+            {{- i18n "payment.defaultGenericError" }}
+          {{- end }}
+        </div>
+      </div>
       <div class="row justify-content-between pr-3">
-        <div class="col-auto px-0 d-flex flex-column justify-content-center">
-          <div class="generic-success mb-0 text-success d-none" id="generic-success">
-            {{- with .Params.message.success -}}
-              {{- . | markdownify -}}
-            {{- else -}}
-              {{- i18n "payment.defaultGenericSuccess" -}}
-            {{- end }}
-          </div>
-          <div class="generic-error mb-0 text-danger d-none" id="generic-error">
-            {{- with .Params.message.error -}}
-              {{- . | markdownify -}}
-            {{- else -}}
-              {{- i18n "payment.defaultGenericError" }}
-            {{- end }}
+        <div class="col-auto d-flex flex-column justify-content-center">
+          <div class="row mx-0">
+            <h5 class="my-0">Price:</h5>
+            <h5 class="my-0 pl-2">{{- .Params.price -}}</h5>
           </div>
         </div>
         <div class="col-auto px-0 d-flex flex-column">

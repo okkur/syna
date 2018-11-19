@@ -6,8 +6,8 @@ background = "secondary"
 title = "Payment Fragment"
 subtitle = "Doesn't work in demo"
 
-post_url = "#"
-stripe_token = "pk_test_TYooMQauvdEDq54NiTphI7jx"
+post_url = "https://us-central1-syna-222118.cloudfunctions.net/function-1/charge"
+stripe_token = "pk_test_36PckiAlsGm9KmHj9b034GAW"
 
 price = "20.00$"
 currency = "usd"
