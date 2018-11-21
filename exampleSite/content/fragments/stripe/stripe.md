@@ -1,5 +1,5 @@
 +++
-fragment = "payment"
+fragment = "stripe"
 weight = 110
 background = "secondary"
 

@@ -1,5 +1,5 @@
 +++
 fragment = "content"
-title = "Payment"
+title = "Stripe"
 weight = 100
 +++

@@ -1,6 +1,6 @@
 {{- $self := . -}}
 {{- .page_scratch.Add "js" (dict "url" "https://js.stripe.com/v3/" "defer" false "async" false) -}}
-{{- .page_scratch.Add "js" (dict "file" "syna-payment.js") -}}
+{{- .page_scratch.Add "js" (dict "file" "syna-stripe.js") -}}
 {{- $bg := .self.Scratch.Get "bg" }}
 
 {{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "Name" .Name "Params" .Params) -}}
@@ -79,9 +79,6 @@ window.syna.payment.push({
       invalid: 'text-warning',
       empty: 'text-body',
       complete: 'text-success'
-    },
-    cardNumber: {
-      placeholder: '{{ .Params.payment.placeholder | default "4242 4242 4242 4242" }}'
     }
   }
 });
