@@ -1,4 +1,20 @@
 import $ from './helpers/jq-helpers';
+import Validator from 'form-validator-simple';
+
+function initFormValidation(form, onSuccess = () => false) {
+  const validator = new Validator({
+    errorTemplate: '<span class="help-block form-error">%s</span>',
+    onFormValidate: (isFormValid, form) => {
+      form.querySelector('button').disabled = !isFormValid
+    },
+    onError: function(e, form) {
+      form.querySelector('.generic-error').removeClass('d-none');
+    },
+    onSuccess,
+  });
+
+  validator.initForm(form);
+}
 
 window.syna.payment.forEach(config => {
   const stripe = Stripe(config.token);
@@ -15,7 +31,7 @@ window.syna.payment.forEach(config => {
   });
 
   const form = $(config.form);
-  form.on('submit', e => {
+  initFormValidation(form[0], e => {
     e.preventDefault();
 
     stripe.createToken(card).then(result => {
