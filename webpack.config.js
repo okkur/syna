@@ -2,6 +2,7 @@ const path = require('path');
 
 module.exports = {
   entry: {
+    head: './assets/js/head.js',
     main: './assets/js/index.js',
     collapse: './assets/js/collapse.js',
     contact: './assets/js/contact.js',

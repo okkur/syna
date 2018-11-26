@@ -1,12 +1,14 @@
 import Chart from 'chart.js';
 import $ from './helpers/jq-helpers';
 
-(window.syna.graph || (window.syna.graph = [])).forEach(fragment => {
-  (window.syna.graphCharts || (window.syna.graphCharts = [])).push(new Chart($(fragment.selector), {
-    type: fragment.config.type || 'line',
+const graphs = window.syna.api.getScope('graph');
+Object.keys(graphs).forEach(key => {
+  const config = graphs[key];
+  window.syna.api.register('graphCharts', 'graphCharts-' + key, new Chart($(config.selector), {
+    type: config.config.type || 'line',
     options: Object.assign({
       maintainAspectRatio: false,
-    }, (fragment.config || {}).options),
-    data: (fragment.config || {}).data,
+    }, (config.config || {}).options),
+    data: (config.config || {}).data,
   }));
 });

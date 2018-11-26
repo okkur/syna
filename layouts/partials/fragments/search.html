@@ -25,11 +25,12 @@
 {{ partial "helpers/search-result-template.html" (dict "name" .Name "message_class" "text-center mt-4" "background" $bg) }}
 {{ partial "helpers/search-result-template.html" . }}
 <script>
-  (window.syna.search || (window.syna.search = [])).push({
+  var fragmentName = "{{ .Name }}";
+  window.syna.api.register('search', 'search-' + fragmentName, {
     searchInput: '#search-query-{{ .Name }}',
     resultsContainer: '#search-results-{{ .Name }}',
     template: '#search-result-template-{{ .Name }}',
     noResults: '#search-no-results-template-{{ .Name }}',
     empty: '#search-empty-template-{{ .Name }}',
-  })
+  });
 </script>

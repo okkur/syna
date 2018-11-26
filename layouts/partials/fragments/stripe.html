@@ -57,7 +57,7 @@
         <div class="col-auto d-flex flex-column justify-content-center">
           <div class="row mx-0">
             <h5 class="my-0">Price:</h5>
-            <h5 class="my-0 pl-2">{{- .Params.price -}}</h5>
+            <h5 class="my-0 pl-2" data-render-price>{{- .Params.price -}}</h5>
           </div>
         </div>
         <div class="col-auto px-0 d-flex flex-column">
@@ -68,18 +68,19 @@
   </div>
 {{- partial "helpers/container.html" (dict "end" true "in_slot" .in_slot) -}}
 <script>
-window.syna.payment.push({
-  form: "{{ (printf "#payment-form-%s" .Name) | safeJS }}",
-  token: "{{ .Params.stripe_token | safeJS }}",
-  price: "{{ .Params.price | safeJS }}",
-  currency: "{{ .Params.currency | safeJS }}",
-  options: {
-    classes: {
-      base: 'text-body form-control row mx-0 px-2',
-      invalid: 'text-warning',
-      empty: 'text-body',
-      complete: 'text-success'
+  var fragmentName = "{{ .Name }}";
+  window.syna.api.register('stripe', 'stripe-' + fragmentName, {
+    form: "{{ (printf "#payment-form-%s" .Name) | safeJS }}",
+    token: "{{ .Params.stripe_token | safeJS }}",
+    price: "{{ .Params.price | safeJS }}",
+    currency: "{{ .Params.currency | safeJS }}",
+    options: {
+      classes: {
+        base: 'text-body form-control row mx-0 px-2',
+        invalid: 'text-warning',
+        empty: 'text-body',
+        complete: 'text-success'
+      }
     }
-  }
-});
+  });
 </script>
