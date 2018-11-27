@@ -3,7 +3,7 @@
 {{- $bg := .self.Scratch.Get "bg" }}
 
 {{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "Name" .Name "Params" .Params) -}}
-  {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
+  {{- partial "helpers/section-header.html" (dict "self" $self.self "bg" $bg "params" .Params) }}
   <div class="row w-100 justify-content-center mx-0">
     <form action="{{ "search" | absURL }}" class="mt-0">
       <div class="input-group my-0">
@@ -22,8 +22,7 @@
     </div>
   </div>
 {{- partial "helpers/container.html" (dict "end" true "in_slot" .in_slot) -}}
-{{ partial "helpers/search-result-template.html" (dict "name" .Name "message_class" "text-center mt-4" "background" $bg) }}
-{{ partial "helpers/search-result-template.html" . }}
+{{ partial "helpers/search-result-template.html" (dict "self" $self "name" .Name "message_class" "text-center mt-4" "background" $bg) }}
 <script>
   (window.syna.search || (window.syna.search = [])).push({
     searchInput: '#search-query-{{ .Name }}',

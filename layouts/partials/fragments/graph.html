@@ -1,9 +1,9 @@
-{{- $self := . -}}
+{{- $self := .self -}}
 {{- .page_scratch.Add "js" ("syna-graph.js" | relLangURL) -}}
-{{- $bg := .self.Scratch.Get "bg" }}
+{{- $bg := $self.Scratch.Get "bg" }}
 
 {{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "Name" .Name "Params" .Params) -}}
-  {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
+  {{- partial "helpers/section-header.html" (dict "self" $self "bg" $bg "params" .Params) }}
   <div class="row chart-container position-relative" style="
     {{- (cond (isset .Params "width") (printf "width: %s;" .Params.width) (print "width: 100%;")) | safeCSS -}}
     {{- (cond (isset .Params "height") (printf "height: %s;" .Params.height) (print "height: 400px;")) | safeCSS -}}
