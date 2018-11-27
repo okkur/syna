@@ -4,8 +4,10 @@
 {{/* Sets page to either the given frontmatter section variable, current
   parent section or if the current page is a section, the current page */}}
 {{- .page_scratch.Set "page" (.Site.GetPage "Section" (.Params.section | default .root.Section)) -}}
-{{- if and (not .Params.section) (eq .root.CurrentSection.Kind "section") -}}
-  {{- .page_scratch.Set "page" .root.CurrentSection -}}
+{{- if .root.CurrentSection -}}
+  {{- if and (not .Params.section) (eq .root.CurrentSection.Kind "section") -}}
+    {{- .page_scratch.Set "page" .root.CurrentSection -}}
+  {{- end -}}
 {{- end -}}
 
 {{- .page_scratch.Set "pages" (.page_scratch.Get "page").Pages -}}
