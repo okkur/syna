@@ -1,3 +1,13 @@
+.bg-primary {
+  a {
+    color: $light;
+
+    @include hover {
+      color: $dark;
+    }
+  }
+}
+
 .jumbotron {
   border-radius: 0rem !important;
 }
@@ -48,7 +58,6 @@ article .content {
 .content-sidebar {
   word-break: break-all;
 }
-
 
 .items {
   .header {
