@@ -1,60 +1,34 @@
 <html lang="{{ .Site.LanguageCode | default (printf "en-us") }}">
+  {{- $.Scratch.Set "layout_info" (dict "is_404" true "root" $ "real_page" . "page" . "page_scratch" $.Scratch) -}}
+  {{- partial "helpers/fragments.html" (dict "page_scratch" $.Scratch) -}}
+  {{- partial "head.html" . }}
+  {{- $bg := .Site.Params.style.background | default "secondary" -}}
 
-  {{- partial "head.html" . -}}
+  <body class="{{ printf "bg-%s" $bg }}">
+    {{ partial "helpers/fragments-renderer.html" (dict "page_scratch" .Scratch) -}}
 
-  <body class="bg-white">
-    {{/*
-      This code may not be understandable immediately. This is trying to find all
-      the resources (read fragments) for each page and all the global fragments.
-      When combining global and local fragments, local ones have more priority.
-      So if there is only one footer fragment and that is global, that footer
-      fragment is shown. The same is true if there are no global footer fragments
-      and one local one. But if there is one global footer fragment and one local
-      footer fragment, the local one is rendered. Filename is checked in order to
-      check for presence of local fragments since multiple files can use a single
-      fragment.
-      */}}
-    {{- $global := .Site.GetPage "page" "_global" -}}
-    {{- $.Scratch.Delete "global_fragments" -}}
-    {{- if $global -}}
-      {{- $.Scratch.Set "global_fragments" ($global.Resources.ByType "page") -}}
-    {{- end -}}
-    {{- $local_fragments := .Resources.ByType "page" -}}
-  
-    {{- $.Scratch.Set "fragments" (slice .) -}}
-    {{- $.Scratch.Set "local_fragments_dirs" (slice) -}}
-    {{- range $local_fragments -}}
-      {{- $.Scratch.Add "fragments" (slice .) -}}
-      {{- $.Scratch.Add "local_fragments_dirs" .Dir -}}
-    {{- end -}}
-    {{- if $.Scratch.Get "global_fragments" -}}
-      {{- range ($.Scratch.Get "global_fragments") -}}
-        {{- $name := replace .Name "/index" "" -}}
-        {{- $directory_same_name := in ($.Scratch.Get "local_fragments_dirs") (printf "%s%s/" $.Dir (replace $name ".md" "")) -}}
-        {{- $file_same_name := where ($.Scratch.Get "fragments") ".Name" $name -}}
-        {{- if and (not $file_same_name) (not $directory_same_name) -}}
-          {{- $.Scratch.Add "fragments" (slice .) -}}
-        {{- end -}}
-      {{- end -}}
-    {{- end -}}
-  
-    {{- $page := . }}
-    {{ $.Scratch.Set "js" (slice) }}
-    {{- range sort ($.Scratch.Get "fragments" | default slice) "Params.weight" -}}
-      {{- if and (not .Params.disabled) (isset .Params "fragment") -}}
-        {{/* Cleanup .Name to be more useful within fragments */}}
-        {{- $name := strings.TrimSuffix ".md" (replace .Name "/index.md" "") -}}
-  
-        {{/* Resource fallthrough path preparation */}}
-        {{- $file_path := strings.TrimSuffix ".md" (replace .File.Path "/index.md" "") -}}
-        {{- $page_path := replace $file_path (printf "/%s" $name) "" -}}
-        {{- $fallthrough := (dict "file_path" $file_path "page_path" $page_path ) -}}
-  
-        {{- partial (print "fragments/" .Params.fragment ".html") (dict "page_scratch" $.Scratch "root" $ "Site" $.Site "page" $page "resources" $.Resources "self" . "Params" .Params "Name" $name "fallthrough" $fallthrough) -}}
-      {{- end -}}
-    {{- end -}}
+    <div id="react"></div>
+    <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header row mx-0">
+              <div class="modal-title col px-0">
+                <h5 class="title text-dark"></h5>
+                <h6 class="subtitle text-secondary"></h6>
+              </div>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <img src="" alt="" class="img-fluid">
+            <div class="modal-body p-3">
+              <div class="content"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    {{- partial "js.html" . -}}
-
+    {{ partial "js.html" . }}
   </body>
 </html>
