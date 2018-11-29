@@ -11,9 +11,8 @@ function initFormValidation(form, onSuccess = () => false) {
       form.querySelector('.generic-error').removeClass('d-none');
     },
     onSuccess,
+    form,
   });
-
-  validator.initForm(form);
 }
 
 window.syna.payment.forEach(config => {
