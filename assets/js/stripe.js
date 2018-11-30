@@ -2,7 +2,7 @@ import $ from './helpers/jq-helpers';
 import Validator from 'form-validator-simple';
 
 function initFormValidation(form, onSuccess = () => false) {
-  const validator = new Validator({
+  new Validator({
     errorTemplate: '<span class="help-block form-error">%s</span>',
     onFormValidate: (isFormValid, form) => {
       form.querySelector('button').disabled = !isFormValid
@@ -11,9 +11,8 @@ function initFormValidation(form, onSuccess = () => false) {
       form.querySelector('.generic-error').removeClass('d-none');
     },
     onSuccess,
+    form,
   });
-
-  validator.initForm(form);
 }
 
 function onSubmit(id) {

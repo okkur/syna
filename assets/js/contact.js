@@ -9,7 +9,7 @@ const selfCheck = 'checkSelf';
   }
 })();
 
-const validator = new Validator({
+const validatorConfig = {
   errorTemplate: '<span class="help-block form-error">%s</span>',
   onFormValidate: (isFormValid, form) => {
     form.querySelector('button').disabled = !isFormValid
@@ -55,8 +55,10 @@ const validator = new Validator({
     }
     return false;
   }
-});
-validator.initAll()
+};
+
+document.querySelectorAll('form')
+  .forEach((form ) => new Validator(Object.assign(validatorConfig, { form })))
 
 function checkReCaptcha() {
   if (document.querySelector('.g-recaptcha-container') && typeof grecaptcha === "undefined") {
