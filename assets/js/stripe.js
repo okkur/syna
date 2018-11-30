@@ -15,11 +15,11 @@ function initFormValidation(form, onSuccess = () => false) {
   });
 }
 
-function onSubmit(id) {
+function onSubmit(configId, form, stripe, card) {
   return function(e) {
     e.preventDefault();
 
-    const config = window.syna.api.get('stripe', id);
+    const config = window.syna.api.get('stripe', configId);
     stripe.createToken(card).then(result => {
       if (result.error) {
         $('.invalid-feedback').text(result.error.message);
@@ -37,7 +37,9 @@ function onSubmit(id) {
   }
 }
 
-window.syna.api.toArray('stripe').forEach(config => {
+const stripeFragments = window.syna.api.getScope('stripe');
+Object.keys(stripeFragments).forEach(key => {
+  const config = stripeFragments[key];
   const stripe = Stripe(config.token);
   const elements = stripe.elements();
   const card = elements.create('card', config.options);
@@ -52,7 +54,7 @@ window.syna.api.toArray('stripe').forEach(config => {
   });
 
   const form = $(config.form);
-  initFormValidation(form[0], onSubmit);
+  initFormValidation(form[0], onSubmit(key, form, stripe, card));
 });
 
 window.syna.stream.subscribe('topic.pricing.change', function(product, price) {
