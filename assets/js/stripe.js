@@ -31,6 +31,7 @@ function onSubmit(configId, form, stripe, card) {
           price: parseInt(config.price.match(/\w+/g).reduce((tmp, match) => tmp + match, ''), 10),
           price_text: config.price_text,
           currency: config.currency,
+          from: window.location.href,
         });
         $.post(action, JSON.stringify(serializedForm))
           .then(() => form.$('#generic-success').removeClass('d-none'))
