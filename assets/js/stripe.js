@@ -25,10 +25,13 @@ function onSubmit(configId, form, stripe, card) {
         $('.invalid-feedback').text(result.error.message);
       } else {
         const action = form.attr('action');
-        const serializedForm = JSON.parse(form.serialize(true));
-        serializedForm.stripeToken = result.token.id;
-        serializedForm.price = parseInt(config.price.match(/\w+/g).reduce((tmp, match) => tmp + match, ''), 10);
-        serializedForm.currency = config.currency;
+        const serializedForm = Object.assign(JSON.parse(form.serialize(true)), {
+          stripeToken: result.token.id,
+          product: config.product,
+          price: parseInt(config.price.match(/\w+/g).reduce((tmp, match) => tmp + match, ''), 10),
+          price_text: config.price_text,
+          currency: config.currency,
+        });
         $.post(action, JSON.stringify(serializedForm))
           .then(() => form.$('#generic-success').removeClass('d-none'))
           .catch(() => form.$('#generic-error').removeClass('d-none'));
@@ -57,9 +60,12 @@ Object.keys(stripeFragments).forEach(key => {
   initFormValidation(form[0], onSubmit(key, form, stripe, card));
 });
 
-window.syna.stream.subscribe('topic.pricing.change', function(product, price) {
+window.syna.stream.subscribe('topic.pricing.change', function({ product, price, price_text, currency }) {
   window.syna.api.toArray('stripe').forEach(config => {
+    config.product = product;
     config.price = price;
-    $('[data-render-price]').text(price)
+    config.price_text = price_text || price;
+    config.currency = currency;
+    $('[data-render="price_text"]').text(price_text || price)
   })
 });

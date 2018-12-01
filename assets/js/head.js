@@ -16,16 +16,23 @@ class Stream {
     return token;
   }
 
-  publish(topic, ...args) {
+  publish(topic, argsText) {
     if (!this._topics[topic]) {
       return false;
     }
     setTimeout(() => {
       const subscribers = this._topics[topic];
-      let len = subscribers ? subscribers.length : 0;
+      const args = argsText
+        .split(',')
+        .reduce((tmp, param) => {
+          const [key, value] = param.split(':');
+          tmp[key] = value;
+          return tmp;
+        }, {});
 
+      let len = subscribers ? subscribers.length : 0;
       while (len--) {
-        subscribers[len].func.apply(null, ...args);
+        subscribers[len].func.call(null, args);
       }
     }, 0);
     return true;
