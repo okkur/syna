@@ -4,7 +4,9 @@ weight = 20
 title = "Premium plan"
 subtitle = "starting at"
 
-price = "$9.99/mo"
+price = "999"
+price_text = "$9.99/mo"
+currency = "USD"
 highlight = true
 
 button_text = "Get started"
