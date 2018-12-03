@@ -80,4 +80,10 @@
   {{- $script_template := resources.Get "scripts/syna-head.js" -}}
   {{- $script := $script_template | resources.Minify | resources.Fingerprint }}
   <script {{- safeHTMLAttr (printf " src=\"%s\"" ($script.RelPermalink | relLangURL)) -}}></script>
+
+  {{- range (.Scratch.Get "page_config") -}}
+    {{- range .Params.config -}}
+      {{- partial "helpers/config.html" (dict "root" $ "head" true "type" .type "data" .) -}}
+    {{- end -}}
+  {{- end -}}
 </head>

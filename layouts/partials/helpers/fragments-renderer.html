@@ -4,7 +4,7 @@
 {{- $real_page := $layout_info.real_page -}}
 {{- $root := $layout_info.root -}}
 
-{{- range sort ($page_scratch.Get "page_fragments") "Params.weight" -}}
+{{- range sort ($page_scratch.Get "page_fragments" | default slice) "Params.weight" -}}
   {{/* If a fragment contains a slot variable in it's frontmatter it should not
     be rendered on the page. It would be later handled by the slot helper. */}}
   {{- if (not (isset .Params "slot")) (ne .Params.slot "") -}}

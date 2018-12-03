@@ -1,3 +1,13 @@
+.bg-primary {
+  a {
+    color: $light;
+
+    @include hover {
+      color: $dark;
+    }
+  }
+}
+
 .jumbotron {
   border-radius: 0rem !important;
 }
@@ -49,7 +59,6 @@ article .content {
   word-break: break-all;
 }
 
-
 .items {
   .header {
     flex: 0 1 200px;
@@ -71,5 +80,20 @@ pre {
 .bg-dark {
   pre {
     background-color: white;
+  }
+}
+
+.faq, .list {
+  .collapse {
+    display: block;
+    height: auto;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.6s ease-out;
+
+    &.show {
+      max-height: 1000px;
+      transition: all 0.6s ease-in;
+    }
   }
 }

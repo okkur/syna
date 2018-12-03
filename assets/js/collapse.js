@@ -1,6 +1,16 @@
 import $ from './helpers/jq-helpers';
 
 const collapse = $('[data-toggle="collapse"]');
+const addCollapse = $('[data-toggle="collapse"][data-add-collapse]');
+
+addCollapse.$nodes.forEach(collapsible => {
+  const target = $(collapsible.dataset.target);
+
+  if (target && target[0].children.length) {
+    const node = $(collapsible.dataset.addCollapse);
+    node.append('<i class="fas fa-chevron-down text-primary"></i>');
+  }
+});
 
 collapse.on('click', function (e) {
   const target = $(this).attr('data-target');
