@@ -16,11 +16,12 @@ modal.on('click', e => {
   }
 });
 
-(window.syna || (window.syna = {})).showModal = function({ title, subtitle, image, content, size = '' }) {
+(window.syna || (window.syna = {})).showModal = function({ title, subtitle, image, content, labels, size = '' }) {
   $('body').addClass('modal-open');
   modal.addClass('show');
   dialog.$('.title').html(title || '');
   dialog.$('.subtitle').html(subtitle || '');
+  dialog.$('.badge-container').html(labels || '');
   dialog.$('img')[0].src = image;
   if (content) {
     dialog.$('.modal-body .content').html(content);

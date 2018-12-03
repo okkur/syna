@@ -21,6 +21,16 @@
                   <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset) }}" class="img-fluid" alt="{{ .Params.asset.text }}">
                 {{- end }}
                 <div class="position-absolute hover-overlay"></div>
+                {{- if .Params.labels -}}
+                  <div class="position-absolute text-light badge-container">
+                    {{- range .Params.labels -}}
+                      <span class="badge badge-dark">
+                        <i class="{{ .icon }}"></i>
+                        <span>{{ .title }}</span>
+                      </span>
+                    {{- end -}}
+                  </div>
+                {{- end -}}
                 {{- if or .Params.title .Params.subtitle }}
                   <div class="position-absolute description-container col">
                     <div class="row justify-content-center description text-light p-2 rounded text-center">
