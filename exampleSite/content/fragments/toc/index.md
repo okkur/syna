@@ -8,7 +8,7 @@ background = "light"
 
 Add table of contents of any content fragment to the page.
 
-<!-- more -->
+<!--more-->
 
 ToC fragment can be used to render Table of Contents of any content fragment
 from any page. The default behavior is to get the name of the content fragment

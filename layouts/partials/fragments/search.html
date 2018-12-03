@@ -1,5 +1,5 @@
 {{- $self := . -}}
-{{- .page_scratch.Add "js" ("syna-search.js" | relLangURL) -}}
+{{- .page_scratch.Add "js" (dict "file" "syna-search.js") -}}
 {{- $bg := .self.Scratch.Get "bg" }}
 
 {{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "Name" .Name "Params" .Params) -}}
@@ -24,11 +24,12 @@
 {{- partial "helpers/container.html" (dict "end" true "in_slot" .in_slot) -}}
 {{ partial "helpers/search-result-template.html" (dict "self" $self "name" .Name "message_class" "text-center mt-4" "background" $bg) }}
 <script>
-  (window.syna.search || (window.syna.search = [])).push({
+  var fragmentName = "{{ .Name }}";
+  window.syna.api.register('search', 'search-' + fragmentName, {
     searchInput: '#search-query-{{ .Name }}',
     resultsContainer: '#search-results-{{ .Name }}',
     template: '#search-result-template-{{ .Name }}',
     noResults: '#search-no-results-template-{{ .Name }}',
     empty: '#search-empty-template-{{ .Name }}',
-  })
+  });
 </script>

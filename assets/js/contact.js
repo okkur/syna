@@ -9,7 +9,7 @@ const selfCheck = 'checkSelf';
   }
 })();
 
-const validator = new Validator({
+const validatorConfig = {
   errorTemplate: '<span class="help-block form-error">%s</span>',
   onFormValidate: (isFormValid, form) => {
     form.querySelector('button').disabled = !isFormValid
@@ -34,12 +34,16 @@ const validator = new Validator({
     const genericError = $(`form[id=${id}] .generic-error`)
     const serializedForm = $(`#${id}`).serialize()
     if ($('.g-recaptcha').length === 0) {
-      $.post(action, serializedForm)
+      $.post(action, serializedForm, {
+        contentType: 'application/x-www-form-urlencoded',
+      })
         .then(() => genericSuccess.removeClass('d-none'))
         .catch(() => genericError.removeClass('d-none'));
     } else if (typeof grecaptcha !== "undefined") {
       if (grecaptcha.getResponse() !== "") {
-        $.post(action, serializedForm)
+        $.post(action, serializedForm, {
+          contentType: 'application/x-www-form-urlencoded',
+        })
           .then(() => {
             genericSuccess.removeClass('d-none')
             $(`form[id=${id}] .success`).removeClass('d-none')
@@ -51,8 +55,10 @@ const validator = new Validator({
     }
     return false;
   }
-});
-validator.initAll()
+};
+
+document.querySelectorAll('form')
+  .forEach((form ) => new Validator(Object.assign(validatorConfig, { form })))
 
 function checkReCaptcha() {
   if (document.querySelector('.g-recaptcha-container') && typeof grecaptcha === "undefined") {

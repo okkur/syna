@@ -2,6 +2,7 @@ const path = require('path');
 
 module.exports = {
   entry: {
+    head: './assets/js/head.js',
     main: './assets/js/index.js',
     collapse: './assets/js/collapse.js',
     contact: './assets/js/contact.js',
@@ -10,6 +11,7 @@ module.exports = {
     portfolio: './assets/js/portfolio.js',
     react: './assets/js/react.js',
     search: './assets/js/search.js',
+    stripe: './assets/js/stripe.js',
   },
   output: {
     path: path.resolve('./assets/scripts/'),

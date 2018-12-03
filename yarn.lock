@@ -1820,9 +1820,9 @@ form-data@~2.3.1:
     combined-stream "1.0.6"
     mime-types "^2.1.12"
 
-form-validator-simple@^0.0.11:
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/form-validator-simple/-/form-validator-simple-0.0.11.tgz#a2e06512841e7fc98d64adad53c849c3485ebec4"
+form-validator-simple@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/form-validator-simple/-/form-validator-simple-0.1.0.tgz#18740722f89f4208e15bc619cd3e843d31e8e28f"
 
 fragment-cache@^0.2.1:
   version "0.2.1"

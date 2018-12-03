@@ -1,4 +1,4 @@
-import serialize from './serialize';
+import serialize, { serializeJSON } from './serialize';
 
 function $(selector) {
   const nodes = typeof selector === 'string' ? Array.from((this && Array.isArray(this) ? this[0] : document).querySelectorAll(selector)) : [selector];
@@ -66,9 +66,13 @@ function $(selector) {
       nodes.forEach(node => node.value = value);
     },
     submit: () => nodes.forEach(node => node.submit()),
-    serialize: () => {
+    serialize: (json = false) => {
       if (nodes.length > 1) {
         throw new Error('Can\'t serialize forms at once');
+      }
+
+      if (json) {
+        return serializeJSON(nodes[0]);
       }
 
       return serialize(nodes[0]);
@@ -97,10 +101,13 @@ $.ajax = function ajax({
   method,
   url,
   data,
+  options = {
+    contentType: "application/json;charset=UTF-8"
+  }
 }) {
   const xhr = new XMLHttpRequest();
   xhr.open(method.toUpperCase(), url);
-  xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  xhr.setRequestHeader("Content-Type", options.contentType);
   xhr.send(data);
 
   return new Promise((resolve, reject) => {
@@ -116,6 +123,6 @@ $.ajax = function ajax({
   })
 }
 
-$.post = (url, data) => $.ajax({ method: 'post', url, data })
+$.post = (url, data, options) => $.ajax({ method: 'post', url, data, options })
 
 export default $;

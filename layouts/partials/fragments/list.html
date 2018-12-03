@@ -1,5 +1,5 @@
 {{- $self := . -}}
-{{- .page_scratch.Add "js" ("syna-collapse.js" | relLangURL) -}}
+{{- .page_scratch.Add "js" (dict "file" "syna-collapse.js") -}}
 
 {{/* Sets page to either the given frontmatter section variable, current
   parent section or if the current page is a section, the current page */}}

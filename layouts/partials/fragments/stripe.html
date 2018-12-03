@@ -1,0 +1,88 @@
+{{- $self := . -}}
+{{- .page_scratch.Add "js" (dict "url" "https://js.stripe.com/v3/" "defer" false "async" false) -}}
+{{- .page_scratch.Add "js" (dict "file" "syna-stripe.js") -}}
+{{- $bg := .self.Scratch.Get "bg" }}
+
+{{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "Name" .Name "Params" .Params) -}}
+  {{- partial "helpers/section-header.html" (dict "self" $self "bg" $bg "params" .Params) -}}
+  {{- with .self.Content -}}
+    <div class="row">
+      <div class="col text-center mt-3
+        {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
+      ">
+        {{ . }}
+      </div>
+    </div>
+  {{- end }}
+  <div class="row mt-3 justify-content-center">
+    <form class="col-sm-12 col-md-8 col-xl-6" method="post" action="
+      {{- print .Params.post_url -}}
+    " id="
+      {{- printf "payment-form-%s" .Name -}}
+    ">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <input id="email" name="email" class="form-control" type="text" data-validation="email" required
+              {{- if .email -}}
+                {{- safeHTMLAttr (printf " placeholder=\"%s\"" .label) -}}
+              {{- else -}}
+                {{- safeHTMLAttr (printf " placeholder=\"%s\"" (i18n "payment.email")) -}}
+              {{- end -}}>
+            <div data-error id="email-error"></div>
+          </div>
+          <div class="form-group">
+            <div id="card-element"></div>
+            <div class="invalid-feedback d-block"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-between mx-0">
+        <div class="generic-success mb-0 text-success d-none" id="generic-success">
+          {{- with .Params.message.success -}}
+            {{- . | markdownify -}}
+          {{- else -}}
+            {{- i18n "payment.defaultGenericSuccess" -}}
+          {{- end }}
+        </div>
+        <div class="generic-error mb-0 text-danger d-none" id="generic-error">
+          {{- with .Params.message.error -}}
+            {{- . | markdownify -}}
+          {{- else -}}
+            {{- i18n "payment.defaultGenericError" }}
+          {{- end }}
+        </div>
+      </div>
+      <div class="row justify-content-between pr-3">
+        <div class="col-auto d-flex flex-column justify-content-center">
+          <div class="row mx-0">
+            <h5 class="my-0">Price:</h5>
+            <h5 class="my-0 pl-2" data-render="price_text">{{- .Params.price_text | default .Params.price -}}</h5>
+          </div>
+        </div>
+        <div class="col-auto px-0 d-flex flex-column">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+{{- partial "helpers/container.html" (dict "end" true "in_slot" .in_slot) -}}
+<script>
+  var fragmentName = "{{ .Name }}";
+  window.syna.api.register('stripe', 'stripe-' + fragmentName, {
+    form: "{{ (printf "#payment-form-%s" .Name) | safeJS }}",
+    token: "{{ .Params.stripe_token | safeJS }}",
+    product: "{{ .Params.product | safeJS }}",
+    price: "{{ .Params.price | safeJS }}",
+    price_text: "{{ (.Params.price_text | default .Params.price) | safeJS }}",
+    currency: "{{ .Params.currency | safeJS }}",
+    options: {
+      classes: {
+        base: 'text-body form-control row mx-0 px-2',
+        invalid: 'text-warning',
+        empty: 'text-body',
+        complete: 'text-success'
+      }
+    }
+  });
+</script>

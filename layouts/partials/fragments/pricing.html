@@ -18,14 +18,17 @@
       {{- partial "helpers/empty-subpath.html" (dict "context" "pricing" "root" $) -}}
     {{- end -}}
     {{- range (sort $items ".Params.weight") }}
-      <div class="col-lg-4 col-md-6 col-12 py-2 pricing-plan {{- if .Params.highlight }} pricing-plan-highlight {{- end -}}">
+      <div
+        class="col-lg-4 col-md-6 col-12 py-2 pricing-plan
+          {{- if .Params.highlight }} pricing-plan-highlight {{- end -}}
+        ">
         <div class="card">
           <div class="card-header
             {{- printf " bg-%s" (.Params.header_bg | default "primary") -}}
             {{- printf " text-%s" (.Params.header_text_color | default "light") -}}">
             <h4 class="mt-0 font-weight-normal text-center">{{ .Title }}</h4>
             <div class="mt-0 h6 font-weight-normal text-center">{{ (.Params.subtitle | default "") | markdownify }}</div>
-            <h2 class="card-title mb-0 pricing-card-title text-center">{{ .Params.price }}</h2>
+            <h2 class="card-title mb-0 pricing-card-title text-center">{{ .Params.price_text | default .Params.price }}</h2>
           </div>
           <div class="card-body {{ printf "bg-%s" (.Params.bg | default "light") }}">
             <div class="mb-4 features">
@@ -33,10 +36,24 @@
                 <p><i class="{{ .icon }}"></i>{{ .text | markdownify }}</p>
               {{- end }}
             </div>
-            <a href="{{ .Params.button_url | relLangURL }}" class="btn btn-lg btn-block btn-primary">{{ .Params.button_text }}</a>
+            <a
+              href="{{ .Params.button_url | relLangURL }}"
+              class="btn btn-lg btn-block btn-primary"
+              data-event-args="{{ printf "title:%s,price:%s,price_text:%s,currency:%s" .Title .Params.price (.Params.price_text | default .Params.price) (.Params.currency | default "") }}">
+              {{ .Params.button_text }}
+            </a>
           </div>
         </div>
       </div>
     {{- end }}
   </div>
 {{- partial "helpers/container.html" (dict "end" true "in_slot" .in_slot) -}}
+
+<script>
+document.querySelectorAll('#{{ .Name }} .btn').forEach(function(node) {
+  node.addEventListener('click', function(e) {
+    e.preventDefault();
+    window.syna.stream.publish('topic.pricing.change', e.target.dataset.eventArgs);
+  });
+});
+</script>

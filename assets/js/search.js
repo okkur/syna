@@ -159,7 +159,7 @@ class SynaSearch {
   }
 }
 
-((window.syna || {}).search || []).forEach(search => {
+window.syna.api.toArray('search').forEach(search => {
   new SynaSearch({
     queryParam: 's',
     searchInput: search.searchInput,
