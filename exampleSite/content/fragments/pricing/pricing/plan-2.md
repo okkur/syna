@@ -6,7 +6,7 @@ subtitle = "starting at"
 
 price = "999"
 price_text = "$9.99/mo"
-currency = "USD"
+currency = "usd"
 highlight = true
 
 button_text = "Get started"

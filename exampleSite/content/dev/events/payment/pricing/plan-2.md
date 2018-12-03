@@ -5,7 +5,7 @@ title = "Premium plan"
 subtitle = "starting at"
 
 price = "9.99"
-currency = "USD"
+currency = "usd"
 price_text = "$9.99/mo"
 highlight = true
 

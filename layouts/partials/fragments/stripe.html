@@ -57,7 +57,7 @@
         <div class="col-auto d-flex flex-column justify-content-center">
           <div class="row mx-0">
             <h5 class="my-0">Price:</h5>
-            <h5 class="my-0 pl-2" data-render="price_text">{{- .Params.price -}}</h5>
+            <h5 class="my-0 pl-2" data-render="price_text">{{- .Params.price_text | default .Params.price -}}</h5>
           </div>
         </div>
         <div class="col-auto px-0 d-flex flex-column">
@@ -72,8 +72,9 @@
   window.syna.api.register('stripe', 'stripe-' + fragmentName, {
     form: "{{ (printf "#payment-form-%s" .Name) | safeJS }}",
     token: "{{ .Params.stripe_token | safeJS }}",
+    product: "{{ .Params.product | safeJS }}",
     price: "{{ .Params.price | safeJS }}",
-    price_text: "{{ .Params.price_text | safeJS }}",
+    price_text: "{{ (.Params.price_text | default .Params.price) | safeJS }}",
     currency: "{{ .Params.currency | safeJS }}",
     options: {
       classes: {
