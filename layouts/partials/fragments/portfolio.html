@@ -11,9 +11,13 @@
     {{- else -}}
       {{- range (sort $items ".Params.weight") }}
         <div class="col-lg-4 col-md-6 col-12 py-2">
-          <div class="border rounded position-relative portfolio-item overflow-hidden 
-            {{- if not .Params.url }} has-modal {{- end -}}
-          ">
+          <div
+            class="border rounded position-relative portfolio-item overflow-hidden 
+              {{- if not .Params.url }} has-modal {{- end -}}
+            "
+            {{- if $self.Params.min_height -}}
+              {{- safeHTMLAttr (printf "style='min-height:%s; height:%s'" $self.Params.min_height $self.Params.min_height) -}}
+            {{- end -}}>
             {{- if .Params.url }}
               <a href="{{ .Params.url | relLangURL }}">
             {{- end }}
