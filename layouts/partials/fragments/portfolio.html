@@ -15,8 +15,8 @@
             class="border rounded position-relative portfolio-item overflow-hidden 
               {{- if not .Params.url }} has-modal {{- end -}}
             "
-            {{- if $self.Params.min_height -}}
-              {{- safeHTMLAttr (printf "style='min-height:%s; height:%s'" $self.Params.min_height $self.Params.min_height) -}}
+            {{- if $self.Params.height -}}
+              {{- safeHTMLAttr (printf "style='min-height:%s; height:%s'" $self.Params.height $self.Params.height) -}}
             {{- end -}}>
             {{- if .Params.url }}
               <a href="{{ .Params.url | relLangURL }}">
