@@ -10,14 +10,15 @@ title = "Documentation"
 
 ### Variables
 
-media
+#### media
 *type: string*
 
-URL to content would want to embed in your page. This value would override `media_source`.
-media_source
+URL to embed in the fragment. Any value would override `media_source`.
+
+#### media_source
 *type: string*
 
-HTML code for your `iframe` or `embed`.
+Custom HTML code for your `iframe` or embed objects.
 
 If `media` is set, this value would not be used.
 
@@ -25,20 +26,21 @@ If `media` is set, this value would not be used.
 *type: boolean*  
 *default: true*
 
-If set to `true`, `iframe` or `embed` would change their size, respecting page size and the `ratio` variable, also overriding `size` variable.  
-If set to `false` however, `ratio` would be ignored and `size` would be used instead.
+Make the embed object or iframe responsive. It can be customized with help of the `ratio` variable.  
+Using `responsive` any `size` variable would be overridden.
 
 #### ratio
-*type: 21by9, 16by9, 4by3, 1by1*
+*type: string*  
+*accepted values: 21by9, 16by9, 4by3, 1by1*  
 *default: 4by3*
 
-If `responsive` is set to `false` then this value would be ignored.
+If `responsive` is set to `false`, this value would be ignored.
 
 #### size
 *type: number*  
 *default: 75*
 
-Percentage value, forcing the fragment to be for example 75% of width of it's parent.
+Percentage value to force embed object or iframe to be a specific width of its parent.
 
 If `responsive` is set to `true` then this value would be ignored.
 

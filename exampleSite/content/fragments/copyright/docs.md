@@ -22,6 +22,6 @@ title = "Documentation"
 *type: boolean*  
 *default: false*
 
-If set to true, the Syna theme name and link would be shown using `i18n attribution` content.
+If set to true, the Syna theme name and link would be shown using the `attribution` snippet from `i18n`.
 
 [Global variables](/docs/global-variables) are documented as well and have been omitted from this page.

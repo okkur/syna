@@ -14,7 +14,8 @@ title = "Documentation"
 *type: number*  
 *default: 10*
 
-Number of pages displayed in the list. If List fragment is registered in a list page, `count` will be used for pagination as well.
+Number of pages displayed in the list.  
+If List fragment is registered in a list page, `count` will be used for pagination as well.
 
 #### section
 *type: string*  
@@ -35,12 +36,12 @@ If set to `true`, it will show the summary of the page. It works by looking for 
 If set to `true`, it will show the image of the page. It works by looking for a Content fragment in the page and fetching the `image` value in it.
 
 #### read_more
-*type: empty (not set, set to no value), false, true*  
+*type: boolean*
 *default: empty*
 
 - empty: show when content is truncated
-- false to never show
-- true to always show
+- false: never show
+- true: always show
 
 #### tiled
 *type: boolean*  
@@ -62,7 +63,7 @@ Content of each page (everything after the title) will be collapsible. If there 
 *type: boolean*  
 *default: true*
 
-Shows subsection branch pages. This means if there are other sections, nested in the section the fragment is working with, and have list pages in them, those list pages will be listed in the fragment.
+If enabled list pages from nested/child sections will be shown.
 
 #### subsection_leaves
 *type: boolean*  

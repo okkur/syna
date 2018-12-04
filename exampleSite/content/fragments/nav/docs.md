@@ -18,7 +18,8 @@ title = "Documentation"
 *type: boolean*  
 *default: false*
 
-If set to `true`, a text input would be added to the navbar and changes the layout of menus. The input is used for search.
+If set to `true`, search is enabled within the navbar.  
+**Note:** The additional input field used for search will alter the menu layout.
 
 #### prepend, postpend
 *type: array of objects*
@@ -37,14 +38,16 @@ Menu like objects that are used to add menus before and after the main menu.
 If object is set, breadcrumbs will be shown under the navbar.
 
 ##### breadcrumb.display
-*type: boolean*
-*default: in case object is defined the value is true, if not, it's false*
+*type: boolean*  
+*default: true*
 
 ##### breadcrumb.level
-*type: number*
+*type: number*  
 *default: 1*
 
-Specifies from which level of nested directories the breadcrumb should be shown. For example for the value of 1:
+Define the section level the breadcrumb will start being shown.
+ 
+The default value `1` would lead to the following being defined: 
 
 ```
 content/_index # level 0, not shown
@@ -53,18 +56,20 @@ content/blog/article-1 # level 2, shown
 ```
 
 ##### breadcrumb.background
-*type: primary, secondary, light, dark, warning, success (other Bootstrap background colors are acceptable as well)*  
-*default: light*
+*type:  string*  
+*recommended: primary, secondary, white, light, dark*  
+*accepted values: primary, secondary, white, light, dark, warning, success, danger, info, transparent*
 
 #### asset
 *type: asset object*
 
-Asset will be shown as logo.
+Asset will be shown as a clickable logo directing to the main page.
 
 #### repo_button
 *type: object*
 
-If set, a repo button would be added to the navbar much like the Github button on top of this page.
+Enable a button on the top right navbar. Usually used to link to your repository such as Github or Gitlab.  
+The icon can be customized via `repo_button.icon`.
 
 ##### repo_button.url
 *type: string*

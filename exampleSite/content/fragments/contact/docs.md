@@ -50,27 +50,27 @@ Submit button text of the form.
 
 Setting netlify to `true` will enable Netlify's form handling and it will override any `post_url` configuration.
 
-Using Netlify form service you wouldn't need to worry about handling the submissions, preventing spam and reCaptcha. All of these would be handled by Netlify.
+Using the Netlify form service simplifies form handling. Enable it and submissions should be showing up in your Netlify interface. It includes spam prevention including reCaptcha usage and can be connected to various triggers such as email, slack and more.
 
-**NOTE:** In order to use Netlify form service your website needs to be hosted on [Netlify](https://netlify.com).
+**NOTE:** Your website needs to be hosted on [Netlify](https://netlify.com) to take advantage of this.
 
 #### recaptcha
 *type: object*  
 *default: Not set*
 
-If this object is set and `recaptcha.sitekey` is not empty and `netlify` is not set to `true` then Google reCaptcha would be added to the form.
+In the case `post_url` is used a reCaptcha can be added to the form by setting recaptcha to `true` and providing a `recaptcha.sitekey`.
 
-This would help with preventing spam submission.
+This reduces spam submissions to your contact form.
 
 ##### recaptcha.sitekey
 *type: string*
 
-Your sitekey from Google reCaptcha. Generate your own from [here](https://www.google.com/recaptcha/intro/v3.html).
+Your specific Google reCaptcha  sitekey generated within the [recaptcha dashboard](https://www.google.com/recaptcha/intro/v3.html).
 
 #### message
 *type: object*
 
-These messages would be shown if form submission either succeeds or fails.
+These messages would be shown after submission in case of an error or success.
 
 ##### message.success
 *type: string*  

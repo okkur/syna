@@ -19,7 +19,7 @@ title = "Documentation"
 #### summary
 *type: string*
 
-The value is not required, but if set the summary displayed in the List fragment would use this value.
+Ability to override the generated default summary by Hugo to be displayed in fragments such as List.
 
 #### asset
 *type: asset object*
@@ -27,7 +27,7 @@ The value is not required, but if set the summary displayed in the List fragment
 This value will render an image on top of the content.
 
 #### display_date
-*type: boolean*
+*type: boolean*  
 *default: false*
 
 #### sidebar
@@ -41,10 +41,11 @@ If this object is present in fragment configuration a sidebar would appear next 
 *type: string*
 
 ##### sidebar.align
-*type: left, right*  
+*type: string*  
+*accepted values: right, left*  
 *default: left*
 
-Sets the alignment of sidebar on the page.
+Sets the alignment on the page.
 
 ##### sidebar.content
 *type: string*

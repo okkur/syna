@@ -23,8 +23,8 @@ Title of the menu displayed in the footer.
 #### asset
 *type: asset object*
 
-The asset will be displayed on top left of the fragment and can be used for logo.
+The asset such as images or graphics is displayed on top left of the fragment and can be used for a logo. 
 
-From global variables, `subtitle` and `title_align` don't work in this fragment since title works differently and there is no subtitle.
+The global variables `subtitle`, `title_align` are not supported in this fragment.
 
 [Global variables](/docs/global-variables) are documented as well and have been omitted from this page.

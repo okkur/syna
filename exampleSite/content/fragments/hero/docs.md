@@ -14,7 +14,7 @@ title = "Documentation"
 *type: boolean*  
 *default: false*
 
-If set to `true`, Particles.js would be appended to the page and particles is displayed in the Hero fragment.
+If set to `true`, Particles.js would be added to the page and displayed in the Hero fragment. 
 
 #### header
 *type: asset object*
@@ -24,12 +24,12 @@ Background image of the Hero fragment.
 #### asset
 *type: asset object*
 
-This asset is displayed on the Hero fragment, can be used to display a logo.
+The asset is displayed on the Hero fragment instead of the `title` and can be used to display a logo. 
 
 #### buttons
 *type: array of objects*
 
-Call to action buttons displayed after title and subtitle.
+Call to action buttons displayed after title or asset and subtitle. 
 
 Visit [Buttons fragment page (documentation section)](/fragments/buttons#docs) for documentation on which variables to use.
 
