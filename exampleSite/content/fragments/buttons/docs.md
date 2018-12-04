@@ -16,19 +16,20 @@ title = "Documentation"
 You can add as many buttons as you want.
 
 ##### buttons.text
-*type: string*
+*type: string*  
 *required*
 
 Title of the call to action button.
 
 ##### buttons.url
-*type: string*
+*type: string*  
 *default: "#"*
 
 URL of the call to action button.
 
 ##### buttons.color
-*type: primary, secondary, success, danger, warning, info, light, dark, link. Can be prefixed by `outline-` for outlined buttons.*
+*type: string*  
+*accepted values: (outline-)primary, secondary, success, danger, warning, info, light, dark*  
 *default: "primary"*
 
 Color class of the button, based on Bootstrap classes. 

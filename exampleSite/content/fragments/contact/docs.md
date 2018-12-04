@@ -8,11 +8,15 @@ title = "Documentation"
   enable = true
 +++
 
-Contact form can be used to either send the message to your email using a service such as [formspree](formspree.io), use Netlify form service or use your custom endpoint.
+Contact form can be used to receive messages.
+
+Various methods and providers are supported. You can use Netlify's form service, [formspree](formspree.io) or a custom endpoint.
 
 **NOTE:** If `netlify` variable is set to true then value of `post_url` will be dismissed since Contact fragment can send the data to a single endpoint only.
 
-This fragment uses text from the `contact` section of i18n. You can customize or translate them using the keys documented here and available in `i18n/` directory of your website.
+This fragment uses internationalized text snippets. Customize them in the fragment or in your own `i18n/` website directory.
+
+Contributions for translations are welcome.
 
 ### Variables
 
@@ -20,31 +24,31 @@ This fragment uses text from the `contact` section of i18n. You can customize or
 *type: string*  
 *default: contact-form-{{ file_name }}*
 
-Unique name for the form. This name will be used in the scripts and needs to be unique in the page.
+Unique name for the form used to identify the form in scripts and on the page.
 
 #### post_url
 *type: string*  
-*default: formspree.io*
+*default: formspree.io*  
+*Requires email to be set*
 
 URL to your own backend or a service you are using.
 
 #### email
-*type: string*  
-*Required if post_url is using default value*
+*type: string*
 
-The variable is appended to `https://formspree.io/` if `post_url` is not set (and uses the default value) and `netlify` is either not set or set to `false`.
+Email used in case of error or if javascript is not available for a functioning contact form.
 
 #### button_text
 *type: string*  
 *default: i18n contact.defaultButton*
 
-Title of submit button of the form.
+Submit button text of the form.
 
 #### netlify
 *type: boolean*  
 *default: false*
 
-If set to `true`, `post_url` would be ignored and Contact fragment would use Netlify variables in order to enable Netlify form service.
+Setting netlify to `true` will enable Netlify's form handling and it will override any `post_url` configuration.
 
 Using Netlify form service you wouldn't need to worry about handling the submissions, preventing spam and reCaptcha. All of these would be handled by Netlify.
 

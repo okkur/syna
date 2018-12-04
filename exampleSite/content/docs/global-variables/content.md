@@ -41,7 +41,8 @@ Set title of the fragment
 Set subtitle of the fragment
 
 #### title_align
-*type: right, left, center*
+*type: string*  
+*accepted values: right, left, center*
 
 Change alignment of fragment's header
 
@@ -54,24 +55,29 @@ Changes the padding of fragment's container
 #### asset
 *type: asset object*
 
-This variable is not global and is not always named `asset`. Any fragment that uses this variable would show either an image or an icon.
+This variable is not a global variable but a variable type that is used in a lot of fragment.
+
+Any fragment that uses this variable type would show either an image or an icon.
+
+The type is introduced to make configuring images and icons same between different fragments.
 
 ##### asset.image
 *type: string*
 
-If set, `asset.icon` will be ignored. `asset.image` supports [image fallthrough mechanism](/docs/image-fallthrough/).
+Link to an image file. `asset.image` supports the build in [image fallthrough mechanism](/docs/image-fallthrough/).
+If `asset.image` is set, `asset.icon` will be ignored.
 
 ##### asset.icon
 *type: string*
 
-If `asset.image` is not set, an icon will usually be shown and the icon will have `asset.icon` as it's class. Icons are powered by FontAwesome.
+Icon class powered by FontAwesome such as `fab fab-github`.
 
 ##### asset.url
 *type: string*
 
-URL of the image or the icon.
+Action/clickable URL of the image or the icon.
 
 ##### asset.text
 *type: string*
 
-If `asset.image` is set, alternative text of the image will be this variable.
+If `asset.image` is set, `text` will be used as alternative text (alt-text) of the image.
