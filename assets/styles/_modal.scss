@@ -35,6 +35,11 @@ body.modal-open {
     }
   }
 
+  .badge-container {
+    color: $light;
+    margin-bottom: 1rem;
+  }
+
   &:not(.show) {
     opacity: 0;
     visibility: hidden;

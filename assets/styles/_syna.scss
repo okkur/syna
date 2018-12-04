@@ -97,3 +97,19 @@ pre {
     }
   }
 }
+
+.badge-container {
+  top: 8px;
+  left: 8px;
+  display: flex;
+  width: calc(100% - 16px);
+
+  .badge {
+    margin-right: 8px;
+    transition: $transition-base;
+
+    [class*=fa-] {
+      margin-right: 2px;
+    }
+  }
+}
