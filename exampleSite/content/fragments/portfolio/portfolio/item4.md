@@ -9,8 +9,8 @@ weight = 40
   icon = "fas fa-paw"
 
 [[labels]]
-  title = "Cat"
-  icon = "fas fa-paw"
+  title = "Dog"
+  icon = "fas fa-dog"
 
 [[labels]]
   title = "Smart"

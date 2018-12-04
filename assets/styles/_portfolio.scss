@@ -1,5 +1,8 @@
 .portfolio-item {
-  min-height: 110px;
+  min-height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   .badge-container {
     .badge {
