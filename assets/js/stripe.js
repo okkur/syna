@@ -62,11 +62,28 @@ Object.keys(stripeFragments).forEach(key => {
 });
 
 window.syna.stream.subscribe('topic.pricing.change', function({ product, price, price_text, currency }) {
+  updateStripeFragments(product, price, price_text, currency);
+});
+
+window.syna.stream.subscribe('topic.url.change', function({ newURL }) {
+  const query = newURL.split('?')[1] || '';
+  const params = query
+    .split('&')
+    .reduce((tmp, pair) => {
+      const [key, value] = pair.split('=')
+      tmp[decodeURIComponent(key)] = decodeURIComponent(value);
+      return tmp;
+    }, {})
+
+  updateStripeFragments(params.product, params.price, params.price_text, params.currency);
+});
+
+function updateStripeFragments(product, price, price_text, currency) {
   window.syna.api.toArray('stripe').forEach(config => {
     config.product = product;
     config.price = price;
     config.price_text = price_text || price;
     config.currency = currency;
-    $('[data-render="price_text"]').text(price_text || price)
-  })
-});
+    $(`${config.form} [data-render="price_text"]`).text(price_text || price);
+  });
+}

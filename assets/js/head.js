@@ -2,9 +2,13 @@ class Stream {
   constructor() {
     this._topics = {};
     this.subUid = -1;
+
+    this._publishHashChange();
+
     this.subscribe = this.subscribe.bind(this);
     this.publish = this.publish.bind(this);
     this.unsubscribe = this.unsubscribe.bind(this);
+    this._publishHashChange = this._publishHashChange.bind(this);
   }
 
   subscribe (topic, func) {
@@ -13,6 +17,11 @@ class Stream {
     }
     const token = (++this.subUid).toString();
     this._topics[topic].push({ token, func });
+
+    if (topic === 'topic.url.change') {
+      func.call(null, { newURL: window.location.href });
+    }
+
     return token;
   }
 
@@ -50,6 +59,12 @@ class Stream {
       }
     }
     return false;
+  }
+
+  _publishHashChange() {
+    window.onhashchange = function({ oldURL, newURL }) {
+      this.publish('topic.url.change', `oldURL:${oldURL},newURL:${newURL}`);
+    }
   }
 }
 
