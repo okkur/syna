@@ -39,7 +39,9 @@
             <a
               href="{{ .Params.button_url | relLangURL }}"
               class="btn btn-lg btn-block btn-primary"
-              data-event-args="{{ printf "title:%s,price:%s,price_text:%s,currency:%s" .Title .Params.price (.Params.price_text | default .Params.price) (.Params.currency | default "") }}">
+              {{- if (not (isset .Params "button_url")) | or (eq .Params.button_url "") -}}
+                {{ safeHTMLAttr (printf "data-event-args=\"title:%s,price:%s,price_text:%s,currency:%s\"" .Title .Params.price (.Params.price_text | default .Params.price) (.Params.currency | default "")) }}
+              {{- end -}}>
               {{ .Params.button_text }}
             </a>
           </div>
@@ -50,7 +52,7 @@
 {{- partial "helpers/container.html" (dict "end" true "in_slot" .in_slot) -}}
 
 <script>
-document.querySelectorAll('#{{ .Name }} .btn').forEach(function(node) {
+document.querySelectorAll('#{{ .Name }} .btn[data-event-args]').forEach(function(node) {
   node.addEventListener('click', function(e) {
     e.preventDefault();
     window.syna.stream.publish('topic.pricing.change', e.target.dataset.eventArgs);
