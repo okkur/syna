@@ -15,7 +15,7 @@
           {{- if not (in .Name "/index.md") -}}
             {{- $item := .Params }}
             {{- $card_header_id := printf "%s" (strings.TrimSuffix ".md" (replace .Name (printf "%s/" $.Name) "")) }}
-            {{- $collapse_id := printf "%s-collapse" (strings.TrimSuffix ".md" (replace .Name (printf "%s/" $.Name) "")) }}
+            {{- $collapse_id := printf "%s%s" $.Name (printf "%s-collapse" (strings.TrimSuffix ".md" (replace .Name (printf "%s/" $.Name) ""))) }}
               <div class="card">
                 <div id="{{ $card_header_id }}" class="card-header" data-toggle="collapse" data-target="#{{ $collapse_id }}"
                             aria-expanded="false" aria-controls="{{ $collapse_id }}">
