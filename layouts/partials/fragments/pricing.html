@@ -55,7 +55,7 @@
 document.querySelectorAll('#{{ .Name }} .btn[data-event-args]').forEach(function(node) {
   node.addEventListener('click', function(e) {
     e.preventDefault();
-    window.syna.stream.publish('topic.pricing.change', e.target.dataset.eventArgs);
+    window.syna.stream.publish('pricing:change', e.target.dataset.eventArgs);
   });
 });
 </script>
