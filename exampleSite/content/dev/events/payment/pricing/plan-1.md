@@ -10,7 +10,7 @@ price_text = "Free"
 # highlight = true
 
 button_text = "Start for free"
-button_url = "#"
+#button_url = "#"
 
 [[features]]
   text = "**Basic** feature"
