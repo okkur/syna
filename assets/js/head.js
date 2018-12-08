@@ -8,7 +8,6 @@ class Stream {
     this.subscribe = this.subscribe.bind(this);
     this.publish = this.publish.bind(this);
     this.unsubscribe = this.unsubscribe.bind(this);
-    this._publishHashChange = this._publishHashChange.bind(this);
   }
 
   subscribe (topic, func) {
@@ -17,11 +16,6 @@ class Stream {
     }
     const token = (++this.subUid).toString();
     this._topics[topic].push({ token, func });
-
-    if (topic === 'topic.url.change') {
-      func.call(null, { newURL: window.location.href });
-    }
-
     return token;
   }
 
@@ -31,13 +25,15 @@ class Stream {
     }
     setTimeout(() => {
       const subscribers = this._topics[topic];
-      const args = argsText
-        .split(',')
-        .reduce((tmp, param) => {
-          const [key, value] = param.split(':');
-          tmp[key] = value;
-          return tmp;
-        }, {});
+      const args = typeof argsText === 'object' ? 
+        argsText :
+        argsText
+          .split(',')
+          .reduce((tmp, param) => {
+            const [key, value] = param.split(':');
+            tmp[key] = value;
+            return tmp;
+          }, {});
 
       let len = subscribers ? subscribers.length : 0;
       while (len--) {
@@ -62,8 +58,24 @@ class Stream {
   }
 
   _publishHashChange() {
-    window.onhashchange = function({ oldURL, newURL }) {
-      this.publish('topic.url.change', `oldURL:${oldURL},newURL:${newURL}`);
+    window.onhashchange = function({ newURL }) {
+      const query = newURL.split('?')[1] || '';
+      const params = query
+        .split('&')
+        .reduce((tmp, pair) => {
+          const [key, value] = pair.split('=')
+          tmp[decodeURIComponent(key)] = decodeURIComponent(value);
+          return tmp;
+        }, {});
+
+      const topic = params.topic;
+      const args = params;
+      delete args.topic;
+      if (!topic) {
+        return;
+      }
+
+      this.publish(`topic.${topic}`, args);
     }
   }
 }

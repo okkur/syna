@@ -9,7 +9,7 @@ price_text = "Free"
 # highlight = true
 
 button_text = "Start for free"
-button_url = "/dev/events/payment?plan=Starting plan&price=0&price_text=Free&currency="
+button_url = "/dev/events/payment?topic=pricing:change&plan=Starting plan&price=0&price_text=Free&currency="
 
 [[features]]
   text = "**Basic** feature"
