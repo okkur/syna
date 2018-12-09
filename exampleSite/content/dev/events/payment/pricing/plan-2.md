@@ -2,7 +2,7 @@
 weight = 20
 
 title = "Premium plan"
-subtitle = "starting at"
+subtitle = "Working with automatic event publisher"
 
 price = "9.99"
 currency = "usd"

@@ -74,3 +74,12 @@ function checkReCaptcha() {
 window.onContactCaptcha = function($form) {
   document.querySelector('form.contact').dispatchEvent(new Event('submit'))
 }
+
+window.syna.stream.subscribe('contact:update', function({ name, email, phone, message }) {
+  $('input[name=name]').attr('value', name || null)[0].focus();
+  // TODO: REVISIT: Remove the following line whenever firefox fixes center on focus
+  $('input[name=name]')[0].scrollIntoView({behavior: "instant", block: "center"});
+  $('input[name=email]').attr('value', email || null);
+  $('input[name=phone]').attr('value', phone || null);
+  $('textarea[name=message]').$nodes.forEach(node => node.appendChild(document.createTextNode(message || '')));
+});

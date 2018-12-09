@@ -8,7 +8,7 @@ price = "Custom"
 # highlight = true
 
 button_text = "Contact us"
-#button_url = "#"
+button_url = "/dev/events/payment?event=contact:update&message=Title: Let's negotiate\nPlan: Enterprise plan\nYour message:\n"
 
 [[features]]
   text = "**Basic** feature"

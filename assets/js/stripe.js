@@ -71,6 +71,9 @@ function updateStripeFragments(product, price, price_text, currency) {
     config.price = price;
     config.price_text = price_text || price;
     config.currency = currency;
-    $(`${config.form} [data-render="price_text"]`).text(price_text || price);
+    $(`${config.form} [data-render="price_text"]`).text(price_text || price || null);
+    $(`${config.form} input[name=email]`)[0].focus();
+    // TODO: REVISIT: Remove the following line whenever firefox fixes center on focus
+    $(`${config.form} input[name=email]`)[0].scrollIntoView({behavior: "instant", block: "center"});
   });
 }

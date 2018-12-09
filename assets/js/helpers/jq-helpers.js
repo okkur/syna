@@ -25,12 +25,14 @@ function $(selector) {
 
       if (value === undefined) {
         return nodes[0].getAttribute(attribute);
-      } else {
+      } else if (value !== null) {
         nodes.forEach(node => node.setAttribute(attribute, value));
       }
+      return _returnee;
     },
     append: innerHTML => {
       nodes.forEach(node => node.innerHTML += innerHTML);
+      return _returnee;
     },
     html: innerHTML => {
       if (innerHTML === undefined) {
@@ -42,6 +44,7 @@ function $(selector) {
       }
 
       nodes.forEach(node => node.innerHTML = innerHTML);
+      return _returnee;
     },
     text: innerText => {
       if (innerText === undefined) {
@@ -52,7 +55,10 @@ function $(selector) {
         return nodes[0].innerText;
       }
 
-      nodes.forEach(node => node.innerText = innerText);
+      if (innerText !== null) {
+        nodes.forEach(node => node.innerText = innerText);
+      }
+      return _returnee;
     },
     val: value => {
       if (value === undefined) {
@@ -64,6 +70,7 @@ function $(selector) {
       }
 
       nodes.forEach(node => node.value = value);
+      return _returnee;
     },
     submit: () => nodes.forEach(node => node.submit()),
     serialize: (json = false) => {
