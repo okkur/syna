@@ -74,3 +74,10 @@ function checkReCaptcha() {
 window.onContactCaptcha = function($form) {
   document.querySelector('form.contact').dispatchEvent(new Event('submit'))
 }
+
+window.syna.stream.subscribe('contact:update', function({ name, email, phone, message }) {
+  $('input[name=name]').attr('value', name || null)[0].focus();
+  $('input[name=email]').attr('value', email || null);
+  $('input[name=phone]').attr('value', phone || null);
+  $('textarea[name=message]').text(message || null);
+});
