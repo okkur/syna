@@ -55,7 +55,9 @@ function $(selector) {
         return nodes[0].innerText;
       }
 
-      nodes.forEach(node => node.innerText = innerText);
+      if (innerText !== null) {
+        nodes.forEach(node => node.innerText = innerText);
+      }
       return _returnee;
     },
     val: value => {
