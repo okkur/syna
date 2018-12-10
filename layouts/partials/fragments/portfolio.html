@@ -5,12 +5,12 @@
 
 {{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "Name" .Name "Params" .Params) -}}
   {{- partial "helpers/section-header.html" (dict "self" $self.self "bg" $bg "params" .Params) }}
-  <div class="row">
+  <div class="row justify-content-center">
     {{- if eq (len $items) 0 }}
       {{- partial "helpers/empty-subpath.html" (dict "context" "portfolio" "root" $) -}}
     {{- else -}}
       {{- range (sort $items ".Params.weight") }}
-        <div class="col-lg-4 col-md-6 col-12 py-2">
+        <div class="col-lg-4 col-md-9 col-12 py-2">
           <div
             class="border rounded position-relative portfolio-item overflow-hidden 
               {{- if not .Params.url }} has-modal {{- end -}}
@@ -37,7 +37,7 @@
                 {{- end -}}
                 {{- if or .Params.title .Params.subtitle }}
                   <div class="position-absolute description-container col">
-                    <div class="row justify-content-center description text-light p-2 rounded text-center">
+                    <div class="row flex-column justify-content-center description text-light p-2 rounded text-center">
                       {{ if .Params.title }}<h5 class="title">{{ .Params.title }}</h5>{{ end }}
                       {{ if .Params.subtitle }}<h6 class="subtitle">{{ .Params.subtitle }}</h6>{{ end }}
                     </div>
