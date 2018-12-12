@@ -10,7 +10,6 @@ $light:               {{ .Site.Params.colors.light | default "#f8f9fa" }};
 $dark:                {{ .Site.Params.colors.dark | default "#343a40" }};
 
 $link-color:          $primary;
-$link-hover-color:    $light;
 
 $gray-200:            #e9ecef !default;
 $border-color:        $gray-200;

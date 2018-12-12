@@ -3,7 +3,15 @@
     color: $light;
 
     @include hover {
-      color: $dark;
+      color: darken($light, 15%);
+    }
+  }
+}
+
+.bg-dark {
+  a {
+    @include hover {
+      color: darken($light, 15%);
     }
   }
 }
