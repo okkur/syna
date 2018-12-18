@@ -28,9 +28,6 @@ function onSubmit(configId, form, stripe, card) {
         const serializedForm = Object.assign(JSON.parse(form.serialize(true)), {
           stripeToken: result.token.id,
           product: config.product,
-          price: parseInt(config.price.match(/\w+/g).reduce((tmp, match) => tmp + match, ''), 10),
-          price_text: config.price_text,
-          currency: config.currency,
           from: window.location.href,
         });
         $.post(action, JSON.stringify(serializedForm))
@@ -59,6 +56,25 @@ Object.keys(stripeFragments).forEach(key => {
 
   const form = $(config.form);
   initFormValidation(form[0], onSubmit(key, form, stripe, card));
+  form.$('[data-action="toggle-price-change"]').on('click', (() => {
+    let isEditable = false;
+    return () => {
+      if (isEditable) {
+        form.$('.price-display').removeClass('hidden');
+        form.$('.price-input').addClass('hidden');
+        form.$('input[name=custom_value]').val('false');
+      } else {
+        form.$('.price-display').addClass('hidden');
+        form.$('.price-input').removeClass('hidden');
+        form.$('input[name=custom_value]').val('true');
+      }
+      isEditable = !isEditable;
+    }
+  })());
+
+  form.$('input[name=price_text]').on('input', e => {
+    form.$('input[name=price]').val(parseInt(e.target.value.match(/\w+/g).reduce((tmp, match) => tmp + match, ''), 10));
+  });
 });
 
 window.syna.stream.subscribe('pricing:change', function({ product, price, price_text, currency }) {
@@ -68,9 +84,6 @@ window.syna.stream.subscribe('pricing:change', function({ product, price, price_
 function updateStripeFragments(product, price, price_text, currency) {
   window.syna.api.toArray('stripe').forEach(config => {
     config.product = product;
-    config.price = price;
-    config.price_text = price_text || price;
-    config.currency = currency;
     $(`${config.form} [data-render="price_text"]`).text(price_text || price || null);
     $(`${config.form} input[name=email]`)[0].focus();
     // TODO: REVISIT: Remove the following line whenever firefox fixes center on focus

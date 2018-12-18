@@ -54,12 +54,23 @@
         </div>
       </div>
       <div class="row justify-content-between pr-3">
-        <div class="col-auto d-flex flex-column justify-content-center">
-          <div class="row mx-0">
-            <h5 class="my-0">Price:</h5>
-            <h5 class="my-0 pl-2" data-render="price_text">{{- .Params.price_text | default .Params.price -}}</h5>
-          </div>
-        </div>
+        {{- if eq (len .Params.prices) 1 -}}
+          {{- range .Params.prices }}
+            <div class="col-auto d-flex flex-column justify-content-center">
+              <div class="row mx-0 align-items-center">
+                <h5 class="my-0">Price:</h5>
+                <h5 class="my-0 pl-2 price-display" data-render="price_text">{{- .text | default .amount -}}</h5>
+                <div class="form-group mb-0 ml-2 price-input hidden">
+                  <input class="form-control" type="text" name="price_text" value="{{ .text | default .amount }}" />
+                </div>
+                <i class="fas fa-edit ml-2 mt-1" data-action="toggle-price-change"></i>
+              </div>
+            </div>
+            <input type="hidden" name="price" value="{{ .amount }}" />
+            <input type="hidden" name="currency" value="{{ .currency }}" />
+            <input type="hidden" name="custom_value" value="false" />
+          {{- end -}}
+        {{- end -}}
         <div class="col-auto px-0 d-flex flex-column">
           <button type="submit" class="btn btn-primary">Submit</button>
         </div>
