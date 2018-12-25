@@ -130,7 +130,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\n__webpack_require__(/*! ./helpers/bootstrap-helper */ \"./assets/js/helpers/bootstrap-helper.js\");\n\n__webpack_require__(/*! ./scroll */ \"./assets/js/scroll.js\");\n\n__webpack_require__(/*! ./modal */ \"./assets/js/modal.js\");\n\n//# sourceURL=webpack:///./assets/js/index.js?");
+eval("\n\n__webpack_require__(/*! ./helpers/bootstrap-helper */ \"./assets/js/helpers/bootstrap-helper.js\");\n\n__webpack_require__(/*! ./scroll */ \"./assets/js/scroll.js\");\n\n__webpack_require__(/*! ./modal */ \"./assets/js/modal.js\");\n\nvar _jqHelpers = __webpack_require__(/*! ./helpers/jq-helpers */ \"./assets/js/helpers/jq-helpers.js\");\n\nvar _jqHelpers2 = _interopRequireDefault(_jqHelpers);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n(0, _jqHelpers2.default)('.btn-group-toggle').$nodes.forEach(function (group) {\n  (0, _jqHelpers2.default)(group).$('label.btn input[type=radio]').on('click', function (e) {\n    (0, _jqHelpers2.default)(group).$('label.btn.active').removeClass('active');\n    (0, _jqHelpers2.default)(e.target.parentElement).addClass('active');\n  });\n});\n\n//# sourceURL=webpack:///./assets/js/index.js?");
 
 /***/ }),
 

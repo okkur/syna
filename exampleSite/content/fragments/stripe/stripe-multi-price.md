@@ -1,7 +1,7 @@
 +++
 fragment = "stripe"
-weight = 124
-background = "primary"
+weight = 120
+background = "secondary"
 
 title = "Payment Fragment"
 subtitle = "Doesn't work in demo"
@@ -10,9 +10,19 @@ post_url = "https://us-central1-syna-222118.cloudfunctions.net/function-1/charge
 stripe_token = "pk_test_36PckiAlsGm9KmHj9b034GAW"
 
 product = "Example Product"
-price = "2000"
-currency = "usd"
-price_text = "20.00$"
+allow_change = true
+[[prices]]
+  text = "20.00$"
+  amount = "2000"
+  currency = "usd"
+[[prices]]
+  text = "30.00$"
+  amount = "3000"
+  currency = "usd"
+[[prices]]
+  text = "50.00$"
+  amount = "5000"
+  currency = "usd"
 
 [email]
   label = "Your email address"

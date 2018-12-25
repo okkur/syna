@@ -54,23 +54,38 @@
         </div>
       </div>
       <div class="row justify-content-between pr-3">
-        {{- if eq (len .Params.prices) 1 -}}
-          {{- range .Params.prices }}
-            <div class="col-auto d-flex flex-column justify-content-center">
-              <div class="row mx-0 align-items-center">
-                <h5 class="my-0">Price:</h5>
-                <h5 class="my-0 pl-2 price-display" data-render="price_text">{{- .text | default .amount -}}</h5>
-                <div class="form-group mb-0 ml-2 price-input hidden">
-                  <input class="form-control" type="text" name="price_text" value="{{ .text | default .amount }}" />
+        <div class="col-auto d-flex flex-column justify-content-center">
+          <div class="row mx-0 align-items-center">
+            <h5 class="my-0">Price:</h5>
+            <div class="price-display row mx-1">
+              {{- if gt (len $.Params.prices) 1 }}
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              {{- end -}}
+                {{- range $index, $price := .Params.prices }}
+                  {{- with $price }}
+                    {{- if eq (len $.Params.prices) 1 }}
+                      <h5 class="my-0 pl-2" data-render="price_text">{{ .text | default .amount }}</h5>
+                      <input type="hidden" name="price" value="{{ .amount }}" />
+                      <input type="hidden" name="currency" value="{{ .currency }}" />
+                    {{- else }}
+                      {{- $input_name := printf "%s-%s" $.Name .amount }}
+                      <label class="btn btn-primary">
+                        <input id="{{ $input_name }}" name="price" type="radio" data-price-text="{{ .text | default .amount }}`" value="{{ .amount }}" /> {{ .text | default .amount }}
+                      </label>
+                    {{- end }}
+                  {{- end -}}
+                {{- end -}}
+              {{- if gt (len $.Params.prices) 1 }}
                 </div>
-                <i class="fas fa-edit ml-2 mt-1" data-action="toggle-price-change"></i>
-              </div>
+              {{- end }}
             </div>
-            <input type="hidden" name="price" value="{{ .amount }}" />
-            <input type="hidden" name="currency" value="{{ .currency }}" />
-            <input type="hidden" name="custom_value" value="false" />
-          {{- end -}}
-        {{- end -}}
+            <div class="form-group mb-0 ml-2 price-input hidden">
+              <input class="form-control" type="text" name="price_text" value="{{ (index .Params.prices 0).text | default (index .Params.prices 0).amount }}" />
+            </div>
+            <i class="fas fa-edit ml-2 mt-1" data-action="toggle-price-change"></i>
+          </div>
+        </div>
+        <input type="hidden" name="custom_value" value="false" />
         <div class="col-auto px-0 d-flex flex-column">
           <button type="submit" class="btn btn-primary">Submit</button>
         </div>
