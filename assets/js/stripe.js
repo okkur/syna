@@ -30,6 +30,11 @@ function onSubmit(configId, form, stripe, card) {
           product: config.product,
           from: window.location.href,
         });
+
+        if (serializedForm.custom_value === "false" && form.$('input[name=price]:checked').length) {
+          serializedForm.price_text = form.$('input[name=price]:checked').attr('data-price-text');
+        }
+
         $.post(action, JSON.stringify(serializedForm))
           .then(() => form.$('#generic-success').removeClass('d-none'))
           .catch(() => form.$('#generic-error').removeClass('d-none'));

@@ -69,7 +69,13 @@ export function serializeJSON(form) {
     const value = element.value;
 
     if (name) {
-      obj[name] = value;
+      if (element.type === 'radio' || element.type === 'checkbox') {
+        if (element.checked) {
+          obj[name] = value;
+        }
+      } else if (element.type !== 'file') {
+        obj[name] = value;
+      }
     }
   }
 
