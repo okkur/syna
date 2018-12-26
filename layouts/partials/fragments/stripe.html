@@ -1,14 +1,14 @@
-{{- $self := . -}}
+{{- $self := .self -}}
 {{- .page_scratch.Add "js" (dict "url" "https://js.stripe.com/v3/" "defer" false "async" false) -}}
 {{- .page_scratch.Add "js" (dict "file" "syna-stripe.js") -}}
-{{- $bg := .self.Scratch.Get "bg" }}
+{{- $bg := $self.Scratch.Get "bg" }}
 
 {{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "Name" .Name "Params" .Params) -}}
   {{- partial "helpers/section-header.html" (dict "self" $self "bg" $bg "params" .Params) -}}
-  {{- with .self.Content -}}
+  {{- with $self.Content -}}
     <div class="row">
       <div class="col text-center mt-3
-        {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
+        {{- partial "helpers/text-color.html" (dict "self" $self "light" "secondary") -}}
       ">
         {{ . }}
       </div>
