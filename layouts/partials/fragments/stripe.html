@@ -28,7 +28,7 @@
               {{- if .email -}}
                 {{- safeHTMLAttr (printf " placeholder=\"%s\"" .label) -}}
               {{- else -}}
-                {{- safeHTMLAttr (printf " placeholder=\"%s\"" (i18n "payment.email")) -}}
+                {{- safeHTMLAttr (printf " placeholder=\"%s\"" (i18n "stripe.email")) -}}
               {{- end -}}>
             <div data-error id="email-error"></div>
           </div>
@@ -43,14 +43,14 @@
           {{- with .Params.message.success -}}
             {{- . | markdownify -}}
           {{- else -}}
-            {{- i18n "payment.defaultGenericSuccess" -}}
+            {{- i18n "stripe.defaultGenericSuccess" -}}
           {{- end }}
         </div>
         <div class="generic-error mb-0 text-danger d-none" id="generic-error">
           {{- with .Params.message.error -}}
             {{- . | markdownify -}}
           {{- else -}}
-            {{- i18n "payment.defaultGenericError" }}
+            {{- i18n "stripe.defaultGenericError" }}
           {{- end }}
         </div>
       </div>
@@ -58,7 +58,7 @@
         <div class="col-auto d-flex flex-column justify-content-center">
           <div class="row mx-0 align-items-center">
             <div class="col-auto px-0">
-              <h5 class="my-0">Price:</h5>
+              <h5 class="my-0">{{ i18n "stripe.price" }}</h5>
             </div>
             <div class="col-auto mx-2 px-0">
               <div class="price-display row mx-0">
@@ -93,7 +93,7 @@
                       {{- end }}
                     </div>
                   </div>
-                  <input class="form-control" type="number" name="custom_price_text" value="{{ .default }}" />
+                  <input class="form-control" type="number" name="custom_price_text" placeholder="{{ i18n "stripe.pricePlaceholder" }}" value="{{ .default }}" />
                 </div>
               {{- end }}
             </div>
