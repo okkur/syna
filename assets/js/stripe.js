@@ -1,5 +1,6 @@
 import $ from './helpers/jq-helpers';
 import Validator from 'form-validator-simple';
+import parsePrice from 'parse-price';
 
 function initFormValidation(form, onSuccess = () => false) {
   new Validator({
@@ -31,9 +32,16 @@ function onSubmit(configId, form, stripe, card) {
           from: window.location.href,
         });
 
-        if (serializedForm.custom_value === "false" && form.$('input[name=price]:checked').length) {
-          serializedForm.price_text = form.$('input[name=price]:checked').attr('data-price-text');
+        let price = serializedForm.price_text;
+        if (serializedForm.custom_value === "true") {
+          price = serializedForm.custom_price_text;
+          serializedForm.currency = form.$('[data-input=currency]').attr('data-value');
+        } else if (serializedForm.multichoice === "true") {
+          serializedForm.currency = form.$('input[name=price_text]:checked').attr('data-currency');
         }
+        delete serializedForm.custom_price_text;
+        serializedForm.price_text = price;
+        serializedForm.price = parsePrice(price) * 100;
 
         $.post(action, JSON.stringify(serializedForm))
           .then(() => form.$('#generic-success').removeClass('d-none'))

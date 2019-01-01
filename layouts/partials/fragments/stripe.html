@@ -1,4 +1,5 @@
 {{- $self := . -}}
+{{- $currencies := dict "USD" "$" "CAD" "CA$" "EUR" "€" "AED" "AED" "AFN" "Af" "ALL" "ALL" "AMD" "AMD" "ARS" "AR$" "AUD" "AU$" "AZN" "man." "BAM" "KM" "BDT" "Tk" "BGN" "BGN" "BHD" "BD" "BIF" "FBu" "BND" "BN$" "BOB" "Bs" "BRL" "R$" "BWP" "BWP" "BYR" "BYR" "BZD" "BZ$" "CDF" "CDF" "CHF" "CHF" "CLP" "CL$" "CNY" "CN¥" "COP" "CO$" "CRC" "₡" "CVE" "CV$" "CZK" "Kč" "DJF" "Fdj" "DKK" "Dkr" "DOP" "RD$" "DZD" "DA" "EEK" "Ekr" "EGP" "EGP" "ERN" "Nfk" "ETB" "Br" "GBP" "£" "GEL" "GEL" "GHS" "GH₵" "GNF" "FG" "GTQ" "GTQ" "HKD" "HK$" "HNL" "HNL" "HRK" "kn" "HUF" "Ft" "IDR" "Rp" "ILS" "₪" "INR" "Rs" "IQD" "IQD" "IRR" "IRR" "ISK" "Ikr" "JMD" "J$" "JOD" "JD" "JPY" "¥" "KES" "Ksh" "KHR" "KHR" "KMF" "CF" "KRW" "₩" "KWD" "KD" "KZT" "KZT" "LBP" "LB£" "LKR" "SLRs" "LTL" "Lt" "LVL" "Ls" "LYD" "LD" "MAD" "MAD" "MDL" "MDL" "MGA" "MGA" "MKD" "MKD" "MMK" "MMK" "MOP" "MOP$" "MUR" "MURs" "MXN" "MX$" "MYR" "RM" "MZN" "MTn" "NAD" "N$" "NGN" "₦" "NIO" "C$" "NOK" "Nkr" "NPR" "NPRs" "NZD" "NZ$" "OMR" "OMR" "PAB" "B/." "PEN" "S/." "PHP" "₱" "PKR" "PKRs" "PLN" "zł" "PYG" "₲" "QAR" "QR" "RON" "RON" "RSD" "din." "RUB" "RUB" "RWF" "RWF" "SAR" "SR" "SDG" "SDG" "SEK" "Skr" "SGD" "S$" "SOS" "Ssh" "SYP" "SY£" "THB" "฿" "TND" "DT" "TOP" "T$" "TRY" "TL" "TTD" "TT$" "TWD" "NT$" "TZS" "TSh" "UAH" "₴" "UGX" "USh" "UYU" "$U" "UZS" "UZS" "VEF" "Bs.F." "VND" "₫" "XAF" "FCFA" "XOF" "CFA" "YER" "YR" "ZAR" "R" "ZMK" "ZK" -}}
 {{- .page_scratch.Add "js" (dict "url" "https://js.stripe.com/v3/" "defer" false "async" false) -}}
 {{- .page_scratch.Add "js" (dict "file" "syna-stripe.js") -}}
 {{- $bg := .self.Scratch.Get "bg" }}
@@ -56,33 +57,51 @@
       <div class="row justify-content-between pr-3">
         <div class="col-auto d-flex flex-column justify-content-center">
           <div class="row mx-0 align-items-center">
-            <h5 class="my-0">Price:</h5>
-            <div class="price-display row mx-1">
-              {{- if gt (len $.Params.prices) 1 }}
-                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-              {{- end -}}
-                {{- range $index, $price := .Params.prices }}
-                  {{- with $price }}
-                    {{- if eq (len $.Params.prices) 1 }}
-                      <h5 class="my-0 pl-2" data-render="price_text">{{ .text | default .amount }}</h5>
-                      <input type="hidden" name="price" value="{{ .amount }}" />
-                      <input type="hidden" name="currency" value="{{ .currency }}" />
-                    {{- else }}
-                      {{- $input_name := printf "%s-%s" $.Name .amount }}
-                      <label class="btn btn-primary">
-                        <input id="{{ $input_name }}" name="price" type="radio" data-price-text="{{ .text | default .amount }}`" value="{{ .amount }}" /> {{ .text | default .amount }}
-                      </label>
-                    {{- end }}
-                  {{- end -}}
+            <div class="col-auto px-0">
+              <h5 class="my-0">Price:</h5>
+            </div>
+            <div class="col-auto mx-2 px-0">
+              <div class="price-display row mx-0">
+                {{- if gt (len $.Params.prices) 1 }}
+                  <div class="btn-group btn-group-toggle" data-toggle="buttons">
                 {{- end -}}
-              {{- if gt (len $.Params.prices) 1 }}
+                  {{- range $index, $price := .Params.prices }}
+                    {{- with $price }}
+                      {{- if eq (len $.Params.prices) 1 }}
+                        <h5 class="my-0 pl-2" data-render="price">{{ .text }}</h5>
+                        <input type="hidden" name="currency" value="{{ .currency }}" />
+                      {{- else }}
+                        {{- $input_name := printf "%s-%s" $.Name .amount }}
+                        <label class="btn btn-primary">
+                          <input id="{{ $input_name }}" name="price_text" type="radio" data-currency="{{ .currency }}" value="{{ .text }}" /> {{ .text }}
+                        </label>
+                      {{- end }}
+                    {{- end -}}
+                  {{- end -}}
+                {{- if gt (len $.Params.prices) 1 }}
+                  </div>
+                  <input type="hidden" name="multichoice" value="true" />
+                {{- end }}
+              </div>
+              {{- with .Params.user_input }}
+                <div class="input-group mb-0 price-input hidden">
+                  <div class="input-group-prepend">
+                    <div class="btn btn-dark dropdown-toggle" data-input="currency" data-value="{{ index .currencies 0 }}">{{ index $currencies (upper (index .currencies 0)) }}</div>
+                    <div class="dropdown-menu">
+                      {{- range .currencies }}
+                        <div class="dropdown-item" data-value="{{ . }}">{{ index $currencies (upper .) }}</div>
+                      {{- end }}
+                    </div>
+                  </div>
+                  <input class="form-control" type="number" name="custom_price_text" value="{{ .default }}" />
                 </div>
               {{- end }}
             </div>
-            <div class="form-group mb-0 ml-2 price-input hidden">
-              <input class="form-control" type="text" name="price_text" value="{{ (index .Params.prices 0).text | default (index .Params.prices 0).amount }}" />
-            </div>
-            <i class="fas fa-edit ml-2 mt-1" data-action="toggle-price-change"></i>
+            {{- if .Params.user_input }}
+              <div class="col-auto px-0">
+                <i class="fas fa-edit ml-2 mt-1" data-action="toggle-price-change"></i>
+              </div>
+            {{- end }}
           </div>
         </div>
         <input type="hidden" name="custom_value" value="false" />
@@ -99,9 +118,6 @@
     form: "{{ (printf "#payment-form-%s" .Name) | safeJS }}",
     token: "{{ .Params.stripe_token | safeJS }}",
     product: "{{ .Params.product | safeJS }}",
-    price: "{{ .Params.price | safeJS }}",
-    price_text: "{{ (.Params.price_text | default .Params.price) | safeJS }}",
-    currency: "{{ .Params.currency | safeJS }}",
     options: {
       classes: {
         base: 'text-body form-control row mx-0 px-2',
