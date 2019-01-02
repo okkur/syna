@@ -5,7 +5,7 @@ weight = 100
 title = "Supported Colors"
 
 [sidebar]
-  enable = true
+  sticky = true
 +++
 
 Fragments and various elements can be customized further using Bootstrap color classes.

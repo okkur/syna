@@ -112,7 +112,7 @@
               {{- end -}}
             {{- end -}}
             {{- if $self.Params.collapsible -}}
-              <div class="collapse">
+              <div class="collapse {{- if eq $.page.URL .URL }} show {{- end }}">
             {{- end -}}
               {{- range $content_page }}
                 {{- if and (ne $self.Params.images false) .Params.asset -}}

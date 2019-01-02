@@ -3,7 +3,7 @@ fragment = "content"
 weight = 100
 
 [sidebar]
-  enable = true
+  sticky = true
 +++
 
 Highly customizable open source theme for Hugo based static websites
