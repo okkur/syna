@@ -12,6 +12,7 @@ subtitle = "Split in two!"
 [sidebar]
   title = "Sidebar"
   align = "right"
+  sticky = false
   content = """
 So much information  
 Phone numbers  
