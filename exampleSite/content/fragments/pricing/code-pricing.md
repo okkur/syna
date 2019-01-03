@@ -30,9 +30,7 @@ weight = 10
 title = "Starting plan"
 subtitle = "starting at"
 
-price = "0" # This value can be communicated to a stripe fragment
-price_text = "Free" # Displayed value of the price
-currency = "USD" # This value can be communicated to a stripe fragment
+price = "Free"
 # highlight = true
 
 button_text = "Start for free"

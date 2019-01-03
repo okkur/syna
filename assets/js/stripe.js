@@ -97,25 +97,25 @@ Object.keys(stripeFragments).forEach(key => {
   });
 });
 
-window.syna.stream.subscribe('pricing:change', function({ product, price, price_text, currency }) {
-  updateStripeFragments(product, price, price_text, currency);
+window.syna.stream.subscribe('pricing:change', function({ product, price, currency }) {
+  updateStripeFragments(product, price, currency);
 });
 
-function updateStripeFragments(product, price, price_text, currency) {
+function updateStripeFragments(product, price, currency) {
   window.syna.api.toArray('stripe').forEach(config => {
     config.product = product;
 
-    if (price_text || price) {
+    if (price) {
       if ($(`${config.form} input[name=multichoice]`).length > 0) {
         $(`${config.form} input[name=price_text]`).$nodes.forEach(input => {
           input.checked = false;
           input.parentElement.classList.remove('active');
         })
-        const input = $(`${config.form} [data-price="${price_text || price}"]`);
+        const input = $(`${config.form} [data-price="${price}"]`);
         input.$('input').attr('checked', true);
         input.addClass('active');
       } else {
-        $(`${config.form} [data-render="price"]`).text(price_text || price);
+        $(`${config.form} [data-render="price"]`).text(price);
       }
     }
 
