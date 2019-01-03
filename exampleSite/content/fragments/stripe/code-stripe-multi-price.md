@@ -20,7 +20,7 @@ product = "Example Product"
 [user_input]
   allow_change = true
   default = "20.00"
-  currencies = ['usd', 'eur', 'cad']
+  currencies = ['usd', 'eur', 'cad'] # First currency will be used as default
 
 [[prices]]
   text = "20.00$"

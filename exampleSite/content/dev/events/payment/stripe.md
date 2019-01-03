@@ -7,7 +7,6 @@ stripe_token = "pk_test_36PckiAlsGm9KmHj9b034GAW"
 
 [[prices]]
   text = "20.00$"
-  amount = "2000"
   currency = "usd"
 
 [email]
