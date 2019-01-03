@@ -69,6 +69,13 @@ Object.keys(stripeFragments).forEach(key => {
 
   const form = $(config.form);
   initFormValidation(form[0], onSubmit(key, form, stripe, card));
+
+  if ($(`${config.form} input[name=multichoice]`).length > 0) {
+    const choices = $(`${config.form} input[name=price_text]`);
+    choices.$nodes[0].setAttribute('checked', true);
+    choices.$nodes[0].parentElement.classList.add('active');
+  }
+
   form.$('[data-action="toggle-price-change"]').on('click', (() => {
     let isEditable = false;
     return () => {
@@ -97,7 +104,25 @@ window.syna.stream.subscribe('pricing:change', function({ product, price, price_
 function updateStripeFragments(product, price, price_text, currency) {
   window.syna.api.toArray('stripe').forEach(config => {
     config.product = product;
-    $(`${config.form} [data-render="price"]`).text(price_text || price || null);
+
+    if (price_text || price) {
+      if ($(`${config.form} input[name=multichoice]`).length > 0) {
+        $(`${config.form} input[name=price_text]`).$nodes.forEach(input => {
+          input.checked = false;
+          input.parentElement.classList.remove('active');
+        })
+        const input = $(`${config.form} [data-price="${price_text || price}"]`);
+        input.$('input').attr('checked', true);
+        input.addClass('active');
+      } else {
+        $(`${config.form} [data-render="price"]`).text(price_text || price);
+      }
+    }
+
+    if (currency) {
+      $(`${config.form} input[name=currency]`).text(currency);
+    }
+
     $(`${config.form} input[name=email]`)[0].focus();
     // TODO: REVISIT: Remove the following line whenever firefox fixes center on focus
     $(`${config.form} input[name=email]`)[0].scrollIntoView({behavior: "instant", block: "center"});

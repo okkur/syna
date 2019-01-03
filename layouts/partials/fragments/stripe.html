@@ -71,8 +71,8 @@
                         <h5 class="my-0 pl-2" data-render="price">{{ .text }}</h5>
                         <input type="hidden" name="currency" value="{{ .currency }}" />
                       {{- else }}
-                        {{- $input_name := printf "%s-%s" $.Name .amount }}
-                        <label class="btn btn-primary">
+                        {{- $input_name := printf "%s-%s" $.Name (.text | default (string .amount)) }}
+                        <label class="btn btn-primary" data-price="{{ .text | default .amount }}">
                           <input id="{{ $input_name }}" name="price_text" type="radio" data-currency="{{ .currency }}" value="{{ .text }}" /> {{ .text }}
                         </label>
                       {{- end }}
