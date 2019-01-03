@@ -134,3 +134,9 @@ pre {
     opacity: 0;
   }
 }
+
+.currency {
+  &-change, &-menu {
+    min-width: 4rem;
+  }
+}

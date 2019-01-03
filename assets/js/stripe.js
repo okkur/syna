@@ -97,7 +97,7 @@ window.syna.stream.subscribe('pricing:change', function({ product, price, price_
 function updateStripeFragments(product, price, price_text, currency) {
   window.syna.api.toArray('stripe').forEach(config => {
     config.product = product;
-    $(`${config.form} [data-render="price_text"]`).text(price_text || price || null);
+    $(`${config.form} [data-render="price"]`).text(price_text || price || null);
     $(`${config.form} input[name=email]`)[0].focus();
     // TODO: REVISIT: Remove the following line whenever firefox fixes center on focus
     $(`${config.form} input[name=email]`)[0].scrollIntoView({behavior: "instant", block: "center"});

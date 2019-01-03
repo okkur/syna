@@ -86,14 +86,14 @@
               {{- with .Params.user_input }}
                 <div class="input-group mb-0 price-input hidden">
                   <div class="input-group-prepend">
-                    <div class="btn btn-dark dropdown-toggle" data-input="currency" data-value="{{ index .currencies 0 }}">{{ index $currencies (upper (index .currencies 0)) }}</div>
-                    <div class="dropdown-menu">
+                    <div class="btn btn-dark currency-change dropdown-toggle" data-input="currency" data-value="{{ index .currencies 0 }}">{{ index $currencies (upper (index .currencies 0)) }}</div>
+                    <div class="dropdown-menu currency-menu">
                       {{- range .currencies }}
                         <div class="dropdown-item" data-value="{{ . }}">{{ index $currencies (upper .) }}</div>
                       {{- end }}
                     </div>
                   </div>
-                  <input class="form-control" type="number" name="custom_price_text" placeholder="{{ i18n "stripe.pricePlaceholder" }}" value="{{ .default }}" />
+                  <input class="form-control" type="text" name="custom_price_text" placeholder="{{ i18n "stripe.pricePlaceholder" }}" value="{{ .default }}" />
                 </div>
               {{- end }}
             </div>

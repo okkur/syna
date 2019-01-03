@@ -57,6 +57,8 @@
   translation: "Price:"
 - id: stripe.pricePlaceholder
   translation: "Enter your custom price"
+- id: stripe.customPriceError
+  translation: "Price should be in the following formats: 20, 20.00, 20,00"
 - id: stripe.defaultGenericSuccess
   translation: "Payment was successful. Thank you."
 - id: defaultGenericError
