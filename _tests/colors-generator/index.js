@@ -11,7 +11,8 @@ const paths = {
 
 const blacklist = {
   items: ['items-no-content', 'items-only', 'logos-no-content', 'logos-only'],
-  embed: ['embed_video']
+  embed: ['embed_video'],
+  hero: ['header.jpg']
 };
 
 const backgrounds = ["white", "light", "secondary", "dark", "primary"];
@@ -96,7 +97,7 @@ Object.keys(fragments).forEach(fragment => {
     }
 
     Object.keys(fragments[fragment].nested[dir]).forEach(filename => {
-      if (filename === "index.md") {
+      if (filename === "index.md" || typeof (blacklist[fragment] || []).find(f => f === filename) !== 'undefined') {
         return;
       }
 
