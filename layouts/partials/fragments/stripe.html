@@ -55,17 +55,17 @@
         </div>
       </div>
       <div class="row justify-content-between pr-3">
-        <div class="col-12 col-sm-auto d-flex flex-column justify-content-center mb-3 pr-0">
+        <div class="col-12 col-sm-auto d-flex flex-column justify-content-center mb-2 pr-0">
           <div class="row mx-0 align-items-center">
             <div class="col-12 col-sm-auto px-0 mr-2 mb-2">
               <h5 class="my-0">{{ i18n "stripe.price" }}</h5>
             </div>
             <div class="col-12 col-sm-auto px-0 mr-2 mb-2">
               <div class="price-display row mx-0">
-                {{- if gt (len $.Params.prices) 1 }}
+                {{- if gt (len ($.Params.prices | default slice)) 1 }}
                   <div class="btn-group btn-group-toggle" data-toggle="buttons">
                 {{- end -}}
-                  {{- range $index, $price := .Params.prices }}
+                  {{- range $index, $price := (.Params.prices | default slice) }}
                     {{- with $price }}
                       {{- if eq (len $.Params.prices) 1 }}
                         <h5 class="my-0 pl-2" data-render="price">{{ .text }}</h5>
@@ -78,13 +78,15 @@
                       {{- end }}
                     {{- end -}}
                   {{- end -}}
-                {{- if gt (len $.Params.prices) 1 }}
+                {{- if gt (len ($.Params.prices | default slice)) 1 }}
                   </div>
                   <input type="hidden" name="multichoice" value="true" />
                 {{- end }}
               </div>
               {{- with .Params.user_input }}
-                <div class="input-group mb-0 price-input hidden">
+                <div class="input-group mb-0 price-input
+                  {{- if gt (len ($.Params.prices | default slice)) 0 }} hidden {{- end -}}
+                ">
                   <div class="input-group-prepend">
                     <div class="btn btn-dark currency-change dropdown-toggle" data-input="currency" data-value="{{ index .currencies 0 }}">{{ index $currencies (upper (index .currencies 0)) }}</div>
                     <div class="dropdown-menu currency-menu">
@@ -97,9 +99,9 @@
                 </div>
               {{- end }}
             </div>
-            {{- if .Params.user_input }}
-              <div class="col-12 col-sm-auto px-0">
-                <i class="fas fa-edit ml-2 mt-1" data-action="toggle-price-change"></i>
+            {{- if and .Params.user_input (gt (len (.Params.prices | default slice)) 0) }}
+              <div class="col-12 col-sm-auto px-0 mb-2">
+                <i class="fas fa-edit ml-2" data-action="toggle-price-change"></i>
               </div>
             {{- end }}
           </div>

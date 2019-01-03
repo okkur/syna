@@ -136,6 +136,14 @@ pre {
 }
 
 .currency {
+  &-change {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
   &-change, &-menu {
     min-width: 4.5rem;
     width: 4.5rem;

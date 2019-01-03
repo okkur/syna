@@ -11,6 +11,11 @@ stripe_token = "pk_test_36PckiAlsGm9KmHj9b034GAW"
 
 product = "Example Product"
 
+[user_input]
+  allow_change = true
+  default = "20.00"
+  currencies = ['usd', 'eur', 'cad']
+
 [[prices]]
   text = "20.00$"
   currency = "usd"

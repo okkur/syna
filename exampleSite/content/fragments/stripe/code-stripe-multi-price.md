@@ -1,4 +1,10 @@
 +++
+fragment = "content"
+weight = 121
++++
+
+<details><summary>Code</summary>
+```+++
 fragment = "stripe"
 weight = 120
 background = "secondary"
@@ -33,3 +39,5 @@ product = "Example Product"
 +++
 
 You can pay for the product by filling this form (provided by Stripe).
+```
+</details>

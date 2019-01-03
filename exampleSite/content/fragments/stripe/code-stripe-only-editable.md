@@ -1,9 +1,15 @@
 +++
+fragment = "content"
+weight = 131
++++
+
+<details><summary>Code</summary>
+```+++
 fragment = "stripe"
-weight = 120
+weight = 130
 background = "secondary"
 
-title = "Payment Fragment with Multiple Choices"
+title = "Payment Fragment with Custom Value"
 subtitle = "Doesn't work in demo"
 
 post_url = "https://us-central1-syna-222118.cloudfunctions.net/function-1/charge"
@@ -16,20 +22,10 @@ product = "Example Product"
   default = "20.00"
   currencies = ['usd', 'eur', 'cad']
 
-[[prices]]
-  text = "20.00$"
-  currency = "usd"
-
-[[prices]]
-  text = "30.00$"
-  currency = "usd"
-
-[[prices]]
-  text = "50.00$"
-  currency = "usd"
-
 [email]
   label = "Your email address"
 +++
 
 You can pay for the product by filling this form (provided by Stripe).
+```
+</details>
