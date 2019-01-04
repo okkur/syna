@@ -13,6 +13,9 @@ addCollapse.$nodes.forEach(collapsible => {
 });
 
 collapse.on('click', function (e) {
+  if (e.target.tagName === 'A') {
+    return
+  }
   const target = $(this).attr('data-target');
 
   if ($(this).attr('aria-expanded') === 'true') {
