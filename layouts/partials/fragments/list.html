@@ -77,13 +77,17 @@
                     {{- end }}
                     class="row align-items-center justify-content-between mx-0 article-title">
                     {{- if $display_summary }}
-                      <h4 class="col-12 col-md px-0 m-0">
+                      <h4 class="col-12 col-md px-0 m-0
+                        {{- if eq $.page.URL .URL }} active-page {{- end -}}
+                      ">
                         <a href="{{ .URL }}">
                           {{- .Params.title | markdownify -}}
                         </a>
                       </h4>
                     {{- else }}
-                      <h5 class="col-12 col-md px-0 m-0">
+                      <h5 class="col-12 col-md px-0 m-0
+                        {{- if eq $.page.URL .URL }} active-page {{- end -}}
+                      ">
                         <a href="{{ .URL }}">
                           {{- .Params.title | markdownify -}}
                         </a>
@@ -115,7 +119,7 @@
               {{- end -}}
             {{- end -}}
             {{- if $self.Params.collapsible -}}
-              <div class="collapse">
+              <div class="collapse {{- if eq $.page.URL .URL }} show {{- end }}">
             {{- end -}}
               {{- range $content_page }}
                 {{- if and (ne $self.Params.images false) .Params.asset -}}

@@ -5,7 +5,7 @@ weight = 100
 title = "Installation"
 
 [sidebar]
-  enable = true
+  sticky = true
 +++
 
 ### Adding Syna to your site

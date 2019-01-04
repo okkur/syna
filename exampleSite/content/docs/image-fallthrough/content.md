@@ -5,7 +5,7 @@ weight = 100
 title = "Image Resource Fallthrough"
 
 [sidebar]
-  enable = true
+  sticky = true
 +++
 
 Some fragments may display images, if configured in their content files.

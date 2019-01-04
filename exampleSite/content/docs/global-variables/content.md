@@ -4,7 +4,7 @@ title = "Global Variables"
 weight = 100
 
 [sidebar]
-  enable = true
+  sticky = true
 +++
 
 There are a few frontmatter variables that can be used for all fragments. The
