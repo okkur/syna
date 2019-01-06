@@ -125,4 +125,16 @@ You can use this array to add new hidden fields to the form.
 ##### fields.hidden.name
 *type: string*
 
+This field can have any value and it would be registered in the form with the custom value you provide, unless the value is one of the following:
+
+- `site`: If the name of the hidden field is set to site, `value` is overridden with permalink of the current page.
+- `page`: `value` would be overridden with URL of the current page.
+
+Any other value for the `name` variable in the `fields.hidden` object will have normal behavior and will not affect the `value` variable.
+
+##### fields.hidden.value
+*type: string*
+
+Value of the hidden field. This field will be overridden if `name` is set to `site` or `page`.
+
 [Global variables](/docs/global-variables) are documented as well and have been omitted from this page.

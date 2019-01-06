@@ -55,7 +55,7 @@ Changes the padding of fragment's container
 #### asset
 *type: asset object*
 
-This variable is not a global variable but a variable type that is used in a lot of fragment.
+This variable is not a global variable but a variable type that is used in a lot of fragments.
 
 Any fragment that uses this variable type would show either an image or an icon.
 
