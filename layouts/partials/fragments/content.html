@@ -26,7 +26,7 @@
               {{- partial "helpers/text-color.html" (dict "self" $self "light" "secondary") -}}
             ">
               {{- .content | markdownify -}}
-              {{ partial "helpers/slot.html" (dict "root" $ "slot" "sidebar")}}
+              {{ partial "helpers/slot.html" (dict "root" $ "slot" "sidebar" "data" (dict "page" $.page "content_fragment" $self)) }}
             </div>
             {{- if .sticky }}
               </div> {{/* .sticky-top */}}
