@@ -77,10 +77,9 @@
 
   {{- partial "custom/css.html" . }}
 
-  <script>
-    window.syna = {};
-    window.synaPortals = {};
-  </script>
+  {{- $script_template := resources.Get "scripts/syna-head.js" -}}
+  {{- $script := $script_template | resources.Minify | resources.Fingerprint }}
+  <script {{- safeHTMLAttr (printf " src=\"%s\"" ($script.RelPermalink | relLangURL)) -}}></script>
 
   {{- range (.Scratch.Get "page_config") -}}
     {{- range .Params.config -}}

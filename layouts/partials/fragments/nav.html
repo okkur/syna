@@ -1,7 +1,7 @@
 {{- $self := . -}}
 {{- $page_scratch := .page_scratch -}}
 {{- if .Params.search -}}
-  {{- .page_scratch.Add "js" ("syna-search.js" | relLangURL) -}}
+  {{- .page_scratch.Add "js" (dict "file" "syna-search.js") -}}
 {{- end -}}
 {{- $bg := .self.Scratch.Get "bg" }}
 
@@ -172,9 +172,10 @@
   {{- end -}}
 </div>
 {{- if .Params.search }}
-{{ partial "helpers/search-result-template.html" (dict "name" .Name "message_class" "p-2" "background" $bg) }}
+{{ partial "helpers/search-result-template.html" (dict "self" $self "name" .Name "message_class" "p-2" "background" $bg) }}
 <script>
-  (window.syna.search || (window.syna.search = [])).push({
+  var fragmentName = "{{ .Name }}";
+  window.syna.api.register('search', 'search-' + fragmentName, {
     searchInput: '#search-query-{{ .Name }}',
     resultsContainer: '#search-results-{{ .Name }}',
     template: '#search-result-template-{{ .Name }}',

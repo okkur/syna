@@ -1,14 +1,11 @@
+{{- $self := .self -}}
 {{- $bg := .bg -}}
 {{- $align := .params.title_align | default "center" -}}
 {{- with .params.title }}
   <div class="row mx-0">
     <div class="col
       {{- printf " text-%s" $align -}}
-      {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
-        {{- printf " text-%s" "dark" -}}
-      {{- else -}}
-        {{- printf " text-%s" "light" -}}
-      {{- end -}}
+      {{- partial "helpers/text-color.html" (dict "self" $self) -}}
     ">
       <h2>
         {{- . | markdownify -}}
@@ -20,11 +17,7 @@
   <div class="row mx-0">
     <div class="col pt-4 pb-0
       {{- printf " text-%s" $align -}}
-      {{- if or (eq $bg "secondary") (eq $bg "primary") -}}
-        {{- printf " text-%s" "dark" -}}
-      {{- else -}}
-        {{- printf " text-muted text-%s" "secondary" -}}
-      {{- end -}}
+      {{- partial "helpers/text-color.html" (dict "self" $self) -}}
     ">
       <h5>
         {{- . | markdownify -}}

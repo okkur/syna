@@ -1,5 +1,14 @@
 .portfolio-item {
-  min-height: 110px;
+  min-height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .badge-container {
+    .badge {
+      background-color: rgba($dark, .5);
+    }
+  }
 
   .description {
     background-color: rgba($dark, 0.6);
@@ -32,6 +41,12 @@
   &:hover {
     .description {
       background: rgba($dark, 0);
+    }
+
+    .badge-container {
+      .badge {
+        background-color: rgba($dark, 0);
+      }
     }
 
     .hover-overlay {

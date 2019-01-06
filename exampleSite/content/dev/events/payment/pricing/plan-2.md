@@ -1,0 +1,30 @@
++++
+weight = 20
+
+title = "Premium plan"
+subtitle = "Working with automatic event publisher"
+
+price = "9.99"
+currency = "usd"
+price_text = "$9.99/mo"
+highlight = true
+
+button_text = "Get started"
+#button_url = "#"
+
+[[features]]
+  text = "**Basic** feature"
+  icon = "fas fa-check"
+
+[[features]]
+  text = "**Premium** feature"
+  icon = "fas fa-check"
+
+[[features]]
+  text = "**Email** support"
+  icon = "fas fa-check"
+
+[[features]]
+  text = "**Chat** support"
+  icon = "fas fa-check"
++++

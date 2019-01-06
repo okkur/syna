@@ -5,9 +5,9 @@
     {{- else if or (and (eq .head false) (ne .data.block true)) (and (eq .head true) (eq .data.block true)) }}
       {{ print .data.html | safeHTML }}
     {{- end -}}
-  {{- else if .data.file -}}
-    {{- if (in (slice "css" "icon" "js") .type) .data.file -}}
-      {{- $location := .data.file | relLangURL -}}
+  {{- else if .data.resource -}}
+    {{- if (in (slice "css" "icon" "js") .type) .data.resource -}}
+      {{- $location := .data.resource | relLangURL -}}
       {{- if and (eq .type "icon") (eq .head true) }}
         {{ printf "<link rel='icon' href='%s'>" $location | safeHTML }}
       {{- else if eq .type "css" }}

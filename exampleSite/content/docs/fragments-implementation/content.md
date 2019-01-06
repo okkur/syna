@@ -5,7 +5,7 @@ weight = 100
 title = "Fragments Implementation"
 
 [sidebar]
-  enable = true
+  sticky = true
 +++
 
 Fragments themselves are [Hugo partials](https://gohugo.io/templates/partials/) that are located in `layouts/partials/fragments/`.

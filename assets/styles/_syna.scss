@@ -1,3 +1,21 @@
+.bg-primary {
+  a {
+    color: $light;
+
+    @include hover {
+      color: darken($light, 15%);
+    }
+  }
+}
+
+.bg-dark {
+  a {
+    @include hover {
+      color: darken($light, 15%);
+    }
+  }
+}
+
 .jumbotron {
   border-radius: 0rem !important;
 }
@@ -49,7 +67,6 @@ article .content {
   word-break: break-all;
 }
 
-
 .items {
   .header {
     flex: 0 1 200px;
@@ -87,4 +104,24 @@ pre {
       transition: all 0.6s ease-in;
     }
   }
+}
+
+.badge-container {
+  top: 8px;
+  left: 8px;
+  display: flex;
+  width: calc(100% - 16px);
+
+  .badge {
+    margin-right: 8px;
+    transition: $transition-base;
+
+    [class*=fa-] {
+      margin-right: 2px;
+    }
+  }
+}
+
+#TableOfContents a.active, .active-page {
+  font-weight: bold;
 }

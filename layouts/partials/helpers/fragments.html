@@ -74,48 +74,53 @@
 {{- $page := $layout_info.page -}}
 {{- $real_page := $layout_info.real_page -}}
 {{- $root := $layout_info.root -}}
-
-{{/* Lookup the directory of the file, split the path by slashes and find each
-  parent directory. Regex is used to split the path. First slash is an edge
-  case to find the root directory. $real_page is added to find the page
-  directory as well. */}}
-{{- $page_scratch.Set "sections" (slice "/") -}}
-{{- $sections := findRE "[^\\/]+" $real_page.CurrentSection.Dir -}}
-{{- range ($sections | default (slice)) -}}
-  {{- $page_scratch.Add "sections" . -}}
-{{- end -}}
-{{- $page_scratch.Add "sections" $real_page -}}
-
-{{/* Loop through all the parent directories and look for _global directories,
-  and in case we are in the $real_page item and if the page is a homepage or a
-  section, look for _index directory. */}}
-{{- $page_scratch.Set "fragment_directories_tmp" (slice) -}}
-{{- range $index, $section := $page_scratch.Get "sections" -}}
-  {{- $directory := $section -}}
-  {{- if (eq (add $index 1) (len ($page_scratch.Get "sections"))) -}}
-    {{- if ne $real_page.Kind "page" -}}
-      {{/* Last item is the page being rendered. If it's a section or homepage,
-        fragments must be at _index directory */}}
-      {{- $page_scratch.Set "active_page" ($real_page.Site.GetPage "page" (printf "%s%s" $real_page.Dir "_index")) -}}
-    {{- else if $page -}}
-      {{- $page_scratch.Set "active_page" $page -}}
-    {{- end -}}
-  {{- else if ge $index 1 -}}
-    {{/* Sections between the first and last are found and their _global directories
-      are taken into account */}}
-    {{- $directory := (delimit (first (add $index 1) $sections) "/") -}}
-    {{- $page_scratch.Set "active_page" ($real_page.Site.GetPage "page" (printf "%s/%s" $directory "_global")) -}}
-  {{- else -}}
-    {{/* First section is always the root directory and we look for it's _global
-      directory */}}
-    {{- $page_scratch.Set "active_page" ($real_page.Site.GetPage "page" (printf "%s/%s" $directory "_global")) -}}
-  {{- end -}}
-  {{- $page_scratch.Add "fragment_directories_tmp" (dict "directory" ($page_scratch.Get "active_page") "index" $index) -}}
-{{- end -}}
+{{- $is_404 := $layout_info.is_404 -}}
 
 {{- $page_scratch.Set "fragment_directories" (slice) -}}
-{{- range sort ($page_scratch.Get "fragment_directories_tmp") "index" "desc" -}}
-  {{- $page_scratch.Add "fragment_directories" .directory -}}
+{{- if eq $is_404 true -}}
+  {{- $page_scratch.Add "fragment_directories" ($real_page.Site.GetPage "page" "/_global") -}}
+{{- else -}}
+  {{/* Lookup the directory of the file, split the path by slashes and find each
+    parent directory. Regex is used to split the path. First slash is an edge
+    case to find the root directory. $real_page is added to find the page
+    directory as well. */}}
+  {{- $page_scratch.Set "sections" (slice "/") -}}
+  {{- $sections := findRE "[^\\/]+" $real_page.CurrentSection.Dir -}}
+  {{- range ($sections | default (slice)) -}}
+    {{- $page_scratch.Add "sections" . -}}
+  {{- end -}}
+  {{- $page_scratch.Add "sections" $real_page -}}
+
+  {{/* Loop through all the parent directories and look for _global directories,
+    and in case we are in the $real_page item and if the page is a homepage or a
+    section, look for _index directory. */}}
+  {{- $page_scratch.Set "fragment_directories_tmp" (slice) -}}
+  {{- range $index, $section := $page_scratch.Get "sections" -}}
+    {{- $directory := $section -}}
+    {{- if (eq (add $index 1) (len ($page_scratch.Get "sections"))) -}}
+      {{- if ne $real_page.Kind "page" -}}
+        {{/* Last item is the page being rendered. If it's a section or homepage,
+          fragments must be at _index directory */}}
+        {{- $page_scratch.Set "active_page" ($real_page.Site.GetPage "page" (printf "%s%s" $real_page.Dir "_index")) -}}
+      {{- else if $page -}}
+        {{- $page_scratch.Set "active_page" $page -}}
+      {{- end -}}
+    {{- else if ge $index 1 -}}
+      {{/* Sections between the first and last are found and their _global directories
+        are taken into account */}}
+      {{- $directory := (delimit (first (add $index 1) $sections) "/") -}}
+      {{- $page_scratch.Set "active_page" ($real_page.Site.GetPage "page" (printf "%s/%s" $directory "_global")) -}}
+    {{- else -}}
+      {{/* First section is always the root directory and we look for it's _global
+        directory */}}
+      {{- $page_scratch.Set "active_page" ($real_page.Site.GetPage "page" (printf "%s/%s" $directory "_global")) -}}
+    {{- end -}}
+    {{- $page_scratch.Add "fragment_directories_tmp" (dict "directory" ($page_scratch.Get "active_page") "index" $index) -}}
+  {{- end -}}
+
+  {{- range sort ($page_scratch.Get "fragment_directories_tmp") "index" "desc" -}}
+    {{- $page_scratch.Add "fragment_directories" .directory -}}
+  {{- end -}}
 {{- end -}}
 
 {{/* We found all the _global (and in case of section or homepage, the
@@ -147,14 +152,16 @@
   {{- range ($page_scratch.Get "fragments") -}}
     {{- $name := replace .Name "/index" "" -}}
     {{- $directory_same_name := in ($page_scratch.Get "fragments_directory_name") (printf "%s%s/" $root.Dir (replace $name ".md" "")) -}}
-    {{- if and (not .Params.disabled) (isset .Params "fragment") (ne .Params.fragment "404") (not (where ($page_scratch.Get "page_fragments") ".Name" $name)) (not $directory_same_name) -}}
-      {{- if eq .Params.fragment "config" -}}
-        {{- $page_scratch.Add "page_config" . -}}
-      {{- else -}}
-        {{- $page_scratch.Add "page_fragments" . -}}
-        {{- $page_scratch.Add "fragments_directory_name" (printf "%s%s/" $root.Dir (replace $name ".md" "")) -}}
-        {{- if isset .Params "padding" -}}
-          {{- $page_scratch.Add "experimentals_used_messages" "FrontMatter variable 'padding' is experimental and may get removed without notice" -}}
+    {{- if and (not .Params.disabled) (isset .Params "fragment") (not (where ($page_scratch.Get "page_fragments") ".Name" $name)) (not $directory_same_name) -}}
+      {{- if or $is_404 (ne .Params.fragment "404") -}}
+        {{- if eq .Params.fragment "config" -}}
+          {{- $page_scratch.Add "page_config" . -}}
+        {{- else -}}
+          {{- $page_scratch.Add "page_fragments" . -}}
+          {{- $page_scratch.Add "fragments_directory_name" (printf "%s%s/" $root.Dir (replace $name ".md" "")) -}}
+          {{- if isset .Params "padding" -}}
+            {{- $page_scratch.Add "experimentals_used_messages" "FrontMatter variable 'padding' is experimental and may get removed without notice" -}}
+          {{- end -}}
         {{- end -}}
       {{- end -}}
     {{- end -}}
@@ -162,7 +169,7 @@
 {{- end -}}
 {{/* This is the js script repository. Each fragment can register it's scripts
   and they are rendered at the end of the page. */}}
-{{- $page_scratch.Set "js" (slice "syna-main.js") -}}
+{{- $page_scratch.Set "js" (slice (dict "file" "syna-main.js")) -}}
 {{/* Disable React by default, we load the framework only if a fragment requires
   it. */}}
 {{- $page_scratch.Set "react" false -}}

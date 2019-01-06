@@ -49,3 +49,11 @@
   translation: "Lives in"
 - id: member.reportsTo
   translation: "Reports to"
+  
+# Payment
+- id: payment.email
+  translation: "Your email address"
+- id: payment.defaultGenericSuccess
+  translation: "Payment was successful. Thank you."
+- id: defaultGenericError
+  translation: "Something happened. Please try again in a few minutes."

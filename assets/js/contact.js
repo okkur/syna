@@ -9,7 +9,7 @@ const selfCheck = 'checkSelf';
   }
 })();
 
-const validator = new Validator({
+const validatorConfig = {
   errorTemplate: '<span class="help-block form-error">%s</span>',
   onFormValidate: (isFormValid, form) => {
     form.querySelector('button').disabled = !isFormValid
@@ -34,12 +34,16 @@ const validator = new Validator({
     const genericError = $(`form[id=${id}] .generic-error`)
     const serializedForm = $(`#${id}`).serialize()
     if ($('.g-recaptcha').length === 0) {
-      $.post(action, serializedForm)
+      $.post(action, serializedForm, {
+        contentType: 'application/x-www-form-urlencoded',
+      })
         .then(() => genericSuccess.removeClass('d-none'))
         .catch(() => genericError.removeClass('d-none'));
     } else if (typeof grecaptcha !== "undefined") {
       if (grecaptcha.getResponse() !== "") {
-        $.post(action, serializedForm)
+        $.post(action, serializedForm, {
+          contentType: 'application/x-www-form-urlencoded',
+        })
           .then(() => {
             genericSuccess.removeClass('d-none')
             $(`form[id=${id}] .success`).removeClass('d-none')
@@ -51,8 +55,10 @@ const validator = new Validator({
     }
     return false;
   }
-});
-validator.initAll()
+};
+
+document.querySelectorAll('form')
+  .forEach((form ) => new Validator(Object.assign(validatorConfig, { form })))
 
 function checkReCaptcha() {
   if (document.querySelector('.g-recaptcha-container') && typeof grecaptcha === "undefined") {
@@ -68,3 +74,12 @@ function checkReCaptcha() {
 window.onContactCaptcha = function($form) {
   document.querySelector('form.contact').dispatchEvent(new Event('submit'))
 }
+
+window.syna.stream.subscribe('contact:update', function({ name, email, phone, message }) {
+  $('input[name=name]').attr('value', name || null)[0].focus();
+  // TODO: REVISIT: Remove the following line whenever firefox fixes center on focus
+  $('input[name=name]')[0].scrollIntoView({behavior: "instant", block: "center"});
+  $('input[name=email]').attr('value', email || null);
+  $('input[name=phone]').attr('value', phone || null);
+  $('textarea[name=message]').$nodes.forEach(node => node.appendChild(document.createTextNode(message || '')));
+});

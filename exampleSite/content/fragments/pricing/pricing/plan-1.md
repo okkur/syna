@@ -4,7 +4,8 @@ weight = 10
 title = "Starting plan"
 subtitle = "starting at"
 
-price = "Free"
+price = "0"
+price_text = "Free"
 # highlight = true
 
 button_text = "Start for free"

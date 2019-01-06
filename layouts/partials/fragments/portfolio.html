@@ -1,19 +1,23 @@
 {{- $self := . -}}
 {{- $items := where (.page.Resources.Match (printf "%s/*.md" .Name)) ".Name" "ne" .self.Name -}}
-{{- .page_scratch.Add "js" ("syna-portfolio.js" | relLangURL) -}}
+{{- .page_scratch.Add "js" (dict "file" "syna-portfolio.js") -}}
 {{- $bg := .self.Scratch.Get "bg" }}
 
 {{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "Name" .Name "Params" .Params) -}}
-  {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
-  <div class="row">
+  {{- partial "helpers/section-header.html" (dict "self" $self.self "bg" $bg "params" .Params) }}
+  <div class="row justify-content-center">
     {{- if eq (len $items) 0 }}
       {{- partial "helpers/empty-subpath.html" (dict "context" "portfolio" "root" $) -}}
     {{- else -}}
       {{- range (sort $items ".Params.weight") }}
-        <div class="col-lg-4 col-md-6 col-12 py-2">
-          <div class="border rounded position-relative portfolio-item overflow-hidden 
-            {{- if not .Params.url }} has-modal {{- end -}}
-          ">
+        <div class="col-lg-4 col-md-9 col-12 py-2">
+          <div
+            class="border rounded position-relative portfolio-item overflow-hidden 
+              {{- if not .Params.url }} has-modal {{- end -}}
+            "
+            {{- if $self.Params.height -}}
+              {{- safeHTMLAttr (printf "style='min-height:%s; height:%s'" $self.Params.height $self.Params.height) -}}
+            {{- end -}}>
             {{- if .Params.url }}
               <a href="{{ .Params.url | relLangURL }}">
             {{- end }}
@@ -21,9 +25,19 @@
                   <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset) }}" class="img-fluid" alt="{{ .Params.asset.text }}">
                 {{- end }}
                 <div class="position-absolute hover-overlay"></div>
+                {{- if .Params.labels -}}
+                  <div class="position-absolute text-light badge-container">
+                    {{- range .Params.labels -}}
+                      <span class="badge badge-dark">
+                        <i class="{{ .icon }}"></i>
+                        <span>{{ .title }}</span>
+                      </span>
+                    {{- end -}}
+                  </div>
+                {{- end -}}
                 {{- if or .Params.title .Params.subtitle }}
                   <div class="position-absolute description-container col">
-                    <div class="row justify-content-center description text-light p-2 rounded text-center">
+                    <div class="row flex-column justify-content-center description text-light p-2 rounded text-center">
                       {{ if .Params.title }}<h5 class="title">{{ .Params.title }}</h5>{{ end }}
                       {{ if .Params.subtitle }}<h6 class="subtitle">{{ .Params.subtitle }}</h6>{{ end }}
                     </div>

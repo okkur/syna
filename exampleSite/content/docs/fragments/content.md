@@ -5,7 +5,7 @@ weight = 100
 title = "Fragments"
 
 [sidebar]
-  enable = true
+  sticky = true
 +++
 
 ### Syna & Fragments

@@ -1,9 +1,10 @@
+{{- $self := .self -}}
 {{- $bg := .Params.background | default "white" -}}
-{{- .page_scratch.Add "js" ("syna-collapse.js" | relLangURL) }}
-{{- $items := where (.page.Resources.Match (printf "%s/*.md" .Name)) ".Name" "ne" .self.Name -}}
+{{- .page_scratch.Add "js" (dict "file" "syna-collapse.js") -}}
+{{- $items := where (.page.Resources.Match (printf "%s/*.md" .Name)) ".Name" "ne" $self.Name -}}
 
 {{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "Name" .Name "Params" .Params) -}}
-  {{- partial "helpers/section-header.html" (dict "bg" $bg "params" .Params) }}
+  {{- partial "helpers/section-header.html" (dict "self" $self "bg" $bg "params" .Params) }}
   <div class="row text-center justify-content-center">
     <div class="faq">
       {{- if eq (len $items) 0 -}}
@@ -14,7 +15,7 @@
           {{- if not (in .Name "/index.md") -}}
             {{- $item := .Params }}
             {{- $card_header_id := printf "%s" (strings.TrimSuffix ".md" (replace .Name (printf "%s/" $.Name) "")) }}
-            {{- $collapse_id := printf "%s-collapse" (strings.TrimSuffix ".md" (replace .Name (printf "%s/" $.Name) "")) }}
+            {{- $collapse_id := printf "%s%s" $.Name (printf "%s-collapse" (strings.TrimSuffix ".md" (replace .Name (printf "%s/" $.Name) ""))) }}
               <div class="card">
                 <div id="{{ $card_header_id }}" class="card-header" data-toggle="collapse" data-target="#{{ $collapse_id }}"
                             aria-expanded="false" aria-controls="{{ $collapse_id }}">
