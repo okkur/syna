@@ -149,3 +149,7 @@ pre {
     width: 4.5rem;
   }
 }
+
+#TableOfContents a.active, .active-page {
+  font-weight: bold;
+}

@@ -2,7 +2,7 @@
 {{- $bg := .self.Scratch.Get "bg" }}
 
 {{ "<!-- Content -->" | safeHTML }}
-<section id="{{ .Name }}">
+<section id="{{ .Name }}" class="content-fragment">
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">
@@ -10,6 +10,9 @@
       <div class="row">
         {{- with .Params.sidebar -}}
           <div class="content-sidebar col-md-3 pb-4 px-0 {{- if (eq .align "right") }} order-1 {{- else }} order-0 {{- end -}}">
+            {{- if .sticky }}
+              <div class="sticky-top pt-3">
+            {{- end -}}
             {{- if .title }}
               <div class="col-12 pb-3
                 {{- partial "helpers/text-color.html" (dict "self" $self) -}}
@@ -23,8 +26,11 @@
               {{- partial "helpers/text-color.html" (dict "self" $self "light" "secondary") -}}
             ">
               {{- .content | markdownify -}}
-              {{ partial "helpers/slot.html" (dict "root" $ "slot" "sidebar")}}
+              {{ partial "helpers/slot.html" (dict "root" $ "slot" "sidebar" "data" (dict "page" $.page "content_fragment" $self)) }}
             </div>
+            {{- if .sticky }}
+              </div> {{/* .sticky-top */}}
+            {{- end -}}
           </div>
           <article class="col-md-9">
         {{- else }}

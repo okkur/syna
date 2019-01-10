@@ -50,10 +50,7 @@
       {{- end -}}
         <article
           {{- if $self.Params.collapsible -}}
-            {{- safeHTMLAttr (print " data-toggle=\"collapse\"") -}}
             {{- safeHTMLAttr (printf " id=\"list-page-%s\"" (anchorize $page_id)) -}}
-            {{- safeHTMLAttr (printf " data-target=\"#list-page-%s .collapse\"" (anchorize $page_id)) -}}
-            {{- safeHTMLAttr (printf " data-add-collapse=\"#list-page-%s .article-title\"" (anchorize $page_id)) -}}
           {{- end }}
           class="
             {{- if $self.Params.tiled -}}
@@ -72,15 +69,25 @@
                 <div class="col-12 pl-0
                   {{- partial "helpers/text-color.html" (dict "self" $self.self) -}}
                 ">
-                  <div class="row align-items-center justify-content-between mx-0 article-title">
+                  <div
+                    {{- if $self.Params.collapsible -}}
+                      {{- safeHTMLAttr (print " data-toggle=\"collapse\"") -}}
+                      {{- safeHTMLAttr (printf " data-target=\"#list-page-%s .collapse\"" (anchorize $page_id)) -}}
+                      {{- safeHTMLAttr (printf " data-add-collapse=\"#list-page-%s .article-title\"" (anchorize $page_id)) -}}
+                    {{- end }}
+                    class="row align-items-center justify-content-between mx-0 article-title">
                     {{- if $display_summary }}
-                      <h4 class="col-12 col-md px-0 m-0">
+                      <h4 class="col-12 col-md px-0 m-0
+                        {{- if eq $.page.URL .URL }} active-page {{- end -}}
+                      ">
                         <a href="{{ .URL }}">
                           {{- .Params.title | markdownify -}}
                         </a>
                       </h4>
                     {{- else }}
-                      <h5 class="col-12 col-md px-0 m-0">
+                      <h5 class="col-12 col-md px-0 m-0
+                        {{- if eq $.page.URL .URL }} active-page {{- end -}}
+                      ">
                         <a href="{{ .URL }}">
                           {{- .Params.title | markdownify -}}
                         </a>
@@ -112,7 +119,7 @@
               {{- end -}}
             {{- end -}}
             {{- if $self.Params.collapsible -}}
-              <div class="collapse">
+              <div class="collapse {{- if eq $.page.URL .URL }} show {{- end }}">
             {{- end -}}
               {{- range $content_page }}
                 {{- if and (ne $self.Params.images false) .Params.asset -}}

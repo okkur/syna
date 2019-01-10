@@ -5,7 +5,7 @@ weight = 100
 title = "Fragments"
 
 [sidebar]
-  enable = true
+  sticky = true
 +++
 
 ### Syna & Fragments
@@ -89,7 +89,7 @@ Each section can have global fragments and if there are multiple fragments with 
 
 ### Built-in fragments
 
-There are several pre-bundled fragments already available in Syna. You can see the full list in the [fragments](/fragments) section.
+There are several pre-bundled fragments already available in Syna. You can see the full list and their documentation in the [fragments](/fragments) section.
 These fragments make use of some [global variables](/docs/global-variables) along with their own variables which are mentioned in the fragment's page.
 
 ### Custom fragments
