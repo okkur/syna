@@ -1,21 +1,30 @@
 +++
+fragment = "content"
+weight = 131
++++
+
+<details><summary>Code</summary>
+```+++
 fragment = "stripe"
-weight = 122
+weight = 130
 background = "secondary"
 
-title = "Payment Fragment"
+title = "Payment Fragment with Custom Value"
 subtitle = "Doesn't work in demo"
 
 post_url = "https://us-central1-syna-222118.cloudfunctions.net/function-1/charge"
 stripe_token = "pk_test_36PckiAlsGm9KmHj9b034GAW"
 
 product = "Example Product"
-price = "2000"
-currency = "usd"
-price_text = "20.00$"
+
+[user_input]
+  default = "20.00"
+  currencies = ['usd', 'eur', 'cad'] # First currency will be used as default
 
 [email]
   label = "Your email address"
 +++
 
 You can pay for the product by filling this form (provided by Stripe).
+```
+</details>

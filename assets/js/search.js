@@ -49,7 +49,7 @@ class SynaSearch {
 
   search(query) {
     if (!query) {
-      return this.resultsContainer.html(this.render(this.empty.html(), {}));
+      return this.resultsContainer.html(window.syna.api.renderTemplate(this.empty.html(), {}));
     }
 
     this.getIndex(data => {
@@ -59,7 +59,7 @@ class SynaSearch {
       if (matches.length > 0) {
         this.populateResults(matches, query);
       } else {
-        this.resultsContainer.html(this.render(this.noResults.html(), {}));
+        this.resultsContainer.html(window.syna.api.renderTemplate(this.noResults.html(), {}));
       }
     });
   }
@@ -104,7 +104,7 @@ class SynaSearch {
       //pull template from hugo templarte definition
       const templateDefinition = this.template.html();
       //replace values
-      let output = this.render(templateDefinition, {
+      let output = window.syna.api.renderTemplate(templateDefinition, {
         key: key,
         title: this.highlight(snippetHighlights, value.item.title),
         link: value.item.permalink,
@@ -129,33 +129,6 @@ class SynaSearch {
     return decodeURIComponent(
       (location.search.split(name + '=')[1] || '').split('&')[0]
     ).replace(/\+/g, ' ');
-  }
-
-  render(templateString, data) {
-    let conditionalMatches, conditionalPattern, copy;
-    conditionalPattern = /\$\{\s*isset ([a-zA-Z]*) \s*\}(.*)\$\{\s*end\s*}/g;
-    //since loop below depends on re.lastInxdex, we use a copy to capture any manipulations whilst inside the loop
-    copy = templateString;
-    while (
-      (conditionalMatches = conditionalPattern.exec(templateString)) !== null
-    ) {
-      if (data[conditionalMatches[1]]) {
-        //valid key, remove conditionals, leave contents.
-        copy = copy.replace(conditionalMatches[0], conditionalMatches[2]);
-      } else {
-        //not valid, remove entire section
-        copy = copy.replace(conditionalMatches[0], '');
-      }
-    }
-    templateString = copy;
-    //now any conditionals removed we can do simple substitution
-    let key, find, re;
-    for (key in data) {
-      find = '\\$\\{\\s*' + key + '\\s*\\}';
-      re = new RegExp(find, 'g');
-      templateString = templateString.replace(re, data[key]);
-    }
-    return templateString;
   }
 }
 

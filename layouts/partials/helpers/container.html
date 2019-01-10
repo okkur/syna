@@ -4,7 +4,7 @@
 {{- if .start }}
 <section id="{{ .Name }}">
   {{- if ne .in_slot true }}
-    <div class="overlay container-fluid
+    <div class="container-fluid
       {{- printf " bg-%s" .bg -}}
     ">
   {{- end }}
@@ -13,7 +13,7 @@
 {{- if .end }}
     </div>{{/* .container */}}
   {{- if ne .in_slot true }}
-    </div>{{/* .overlay.container-fluid */}}
+    </div>{{/* .container-fluid */}}
   {{- end }}
 </section>
 {{- end }}

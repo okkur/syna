@@ -6,8 +6,23 @@ function $(selector) {
   const _returnee = {
     $nodes: nodes,
     $: $.bind(nodes),
-    on: (event, callback) => {
-      nodes.forEach(node => node[`on${event}`] = callback.bind(node));
+    on: (event, selector, callback) => {
+      if (typeof callback === 'undefined') {
+        callback = selector;
+        selector = null;
+      }
+
+      if (selector) {
+        nodes.forEach(node => {
+          node.addEventListener(event, e => {
+            if (e.target.matches(selector)) {
+              callback.call(node, e)
+            }
+          })
+        })
+      } else {
+        nodes.forEach(node => node[`on${event}`] = callback.bind(node));
+      }
       return _returnee;
     },
     addClass: className => {

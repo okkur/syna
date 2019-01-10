@@ -4,13 +4,12 @@ weight = 10
 title = "Starting plan"
 subtitle = "Working with url accross pages"
 
-price = "0"
 currency = "USD"
-price_text = "Free"
+price = "$9.99/mo"
 # highlight = true
 
-button_text = "Start for free"
-button_url = "/dev/events/payment?event=pricing:change&plan=Starting plan&price=0&price_text=Free&currency="
+button_text = "Start at $9.99/mo"
+button_url = "/dev/events/payment?event=pricing:change&plan=Starting plan&price=$9.99/mo&currency=usd"
 
 [[features]]
   text = "**Basic** feature"

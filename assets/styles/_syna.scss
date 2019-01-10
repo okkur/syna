@@ -122,6 +122,34 @@ pre {
   }
 }
 
+.btn-group-toggle label.btn {
+  position: relative;
+
+  input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+}
+
+.currency {
+  &-change {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  &-change, &-menu {
+    min-width: 4.5rem;
+    width: 4.5rem;
+  }
+}
+
 #TableOfContents a.active, .active-page {
   font-weight: bold;
 }

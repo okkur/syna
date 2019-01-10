@@ -1,15 +1,15 @@
 +++
 fragment = "content"
-weight = 111
+weight = 121
 +++
 
 <details><summary>Code</summary>
 ```+++
 fragment = "stripe"
-weight = 110
+weight = 120
 background = "secondary"
 
-title = "Payment Fragment"
+title = "Payment Fragment with Multiple Choices"
 subtitle = "Doesn't work in demo"
 
 post_url = "https://us-central1-syna-222118.cloudfunctions.net/function-1/charge"
@@ -23,6 +23,14 @@ product = "Example Product"
 
 [[prices]]
   text = "20.00$"
+  currency = "usd"
+
+[[prices]]
+  text = "30.00$"
+  currency = "usd"
+
+[[prices]]
+  text = "50.00$"
   currency = "usd"
 
 [email]

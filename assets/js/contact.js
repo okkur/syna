@@ -57,7 +57,7 @@ const validatorConfig = {
   }
 };
 
-document.querySelectorAll('form')
+document.querySelectorAll('form.contact')
   .forEach((form ) => new Validator(Object.assign(validatorConfig, { form })))
 
 function checkReCaptcha() {
