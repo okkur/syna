@@ -16,15 +16,6 @@ function initFormValidation(form, onSuccess = () => false) {
   });
 }
 
-function resetPrice(form) {
-  return function() {
-    const backup = form.$('[data-render=backup]');
-    form.$('[data-render=price]').html(backup.html());
-    form.$('[data-render=price] [data-price].active').$nodes.forEach(node => node.click());
-    backup.html('');
-  }
-}
-
 function onSubmit(configId, form, stripe, card) {
   return function(e) {
     e.preventDefault();
@@ -136,7 +127,6 @@ function updateStripeFragments(product, price, currency) {
       }
 
       priceDisplay.html(window.syna.api.renderTemplate(priceTemplate, data));
-      priceDisplay.$('[data-action=reset]').on('click', resetPrice(form));
     }
 
     if (currency) {

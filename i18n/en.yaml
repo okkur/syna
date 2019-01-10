@@ -63,3 +63,7 @@
   translation: "Payment was successful. Thank you."
 - id: defaultGenericError
   translation: "Something happened. Please try again in a few minutes."
+- id: stripe.change_price
+  translation: "Change Price"
+- id: stripe.change_currency
+  translation: "Change Currency"

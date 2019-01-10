@@ -89,7 +89,7 @@
                 <div class="input-group mb-0 price-input
                   {{- if gt (len ($.Params.prices | default slice)) 0 }} hidden {{- end -}}
                 ">
-                  <div class="input-group-prepend">
+                  <div class="input-group-prepend" title="{{ i18n "stripe.change_currency" }}">
                     <div class="btn btn-dark currency-change dropdown-toggle" data-input="currency" data-value="{{ index .currencies 0 }}">{{ index $currencies (upper (index .currencies 0)) }}</div>
                     <div class="dropdown-menu currency-menu">
                       {{- range .currencies }}
@@ -103,7 +103,7 @@
             </div>
             {{- if and .Params.user_input (gt (len (.Params.prices | default slice)) 0) }}
               <div class="col-12 col-sm-auto px-0 mb-2">
-                <i class="fas fa-edit ml-2" data-action="toggle-price-change"></i>
+                <i class="fas fa-edit ml-2" data-action="toggle-price-change" title="{{ i18n "stripe.change_price" }}"></i>
               </div>
             {{- end }}
           </div>
@@ -136,7 +136,4 @@
   <h5 class="my-0 pl-2">${price}</h5>
   <input type="hidden" name="price_text" value="${price}" />
   <input type="hidden" name="currency" value="${currency}" />
-  <div class="row align-items-center ml-2" data-action="reset">
-    <i class="fas fa-redo"></i>
-  </div>
 </script>
