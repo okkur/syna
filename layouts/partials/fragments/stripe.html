@@ -61,33 +61,24 @@
               <h5 class="my-0">{{ i18n "stripe.price" }}</h5>
             </div>
             <div class="col-12 col-sm-auto px-0 mr-2 mb-2">
-              <div class="price-display row mx-0" data-render="price">
-                {{- if gt (len ($.Params.prices | default slice)) 1 }}
+              {{- if or (and (isset .Params "user_input") (gt (len (.Params.prices | default slice)) 1)) (not (isset .Params "user_input")) }}
+                <div class="price-display row mx-0" data-render="price">
                   <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                {{- end -}}
-                  {{- range $index, $price := (.Params.prices | default slice) }}
-                    {{- with $price }}
-                      {{- if eq (len $.Params.prices) 1 }}
-                        <h5 class="my-0 pl-2">{{ .text }}</h5>
-                        <input type="hidden" name="price_text" value="{{ .text }}" />
-                        <input type="hidden" name="currency" value="{{ .currency }}" />
-                      {{- else }}
+                    {{- range $index, $price := (.Params.prices | default slice) }}
+                      {{- with $price }}
                         {{- $input_name := printf "%s-%s" $.Name (.text | default (string .amount)) }}
                         <label class="btn btn-primary" data-price="{{ .text | default .amount }}">
                           <input id="{{ $input_name }}" name="price_text" type="radio" data-currency="{{ .currency }}" value="{{ .text }}" /> {{ .text }}
                         </label>
-                      {{- end }}
+                      {{- end -}}
                     {{- end -}}
-                  {{- end -}}
-                {{- if gt (len ($.Params.prices | default slice)) 1 }}
                   </div>
-                  <input type="hidden" name="multichoice" value="true" />
-                {{- end }}
-              </div>
+                </div>
+              {{- end }}
               <div class="hidden" data-render="backup"></div>
               {{- with .Params.user_input }}
                 <div class="input-group mb-0 price-input
-                  {{- if gt (len ($.Params.prices | default slice)) 0 }} hidden {{- end -}}
+                  {{- if gt (len ($.Params.prices | default slice)) 1 }} hidden {{- end -}}
                 ">
                   <div class="input-group-prepend" title="{{ i18n "stripe.change_currency" }}">
                     <div class="btn btn-dark currency-change dropdown-toggle" data-input="currency" data-value="{{ index .currencies 0 }}">{{ index $currencies (upper (index .currencies 0)) }}</div>
@@ -101,7 +92,7 @@
                 </div>
               {{- end }}
             </div>
-            {{- if and .Params.user_input (gt (len (.Params.prices | default slice)) 0) }}
+            {{- if and .Params.user_input (gt (len (.Params.prices | default slice)) 1) }}
               <div class="col-12 col-sm-auto px-0 mb-2">
                 <i class="fas fa-edit ml-2" data-action="toggle-price-change" title="{{ i18n "stripe.change_price" }}"></i>
               </div>

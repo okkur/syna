@@ -44,7 +44,7 @@ function onSubmit(configId, form, stripe, card) {
         if (serializedForm.custom_value === "true") {
           price = serializedForm.custom_price_text;
           serializedForm.currency = form.$('[data-input=currency]').attr('data-value');
-        } else if (serializedForm.multichoice === "true") {
+        } else {
           serializedForm.currency = form.$('input[name=price_text]:checked').attr('data-currency');
         }
         delete serializedForm.custom_price_text;
@@ -80,11 +80,9 @@ Object.keys(stripeFragments).forEach(key => {
   const form = $(config.form);
   initFormValidation(form[0], onSubmit(key, form, stripe, card));
 
-  if ($(`${config.form} input[name=multichoice]`).length > 0) {
-    const choices = $(`${config.form} input[name=price_text]`);
-    choices.$nodes[0].setAttribute('checked', true);
-    choices.$nodes[0].parentElement.classList.add('active');
-  }
+  const choices = $(`${config.form} input[name=price_text]`);
+  choices.$nodes[0].setAttribute('checked', true);
+  choices.$nodes[0].parentElement.classList.add('active');
 
   form.$('[data-action="toggle-price-change"]').on('click', (() => {
     let isEditable = false;
