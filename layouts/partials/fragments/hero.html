@@ -39,14 +39,24 @@
     </div>
     {{- end -}}
   {{- else }}
-    {{- with .Params.title }}
+    {{- if .Params.title_page -}}
     <div class="row justify-content-center align-items-start">
       <h1 class="overlay jumbotron-heading
         {{- partial "helpers/text-color.html" (dict "self" $self.self) -}}
       ">
-        {{- . -}}
+        {{ $.root.Title }}
       </h1>
     </div>
+    {{- else -}}
+      {{- with .Params.title }}
+      <div class="row justify-content-center align-items-start">
+        <h1 class="overlay jumbotron-heading
+          {{- partial "helpers/text-color.html" (dict "self" $self.self) -}}
+        ">
+          {{- . -}}
+        </h1>
+      </div>
+      {{- end -}}
     {{- end -}}
     {{- with .Params.subtitle }}
     <div class="row justify-content-center align-items-start">

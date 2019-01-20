@@ -6,6 +6,7 @@ weight = 110
 background = "secondary"
 particles = true
 
+#title_page = true # Default is false
 title = "Syna Theme"
 subtitle = "Showcase your next project"
 

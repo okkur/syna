@@ -23,6 +23,12 @@ inside the hero fragment's directory.
 
 ### Variables
 
+#### title_page
+*type: boolean*  
+*default: false*
+
+If set to `true` and `asset` is not set, title will be the same as page title.
+
 #### particles
 *type: boolean*  
 *default: false*
@@ -38,6 +44,8 @@ Background image of the Hero fragment.
 *type: asset object*
 
 The asset is displayed on the Hero fragment instead of the `title` and can be used to display a logo. 
+
+**Note:** If set, title will not be shown and subtitle will be displayed in a bigger size.
 
 #### buttons
 *type: array of objects*
