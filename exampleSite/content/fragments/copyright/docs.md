@@ -8,6 +8,10 @@ title = "Documentation"
   enable = true
 +++
 
+### Note
+
+Use one instance of this fragment per page. Running more might lead to unexpected issues.
+
 ### Menus
 
 - .Site.Menus.copyright_footer
