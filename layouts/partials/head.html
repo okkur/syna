@@ -61,18 +61,20 @@
   {{- $style := $styleTemplated | resources.ToCSS $options | resources.Minify | resources.Fingerprint }}
   <link href="{{ $style.RelPermalink }}" rel="stylesheet">
 
-  {{- with .Site.Params.custom.favicon }}
-    <link rel="shortcut icon" type="image/x-icon" href="{{ . | relLangURL }}">
-    <link rel="icon" {{ with .Site.Params.custom.favicon_ico_sizes }}sizes="{{ . }}"{{ end }} type="image/x-icon" href="{{ . | relLangURL }}">
-  {{- end }}
+  {{- with .Site.Params.custom -}}
+    {{- with .favicon }}
+      <link rel="shortcut icon" type="image/x-icon" href="{{ . | relLangURL }}">
+      <link rel="icon" {{ with $.Site.Params.custom.favicon_ico_sizes }}sizes="{{ . }}"{{ end }} type="image/x-icon" href="{{ . | relLangURL }}">
+    {{- end }}
 
-  {{- with .Site.Params.custom.favicon_png }}
-    <link rel="icon" href="{{ . | relLangURL }}">
-    <link rel="apple-touch-icon-precomposed" href="{{ . | relLangURL }}">
-  {{- end }}
+    {{- with .favicon_png }}
+      <link rel="icon" href="{{ . | relLangURL }}">
+      <link rel="apple-touch-icon-precomposed" href="{{ . | relLangURL }}">
+    {{- end }}
 
-  {{- with .Site.Params.custom.favicon_svg }}
-    <link rel="icon" type="image/svg+xml" href="{{ . | relLangURL }}">
+    {{- with .favicon_svg }}
+      <link rel="icon" type="image/svg+xml" href="{{ . | relLangURL }}">
+    {{- end -}}
   {{- end }}
 
   {{- partial "custom/css.html" . }}
