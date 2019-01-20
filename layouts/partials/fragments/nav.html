@@ -13,7 +13,10 @@
   {{- else -}}
     {{- printf " navbar-%s" "dark" -}}
   {{- end -}}
-" id="{{ .Name }}" role="navigation">
+" id="{{ .Name }}" role="navigation"
+{{- if .Params.sticky -}}
+  {{- safeHTMLAttr (print " style='position: sticky; top: 0; z-index: 10000 !important;'") -}}
+{{- end -}}>
   <div class="container">
     {{- if .Params.asset.image }}
       <a class="navbar-brand py-0" href="{{ "#page-top" | relLangURL }}">

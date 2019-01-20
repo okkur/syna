@@ -5,6 +5,7 @@ date = "2018-05-17"
 weight = 0
 background = "dark"
 search = true
+sticky = true
 
 [breadcrumb]
   display = true # Default value is false
