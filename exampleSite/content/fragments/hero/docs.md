@@ -8,6 +8,19 @@ title = "Documentation"
   enable = true
 +++
 
+### Extra Files
+
+Hero fragment supports extra files to configure how it appears. Therefore you need
+to create a directory for the hero fragment and name your fragment `index.md` inside that directory.
+
+Extra files can be provided for background, logo and particles effect configuration.
+
+#### [hero]/config.json
+
+If `particles` variable is set to true, a default configuration for the `particles-js` library
+will be used. You can customize this configuration by providing a `config.json` file
+inside the hero fragment's directory.
+
 ### Variables
 
 #### particles

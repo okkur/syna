@@ -18,7 +18,7 @@
     ">
   {{- end }}
   {{- if .Params.particles }}
-    <div id="particles-js"></div>
+    <div id="{{ printf "%s-particles-js" .Name }}" class="particles-js"></div>
   {{- end -}}
   {{- if .Params.asset -}}
     {{- with .Params.asset }}
@@ -71,3 +71,11 @@
   {{- end }}
   </div>
 </header>
+<script>
+  var fragmentName = "{{ .Name }}";
+  {{- $file_path := printf "%s%s/config.json" .page.Dir .Name -}}
+  window.syna.api.register("hero", "hero-" + fragmentName, {
+    selector: "{{ printf "%s-particles-js" .Name }}",
+    config: {{ if fileExists $file_path -}} JSON.parse({{ readFile $file_path | safeHTML }}) {{- else -}} null {{- end -}},
+  });
+</script>
