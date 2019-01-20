@@ -77,7 +77,9 @@
     {{- end -}}
 
     {{ if and (not .favicon) (not .favicon_png) (not .favicon_svg) }}
-      <link rel="icon" type="image/svg+xml" href="favicon.svg">
+      <link rel="icon" href="/favicon.png">
+      <link rel="apple-touch-icon-precomposed" href="/favicon.png">
+      <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     {{ end }}
   {{- end }}
 
