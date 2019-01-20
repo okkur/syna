@@ -21,6 +21,12 @@ title = "Documentation"
 If set to `true`, search is enabled within the navbar.  
 **Note:** The additional input field used for search will alter the menu layout.
 
+#### sticky
+*type: boolean*  
+*default: false*
+
+If set to `true`, navbar will stick to the top of the screen whenever page scrolls past it.
+
 #### prepend, postpend
 *type: array of objects*
 
