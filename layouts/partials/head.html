@@ -75,6 +75,10 @@
     {{- with .favicon_svg }}
       <link rel="icon" type="image/svg+xml" href="{{ . | relLangURL }}">
     {{- end -}}
+
+    {{ if and (not .favicon) (not .favicon_png) (not .favicon_svg) }}
+      <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    {{ end }}
   {{- end }}
 
   {{- partial "custom/css.html" . }}
