@@ -19,11 +19,11 @@
 {{- end -}}>
   <div class="container">
     {{- if .Params.asset.image }}
-      <a class="navbar-brand py-0" href="{{ "#page-top" | relLangURL }}">
+      <a class="navbar-brand py-0" href="{{ "#" | relLangURL }}">
         <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset) }}" height="35" class="d-inline-block align-top" alt="{{ .Params.asset.text }}">
       </a>
     {{- else }}
-      <a class="navbar-brand py-0" href="{{ "#page-top" | relLangURL }}">
+      <a class="navbar-brand py-0" href="{{ "#" | relLangURL }}">
         {{- .Params.asset.text -}}
       </a>
     {{- end }}
