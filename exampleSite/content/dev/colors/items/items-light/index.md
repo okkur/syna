@@ -2,7 +2,7 @@
 fragment = "items"
 #disabled = false
 date = "2017-10-04"
-weight = 121
+weight = 141
 background = "light"
 
 title = "Items Fragment"
