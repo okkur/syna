@@ -1,4 +1,4 @@
-.bg-primary {
+.fragment .bg-primary {
   a {
     color: $light;
 
@@ -8,7 +8,7 @@
   }
 }
 
-.bg-dark {
+.fragment .bg-dark {
   a {
     @include hover {
       color: darken($light, 15%);

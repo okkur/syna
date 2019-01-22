@@ -5,7 +5,7 @@
 {{- $bg := .self.Scratch.Get "bg" }}
 
 {{ "<!-- Hero -->" | safeHTML }}
-<header id="{{ .Name }}">
+<header id="{{ .Name }}" class="fragment">
   {{- if .Params.header }}
     <div
       style="background-image:url({{ partial "helpers/image.html" (dict "root" $self "asset" .Params.header) }})"
