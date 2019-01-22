@@ -8,7 +8,7 @@
   <p class="{{ .message_class }}">{{- i18n "search.no_results" | default "No matches found" }}</p>
 </script>
 <script id="search-result-template-{{ .name }}" type="text/x-js-template">
-  <a href="${link}" id="summary-${key}" class="result">
+  <a href="${link}" id="summary-${key}" class="result ignore-color-change">
     <div class="p-2">
       <h5>${title}</h5>
       <p class="m-0 
