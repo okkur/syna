@@ -13,13 +13,13 @@
         <div class="col-lg-4 col-md-9 col-12 py-2">
           <div
             class="border rounded position-relative portfolio-item overflow-hidden 
-              {{- if not .Params.url }} has-modal {{- end -}}
+              {{- if not .Params.item_url }} has-modal {{- end -}}
             "
             {{- if $self.Params.height -}}
               {{- safeHTMLAttr (printf "style='min-height:%s; height:%s'" $self.Params.height $self.Params.height) -}}
             {{- end -}}>
-            {{- if .Params.url }}
-              <a href="{{ .Params.url | relLangURL }}">
+            {{- if .Params.item_url }}
+              <a href="{{ .Params.item_url | relLangURL }}">
             {{- end }}
                 {{- if .Params.asset -}}
                   <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset) }}" class="img-fluid" alt="{{ .Params.asset.text }}">
@@ -44,7 +44,7 @@
                   </div>
                 {{- end }}
                 <div class="content hidden">{{ .Content }}</div>
-            {{- if .Params.url }}
+            {{- if .Params.item_url }}
               </a>
             {{- end }}
           </div>
