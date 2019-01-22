@@ -3,7 +3,7 @@
 {{- $bg := .self.Scratch.Get "bg" }}
 
 {{ "<!-- Copyright -->" | safeHTML }}
-<footer class="overlay container-fluid
+<footer class="overlay fragment container-fluid
   {{- printf " bg-%s" $bg -}}
 " id="{{ .Name }}">
   <div class="container">

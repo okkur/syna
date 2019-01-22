@@ -2,9 +2,10 @@
 fragment = "nav"
 #disabled = true
 date = "2018-05-17"
-weight = 122
+weight = 142
 background = "secondary"
 search = true
+#sticky = true # Default is false
 
 [breadcrumb]
   display = true # Default value is false

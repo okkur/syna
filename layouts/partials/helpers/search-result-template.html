@@ -8,11 +8,11 @@
   <p class="{{ .message_class }}">{{- i18n "search.no_results" | default "No matches found" }}</p>
 </script>
 <script id="search-result-template-{{ .name }}" type="text/x-js-template">
-  <a href="${link}" id="summary-${key}" class="result">
+  <a href="${link}" id="summary-${key}" class="result ignore-color-change">
     <div class="p-2">
       <h5>${title}</h5>
       <p class="m-0 
-        {{- partial "helpers/text-color.html" (dict "self" $self "light" "body" "dark" "white") -}}
+        {{- partial "helpers/text-color.html" (dict "self" $self "light" "secondary") -}}
       ">${snippet}</p>
       ${ isset tags }<p>Tags: ${tags}</p>${ end }
       ${ isset categories }<p>Categories: ${categories}</p>${ end }

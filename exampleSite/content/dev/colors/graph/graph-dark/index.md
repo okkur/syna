@@ -1,6 +1,6 @@
 +++
 fragment = "graph"
-weight = 123
+weight = 143
 background = "dark"
 
 title = "Graph Fragment"

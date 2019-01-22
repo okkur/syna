@@ -19,7 +19,7 @@
     cursor: pointer;
     text-decoration: inherit;
 
-    h5 {
+    h5:not(:hover):not(:active) {
       @extend a;
     }
 
