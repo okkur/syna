@@ -93,7 +93,7 @@
   </div>
   {{- with .Params.repo_button }}
     <div class="d-none d-lg-block pl-auto">
-      <a class="btn btn-light" href="{{ .url }}" role="button">
+      <a class="btn btn-light ignore-color-change" href="{{ .url }}" role="button">
         <i class="{{ printf "%s" .icon | default (printf "fab fa-github") }} mr-2"></i>
         {{ .text | default "Star" }}
       </a>

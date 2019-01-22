@@ -1,17 +1,21 @@
-.fragment .bg-primary {
-  a {
-    color: $light;
+.fragment {
+  &.bg-primary, .bg-primary {
+    a:not(.ignore-color-change) {
+      color: $light;
 
-    @include hover {
-      color: darken($light, 15%);
+      @include hover {
+        color: darken($light, 15%);
+      }
     }
   }
 }
 
-.fragment .bg-dark {
-  a {
-    @include hover {
-      color: darken($light, 15%);
+.fragment {
+  &.bg-dark, .bg-dark {
+    a:not(.ignore-color-change) {
+      @include hover {
+        color: darken($light, 15%);
+      }
     }
   }
 }
