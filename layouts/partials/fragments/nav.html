@@ -6,7 +6,7 @@
 {{- $bg := .self.Scratch.Get "bg" }}
 
 {{- "<!-- Navigation -->" | safeHTML -}}
-<nav class="overlay navbar navbar-expand-lg py-2
+<nav class="overlay fragment navbar navbar-expand-lg py-2
   {{- printf " bg-%s" $bg -}}
   {{- if or (eq $bg "light") (eq $bg "white") (eq $bg "secondary") -}}
     {{- printf " navbar-%s" "light" -}}
@@ -93,7 +93,7 @@
   </div>
   {{- with .Params.repo_button }}
     <div class="d-none d-lg-block pl-auto">
-      <a class="btn btn-light" href="{{ .url }}" role="button">
+      <a class="btn btn-light ignore-color-change" href="{{ .url }}" role="button">
         <i class="{{ printf "%s" .icon | default (printf "fab fa-github") }} mr-2"></i>
         {{ .text | default "Star" }}
       </a>

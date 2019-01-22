@@ -2,10 +2,11 @@
 fragment = "hero"
 #disabled = true
 date = "2016-09-07"
-weight = 123
+weight = 143
 background = "dark"
 particles = true
 
+#title_page = true # Default is false
 title = "Syna Theme"
 subtitle = "Showcase your next project"
 

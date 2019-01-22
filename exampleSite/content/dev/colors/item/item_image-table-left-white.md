@@ -2,7 +2,7 @@
 fragment = "item"
 #disabled = false
 date = "2017-10-04"
-weight = 320
+weight = 340
 background = "white"
 align = "left"
 

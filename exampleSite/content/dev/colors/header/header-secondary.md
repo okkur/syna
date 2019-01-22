@@ -1,7 +1,7 @@
 +++
 date = "2018-07-13"
 fragment = "header"
-weight = 122
+weight = 142
 
 background = "secondary"
 title = "Section Header Fragment"

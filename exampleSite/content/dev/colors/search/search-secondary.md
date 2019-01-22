@@ -1,6 +1,6 @@
 +++
 fragment = "search"
-weight = 122
+weight = 142
 background = "secondary"
 
 title = "Search Fragment"

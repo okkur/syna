@@ -2,9 +2,8 @@
 fragment = "embed"
 #disabled = true
 date = "2017-10-07"
-weight = 124
+weight = 144
 background = "primary"
-form_name = "subscribe"
 
 #title = ""
 #subtitle = ""

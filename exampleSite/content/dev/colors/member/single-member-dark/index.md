@@ -2,7 +2,7 @@
 fragment = "member"
 #disabled = false
 date = "2017-10-17"
-weight = 143
+weight = 163
 background = "dark"
 
 title = "Single Member Fragment"
