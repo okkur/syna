@@ -12,7 +12,7 @@
     <div class="p-2">
       <h5>${title}</h5>
       <p class="m-0 
-        {{- partial "helpers/text-color.html" (dict "self" $self "light" "body" "dark" "white") -}}
+        {{- partial "helpers/text-color.html" (dict "self" $self "light" "secondary") -}}
       ">${snippet}</p>
       ${ isset tags }<p>Tags: ${tags}</p>${ end }
       ${ isset categories }<p>Categories: ${categories}</p>${ end }
