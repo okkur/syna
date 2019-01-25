@@ -10,13 +10,17 @@ nav[role=navigation] {
   z-index: 1000 !important;
 }
 
-.particles-js {
-  position: absolute;
-  width: 100%;
-  margin-left: -2rem;
-  height: 550px;
-  margin-top: -4rem;
-  overflow: hidden;
+.hero {
+  position: relative;
+
+  .particles-js {
+    position: absolute;
+    width: 100%;
+    margin-left: -2rem;
+    height: 100%;
+    margin-top: -4rem;
+    overflow: hidden;
+  }
 }
 
 @include media-breakpoint-down(md) {
