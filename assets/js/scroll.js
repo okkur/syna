@@ -13,13 +13,15 @@ function handleScroll() {
     $('.scroll-to-top').addClass('d-none');
   }
 
-  const headers = $('.content-fragment h1, .content-fragment h2, .content-fragment h3, .content-fragment h4, .content-fragment h5, .content-fragment h6');
+  const headers = $('.content-fragment h1, .content-fragment h2, .content-fragment h3, .content-fragment h4, .content-fragment h5, .content-fragment h6, .fragment');
   for (let i = headers.length - 1; i >= 0; i--) {
     const bounds = headers[i].getBoundingClientRect();
     if (bounds.top < 64) {
-      $(`.toc #TableOfContents li a`).removeClass('active');
+      $('.scroll-spy a:not(.default-active)').removeClass('active');
+      $('.toc #TableOfContents li a').removeClass('active');
       if (headers[i].id) {
         $(`.toc #TableOfContents li a[href="${window.location.pathname}#${headers[i].id}"]`).addClass('active');
+        $(`.scroll-spy a[href="${window.location.pathname}#${headers[i].id}"]`).addClass('active');
       }
       break;
     }
