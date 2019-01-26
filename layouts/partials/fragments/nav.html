@@ -6,7 +6,7 @@
 {{- $bg := .self.Scratch.Get "bg" }}
 
 {{- "<!-- Navigation -->" | safeHTML -}}
-<nav class="overlay fragment navbar navbar-expand-lg py-2
+<nav class="overlay fragment navbar navbar-expand-lg py-2 scroll-spy
   {{- printf " bg-%s" $bg -}}
   {{- if or (eq $bg "light") (eq $bg "white") (eq $bg "secondary") -}}
     {{- printf " navbar-%s" "light" -}}
@@ -39,8 +39,14 @@
       <ul class="navbar-nav">
         {{- if .Params.prepend -}}
           {{- range sort .Params.prepend }}
+            {{- $isMenuCurrent := or (eq $.root.URL .url) (eq (printf "%s/" $.root.URL) .url) (eq $.root.URL (printf "%s/" .url)) -}}
             <li class="nav-item">
-              <a href="{{ .url | relLangURL }}" {{- if hasPrefix .url "#" }} class="anchor nav-link"{{ else }} class="nav-link"{{ end }}>
+              <a href="{{ .url | relLangURL }}"
+                {{- if hasPrefix .URL "#" }}
+                  class="nav-link anchor"
+                {{- else }}
+                  class="nav-link {{- if $isMenuCurrent }} active default-active {{- end -}}"
+                {{- end }}>
                 {{ .name }}
               </a>
             </li>
@@ -48,8 +54,14 @@
         {{- end }}
         {{- if .Site.Menus.main -}}
           {{- range sort .Site.Menus.main }}
+            {{- $isMenuCurrent := or (eq $.root.URL .URL) (eq (printf "%s/" $.root.URL) .URL) (eq $.root.URL (printf "%s/" .URL)) -}}
             <li class="nav-item">
-              <a href="{{ .URL | relLangURL }}" {{- if hasPrefix .URL "#" }} class="nav-link anchor"{{ else }} class="nav-link"{{ end }}>
+              <a href="{{ .URL | relLangURL }}"
+                {{- if hasPrefix .URL "#" }}
+                  class="nav-link anchor"
+                {{- else }}
+                  class="nav-link {{- if $isMenuCurrent }} active default-active {{- end -}}"
+                {{- end }}>
                 {{ .Name }}
               </a>
             </li>
@@ -57,8 +69,14 @@
         {{- end }}
         {{- if .Params.postpend -}}
           {{- range sort .Params.postpend }}
+            {{- $isMenuCurrent := or (eq $.root.URL .url) (eq (printf "%s/" $.root.URL) .url) (eq $.root.URL (printf "%s/" .url)) -}}
             <li class="nav-item">
-              <a href="{{ .url | relLangURL }}" {{- if hasPrefix .URL "#" }} class="nav-link anchor"{{ else }} class="nav-link"{{ end }}>
+              <a href="{{ .url | relLangURL }}"
+                {{- if hasPrefix .URL "#" }}
+                  class="nav-link anchor"
+                {{- else }}
+                  class="nav-link {{- if $isMenuCurrent }} active default-active {{- end -}}"
+                {{- end }}>
                 {{ .name }}
               </a>
             </li>
