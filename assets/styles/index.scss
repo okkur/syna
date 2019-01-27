@@ -17,9 +17,9 @@ $list-inline-padding: 5px;
 $dropdown-item-padding-x: 1rem;
 {{ if not .Site.Params.fontawesome.disabled }}
 @import './fontawesome/fontawesome.scss';
-@import './fontawesome/fa-regular.scss';
-@import './fontawesome/fa-solid.scss';
-@import './fontawesome/fa-brands.scss';
+@import './fontawesome/regular.scss';
+@import './fontawesome/solid.scss';
+@import './fontawesome/brands.scss';
 {{ end }}
 @import './bootstrap/bootstrap.scss';
 @import './helpers';
