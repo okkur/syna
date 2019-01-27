@@ -55,7 +55,6 @@ const copy = function(src, dest) {
   oldFile.pipe(newFile);
 };
 
-
-copyDir('./node_modules/@fortawesome/fontawesome-free-webfonts/scss', './assets/styles/fontawesome');
-copyDir('./node_modules/@fortawesome/fontawesome-free-webfonts/webfonts', './static/fonts');
+copyDir('./node_modules/@fortawesome/fontawesome-free/scss', './assets/styles/fontawesome');
+copyDir('./node_modules/@fortawesome/fontawesome-free/webfonts', './static/fonts');
 copyDir('./node_modules/bootstrap/scss', './assets/styles/bootstrap');
