@@ -53,8 +53,6 @@
 # Stripe
 - id: stripe.email
   translation: "Your email address"
-- id: stripe.price
-  translation: "Price:"
 - id: stripe.pricePlaceholder
   translation: "Enter your custom price"
 - id: stripe.customPriceError

@@ -112,7 +112,15 @@ window.syna.stream.subscribe('pricing:change', function({ product, price, curren
 function updateStripeFragments(product, price, currency) {
   window.syna.api.toArray('stripe').forEach(config => {
     const form = $(config.form);
-    config.product = product;
+    if (product) {
+      config.product = product;
+      $('[data-render="product"]').html(
+        window.syna.api.renderTemplate(
+          $('#stripe-product-template').html(),
+          { product }
+        ),
+      );
+    }
 
     if (price) {
       const priceTemplate = $('#stripe-price-template').html();
