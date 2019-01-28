@@ -81,8 +81,10 @@ Object.keys(stripeFragments).forEach(key => {
   initFormValidation(form[0], onSubmit(key, form, stripe, card));
 
   const choices = $(`${config.form} input[name=price_text]`);
-  choices.$nodes[0].setAttribute('checked', true);
-  choices.$nodes[0].parentElement.classList.add('active');
+  if (choices.length > 0) {
+    choices.$nodes[0].setAttribute('checked', true);
+    choices.$nodes[0].parentElement.classList.add('active');
+  }
 
   form.$('[data-action="toggle-price-change"]').on('click', (() => {
     let isEditable = false;
