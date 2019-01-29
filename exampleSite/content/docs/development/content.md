@@ -25,6 +25,18 @@ You can change these colors by editing them in `config.toml`.
 Change other Bootstrap variables using `assets/styles/bootstrap/_variables.scss`.
 Syna customizes some parts of the theme via custom css, which is available in the `assets/styles` directory.
 
+### Fonts
+
+FontAwesome Free is supported by default and is used throughout built-in fragments. You can disable it by setting `fontawesome.disabled` in your `config.toml` to `true`.
+
+If you want to add FontAwesome Pro to the theme, the following recipe may be helpful.
+
+- Move all the files from `fontawesome-pro-[version]-web/webfonts/` (from the archive) to `static/fonts` directory in the theme.
+- Move all the files from `fontawesome-pro-[version]-web/scss/` (from the archive) to `assets/styles/fontawesome` directory in the theme.
+- Set `fontawesome.pro` in your `config.toml` file to `true`.
+
+After these steps, FontAwesome Pro will be loaded in every page of your website.
+
 ### JavaScript
 
 Syna uses code spliting to get bundles for each fragment.
