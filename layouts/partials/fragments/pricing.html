@@ -40,7 +40,7 @@
               href="{{ .Params.button_url | relLangURL }}"
               class="btn btn-lg btn-block btn-primary"
               {{- if (not (isset .Params "button_url")) | or (eq .Params.button_url "") -}}
-                {{ safeHTMLAttr (printf "data-event-args=\"title:%s,price:%s,currency:%s\"" .Title .Params.price (.Params.currency | default "")) }}
+                {{ safeHTMLAttr (printf "data-event-args=\"title:%s,price:%s,currency:%s,product:%s\"" .Title .Params.price (.Params.currency | default "") .Title) }}
               {{- end -}}>
               {{ .Params.button_text }}
             </a>

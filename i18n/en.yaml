@@ -53,8 +53,6 @@
 # Stripe
 - id: stripe.email
   translation: "Your email address"
-- id: stripe.price
-  translation: "Price:"
 - id: stripe.pricePlaceholder
   translation: "Enter your custom price"
 - id: stripe.customPriceError
@@ -63,3 +61,7 @@
   translation: "Payment was successful. Thank you."
 - id: defaultGenericError
   translation: "Something happened. Please try again in a few minutes."
+- id: stripe.change_price
+  translation: "Change Price"
+- id: stripe.change_currency
+  translation: "Change Currency"

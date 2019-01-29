@@ -16,15 +16,6 @@ function initFormValidation(form, onSuccess = () => false) {
   });
 }
 
-function resetPrice(form) {
-  return function() {
-    const backup = form.$('[data-render=backup]');
-    form.$('[data-render=price]').html(backup.html());
-    form.$('[data-render=price] [data-price].active').$nodes.forEach(node => node.click());
-    backup.html('');
-  }
-}
-
 function onSubmit(configId, form, stripe, card) {
   return function(e) {
     e.preventDefault();
@@ -51,6 +42,7 @@ function onSubmit(configId, form, stripe, card) {
 
         let price = formData.price_text;
         const serializedForm = {
+          email: formData.email,
           stripeToken: formData.stripeToken,
           currency: formData.currency,
           price: formData.price,
@@ -59,7 +51,7 @@ function onSubmit(configId, form, stripe, card) {
         if (formData.custom_value === "true") {
           price = formData.custom_price_text;
           serializedForm.currency = form.$('[data-input=currency]').attr('data-value');
-        } else if (formData.multichoice === "true") {
+        } else {
           serializedForm.currency = form.$('input[name=price_text]:checked').attr('data-currency');
         }
         serializedForm.metadata.price_text = price;
@@ -94,8 +86,8 @@ Object.keys(stripeFragments).forEach(key => {
   const form = $(config.form);
   initFormValidation(form[0], onSubmit(key, form, stripe, card));
 
-  if ($(`${config.form} input[name=multichoice]`).length > 0) {
-    const choices = $(`${config.form} input[name=price_text]`);
+  const choices = $(`${config.form} input[name=price_text]`);
+  if (choices.length > 0) {
     choices.$nodes[0].setAttribute('checked', true);
     choices.$nodes[0].parentElement.classList.add('active');
   }
@@ -128,7 +120,15 @@ window.syna.stream.subscribe('pricing:change', function({ product, price, curren
 function updateStripeFragments(product, price, currency) {
   window.syna.api.toArray('stripe').forEach(config => {
     const form = $(config.form);
-    config.product = product;
+    if (product) {
+      config.product = product;
+      $('[data-render="product"]').html(
+        window.syna.api.renderTemplate(
+          $('#stripe-product-template').html(),
+          { product }
+        ),
+      );
+    }
 
     if (price) {
       const priceTemplate = $('#stripe-price-template').html();
@@ -141,7 +141,6 @@ function updateStripeFragments(product, price, currency) {
       }
 
       priceDisplay.html(window.syna.api.renderTemplate(priceTemplate, data));
-      priceDisplay.$('[data-action=reset]').on('click', resetPrice(form));
     }
 
     if (currency) {

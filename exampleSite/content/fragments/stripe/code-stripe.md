@@ -17,10 +17,6 @@ stripe_token = "pk_test_36PckiAlsGm9KmHj9b034GAW"
 
 product = "Example Product"
 
-[user_input]
-  default = "20.00"
-  currencies = ['usd', 'eur', 'cad'] # First currency will be used as default
-
 [[prices]]
   text = "20.00$"
   currency = "usd"
