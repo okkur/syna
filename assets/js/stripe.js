@@ -42,6 +42,7 @@ function onSubmit(configId, form, stripe, card) {
 
         let price = formData.price_text;
         const serializedForm = {
+          email: formData.email,
           stripeToken: formData.stripeToken,
           currency: formData.currency,
           price: formData.price,
@@ -50,7 +51,7 @@ function onSubmit(configId, form, stripe, card) {
         if (formData.custom_value === "true") {
           price = formData.custom_price_text;
           serializedForm.currency = form.$('[data-input=currency]').attr('data-value');
-        } else if (formData.multichoice === "true") {
+        } else {
           serializedForm.currency = form.$('input[name=price_text]:checked').attr('data-currency');
         }
         serializedForm.metadata.price_text = price;
