@@ -15,12 +15,15 @@ $gray-200:            #e9ecef !default;
 $border-color:        $gray-200;
 $list-inline-padding: 5px;
 $dropdown-item-padding-x: 1rem;
-{{ if not .Site.Params.fontawesome.disabled }}
-@import './fontawesome/fontawesome.scss';
-@import './fontawesome/regular.scss';
-@import './fontawesome/solid.scss';
-@import './fontawesome/brands.scss';
-{{ end }}
+{{- if not .Site.Params.fontawesome.disabled -}}
+  @import './fontawesome/fontawesome.scss';
+  @import './fontawesome/regular.scss';
+  @import './fontawesome/solid.scss';
+  {{- if .Site.Params.fontawesome.pro }}
+    @import './fontawesome/light.scss';
+  {{- end }}
+  @import './fontawesome/brands.scss';
+{{- end }}
 @import './bootstrap/bootstrap.scss';
 @import './helpers';
 @import './header';
