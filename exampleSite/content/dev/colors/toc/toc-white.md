@@ -1,6 +1,6 @@
 +++
 fragment = "toc"
-weight = 140
+weight = 160
 background = "white"
 content = "content.md"
 +++

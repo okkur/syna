@@ -24,10 +24,12 @@ Title of the portfolio item. Will appear in the modal (after clicking the item) 
 
 Subtitle of the portfolio item. Will appear in the modal (after clicking the item) as well.
 
-#### url
+#### item_url
 *type: string*
 
 URL of the portfolio item. If set, then clicking the portfolio item would open the URL and modal will not be opened.
+
+**NOTE:** This variable may be deprecated in the future and be renamed to `url`.
 
 #### asset
 *type: asset object*

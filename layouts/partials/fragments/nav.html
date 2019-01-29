@@ -6,21 +6,24 @@
 {{- $bg := .self.Scratch.Get "bg" }}
 
 {{- "<!-- Navigation -->" | safeHTML -}}
-<nav class="overlay navbar navbar-expand-lg py-2
+<nav class="overlay fragment navbar navbar-expand-lg py-2 scroll-spy
   {{- printf " bg-%s" $bg -}}
   {{- if or (eq $bg "light") (eq $bg "white") (eq $bg "secondary") -}}
     {{- printf " navbar-%s" "light" -}}
   {{- else -}}
     {{- printf " navbar-%s" "dark" -}}
   {{- end -}}
-" id="{{ .Name }}" role="navigation">
+" id="{{ .Name }}" role="navigation"
+{{- if .Params.sticky -}}
+  {{- safeHTMLAttr (print " style='position: sticky; top: 0; z-index: 10000 !important;'") -}}
+{{- end -}}>
   <div class="container">
     {{- if .Params.asset.image }}
-      <a class="navbar-brand py-0" href="{{ "#page-top" | relLangURL }}">
+      <a class="navbar-brand py-0" href="{{ "#" | relLangURL }}">
         <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset) }}" height="35" class="d-inline-block align-top" alt="{{ .Params.asset.text }}">
       </a>
     {{- else }}
-      <a class="navbar-brand py-0" href="{{ "#page-top" | relLangURL }}">
+      <a class="navbar-brand py-0" href="{{ "#" | relLangURL }}">
         {{- .Params.asset.text -}}
       </a>
     {{- end }}
@@ -36,8 +39,14 @@
       <ul class="navbar-nav">
         {{- if .Params.prepend -}}
           {{- range sort .Params.prepend }}
+            {{- $isMenuCurrent := or (eq $.root.URL .url) (eq (printf "%s/" $.root.URL) .url) (eq $.root.URL (printf "%s/" .url)) -}}
             <li class="nav-item">
-              <a href="{{ .url | relLangURL }}" {{- if hasPrefix .url "#" }} class="anchor nav-link"{{ else }} class="nav-link"{{ end }}>
+              <a href="{{ .url | relLangURL }}"
+                {{- if hasPrefix .URL "#" }}
+                  class="nav-link anchor"
+                {{- else }}
+                  class="nav-link {{- if $isMenuCurrent }} active default-active {{- end -}}"
+                {{- end }}>
                 {{ .name }}
               </a>
             </li>
@@ -45,8 +54,14 @@
         {{- end }}
         {{- if .Site.Menus.main -}}
           {{- range sort .Site.Menus.main }}
+            {{- $isMenuCurrent := or (eq $.root.URL .URL) (eq (printf "%s/" $.root.URL) .URL) (eq $.root.URL (printf "%s/" .URL)) -}}
             <li class="nav-item">
-              <a href="{{ .URL | relLangURL }}" {{- if hasPrefix .URL "#" }} class="nav-link anchor"{{ else }} class="nav-link"{{ end }}>
+              <a href="{{ .URL | relLangURL }}"
+                {{- if hasPrefix .URL "#" }}
+                  class="nav-link anchor"
+                {{- else }}
+                  class="nav-link {{- if $isMenuCurrent }} active default-active {{- end -}}"
+                {{- end }}>
                 {{ .Name }}
               </a>
             </li>
@@ -54,8 +69,14 @@
         {{- end }}
         {{- if .Params.postpend -}}
           {{- range sort .Params.postpend }}
+            {{- $isMenuCurrent := or (eq $.root.URL .url) (eq (printf "%s/" $.root.URL) .url) (eq $.root.URL (printf "%s/" .url)) -}}
             <li class="nav-item">
-              <a href="{{ .url | relLangURL }}" {{- if hasPrefix .URL "#" }} class="nav-link anchor"{{ else }} class="nav-link"{{ end }}>
+              <a href="{{ .url | relLangURL }}"
+                {{- if hasPrefix .URL "#" }}
+                  class="nav-link anchor"
+                {{- else }}
+                  class="nav-link {{- if $isMenuCurrent }} active default-active {{- end -}}"
+                {{- end }}>
                 {{ .name }}
               </a>
             </li>
@@ -90,7 +111,7 @@
   </div>
   {{- with .Params.repo_button }}
     <div class="d-none d-lg-block pl-auto">
-      <a class="btn btn-light" href="{{ .url }}" role="button">
+      <a class="btn btn-light ignore-color-change" href="{{ .url }}" role="button">
         <i class="{{ printf "%s" .icon | default (printf "fab fa-github") }} mr-2"></i>
         {{ .text | default "Star" }}
       </a>

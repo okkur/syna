@@ -1,7 +1,7 @@
 +++
 date = "2018-07-09"
 fragment = "portfolio"
-weight = 124
+weight = 144
 background = "primary"
 
 title = "Portfolio Fragment"

@@ -50,7 +50,7 @@
                 </h6>
               {{- end -}}
               {{- if $member.scope -}}
-                <div class="pt-3 font-weight-bold">
+                <div class="pt-3">
                   {{- range $member.scope -}}
                     <div>
                       {{- . | markdownify -}}
@@ -97,7 +97,7 @@
           {{- if not (in .Name "/index.md") -}}
             {{- $member := .Params -}}
             {{- if .Params.asset -}}
-              <div class="col-12 col-lg-4 p-4 text-center">
+              <div class="col-12 col-lg-5 p-5 text-center">
                 <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset) }}" class="img-fluid rounded-circle border
                   {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "white") -}}
                 " alt="{{ $member.title }}"></img>
@@ -105,7 +105,7 @@
             {{- end -}}
             <div class="col-12 text-lg-left
               {{- if .Params.asset -}}
-                {{- printf " col-lg-8 pb-4 pt-0 pl-lg-5 pt-lg-4 text-center" -}}
+                {{- printf " col-lg-7 pb-4 pt-0 pl-lg-2 pt-lg-4 text-center" -}}
               {{- else -}}
                 {{- printf " col-lg-4" -}}
               {{- end -}}">
@@ -138,7 +138,7 @@
                   {{- end -}}
                 </div>
                 {{- if $member.scope -}}
-                  <div class="mt-3 font-weight-bold">
+                  <div class="mt-3">
                     {{- range $member.scope -}}
                       <div>
                         {{- . | markdownify -}}

@@ -27,7 +27,7 @@ subtitle = "Displaying animals with links and modals"
 weight = 10
 title = "First Title"
 subtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing"
-url = "#"
+item_url = "#"
 
 [asset]
   image = "cat-1.jpeg"

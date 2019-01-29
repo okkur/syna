@@ -2,7 +2,7 @@
 {{ (printf "<!-- %s -->" (humanize .Params.fragment)) | safeHTML }}
 {{- end }}
 {{- if .start }}
-<section id="{{ .Name }}">
+<section id="{{ .Name }}" class="fragment">
   {{- if ne .in_slot true }}
     <div class="container-fluid
       {{- printf " bg-%s" .bg -}}

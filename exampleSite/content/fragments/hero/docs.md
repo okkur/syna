@@ -8,7 +8,26 @@ title = "Documentation"
   enable = true
 +++
 
+### Extra Files
+
+Hero fragment supports extra files to configure how it appears. Therefore you need
+to create a directory for the hero fragment and name your fragment `index.md` inside that directory.
+
+Extra files can be provided for background, logo and particles effect configuration.
+
+#### [hero]/config.json
+
+If `particles` variable is set to true, a default configuration for the `particles-js` library
+will be used. You can customize this configuration by providing a `config.json` file
+inside the hero fragment's directory.
+
 ### Variables
+
+#### title_page
+*type: boolean*  
+*default: false*
+
+If set to `true` and `asset` is not set, title will be the same as page title.
 
 #### particles
 *type: boolean*  
@@ -25,6 +44,8 @@ Background image of the Hero fragment.
 *type: asset object*
 
 The asset is displayed on the Hero fragment instead of the `title` and can be used to display a logo. 
+
+**Note:** If set, title will not be shown and subtitle will be displayed in a bigger size.
 
 #### buttons
 *type: array of objects*

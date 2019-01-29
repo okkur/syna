@@ -2,7 +2,7 @@
 {{- $bg := .self.Scratch.Get "bg" }}
 
 {{ "<!-- Content -->" | safeHTML }}
-<section id="{{ .Name }}" class="content-fragment">
+<section id="{{ .Name }}" class="content-fragment fragment">
   <div class="overlay container-fluid
     {{- printf " bg-%s" $bg -}}
   ">

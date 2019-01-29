@@ -5,7 +5,7 @@
 {{- $bg := .self.Scratch.Get "bg" }}
 
 {{ "<!-- Hero -->" | safeHTML }}
-<header id="{{ .Name }}">
+<header id="{{ .Name }}" class="fragment hero">
   {{- if .Params.header }}
     <div
       style="background-image:url({{ partial "helpers/image.html" (dict "root" $self "asset" .Params.header) }})"
@@ -18,7 +18,7 @@
     ">
   {{- end }}
   {{- if .Params.particles }}
-    <div id="particles-js"></div>
+    <div id="{{ printf "%s-particles-js" .Name }}" class="particles-js"></div>
   {{- end -}}
   {{- if .Params.asset -}}
     {{- with .Params.asset }}
@@ -39,14 +39,24 @@
     </div>
     {{- end -}}
   {{- else }}
-    {{- with .Params.title }}
+    {{- if .Params.title_page -}}
     <div class="row justify-content-center align-items-start">
       <h1 class="overlay jumbotron-heading
         {{- partial "helpers/text-color.html" (dict "self" $self.self) -}}
       ">
-        {{- . -}}
+        {{ $.root.Title }}
       </h1>
     </div>
+    {{- else -}}
+      {{- with .Params.title }}
+      <div class="row justify-content-center align-items-start">
+        <h1 class="overlay jumbotron-heading
+          {{- partial "helpers/text-color.html" (dict "self" $self.self) -}}
+        ">
+          {{- . -}}
+        </h1>
+      </div>
+      {{- end -}}
     {{- end -}}
     {{- with .Params.subtitle }}
     <div class="row justify-content-center align-items-start">
@@ -71,3 +81,11 @@
   {{- end }}
   </div>
 </header>
+<script>
+  var fragmentName = "{{ .Name }}";
+  {{- $file_path := printf "%s%s/config.json" .page.Dir .Name -}}
+  window.syna.api.register("hero", "hero-" + fragmentName, {
+    selector: "{{ printf "%s-particles-js" .Name }}",
+    config: {{ if fileExists $file_path -}} JSON.parse({{ readFile $file_path | safeHTML }}) {{- else -}} null {{- end -}},
+  });
+</script>

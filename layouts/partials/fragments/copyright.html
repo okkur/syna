@@ -3,7 +3,7 @@
 {{- $bg := .self.Scratch.Get "bg" }}
 
 {{ "<!-- Copyright -->" | safeHTML }}
-<footer class="overlay container-fluid
+<footer class="overlay fragment container-fluid
   {{- printf " bg-%s" $bg -}}
 " id="{{ .Name }}">
   <div class="container">
@@ -12,7 +12,7 @@
         <div class="row mx-0 my-2 justify-content-center text-center text-lg-none
           {{- partial "helpers/text-color.html" (dict "self" $self "light" "white" "dark" "black-50") -}}
         ">
-          <div class="row mx-0 mr-lg-auto">
+          <div class="row mx-0 mr-lg-auto justify-content-center">
             {{- with .Params.copyright }}
               <div class="col-auto">
                 {{- . | markdownify -}}

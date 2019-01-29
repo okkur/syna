@@ -2,7 +2,7 @@
 weight = 10
 title = "title"
 subtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing"
-url = "#"
+item_url = "#"
 
 [asset]
   image = "resource_logo.svg"

@@ -34,21 +34,26 @@ function onSubmit(configId, form, stripe, card) {
 
         // Parse the form data and calculate the price based on whether the form
         // had single value, custom value or multiple values
-        const serializedForm = Object.assign(JSON.parse(form.serialize(true)), {
+        const formData = Object.assign(JSON.parse(form.serialize(true)), {
           stripeToken: result.token.id,
           product: config.product,
           from: window.location.href,
         });
 
-        let price = serializedForm.price_text;
-        if (serializedForm.custom_value === "true") {
-          price = serializedForm.custom_price_text;
+        let price = formData.price_text;
+        const serializedForm = {
+          stripeToken: formData.stripeToken,
+          currency: formData.currency,
+          price: formData.price,
+          metadata: Object.assign(formData, {}),
+        }
+        if (formData.custom_value === "true") {
+          price = formData.custom_price_text;
           serializedForm.currency = form.$('[data-input=currency]').attr('data-value');
-        } else {
+        } else if (formData.multichoice === "true") {
           serializedForm.currency = form.$('input[name=price_text]:checked').attr('data-currency');
         }
-        delete serializedForm.custom_price_text;
-        serializedForm.price_text = price;
+        serializedForm.metadata.price_text = price;
         serializedForm.price = parsePrice(price) * (currencies[serializedForm.currency.toUpperCase()] || 1);
 
         // Send the form to the server and display messages according to the response

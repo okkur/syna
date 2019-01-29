@@ -12,11 +12,13 @@ subtitle = "Split in two!"
 [sidebar]
   title = "Sidebar"
   align = "left"
+  #sticky = true # Default is false
   content = """
 So much information  
 Phone numbers  
 Details  
 Or even more  
+Event with [a link](#)
 """
 +++
 

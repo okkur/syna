@@ -1,6 +1,6 @@
 +++
 date = "2018-07-07"
 fragment = "editor"
-weight = 120
+weight = 140
 background = "white"
 +++

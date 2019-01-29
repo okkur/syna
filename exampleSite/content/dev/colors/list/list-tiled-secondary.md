@@ -1,6 +1,6 @@
 +++
 fragment = "list"
-weight = 122
+weight = 142
 
 title = "List fragment with tiled layout"
 subtitle = "Displays pages from dev/blog section"
