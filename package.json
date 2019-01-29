@@ -9,9 +9,9 @@
   "scripts": {
     "postinstall": "node post-install.js",
     "build-js": "webpack --progress",
-    "build-hugo": "cd exampleSite && hugo -c content --config config.toml --minify",
+    "build-hugo": "cd exampleSite && DEMO_MODE=true hugo -c content --config config.toml --minify",
     "watch-js": "webpack --watch --progress",
-    "watch-hugo": "cd exampleSite && hugo -c content --config config.toml server -D",
+    "watch-hugo": "cd exampleSite && DEMO_MODE=true hugo -c content --config config.toml server -D",
     "dev": "nf start",
     "start": "npm run watch-js",
     "build": "npm run build-js && npm run build-hugo",
