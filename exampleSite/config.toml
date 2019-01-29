@@ -49,6 +49,7 @@ googleAnalytics = ""
   # For custom fontawesome js files use the custom.js method
   [params.fontawesome]
     disabled = false
+    pro = false
 
   [params.colors]
     primary = "#00838F"
