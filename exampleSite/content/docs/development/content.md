@@ -31,13 +31,13 @@ FontAwesome Free is supported by default and is used throughout built-in fragmen
 
 If you want to add FontAwesome Pro to the theme, the following recipe may be helpful.
 
-- Move all the files from `fontawesome-pro-[version]-web/webfonts/` (from the archive) to `static/fonts`* directory.
-- Move all the files from `fontawesome-pro-[version]-web/scss/` (from the archive) to `assets/styles/fontawesome`* directory.
+- Move all the files from `fontawesome-pro-[version]-web/webfonts/` (from the archive) to `static/fonts`[^1] directory.
+- Move all the files from `fontawesome-pro-[version]-web/scss/` (from the archive) to `assets/styles/fontawesome`[^1] directory.
 - Set `fontawesome.pro` in your `config.toml` file to `true`.
 
 After these steps, FontAwesome Pro will be loaded in every page of your website.
 
-*: Note that the mentioned directory in your website's root directory. If the directory doesn't exist, create it in that path.
+[^1]: Note that the mentioned directory in your website's root directory. If the directory doesn't exist, create it in that path.
 
 ### JavaScript
 
