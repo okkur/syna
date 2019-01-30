@@ -7,7 +7,6 @@
   </script>
 {{- end -}}
 
-{{- partial "custom/js.html" . -}}
 {{- range uniq ($.Scratch.Get "js") -}}
   {{- if .url -}}
     <script 
