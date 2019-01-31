@@ -6,7 +6,7 @@ function initFormValidation(form, onSuccess = () => false) {
   new Validator({
     errorTemplate: '<span class="help-block form-error">%s</span>',
     onFormValidate: (isFormValid, form) => {
-      form.querySelector('button').disabled = !isFormValid
+      form.querySelector('button').disabled = !isFormValid;
     },
     onError: function(e, form) {
       form.querySelector('.generic-error').removeClass('d-none');
