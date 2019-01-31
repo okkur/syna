@@ -51,9 +51,7 @@
         <ul class="nav flex-column">
             {{- range sort .Site.Menus.footer }}
               <li class="nav-item">
-                <a class="nav-link p-0 display-5
-                  {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
-                " href="{{ .URL | relLangURL }}"
+                <a class="nav-link p-0 display-5" href="{{ .URL | relLangURL }}"
                   {{- if hasPrefix .URL "#" }}
                     class="anchor"
                   {{- end -}}>
