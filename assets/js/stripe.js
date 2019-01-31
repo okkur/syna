@@ -50,7 +50,7 @@ function onSubmit(configId, form, stripe, card) {
           currency: formData.currency,
           price: formData.price,
           metadata: Object.assign(formData, {}),
-        }
+        };
         if (formData.custom_value === "true") {
           price = formData.custom_price_text;
           serializedForm.currency = form.$('[data-input=currency]').attr('data-value');
