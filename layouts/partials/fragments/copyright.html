@@ -46,9 +46,7 @@
             <ul class="nav ml-lg-auto">
               {{- range sort .Site.Menus.copyright_footer }}
                 <li class="nav-item">
-                  <a class="nav-link py-0
-                    {{- partial "helpers/text-color.html" (dict "self" $self "light" "white" "dark" "black-50") -}}
-                  " href="{{ .URL | relLangURL }}"
+                  <a class="nav-link py-0" href="{{ .URL | relLangURL }}"
                   {{ if hasPrefix .URL "#" }}
                     class="anchor"
                   {{ end }}>
