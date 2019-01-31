@@ -21,10 +21,13 @@ function onSubmit(configId, form, stripe, card) {
     e.preventDefault();
 
     const config = window.syna.api.get('stripe', configId);
+    const button = form.$('button[type=submit]');
+    button.attr('disabled', true).addClass('disabled');
     // Stripe requires creating a token for user data to avoid sending data to other server
     stripe.createToken(card).then(result => {
       if (result.error) {
         $('.invalid-feedback').text(result.error.message);
+        button.removeAttr('disabled').removeClass('disabled');
       } else {
         const action = form.attr('action');
         // Empty backup so that if an event has changed the price, the old
@@ -60,8 +63,14 @@ function onSubmit(configId, form, stripe, card) {
         // Send the form to the server and display messages according to the response
         form.$('[data-render=backup]').html(backup);
         $.post(action, JSON.stringify(serializedForm))
-          .then(() => form.$('#generic-success').removeClass('d-none'))
-          .catch(() => form.$('#generic-error').removeClass('d-none'));
+          .then(() => {
+            button.removeAttr('disabled').removeClass('disabled');
+            form.$('#generic-success').removeClass('d-none')
+          })
+          .catch(() => {
+            button.removeAttr('disabled').removeClass('disabled');
+            form.$('#generic-error').removeClass('d-none')
+          });
       }
     });
   }
