@@ -14,15 +14,18 @@
               <div class="sticky-top pt-3">
             {{- end -}}
             {{- if .title }}
-              <div class="col-12 pb-3
+              <div class="col-12 px-0
                 {{- partial "helpers/text-color.html" (dict "self" $self) -}}
               ">
-                <h1>
+                {{- $title_align := .title_align | default "left" -}}
+                <h3 class="sidebar-title {{- printf " text-%s" $title_align -}}">
                   {{- .title | markdownify -}}
-                </h1>
+                </h3>
               </div>
             {{- end }}
+            {{- $content_align := .content_align | default "left" -}}
             <div class="col-12 px-0
+              {{- printf " text-%s" $content_align -}}
               {{- partial "helpers/text-color.html" (dict "self" $self "light" "secondary") -}}
             ">
               {{- .content | markdownify -}}
