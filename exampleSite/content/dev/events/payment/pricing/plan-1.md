@@ -9,7 +9,7 @@ price = "$9.99/mo"
 # highlight = true
 
 button_text = "Start at $9.99/mo"
-button_url = "/dev/events/payment?event=pricing:change&plan=Starting plan&price=$9.99/mo&currency=usd"
+button_url = "/dev/events/payment?event=pricing:change&product=Starting plan&price=$9.99/mo&currency=usd"
 
 [[features]]
   text = "**Basic** feature"
