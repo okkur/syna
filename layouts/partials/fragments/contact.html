@@ -84,18 +84,18 @@
               {{- end }}
             </div>
             <div class="col-lg-12 text-center">
-              <div class="captcha-error text-danger d-none" id="captcha-error">
+              <div class="captcha-error alert alert-danger d-none" id="captcha-error">
                   {{- i18n "contact.defaultCaptchaError" }} {{ .Params.email }}.
               </div>
-              <div class="generic-error text-danger d-none" id="generic-error">
+              <div class="generic-error alert alert-danger d-none" id="generic-error">
                 {{- with .Params.message.error -}}
                   {{- . | markdownify -}}
                 {{- else -}}
                   {{- i18n "contact.defaultGenericError" }} {{ .Params.email -}}.
                 {{- end }}
-              </div><br />
+              </div>
               <noscript>
-                <div class="text-danger py-2" id="js-error">
+                <div class="alert alert-danger py-2" id="js-error">
                   {{- i18n "contact.defaultJsError" }} {{ .Params.email }}.
                 </div>
               </noscript>
