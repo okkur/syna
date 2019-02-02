@@ -15,7 +15,8 @@
     "dev": "nf start",
     "start": "npm run watch-js",
     "build": "npm run build-js && npm run build-hugo",
-    "test:colors": "node _tests/colors-generator/index.js"
+    "test:colors": "node _tests/colors-generator/index.js",
+    "test:alignments": "node _tests/align-generator/index.js"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
