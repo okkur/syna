@@ -56,7 +56,7 @@
             {{- if $self.Params.tiled -}}
               {{- print "card w-100" -}}
             {{- else -}}
-              {{- printf "col-12 mb-%s" (cond $display_summary "4" "2") -}}
+              {{- printf "col-12 px-0 mb-%s" (cond $display_summary "4" "2") -}}
             {{- end -}}
           ">
           {{- if $self.Params.tiled }}
@@ -77,7 +77,7 @@
                     {{- end }}
                     class="row align-items-center justify-content-between mx-0 article-title">
                     {{- if $display_summary }}
-                      <h4 class="col-12 col-md px-0 m-0
+                      <h4 class="col px-0 m-0
                         {{- if eq $.page.URL .URL }} active-page {{- end -}}
                       ">
                         <a href="{{ .URL }}">
@@ -85,7 +85,7 @@
                         </a>
                       </h4>
                     {{- else }}
-                      <h5 class="col-12 col-md px-0 m-0
+                      <h5 class="col px-0 m-0
                         {{- if eq $.page.URL .URL }} active-page {{- end -}}
                       ">
                         <a href="{{ .URL }}">
