@@ -1,0 +1,33 @@
+.stripe-form {
+  .should-fade {
+    transition: $transition-base;
+    opacity: 1;
+  }
+
+  &.success .should-fade {
+    opacity: 0.2;
+  }
+
+  .generic-success {
+    transition: $transition-base;
+    position: absolute;
+    left: -.25rem;
+    top: -1rem;
+    width: calc(100% + .5rem);
+    height: calc(100% + 2rem);
+    border-radius: 5px;
+    z-index: 100;
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+
+    &.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+}

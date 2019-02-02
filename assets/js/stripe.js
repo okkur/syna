@@ -23,11 +23,17 @@ function onSubmit(configId, form, stripe, card) {
     const config = window.syna.api.get('stripe', configId);
     const button = form.$('button[type=submit]');
     button.attr('disabled', true).addClass('disabled');
+    form.$('#generic-error').addClass('d-none');
+    form.$('#generic-success').addClass('hidden');
+    form.removeClass('success').removeClass('error');
     // Stripe requires creating a token for user data to avoid sending data to other server
     stripe.createToken(card).then(result => {
       if (result.error) {
         $('.invalid-feedback').text(result.error.message);
         button.removeAttr('disabled').removeClass('disabled');
+        card.clear();
+        card.focus();
+        form.addClass('error');
       } else {
         const action = form.attr('action');
         // Empty backup so that if an event has changed the price, the old
@@ -65,11 +71,15 @@ function onSubmit(configId, form, stripe, card) {
         $.post(action, JSON.stringify(serializedForm))
           .then(() => {
             button.removeAttr('disabled').removeClass('disabled');
-            form.$('#generic-success').removeClass('d-none')
+            form.$('#generic-success').removeClass('hidden');
+            form.addClass('success');
           })
           .catch(() => {
             button.removeAttr('disabled').removeClass('disabled');
-            form.$('#generic-error').removeClass('d-none')
+            form.$('#generic-error').removeClass('d-none');
+            form.addClass('error');
+            card.clear();
+            card.focus();
           });
       }
     });
@@ -119,6 +129,11 @@ Object.keys(stripeFragments).forEach(key => {
 
   form.$('input[name=price_text]').on('input', e => {
     form.$('input[name=price]').val(parseInt(e.target.value.match(/\w+/g).reduce((tmp, match) => tmp + match, ''), 10));
+  });
+
+  form.$('#generic-success [data-action="return-form"]').on('click', () => {
+    form.$('#generic-success').addClass('hidden');
+    form.removeClass('success');
   });
 });
 
