@@ -1,6 +1,6 @@
 +++
 title_align="right"
-+++
+
 fragment = "stripe"
 weight = 162
 background = "secondary"

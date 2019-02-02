@@ -69,14 +69,14 @@ const fragments = fs.readdirSync(paths.fragments).reduce((tmp, dir) => {
 
 fs.mkdirSync(paths.devAligns);
 fs.mkdirSync(`${paths.devAligns}/_index`);
-fs.writeFile(`${paths.devAligns}/_index.md`, index, "utf-8", () => {});
+fs.writeFile(`${paths.devAligns}/_index.md`, index, "utf8", () => {});
 fs.writeFile(
   `${paths.devAligns}/_index/index.md`,
   content,
-  "utf-8",
+  "utf8",
   () => {}
 );
-fs.writeFile(`${paths.devAligns}/_index/list.md`, list, "utf-8", () => {});
+fs.writeFile(`${paths.devAligns}/_index/list.md`, list, "utf8", () => {});
 
 Object.keys(fragments).forEach(fragment => {
   let weight = 100;
@@ -85,7 +85,7 @@ Object.keys(fragments).forEach(fragment => {
     parseBlackFriday(
       fragment,
       weight,
-      fs.readFileSync(fragments[fragment].fragments[filename], "utf-8"),
+      fs.readFileSync(fragments[fragment].fragments[filename], "utf8"),
       filename
     );
   });
@@ -93,7 +93,7 @@ Object.keys(fragments).forEach(fragment => {
   Object.keys(fragments[fragment].nested).forEach(dir => {
     const index = fragments[fragment].nested[dir]["index.md"];
     weight += 20;
-    if (parseBlackFriday(fragment, weight, fs.readFileSync(index, "utf-8"), "index", dir) === false) {
+    if (parseBlackFriday(fragment, weight, fs.readFileSync(index, "utf8"), "index", dir) === false) {
       return;
     }
 
@@ -138,7 +138,7 @@ function parseBlackFriday(fragment, weight, content, filename, dir) {
   fs.writeFile(
     `${paths.devAligns}/${fragment}/index.md`,
     indexTemplate.replace(/%fragment%/g, fragment),
-    "utf-8",
+    "utf8",
     () => {}
   );
 
@@ -150,7 +150,7 @@ function parseBlackFriday(fragment, weight, content, filename, dir) {
       .replace(/weight\s?=\s?"?\d+"?/im, `weight = ${weight + i}`);
 
     if (content.indexOf("title_align") === -1) {
-      tmp = tmp.slice(0, tmp.indexOf("+++") + 3) + `\ntitle_align="${alignment}"\n` + tmp.slice(tmp.indexOf("+++"));
+      tmp = tmp.slice(0, tmp.indexOf("+++") + 3) + `\ntitle_align="${alignment}"\n` + tmp.slice(tmp.indexOf("+++") + 3);
     }
 
     // Write the edited config into the fragment, whether it's in a nested directory or not
@@ -159,7 +159,7 @@ function parseBlackFriday(fragment, weight, content, filename, dir) {
         (dir ? `/${dir}-${alignment}` : "")}/${filename +
         (dir ? "" : `-${alignment}`)}.md`,
       tmp,
-      "utf-8",
+      "utf8",
       () => {}
     );
   });

@@ -1,6 +1,6 @@
 +++
 title_align="right"
-+++
+
 fragment = "graph"
 weight = 122
 background = "secondary"

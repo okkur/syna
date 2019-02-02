@@ -1,6 +1,6 @@
 +++
 title_align="left"
-+++
+
 fragment = "footer"
 #disabled = true
 date = "2016-09-07"

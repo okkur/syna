@@ -1,6 +1,6 @@
 +++
 title_align="right"
-+++
+
 fragment = "item"
 #disabled = false
 date = "2017-10-04"
