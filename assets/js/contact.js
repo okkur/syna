@@ -1,8 +1,6 @@
 import $ from './helpers/jq-helpers';
 import Validator from 'form-validator-simple';
 
-const selfCheck = 'checkSelf';
-
 (function() {
   if ($('.g-recaptcha')) {
     checkReCaptcha();
@@ -18,47 +16,53 @@ const validatorConfig = {
     $(`form[id=${form.getAttribute('id')}] .generic-error`).removeClass('d-none');
   },
   onSuccess: function(e, form) {
-    if (selfCheck !== "checkSelf") {
-      genericError.removeClass('d-none');
-      return false;
-    }
-
     if (form.dataset.hasNetlify) {
       return;
     }
 
     e.preventDefault()
     const id = form.getAttribute('id')
-    const action = $(`#${id}`).attr('action')
-    const genericSuccess = $(`form[id=${id}] .generic-success`)
-    const genericError = $(`form[id=${id}] .generic-error`)
+    const $form = $(`form[id=${id}]`)
+    const action = $form.attr('action')
+    const genericSuccess = $form.$('.generic-success')
+    const genericError = $form.$('.generic-error')
+    genericSuccess.addClass('hidden')
+    genericError.addClass('d-none')
+    $form.removeClass('error').removeClass('success')
+
     const serializedForm = $(`#${id}`).serialize()
-    if ($('.g-recaptcha').length === 0) {
-      $.post(action, serializedForm, {
-        contentType: 'application/x-www-form-urlencoded',
-      })
-        .then(() => genericSuccess.removeClass('d-none'))
-        .catch(() => genericError.removeClass('d-none'));
-    } else if (typeof grecaptcha !== "undefined") {
-      if (grecaptcha.getResponse() !== "") {
-        $.post(action, serializedForm, {
-          contentType: 'application/x-www-form-urlencoded',
-        })
-          .then(() => {
-            genericSuccess.removeClass('d-none')
-            $(`form[id=${id}] .success`).removeClass('d-none')
-          })
-          .catch(() => genericError.removeClass('d-none'));
-      } else {
-        grecaptcha.execute();
-      };
+    if (typeof grecaptcha !== "undefined" && grecaptcha.getResponse() === "") {
+      grecaptcha.execute()
+      return false
     }
+
+    $form.$('button[type=submit]').attr('disabled', true).addClass('disabled')
+    $.post(action, serializedForm, {
+      contentType: 'application/x-www-form-urlencoded',
+    })
+      .then(() => {
+        genericSuccess.removeClass('hidden')
+        $form.addClass('success')
+        $form.$('button[type=submit]').removeAttr('disabled').removeClass('disabled')
+      })
+      .catch(() => {
+        genericError.removeClass('d-none')
+        $form.addClass('error')
+        $form.$('button[type=submit]').removeAttr('disabled').removeClass('disabled')
+      });
+
     return false;
   }
 };
 
 document.querySelectorAll('form.contact')
-  .forEach((form ) => new Validator(Object.assign(validatorConfig, { form })))
+  .forEach((form ) => {
+    new Validator(Object.assign(validatorConfig, { form }))
+    $(form).$('#generic-success [data-action="return-form"]').on('click', () => {
+      $(form).$('#generic-success').addClass('hidden');
+      $(form).removeClass('success');
+    });
+  })
 
 function checkReCaptcha() {
   if (document.querySelector('.g-recaptcha-container') && typeof grecaptcha === "undefined") {
