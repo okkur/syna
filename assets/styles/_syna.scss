@@ -1,10 +1,36 @@
+.nav-link {
+  color: $navbar-light-color;
+
+  @include hover-focus {
+    color: $navbar-light-hover-color;
+  }
+
+  &.disabled {
+    color: $navbar-light-disabled-color;
+  }
+}
+
 .fragment {
   &.bg-primary, .bg-primary {
-    a:not(.ignore-color-change) {
+    a:not(.nav-link):not(.ignore-color-change) {
       color: $light;
 
       @include hover {
         color: darken($light, 15%);
+      }
+    }
+  }
+
+  &.bg-dark, .bg-dark {
+    .nav-link {
+      color: $navbar-dark-color;
+    
+      @include hover-focus {
+        color: $navbar-dark-hover-color;
+      }
+    
+      &.disabled {
+        color: $navbar-dark-disabled-color;
       }
     }
   }

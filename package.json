@@ -15,7 +15,8 @@
     "dev": "nf start",
     "start": "npm run watch-js",
     "build": "npm run build-js && npm run build-hugo",
-    "test:colors": "node _tests/colors-generator/index.js"
+    "test:colors": "node _tests/colors-generator/index.js",
+    "test:alignments": "node _tests/align-generator/index.js"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -34,7 +35,7 @@
     "bootstrap": "^4.1.1",
     "chart.js": "^2.7.2",
     "foreman": "^3.0.0",
-    "form-validator-simple": "^0.1.0",
+    "form-validator-simple": "^0.1.1",
     "fuse.js": "^3.2.1",
     "i": "^0.3.6",
     "parse-price": "^1.1.8",
