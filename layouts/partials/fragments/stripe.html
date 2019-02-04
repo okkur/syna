@@ -73,7 +73,6 @@
                     </div>
                   </div>
                 {{- end }}
-                <div class="hidden" data-render="backup"></div>
                 {{- with .Params.user_input }}
                   <div class="input-group mb-0 price-input
                     {{- if gt (len ($.Params.prices | default slice)) 1 }} hidden {{- end -}}
@@ -143,7 +142,12 @@
 </script>
 <script id="stripe-price-template" type="text/x-js-template">
   <div class="btn-group btn-group-toggle" data-toggle="buttons">
-    <label data-price="${price}" class="btn btn-primary active">
+    <label data-price="${price}" class="btn
+      {{- if eq $bg "secondary" -}}
+        {{- print " btn-primary" -}}
+      {{- else -}}
+        {{- print " btn-secondary" -}}
+      {{- end -}}">
       <input id="stripe-${price}" name="price_text" type="radio" data-currency="${currency}" value="${price}" checked="true"> ${price}
     </label>
   </div>

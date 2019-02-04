@@ -36,21 +36,14 @@ function onSubmit(configId, form, stripe, card) {
         form.addClass('error');
       } else {
         const action = form.attr('action');
-        // Empty backup so that if an event has changed the price, the old
-        // values would be ignored
-        const backup = form.$('[data-render=backup]').html();
-        form.$('[data-render=backup]').html('');
 
         // Parse the form data and calculate the price based on whether the form
         // had single value, custom value or multiple values
         const formData = JSON.parse(form.serialize(true));
-
         let price = formData.price_text;
         const serializedForm = {
           email: formData.email,
           stripeToken: result.token.id,
-          currency: formData.currency,
-          price: formData.price,
           metadata: Object.assign(formData, {
             product: config.product,
             description: config.description,
@@ -67,8 +60,6 @@ function onSubmit(configId, form, stripe, card) {
         serializedForm.metadata.price_text = price;
         serializedForm.price = parsePrice(price) * (currencies[serializedForm.currency.toUpperCase()] || 1);
 
-        // Send the form to the server and display messages according to the response
-        form.$('[data-render=backup]').html(backup);
         $.post(action, JSON.stringify(serializedForm))
           .then(() => {
             button.removeAttr('disabled').removeClass('disabled');
@@ -162,13 +153,16 @@ function updateStripeFragments(product, description, price, currency) {
       const priceTemplate = $('#stripe-price-template').html();
       const data = { price, currency };
       const priceDisplay = form.$('[data-render=price]');
-      const backup = form.$('[data-render=backup]');
-
-      if (!backup.html()) {
-        backup.html(priceDisplay.html());
-      }
 
       priceDisplay.html(window.syna.api.renderTemplate(priceTemplate, data));
+
+      setTimeout(() => {
+        const choices = $(`${config.form} input[name=price_text]`);
+        if (choices.length > 0) {
+          choices.$nodes[0].setAttribute('checked', true);
+          choices.$nodes[0].parentElement.classList.add('active');
+        }
+      }, 0);
     }
 
     if (currency) {
