@@ -43,20 +43,21 @@ function onSubmit(configId, form, stripe, card) {
 
         // Parse the form data and calculate the price based on whether the form
         // had single value, custom value or multiple values
-        const formData = Object.assign(JSON.parse(form.serialize(true)), {
-          stripeToken: result.token.id,
-          product: config.product,
-          from: window.location.href,
-        });
+        const formData = JSON.parse(form.serialize(true));
 
         let price = formData.price_text;
         const serializedForm = {
           email: formData.email,
-          stripeToken: formData.stripeToken,
+          stripeToken: result.token.id,
           currency: formData.currency,
           price: formData.price,
-          metadata: Object.assign(formData, {}),
+          metadata: Object.assign(formData, {
+            product: config.product,
+            description: config.description,
+            from: window.location.href,
+          }),
         };
+
         if (formData.custom_value === "true") {
           price = formData.custom_price_text;
           serializedForm.currency = form.$('[data-input=currency]').attr('data-value');
@@ -137,15 +138,18 @@ Object.keys(stripeFragments).forEach(key => {
   });
 });
 
-window.syna.stream.subscribe('pricing:change', function({ product, price, currency }) {
-  updateStripeFragments(product, price, currency);
+window.syna.stream.subscribe('pricing:change', function({ product, description, price, currency }) {
+  updateStripeFragments(product, description, price, currency);
 });
 
-function updateStripeFragments(product, price, currency) {
+function updateStripeFragments(product, description, price, currency) {
   window.syna.api.toArray('stripe').forEach(config => {
     const form = $(config.form);
+
+    config.description = description
+    config.product = product;
+
     if (product) {
-      config.product = product;
       $('[data-render="product"]').html(
         window.syna.api.renderTemplate(
           $('#stripe-product-template').html(),
