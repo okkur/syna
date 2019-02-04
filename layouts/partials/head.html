@@ -83,6 +83,11 @@
     {{ end }}
   {{- end }}
 
+  <script>
+    window.syna = {
+      {{ if .Site.Params.unsafeEvents }}{{ print "enabledUnsafeEvents: true," | safeJS }}{{ end }}
+    };
+  </script>
   {{- $script_template := resources.Get "scripts/syna-head.js" -}}
   {{- $script := $script_template | resources.Minify | resources.Fingerprint }}
   <script {{- safeHTMLAttr (printf " src=\"%s\"" ($script.RelPermalink | relLangURL)) -}}></script>

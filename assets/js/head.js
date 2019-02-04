@@ -4,7 +4,7 @@ class Stream {
     this.subUid = -1;
     this._activeUrlEvent = null;
 
-    this._translateUrlQuery(window.location.href);
+    this._updateActiveEvent(window.location.href);
     window.onhashchange = function({ newURL }) {
       this._publishHashChange(newURL);
     };
@@ -14,6 +14,7 @@ class Stream {
     this.unsubscribe = this.unsubscribe.bind(this);
     this._publishHashChange = this._publishHashChange.bind(this);
     this._translateUrlQuery = this._translateUrlQuery.bind(this);
+    this._updateActiveEvent = this._updateActiveEvent.bind(this);
   }
 
   subscribe (topic, func) {
@@ -68,29 +69,39 @@ class Stream {
   }
 
   _publishHashChange(url) {
-    const { event, args } = this._translateUrlQuery(url);
-    this.publish(event, args);
+    const { event, args } = this._updateActiveEvent(url);
+    if (!event) {
+      return false;
+    }
+    return this.publish(event, args);
+  }
+
+  _updateActiveEvent(url) {
+    let params = this._translateUrlQuery(url);
+    let event = null;
+    if (!params.e && window.syna.enabledUnsafeEvents && params.event) {
+      event = params.event;
+    } else if (params.e) {
+      params = this._translateUrlQuery(atob(params.e));
+      event = params.event;
+    } else {
+      return {};
+    }
+
+    delete params.event;
+    this._activeUrlEvent = { event, args: params };
+    return this._activeUrlEvent;
   }
 
   _translateUrlQuery(url) {
     const query = url.split('?')[1] || '';
-    const params = query
+    return query
       .split('&')
       .reduce((tmp, pair) => {
         const [key, value] = pair.split('=')
         tmp[decodeURIComponent(key)] = decodeURIComponent(value);
         return tmp;
       }, {});
-
-    const event = params.event;
-    const args = params;
-    if (!event) {
-      return;
-    }
-
-    delete args.event;
-    this._activeUrlEvent = { event, args };
-    return this._activeUrlEvent;
   }
 }
 
@@ -169,8 +180,7 @@ class SynaAPI {
   }
 }
 
-window.syna = {
-  api: new SynaAPI(),
-  stream: new Stream(),
-};
+window.syna = window.syna || {};
+window.syna.api = new SynaAPI();
+window.syna.stream = new Stream();
 window.synaPortals = {};

@@ -23,6 +23,7 @@ googleAnalytics = ""
   name = "Okkur Labs"
   description = "Open Source Theme for your next project"
   debug = true
+  unsafeEvents = true # Default is false. Enables ?event=type format of url events.
 
   [params.style]
     #background = "secondary"
