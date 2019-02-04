@@ -10,7 +10,7 @@ import Validator from 'form-validator-simple';
 const validatorConfig = {
   errorTemplate: '<span class="help-block form-error">%s</span>',
   onFormValidate: (isFormValid, form) => {
-    form.querySelector('button').disabled = !isFormValid
+    form.querySelector('button.submit-btn').disabled = !isFormValid
   },
   onError: function(e, form) {
     $(`form[id=${form.getAttribute('id')}] .generic-error`).removeClass('d-none');
@@ -36,19 +36,19 @@ const validatorConfig = {
       return false
     }
 
-    $form.$('button[type=submit]').attr('disabled', true).addClass('disabled')
+    $form.$('button.submit-btn').attr('disabled', true).addClass('disabled')
     $.post(action, serializedForm, {
       contentType: 'application/x-www-form-urlencoded',
     })
       .then(() => {
         genericSuccess.removeClass('hidden')
         $form.addClass('success')
-        $form.$('button[type=submit]').removeAttr('disabled').removeClass('disabled')
+        $form.$('button.submit-btn').removeAttr('disabled').removeClass('disabled')
       })
       .catch(() => {
         genericError.removeClass('d-none')
         $form.addClass('error')
-        $form.$('button[type=submit]').removeAttr('disabled').removeClass('disabled')
+        $form.$('button.submit-btn').removeAttr('disabled').removeClass('disabled')
       });
 
     return false;

@@ -21,7 +21,7 @@ function onSubmit(configId, form, stripe, card) {
     e.preventDefault();
 
     const config = window.syna.api.get('stripe', configId);
-    const button = form.$('button[type=submit]');
+    const button = form.$('button.submit-btn');
     button.attr('disabled', true).addClass('disabled');
     form.$('#generic-error').addClass('d-none');
     form.$('#generic-success').addClass('hidden');
