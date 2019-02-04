@@ -12,7 +12,7 @@
   <div class="row">
     <div class="col-12">
       <form
-        class="contact"
+        class="contact position-relative"
         method="POST"
         name="{{- .Params.form_name | default (printf "contact-form-%s" .Name) }}"
         id="{{- .Params.form_name | default (printf "contact-form-%s" .Name) }}"
@@ -21,7 +21,7 @@
         {{- else -}}
           {{- safeHTMLAttr (printf " action=\"%s\"" (.Params.post_url | default (printf "https://formspree.io/%s" .Params.email))) -}}
         {{- end }}>
-          <div class="row py-3">
+          <div class="row py-3 should-fade">
             <div class="col-md-6">
               {{- with .Params.fields.name }}
                 <div class="form-group">
@@ -84,25 +84,18 @@
               {{- end }}
             </div>
             <div class="col-lg-12 text-center">
-              <div class="generic-success text-success d-none" id="generic-success">
-                {{- with .Params.message.success -}}
-                  {{- . | markdownify -}}
-                {{- else -}}
-                  {{- i18n "contact.defaultGenericSuccess" -}}
-                {{- end }}
-              </div>
-              <div class="captcha-error text-danger d-none" id="captcha-error">
+              <div class="captcha-error alert alert-danger d-none" id="captcha-error">
                   {{- i18n "contact.defaultCaptchaError" }} {{ .Params.email }}.
               </div>
-              <div class="generic-error text-danger d-none" id="generic-error">
+              <div class="generic-error alert alert-danger d-none" id="generic-error">
                 {{- with .Params.message.error -}}
                   {{- . | markdownify -}}
                 {{- else -}}
                   {{- i18n "contact.defaultGenericError" }} {{ .Params.email -}}.
                 {{- end }}
-              </div><br />
+              </div>
               <noscript>
-                <div class="text-danger py-2" id="js-error">
+                <div class="alert alert-danger py-2" id="js-error">
                   {{- i18n "contact.defaultJsError" }} {{ .Params.email }}.
                 </div>
               </noscript>
@@ -110,7 +103,7 @@
                 <div class="g-recaptcha-container">
                   <span class="g-recaptcha-filler"></span>
                   <button
-                    class="g-recaptcha btn btn-primary"
+                    class="g-recaptcha btn btn-primary submit-btn"
                     type="submit"
                     data-sitekey="{{ .Params.recaptcha.sitekey }}"
                     data-size="invisible"
@@ -126,7 +119,7 @@
                   <div netlify-recaptcha></div>
                 {{- end }}
                 <button
-                  class="btn
+                  class="btn submit-btn
                     {{- if eq $bg "primary" -}}
                       {{- printf " btn-%s" "dark" -}}
                     {{- else -}}
@@ -148,6 +141,14 @@
               <input type="hidden" name="{{ .name }}" value="{{ .value }}"/>
             {{- end -}}
           {{- end -}}
+          <div class="generic-success text-success hidden" id="generic-success">
+            {{- with .Params.message.success -}}
+              {{- . | markdownify -}}
+            {{- else -}}
+              {{- i18n "contact.defaultGenericSuccess" -}}
+            {{- end }}
+            <span class="btn btn-outline-primary mt-3" data-action="return-form">Return</span>
+          </div>
       </form>
     </div>
   </div>

@@ -6,7 +6,7 @@ function initFormValidation(form, onSuccess = () => false) {
   new Validator({
     errorTemplate: '<span class="help-block form-error">%s</span>',
     onFormValidate: (isFormValid, form) => {
-      form.querySelector('button').disabled = !isFormValid
+      form.querySelector('button').disabled = !isFormValid;
     },
     onError: function(e, form) {
       form.querySelector('.generic-error').removeClass('d-none');
@@ -21,10 +21,19 @@ function onSubmit(configId, form, stripe, card) {
     e.preventDefault();
 
     const config = window.syna.api.get('stripe', configId);
+    const button = form.$('button.submit-btn');
+    button.attr('disabled', true).addClass('disabled');
+    form.$('#generic-error').addClass('d-none');
+    form.$('#generic-success').addClass('hidden');
+    form.removeClass('success').removeClass('error');
     // Stripe requires creating a token for user data to avoid sending data to other server
     stripe.createToken(card).then(result => {
       if (result.error) {
         $('.invalid-feedback').text(result.error.message);
+        button.removeAttr('disabled').removeClass('disabled');
+        card.clear();
+        card.focus();
+        form.addClass('error');
       } else {
         const action = form.attr('action');
         // Empty backup so that if an event has changed the price, the old
@@ -34,20 +43,21 @@ function onSubmit(configId, form, stripe, card) {
 
         // Parse the form data and calculate the price based on whether the form
         // had single value, custom value or multiple values
-        const formData = Object.assign(JSON.parse(form.serialize(true)), {
-          stripeToken: result.token.id,
-          product: config.product,
-          from: window.location.href,
-        });
+        const formData = JSON.parse(form.serialize(true));
 
         let price = formData.price_text;
         const serializedForm = {
           email: formData.email,
-          stripeToken: formData.stripeToken,
+          stripeToken: result.token.id,
           currency: formData.currency,
           price: formData.price,
-          metadata: Object.assign(formData, {}),
-        }
+          metadata: Object.assign(formData, {
+            product: config.product,
+            description: config.description,
+            from: window.location.href,
+          }),
+        };
+
         if (formData.custom_value === "true") {
           price = formData.custom_price_text;
           serializedForm.currency = form.$('[data-input=currency]').attr('data-value');
@@ -60,8 +70,18 @@ function onSubmit(configId, form, stripe, card) {
         // Send the form to the server and display messages according to the response
         form.$('[data-render=backup]').html(backup);
         $.post(action, JSON.stringify(serializedForm))
-          .then(() => form.$('#generic-success').removeClass('d-none'))
-          .catch(() => form.$('#generic-error').removeClass('d-none'));
+          .then(() => {
+            button.removeAttr('disabled').removeClass('disabled');
+            form.$('#generic-success').removeClass('hidden');
+            form.addClass('success');
+          })
+          .catch(() => {
+            button.removeAttr('disabled').removeClass('disabled');
+            form.$('#generic-error').removeClass('d-none');
+            form.addClass('error');
+            card.clear();
+            card.focus();
+          });
       }
     });
   }
@@ -111,17 +131,25 @@ Object.keys(stripeFragments).forEach(key => {
   form.$('input[name=price_text]').on('input', e => {
     form.$('input[name=price]').val(parseInt(e.target.value.match(/\w+/g).reduce((tmp, match) => tmp + match, ''), 10));
   });
+
+  form.$('#generic-success [data-action="return-form"]').on('click', () => {
+    form.$('#generic-success').addClass('hidden');
+    form.removeClass('success');
+  });
 });
 
-window.syna.stream.subscribe('pricing:change', function({ product, price, currency }) {
-  updateStripeFragments(product, price, currency);
+window.syna.stream.subscribe('pricing:change', function({ product, description, price, currency }) {
+  updateStripeFragments(product, description, price, currency);
 });
 
-function updateStripeFragments(product, price, currency) {
+function updateStripeFragments(product, description, price, currency) {
   window.syna.api.toArray('stripe').forEach(config => {
     const form = $(config.form);
+
+    config.description = description
+    config.product = product;
+
     if (product) {
-      config.product = product;
       $('[data-render="product"]').html(
         window.syna.api.renderTemplate(
           $('#stripe-product-template').html(),

@@ -59,7 +59,7 @@
   translation: "Price should be in the following formats: 20, 20.00, 20,00"
 - id: stripe.defaultGenericSuccess
   translation: "Payment was successful. Thank you."
-- id: defaultGenericError
+- id: stripe.defaultGenericError
   translation: "Something happened. Please try again in a few minutes."
 - id: stripe.change_price
   translation: "Change Price"

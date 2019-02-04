@@ -45,6 +45,10 @@ function $(selector) {
       }
       return _returnee;
     },
+    removeAttr: attribute => {
+      nodes.forEach(node => node.removeAttribute(attribute));
+      return _returnee;
+    },
     append: innerHTML => {
       nodes.forEach(node => node.innerHTML += innerHTML);
       return _returnee;
