@@ -27,4 +27,10 @@ $(document)
     button.attr('data-value', e.target.dataset.value);
     $(dropdown).removeClass('show');
     $(dropdown.parentElement).removeClass('show');
+  })
+  .on('click', 'a[href*="event="], a[href*="e="]', e => {
+    if (window.syna.stream._publishHashChange(e.target.href)) {
+      e.preventDefault();
+      return false;
+    }
   });
