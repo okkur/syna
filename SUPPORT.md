@@ -9,7 +9,7 @@ Afterwards open the relevant pull/merge request that potentially fixes it.
 Please remember this is a community project and you are not entitled to free support.
 Be kind to anyone helping out.
 
-For commercial support reach out to support@okkur.io
+For commercial support reach out to support@okkur.org
 
 ## Documentation
   * [User Documentation](/docs)

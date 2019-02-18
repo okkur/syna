@@ -26,9 +26,9 @@ contributionLinks:
   starterIssues: "https://github.com/okkur/syna/labels/starter%20issue"
 
 emails:
-  commercialSupport: "support@okkur.io"
-  security: "security@okkur.io"
-  coc: "coc@okkur.io"
+  commercialSupport: "support@okkur.org"
+  security: "security@okkur.org"
+  coc: "coc@okkur.org"
 
 copyright:
   year: "2017"
@@ -41,7 +41,7 @@ maintainers:
     nick: "stp-ip"
 
 repo:
-  link: "https://github.com/okkur/syna/"
+  link: "https://syna.okkur.org/code"
   type: "Github"
 
 issueTemplate:

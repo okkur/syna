@@ -16,7 +16,7 @@ Highly customizable with modular per-page fragments.
 
 To start using Syna please read the [installation guide](./docs/README.md#installation).
 
-You can also check out our [demo](https://syna.okkur.io/demo/).
+You can also check out our [demo](https://syna.okkur.org/demo/).
 
 ## Documentation
 
