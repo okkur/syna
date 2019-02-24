@@ -1,9 +1,5 @@
-{{- $bg := .backgorund }}
-
 <table class="table table-bordered
-  {{- if and (ne $bg "white") (ne $bg "light") -}}
-    {{- printf " table-inverse" -}}
-  {{- end -}}
+  {{- partial "helpers/text-color.html" (dict "self" .self) -}}
 ">
   <thead>
     <tr>

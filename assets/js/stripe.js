@@ -171,7 +171,7 @@ function updateStripeFragments(product, description, price, currency) {
 
     form.$('input[name=email]')[0].focus();
     // TODO: REVISIT: Remove the following line whenever firefox fixes center on focus
-    form.$('input[name=email]')[0].scrollIntoView({behavior: "instant", block: "center"});
+    form[0].scrollIntoView({behavior: "instant", block: "center"});
   });
 }
 

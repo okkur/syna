@@ -8,7 +8,7 @@
       {{- if .Params.rows }}
         <div class="row justify-content-center">
           <div class="col table-responsive">
-            {{ partial "helpers/table.html" (dict "header" .Params.header "rows" .Params.rows "page_scratch" .page_scratch "background" $bg) }}
+            {{ partial "helpers/table.html" (dict "header" .Params.header "rows" .Params.rows "page_scratch" .page_scratch "self" $self) }}
           </div>
         </div>
       {{- end }}

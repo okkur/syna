@@ -2,7 +2,7 @@
 {{- $content_fragment := first 1 ((where ((.Scratch.Get "page_fragments") | default (slice)) "Params.fragment" "in" "content") | default (slice)) -}}
 {{- .Scratch.Set "page_description" .Site.Params.Description -}}
 {{- range $content_fragment -}}
-  {{- .Scratch.Set "page_description" (.Params.summary | default .Summary) -}}
+  {{- $.Scratch.Set "page_description" (.Params.summary | default .Summary) -}}
 {{- end -}}
 <head>
   <meta name="theme" content="Syna">
@@ -17,7 +17,7 @@
   <meta name="google" value="notranslate">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="description" content="{{ .Description }}">
+  <meta name="description" content="{{- .Scratch.Get "page_description" -}}">
   <meta property="og:title" content="{{ $title }}">
   <meta property="og:url" content="{{ .URL | absURL }}">
   <meta property="og:description" content="{{- .Scratch.Get "page_description" -}}">
@@ -25,7 +25,7 @@
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ $title }}" />
-  <meta name="twitter:description" content="{{- .Scratch.Get "page_description" -}}" />
+  <meta name="twitter:description" content="{{- .Scratch.Get "page_description" -}}">
   <meta name="twitter:url" content="{{ .URL | absURL }}" />
   {{- if $content_fragment -}}
     {{- range $content_fragment -}}
