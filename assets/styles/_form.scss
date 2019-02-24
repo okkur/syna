@@ -103,17 +103,24 @@ div.form-error ul li {
 }
 
 .grecaptcha-badge {
-  margin: -1.5rem 0 1rem;
+  margin: 0;
 }
 
-.g-recaptcha-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
+.g-recaptcha {
+  &-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
-.g-recaptcha-container .filler {
-  display: none;
+    .filler {
+      display: none;
+    }
+  }
+
+  &.btn {
+    height: 38px;
+    margin-top: 11px;
+  }
 }
 
 .generic-success, .generic-error, .captcha-error {
