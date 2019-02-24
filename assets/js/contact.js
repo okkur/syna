@@ -85,5 +85,8 @@ window.syna.stream.subscribe('contact:update', function({ name, email, phone, me
   $('input[name=name]')[0].scrollIntoView({behavior: "instant", block: "center"});
   $('input[name=email]').attr('value', email || null);
   $('input[name=phone]').attr('value', phone || null);
-  $('textarea[name=message]').$nodes.forEach(node => node.appendChild(document.createTextNode(message || '')));
+  $('textarea[name=message]').$nodes.forEach(node => {
+    node.innerHTML = '';
+    node.appendChild(document.createTextNode(message || ''));
+  });
 });
