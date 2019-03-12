@@ -61,7 +61,7 @@
               {{- with $member.icons -}}
                 <div class="row justify-content-center pt-4">
                   {{- range . -}}
-                    <span class="fa-stack fa-2x m-2">
+                    <span class="fa-stack fa-2x m-2" title="{{ .text }}">
                       <a href="{{ .url }}">
                         <i class="fas fa-circle fa-stack-2x
                           {{- if eq $bg "primary" -}}
@@ -69,6 +69,7 @@
                           {{- end -}}
                         "></i>
                         <i class="{{ .icon }} fa-stack-1x fa-inverse"></i>
+                        <span class="sr-only">{{ .text }}</span>
                       </a>
                     </span>
                   {{- end }}
@@ -150,7 +151,7 @@
                   <div class="col-12 text-center">
                     <div class="row justify-content-lg-start justify-content-center py-2">
                       {{- range . -}}
-                        <span class="fa-stack fa-2x m-2">
+                        <span class="fa-stack fa-2x m-2" title="{{ .text }}">
                           <a href="{{ .url }}">
                             <i class="fas fa-circle fa-stack-2x
                               {{- if eq $bg "primary" -}}
@@ -158,6 +159,7 @@
                               {{- end -}}
                             "></i>
                             <i class="{{ .icon }} fa-stack-1x fa-inverse"></i>
+                            <span class="sr-only">{{ .text }}</span>
                           </a>
                         </span>
                       {{- end -}}
