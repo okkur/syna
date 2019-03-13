@@ -14,6 +14,7 @@ scope = [
 
 [[icons]]
   icon = "fab fa-linkedin-in"
+  text = "Linkedin"
   url = "#"
 
 [asset]

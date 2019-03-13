@@ -49,7 +49,19 @@
   translation: "Lives in"
 - id: member.reportsTo
   translation: "Reports to"
-  
+
+# Navbar
+- id: navbar.search
+  translation: "Search..."
+- id: navbar.github
+  translation: "Github"
+- id: navbar.back_to_top
+  translation: "Back to top"
+
+# Search
+- id: search.search
+  translation: "Search"
+
 # Stripe
 - id: stripe.email
   translation: "Your email address"

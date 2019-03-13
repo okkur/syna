@@ -65,9 +65,9 @@
     1, otherwise why bother */}}
   {{- if gt (len (split $toc "<li>")) 2 -}}
     {{- partial "helpers/container.html" (dict "start" true "fragment" "TOC" "in_slot" .in_slot "bg" $bg "Name" .Name "padding" .Params.padding) -}}
-        <div class="toc">
-          {{- safeHTML $toc -}}
-        </div>
+      <div class="toc">
+        {{- safeHTML $toc -}}
+      </div>
     {{- partial "helpers/container.html" (dict "end" true "in_slot" .in_slot) -}}
   {{- end -}}
 {{- end -}}

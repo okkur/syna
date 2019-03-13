@@ -23,9 +23,9 @@
               <div class="row image justify-content-center align-items-center">
                 {{- with $item.asset -}}
                   {{- if .image }}
-                    <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .) }}" class="p-2 w-75 mb-2" alt="{{ .text }}">
+                    <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .) }}" class="p-2 w-75 mb-2" alt="{{ .text | default $item.title }}">
                   {{- else if .icon }}
-                    <span class="fa-stack fa-3x m-2">
+                    <span class="fa-stack fa-3x m-2" title="{{ .text | default $item.title }}">
                       <i class="fas fa-circle fa-stack-2x
                         {{- if eq $bg "primary" -}}
                           {{- print " text-dark" -}}
@@ -34,6 +34,7 @@
                         {{- end -}}
                       "></i>
                       <i class="{{ .icon }} fa-stack-1x fa-inverse"></i>
+                      <span class="sr-only">{{ .text | default $item.title }}</span>
                     </span>
                   {{- end -}}
                 {{- end }}

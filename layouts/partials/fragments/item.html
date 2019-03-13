@@ -67,9 +67,9 @@
             {{- end -}}
             {{- with .Params.asset -}}
               {{- if isset . "image" }}
-                <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .) }}" class="img-fluid p-2" alt="{{ .text }}">
+                <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .) }}" class="img-fluid p-2" alt="{{ .text | default $.Params.title }}">
               {{- else if isset . "icon" }}
-                <span class="fa-stack fa-4x">
+                <span class="fa-stack fa-4x" title="{{ .text | default $.Params.title }}">
                   <i class="fas fa-circle fa-stack-2x
                     {{- if eq $bg "primary" -}}
                       {{- print " text-dark" -}}
@@ -78,6 +78,7 @@
                     {{- end -}}
                   "></i>
                   <i class="{{ .icon }} fa-stack-1x fa-inverse"></i>
+                  <span class="sr-only">{{ .text | default $.Params.title }}</span>
                 </span>
               {{- end -}}
             {{- else -}}
@@ -169,11 +170,11 @@
         {{- with .Params.asset -}}
           {{- if isset . "image" }}
             <div class="col-12 text-center d-none d-lg-inline">
-              <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .) }}" class="img-fluid p-2" alt="{{ .Params.asset.text }}">
+              <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .) }}" class="img-fluid p-2" alt="{{ .text | default $.Params.title }}">
             </div>
           {{- else if isset . "icon" }}
             <div class="col-12 text-center d-none d-lg-inline">
-              <span class="fa-stack fa-4x">
+              <span class="fa-stack fa-4x" title="{{ .text | default $.Params.title }}">
                 <i class="fas fa-circle fa-stack-2x
                   {{- if eq $bg "primary" -}}
                     {{- print " text-dark" -}}
@@ -182,6 +183,7 @@
                   {{- end -}}
                 "></i>
                 <i class="{{ .icon }} fa-stack-1x fa-inverse"></i>
+                <span class="sr-only">{{ .text | default $.Params.title }}</span>
               </span>
             </div>
           {{- end -}}
