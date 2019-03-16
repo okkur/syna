@@ -1,3 +1,4 @@
+{{- .page_scratch.Add "js" (dict "file" "syna-pricing.js") -}}
 {{- $items := where (.resources.Match (printf "%s/*.md" .Name)) ".Name" "ne" .self.Name -}}
 {{- $self := . -}}
 {{- $bg := .self.Scratch.Get "bg" }}
@@ -19,6 +20,7 @@
     {{- end -}}
     {{- range (sort $items ".Params.weight") }}
       <div
+        data-pricing-plan="{{ print .Title }}"
         class="col-lg-4 col-md-9 col-12 py-2 pricing-plan
           {{- if .Params.highlight }} pricing-plan-highlight {{- end -}}
         ">
@@ -39,6 +41,7 @@
             <a
               href="{{ .Params.button_url | relLangURL }}"
               class="btn btn-lg btn-block btn-primary"
+              data-primary-action="click"
               {{- if (not (isset .Params "button_url")) | or (eq .Params.button_url "") -}}
                 {{ safeHTMLAttr (printf "data-event-args=\"title:%s,price:%s,currency:%s,product:%s,description:%s\"" .Title .Params.price (.Params.currency | default "") .Title .Params.subtitle) }}
               {{- end -}}>
