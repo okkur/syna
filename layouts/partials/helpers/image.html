@@ -1,5 +1,6 @@
 {{/* Global resource fallback */}}
 {{- $image := .asset.image -}}
+{{- .root.page_scratch.Set "resource" nil -}}
 {{/* static/images directory */}}
 {{- .root.page_scratch.Set "image" (printf "images/%s" $image) -}}
 
@@ -8,6 +9,7 @@
   {{- $location := (printf "%s/%s" .root.page.Dir $image) -}}
   {{- if (fileExists (printf "content/%s" $location)) -}}
     {{- .root.page_scratch.Set "image" $location -}}
+    {{- .root.page_scratch.Set "resource" (.root.page.Resources.GetMatch $image) -}}
   {{- end -}}
 {{- end -}}
 
@@ -15,10 +17,22 @@
 {{- $location := (printf "%s/%s" .root.file_path $image) -}}
 {{- if (fileExists (printf "content/%s" $location)) -}}
   {{- .root.page_scratch.Set "image" $location -}}
+  {{- .root.page_scratch.Set "resource" (.root.page.Resources.GetMatch (strings.TrimPrefix .root.page.Dir $location)) -}}
 {{- end -}}
 
-{{- if eq .absolute true -}}
-  {{- .root.page_scratch.Get "image" | absURL -}}
-{{- else -}}
-  {{- .root.page_scratch.Get "image" | relLangURL -}}
+{{- if eq (.root.page_scratch.Get "resource") nil -}}
+  {{- if eq .absolute true -}}
+    {{- .root.page_scratch.Get "image" | absURL -}}
+  {{- else -}}
+    {{- .root.page_scratch.Get "image" | relLangURL -}}
+  {{- end -}}
+{{- else if eq (.root.page_scratch.Get "resource").ResourceType "image" -}}
+  {{- if isset . "fill" -}}
+    {{- .root.page_scratch.Set "resource" ((.root.page_scratch.Get "resource").Fill .fill)}}
+  {{- end -}}
+  {{- if eq .absolute true -}}
+    {{- (.root.page_scratch.Get "resource").Permalink -}}
+  {{- else -}}
+    {{- (.root.page_scratch.Get "resource").RelPermalink -}}
+  {{- end -}}
 {{- end -}}
