@@ -20,6 +20,7 @@ Contributions for translations are welcome.
 
 ### Events
 
+<!-- TODO: revise later -->
 This fragment uses the [Events](/docs/events) api by default.
 
 #### Subscribers

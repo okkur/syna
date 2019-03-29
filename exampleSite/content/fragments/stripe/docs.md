@@ -8,9 +8,9 @@ title = "Documentation"
   enable = true
 +++
 
-Stripe fragment creates a form with a Stripe element inside it and is used to create payments for the users.
+Stripe fragment creates a form with a Stripe element inside, which is used to create payments for the users.
 
-It requires a backend for creating the customer and charge for Stripe. An example can be found at [here](https://github.com/okkur/syna-stripe-gcf) which can be deployed on Google Cloud Functions and works out of the box.
+It requires a backend for creating the customer and charge for Stripe. An example can be found at [here](https://syna.okkur.org/stripe-gcf) which can be deployed on Google Cloud Functions and works out of the box.
 
 The use of a backend is also useful for saving other information from the user such as the product they selected (in case you are providing more than one products) or other metadata.
 
@@ -32,24 +32,24 @@ If provided, this variable will override the preconfigured `product` variable an
 ###### description
 *type: string*
 
-Payment metadata. This varialbe is not displayed to the user but will be sent to the server with the form data.
+Payment metadata. This variable is not displayed to the user but will be sent to the server with the form data.
 
 ###### price
 *type: string*
 
-The price that will be charged to the user's account.
+The price that will be charged to the user's account. The value should follow the same rules as [prices.text](#prices-text).
 
 ###### currency
 *type: string*
 
-The currency in which the user will be charged.
+The currency in which the user will be charged. The value should follow the same rules as [prices.currency](#prices-currency).
 
 ### Variables
 
 #### post_url
 *type: string*
 
-Form data will be sent to this url. The url should point to an api which can handle Stripe's charge customer api. An [example](https://github.com/okkur/syna-stripe-gcf) is provided for more information.
+Form data will be sent to this url. The url should point to an api which can handle Stripe's charge customer api. An [example](https://syna.okkur.org/stripe-gcf) is provided for more information.
 
 #### stripe_token
 *type: string*
@@ -75,12 +75,12 @@ This variable is optional. If the array contains a single item, the form's desig
 ##### prices.text
 *type: string*
 
-This variable is shown on the price button. On form submission it will be parsed into the format that Stripe expects.
+The price that will be charged to the user's account. This variable is shown to the user as is but it will be converted to a number with no decimals when it is submitted. The value can be anything that can be formatted to a number, for example: `20.00$`, `20`, `19.95$/mo`.
 
 ##### prices.currency
 *type: string*
 
-The currency of the price.
+The currency in which the user will be charged. The value should be the three-letter ISO coded of the currency. You can find the appropriate ISO code [here](https://stripe.com/docs/currencies#presentment-currencies).
 
 #### user_input
 *type: object*
@@ -90,10 +90,11 @@ This variable will create a field and will display either the field itself or a 
 ##### user_input.default
 *type: string*
 
-Default value in the editable price field.
+Default value in the editable price field. The value should follow the same rules as [prices.text](#prices-text).
 
 ##### user_input.currencies
 *type: array of strings*
 
+The currency in which the user will be charged. The value should follow the same rules as [prices.currency](#prices-currency).
 
 [Global variables](/docs/global-variables) are documented as well and have been omitted from this page.

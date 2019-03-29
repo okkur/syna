@@ -42,7 +42,7 @@ URL of the button on the column.
 You can make use of the Events api through this variable.
 
 - Not setting the `button_url` variable will publish an event with `title`, `subtitle`, `price` and `currency` variables.
-- Setting it to an event url such as: `/dev/events/payment?event=pricing:change&product=Starting plan&price=$9.99/mo&currency=usd` will redirect the page and publish a custom event.
+- Setting it to an event url such as: `/fragments/stripe/?event=pricing:change&product=Starting plan&price=$9.99/mo&currency=usd` will redirect the page and publish a custom event.
 
 #### features
 *type: array of objects*
