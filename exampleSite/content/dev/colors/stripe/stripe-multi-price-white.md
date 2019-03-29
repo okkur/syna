@@ -27,8 +27,8 @@ product = "Example Product"
   text = "50.00$"
   currency = "usd"
 
-[email]
-  label = "Your email address"
+[fields.email]
+  text =  "Your email address"
 +++
 
 You can pay for the product by filling this form (provided by Stripe).

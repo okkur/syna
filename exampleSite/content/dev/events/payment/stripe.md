@@ -13,6 +13,6 @@ stripe_token = "pk_test_36PckiAlsGm9KmHj9b034GAW"
   text = "30.00$"
   currency = "usd"
 
-[email]
-  label = "Your email address"
+[fields.email]
+  text = "Your email address"
 +++

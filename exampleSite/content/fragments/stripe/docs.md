@@ -61,11 +61,13 @@ Publishable API token from your Stripe account should
 
 Your product's name. This variable is optional.
 
-#### email
+#### fields.email
 *type: object*
 
-##### email.label
+##### fields.email.text
 *type: string*
+
+Placeholder text shown in the email input.
 
 #### prices
 *type: array of objects*
