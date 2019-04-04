@@ -18,7 +18,7 @@ Subtitle of the form. This is displayed in the section shows the form.
 ### post_url *string* *Either **post_url** or **email** should be provided*
 If set, submitted data would be sent to this url.
 ### email *string* *Either **post_url** or **email** should be provided*
-If set and there is no **post_url** provided, then the form data would be sent to `https://formspree.io/[emsail]`. This is the default behavior and can be overriden using the `post_url` variable.
+If set and there is no **post_url** provided, then the form data would be sent to `https://formspree.io/[email]`. This is the default behavior and can be overriden using the `post_url` variable.
 ### button *string*
 Submit button's title. Default value is called from the i18n dictionary using the key `contact.defaultButton`
 ### netlify *boolean*
