@@ -12,7 +12,7 @@
         </h4>
         {{- if .image }}
         <a href="{{ .url }}">
-          <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .) }}" class="img-fluid w-50" alt="{{ .text }}">
+          <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" . "resize" "166x75") }}" class="img-fluid w-50" alt="{{ .text }}">
         </a>
         {{- else }}
         <div>

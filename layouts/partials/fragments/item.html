@@ -67,7 +67,7 @@
             {{- end -}}
             {{- with .Params.asset -}}
               {{- if isset . "image" }}
-                <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .) }}" class="img-fluid p-2" alt="{{ .text | default $.Params.title }}">
+                <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" . "resize" "800x") }}" class="img-fluid p-2" alt="{{ .text | default $.Params.title }}">
               {{- else if isset . "icon" }}
                 <span class="fa-stack fa-4x" title="{{ .text | default $.Params.title }}">
                   <i class="fas fa-circle fa-stack-2x
@@ -170,7 +170,7 @@
         {{- with .Params.asset -}}
           {{- if isset . "image" }}
             <div class="col-12 text-center d-none d-lg-inline">
-              <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .) }}" class="img-fluid p-2" alt="{{ .text | default $.Params.title }}">
+              <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" . "resize" "300x") }}" class="img-fluid p-2" alt="{{ .text | default $.Params.title }}">
             </div>
           {{- else if isset . "icon" }}
             <div class="col-12 text-center d-none d-lg-inline">
