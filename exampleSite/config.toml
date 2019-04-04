@@ -86,7 +86,7 @@ googleAnalytics = ""
   weight = 40
 
 [[menu.footer]]
-  url = "https://about.okkur.org/docs"
+  url = "https://syna.okkur.org/docs"
   name = "Getting Started"
   weight = 10
 
@@ -98,7 +98,7 @@ googleAnalytics = ""
 [[menu.footer_social]]
   weight = 30
   name = "github"
-  url = "https://about.okkur.org/code"
+  url = "https://syna.okkur.org/code"
   pre = "fab fa-github fa-stack-2x"
 
 [[menu.copyright_footer]]
