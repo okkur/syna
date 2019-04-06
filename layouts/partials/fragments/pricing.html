@@ -20,7 +20,7 @@
     {{- end -}}
     {{- range (sort $items ".Params.weight") }}
       <div
-        data-pricing-plan="{{ print .Title }}"
+        data-pricing-plan="{{ print .File }}"
         class="col-lg-4 col-md-9 col-12 py-2 pricing-plan
           {{- if .Params.highlight }} pricing-plan-highlight {{- end -}}
         ">
