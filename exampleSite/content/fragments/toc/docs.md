@@ -5,7 +5,7 @@ weight = 300
 title = "Documentation"
 
 [sidebar]
-  enable = true
+  sticky = true
 +++
 
 This fragment renders table of contents of a content fragment. It can be used standalone, or in a slot in `list` or `content` fragment.

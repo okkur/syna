@@ -5,14 +5,14 @@ weight = 300
 title = "Documentation"
 
 [sidebar]
-  enable = true
+  sticky = true
 +++
 
 This fragment needs a fragment controller file and subitems. You need to create a directory for this fragment and put `index.md` with `fragment = "portfolio"` and subitems next to that file.
 
 ### Variables
 
-`index.md` doesn't use any variables. Following variables are for subitems.
+`index.md` only uses [global varibales](/docs/global-variables). Following variables are for subitems.
 
 #### title
 *type: string*

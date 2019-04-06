@@ -5,7 +5,7 @@ weight = 300
 title = "Documentation"
 
 [sidebar]
-  enable = true
+  sticky = true
 +++
 
 Stripe fragment creates a form with a Stripe element inside, which is used to create payments for the users.

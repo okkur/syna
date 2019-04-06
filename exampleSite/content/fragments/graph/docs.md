@@ -5,7 +5,7 @@ weight = 300
 title = "Documentation"
 
 [sidebar]
-  enable = true
+  sticky = true
 +++
   
 ### Variables

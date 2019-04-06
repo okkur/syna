@@ -5,7 +5,7 @@ weight = 300
 title = "Documentation"
 
 [sidebar]
-  enable = true
+  sticky = true
 +++
 
 This fragment is to display a header as a single fragment. It doesn't have any variables except for global ones.

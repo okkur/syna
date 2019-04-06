@@ -5,7 +5,7 @@ weight = 300
 title = "Documentation"
 
 [sidebar]
-  enable = true
+  sticky = true
 +++
 
 This fragment doesn't make use of any variables except for global variables.

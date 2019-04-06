@@ -5,7 +5,7 @@ weight = 300
 title = "Documentation"
 
 [sidebar]
-  enable = true
+  sticky = true
 +++
 
 404 fragment looks a lot like the `hero` fragment, with a default call to action button to return to the homepage and a description in addition to subtitle and title.
