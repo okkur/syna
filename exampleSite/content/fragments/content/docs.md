@@ -22,7 +22,7 @@ title = "Documentation"
 Ability to override the generated default summary by Hugo to be displayed in fragments such as List.
 
 #### asset
-*type: asset object*
+*type: [asset object](/docs/global-variables/#asset)*
 
 This value will render an image on top of the content.
 

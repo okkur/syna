@@ -33,7 +33,7 @@ Title of the call to action button.
 URL for the call to action button.
 
 #### asset
-*type: asset object*
+*type: [asset object](/docs/global-variables/#asset)*
 
 The asset will be displayed on top of the fragment, before title and subtitle.
 

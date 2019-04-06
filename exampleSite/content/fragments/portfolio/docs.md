@@ -32,7 +32,7 @@ URL of the portfolio item. If set, then clicking the portfolio item would open t
 **NOTE:** This variable may be deprecated in the future and be renamed to `url`.
 
 #### asset
-*type: asset object*
+*type: [asset object](/docs/global-variables/#asset)*
 
 The image that is shown on the portfolio item.
 
