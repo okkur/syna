@@ -18,6 +18,37 @@ This fragment uses internationalized text snippets. Customize them in the fragme
 
 Contributions for translations are welcome.
 
+### Events
+
+<!-- TODO: revise later -->
+This fragment uses the [Events](/docs/events) api by default.
+
+#### Subscribers
+
+##### contact:update
+
+This event is not published by any fragment by default. But you can make use of it through [event urls](/docs/events/#event-urls).
+
+###### name
+*type: string*
+
+Fills the name input.
+
+###### email
+*type: string*
+
+Fills the email input.
+
+###### phone
+*type: string*
+
+Fills the phone input.
+
+###### message
+*type: string*
+
+Fills the message input.
+
 ### Variables
 
 #### form_name

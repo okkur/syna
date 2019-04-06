@@ -28,10 +28,10 @@
           <div class="col-sm-12">
             <div class="form-group">
               <input id="email" name="email" class="form-control" type="text" data-validation="email" required
-                {{- if .email -}}
-                  {{- safeHTMLAttr (printf " placeholder=\"%s\"" .label) -}}
-                {{- else -}}
+                {{- if not .Params.fields.email -}}
                   {{- safeHTMLAttr (printf " placeholder=\"%s\"" (i18n "stripe.email")) -}}
+                {{- else -}}
+                  {{- safeHTMLAttr (printf " placeholder=\"%s\"" .Params.fields.email.text) -}}
                 {{- end -}}>
               <div data-error id="email-error"></div>
             </div>
