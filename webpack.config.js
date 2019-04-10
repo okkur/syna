@@ -9,6 +9,7 @@ module.exports = {
     graph: './assets/js/graph.js',
     hero: './assets/js/hero.js',
     portfolio: './assets/js/portfolio.js',
+    pricing: './assets/js/pricing.js',
     react: './assets/js/react.js',
     search: './assets/js/search.js',
     stripe: './assets/js/stripe.js',
