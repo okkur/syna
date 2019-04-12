@@ -3,7 +3,7 @@
 {{- end }}
 {{- if .start }}
 <section id="{{ .Name }}" class="fragment">
-  {{- if ne .in_slot true }}
+  {{- if or (ne .in_slot true) (eq .Params.force_background true) }}
     <div class="container-fluid
       {{- printf " bg-%s" .bg -}}
     ">

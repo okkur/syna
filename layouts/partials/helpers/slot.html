@@ -1,9 +1,22 @@
+{{/* This helper registers a slot, find all the fragments (previously registered
+  in the fragments helpers) that have their slot variable set to this slot's
+  name and renders them */}}
+
 {{- $slot := .slot -}}
-{{- $slot_name := printf "%s/%s" .root.self.File.BaseFileName $slot -}}
-{{- $nested_level := .root.nested_level | default 0 -}}
+{{- $slot_name := printf "%s/%s" .root.Name $slot -}}
 {{- $page_scratch := .root.page_scratch -}}
 {{- $root := .root -}}
+{{- $data := .data -}}
+{{- $should_render := .should_render | default true -}}
 
+{{/* This variable is to determine how deep is this slot. It will actually be
+  set in the fragment context when rendering the fragments in the slot and will
+  be passed down when slot is registered. The default value is set to 0 because
+  if the variable is not defined, the parent fragment is rendered directly in
+  the page.*/}}
+{{- $nested_level := .root.nested_level | default 0 -}}
+
+{{/* Find fragments that are to be rendered on this slot */}}
 {{- $page_scratch.Set $slot_name (slice) -}}
 {{- range ($page_scratch.Get "page_fragments") -}}
   {{- if and (not .Params.disabled) (isset .Params "fragment") (eq .Params.slot $slot_name) -}}
@@ -11,16 +24,14 @@
   {{- end -}}
 {{- end -}}
 
+{{/* Store all found fragments in the page */}}
 {{ $page_scratch.Add "page_slots" (dict "slot" $slot_name "fragments" ($page_scratch.Get $slot_name)) }}
-{{- if lt $nested_level 2 -}}
-  {{- range sort ($page_scratch.Get $slot_name) "Params.weight" -}}
-    {{/* Cleanup .Name to be more useful within fragments */}}
-    {{- $name := cond (eq $.root.page .) .File.BaseFileName (strings.TrimSuffix ".md" (replace .Name "/index.md" "")) -}}
-    {{- $bg := .Params.background | default "light" -}}
-    {{- .Scratch.Set "bg" $bg -}}
 
-    {{- $file_path := strings.TrimSuffix ".md" (replace .File.Path "/index.md" "") -}}
-    {{- $context := dict "page_scratch" $page_scratch "root" $root.root "Site" $root.Site "page" $root.page "resources" $root.resources "self" . "Params" .Params "Name" $name "file_path" $file_path "nested_level" (add $nested_level 1) "in_slot" true "data" ($.data | default (dict)) -}}
-    {{- partial (print "fragments/" (strings.TrimPrefix (printf "%s/%s:" $.root.self.File.BaseFileName $slot) .Params.fragment) ".html") $context -}}
+{{/* Don't render any of the fragments if the parent fragment is already two
+  levels deep or should_render variable is set to false */}}
+{{- if and (lt $nested_level 2) (ne $should_render false) -}}
+  {{/* Render fragments */}}
+  {{- range sort ($page_scratch.Get $slot_name) "Params.weight" -}}
+    {{- partial "helpers/slot-renderer.html" (dict "page_scratch" $page_scratch "data" $data "root" $root "slot" $slot "fragment" .) -}}
   {{- end -}}
 {{- end -}}

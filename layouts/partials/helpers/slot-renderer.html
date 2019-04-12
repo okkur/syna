@@ -1,0 +1,14 @@
+{{- $page_scratch := .page_scratch -}}
+{{- $data := .data -}}
+{{- $root := .root -}}
+{{- $slot := .slot -}}
+{{- $fragment := .fragment -}}
+
+{{/* Cleanup .Name to be more useful within fragments */}}
+{{- $name := cond (eq $root.page $fragment) $fragment.File.BaseFileName (strings.TrimSuffix ".md" (replace $fragment.Name "/index.md" "")) -}}
+{{- $bg := $fragment.Params.background | default "light" -}}
+{{- $fragment.Scratch.Set "bg" $bg -}}
+
+{{- $file_path := strings.TrimSuffix ".md" (replace $fragment.File.Path "/index.md" "") -}}
+{{- $context := dict "page_scratch" $page_scratch "root" $root.root "Site" $root.Site "page" $root.page "resources" $root.resources "self" $fragment "Params" $fragment.Params "Name" $name "file_path" $file_path "nested_level" (add ($root.nested_level | default 0) 1) "in_slot" true "data" ($data | default (dict)) -}}
+{{- partial (print "fragments/" (strings.TrimPrefix (printf "%s/%s:" $root.self.File.BaseFileName $slot) $fragment.Params.fragment) ".html") $context -}}
