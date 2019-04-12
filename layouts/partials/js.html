@@ -7,27 +7,36 @@
   </script>
 {{- end -}}
 
+{{- $.Scratch.Set "loaded_scripts" slice -}}
 {{- range uniq ($.Scratch.Get "js") -}}
-  {{- if .url -}}
-    <script 
-      {{- if (.async | default true) -}}
-        {{- safeHTMLAttr (print " async") -}}
-      {{- end -}}
-      {{- if (.defer | default true) -}}
-        {{- safeHTMLAttr (print " defer") -}}
-      {{- end -}}
-      {{- safeHTMLAttr (printf " src=\"%s\"" .url) -}}></script>
-  {{- else }}
-    {{- $script_template := resources.Get (printf "scripts/%s" .file) -}}
-    {{- $script := $script_template | resources.Minify | resources.Fingerprint }}
-    <script 
-      {{- if (.async | default true) -}}
-        {{- safeHTMLAttr (print " async") -}}
-      {{- end -}}
-      {{- if (.defer | default true) -}}
-        {{- safeHTMLAttr (print " defer") -}}
-      {{- end -}}
-      {{- safeHTMLAttr (printf " src=\"%s\"" ($script.RelPermalink | relLangURL)) -}}></script>
+  {{- if or (and .name (not (in ($.Scratch.Get "loaded_scripts") .name))) (not (isset . "name")) -}}
+    {{- if .url -}}
+      <script 
+        {{- if (.async | default true) -}}
+          {{- safeHTMLAttr (print " async") -}}
+        {{- end -}}
+        {{- if (.defer | default true) -}}
+          {{- safeHTMLAttr (print " defer") -}}
+        {{- end -}}
+        {{- safeHTMLAttr (printf " src=\"%s\"" .url) -}}></script>
+    {{- else if .file }}
+      {{- $script_template := resources.Get (printf "scripts/%s" .file) -}}
+      {{- $script := $script_template | resources.Minify | resources.Fingerprint }}
+      <script 
+        {{- if (.async | default true) -}}
+          {{- safeHTMLAttr (print " async") -}}
+        {{- end -}}
+        {{- if (.defer | default true) -}}
+          {{- safeHTMLAttr (print " defer") -}}
+        {{- end -}}
+        {{- safeHTMLAttr (printf " src=\"%s\"" ($script.RelPermalink | relLangURL)) -}}></script>
+    {{- else if .script -}}
+      {{ .script | safeHTML }}
+    {{- end -}}
+
+    {{- if .name -}}
+      {{- $.Scratch.Add "loaded_scripts" .name -}}
+    {{- end -}}
   {{- end -}}
 {{- end -}}
 {{- template "_internal/google_analytics_async.html" . -}}
