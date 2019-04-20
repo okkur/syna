@@ -85,7 +85,7 @@
                         {{- end }}
                       </div>
                     </div>
-                    <input class="form-control" type="text" name="custom_price_text" placeholder="{{ i18n "stripe.pricePlaceholder" }}" value="{{ .default }}" />
+                    <input class="form-control" type="text" name="custom_price_text" data-value="price" placeholder="{{ i18n "stripe.pricePlaceholder" }}" value="{{ .default }}" />
                   </div>
                 {{- end }}
               </div>
@@ -127,7 +127,7 @@
 <script>
   var fragmentName = "{{ .Name }}";
   window.syna.api.register('stripe', 'stripe-' + fragmentName, {
-    form: "{{ (printf "#payment-form-%s" .Name) | safeJS }}",
+    form: "{{ (print .Name) | safeJS }}",
     token: "{{ .Params.stripe_token | safeJS }}",
     product: "{{ .Params.product | safeJS }}",
     options: {
@@ -140,21 +140,18 @@
     }
   });
 </script>
-<script id="stripe-price-template" type="text/x-js-template">
+{{- .page_scratch.Add "js" (dict "name" (printf "stripe-templates-%s" .self.File) "script" (printf `
+<script id="stripe-price-template-%s" type="text/x-js-template">
   <div class="btn-group btn-group-toggle" data-toggle="buttons">
-    <label data-price="${price}" class="btn
-      {{- if eq $bg "secondary" -}}
-        {{- print " btn-primary" -}}
-      {{- else -}}
-        {{- print " btn-secondary" -}}
-      {{- end -}}">
+    <label data-price="${price}" class="btn %s">
       <input id="stripe-${price}" name="price_text" type="radio" data-currency="${currency}" value="${price}" checked="true"> ${price}
     </label>
   </div>
 </script>
-<script id="stripe-product-template" type="text/x-js-template">
+<script id="stripe-product-template-%s" type="text/x-js-template">
   <div class="row product mx-0 align-items-center mb-3">
     <i class="ml-1 fas fa-file-alt"></i>
     <h5 class="ml-2 mb-0">${product}</h5>
   </div>
 </script>
+` .Name (cond (eq $bg "secondary") "btn-primary" "btn-secondary") .Name)) -}}
