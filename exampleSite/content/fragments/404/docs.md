@@ -5,7 +5,7 @@ weight = 300
 title = "Documentation"
 
 [sidebar]
-  enable = true
+  sticky = true
 +++
 
 404 fragment looks a lot like the `hero` fragment, with a default call to action button to return to the homepage and a description in addition to subtitle and title.
@@ -33,7 +33,7 @@ Title of the call to action button.
 URL for the call to action button.
 
 #### asset
-*type: asset object*
+*type: [asset object](/docs/global-variables/#asset)*
 
 The asset will be displayed on top of the fragment, before title and subtitle.
 

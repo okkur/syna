@@ -5,7 +5,7 @@ weight = 300
 title = "Documentation"
 
 [sidebar]
-  enable = true
+  sticky = true
 +++
 
 This fragment needs a fragment controller file and subitems. You need to create a directory for this fragment and put `index.md` with `fragment = "pricing"` and subitems next to that file.
