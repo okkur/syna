@@ -47,14 +47,9 @@ This variable is optional.
 
 Either an image or an icon. The asset is displayed in the sidebar unless the fragment is centered.
 
-#### header
-*type: object*
+#### header, rows (table fragment)
+*type: [table object](/fragments/table/#docs)*
 
-A table can be displayed by setting `header` and `rows` variables following the same API as the [table fragment](/fragments/table#docs).
-
-#### rows
-*type: array of object*
-
-A table can be displayed by setting `header` and `rows` variables following the same API as the [table fragment](/fragments/table#docs).
+A table can be added to the item fragment using the same variables as the table fragment. Please read more about tables in the [table fragment's docs](/fragments/table/#docs).
 
 [Global variables](/docs/global-variables) are documented as well and have been omitted from this page.
