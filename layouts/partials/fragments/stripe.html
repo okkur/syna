@@ -108,7 +108,10 @@
           </div>
         </div>
         <div class="row should-fade mx-0">
-          <button type="submit" class="btn btn-primary col-12 submit-btn">Submit</button>
+          <button type="submit" class="btn btn-primary col-12 submit-btn">
+            {{- i18n "stripe.pay" | default "Pay" -}}
+            <span class="submit-price-display" data-render="price-value"></span>
+          </button>
         </div>
         <div class="generic-success mb-0 mb-3 hidden" id="generic-success">
           <div class="alert alert-success">
@@ -118,7 +121,7 @@
               {{- i18n "stripe.defaultGenericSuccess" -}}
             {{- end }}
           </div>
-          <span class="btn btn-primary" data-action="return-form">Return</span>
+          <span class="btn btn-primary" data-action="return-form">{{- i18n "stripe.return" | default "Return" -}}</span>
         </div>
       </form>
     </div>

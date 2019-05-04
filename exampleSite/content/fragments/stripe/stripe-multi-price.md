@@ -30,6 +30,5 @@ product = "Example Product"
 [fields.email]
   text = "Your email address"
 +++
-[fields.email]
-   text = 
+
 You can pay for the product by filling this form (provided by Stripe).
