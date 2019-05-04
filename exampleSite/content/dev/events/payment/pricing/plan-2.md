@@ -5,7 +5,7 @@ title = "Premium plan"
 subtitle = "Working with automatic event publisher"
 
 currency = "usd"
-price = "$9.99/mo"
+price = "$19.99/mo"
 highlight = true
 
 button_text = "Get started"

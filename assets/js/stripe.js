@@ -98,7 +98,7 @@ Object.keys(stripeFragments).forEach(key => {
   initFormValidation(form[0], onSubmit(key, form, stripe, card));
 
   if (form.$('input[name=custom_price_text]').length > 0) {
-    form.$('[data-render="price-value"]').text(form.$('[data-input=currency]').text() + form.$('input[name=custom_price_text]').val())
+    form.$('[data-render="price-value"]').text(form.$('input[name=custom_price_text]').val() + form.$('[data-input=currency]').text())
   }
   const choices = $(`#payment-form-${config.form} input[name=price_text]`);
   if (choices.length > 0) {
@@ -114,10 +114,12 @@ Object.keys(stripeFragments).forEach(key => {
         form.$('.price-display').removeClass('hidden');
         form.$('.price-input').addClass('hidden');
         form.$('input[name=custom_value]').val('false');
+        form.$('[data-render="price-value"]').text(form.$('input[name=price_text][checked]').val());
       } else {
         form.$('.price-display').addClass('hidden');
         form.$('.price-input').removeClass('hidden');
         form.$('input[name=custom_value]').val('true');
+        form.$('[data-render="price-value"]').text(form.$('input[name=custom_price_text]').val() + form.$('[data-input=currency]').text());
       }
       isEditable = !isEditable;
     }
@@ -129,7 +131,7 @@ Object.keys(stripeFragments).forEach(key => {
     form.$('[data-render="price-value"]').text(e.target.value);
   });
   form.on('input', 'input[name=custom_price_text]', e => {
-    form.$('[data-render="price-value"]').text(form.$('[data-input=currency]').text() + e.target.value);
+    form.$('[data-render="price-value"]').text(e.target.value + form.$('[data-input=currency]').text());
   })
 
   form.$('#generic-success [data-action="return-form"]').on('click', () => {
