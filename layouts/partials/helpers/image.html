@@ -1,8 +1,11 @@
 {{/* Global resource fallback */}}
 {{- $image := .asset.image -}}
 
-{{/* Resource is used when file is not imported from static directory, in which
-  case we can perform image processing. */}}
+{{/* A resource is an asset file that is located in the fragment or page
+  directory while other assets are located in the static/ directory. We can only
+  manipulate resources and we can't run any functions on the static assets.
+  The following variable will be set to true if we can find the asset outside
+  static/ directory and will later be used to resize the image. */}}
 {{- .root.page_scratch.Set "resource" nil -}}
 
 {{/* static/images directory */}}
