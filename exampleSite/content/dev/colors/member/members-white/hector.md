@@ -7,14 +7,17 @@ lives_in = "[Iceland](https://www.google.com/maps/place/Iceland/)"
 
 [[icons]]
   icon = "fab fa-twitter"
+  text = "Twitter"
   url = "#"
 
 [[icons]]
   icon = "fab fa-facebook"
+  text = "Twitter"
   url = "#"
 
 [[icons]]
   icon = "fab fa-linkedin-in"
+  text = "Linkedin"
   url = "#"
 
 [asset]

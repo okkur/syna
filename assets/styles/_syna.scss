@@ -115,9 +115,31 @@ pre {
   padding: .75rem;
 }
 
-.bg-dark {
-  pre {
-    background-color: white;
+section .bg {
+  @each $bg in dark, secondary {
+    &-#{$bg} {
+      code, pre {
+        background-color: $light;
+        color: $dark;
+      }
+
+      code {
+        padding: 3px 4px 2px;
+      }
+    }
+  }
+
+  @each $bg in white, primary, success, info, warning, danger, light {
+    &-#{$bg} {
+      code, pre {
+        background-color: $dark;
+        color: $light;
+      }
+
+      code {
+        padding: 3px 4px 2px;
+      }
+    }
   }
 }
 
