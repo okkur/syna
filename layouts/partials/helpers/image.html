@@ -31,7 +31,7 @@
 {{- else -}}
   {{- if isset . "resize" -}}
     {{- if ne (.root.page_scratch.Get "resource").MediaType.SubType "svg" -}}
-      {{- .root.page_scratch.Set "resource" ((.root.page_scratch.Get "resource").Resize .resize) -}}
+      {{- .root.page_scratch.Set "resource" ((.root.page_scratch.Get "resource").Fill .resize) -}}
     {{- end -}}
   {{- end -}}
 
