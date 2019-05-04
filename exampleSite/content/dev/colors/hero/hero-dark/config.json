@@ -13,11 +13,11 @@
     "shape": {
       "type": "circle",
       "stroke": {
-        "width": 4,
+        "width": 0,
         "color": "#000000"
       },
       "polygon": {
-        "nb_sides": 3
+        "nb_sides": 5
       },
       "image": {
         "src": "img/github.svg",
@@ -36,7 +36,7 @@
       }
     },
     "size": {
-      "value": 15.782952832645451,
+      "value": 3,
       "random": true,
       "anim": {
         "enable": false,

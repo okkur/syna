@@ -16,7 +16,7 @@ product = "Example Product"
   currencies = ['usd', 'eur', 'cad'] # First currency will be used as default
 
 [fields.email]
-  text =  "Your email address"
+  text = "Your email address"
 +++
 
 You can pay for the product by filling this form (provided by Stripe).
