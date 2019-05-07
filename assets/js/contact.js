@@ -76,7 +76,9 @@ function checkReCaptcha() {
 }
 
 window.onContactCaptcha = function($form) {
-  document.querySelector('form.contact').dispatchEvent(new Event('submit'))
+  var customEvent = document.createEvent('Event');
+  customEvent.initEvent('submit', true, true);
+  document.querySelector('form.contact').dispatchEvent(customEvent)
 }
 
 window.syna.stream.subscribe('contact:update', function({ name, email, phone, message }) {

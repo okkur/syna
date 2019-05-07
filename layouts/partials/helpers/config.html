@@ -1,4 +1,4 @@
-{{- if in (slice "meta" "icon" "css" "icon" "link" "js") .type -}}
+{{- if in (slice "meta" "icon" "css" "js") .type -}}
   {{- if .data.html -}}
     {{- if and (eq .type "meta") (eq .head true) }}
       {{ print .data.html | safeHTML }}

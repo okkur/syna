@@ -9,7 +9,7 @@ currency = "usd"
 highlight = true
 
 button_text = "Get started"
-button_url = "/dev/events/payment?topic=pricing:change&plan=Premium plan&price=999&price_text=$9.99/mo&currency=usd"
+button_url = "/fragments/stripe?event=pricing:change&product=Starting%20plan&price=$9.99/mo&currency=usd"
 
 [[features]]
   text = "**Basic** feature"

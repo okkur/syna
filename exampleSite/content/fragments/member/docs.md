@@ -5,7 +5,7 @@ weight = 300
 title = "Documentation"
 
 [sidebar]
-  enable = true
+  sticky = true
 +++
 
 This fragment needs a fragment controller file and subitems. You need to create a directory for this fragment and put `index.md` with `fragment = "member"` and subitems next to that file.
@@ -32,12 +32,12 @@ This fragment needs a fragment controller file and subitems. You need to create 
 *Markdown enabled*
 
 #### icons
-*type: array of asset objects*
+*type: array of [asset object](/docs/global-variables/#asset)s*
 
 Social media and other icons.
 
 #### asset
-*type: asset object*
+*type: [asset object](/docs/global-variables/#asset)*
 
 Member avatar.
 

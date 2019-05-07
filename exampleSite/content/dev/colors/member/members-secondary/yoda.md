@@ -14,14 +14,17 @@ scope = [
 
 [[icons]]
   icon = "fab fa-twitter"
+  text = "Twitter"
   url = "#"
 
 [[icons]]
   icon = "fab fa-facebook-f"
+  text = "Facebook"
   url = "#"
 
 [[icons]]
   icon = "fab fa-linkedin-in"
+  text = "Linkedin"
   url = "#"
 
 [asset]

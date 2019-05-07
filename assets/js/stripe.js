@@ -84,7 +84,7 @@ Object.keys(stripeFragments).forEach(key => {
   const stripe = Stripe(config.token);
   const elements = stripe.elements();
   const card = elements.create('card', config.options);
-  card.mount(`${config.form} #card-element`);
+  card.mount(`#payment-form-${config.form} #card-element`);
   card.addEventListener('change', e => {
     const displayError = $('.invalid-feedback');
     if (event.error) {
@@ -94,10 +94,10 @@ Object.keys(stripeFragments).forEach(key => {
     }
   });
 
-  const form = $(config.form);
+  const form = $(`#payment-form-${config.form}`);
   initFormValidation(form[0], onSubmit(key, form, stripe, card));
 
-  const choices = $(`${config.form} input[name=price_text]`);
+  const choices = $(`#payment-form-${config.form} input[name=price_text]`);
   if (choices.length > 0) {
     choices.$nodes[0].setAttribute('checked', true);
     choices.$nodes[0].parentElement.classList.add('active');
@@ -135,7 +135,7 @@ window.syna.stream.subscribe('pricing:change', function({ product, description, 
 
 function updateStripeFragments(product, description, price, currency) {
   window.syna.api.toArray('stripe').forEach(config => {
-    const form = $(config.form);
+    const form = $(`#payment-form-${config.form}`);
 
     config.description = description
     config.product = product;
@@ -143,21 +143,26 @@ function updateStripeFragments(product, description, price, currency) {
     if (product) {
       $('[data-render="product"]').html(
         window.syna.api.renderTemplate(
-          $('#stripe-product-template').html(),
+          $(`#stripe-product-template-${config.form}`).html(),
           { product }
         ),
       );
     }
 
     if (price) {
-      const priceTemplate = $('#stripe-price-template').html();
+      const priceTemplate = $(`#stripe-price-template-${config.form}`).html();
       const data = { price, currency };
-      const priceDisplay = form.$('[data-render=price]');
 
-      priceDisplay.html(window.syna.api.renderTemplate(priceTemplate, data));
+      if (form.$('[data-render=price]').length > 0) {
+        form.$('[data-render=price]').html(window.syna.api.renderTemplate(priceTemplate, data));
+      }
+
+      if (form.$('[data-value=price]').length > 0) {
+        form.$('[data-value=price]').val(price);
+      }
 
       setTimeout(() => {
-        const choices = $(`${config.form} input[name=price_text]`);
+        const choices = $(`#payment-form-${config.form} input[name=price_text]`);
         if (choices.length > 0) {
           choices.$nodes[0].setAttribute('checked', true);
           choices.$nodes[0].parentElement.classList.add('active');

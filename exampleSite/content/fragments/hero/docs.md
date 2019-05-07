@@ -5,7 +5,7 @@ weight = 300
 title = "Documentation"
 
 [sidebar]
-  enable = true
+  sticky = true
 +++
 
 ### Extra Files
@@ -36,12 +36,12 @@ If set to `true` and `asset` is not set, title will be the same as page title.
 If set to `true`, Particles.js would be added to the page and displayed in the Hero fragment. 
 
 #### header
-*type: asset object*
+*type: [asset object](/docs/global-variables/#asset)*
 
 Background image of the Hero fragment.
 
 #### asset
-*type: asset object*
+*type: [asset object](/docs/global-variables/#asset)*
 
 The asset is displayed on the Hero fragment instead of the `title` and can be used to display a logo. 
 
