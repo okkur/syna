@@ -49,7 +49,6 @@ _2019-05_
   - `stripe`: Prevent double charges by disabling button
   - `stripe`: Add multiple price option
   - `stripe`: Add custom price option
-  - New: `portfolio`: Add portfolio fragment
   - New: `graph`: Add chart.js fragment
   - New: `TOC`: Add table of contents fragment
   - New: `config`: New config fragment to inject custom assets such as `meta`, `link` or `script`
