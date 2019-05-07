@@ -25,7 +25,7 @@
       <div class="row justify-content-center align-items-start">
         <img
           class="overlay img-fluid"
-          src="{{ partial "helpers/image.html" (dict "root" $self "asset" . "resize" "x200") }}"
+          src="{{ partial "helpers/image.html" (dict "root" $self "asset" .) }}"
           alt="
             {{- if .text -}}
               {{- print .text -}}

@@ -22,7 +22,7 @@
               <a href="{{ .Params.item_url | relLangURL }}">
             {{- end }}
                 {{- if .Params.asset -}}
-                  <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset "resize" "508x381") }}" class="img-fluid" alt="{{ .Params.asset.text }}">
+                  <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset "resize" "500x380") }}" class="img-fluid" alt="{{ .Params.asset.text }}">
                 {{- end }}
                 <div class="position-absolute hover-overlay"></div>
                 {{- if .Params.labels -}}
