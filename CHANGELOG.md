@@ -1,19 +1,73 @@
 <!--
-# v0.15.0
+# v0.16.0
 _2018_
-  - [Downloads for v0.15.0](https://github.com/okkur/syna/releases/tag/v0.15.0)
-  - [Changelog since v0.14.0](#changes-since-v014)
+  - [Downloads for v0.16.0](https://github.com/okkur/syna/releases/tag/v0.16.0)
+  - [Changelog since v0.15.0](#changes-since-v015)
 
-## Documentation for v0.15
-[Documentation](/tree/v0.15/docs)
+## Documentation for v0.16
+[Documentation](https://syna.okkur.org/docs) *Documentation defaults to latest release*
 
-## Changes since v0.14.0
+## Changes since v0.15.0
 
-## Fixes since v0.14.0
+## Fixes since v0.15.0
 
 ---
 
 -->
+
+# v0.15.0
+_2019-05_
+  - [Downloads for v0.15.0](https://github.com/okkur/syna/releases/tag/v0.15.0)
+  - [Changelog since v0.14.0](#changes-since-v014)
+
+## Documentation for v0.15
+[Documentation](https://syna.okkur.org/docs) *Documentation defaults to latest release*
+
+## Changes since v0.14.0
+  - BREAKING: `item`: Item URL configuration is now `item_url` instead of `url`
+  - BREAKING: Custom JS and CSS within config.toml are replaced by `config` fragment
+  - Huge documentation overhaul
+  - Accesibility improvements via `alt` and `sr-only` tags
+  - Code snippets and inline code are more readable (invert background)
+  - Contrast improvements for text, buttons and backgrounds
+  - Add Title_align for better control of headers
+  - Enable and document usage of FontAwesome Pro
+  - Upgrade FontAwesome
+  - Show scrollspy and active page to navbar and sidebar based navbars
+  - Resize images automatically with the exception of `static/` based ones
+  - Use favicon.svg and favicon.png, if defined
+  - Add slot feature to combine various fragments
+  - Add support for social media cards
+  - Ability to create documentation via `content` and `list` using sidebar slots
+  - `list`: Add collapsible items
+  - `nav`: Add sticky option
+  - `hero`: Ability to customize particle.js
+  - `pricing`: Add plan:change event
+  - New: `events`: Client side pubsub like event framework including triggering events via URL
+  - `events`: Base64 obfuscated event URLs
+  - New: `stripe`: Add payments fragment based on stripe
+  - `stripe`: Prevent double charges by disabling button
+  - `stripe`: Add multiple price option
+  - `stripe`: Add custom price option
+  - New: `portfolio`: Add portfolio fragment
+  - New: `graph`: Add chart.js fragment
+  - New: `TOC`: Add table of contents fragment
+  - New: `config`: New config fragment to inject custom assets such as `meta`, `link` or `script`
+  - New: `header`: Add separate header fragment
+
+## Fixes since v0.14.0
+  - Fix consistency of header margins
+  - Retriggering an event will clear fields
+  - `stripe`: Fix multiple Stripe fragments on a single page
+  - `contact`: Fix Recaptcha positioning
+  - `contact`: Make contact form async even within Firefox
+  - `table`: Optimize darker background colors
+  - `content`: Sidebar margin fixes
+  - `404`: Fix layout issues
+  - `editor`: Fix editor not always loading
+  - `react-portal`: Fix portal not always loading
+
+---
 
 # v0.14.0
 _2018-10-15_
