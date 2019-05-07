@@ -7,24 +7,23 @@ Highly customizable open source theme for Hugo based static websites
 
 
 # Syna Theme
-Base your next personal, project or commercial website on Syna.  
-Highly customizable with modular per-page fragments.
+Create your next website with Syna.  
 
 ![Syna Theme screenshot](https://github.com/okkur/syna/blob/master/images/screenshot.png)
 
 ## Using Syna Theme
 
-To start using Syna please read the [installation guide](./docs/README.md#installation).
+Start exploring [Syna](https://syna.okkur.org/demo).
 
-You can also check out our [demo](https://syna.okkur.org/demo/).
+To get started with your own website use our [starter repo](https://syna.okkur.org/start).
 
 ## Documentation
 
-Take a look at our full [documentation](/docs/README.md).
+Take a look at our full [documentation](https://syna.okkur.org/docs).
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes.](https://syna.okkur.org/releases/)
+Detailed changes for each release are documented in the [release notes](https://syna.okkur.org/releases/).
 
 ## Support
 For detailed information on support options see our [support guide](/SUPPORT.md).
