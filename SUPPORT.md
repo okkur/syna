@@ -12,6 +12,4 @@ Be kind to anyone helping out.
 For commercial support reach out to support@okkur.org
 
 ## Documentation
-  * [User Documentation](/docs)
-
-  * [Troubleshooting Guide](/docs/troubleshooting.md)
+  * [User Documentation](https://syna.okkur.org/docs)

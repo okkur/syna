@@ -1,10 +1,10 @@
-<img src='https://github.com/okkur/syna/blob/master/exampleSite/static/images/logo.svg' width='500'/>
+<a href='https://syna.okkur.org'><img src='https://github.com/okkur/syna/blob/master/exampleSite/static/images/logo.svg' width='500'/></a>
 
 Highly customizable open source theme for Hugo based static websites
 
  [![state](https://img.shields.io/badge/state-beta-blue.svg)]() [![release](https://img.shields.io/github/release/okkur/syna.svg)](https://github.com/okkur/syna/releases) [![license](https://img.shields.io/github/license/okkur/syna.svg)](LICENSE)
 
-**NOTE: This is a beta release, we do not consider it completely production ready yet. Use at your own risk.**
+
 
 # Syna Theme
 Base your next personal, project or commercial website on Syna.  
@@ -34,8 +34,8 @@ Best place to start is our [contribution guide](/CONTRIBUTING.md).
 
 ----
 
-*Code is licensed under the [Apache License, Version 2.0](https://syna.okkur.org/license/).*  
-*Documentation/examples are licensed under [Creative Commons BY-SA 4.0](https://syna.okkur.org/docs-license/).*  
+*Code is licensed under the [Apache License, Version 2.0](/LICENSE).*  
+*Documentation/examples are licensed under [Creative Commons BY-SA 4.0](/docs/LICENSE).*  
 *Illustrations, trademarks and third-party resources are owned by their respective party and are subject to different licensing.*
 
 *The Syna logo was created by [Florin Luca](https://99designs.com/profiles/florinluca)*
@@ -45,3 +45,4 @@ Best place to start is our [contribution guide](/CONTRIBUTING.md).
 ---
 
 Copyright 2017 - The Syna Theme Authors
+
