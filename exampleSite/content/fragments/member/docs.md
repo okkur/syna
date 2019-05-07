@@ -37,7 +37,8 @@ This fragment needs a fragment controller file and subitems. You need to create 
 Social media and other icons.
 
 #### asset
-*type: [asset object](/docs/global-variables/#asset)*
+*type: [asset object](/docs/global-variables/#asset)*  
+*size: 250x250*
 
 Member avatar.
 
