@@ -1,8 +1,8 @@
 project:
   name: "Syna Theme"
-  state: "beta"
+  state: "stable"
   image: "https://github.com/okkur/syna/blob/master/exampleSite/static/images/logo.svg"
-  website: ""
+  website: "https://syna.okkur.org"
   oneLiner: "Highly customizable open source theme for Hugo based static websites"
   description: |
     Base your next personal, project or commercial website on Syna.  
@@ -17,9 +17,8 @@ vision:
   aim: "Syna provides a generic solution to easily get up and running, but doesn't consider hugely specialized solutions to be integrated."
 
 supportLinks:
-  documentation: "/docs"
-  examples: "/exampleSite"
-  troubleshooting: "/docs/troubleshooting.md"
+  documentation: "https://syna.okkur.org/docs"
+  examples: "https://syna.okkur.org/demo"
 
 contributionLinks:
   issueTemplate: "/.github/ISSUE_TEMPLATE.md"
@@ -35,6 +34,7 @@ copyright:
 
 cla:
   copyrightHolder: "nzt.ventures GmbH"
+  mail: "legal@nzt.ventures"
 
 maintainers:
   - name: "Michael Grosser"
@@ -59,3 +59,6 @@ badges:
   - image: "https://img.shields.io/github/license/okkur/syna.svg"
     link: "LICENSE"
     alt: "license"
+
+reposeed:
+  configVersion: "v1"
