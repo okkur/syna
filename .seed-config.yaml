@@ -5,8 +5,7 @@ project:
   website: "https://syna.okkur.org"
   oneLiner: "Highly customizable open source theme for Hugo based static websites"
   description: |
-    Base your next personal, project or commercial website on Syna.  
-    Highly customizable with modular per-page fragments.
+    Create your next website with Syna.  
   version: "v0.15.0"
 
 vision:
