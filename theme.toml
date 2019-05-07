@@ -4,7 +4,7 @@ licenselink = "https://syna.okkur.org/license"
 description = "A customizable one to multi page theme for open source projects, companies and freelancers."
 homepage = "https://syna.okkur.org"
 tags = ["open source", "company", "one-page", "multi-page"]
-min_version = 0.55
+min_version = 0.54
 
 [author]
   name = "Okkur Labs"
