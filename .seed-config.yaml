@@ -50,7 +50,7 @@ issueTemplate:
   - "Hugo version"
 
 badges:
-  - image: "https://img.shields.io/badge/state-beta-blue.svg"
+  - image: "https://img.shields.io/badge/state-stable-green.svg"
     alt: "state"
   - image: "https://img.shields.io/github/release/okkur/syna.svg"
     link: "https://github.com/okkur/syna/releases"

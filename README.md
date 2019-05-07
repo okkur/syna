@@ -2,7 +2,7 @@
 
 Highly customizable open source theme for Hugo based static websites
 
- [![state](https://img.shields.io/badge/state-beta-blue.svg)]() [![release](https://img.shields.io/github/release/okkur/syna.svg)](https://github.com/okkur/syna/releases) [![license](https://img.shields.io/github/license/okkur/syna.svg)](LICENSE)
+ [![state](https://img.shields.io/badge/state-stable-green.svg)]() [![release](https://img.shields.io/github/release/okkur/syna.svg)](https://github.com/okkur/syna/releases) [![license](https://img.shields.io/github/license/okkur/syna.svg)](LICENSE)
 
 
 
@@ -12,17 +12,14 @@ Create your next website with Syna.
 ![Syna Theme screenshot](https://github.com/okkur/syna/blob/master/images/screenshot.png)
 
 ## Using Syna Theme
-
 Start exploring [Syna](https://syna.okkur.org/demo).
 
-To get started with your own website use our [starter repo](https://syna.okkur.org/start).
+Or get started creating your own page with our [starter repo](https://syna.okkur.org/start).
 
 ## Documentation
-
 Take a look at our full [documentation](https://syna.okkur.org/docs).
 
 ## Changelog
-
 Detailed changes for each release are documented in the [release notes](https://syna.okkur.org/releases/).
 
 ## Support
@@ -44,4 +41,3 @@ Best place to start is our [contribution guide](/CONTRIBUTING.md).
 ---
 
 Copyright 2017 - The Syna Theme Authors
-
