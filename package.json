@@ -1,6 +1,6 @@
 {
   "name": "syna",
-  "version": "0.14.0",
+  "version": "0.15.0",
   "description": "Highly customizable open source theme for Hugo based static websites",
   "main": "static-main",
   "repository": "git@github.com:okkur/syna.git",
