@@ -38,9 +38,9 @@ googleAnalytics = ""
 
   # Piwik tracking
   [params.analytics.piwik]
-    url = "https://use.okkur.net"
-    id = "13"
-    domain = "syna-demo.okkur.org" # Track subdomains via "*.example.com"
+    #url = "https://use.example.net"
+    #id = ""
+    #domain = "*" # Track subdomains via "*.example.com"
     # Optional hash for integrity check
     #hash = "sha512-RfeD0pacGTqy9m7U6PgehQfS4cc7SIt+e+P+H5e848kEvB/RW84CUGO3O4O3LNbxjevym6KPUZ8muPsMrI8WIw=="
 
@@ -86,7 +86,7 @@ googleAnalytics = ""
   weight = 40
 
 [[menu.footer]]
-  url = "https://syna.okkur.org/docs"
+  url = "https://syna.okkur.org/demo"
   name = "Getting Started"
   weight = 10
 
