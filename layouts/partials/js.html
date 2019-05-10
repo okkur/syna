@@ -8,7 +8,7 @@
 {{- end -}}
 
 {{- $.Scratch.Set "loaded_scripts" slice -}}
-{{- range uniq ($.Scratch.Get "js") -}}
+{{- range ($.Scratch.Get "js") -}}
   {{- if or (and .name (not (in ($.Scratch.Get "loaded_scripts") .name))) (not (isset . "name")) -}}
     {{- if .url -}}
       <script 
