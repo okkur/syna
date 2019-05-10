@@ -85,7 +85,7 @@
     case to find the root directory. $real_page is added to find the page
     directory as well. */}}
   {{- $page_scratch.Set "sections" (slice "/") -}}
-  {{- $sections := findRE "[^\\/]+" $real_page.CurrentSection.Dir -}}
+  {{- $sections := findRE "[^\\/]+" $real_page.CurrentSection.File.Dir -}}
   {{- range ($sections | default (slice)) -}}
     {{- $page_scratch.Add "sections" . -}}
   {{- end -}}
@@ -101,7 +101,7 @@
       {{- if ne $real_page.Kind "page" -}}
         {{/* Last item is the page being rendered. If it's a section or homepage,
           fragments must be at _index directory */}}
-        {{- $page_scratch.Set "active_page" ($real_page.Site.GetPage "page" (printf "%s%s" $real_page.Dir "_index")) -}}
+        {{- $page_scratch.Set "active_page" ($real_page.Site.GetPage "page" (printf "%s%s" $real_page.File.Dir "_index")) -}}
       {{- else if $page -}}
         {{- $page_scratch.Set "active_page" $page -}}
       {{- end -}}
@@ -151,14 +151,14 @@
 {{- if $page_scratch.Get "fragments" -}}
   {{- range ($page_scratch.Get "fragments") -}}
     {{- $name := replace .Name "/index" "" -}}
-    {{- $directory_same_name := in ($page_scratch.Get "fragments_directory_name") (printf "%s%s/" $root.Dir (replace $name ".md" "")) -}}
+    {{- $directory_same_name := in ($page_scratch.Get "fragments_directory_name") (printf "%s%s/" $root.File.Dir (replace $name ".md" "")) -}}
     {{- if and (not .Params.disabled) (isset .Params "fragment") (not (where ($page_scratch.Get "page_fragments") ".Name" $name)) (not $directory_same_name) -}}
       {{- if or $is_404 (ne .Params.fragment "404") -}}
         {{- if eq .Params.fragment "config" -}}
           {{- $page_scratch.Add "page_config" . -}}
         {{- else -}}
           {{- $page_scratch.Add "page_fragments" . -}}
-          {{- $page_scratch.Add "fragments_directory_name" (printf "%s%s/" $root.Dir (replace $name ".md" "")) -}}
+          {{- $page_scratch.Add "fragments_directory_name" (printf "%s%s/" $root.File.Dir (replace $name ".md" "")) -}}
           {{- if isset .Params "padding" -}}
             {{- $page_scratch.Add "experimentals_used_messages" "FrontMatter variable 'padding' is experimental and may get removed without notice" -}}
           {{- end -}}

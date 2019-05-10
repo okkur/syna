@@ -45,7 +45,7 @@
   {{- end }}
   {{ with .Site.Params.name -}}<meta name="author" content="{{ . }}">{{- end }}
 
-  {{ .Hugo.Generator }}
+  {{ hugo.Generator }}
 
   <title>
     {{- $title | safeHTML -}}

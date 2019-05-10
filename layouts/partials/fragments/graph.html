@@ -15,6 +15,6 @@
   var fragmentName = "{{ .Name }}";
   window.syna.api.register('graph', 'graph-' + fragmentName, {
     selector: "{{ printf "#chart-%s" .Name }}",
-    config: JSON.parse({{ readFile (printf "%s%s/config.json" .page.Dir .Name) | safeHTML }}),
+    config: JSON.parse({{ readFile (printf "%s%s/config.json" .page.File.Dir .Name) | safeHTML }}),
   });
 </script>

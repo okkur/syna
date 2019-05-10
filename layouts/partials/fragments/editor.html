@@ -8,8 +8,8 @@
 {{- partial "helpers/container.html" (dict "end" true "in_slot" .in_slot) -}}
 <script>
   (window.editors || (window.editors = [])).push({
-    ui: JSON.parse({{ readFile (printf "%s%s/ui.json" .page.Dir .Name) | safeHTML }}),
-    schema: JSON.parse({{ readFile (printf "%s%s/schema.json" .page.Dir .Name) | safeHTML }}),
+    ui: JSON.parse({{ readFile (printf "%s%s/ui.json" .page.File.Dir .Name) | safeHTML }}),
+    schema: JSON.parse({{ readFile (printf "%s%s/schema.json" .page.File.Dir .Name) | safeHTML }}),
     container: {{ printf "#%s [data-portal]" .Name }}
   });
 </script>
