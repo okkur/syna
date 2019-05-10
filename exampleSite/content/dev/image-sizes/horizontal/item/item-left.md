@@ -6,7 +6,7 @@ weight = 335
 background = "secondary"
 align = "right"
 
-title = "item - right"
+title = "item - left"
 
 [asset]
   image = "horizontal.jpeg"

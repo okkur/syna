@@ -61,9 +61,9 @@ Any fragment that uses this variable type would show either an image or an icon.
 
 The type is introduced to make configuring images and icons same between different fragments.
 
-Some fragments support resizing the images provided to them using the asset object. These fragment document the size that your image will be resized to. 
-Please note that images inside the `static/` directory will not be resized. So if you want to disable the image resizing, put the image in that directory.
-If not, you can move the image to page or fragment directory.
+Some fragments automatically resize images to better fit the layout. For the best result use the documented size of each fragment's asset object.
+*To disable image resizing use assets stored within `static/` as these are excluded from auto resizing.*
+Please make sure to provide the correct size as documented for each fragment's asset object.
 
 ##### asset.image
 *type: string*
