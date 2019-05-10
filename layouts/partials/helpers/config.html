@@ -8,7 +8,7 @@
   {{- else if and (ne .data.resource "") (in (slice "css" "icon" "js") .type) -}}
     {{- $.root.Scratch.Set "config_resource" .data.resource -}}
     {{- if not (or (hasPrefix .data.resource "http://") (hasPrefix .data.resource "https://")) -}}
-      {{- $page_level_resource := printf "%s%s" $.root.Dir .data.resource -}}
+      {{- $page_level_resource := printf "%s%s" $.root.File.Dir .data.resource -}}
       {{- if fileExists (printf "content/%s" $page_level_resource) -}}
         {{- $.root.Scratch.Set "config_resource" $page_level_resource -}}
       {{- end -}}

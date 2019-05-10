@@ -5,7 +5,7 @@
 
 {{/* Page specific resource */}}
 {{- if .root.page -}}
-  {{- $location := (printf "%s/%s" .root.page.Dir $image) -}}
+  {{- $location := (printf "%s/%s" .root.page.File.Dir $image) -}}
   {{- if (fileExists (printf "content/%s" $location)) -}}
     {{- .root.page_scratch.Set "image" $location -}}
   {{- end -}}
