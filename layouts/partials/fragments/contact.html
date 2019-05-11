@@ -141,13 +141,15 @@
               <input type="hidden" name="{{ .name }}" value="{{ .value }}"/>
             {{- end -}}
           {{- end -}}
-          <div class="generic-success text-success hidden" id="generic-success">
-            {{- with .Params.message.success -}}
-              {{- . | markdownify -}}
-            {{- else -}}
-              {{- i18n "contact.defaultGenericSuccess" -}}
-            {{- end }}
-            <span class="btn btn-outline-primary mt-3" data-action="return-form">Return</span>
+          <div class="generic-success mb-0 mb-3 hidden" id="generic-success">
+            <div class="alert alert-success">
+              {{- with .Params.message.success -}}
+                {{- . | markdownify -}}
+              {{- else -}}
+                {{- i18n "contact.defaultGenericSuccess" -}}
+              {{- end }}
+            </div>
+            <span class="btn btn-primary" data-action="return-form">Return</span>
           </div>
       </form>
     </div>
