@@ -63,6 +63,10 @@
   translation: "Search"
 
 # Stripe
+- id: stripe.pay
+  translation: "Pay"
+- id: stripe.return
+  translation: "Return"
 - id: stripe.email
   translation: "Your email address"
 - id: stripe.pricePlaceholder

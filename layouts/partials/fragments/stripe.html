@@ -49,7 +49,10 @@
             </div>
           {{- end }}
         </div>
-        <div class="row should-fade justify-content-between pr-3">
+        <div class="row should-fade justify-content-between pr-3
+          {{- if and (eq (len ($.Params.prices | default slice)) 1) (not (isset .Params "user_input")) -}}
+            {{- print " hidden" -}}
+          {{- end -}}">
           <div class="col-12 col-sm-auto d-flex flex-column justify-content-center mb-2 pr-0">
             <div class="row mx-0 align-items-center">
               <div class="col-12 col-sm-auto px-0 mr-2 mb-2">
@@ -108,7 +111,10 @@
           </div>
         </div>
         <div class="row should-fade mx-0">
-          <button type="submit" class="btn btn-primary col-12 submit-btn">Submit</button>
+          <button type="submit" class="btn btn-primary col-12 submit-btn">
+            {{- i18n "stripe.pay" | default "Pay" -}}
+            <span class="submit-price-display" data-render="price-value"></span>
+          </button>
         </div>
         <div class="generic-success mb-0 mb-3 hidden" id="generic-success">
           <div class="alert alert-success">
@@ -118,7 +124,7 @@
               {{- i18n "stripe.defaultGenericSuccess" -}}
             {{- end }}
           </div>
-          <span class="btn btn-primary" data-action="return-form">Return</span>
+          <span class="btn btn-primary" data-action="return-form">{{- i18n "stripe.return" | default "Return" -}}</span>
         </div>
       </form>
     </div>
