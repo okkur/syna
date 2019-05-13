@@ -8,7 +8,6 @@ themesDir = "../.."
 enableGitInfo = true
 version = "0.15.0"
 disableKinds = ["RSS", "taxonomy", "taxonomyTerm"]
-ignorefiles = [ "content/dev/.*" ]
 
 [outputs]
   home = ["HTML", "JSON"]
