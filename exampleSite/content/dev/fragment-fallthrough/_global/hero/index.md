@@ -24,7 +24,7 @@ subtitle = "If you see this, directory_same_name is not working"
 
 [[buttons]]
   text = "Getting Started"
-  url = "https://github.com/okkur/syna/blob/master/docs/README.md"
+  url = "/docs/"
   color = "primary"
 
 [[buttons]]
