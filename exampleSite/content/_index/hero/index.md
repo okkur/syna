@@ -24,7 +24,7 @@ subtitle = "Showcase your next project"
 
 [[buttons]]
   text = "Getting Started"
-  url = "https://github.com/okkur/syna/blob/master/docs/README.md"
+  url = "/docs/"
   color = "primary"
 
 [[buttons]]

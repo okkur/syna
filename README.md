@@ -1,4 +1,4 @@
-<a href='https://syna.okkur.org'><img src='https://github.com/okkur/syna/blob/master/exampleSite/static/images/logo.svg' width='500'/></a>
+<a href='https://syna.okkur.org'><img src='https://raw.githubusercontent.com/okkur/syna/master/exampleSite/static/images/logo.svg' width='500'/></a>
 
 Highly customizable open source theme for Hugo based static websites
 
@@ -9,7 +9,7 @@ Highly customizable open source theme for Hugo based static websites
 # Syna Theme
 Create your next website with Syna.  
 
-![Syna Theme screenshot](https://github.com/okkur/syna/blob/master/images/screenshot.png)
+![Syna Theme screenshot](https://raw.githubusercontent.com/okkur/syna/master/images/screenshot.png)
 
 ## Using Syna Theme
 Start exploring [Syna](https://syna.okkur.org/demo).
@@ -20,7 +20,7 @@ Or get started creating your own page with our [starter repo](https://syna.okkur
 Take a look at our full [documentation](https://syna.okkur.org/docs).
 
 ## Changelog
-Detailed changes for each release are documented in the [release notes](https://syna.okkur.org/releases/).
+Detailed changes for each release are documented in the [release notes](https://syna.okkur.org/releases).
 
 ## Support
 For detailed information on support options see our [support guide](/SUPPORT.md).
