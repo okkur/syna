@@ -1,7 +1,7 @@
 project:
   name: "Syna Theme"
   state: "stable"
-  image: "https://raw.githubusercontent.com/okkur/syna/master/exampleSite/static/images/logo.svg"
+  image: "https://raw.githubusercontent.com/okkur/syna/master/exampleSite/static/images/logo.svg?sanitize=true"
   website: "https://syna.okkur.org"
   oneLiner: "Highly customizable open source theme for Hugo based static websites"
   description: |
