@@ -19,14 +19,14 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="description" content="{{- .Scratch.Get "page_description" -}}">
   <meta property="og:title" content="{{ $title }}">
-  <meta property="og:url" content="{{ .URL | absURL }}">
+  <meta property="og:url" content="{{ .Permalink }}">
   <meta property="og:description" content="{{- .Scratch.Get "page_description" -}}">
   <meta property="og:site_name" content="{{ .Site.Title }}">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ $title }}" />
   <meta name="twitter:description" content="{{- .Scratch.Get "page_description" -}}">
-  <meta name="twitter:url" content="{{ .URL | absURL }}" />
+  <meta name="twitter:url" content="{{ .Permalink }}" />
   {{- if $content_fragment -}}
     {{- range $content_fragment -}}
       {{- if and .Params.asset -}}

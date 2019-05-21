@@ -78,17 +78,17 @@
                     class="row align-items-center justify-content-between mx-0 article-title">
                     {{- if $display_summary }}
                       <h4 class="col px-0 m-0
-                        {{- if eq $.page.URL .URL }} active-page {{- end -}}
+                        {{- if eq $.page.Permalink .Permalink }} active-page {{- end -}}
                       ">
-                        <a href="{{ .URL }}">
+                        <a href="{{ .Permalink }}">
                           {{- .Params.title | markdownify -}}
                         </a>
                       </h4>
                     {{- else }}
                       <h5 class="col px-0 m-0
-                        {{- if eq $.page.URL .URL }} active-page {{- end -}}
+                        {{- if eq $.page.Permalink .Permalink }} active-page {{- end -}}
                       ">
-                        <a href="{{ .URL }}">
+                        <a href="{{ .Permalink }}">
                           {{- .Params.title | markdownify -}}
                         </a>
                       </h5>
@@ -119,7 +119,7 @@
               {{- end -}}
             {{- end -}}
             {{- if $self.Params.collapsible -}}
-              <div class="collapse {{- if eq $.page.URL .URL }} show {{- end }}">
+              <div class="collapse {{- if eq $.page.Permalink .Permalink }} show {{- end }}">
             {{- end -}}
               {{- range $content_page }}
                 {{- if and (ne $self.Params.images false) .Params.asset -}}
@@ -150,7 +150,7 @@
                           {{- else -}}
                             {{- printf " badge-%s" "secondary" -}}
                           {{- end -}}
-                        " href="{{ .URL }}">{{ i18n "content.readmore" | default "Read more..." }}</a>
+                        " href="{{ .Permalink }}">{{ i18n "content.readmore" | default "Read more..." }}</a>
                       {{- end -}}
                     {{- end -}}
                   {{- end -}}
@@ -165,7 +165,7 @@
             {{- range $content_page }}
               {{- if and (ne $self.Params.read_more false) (or $self.Params.read_more .Truncated) }}
                 <div class="card-footer">
-                  <a href="{{ .URL }}">{{ i18n "content.readmore" | default "Read more..." }}</a>
+                  <a href="{{ .Permalink }}">{{ i18n "content.readmore" | default "Read more..." }}</a>
                 </div>
               {{- end -}}
             {{- end -}}

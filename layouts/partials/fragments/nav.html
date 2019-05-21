@@ -39,7 +39,7 @@
       <ul class="navbar-nav">
         {{- if .Params.prepend -}}
           {{- range sort .Params.prepend }}
-            {{- $isMenuCurrent := or (eq $.root.URL .url) (eq (printf "%s/" $.root.URL) .url) (eq $.root.URL (printf "%s/" .url)) -}}
+            {{- $isMenuCurrent := or (eq $.root.Permalink .url) (eq (printf "%s/" $.root.Permalink) .url) (eq $.root.Permalink (printf "%s/" .url)) -}}
             <li class="nav-item">
               <a href="{{ .url | relLangURL }}"
                 {{- if hasPrefix .URL "#" }}
@@ -54,7 +54,7 @@
         {{- end }}
         {{- if .Site.Menus.main -}}
           {{- range sort .Site.Menus.main }}
-            {{- $isMenuCurrent := or (eq $.root.URL .URL) (eq (printf "%s/" $.root.URL) .URL) (eq $.root.URL (printf "%s/" .URL)) -}}
+            {{- $isMenuCurrent := or (eq $.root.Permalink .URL) (eq (printf "%s/" $.root.Permalink) .URL) (eq $.root.Permalink (printf "%s/" .URL)) -}}
             <li class="nav-item">
               <a href="{{ .URL | relLangURL }}"
                 {{- if hasPrefix .URL "#" }}
@@ -69,7 +69,7 @@
         {{- end }}
         {{- if .Params.postpend -}}
           {{- range sort .Params.postpend }}
-            {{- $isMenuCurrent := or (eq $.root.URL .url) (eq (printf "%s/" $.root.URL) .url) (eq $.root.URL (printf "%s/" .url)) -}}
+            {{- $isMenuCurrent := or (eq $.root.Permalink .url) (eq (printf "%s/" $.root.Permalink) .url) (eq $.root.Permalink (printf "%s/" .url)) -}}
             <li class="nav-item">
               <a href="{{ .url | relLangURL }}"
                 {{- if hasPrefix .URL "#" }}
@@ -169,7 +169,7 @@
                 {{- print " aria-current=\"page\"" -}}
               {{- end -}}>
               {{- if ne $.root . }}
-                <a href="{{ .URL -}}">
+                <a href="{{ .Permalink -}}">
                   {{- .Title -}}
                 </a>
               {{- else }}
