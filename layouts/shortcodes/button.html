@@ -1,0 +1,8 @@
+{{- $color := (.Get "color") | default "primary" -}}
+{{- $url := .Get "url" -}}
+
+<a class="btn
+  {{- if hasPrefix $url "#" }} anchor{{- end -}}
+  {{- printf " btn-%s" $color -}}" href="{{ $url | relLangURL }}">
+  {{- .Inner -}}
+</a>

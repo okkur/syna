@@ -1,0 +1,6 @@
+{{- $align := .Get 0 -}}
+
+<div class="
+  {{- if (in (slice "left" "center" "right") $align) -}}
+    {{- printf " text-%s" $align -}}
+  {{- end -}}">{{ .Inner }}</div>
