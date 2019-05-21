@@ -5,7 +5,7 @@
 {{- if (isset . "data") -}}
   {{- .page_scratch.Set "content_fragment_path" .data.content_fragment -}}
   {{- .page_scratch.Set "content_page" .data.content_fragment -}}
-  {{- .page_scratch.Set "url" .data.page.URL -}}
+  {{- .page_scratch.Set "url" .data.page.Permalink -}}
 {{- else -}}
   {{- .page_scratch.Set "content_fragment_path" .Params.content -}}
 
@@ -32,7 +32,7 @@
   {{- end -}}
 
   {{- $page := cond (eq (.page_scratch.Get "page") "") $.page (.page_scratch.Get "page") -}}
-  {{- .page_scratch.Set "url" $page.URL -}}
+  {{- .page_scratch.Set "url" $page.Permalink -}}
   {{- if (eq ($.page_scratch.Get "fragment_path") "index.md") -}}
     {{- .page_scratch.Set "content_page" $page -}}
   {{- else -}}
