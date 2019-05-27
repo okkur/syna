@@ -1,1 +1,1 @@
-<div class="hide-on-mobile">{{ .Inner }}</div>
+{{- printf "<div class=\"hide-on-mobile\">%s</div>" .Inner | safeHTML -}}

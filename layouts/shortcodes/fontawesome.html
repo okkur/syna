@@ -1,3 +1,1 @@
-<a href="{{ .Get "url" }}">
-  <i class="{{ .Get "icon" }} fa-2x"></i>
-</a>
+{{- printf "<a href=\"%s\"><i class=\"%s fa-2x\"></i></a>" (.Get "url") (.Get "icon") | safeHTML -}}

@@ -1,0 +1,8 @@
+{{ if eq (.Get 0) "table" }}
+  {{ $content := .Inner | markdownify }}
+  {{ $content := replace $content "<table>" "<table class='table table-bordered'>" }}
+  {{ $content := replace $content "</table>" "</table></div>" }}
+  {{ $content := replaceRE "<(th|td)><th>(.*)</th></(th|td)>" "<th>$2</th>" $content }}
+  {{ $content := replaceRE "<(th|td)><div class=['\"]hide-on-mobile['\"]>(.*)</div></(th|td)>" "<$1 class='hide-on-mobile'>$2</$3>" $content }}
+  {{ $content | safeHTML }}
+{{ end }}

@@ -1,6 +1,5 @@
 {{- $self := .self -}}
 {{- $bg := $self.Scratch.Get "bg" }}
-{{- $text_color := cond (in (slice "white" "light" "secondary" "primary") $bg) "text-body" "text-white" -}}
 
 {{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "Name" .Name "Params" .Params) -}}
   {{- partial "helpers/section-header.html" (dict "self" $self "bg" $bg "params" .Params) }}
@@ -8,12 +7,7 @@
     <div class="col-12 order-lg-1 text-center">
       <div class="row justify-content-center">
         <div class="col table-responsive">
-          {{ $content := $self.Content }}
-          {{ $content := replace $content "<table>" (printf "<table class='table table-bordered %s'>" $text_color) }}
-          {{ $content := replace $content "</table>" "</table></div>" }}
-          {{ $content := replaceRE "<(th|td)><th>(.*)</th>\n</(th|td)>" "<th>$2</th>" $content }}
-          {{ $content := replaceRE "<(th|td)><div class=['\"]hide-on-mobile['\"]>(.*)</div>\n</(th|td)>" "<$1 class='hide-on-mobile'>$2</$3>" $content }}
-          {{ $content | safeHTML }}
+          {{ $self.Content }}
         </div>
       </div>
     </div>
