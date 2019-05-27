@@ -11,7 +11,7 @@ date = "2017-10-10"
 weight = 120
 background = "secondary"
 
-title = "Table Fragment"
+title = "Simple Table"
 subtitle= "Simple Markdown table"
 #title_align = "left" # Default is center, can be left, right or center
 +++
