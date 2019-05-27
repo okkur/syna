@@ -22,7 +22,7 @@
 {{/* Fragment specific resource */}}
 {{- $location := (printf "%s/%s" .root.file_path $image) -}}
 {{- if (fileExists (printf "content/%s" $location)) -}}
-  {{- .root.page_scratch.Set "resource" (.root.page.Resources.GetMatch (strings.TrimPrefix .root.page.Dir $location)) -}}
+  {{- .root.page_scratch.Set "resource" (.root.page.Resources.GetMatch (strings.TrimPrefix .root.page.File.Dir $location)) -}}
 {{- end -}}
 
 {{- if eq (.root.page_scratch.Get "resource") nil -}}
