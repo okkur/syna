@@ -9,15 +9,15 @@ enableGitInfo = true
 version = "0.15.0"
 disableKinds = ["RSS", "taxonomy", "taxonomyTerm"]
 
+# Google Analytics tracking
+googleAnalytics = ""
+
 [outputs]
   home = ["HTML", "JSON"]
 
 [frontmatter]
 date = ["date", "lastmod"]
 lastmod = ["lastmod", ":git", "date"]
-
-# Google Analytics tracking
-googleAnalytics = ""
 
 [params]
   name = "Okkur Labs"
