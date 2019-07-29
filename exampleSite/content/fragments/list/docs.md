@@ -29,6 +29,20 @@ This value will be used for finding pages. The value by default is the path to t
 
 If set to `true`, it will show the summary of the page. It works by looking for a Content fragment in the page and fetching the summary, either by looking for a `summary` variable in that Content fragment or by using Hugo to summarize the content.
 
+#### sort
+*type: string*
+*accepted values: All Hugo [page variables](https://gohugo.io/variables/page/)*
+*default: PublishDate*
+
+Sets the sort property. Accepted values are all the public fields on the page variable. Please refer to [*Page variables*](https://gohugo.io/variables/page/) documentation page on Hugo.
+
+#### sort_order
+*type: string*
+*accepted values: asc, desc*
+*default: asc*
+
+Sets the sort order.
+
 #### images
 *type: boolean*  
 *default: true*

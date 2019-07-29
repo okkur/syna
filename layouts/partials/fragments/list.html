@@ -34,7 +34,7 @@
   <div class="row mx-0
     {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
   ">
-    {{- range first (.Params.count | default 10) (.page_scratch.Get "pages") -}}
+    {{- range first (.Params.count | default 10) (sort (.page_scratch.Get "pages") (.Params.sort | default "PublishDate") (.Params.sort_order | default "asc")) -}}
       {{- $page := . -}}
       {{- $self.page_scratch.Set "article_page_fragments" (slice .) -}}
       {{- range .Resources.ByType "page" -}}
