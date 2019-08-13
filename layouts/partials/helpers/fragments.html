@@ -151,7 +151,7 @@
 {{- if $page_scratch.Get "fragments" -}}
   {{- range ($page_scratch.Get "fragments") -}}
     {{- $name := replace .Name "/index" "" -}}
-    {{- if $root.File -}}
+    {{- if ne $root.File nil -}}
       {{- $directory_same_name := in ($page_scratch.Get "fragments_directory_name") (printf "%s%s/" $root.File.Dir (replace $name ".md" "")) -}}
       {{- if and (not .Params.disabled) (isset .Params "fragment") (not (where ($page_scratch.Get "page_fragments") ".Name" $name)) (not $directory_same_name) -}}
         {{- if or $is_404 (ne .Params.fragment "404") -}}
