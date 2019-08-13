@@ -119,7 +119,9 @@
   {{- end -}}
 
   {{- range sort ($page_scratch.Get "fragment_directories_tmp") "index" "desc" -}}
-    {{- $page_scratch.Add "fragment_directories" .directory -}}
+    {{ if .directory }}
+      {{- $page_scratch.Add "fragment_directories" .directory -}}
+    {{ end }}
   {{- end -}}
 {{- end -}}
 
@@ -128,15 +130,13 @@
   the fragments in those directories. We will remove the duplicates later. */}}
 {{- $page_scratch.Set "fragments" (slice) -}}
 {{- range $directory := ($page_scratch.Get "fragment_directories") -}}
-  {{- if $directory -}}
-    {{/* Every index.md or [page].md file can be a fragment as well. Even in
-      _index directories. */}}
+  {{/* Every index.md or [page].md file can be a fragment as well. Even in
+    _index directories. */}}
+  {{- $page_scratch.Add "fragments" . -}}
+  {{/* Fragments are just page resources with type page (generally any .md
+    file) */}}
+  {{- range ($directory.Resources.ByType "page") -}}
     {{- $page_scratch.Add "fragments" . -}}
-    {{/* Fragments are just page resources with type page (generally any .md 
-      file) */}}
-    {{- range ($directory.Resources.ByType "page") -}}
-      {{- $page_scratch.Add "fragments" . -}}
-    {{- end -}}
   {{- end -}}
 {{- end -}}
 

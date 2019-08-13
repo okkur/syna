@@ -1,21 +1,22 @@
+{{- $items := partial "helpers/subitems.html" . -}}
+
 {{- $self := . -}}
-{{- $members := where (.page.Resources.Match (printf "%s/*.md" .Name)) ".Name" "ne" .self.Name -}}
 {{- $bg := .self.Scratch.Get "bg" }}
 
 {{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "Name" .Name "Params" .Params) -}}
   {{- partial "helpers/section-header.html" (dict "self" $self.self "bg" $bg "params" .Params) }}
-  {{- if eq (len $members) 0 -}}
+  {{- if eq (len $items) 0 -}}
     {{- partial "helpers/empty-subpath.html" (dict "context" "member" "root" $) -}}
-  {{- else if gt $members 1 -}}
+  {{- else if gt $items 1 -}}
     <div class="row justify-content-center align-items-start">
-      {{- range $members -}}
+      {{- range $items -}}
         {{/* Handle special case of index.md being considered a member */}}
         {{- if not (in .Name "/index.md") -}}
           {{- $member := .Params -}}
           <div class="col-lg-4 col-md-6 col-sm-12 pt-3 pb-5 text-left text-sm-center">
             {{- if .Params.asset -}}
               <div class="text-center m-2">
-                <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset "resize" "250x250") }}" class="img-fluid rounded-circle w-75 border
+                <img src="{{ partial "helpers/image.html" (dict "root" $self "this" . "asset" .Params.asset "resize" "250x250") }}" class="img-fluid rounded-circle w-75 border
                   {{- if or (eq $bg "white") (eq $bg "light") (eq $bg "secondary") (eq $bg "primary") -}}
                     {{- print " border-dark" -}}
                   {{- else -}}
@@ -87,9 +88,9 @@
         {{- end -}}
       {{- end }}
     </div>
-  {{- else if le $members 1 -}}
+  {{- else if le $items 1 -}}
     <div class="card p-2">
-      {{- range $members -}}
+      {{- range $items -}}
         <div class="row m-0 justify-content-center 
           {{- if .Params.asset -}}
             {{- printf " align-items-center" -}}
@@ -99,7 +100,7 @@
             {{- $member := .Params -}}
             {{- if .Params.asset -}}
               <div class="col-12 col-lg-5 p-5 text-center">
-                <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset "resize" "250x250") }}" class="img-fluid rounded-circle border
+                <img src="{{ partial "helpers/image.html" (dict "root" $self "this" . "asset" .Params.asset "resize" "250x250") }}" class="img-fluid rounded-circle border
                   {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "white") -}}
                 " alt="{{ $member.title }}"></img>
               </div>

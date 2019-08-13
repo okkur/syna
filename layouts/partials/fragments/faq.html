@@ -1,7 +1,8 @@
+{{- $items := partial "helpers/subitems.html" . -}}
+
 {{- $self := .self -}}
 {{- $bg := .Params.background | default "white" -}}
 {{- .page_scratch.Add "js" (dict "file" "syna-collapse.js") -}}
-{{- $items := where (.page.Resources.Match (printf "%s/*.md" .Name)) ".Name" "ne" $self.Name -}}
 
 {{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "Name" .Name "Params" .Params) -}}
   {{- partial "helpers/section-header.html" (dict "self" $self "bg" $bg "params" .Params) }}
