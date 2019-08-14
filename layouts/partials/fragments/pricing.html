@@ -1,5 +1,6 @@
+{{- $items := partial "helpers/subitems.html" . -}}
+
 {{- .page_scratch.Add "js" (dict "file" "syna-pricing.js") -}}
-{{- $items := where (.resources.Match (printf "%s/*.md" .Name)) ".Name" "ne" .self.Name -}}
 {{- $self := . -}}
 {{- $bg := .self.Scratch.Get "bg" }}
 

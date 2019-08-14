@@ -1,5 +1,6 @@
+{{- $items := partial "helpers/subitems.html" . -}}
+
 {{- $self := . -}}
-{{- $items := where (.page.Resources.Match (printf "%s/*.md" .Name)) ".Name" "ne" .self.Name -}}
 {{- .page_scratch.Add "js" (dict "file" "syna-portfolio.js") -}}
 {{- $bg := .self.Scratch.Get "bg" }}
 
@@ -22,7 +23,7 @@
               <a href="{{ .Params.item_url | relLangURL }}">
             {{- end }}
                 {{- if .Params.asset -}}
-                  <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .Params.asset "resize" "500x380") }}" class="img-fluid" alt="{{ .Params.asset.text }}">
+                  <img src="{{ partial "helpers/image.html" (dict "root" $self "this" . "asset" .Params.asset "resize" "500x380") }}" class="img-fluid" alt="{{ .Params.asset.text }}">
                 {{- end }}
                 <div class="position-absolute hover-overlay"></div>
                 {{- if .Params.labels -}}
