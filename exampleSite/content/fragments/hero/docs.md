@@ -35,6 +35,13 @@ If set to `true` and `asset` is not set, title will be the same as page title.
 
 If set to `true`, Particles.js would be added to the page and displayed in the Hero fragment. 
 
+#### minHeight
+*type: string*  
+*accepted values: css size values*  
+*default: initial*
+
+Sets minimum height of hero fragment.
+
 #### header
 *type: [asset object](/docs/global-variables/#asset)*
 

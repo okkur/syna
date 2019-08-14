@@ -6,12 +6,19 @@
   border-radius: 0rem;
 }
 
-nav[role=navigation] {
+nav[role="navigation"] {
   z-index: 1000 !important;
 }
 
 .hero {
   position: relative;
+
+  .jumbotron {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
   .particles-js {
     position: absolute;

@@ -8,12 +8,20 @@
 <header id="{{ .Name }}" class="fragment hero">
   {{- if .Params.header }}
     <div
-      style="background-image:url({{ partial "helpers/image.html" (dict "root" $self "asset" .Params.header) }})"
+      style="
+        {{- with .Params.minHeight -}}
+          {{- (printf "min-height: %s;" .) | safeCSS -}}
+        {{- end -}}
+        background-image:url({{ partial "helpers/image.html" (dict "root" $self "asset" .Params.header) }})"
       class="jumbotron text-center header-image mb-0
         {{- printf " bg-%s" $bg -}}
       ">
   {{- else }}
-    <div class="jumbotron text-center mb-0
+    <div style="
+        {{- with .Params.minHeight -}}
+          {{- (printf "min-height: %s;" .) | safeCSS -}}
+        {{- end -}}
+      "class="jumbotron text-center mb-0
       {{- printf " bg-%s" $bg -}}
     ">
   {{- end }}
@@ -79,17 +87,19 @@
       </div>
     {{- end -}}
   {{- end -}}
-  {{- range .Params.buttons }}
-    <a class="overlay btn btn-lg m-2
-      {{- if hasPrefix .url " # " }} anchor{{ end -}}
-      {{- $color := .color | default "primary" -}}
-      {{- printf " btn-%s " $color -}}
-    " href="{{ .url | relLangURL }}">
-      <div class="column justify-content-center align-content-center">
-        {{- .text -}}
-      </div>
-    </a>
-  {{- end }}
+  <div>
+    {{- range .Params.buttons }}
+      <a class="overlay btn btn-lg m-2
+        {{- if hasPrefix .url " # " }} anchor{{ end -}}
+        {{- $color := .color | default "primary" -}}
+        {{- printf " btn-%s " $color -}}
+      " href="{{ .url | relLangURL }}">
+        <div class="column justify-content-center align-content-center">
+          {{- .text -}}
+        </div>
+      </a>
+    {{- end }}
+  </div>
   </div>
 </header>
 <script>
