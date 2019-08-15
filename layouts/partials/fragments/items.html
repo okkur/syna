@@ -15,8 +15,8 @@
           {{- $item := .Params -}}
           {{- $this := . }}
           <div class="col-md-4 d-flex flex-column">
-            {{- if and $item.asset $item.asset.url }}
-              <a href="{{ $item.asset.url | relLangURL }}" class="col justify-content-between d-flex flex-column header
+            {{- if and $item.asset (or $item.asset.url $item.asset.url_ref) }}
+              <a href="{{- partial "helpers/url.html" (dict "self" $self "url" $item.asset.url "url_ref" $item.asset.url_ref) -}}" class="col justify-content-between d-flex flex-column header
                 {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "") -}}
               ">
             {{- else }}

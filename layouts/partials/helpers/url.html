@@ -1,0 +1,5 @@
+{{- $url := .url | relLangURL -}}
+{{- if .url_ref -}}
+  {{- $url = ref .self.page .url_ref -}}
+{{- end -}}
+{{- return $url -}}

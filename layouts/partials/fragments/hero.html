@@ -93,7 +93,7 @@
         {{- if hasPrefix .url " # " }} anchor{{ end -}}
         {{- $color := .color | default "primary" -}}
         {{- printf " btn-%s " $color -}}
-      " href="{{ .url | relLangURL }}">
+      " href="{{- partial "helpers/url.html" (dict "self" $self "url" .url "url_ref" .url_ref) -}}">
         <div class="column justify-content-center align-content-center">
           {{- .text -}}
         </div>
