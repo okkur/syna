@@ -94,7 +94,7 @@ class Stream {
   }
 
   _translateUrlQuery(url) {
-    const query = url.split('?')[1] || '';
+    const query = url.slice(url.indexOf('?') + 1) || '';
     return query
       .split('&')
       .reduce((tmp, pair) => {
