@@ -28,13 +28,17 @@
   {{- .page_scratch.Set "pages" $paginator.Pages -}}
   {{- .page_scratch.Set "paginator" $paginator -}}
 {{- end -}}
+
+{{- $filtered_pages := (partial "helpers/filter-special-pages.html" (dict "pages" (.page_scratch.Get "pages") "page_scratch" .page_scratch)) -}}
+{{- $sorted_pages := (sort $filtered_pages (.Params.sort | default "PublishDate") (.Params.sort_order | default "asc")) -}}
+
 {{- $bg := .self.Scratch.Get "bg" }}
 {{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "Name" .Name "Params" .Params) -}}
   {{- partial "helpers/section-header.html" (dict "self" $self.self "bg" $bg "params" .Params) }}
   <div class="row mx-0
     {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
   ">
-    {{- range first (.Params.count | default 10) (sort (.page_scratch.Get "pages") (.Params.sort | default "PublishDate") (.Params.sort_order | default "asc")) -}}
+    {{- range first (.Params.count | default 10) $sorted_pages -}}
       {{- $page := . -}}
       {{- $self.page_scratch.Set "article_page_fragments" (slice .) -}}
       {{- range .Resources.ByType "page" -}}
