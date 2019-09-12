@@ -53,13 +53,7 @@
 {{- if ne (.page_scratch.Get "content_page") "" -}}
   {{- $bg := .self.Scratch.Get "bg" }}
   {{- $toc := (.page_scratch.Get "content_page").TableOfContents -}}
-  {{/* Remove empty lists and list items */}}
-  {{- $toc := (replace $toc "<ul>\n<li>\n<ul>" "<ul>") -}}
-  {{- $toc := (replace $toc "<ul>\n<li>\n<ul>" "<ul>") -}}
-  {{- $toc := (replace $toc "<ul>\n<li>\n<ul>" "<ul>") -}}
-  {{- $toc := (replace $toc "</ul></li>\n</ul>" "</ul>") -}}
-  {{- $toc := (replace $toc "</ul></li>\n</ul>" "</ul>") -}}
-  {{- $toc := (replace $toc "</ul></li>\n</ul>" "</ul>") -}}
+  {{/* Change urls and make them absolute */}}
   {{- $toc := (replace $toc "<li><a href=\"" (printf "<li><a href=\"%s" (.page_scratch.Get "url"))) -}}
   {{/* count the number of remaining li tags and only display ToC if more than
     1, otherwise why bother */}}
