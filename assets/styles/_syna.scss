@@ -11,7 +11,8 @@
 }
 
 .fragment {
-  &.bg-primary, .bg-primary {
+  &.bg-primary,
+  .bg-primary {
     a:not(.nav-link):not(.ignore-color-change) {
       color: $light;
 
@@ -21,14 +22,15 @@
     }
   }
 
-  &.bg-dark, .bg-dark {
+  &.bg-dark,
+  .bg-dark {
     .nav-link {
       color: $navbar-dark-color;
-    
+
       @include hover-focus {
         color: $navbar-dark-hover-color;
       }
-    
+
       &.disabled {
         color: $navbar-dark-disabled-color;
       }
@@ -37,7 +39,8 @@
 }
 
 .fragment {
-  &.bg-dark, .bg-dark {
+  &.bg-dark,
+  .bg-dark {
     a:not(.ignore-color-change) {
       @include hover {
         color: darken($light, 15%);
@@ -95,6 +98,7 @@ article .content {
 
 .content-sidebar {
   word-break: break-word;
+  overflow-y: auto;
 }
 
 .items {
@@ -112,18 +116,19 @@ article .content {
 }
 
 pre {
-  padding: .75rem;
+  padding: 0.75rem;
 }
 
 section .bg {
   @each $bg in dark, secondary {
     &-#{$bg} {
-      code, pre {
+      code,
+      pre {
         background-color: $light;
         color: $dark;
       }
 
-      code {
+      p code {
         padding: 3px 4px 2px;
       }
     }
@@ -131,19 +136,21 @@ section .bg {
 
   @each $bg in white, primary, success, info, warning, danger, light {
     &-#{$bg} {
-      code, pre {
+      code,
+      pre {
         background-color: $dark;
         color: $light;
       }
 
-      code {
+      p code {
         padding: 3px 4px 2px;
       }
     }
   }
 }
 
-.faq, .list {
+.faq,
+.list {
   .collapse {
     display: block;
     height: auto;
@@ -168,7 +175,7 @@ section .bg {
     margin-right: 8px;
     transition: $transition-base;
 
-    [class*=fa-] {
+    [class*="fa-"] {
       margin-right: 2px;
     }
   }
@@ -196,12 +203,14 @@ section .bg {
     padding-right: 1rem;
   }
 
-  &-change, &-menu {
+  &-change,
+  &-menu {
     min-width: 4.5rem;
     width: 4.5rem;
   }
 }
 
-#TableOfContents a.active, .active-page {
+#TableOfContents a.active,
+.active-page {
   font-weight: bold;
 }
