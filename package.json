@@ -1,9 +1,9 @@
 {
   "name": "syna",
-  "version": "0.15.0",
+  "version": "0.15.2",
   "description": "Highly customizable open source theme for Hugo based static websites",
   "main": "static-main",
-  "repository": "git@github.com:okkur/syna.git",
+  "repository": "https://git.okkur.org/syna",
   "author": "Michael Grosser (stp-ip)",
   "license": "Apache",
   "scripts": {

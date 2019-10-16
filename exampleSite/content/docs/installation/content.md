@@ -15,20 +15,20 @@ This way whenever you want to update the theme you can just pull the updates and
 
 ```bash
 git submodule init # If you haven't initialized before
-git submodule add https://github.com/okkur/syna.git themes/syna
+git submodule add https://git.okkur.org/syna themes/syna
 cd themes/syna
-git checkout v0.12.0 # Latest release as of now is v0.12.0
+git checkout v0.15 # Latest release as of now is v0.15
 ```
 
 *You can visit [Hugo's documentation](https://gohugo.io/themes/installing-and-using-themes/) on installing themes for more information.*
 
 ### Using starter
 
-If you don't have a site yet, you can use our [starter](https://github.com/okkur/syna-start).
+If you don't have a site yet, you can use our [starter](https://git.okkur.org/syna-start).
 Using the starter you will have a sample page with several fragment examples and you can use them to start building your own website.
 
 ```bash
-git clone --recurse-submodules https://github.com/okkur/syna-start.git # --recurse-submodules will clone the theme
+git clone --recurse-submodules https://git.okkur.org/syna-start # --recurse-submodules will clone the theme
 cd syna-start
 hugo server -D # to build your website, run hugo instead
 ```

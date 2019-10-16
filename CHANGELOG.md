@@ -15,6 +15,46 @@ _2018_
 
 -->
 
+# v0.15.2
+_2019-10-16_
+  - [Downloads for v0.15.2](https://github.com/okkur/syna/releases/tag/v0.15.2)
+  - [Changelog since v0.15.1](#changes-since-v0151)
+
+## Documentation for v0.15.2
+[Documentation](https://syna.okkur.org/docs) *Documentation defaults to latest release*
+
+## Changes since v0.15.1
+  - Add support for sort order in the list fragment #583
+  - Add minHeight param to hero fragment #571
+  - Bump Hugo's minimum required version to v0.58 #588
+
+## Fixes since v0.15.1
+  - Fix fragments not showing in the 404 page #575
+  - Fix global fragments with subitems showing warning #582
+  - Fix toc list displaying pagination in docs
+  - Fix extra padding on code blocks #603
+  - Filter special pages out of list fragment's displayed pages #595
+  - Fix children deptch in toc #596
+  - Fix bad split in event params (pubsub) #594
+
+---
+
+# v0.15.1
+_2019-05-27_
+  - [Downloads for v0.15.1](https://github.com/okkur/syna/releases/tag/v0.15.1)
+  - [Changelog since v0.15.0](#changes-since-v015)
+
+## Documentation for v0.15.1
+[Documentation](https://syna.okkur.org/docs) *Documentation defaults to latest release*
+
+## Changes since v0.15.0
+
+## Fixes since v0.15.0
+  - Add the new auto generated files (have been missed in a previous commit)
+  - Move syna-grid.css from user side to theme side (bad approach, removes it from user side at least)
+  - Fix the .Dir deprecation warning, I have no idea how these are popping up
+
+---
 # v0.15.0
 _2019-05_
   - [Downloads for v0.15.0](https://github.com/okkur/syna/releases/tag/v0.15.0)
