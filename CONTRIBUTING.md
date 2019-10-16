@@ -19,8 +19,6 @@ This guide helps make contributing to Syna Theme simple and efficient for everyo
 If you are starting out contributing to Syna Theme, there might be smaller scoped "starter issues" available:
 [Current starter issues](https://github.com/okkur/syna/labels/starter%20issue)
 
-For helping out developing on Syna directly take a look at our [developer documentation](https://syna.okkur.org/docs/development).
-
 ### Report bug
 
 If you are sure you found a bug and no issue exists yet, please feel free to create an issue following the [issue template](/.github/ISSUE_TEMPLATE.md).
