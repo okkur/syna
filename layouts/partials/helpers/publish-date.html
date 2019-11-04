@@ -1,6 +1,6 @@
 {{- $date := .root.Date | default .root.Lastmod }}
 {{- if not (eq .badge false) }}
-  <span class="badge mr-1
+  <span class="publish-date badge mr-1
     {{- if (eq $.background "dark") -}}
       {{- printf " badge-%s" "light" -}}
     {{- else -}}
@@ -11,7 +11,7 @@
     </time>
   </span>
 {{- else }}
-  <span class="mr-1 badge
+  <span class="publish-data mr-1 badge
     {{- if (eq $.background "dark") -}}
       {{- printf " badge-%s" "light" -}}
     {{- end -}}">
