@@ -1,0 +1,32 @@
+{{/* Sets page to either the given frontmatter section variable, current
+  parent section or if the current page is a section, the current page */}}
+{{- .page_scratch.Set "page" (.Site.GetPage "Section" (.Params.section | default .root.Section)) -}}
+{{- if .root.CurrentSection -}}
+  {{- if and (not .Params.section) (eq .root.CurrentSection.Kind "section") -}}
+    {{- .page_scratch.Set "page" .root.CurrentSection -}}
+  {{- end -}}
+{{- end -}}
+
+{{- .page_scratch.Set "pages" (.page_scratch.Get "page").Pages -}}
+{{- if .Params.subsections -}}
+  {{- .page_scratch.Add "pages" (.page_scratch.Get "page").Sections -}}
+{{- end -}}
+{{- if .Params.subsection_leaves -}}
+  {{- range (.page_scratch.Get "page").Sections -}}
+    {{- $.page_scratch.Add "pages" .Pages -}}
+  {{- end -}}
+{{- end -}}
+
+{{/* Pagination is used if paginate (default value is 10) is more than
+  frontmatter count variable */}}
+{{- $renderPagination := and (in (slice "section" "home") .root.Kind) (or (not (isset .Params "count")) (le .Params.count 0)) -}}
+{{- if $renderPagination -}}
+  {{- $paginator := .root.Paginate ($.page_scratch.Get "pages") -}}
+  {{- .page_scratch.Set "pages" $paginator.Pages -}}
+  {{- .page_scratch.Set "paginator" $paginator -}}
+{{- end -}}
+
+{{- $filtered_pages := (partial "helpers/filter-special-pages.html" (dict "pages" (.page_scratch.Get "pages") "page_scratch" .page_scratch)) -}}
+{{- $sorted_pages := (sort $filtered_pages (.Params.sort | default "PublishDate") (.Params.sort_order | default "asc")) -}}
+
+{{- return (dict "sorted_pages" $sorted_pages "renderPagination" $renderPagination) -}}
