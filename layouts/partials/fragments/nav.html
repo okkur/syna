@@ -151,7 +151,7 @@
   * Render the breadcrumb
   */}}
 {{- if and $display_breadcrumb (lt $level (len ($page_scratch.Get "crumbs"))) }}
-  <nav aria-label="breadcrumb" class="overlay navbar navbar-expand-lg pt-2
+  <nav aria-label="breadcrumb" class="overlay navbar breadcrumb-container navbar-expand-lg pt-2
     {{- printf " bg-%s" $nav_bg -}}
     {{- if or (eq $bg "light") (eq $bg "white") (eq $bg "secondary") -}}
       {{- printf " navbar-%s" "light" -}}
