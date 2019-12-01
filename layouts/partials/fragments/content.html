@@ -9,7 +9,7 @@
           <div class="sticky-top pt-3">
         {{- end -}}
         {{- if .title }}
-          <div class="col-12 px-0
+          <div class="content-sidebar-title col-12 px-0
             {{- partial "helpers/text-color.html" (dict "self" $self) -}}
           ">
             {{- $title_align := .title_align | default "left" -}}
@@ -19,7 +19,7 @@
           </div>
         {{- end }}
         {{- $content_align := .content_align | default "left" -}}
-        <div class="col-12 px-0
+        <div class="content-sidebar-body col-12 px-0
           {{- printf " text-%s" $content_align -}}
           {{- partial "helpers/text-color.html" (dict "self" $self "light" "secondary") -}}
         ">
@@ -36,7 +36,7 @@
     {{- end }}
       {{- partial "helpers/section-header.html" (dict "self" $self "bg" $bg "params" .Params) }}
       {{- if or .Params.display_date .Params.categories -}}
-        <div class="col-12 pb-4 mt-2">
+        <div class="content-info col-12 pb-4 mt-2">
           {{- if .Params.display_date -}}
             {{- partial "helpers/publish-date.html" (dict "root" $self "background" $bg) -}}
           {{- end -}}
@@ -46,11 +46,11 @@
         </div>
       {{- end }}
       {{- if .Params.asset -}}
-        <div class="col-12">
+        <div class="content-image col-12">
           <img src="{{ partial "helpers/image.html" (dict "root" . "asset" .Params.asset) }}" alt="{{ .Params.subtitle | default .Params.title }}" class="img-fluid mb-4">
         </div>
       {{- end -}}
-      <div class="col-12 content px-0
+      <div class="content-body col-12 content px-0
         {{- partial "helpers/text-color.html" (dict "self" $self) -}}
       ">
         {{- partial "helpers/slot.html" (dict "root" $ "slot" "before-content" "data" (dict "page" $.page "content_fragment" .self)) -}}

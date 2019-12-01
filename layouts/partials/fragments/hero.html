@@ -26,13 +26,13 @@
     ">
   {{- end }}
   {{- if .Params.particles }}
-    <div id="{{ printf "%s-particles-js" .Name }}" class="particles-js"></div>
+    <div id="{{ printf "%s-particles-js" .Name }}" class="hero-particles particles-js"></div>
   {{- end -}}
   {{- if .Params.asset -}}
     {{- with .Params.asset }}
-      <div class="row justify-content-center align-items-start">
+      <div class="hero-image-container row justify-content-center align-items-start">
         <img
-          class="overlay img-fluid"
+          class="hero-image overlay img-fluid"
           src="{{ partial "helpers/image.html" (dict "root" $self "asset" .) }}"
           alt="
             {{- if .text -}}
@@ -49,8 +49,8 @@
       </div>
     {{- end }}
     {{- with .Params.subtitle }}
-      <div class="row justify-content-center align-items-start">
-        <h1 class="overlay jumbotron-heading my-4
+      <div class="hero-subtitle-container row justify-content-center align-items-start">
+        <h1 class="hero-subtitle overlay jumbotron-heading my-4
           {{- partial "helpers/text-color.html" (dict "self" $self.self) -}}
         ">
           {{- . | markdownify -}}
@@ -59,8 +59,8 @@
     {{- end -}}
   {{- else }}
     {{- if .Params.title_page }}
-      <div class="row justify-content-center align-items-start">
-        <h1 class="overlay jumbotron-heading
+      <div class="hero-page-title-container row justify-content-center align-items-start">
+        <h1 class="hero-page-title overlay jumbotron-heading
           {{- partial "helpers/text-color.html" (dict "self" $self.self) -}}
         ">
           {{ $.root.Title }}
@@ -68,8 +68,8 @@
       </div>
     {{- else -}}
       {{- with .Params.title }}
-        <div class="row justify-content-center align-items-start">
-          <h1 class="overlay jumbotron-heading
+        <div class="hero-title-container row justify-content-center align-items-start">
+          <h1 class="hero-title overlay jumbotron-heading
             {{- partial "helpers/text-color.html" (dict "self" $self.self) -}}
           ">
             {{- . -}}
@@ -78,8 +78,8 @@
       {{- end -}}
     {{- end -}}
     {{- with .Params.subtitle }}
-      <div class="row justify-content-center align-items-start">
-        <div class="overlay lead
+      <div class="hero-subtitle-container row justify-content-center align-items-start">
+        <div class="hero-subtitle overlay lead
           {{- partial "helpers/text-color.html" (dict "self" $self.self) -}}
         ">
           {{- . | markdownify -}}
@@ -87,7 +87,7 @@
       </div>
     {{- end -}}
   {{- end -}}
-  <div>
+  <div class="hero-buttons">
     {{- range .Params.buttons }}
       <a class="overlay btn btn-lg m-2
         {{- if hasPrefix .url " # " }} anchor{{ end -}}
