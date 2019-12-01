@@ -2,13 +2,11 @@
 {{ (printf "<!-- %s -->" (humanize .Params.fragment)) | safeHTML }}
 {{- end }}
 {{- if .start }}
-<section id="{{ .Name }}" class="fragment">
+<section id="{{ .Name }}" class="{{- printf "fragment %s" .section_class -}}">
   {{- if ne .in_slot true }}
-    <div class="container-fluid
-      {{- printf " bg-%s" .bg -}}
-    ">
+    <div class="{{- printf "container-fluid bg-%s %s" .bg .container_class -}}">
   {{- end }}
-    <div class="container {{ print (.Params.padding | default (cond (eq .in_slot true) "p-0" "py-5")) -}}">
+    <div class="container {{ print (.Params.padding | default (cond (eq .in_slot true) "p-0" "py-5")) -}} {{- printf " %s" .container_class -}}">
 {{- end -}}
 {{- if .end }}
     </div>{{/* .container */}}
