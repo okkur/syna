@@ -16,7 +16,9 @@
     "start": "npm run watch-js",
     "build": "npm run build-js && npm run build-hugo",
     "test:colors": "node _tests/colors-generator/index.js",
-    "test:alignments": "node _tests/align-generator/index.js"
+    "test:alignments": "node _tests/align-generator/index.js",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -24,6 +26,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "concurrently": "^3.5.1",
+    "cypress": "^3.6.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "node-sass": "^4.8.3",
     "style-loader": "^0.20.3",
