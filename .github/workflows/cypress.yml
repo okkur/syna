@@ -1,0 +1,26 @@
+name: Cypress
+
+on: [pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Use Node.js 10.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+
+    - name: Setup Hugo
+      uses: peaceiris/actions-hugo@v2
+      with:
+        hugo-version: '0.60.1'
+        
+    - name: Cypress run
+      uses: cypress-io/github-action@v1
+      with:
+        config-file: cypress.json
+        start: yarn watch-hugo
