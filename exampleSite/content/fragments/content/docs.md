@@ -45,7 +45,7 @@ If this object is present in fragment configuration a sidebar would appear next 
 
 Makes the sidebar stick to top of the page when user scrolls past it.
 
-**NOTE:** If there are multiple content fragment in a page, their sticky sidebars will not be merged into one.
+**NOTE:** Sticky sidebars will not be merged into one, when there are multiple content fragment in a page.
 
 ##### sidebar.align
 *type: string*  
