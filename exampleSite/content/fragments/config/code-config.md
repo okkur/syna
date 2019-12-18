@@ -4,6 +4,7 @@ weight = 110
 +++
 
 <details><summary>Code</summary>
+
 ```
 +++
 fragment = "config"

@@ -4,6 +4,7 @@ weight = 111
 +++
 
 <details><summary>Code (index.md)</summary>
+
 ```
 +++
 fragment = "hero"
@@ -44,6 +45,7 @@ subtitle = "Showcase your next project"
 </details>
 
 <details><summary>Particles (config.json)</summary>
+
 ```
 {
   "particles": {

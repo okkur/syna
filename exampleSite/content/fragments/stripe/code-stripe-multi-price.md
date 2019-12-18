@@ -4,6 +4,7 @@ weight = 121
 +++
 
 <details><summary>Code</summary>
+
 ```+++
 fragment = "stripe"
 weight = 120

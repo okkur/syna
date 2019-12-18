@@ -4,6 +4,7 @@ weight = 111
 +++
 
 <details><summary>Code</summary>
+
 ```+++
 date = "2018-07-07"
 fragment = "editor"
