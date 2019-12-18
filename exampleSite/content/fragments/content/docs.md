@@ -40,6 +40,13 @@ If this object is present in fragment configuration a sidebar would appear next 
 ##### sidebar.title
 *type: string*
 
+##### sidebar.sticky
+*type: boolean*
+
+Makes the sidebar stick to top of the page when user scrolls past it.
+
+**NOTE:** Sticky sidebars will not be merged into one, when there are multiple content fragment in a page.
+
 ##### sidebar.align
 *type: string*  
 *accepted values: right, left*  
