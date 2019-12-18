@@ -27,6 +27,6 @@
 {{- end -}}
 
 {{- $filtered_pages := (partial "helpers/filter-special-pages.html" (dict "pages" (.page_scratch.Get "pages") "page_scratch" .page_scratch)) -}}
-{{- $sorted_pages := (sort $filtered_pages (.Params.sort | default "PublishDate") (.Params.sort_order | default "asc")) -}}
+{{- $sorted_pages := (sort $filtered_pages (.Params.sort | default "PublishDate") (.Params.sort_order | default "desc")) -}}
 
 {{- return (dict "sorted_pages" $sorted_pages "renderPagination" $renderPagination) -}}
