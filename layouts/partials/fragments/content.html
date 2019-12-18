@@ -54,7 +54,7 @@
         {{- partial "helpers/text-color.html" (dict "self" $self) -}}
       ">
         {{- partial "helpers/slot.html" (dict "root" $ "slot" "before-content" "data" (dict "page" $.page "content_fragment" .self)) -}}
-        {{- $content := $self.Content | markdownify -}}
+        {{- $content := $self.Content -}}
         {{- $content := replace $content "<blockquote>" "<blockquote class=\"blockquote\">" -}}
         {{- $content | safeHTML -}}
         {{- partial "helpers/slot.html" (dict "root" $ "slot" "after-content" "data" (dict "page" $.page "content_fragment" .self)) -}}
