@@ -20,6 +20,11 @@ googleAnalytics = ""
 date = ["date", "lastmod"]
 lastmod = ["lastmod", ":git", "date"]
 
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+     unsafe = true
+
 [params]
   name = "Okkur Labs"
   description = "Open Source Theme for your next project"
