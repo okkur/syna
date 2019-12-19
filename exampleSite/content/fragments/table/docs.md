@@ -73,4 +73,4 @@ Specifies the horizontal alignment of the cell.
 
 If set to `true`, the cell will not appear on smaller devices. The table behaves responsive to the width but using this feature you can lessen the width of the table, making it easier to navigate.
 
-[Global variables](/docs/global-variables) are documented as well and have been omitted from this page.
+[Global variables]({{< ref "global-variables" >}}) are documented as well and have been omitted from this page.

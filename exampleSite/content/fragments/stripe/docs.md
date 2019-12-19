@@ -16,13 +16,13 @@ The use of a backend is also useful for saving other information from the user s
 
 ### Events
 
-This fragment uses the [Events](/docs/events) api by default.
+This fragment uses the [Events]({{< ref "events" >}}) api by default.
 
 #### Subscribers
 
 ##### pricing:change
 
-This event is published by the [Pricing fragment](/fragments/pricing/#events). It can also be published by [event urls](/docs/events/#event-urls).
+This event is published by the [Pricing fragment]({{< ref "pricing" >}}#events). It can also be published by [event urls]({{< ref "events" >}}#event-urls).
 
 ###### product
 *type: string*
@@ -99,4 +99,4 @@ Default value in the editable price field. The value should follow the same rule
 
 The currency in which the user will be charged. The value should follow the same rules as [prices.currency](#prices-currency).
 
-[Global variables](/docs/global-variables) are documented as well and have been omitted from this page.
+[Global variables]({{< ref "global-variables" >}}) are documented as well and have been omitted from this page.

@@ -10,7 +10,7 @@ title = "Documentation"
 
 ### Variables
 
-`index.md` only uses [global varibales](/docs/global-variables). Following variables are for subitems.
+`index.md` only uses [global varibales]({{< ref "global-variables" >}}). Following variables are for subitems.
 
 #### title
 *type: string*
@@ -18,7 +18,7 @@ title = "Documentation"
 Title of the item column.
 
 #### asset
-*type: [asset object](/docs/global-variables/#asset)*  
+*type: [asset object]{{< ref "/global-variables" >}}#asset)*  
 *size: 300x110*
 
 Either an image or an icon shown in the column.
@@ -29,4 +29,4 @@ Either an image or an icon shown in the column.
 
 Description of the column. This variable is optional.
 
-[Global variables](/docs/global-variables) are documented as well and have been omitted from this page.
+[Global variables]({{< ref "global-variables" >}}) are documented as well and have been omitted from this page.

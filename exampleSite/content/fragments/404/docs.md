@@ -33,10 +33,10 @@ Title of the call to action button.
 URL for the call to action button.
 
 #### asset
-*type: [asset object](/docs/global-variables/#asset)*
+*type: [asset object]({{< ref "global-variables" >}}#asset)*
 
 The asset will be displayed on top of the fragment, before title and subtitle.
 
 Asset in this fragment only support images that are supported in `img` tag (`.png`, `.jpg`, `.gif`, `.svg`, etc.).
 
-[Global variables](/docs/global-variables) are documented as well and have been omitted from this page.
+[Global variables]({{< ref "global-variables" >}}) are documented as well and have been omitted from this page.

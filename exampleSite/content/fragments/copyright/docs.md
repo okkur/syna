@@ -28,4 +28,4 @@ Use one instance of this fragment per page. Running more might lead to unexpecte
 
 If set to true, the Syna theme name and link would be shown using the `attribution` snippet from `i18n`.
 
-[Global variables](/docs/global-variables) are documented as well and have been omitted from this page.
+[Global variables]({{< ref "global-variables" >}}) are documented as well and have been omitted from this page.
