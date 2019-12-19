@@ -1,4 +1,5 @@
-{{- $title := printf "%s%s" .Title (cond (not .IsHome) (printf " &middot; %s" .Site.Title) (print "")) -}}
+{{- $page_title := partial "helpers/page-title.html" (dict "page" . "self" .) -}}
+{{- $title := printf "%s%s" $page_title (cond .IsHome (print "") (printf " &middot; %s" .Site.Title)) -}}
 {{- $content_fragment := first 1 ((where ((.Scratch.Get "page_fragments") | default (slice)) "Params.fragment" "in" "content") | default (slice)) -}}
 {{- .Scratch.Set "page_description" .Site.Params.Description -}}
 {{- range $content_fragment -}}

@@ -1,0 +1,16 @@
+{{- $page := .page -}}
+{{- $self := .self -}}
+
+{{- $page_title := $page.Title -}}
+{{- if eq $page_title "" -}}
+  {{- $self.Scratch.Set "page_title_page_fragments" (slice .) -}}
+  {{- range $page.Resources.ByType "page" -}}
+    {{- $self.Scratch.Add "page_title_page_fragments" . -}}
+  {{- end -}}
+  {{- $content_page := first 1 (where ($self.Scratch.Get "page_title_page_fragments") "Params.fragment" "in" "content") -}}
+
+  {{- if $content_page -}}
+    {{- $page_title = (index $content_page 0).Title -}}
+  {{- end -}}
+{{- end -}}
+{{- return $page_title -}}
