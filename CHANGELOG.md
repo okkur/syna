@@ -1,6 +1,22 @@
 <!--
-# v0.16.0
+# v0.17.0
 _2018_
+  - [Downloads for v0.17.0](https://github.com/okkur/syna/releases/tag/v0.17.0)
+  - [Changelog since v0.16.0](#changes-since-v016)
+
+## Documentation for v0.17
+[Documentation](https://syna.okkur.org/docs) *Documentation defaults to latest release*
+
+## Changes since v0.16.0
+
+## Fixes since v0.16.0
+
+---
+
+-->
+
+# v0.16.0
+_2019-12-31_
   - [Downloads for v0.16.0](https://github.com/okkur/syna/releases/tag/v0.16.0)
   - [Changelog since v0.15.0](#changes-since-v015)
 
@@ -8,12 +24,30 @@ _2018_
 [Documentation](https://syna.okkur.org/docs) *Documentation defaults to latest release*
 
 ## Changes since v0.15.0
+  - Support Hugo v0.61
+  - Move skeleton css to theme side
+  - Helper classes for each section and containers #665
+  - Add Cypress based tests using Github actions #647 #666
+  - Use unsafe markdown configuration due to Hugo change #645
+  - Bootstrap update to v4.4.1
+  - `content`: Added defaulting for page title from content fragment #670
+  - `content`: Add addtional content fragment documentation #668
+  - `content`: Content fragment now supports `padding` variable like other fragments using container helper
+  - `hero`: Add minHeight parameter
+  - `list`: Add optional sort order to lists
 
 ## Fixes since v0.15.0
+  - Fix default list order #669
+  - Remove unnencessary markdownify calls #646
+  - Refactor modal html into js code #643
+  - Fix _index being added into lists #610
+  - Fix subdirecotry fragments not working #588
+  - Remove extra space before codeblocks #605
+  - `events`: Fix missing character issue in published events with question marks in arguments #608
+  - `list`: Fix child depth #606
+  - `404`: Fix fragments not showing on 404 page #589
 
 ---
-
--->
 
 # v0.15.2
 _2019-10-16_
