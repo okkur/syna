@@ -6,7 +6,7 @@ project:
   oneLiner: "Highly customizable open source theme for Hugo based static websites"
   description: |
     Create your next website with Syna.  
-  version: "v0.15.2"
+  version: "v0.16.0"
 
 vision:
   type: "community"

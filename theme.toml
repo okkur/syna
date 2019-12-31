@@ -5,7 +5,7 @@ description = "A customizable one to multi page theme for open source projects, 
 homepage = "https://syna.okkur.org"
 tags = [ "customizable", "blog", "responsive", "clean", "personal", "bootstrap", "portfolio", "company", "projects", "mobile", "search", "documentation" ]
 features = [ "FAQ", "portfolio", "chart.js", "team showcase", "pricing", "events", "stripe", "contact form", "react portal" ]
-min_version = 0.58
+min_version = 0.61
 
 [author]
   name = "Okkur Labs"
