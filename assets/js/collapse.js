@@ -28,11 +28,11 @@ collapse.on('click', function (e) {
 const hideCollapse = function (el, target) {
   $(el).attr('aria-expanded', 'false');
   $(el).addClass('collapsed');
-  $(target).removeClass('show');
+  $(target).removeClass('show').removeClass('in');
 };
 
 const showCollapse = function (el, target) {
   $(el).attr('aria-expanded', 'true');
   $(el).removeClass('collapsed');
-  $(target).addClass('show');
+  $(target).addClass('show').addClass('in');
 };
