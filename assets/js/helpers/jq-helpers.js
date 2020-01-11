@@ -50,7 +50,7 @@ function $(selector) {
       return _returnee;
     },
     append: innerHTML => {
-      nodes.forEach(node => node.innerHTML += innerHTML);
+      nodes.forEach(node => node.insertAdjacentHTML('beforeend', innerHTML));
       return _returnee;
     },
     html: innerHTML => {

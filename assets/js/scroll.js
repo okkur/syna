@@ -29,5 +29,5 @@ function handleScroll() {
 }
 
 function scrollToTop() {
-  $.scrollTo(document.body, 0, 250)
+  $.scrollTo(document.scrollingElement, 0, 250)
 }
