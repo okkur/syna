@@ -11,4 +11,19 @@ describe("Navbar", () => {
     cy.get(".breadcrumb li:nth-child(2)").should("contain", "Blog");
     cy.get(".breadcrumb li:nth-child(2) a").should("have.length", 0);
   });
+
+  it("(mobile) should display navigation when collapse icon is clicked", () => {
+    cy.viewport(600, 800)
+    cy.visit("/")
+    cy.get('[data-toggle="collapse"][data-target="#navbarCollapse"]').click()
+    cy.get('#navbarCollapse').should('be.visible')
+  })
+
+  it("(mobile) should hide navigation when collapse icon is clicked", () => {
+    cy.viewport(600, 800)
+    cy.visit("/")
+    cy.get('[data-toggle="collapse"][data-target="#navbarCollapse"]').click()
+    cy.get('#navbarCollapse').should('be.visible')
+    cy.get('[data-toggle="collapse"][data-target="#navbarCollapse"]').click()
+    cy.get('#navbarCollapse').should('be.hidden')})
 });
