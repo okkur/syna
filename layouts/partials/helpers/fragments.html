@@ -76,8 +76,13 @@
 {{- $root := $layout_info.root -}}
 {{- $is_404 := $layout_info.is_404 -}}
 
+{{ $default_lang := $real_page.Site.Params.DefaultContentLanguage }}
+{{ $default_site := index (where $real_page.Sites "Language.Lang" "eq" $default_lang) 0 }}
+{{ $lang := $real_page.Site.Language.Lang }}
+
 {{- $page_scratch.Set "fragment_directories" (slice) -}}
 {{- if eq $is_404 true -}}
+  {{- $page_scratch.Add "fragment_directories" ($default_site.GetPage "page" "/_global") -}}
   {{- $page_scratch.Add "fragment_directories" ($real_page.Site.GetPage "page" "/_global") -}}
 {{- else -}}
   {{/* Lookup the directory of the file, split the path by slashes and find each
@@ -101,20 +106,25 @@
       {{- if ne $real_page.Kind "page" -}}
         {{/* Last item is the page being rendered. If it's a section or homepage,
           fragments must be at _index directory */}}
+        {{- $page_scratch.Set "active_page_default" ($default_site.GetPage "page" (printf "%s%s" $real_page.File.Dir "_index")) -}}
         {{- $page_scratch.Set "active_page" ($real_page.Site.GetPage "page" (printf "%s%s" $real_page.File.Dir "_index")) -}}
       {{- else if $page -}}
+        {{- $page_scratch.Set "active_page_default" $page -}}
         {{- $page_scratch.Set "active_page" $page -}}
       {{- end -}}
     {{- else if ge $index 1 -}}
       {{/* Sections between the first and last are found and their _global directories
         are taken into account */}}
       {{- $directory := (delimit (first (add $index 1) ($page_scratch.Get "sections")) "/") -}}
+      {{- $page_scratch.Set "active_page_default" ($default_site.GetPage "page" (printf "%s/%s" $directory "_global")) -}}
       {{- $page_scratch.Set "active_page" ($real_page.Site.GetPage "page" (printf "%s/%s" $directory "_global")) -}}
     {{- else -}}
       {{/* First section is always the root directory and we look for it's _global
         directory */}}
+      {{- $page_scratch.Set "active_page_default" ($default_site.GetPage "page" (printf "%s/%s" $directory "_global")) -}}
       {{- $page_scratch.Set "active_page" ($real_page.Site.GetPage "page" (printf "%s/%s" $directory "_global")) -}}
     {{- end -}}
+    {{- $page_scratch.Add "fragment_directories_tmp" (dict "directory" ($page_scratch.Get "active_page_default") "index" $index) -}}
     {{- $page_scratch.Add "fragment_directories_tmp" (dict "directory" ($page_scratch.Get "active_page") "index" $index) -}}
   {{- end -}}
 
@@ -129,6 +139,7 @@
   additional _index directory) in the previous loop. Here we will extract all
   the fragments in those directories. We will remove the duplicates later. */}}
 {{- $page_scratch.Set "fragments" (slice) -}}
+{{- $page_scratch.Set "fragments_paths" (slice) -}}
 {{- range $directory := ($page_scratch.Get "fragment_directories") -}}
   {{/* Every index.md or [page].md file can be a fragment as well. Even in
     _index directories. */}}
@@ -136,8 +147,17 @@
   {{/* Fragments are just page resources with type page (generally any .md
     file) */}}
   {{- range ($directory.Resources.ByType "page") -}}
-    {{- $page_scratch.Add "fragments" . -}}
+    {{- $page_scratch.Add "fragments_paths" (dict "path" .File.Path "resource" .) -}}
   {{- end -}}
+{{- end -}}
+
+{{- range ($page_scratch.Get "fragments_paths") -}}
+  {{ $is_resource_single_language := eq (len (where ($page_scratch.Get "fragments_paths") ".path" "eq" (printf "%s%s.%s.md" .resource.File.Dir .resource.File.TranslationBaseName $lang))) 0 }}
+  {{ if and (eq $lang $default_lang) (eq (len (findRE "\\.\\w{2}\\.md" .path)) 0) }}
+    {{- $page_scratch.Add "fragments" .resource -}}
+  {{ else if and (ne $lang $default_lang) (or (eq .resource.File.Lang $lang) $is_resource_single_language) }}
+    {{- $page_scratch.Add "fragments" .resource -}}
+  {{ end }}
 {{- end -}}
 
 {{/* Here we find fragments that are relevant to this page. We do this by
