@@ -1,6 +1,9 @@
 {{/* Sets page to either the given frontmatter section variable, current
   parent section or if the current page is a section, the current page */}}
-{{- .page_scratch.Set "page" (.Site.GetPage "Section" (.Params.section | default .root.Section)) -}}
+{{- $page := cond (ne .Params.section nil) .Params.section  .root.Section -}}
+{{/* Weird Hugo hack coming up. Homepage and some sections' pages are fetched
+  with different types! */}}
+{{- .page_scratch.Set "page" ((.Site.GetPage "Section" $page) | default (.Site.GetPage "section" $page)) -}}
 {{- if .root.CurrentSection -}}
   {{- if and (not .Params.section) (eq .root.CurrentSection.Kind "section") -}}
     {{- .page_scratch.Set "page" .root.CurrentSection -}}
