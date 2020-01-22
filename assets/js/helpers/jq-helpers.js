@@ -140,9 +140,9 @@ $.ajax = function ajax({
     xhr.onreadystatechange = () => {
       if (xhr.readyState == 4) {
         if (xhr.status == 200) {
-            resolve(JSON.parse(xhr.responseXML || xhr.responseText));
+          resolve(JSON.parse(xhr.responseXML || xhr.responseText));
         } else {
-            reject(xhr.statusText);
+          reject(xhr.statusText);
         }
       }
     }
