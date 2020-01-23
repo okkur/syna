@@ -9,9 +9,8 @@ title = "MultiLingual Mode"
 +++
 
 > Syna supports creating Multilingual websites since v0.16.1. The implementation
-> only supports `page[.language code].md` method and not 
-> `[language code]/page.md` but we hope to add the second approach in the 
-> future.
+> currently supports specifying languages on a per file basis such as
+> `page[.language code].md` future.
 
 In order to make your website multilingual, you need to change your
 configuration so Hugo will generate new pages for translated content in your
@@ -23,8 +22,8 @@ same pages but in two languages. Hugo will not however generate English pages
 for German website if those pages are not translated to German. For more 
 information on Hugo's Multilingual mode, please refer to [their documentation](https://gohugo.io/content-management/multilingual/).
 
-In order to configure two languages, you need to udpate your configuration.
-Here's an example from the official documentation:
+In order to configure two languages, you need to update your main your
+configuration. Here's an example from the official documentation:
 
 ```
 DefaultContentLanguage = "en"
@@ -93,7 +92,7 @@ A French version of the page will be generated, containing all your fragments
 but the portfolio fragment will be the translated version. The page will have
 not changed for the default language.
 
-> The Multilingual mode is in alpha mode. This means it is subject to change and
+> Multilingual mode is currently release as alpha. It is subject to changes and
 > may not be stable. Please follow the changelog and updates to this page for
-> more information and news about the changes. Please create issues and pull
+> more information and news about any changes. Please create issues and pull
 > requests and let us know what you think.
