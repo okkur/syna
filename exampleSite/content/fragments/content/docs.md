@@ -22,7 +22,7 @@ title = "Documentation"
 Ability to override the generated default summary by Hugo to be displayed in fragments such as List.
 
 #### asset
-*type: [asset object](/docs/global-variables/#asset)*
+*type: [asset object]({{< ref "global-variables" >}}#asset)*
 
 This value will render an image on top of the content.
 
@@ -59,4 +59,4 @@ Sets the alignment on the page.
 
 Markdown enabled content that would be rendered in the sidebar.
 
-[Global variables](/docs/global-variables) are documented as well and have been omitted from this page.
+[Global variables]({{< ref "global-variables" >}}) are documented as well and have been omitted from this page.

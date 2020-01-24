@@ -18,4 +18,4 @@ title = "Documentation"
 *type: string (number with unit as suffix)*
 *default: 100%*
 
-[Global variables](/docs/global-variables) are documented as well and have been omitted from this page.
+[Global variables]({{< ref "global-variables" >}}) are documented as well and have been omitted from this page.

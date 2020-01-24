@@ -24,4 +24,4 @@ These colors are customized within `config.toml` to fit the Syna theme.
 
 Classes are mainly used for backgrounds and button colors.  
 Links, inline code and other elements will also be changed.
-These colors can also be overwritten for more details see our [style documentation](/docs/development/#styles).
+These colors can also be overwritten for more details see our [style documentation]({{< ref "development" >}}#styles).
