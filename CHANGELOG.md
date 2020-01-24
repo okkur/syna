@@ -1,7 +1,7 @@
 <!--
 # v0.17.0
 _2018_
-  - [Downloads for v0.17.0](https://github.com/okkur/syna/releases/tag/v0.17.0)
+  - [Downloads for v0.17.0](https://syna.okkur.org/releases//v0.17.0)
   - [Changelog since v0.16.0](#changes-since-v016)
 
 ## Documentation for v0.17
@@ -15,10 +15,32 @@ _2018_
 
 -->
 
+# v0.16.1
+_2020-01-24_
+  - [Downloads for v0.16.1](https://syna.okkur.org/releases/v0.16.1)
+  - [Changelog since v0.16.0](#changes-since-v0160)
+
+## Documentation for v0.16
+[Documentation](https://syna.okkur.org/docs) *Documentation defaults to latest release*
+
+## Changes since v0.16.0
+  - Add alpha support for multilingual websites [687](https://github.com/okkur/syna/pull/687)
+  - Add e2e tests via Cypress
+
+## Fixes since v0.16.0
+  - `contact`: formspree forms now work synchronously [689](https://github.com/okkur/syna/pull/689)
+  - `list`: Fix list fragment not working on some sections [688](https://github.com/okkur/syna/pull/688)
+  - Fix language code prefix of static assets [680](https://github.com/okkur/syna/issues/680)
+  - Fix incorrect language config key [684](https://github.com/okkur/syna/pull/684)
+  - Fix events not firing [681](https://github.com/okkur/syna/pull/681)
+  - Fix FAQ card width overflow on mobile [673](https://github.com/okkur/syna/pull/673)
+
+---
+
 # v0.16.0
 _2019-12-31_
-  - [Downloads for v0.16.0](https://github.com/okkur/syna/releases/tag/v0.16.0)
-  - [Changelog since v0.15.0](#changes-since-v015)
+  - [Downloads for v0.16.0](https://syna.okkur.org/releases//v0.16.0)
+  - [Changelog since v0.15.0](#changes-since-v0150)
 
 ## Documentation for v0.16
 [Documentation](https://syna.okkur.org/docs) *Documentation defaults to latest release*
@@ -51,7 +73,7 @@ _2019-12-31_
 
 # v0.15.2
 _2019-10-16_
-  - [Downloads for v0.15.2](https://github.com/okkur/syna/releases/tag/v0.15.2)
+  - [Downloads for v0.15.2](https://syna.okkur.org/releases//v0.15.2)
   - [Changelog since v0.15.1](#changes-since-v0151)
 
 ## Documentation for v0.15.2
@@ -75,8 +97,8 @@ _2019-10-16_
 
 # v0.15.1
 _2019-05-27_
-  - [Downloads for v0.15.1](https://github.com/okkur/syna/releases/tag/v0.15.1)
-  - [Changelog since v0.15.0](#changes-since-v015)
+  - [Downloads for v0.15.1](https://syna.okkur.org/releases//v0.15.1)
+  - [Changelog since v0.15.0](#changes-since-v0150)
 
 ## Documentation for v0.15.1
 [Documentation](https://syna.okkur.org/docs) *Documentation defaults to latest release*
@@ -91,8 +113,8 @@ _2019-05-27_
 ---
 # v0.15.0
 _2019-05_
-  - [Downloads for v0.15.0](https://github.com/okkur/syna/releases/tag/v0.15.0)
-  - [Changelog since v0.14.0](#changes-since-v014)
+  - [Downloads for v0.15.0](https://syna.okkur.org/releases//v0.15.0)
+  - [Changelog since v0.14.0](#changes-since-v0140)
 
 ## Documentation for v0.15
 [Documentation](https://syna.okkur.org/docs) *Documentation defaults to latest release*
@@ -144,8 +166,8 @@ _2019-05_
 
 # v0.14.0
 _2018-10-15_
-  - [Downloads for v0.14.0](https://github.com/okkur/syna/releases/tag/v0.14.0)
-  - [Changelog since v0.13.0](#changes-since-v013)
+  - [Downloads for v0.14.0](https://syna.okkur.org/releases//v0.14.0)
+  - [Changelog since v0.13.0](#changes-since-v0130)
 
 ## Documentation for v0.14
 [Documentation](/tree/v0.14/docs)
@@ -182,8 +204,8 @@ _2018-10-15_
 
 # v0.13.0
 _2018-09-10_
-  - [Downloads for v0.13.0](https://github.com/okkur/syna/releases/tag/v0.13.0)
-  - [Changelog since v0.12.0](#changes-since-v012)
+  - [Downloads for v0.13.0](https://syna.okkur.org/releases//v0.13.0)
+  - [Changelog since v0.12.0](#changes-since-v0120)
 
 ## Documentation for v0.13.0
 [Documentation](/tree/v0.13.0/docs)
@@ -222,8 +244,8 @@ _2018-09-10_
 
 # v0.12.0
 _2018-08-06_
-  - [Downloads for v0.12.0](https://github.com/okkur/syna/releases/tag/v0.12.0)
-  - [Changelog since v0.11.0](#changes-since-v011)
+  - [Downloads for v0.12.0](https://syna.okkur.org/releases//v0.12.0)
+  - [Changelog since v0.11.0](#changes-since-v0110)
 
 ## Documentation for v0.12.0
 [Documentation](/tree/v0.12.0/docs)
@@ -262,8 +284,8 @@ _2018-08-06_
 > Our recommendation is to build your side from our release tags instead of master.
 
 _2018-06-06_
-  - [Downloads for v0.11.0](https://github.com/okkur/syna/releases/tag/v0.11.0)
-  - [Changelog since v0.10.0](#changes-since-v010)
+  - [Downloads for v0.11.0](https://syna.okkur.org/releases//v0.11.0)
+  - [Changelog since v0.10.0](#changes-since-v0100)
 
 ## Documentation
 [Documentation](/tree/v0.11.0/docs)
@@ -311,7 +333,7 @@ _2018-06-06_
 
 # v0.10.0
 _2018-03-09_
-  - [Downloads for v0.10.0](https://github.com/okkur/syna/releases/tag/v0.10.0)
+  - [Downloads for v0.10.0](https://syna.okkur.org/releases//v0.10.0)
   - [Changelog since v0.9.0](#changes-since-v090)
 
 ## Documentation
@@ -335,7 +357,7 @@ Notes: This version includes a major breaking change.
 
 # v0.9.0
 _2017-12-08_
-  - [Downloads for v0.9.0](https://github.com/okkur/syna/releases/tag/v0.9.0)
+  - [Downloads for v0.9.0](https://syna.okkur.org/releases//v0.9.0)
   - [Changelog since v0.8.0](#changes-since-v080)
 
 ## Documentation
@@ -359,7 +381,7 @@ Notes: Member and Footer fragments only support brand icons for now.
 
 # v0.8.0
 _2017-10-23_
-  - [Downloads for v0.8.0](https://github.com/okkur/syna/releases/tag/v0.8.0)
+  - [Downloads for v0.8.0](https://syna.okkur.org/releases//v0.8.0)
   - [Changelog since v0.7.0](#changes-since-v070)
 
 ## Documentation
@@ -383,7 +405,7 @@ _2017-10-23_
 
 # v0.7.0
 _2017-10-18_
-  - [Downloads for v0.7.0](https://github.com/okkur/syna/releases/tag/v0.7.0)
+  - [Downloads for v0.7.0](https://syna.okkur.org/releases//v0.7.0)
   - [Changelog since v0.6.0](#changes-since-v060)
 
 ## Documentation
@@ -408,7 +430,7 @@ _2017-10-18_
 
 # v0.6.0
 _2017-10-08_
-  - [Downloads for v0.6.0](https://github.com/okkur/syna/releases/tag/v0.6.0)
+  - [Downloads for v0.6.0](https://syna.okkur.org/releases//v0.6.0)
   - [Changelog since v0.5.0](#changes-since-v050)
 
 ## Documentation
@@ -430,7 +452,7 @@ _2017-10-08_
 
 # v0.5.0
 _2017-10-08_
-  - [Downloads for v0.5.0](https://github.com/okkur/syna/releases/tag/v0.5.0)
+  - [Downloads for v0.5.0](https://syna.okkur.org/releases//v0.5.0)
   - [Changelog since v0.4.0](#changes-since-v040)
 
 ## Documentation
@@ -453,7 +475,7 @@ _2017-10-08_
 
 # v0.4.0
 _2017-10-07_
-  - [Downloads for v0.4.0](https://github.com/okkur/syna/releases/tag/v0.4.0)
+  - [Downloads for v0.4.0](https://syna.okkur.org/releases//v0.4.0)
   - [Changelog since v0.3.0](#changes-since-v030)
 
 ## Documentation
@@ -470,7 +492,7 @@ _2017-10-07_
 
 # v0.3.0
 _2017-10-05_
-  - [Downloads for v0.3.0](https://github.com/okkur/syna/releases/tag/v0.3.0)
+  - [Downloads for v0.3.0](https://syna.okkur.org/releases//v0.3.0)
   - [Changelog since v0.2.0](#changes-since-v020)
 
 ## Documentation
@@ -486,7 +508,7 @@ _2017-10-05_
 
 # v0.2.0
 _2017-10-05_
-  - [Downloads for v0.2.0](https://github.com/okkur/syna/releases/tag/v0.2.0)
+  - [Downloads for v0.2.0](https://syna.okkur.org/releases//v0.2.0)
   - [Changelog since v0.1.0](#changes-since-v010)
 
 ## Documentation
@@ -502,7 +524,7 @@ _2017-10-05_
 # v0.1.0
 _2017-10-04_
 
-  - [Downloads for v0.1.0](https://github.com/okkur/syna/releases/tag/v0.1.0)
+  - [Downloads for v0.1.0](https://syna.okkur.org/releases//v0.1.0)
   - [Changelog since v0.0.0](#changes-since-v000)
 
 ## Documentation
