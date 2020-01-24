@@ -26,4 +26,4 @@ window.synaPortals['UNIQUE_IDENTIFIER] = {
 Add this code to your script (the file you have defined your React component). If your component doesn't show up, make sure your code is being loaded before `syna-react.js`.
 An easy way to make sure of that is to use the `config` fragment.
 
-[Global variables](/docs/global-variables) are documented as well and have been omitted from this page.
+[Global variables]({{< ref "global-variables" >}}) are documented as well and have been omitted from this page.

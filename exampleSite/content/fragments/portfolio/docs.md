@@ -12,7 +12,7 @@ This fragment needs a fragment controller file and subitems. You need to create 
 
 ### Variables
 
-`index.md` only uses [global varibales](/docs/global-variables). Following variables are for subitems.
+`index.md` only uses [global varibales]({{< ref "global-variables" >}}). Following variables are for subitems.
 
 #### title
 *type: string*
@@ -32,9 +32,9 @@ URL of the portfolio item. If set, then clicking the portfolio item would open t
 **NOTE:** This variable may be deprecated in the future and be renamed to `url`.
 
 #### asset
-*type: [asset object](/docs/global-variables/#asset)*  
+*type: [asset object]({{< ref "global-variables" >}}#asset)*  
 *size: 500x380*
 
 The image that is shown on the portfolio item.
 
-[Global variables](/docs/global-variables) are documented as well and have been omitted from this page.
+[Global variables]({{< ref "global-variables" >}}) are documented as well and have been omitted from this page.

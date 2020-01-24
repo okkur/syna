@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const prefix = "dev";
 const { indexTemplate, index, content, list } = require('./templates');
 
 const root = path.resolve(`${__dirname}/../..`);
@@ -104,7 +105,7 @@ Object.keys(fragments).forEach(fragment => {
       backgrounds.forEach(background => {
         fs.createReadStream(fragments[fragment].nested[dir][filename]).pipe(
           fs.createWriteStream(
-            `${paths.devColors}/${fragment}/${dir}-${background}/${filename}`
+            `${paths.devColors}/${prefix}-${fragment}/${dir}-${background}/${filename}`
           )
         );
       });
@@ -121,13 +122,13 @@ function parseBlackFriday(fragment, weight, content, filename, dir) {
     return;
   }
 
-  if (!fs.existsSync(`${paths.devColors}/${fragment}`)) {
-    fs.mkdirSync(`${paths.devColors}/${fragment}`);
+  if (!fs.existsSync(`${paths.devColors}/${prefix}-${fragment}`)) {
+    fs.mkdirSync(`${paths.devColors}/${prefix}-${fragment}`);
   }
 
-  if (dir && !fs.existsSync(`${paths.devColors}/${fragment}/${dir}`)) {
+  if (dir && !fs.existsSync(`${paths.devColors}/${prefix}-${fragment}/${dir}`)) {
     backgrounds.forEach(background => {
-      const path = `${paths.devColors}/${fragment}/${dir}-${background}`;
+      const path = `${paths.devColors}/${prefix}-${fragment}/${dir}-${background}`;
       if (!fs.existsSync(path)) {
         fs.mkdirSync(path);
       }
@@ -135,7 +136,7 @@ function parseBlackFriday(fragment, weight, content, filename, dir) {
   }
 
   fs.writeFile(
-    `${paths.devColors}/${fragment}/index.md`,
+    `${paths.devColors}/${prefix}-${fragment}/index.md`,
     indexTemplate.replace(/%fragment%/g, fragment),
     "utf8",
     () => {}
@@ -146,7 +147,7 @@ function parseBlackFriday(fragment, weight, content, filename, dir) {
       .replace(/background\s?=\s".*"/im, `background = "${background}"`)
       .replace(/weight\s?=\s?"?\d+"?/im, `weight = ${weight + i}`);
     fs.writeFile(
-      `${paths.devColors}/${fragment +
+      `${paths.devColors}/${prefix}-${fragment +
         (dir ? `/${dir}-${background}` : "")}/${filename +
         (dir ? "" : `-${background}`)}.md`,
       tmp,

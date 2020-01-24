@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const prefix = "dev";
 const { indexTemplate, index, content, list } = require('./templates');
 
 const root = path.resolve(`${__dirname}/../..`);
@@ -105,7 +106,7 @@ Object.keys(fragments).forEach(fragment => {
       alignments.forEach(alignment => {
         fs.createReadStream(fragments[fragment].nested[dir][filename]).pipe(
           fs.createWriteStream(
-            `${paths.devAligns}/${fragment}/${dir}-${alignment}/${filename}`
+            `${paths.devAligns}/${prefix}-${fragment}/${dir}-${alignment}/${filename}`
           )
         );
       });
@@ -122,13 +123,13 @@ function parseBlackFriday(fragment, weight, content, filename, dir) {
     return false;
   }
 
-  if (!fs.existsSync(`${paths.devAligns}/${fragment}`)) {
-    fs.mkdirSync(`${paths.devAligns}/${fragment}`);
+  if (!fs.existsSync(`${paths.devAligns}/${prefix}-${fragment}`)) {
+    fs.mkdirSync(`${paths.devAligns}/${prefix}-${fragment}`);
   }
 
-  if (dir && !fs.existsSync(`${paths.devAligns}/${fragment}/${dir}`)) {
+  if (dir && !fs.existsSync(`${paths.devAligns}/${prefix}-${fragment}/${dir}`)) {
     alignments.forEach(alignment => {
-      const path = `${paths.devAligns}/${fragment}/${dir}-${alignment}`;
+      const path = `${paths.devAligns}/${prefix}-${fragment}/${dir}-${alignment}`;
       if (!fs.existsSync(path)) {
         fs.mkdirSync(path);
       }
@@ -136,7 +137,7 @@ function parseBlackFriday(fragment, weight, content, filename, dir) {
   }
 
   fs.writeFile(
-    `${paths.devAligns}/${fragment}/index.md`,
+    `${paths.devAligns}/${prefix}-${fragment}/index.md`,
     indexTemplate.replace(/%fragment%/g, fragment),
     "utf8",
     () => {}
@@ -155,7 +156,7 @@ function parseBlackFriday(fragment, weight, content, filename, dir) {
 
     // Write the edited config into the fragment, whether it's in a nested directory or not
     fs.writeFile(
-      `${paths.devAligns}/${fragment +
+      `${paths.devAligns}/${prefix}${fragment +
         (dir ? `/${dir}-${alignment}` : "")}/${filename +
         (dir ? "" : `-${alignment}`)}.md`,
       tmp,

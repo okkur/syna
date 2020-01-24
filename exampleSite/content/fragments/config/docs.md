@@ -39,4 +39,4 @@ HTML code injected directly to the page.
 
 If `config.type` is set to any of `css`, `js` or `icon`, either `config.resource` or `config.html` should be provided.
 
-[Global variables](/docs/global-variables) are documented as well and have been omitted from this page.
+[Global variables]{{< ref "global-variables">}}) are documented as well and have been omitted from this page.

@@ -44,4 +44,4 @@ Percentage value to force embed object or iframe to be a specific width of its p
 
 If `responsive` is set to `true` then this value would be ignored.
 
-[Global variables](/docs/global-variables) are documented as well and have been omitted from this page.
+[Global variables]({{< ref "global-variables" >}}) are documented as well and have been omitted from this page.

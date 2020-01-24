@@ -16,7 +16,7 @@ const validatorConfig = {
     $(`form[id=${form.getAttribute('id')}] .generic-error`).removeClass('d-none');
   },
   onSuccess: function(e, form) {
-    if (form.dataset.hasNetlify) {
+    if (form.dataset.hasNetlify || form.dataset.hasFormspree) {
       return;
     }
 

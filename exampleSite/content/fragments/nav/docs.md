@@ -71,7 +71,7 @@ content/blog/article-1 # level 2, shown
 *accepted values: primary, secondary, white, light, dark, warning, success, danger, info, transparent*
 
 #### asset
-*type: [asset object](/docs/global-variables/#asset)*
+*type: [asset object]({{< ref "global-variables" >}}#asset)*
 
 Asset will be shown as a clickable logo directing to the main page.
 
@@ -92,4 +92,4 @@ The icon can be customized via `repo_button.icon`.
 *type: string*  
 *default: fab fa-github*
 
-[Global variables](/docs/global-variables) are documented as well and have been omitted from this page.
+[Global variables]({{< ref "global-variables" >}}) are documented as well and have been omitted from this page.

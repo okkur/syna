@@ -11,4 +11,4 @@ directory of the fragment for the JSON data of the form.
 
 No variable is needed for this fragment, except for global variables.
 
-[Global variables](/docs/global-variables) are documented as well and have been omitted from this page.
+[Global variables]({{< ref "global-variables" >}}) are documented as well and have been omitted from this page.

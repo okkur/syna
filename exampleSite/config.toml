@@ -1,12 +1,12 @@
 # Site settings
 baseurl = "/"
 languageCode = "en-us"
-languageLang = "en"
+defaultContentLanguage = "en"
 title = "Okkur - Syna"
 theme = "syna"
 themesDir = "../.."
 enableGitInfo = true
-version = "0.16.0"
+version = "0.16.1"
 disableKinds = ["RSS", "taxonomy", "taxonomyTerm"]
 ignorefiles = [ "content/dev/.*" ]
 
