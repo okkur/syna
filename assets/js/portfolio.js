@@ -12,4 +12,4 @@ portfolioItem.on('click', function() {
     labels: (this.querySelector('.badge-container') || _default).innerHTML,
     size: 'md',
   });
-})
+});

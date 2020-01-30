@@ -3,7 +3,14 @@ import Fuse from 'fuse.js';
 import $ from './helpers/jq-helpers';
 
 class SynaSearch {
-  constructor({ queryParam, searchInput, resultsContainer, template, noResults, empty }) {
+  constructor({
+    queryParam,
+    searchInput,
+    resultsContainer,
+    template,
+    noResults,
+    empty,
+  }) {
     this.searchInput = $(searchInput);
     this.resultsContainer = $(resultsContainer);
     this.template = $(template);
@@ -23,16 +30,16 @@ class SynaSearch {
         { name: 'title', weight: 0.8 },
         { name: 'contents', weight: 0.5 },
         { name: 'tags', weight: 0.3 },
-        { name: 'categories', weight: 0.3 }
-      ]
+        { name: 'categories', weight: 0.3 },
+      ],
     };
-  
+
     this.summaryInclude = 60;
     this.indexCache = null;
 
     const searchQuery = this.param(queryParam) || '';
     this.searchInput.val(searchQuery.trim());
-    this.searchInput.on('input', e => this.search(e.target.value.trim()));
+    this.searchInput.on('input', (e) => this.search(e.target.value.trim()));
     this.search(searchQuery);
   }
 
@@ -41,7 +48,7 @@ class SynaSearch {
       return callback(this.indexCache);
     }
 
-    $.ajax({ method: 'get', url: '/index.json' }).then(data => {
+    $.ajax({ method: 'get', url: '/index.json' }).then((data) => {
       this.indexCache = data;
       callback(data);
     });
@@ -49,17 +56,21 @@ class SynaSearch {
 
   search(query) {
     if (!query) {
-      return this.resultsContainer.html(window.syna.api.renderTemplate(this.empty.html(), {}));
+      return this.resultsContainer.html(
+        window.syna.api.renderTemplate(this.empty.html(), {}),
+      );
     }
 
-    this.getIndex(data => {
+    this.getIndex((data) => {
       const pages = data;
       const fuse = new Fuse(pages, this.fuseOptions);
       const matches = fuse.search(query);
       if (matches.length > 0) {
         this.populateResults(matches, query);
       } else {
-        this.resultsContainer.html(window.syna.api.renderTemplate(this.noResults.html(), {}));
+        this.resultsContainer.html(
+          window.syna.api.renderTemplate(this.noResults.html(), {}),
+        );
       }
     });
   }
@@ -75,7 +86,7 @@ class SynaSearch {
       if (this.fuseOptions.tokenize) {
         snippetHighlights.push(query);
       } else {
-        value.matches.forEach(mvalue => {
+        value.matches.forEach((mvalue) => {
           if (mvalue.key === 'tags' || mvalue.key === 'categories') {
             snippetHighlights.push(mvalue.value);
           } else if (mvalue.key === 'contents') {
@@ -91,8 +102,8 @@ class SynaSearch {
             snippetHighlights.push(
               mvalue.value.substring(
                 mvalue.indices[0][0],
-                mvalue.indices[0][1] - mvalue.indices[0][0] + 1
-              )
+                mvalue.indices[0][1] - mvalue.indices[0][0] + 1,
+              ),
             );
           }
         });
@@ -110,7 +121,7 @@ class SynaSearch {
         link: value.item.permalink,
         tags: value.item.tags,
         categories: value.item.categories,
-        snippet: this.highlight(snippetHighlights, snippet)
+        snippet: this.highlight(snippetHighlights, snippet),
       });
 
       finalHTML += output;
@@ -121,18 +132,21 @@ class SynaSearch {
 
   highlight(highlights, text) {
     return highlights.reduce((tmp, snipvalue) => {
-      return tmp.replace(new RegExp(snipvalue, 'im'), `<mark>${snipvalue}</mark>`);
-    }, text)
+      return tmp.replace(
+        new RegExp(snipvalue, 'im'),
+        `<mark>${snipvalue}</mark>`,
+      );
+    }, text);
   }
 
   param(name) {
     return decodeURIComponent(
-      (location.search.split(name + '=')[1] || '').split('&')[0]
+      (location.search.split(name + '=')[1] || '').split('&')[0],
     ).replace(/\+/g, ' ');
   }
 }
 
-window.syna.api.toArray('search').forEach(search => {
+window.syna.api.toArray('search').forEach((search) => {
   new SynaSearch({
     queryParam: 's',
     searchInput: search.searchInput,

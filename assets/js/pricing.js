@@ -6,5 +6,8 @@ window.syna.stream.subscribe('plan:select', function({ plan }) {
 
   $('.pricing-plan').removeClass('selected');
   pricingPlan.addClass('selected');
-  setTimeout(() => primaryAction[0][primaryAction.attr('data-primary-action')](), 100);
+  setTimeout(
+    () => primaryAction[0][primaryAction.attr('data-primary-action')](),
+    100,
+  );
 });

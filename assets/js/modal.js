@@ -14,13 +14,20 @@ setTimeout(() => {
 
   $('[data-dismiss="modal"]').on('click', closeDialog);
 
-  modal.on('click', e => { 
+  modal.on('click', (e) => {
     if (!dialog[0].contains(e.target)) {
-      closeDialog()
+      closeDialog();
     }
   });
 
-  (window.syna || (window.syna = {})).showModal = function({ title, subtitle, image, content, labels, size = '' }) {
+  (window.syna || (window.syna = {})).showModal = function({
+    title,
+    subtitle,
+    image,
+    content,
+    labels,
+    size = '',
+  }) {
     $('body').addClass('modal-open');
     modal.addClass('show');
     dialog.$('.title').html(title || '');
@@ -33,6 +40,9 @@ setTimeout(() => {
     } else {
       dialog.$('.modal-body .content').addClass('hidden');
     }
-    dialog.removeClass('md').removeClass('lg').addClass(size);
-  }
+    dialog
+      .removeClass('md')
+      .removeClass('lg')
+      .addClass(size);
+  };
 }, 0);
