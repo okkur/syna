@@ -35,6 +35,14 @@ body.modal-open {
     }
   }
 
+  .icon-container {
+    font-size: 64px;
+
+    .fa-stack-1x, .fa-stack-2x {
+      position: relative;
+    }
+  }
+
   .badge-container {
     color: $light;
     margin-bottom: 1rem;
