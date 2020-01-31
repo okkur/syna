@@ -33,7 +33,12 @@ setTimeout(() => {
     modal.addClass("show");
     dialog.$(".title").html(title || "");
     dialog.$(".subtitle").html(subtitle || "");
-    dialog.$("img")[0].src = image;
+    if (image) {
+      dialog.$("img").removeClass("hidden");
+      dialog.$("img")[0].src = image;
+    } else {
+      dialog.$("img").addClass("hidden");
+    }
 
     if (labels) {
       dialog.$(".badge-container").removeClass("hidden");
