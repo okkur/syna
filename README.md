@@ -1,5 +1,7 @@
 <a href='https://syna.okkur.org'><img src='https://raw.githubusercontent.com/okkur/syna/master/exampleSite/static/images/logo.svg?sanitize=true' width='500'/></a>
 
+Changing readme so I can create a PR.
+
 Highly customizable open source theme for Hugo based static websites
 
  [![state](https://img.shields.io/badge/state-stable-green.svg)]() [![release](https://img.shields.io/github/release/okkur/syna.svg)](https://github.com/okkur/syna/releases) [![license](https://img.shields.io/github/license/okkur/syna.svg)](LICENSE)
