@@ -184,7 +184,7 @@
         {{- if or $is_404 (ne .Params.fragment "404") -}}
           {{- if eq .Params.fragment "config" -}}
             {{- $page_scratch.Add "page_config" . -}}
-          {{- else if eq .Params.fragments "memberspace" -}}
+          {{- else if eq .Params.fragment "memberspace" -}}
             {{- $page_scratch.Set "memberspace" . -}}
           {{- else -}}
             {{- $page_scratch.Add "page_fragments" . -}}
