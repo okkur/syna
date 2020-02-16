@@ -81,6 +81,13 @@
               </a>
             </li>
           {{- end -}}
+        {{- end -}}
+        {{- with ($page_scratch.Get "memberspace") }}
+          <li class="nav-item">
+            <a href="https://{{- .Params.subdomain -}}.memberspace.com/member/sign_in" class="nav-link anchor">
+              Login / Signup
+            </a>
+          </li>
         {{- end }}
       </ul>
       {{- if .Params.search }}

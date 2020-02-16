@@ -172,6 +172,7 @@
   looking from the page directory or file to it's parents and so on. */}}
 {{- $page_scratch.Set "page_fragments" (slice) -}}
 {{- $page_scratch.Set "page_config" (slice) -}}
+{{- $page_scratch.Set "memberspace" nil -}}
 {{- $page_scratch.Set "experimentals_used_messages" (slice) -}}
 {{- $page_scratch.Set "fragments_directory_name" (slice) -}}
 {{- if $page_scratch.Get "fragments" -}}
@@ -183,6 +184,8 @@
         {{- if or $is_404 (ne .Params.fragment "404") -}}
           {{- if eq .Params.fragment "config" -}}
             {{- $page_scratch.Add "page_config" . -}}
+          {{- else if eq .Params.fragments "memberspace" -}}
+            {{- $page_scratch.Set "memberspace" . -}}
           {{- else -}}
             {{- $page_scratch.Add "page_fragments" . -}}
             {{- $page_scratch.Add "fragments_directory_name" (printf "%s%s/" $root.File.Dir (replace $name ".md" "")) -}}

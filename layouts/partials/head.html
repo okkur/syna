@@ -95,4 +95,16 @@
       {{- partial "helpers/config.html" (dict "root" $ "head" true "type" .type "data" .) -}}
     {{- end -}}
   {{- end -}}
+
+  {{- with (.Scratch.Get "memberspace") -}}
+    <script>
+      var MemberSpace = window.MemberSpace || {subdomain: "{{- print .Params.subdomain -}}"};
+      (function(d){
+        var s = d.createElement("script");
+        s.src = "https://cdn.memberspace.com/scripts/widgets.js";
+        var e = d.getElementsByTagName("script")[0];
+        e.parentNode.insertBefore(s,e);
+      }(document));
+    </script>
+  {{- end -}}
 </head>
