@@ -102,6 +102,7 @@
   </div>
   </div>
 </header>
+{{- if .Params.particles }}
 <script>
   var fragmentName = "{{ .Name }}";
   {{- $file_path := printf "%s%s/config.json" .page.File.Dir .Name -}}
@@ -110,3 +111,4 @@
     config: {{ if fileExists $file_path -}} JSON.parse({{ readFile $file_path | safeHTML }}) {{- else -}} null {{- end -}},
   });
 </script>
+{{ end -}}
