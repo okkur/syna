@@ -12,6 +12,7 @@ const ModalTemplate = `
         </button>
       </div>
       <img src="" alt="" class="img-fluid">
+      <div class="icon-container pt-4"></div>
       <div class="modal-body p-3">
         <div class="badge-container"></div>
         <div class="content"></div>

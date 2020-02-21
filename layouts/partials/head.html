@@ -7,7 +7,7 @@
 {{- end -}}
 <head>
   <meta name="theme" content="Syna">
-  <meta name="theme-version" content="v0.16">
+  <meta name="theme-version" content="v0.16.1">
   <meta name="theme-url" content="https://syna.okkur.org">
   <meta name="theme-description" content="Highly customizable open source theme for Hugo based static websites">
   <meta name="theme-author" content="Okkur Labs">
@@ -18,11 +18,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="description" content="{{- .Scratch.Get "page_description" -}}">
-  <meta property="og:title" content="{{ $title }}">
-  <meta property="og:url" content="{{ .Permalink }}">
-  <meta property="og:description" content="{{- .Scratch.Get "page_description" -}}">
-  <meta property="og:site_name" content="{{ .Site.Title }}">
-  <meta property="og:type" content="website">
+  {{ template "_internal/opengraph.html" . }}
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ $title }}" />
   <meta name="twitter:description" content="{{- .Scratch.Get "page_description" -}}">

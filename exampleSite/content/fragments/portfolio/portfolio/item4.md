@@ -2,7 +2,7 @@
 weight = 40
 
 [asset]
-  image = "dog-2.jpeg"
+  image = "dog-1.jpeg"
 
 [[labels]]
   title = "Animal"
