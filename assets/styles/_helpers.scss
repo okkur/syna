@@ -1,5 +1,9 @@
 .hidden {
-  display: none;
+  display: none !important;
+}
+
+.display-contents {
+  display: contents;
 }
 
 .overflow-hidden {
