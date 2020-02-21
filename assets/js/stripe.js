@@ -27,7 +27,7 @@ function onSubmit(configId, form, stripe, card) {
     form.$('#generic-success').addClass('hidden');
     form.removeClass('success').removeClass('error');
     // Stripe requires creating a token for user data to avoid sending data to other server
-    stripe.createToken(card).then(result => {
+    stripe.createToken(card).then((result) => {
       if (result.error) {
         $('.invalid-feedback').text(result.error.message);
         button.removeAttr('disabled').removeClass('disabled');
@@ -51,14 +51,20 @@ function onSubmit(configId, form, stripe, card) {
           }),
         };
 
-        if (formData.custom_value === "true") {
+        if (formData.custom_value === 'true') {
           price = formData.custom_price_text;
-          serializedForm.currency = form.$('[data-input=currency]').attr('data-value');
+          serializedForm.currency = form
+            .$('[data-input=currency]')
+            .attr('data-value');
         } else {
-          serializedForm.currency = form.$('input[name=price_text]:checked').attr('data-currency');
+          serializedForm.currency = form
+            .$('input[name=price_text]:checked')
+            .attr('data-currency');
         }
         serializedForm.metadata.price_text = price;
-        serializedForm.price = parsePrice(price) * (currencies[serializedForm.currency.toUpperCase()] || 1);
+        serializedForm.price =
+          parsePrice(price) *
+          (currencies[serializedForm.currency.toUpperCase()] || 1);
 
         $.post(action, JSON.stringify(serializedForm))
           .then(() => {
@@ -75,17 +81,17 @@ function onSubmit(configId, form, stripe, card) {
           });
       }
     });
-  }
+  };
 }
 
 const stripeFragments = window.syna.api.getScope('stripe');
-Object.keys(stripeFragments).forEach(key => {
+Object.keys(stripeFragments).forEach((key) => {
   const config = stripeFragments[key];
   const stripe = Stripe(config.token);
   const elements = stripe.elements();
   const card = elements.create('card', config.options);
   card.mount(`#payment-form-${config.form} #card-element`);
-  card.addEventListener('change', e => {
+  card.addEventListener('change', (e) => {
     const displayError = $('.invalid-feedback');
     if (event.error) {
       displayError.text(event.error.message);
@@ -98,41 +104,61 @@ Object.keys(stripeFragments).forEach(key => {
   initFormValidation(form[0], onSubmit(key, form, stripe, card));
 
   if (form.$('input[name=custom_price_text]').length > 0) {
-    form.$('[data-render="price-value"]').text(form.$('input[name=custom_price_text]').val() + form.$('[data-input=currency]').text())
+    form
+      .$('[data-render="price-value"]')
+      .text(
+        form.$('input[name=custom_price_text]').val() +
+          form.$('[data-input=currency]').text(),
+      );
   }
   const choices = $(`#payment-form-${config.form} input[name=price_text]`);
   if (choices.length > 0) {
     choices.$nodes[0].setAttribute('checked', true);
     choices.$nodes[0].parentElement.classList.add('active');
-    form.$('[data-render="price-value"]').text(choices.$nodes[0].value)
+    form.$('[data-render="price-value"]').text(choices.$nodes[0].value);
   }
 
-  form.$('[data-action="toggle-price-change"]').on('click', (() => {
-    let isEditable = false;
-    return () => {
-      if (isEditable) {
-        form.$('.price-display').removeClass('hidden');
-        form.$('.price-input').addClass('hidden');
-        form.$('input[name=custom_value]').val('false');
-        form.$('[data-render="price-value"]').text(form.$('input[name=price_text][checked]').val());
-      } else {
-        form.$('.price-display').addClass('hidden');
-        form.$('.price-input').removeClass('hidden');
-        form.$('input[name=custom_value]').val('true');
-        form.$('[data-render="price-value"]').text(form.$('input[name=custom_price_text]').val() + form.$('[data-input=currency]').text());
-      }
-      isEditable = !isEditable;
-    }
-  })());
+  form.$('[data-action="toggle-price-change"]').on(
+    'click',
+    (() => {
+      let isEditable = false;
+      return () => {
+        if (isEditable) {
+          form.$('.price-display').removeClass('hidden');
+          form.$('.price-input').addClass('hidden');
+          form.$('input[name=custom_value]').val('false');
+          form
+            .$('[data-render="price-value"]')
+            .text(form.$('input[name=price_text][checked]').val());
+        } else {
+          form.$('.price-display').addClass('hidden');
+          form.$('.price-input').removeClass('hidden');
+          form.$('input[name=custom_value]').val('true');
+          form
+            .$('[data-render="price-value"]')
+            .text(
+              form.$('input[name=custom_price_text]').val() +
+                form.$('[data-input=currency]').text(),
+            );
+        }
+        isEditable = !isEditable;
+      };
+    })(),
+  );
 
-  form.on('input', 'input[name=price_text]', e => {
-    const price = parseInt(e.target.value.match(/\w+/g).reduce((tmp, match) => tmp + match, ''), 10)
+  form.on('input', 'input[name=price_text]', (e) => {
+    const price = parseInt(
+      e.target.value.match(/\w+/g).reduce((tmp, match) => tmp + match, ''),
+      10,
+    );
     form.$('input[name=price]').val(price);
     form.$('[data-render="price-value"]').text(e.target.value);
   });
-  form.on('input', 'input[name=custom_price_text]', e => {
-    form.$('[data-render="price-value"]').text(e.target.value + form.$('[data-input=currency]').text());
-  })
+  form.on('input', 'input[name=custom_price_text]', (e) => {
+    form
+      .$('[data-render="price-value"]')
+      .text(e.target.value + form.$('[data-input=currency]').text());
+  });
 
   form.$('#generic-success [data-action="return-form"]').on('click', () => {
     form.$('#generic-success').addClass('hidden');
@@ -140,22 +166,27 @@ Object.keys(stripeFragments).forEach(key => {
   });
 });
 
-window.syna.stream.subscribe('pricing:change', function({ product, description, price, currency }) {
+window.syna.stream.subscribe('pricing:change', function({
+  product,
+  description,
+  price,
+  currency,
+}) {
   updateStripeFragments(product, description, price, currency);
 });
 
 function updateStripeFragments(product, description, price, currency) {
-  window.syna.api.toArray('stripe').forEach(config => {
+  window.syna.api.toArray('stripe').forEach((config) => {
     const form = $(`#payment-form-${config.form}`);
 
-    config.description = description
+    config.description = description;
     config.product = product;
 
     if (product) {
       $('[data-render="product"]').html(
         window.syna.api.renderTemplate(
           $(`#stripe-product-template-${config.form}`).html(),
-          { product }
+          { product },
         ),
       );
     }
@@ -165,7 +196,9 @@ function updateStripeFragments(product, description, price, currency) {
       const data = { price, currency };
 
       if (form.$('[data-render=price]').length > 0) {
-        form.$('[data-render=price]').html(window.syna.api.renderTemplate(priceTemplate, data));
+        form
+          .$('[data-render=price]')
+          .html(window.syna.api.renderTemplate(priceTemplate, data));
       }
 
       if (form.$('[data-value=price]').length > 0) {
@@ -175,7 +208,9 @@ function updateStripeFragments(product, description, price, currency) {
       form.$('[data-render="price-value"]').text(price);
 
       setTimeout(() => {
-        const choices = $(`#payment-form-${config.form} input[name=price_text]`);
+        const choices = $(
+          `#payment-form-${config.form} input[name=price_text]`,
+        );
         if (choices.length > 0) {
           choices.$nodes[0].setAttribute('checked', true);
           choices.$nodes[0].parentElement.classList.add('active');
@@ -189,7 +224,7 @@ function updateStripeFragments(product, description, price, currency) {
 
     form.$('input[name=email]')[0].focus();
     // TODO: REVISIT: Remove the following line whenever firefox fixes center on focus
-    form[0].scrollIntoView({behavior: "instant", block: "center"});
+    form[0].scrollIntoView({ behavior: 'instant', block: 'center' });
   });
 }
 
@@ -356,5 +391,5 @@ const currencies = {
   YER: 100,
   ZAR: 100,
   ZMW: 100,
-  ZWB: 100
+  ZWB: 100,
 };

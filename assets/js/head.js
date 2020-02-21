@@ -17,7 +17,7 @@ class Stream {
     this._updateActiveEvent = this._updateActiveEvent.bind(this);
   }
 
-  subscribe (topic, func) {
+  subscribe(topic, func) {
     if (!this._topics[topic]) {
       this._topics[topic] = [];
     }
@@ -36,15 +36,14 @@ class Stream {
     }
     setTimeout(() => {
       const subscribers = this._topics[topic];
-      const args = typeof argsText === 'object' ? 
-        argsText :
-        argsText
-          .split(',')
-          .reduce((tmp, param) => {
-            const [key, value] = param.split(':');
-            tmp[key] = value;
-            return tmp;
-          }, {});
+      const args =
+        typeof argsText === 'object'
+          ? argsText
+          : argsText.split(',').reduce((tmp, param) => {
+              const [key, value] = param.split(':');
+              tmp[key] = value;
+              return tmp;
+            }, {});
 
       let len = subscribers ? subscribers.length : 0;
       while (len--) {
@@ -95,19 +94,17 @@ class Stream {
 
   _translateUrlQuery(url) {
     const query = url.slice(url.indexOf('?') + 1) || '';
-    return query
-      .split('&')
-      .reduce((tmp, pair) => {
-        const [key, value] = pair.split('=')
-        tmp[decodeURIComponent(key)] = decodeURIComponent(value);
-        return tmp;
-      }, {});
+    return query.split('&').reduce((tmp, pair) => {
+      const [key, value] = pair.split('=');
+      tmp[decodeURIComponent(key)] = decodeURIComponent(value);
+      return tmp;
+    }, {});
   }
 }
 
 class SynaAPI {
   constructor() {
-    this._registry = {}
+    this._registry = {};
     this.register = this.register.bind(this);
     this.update = this.update.bind(this);
     this.get = this.get.bind(this);
@@ -137,7 +134,7 @@ class SynaAPI {
       return null;
     }
 
-    return this._registry[scope][id]
+    return this._registry[scope][id];
   }
 
   getScope(scope) {

@@ -11,16 +11,16 @@ function toggleMenu(node) {
 }
 
 function closeMenus() {
-  Array.from(dropdowns || []).forEach(node => {
+  Array.from(dropdowns || []).forEach((node) => {
     node.querySelector('.dropdown-toggle').classList.remove('dropdown-open');
     node.classList.remove('open');
-  })
+  });
 }
 
 function closeMenusOnResize() {
   if (document.body.clientWidth >= 768) {
     closeMenus();
-    Array.from(collapse || []).forEach(node => node.classList.remove('in'));
+    Array.from(collapse || []).forEach((node) => node.classList.remove('in'));
   }
 }
 
@@ -36,5 +36,9 @@ function toggleDropdown() {
 }
 
 window.addEventListener('resize', closeMenusOnResize, false);
-Array.from(dropdowns || []).forEach(node => node.addEventListener('click', toggleDropdown))
-Array.from(toggle || []).forEach(node => node.addEventListener('click', e => toggleMenu(node), false));
+Array.from(dropdowns || []).forEach((node) =>
+  node.addEventListener('click', toggleDropdown),
+);
+Array.from(toggle || []).forEach((node) =>
+  node.addEventListener('click', (e) => toggleMenu(node), false),
+);
