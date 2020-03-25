@@ -16,13 +16,13 @@ The use of a backend is also useful for saving other information from the user s
 
 ### Events
 
-This fragment uses the [Events]({{< ref "events" >}}) api by default.
+This fragment uses the [Events]({{< ref "docs/events" >}}) api by default.
 
 #### Subscribers
 
 ##### pricing:change
 
-This event is published by the [Pricing fragment]({{< ref "pricing" >}}#events). It can also be published by [event urls]({{< ref "events" >}}#event-urls).
+This event is published by the [Pricing fragment]({{< ref "pricing" >}}#events). It can also be published by [event urls]({{< ref "docs/events" >}}#event-urls).
 
 ###### product
 *type: string*
