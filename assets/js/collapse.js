@@ -3,7 +3,7 @@ import $ from './helpers/jq-helpers';
 const collapse = $('[data-toggle="collapse"]');
 const addCollapse = $('[data-toggle="collapse"][data-add-collapse]');
 
-addCollapse.$nodes.forEach(collapsible => {
+addCollapse.$nodes.forEach((collapsible) => {
   const target = $(collapsible.dataset.target);
 
   if (target && target[0].children.length) {
@@ -12,9 +12,9 @@ addCollapse.$nodes.forEach(collapsible => {
   }
 });
 
-collapse.on('click', function (e) {
+collapse.on('click', function(e) {
   if (e.target.tagName === 'A') {
-    return
+    return;
   }
   const target = $(this).attr('data-target');
 
@@ -25,13 +25,13 @@ collapse.on('click', function (e) {
   }
 });
 
-const hideCollapse = function (el, target) {
+const hideCollapse = function(el, target) {
   $(el).attr('aria-expanded', 'false');
   $(el).addClass('collapsed');
   $(target).removeClass('show');
 };
 
-const showCollapse = function (el, target) {
+const showCollapse = function(el, target) {
   $(el).attr('aria-expanded', 'true');
   $(el).removeClass('collapsed');
   $(target).addClass('show');

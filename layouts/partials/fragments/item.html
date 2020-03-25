@@ -168,6 +168,13 @@
           </div>
         {{- end -}}
         {{- with .Params.asset -}}
+          {{- if isset . "url" -}}
+            <a
+              href="{{ print .url }}"
+              {{ if isset . "icon" }}
+                {{- safeHTMLAttr (print "class='display-contents'") -}}
+              {{ end }}>
+          {{- end -}}
           {{- if isset . "image" }}
             <div class="col-12 text-center d-none d-lg-inline">
               <img src="{{ partial "helpers/image.html" (dict "root" $self "asset" .) }}" class="img-fluid p-2" alt="{{ .text | default $.Params.title }}">
@@ -186,6 +193,9 @@
                 <span class="sr-only">{{ .text | default $.Params.title }}</span>
               </span>
             </div>
+          {{- end -}}
+          {{- if isset . "url" -}}
+            </a>
           {{- end -}}
         {{- else -}}
           {{- if .Params.buttons }}

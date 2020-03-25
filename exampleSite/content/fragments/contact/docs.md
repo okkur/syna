@@ -21,13 +21,14 @@ Contributions for translations are welcome.
 ### Events
 
 <!-- TODO: revise later -->
-This fragment uses the [Events]({{< ref "events" >}}) api by default.
+This fragment uses the [Events]({{< ref "docs/events" >}}) api by default.
 
 #### Subscribers
 
 ##### contact:update
 
-This event is not published by any fragment by default. But you can make use of it through [event urls]({{< ref "events" >}}#event-urls).
+This event is not published by any fragment by default. But you can make use of
+it through [event urls]({{< ref "docs/events" >}}#event-urls).
 
 ###### name
 *type: string*

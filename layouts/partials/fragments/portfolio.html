@@ -22,9 +22,17 @@
             {{- if .Params.item_url }}
               <a href="{{ .Params.item_url | relLangURL }}">
             {{- end }}
-                {{- if .Params.asset -}}
-                  <img src="{{ partial "helpers/image.html" (dict "root" $self "this" . "asset" .Params.asset "resize" "500x380") }}" class="img-fluid" alt="{{ .Params.asset.text }}">
-                {{- end }}
+                {{- $this := . -}}
+                {{- with .Params.asset -}}
+                  {{- if .image -}}
+                    <img src="{{ partial "helpers/image.html" (dict "root" $self "this" $this "asset" . "resize" "500x380") }}" class="portfolio-image img-fluid" alt="{{ .text }}">
+                  {{- else if .icon }}
+                    <span class="portfolio-icon fa-stack fa-3x m-2" title="{{ .text }}">
+                      <i class="{{ .icon }} fa-stack-2x fa-inverse"></i>
+                      <span class="sr-only">{{ .text }}</span>
+                    </span>
+                  {{- end -}}
+                {{- end -}}
                 <div class="position-absolute hover-overlay"></div>
                 {{- if .Params.labels -}}
                   <div class="position-absolute text-light badge-container">
