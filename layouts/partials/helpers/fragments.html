@@ -116,7 +116,7 @@
     {{- else if ge $index 1 -}}
       {{/* Sections between the first and last are found and their _global directories
         are taken into account */}}
-      {{- $directory := (delimit (first (add $index 1) ($page_scratch.Get "sections")) "/") -}}
+      {{- $directory := strings.TrimPrefix "/" (delimit (first (add $index 1) ($page_scratch.Get "sections")) "/") -}}
       {{- $page := printf "%s/%s" $directory "_global" -}}
       {{- $page_scratch.Set "active_page_default" ($default_site.GetPage "page" $page) -}}
       {{- $page_scratch.Set "active_page" ($real_page.Site.GetPage "page" $page) -}}
