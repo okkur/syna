@@ -57,17 +57,17 @@
 
   {{- with .Site.Params.custom -}}
     {{- with .favicon }}
-      <link rel="shortcut icon" type="image/x-icon" href="{{ . | relLangURL }}">
-      <link rel="icon" {{ with $.Site.Params.custom.favicon_ico_sizes }}sizes="{{ . }}"{{ end }} type="image/x-icon" href="{{ . | relLangURL }}">
+      <link rel="shortcut icon" type="image/x-icon" href="{{ . }}">
+      <link rel="icon" {{ with $.Site.Params.custom.favicon_ico_sizes }}sizes="{{ . }}"{{ end }} type="image/x-icon" href="{{ . | relURL }}">
     {{- end }}
 
     {{- with .favicon_png }}
-      <link rel="icon" href="{{ . | relLangURL }}">
-      <link rel="apple-touch-icon-precomposed" href="{{ . | relLangURL }}">
+      <link rel="icon" href="{{ . | relURL }}">
+      <link rel="apple-touch-icon-precomposed" href="{{ . | relURL }}">
     {{- end }}
 
     {{- with .favicon_svg }}
-      <link rel="icon" type="image/svg+xml" href="{{ . | relLangURL }}">
+      <link rel="icon" type="image/svg+xml" href="{{ . | relURL }}">
     {{- end -}}
 
     {{ if and (not .favicon) (not .favicon_png) (not .favicon_svg) }}
@@ -84,7 +84,7 @@
   </script>
   {{- $script_template := resources.Get "scripts/syna-head.js" -}}
   {{- $script := $script_template | resources.Minify | resources.Fingerprint }}
-  <script {{- safeHTMLAttr (printf " src=\"%s\"" ($script.RelPermalink | relLangURL)) -}}></script>
+  <script {{- safeHTMLAttr (printf " src=\"%s\"" ($script.RelPermalink)) -}}></script>
 
   {{- range (.Scratch.Get "page_config") -}}
     {{- range .Params.config -}}

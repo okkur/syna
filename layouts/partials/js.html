@@ -29,7 +29,7 @@
         {{- if (.defer | default true) -}}
           {{- safeHTMLAttr (print " defer") -}}
         {{- end -}}
-        {{- safeHTMLAttr (printf " src=\"%s\"" ($script.RelPermalink | relLangURL)) -}}></script>
+        {{- safeHTMLAttr (printf " src=\"%s\"" ($script.RelPermalink)) -}}></script>
     {{- else if .script -}}
       {{ .script | safeHTML }}
     {{- end -}}
