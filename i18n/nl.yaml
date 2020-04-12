@@ -1,0 +1,83 @@
+# General
+- id: attribution
+  translation: "Website gebaseerd op"
+- id: nl
+  translation: "Nederlands"
+
+# Content
+- id: content.readmore
+  translation: "Lees meer..."
+
+# Contact Form
+- id: contact.defaultNameError
+  translation: "Vul a.u.b. je naam in"
+- id: contact.defaultEmailError
+  translation: "Vul a.u.b. je e-mailadres in"
+- id: contact.defaultPhoneError
+  translation: "Vul a.u.b. je telefoonnummer in"
+- id: contact.defaultMessageError
+  translation: "Vul a.u.b. een bericht in"
+- id: contact.defaultGenericSuccess
+  translation: "Thank you for contacting us"
+- id: contact.defaultGenericError
+  translation: "Bericht kon niet verzonden worden. Neem contact met ons op, op"
+- id: contact.defaultJsError
+  translation: "Bericht kan niet vezonden worden als javascript uitgeschakeld is. Neem contact met ons op, op"
+- id: contact.defaultCaptchaError
+  translation: "Bericht kan niet verzonden worden omdat captcha niet geladen kan worden. Neem contact met ons op, op"
+- id: contact.defaultButton
+  translation: "Verstuur bericht"
+
+# Footer
+- id: footerLegal.copyright
+  translation: "© Copyright"
+- id: footerLegal.by
+  translation: "door "
+
+# 404
+- id: 404.title
+  translation: "Pagina niet gevonden"
+- id: 404.subtitle
+  translation: "De opgevraagde pagina kan niet worden gevonden"
+- id: 404.direction
+  translation: "Je kunt altijd terug naar de hoofdpagina"
+- id: 404.button
+  translation: "Hoofdpagina"
+  
+# Member
+- id: member.livesIn
+  translation: "Leeft in"
+- id: member.reportsTo
+  translation: "Verantwoord aan"
+
+# Navbar
+- id: navbar.search
+  translation: "Zoeken..."
+- id: navbar.github
+  translation: "Github"
+- id: navbar.back_to_top
+  translation: "Terug naar boven"
+
+# Search
+- id: search.search
+  translation: "Zoeken"
+
+# Stripe
+- id: stripe.pay
+  translation: "Betalen"
+- id: stripe.return
+  translation: "Terug"
+- id: stripe.email
+  translation: "Je e-mailadres"
+- id: stripe.pricePlaceholder
+  translation: "Voer je eigen prijs in"
+- id: stripe.customPriceError
+  translation: "Prijs zou in het volgende formaat moeten zijn: 20, 20.00, 20,00"
+- id: stripe.defaultGenericSuccess
+  translation: "Betaling gelukt. Bedankt."
+- id: stripe.defaultGenericError
+  translation: "Er is iets mis gegaan. Probeer het over enkele minuten nog eens."
+- id: stripe.change_price
+  translation: "Wijzig prijs"
+- id: stripe.change_currency
+  translation: "Wijzig valuta"
