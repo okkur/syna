@@ -101,12 +101,10 @@
         </div>
       {{- end }}
       {{- if .Site.IsMultiLingual -}}
-        {{- range .Site.Languages }}
-          {{- if ne .Lang $.Site.Language.Lang -}}
-            <a class="btn btn-secondary mr-1 my-2" href="{{ delimit (slice "/" .) "" }}" role="button">
-              {{ .LanguageName }}
-            </a>
-          {{- end -}}
+        {{- range $.root.Page.Translations }}
+          <a class="btn btn-secondary mr-1 my-2" href="{{ .Permalink }}" role="button">
+            {{ .Language.LanguageName }}
+          </a>
         {{- end -}}
       {{- end }}
     </div>
