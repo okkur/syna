@@ -23,22 +23,27 @@ for German website if those pages are not translated to German. For more
 information on Hugo's Multilingual mode, please refer to [their documentation](https://gohugo.io/content-management/multilingual/).
 
 In order to configure two languages, you need to update your main your
-configuration. Here's an example from the official documentation:
+configuration. Here's an example, derived from the official documentation:
 
 ```
 DefaultContentLanguage = "en"
 
 [languages]
   [languages.en]
+    languageName = "English"
     title = "My blog"
     weight = 1
   [languages.fr]
+    languageName = "Français"
     title = "Mon blogue"
     weight = 2
 
 [params]
   ...
 ```
+
+The `languageName` parameter is used as text on the language switcher buttons
+in the navbar.
 
 Please note that these parameters are added outside of `params` variable, inside
 your configuration file (`config.toml`, `config.yaml`, `config.json`). This will

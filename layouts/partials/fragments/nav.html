@@ -36,7 +36,7 @@
       {{- else -}}
         {{- printf " justify-content-end " -}}
       {{- end -}} collapse show" id="navbarCollapse">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav mr-2">
         {{- if .Params.prepend -}}
           {{- range sort .Params.prepend }}
             {{- $isMenuCurrent := or (eq $.root.Permalink .url) (eq (printf "%s/" $.root.Permalink) .url) (eq $.root.Permalink (printf "%s/" .url)) -}}
@@ -102,9 +102,11 @@
       {{- end }}
       {{- if .Site.IsMultiLingual -}}
         {{- range .Site.Languages }}
-          <a class="btn btn-secondary p-1 m-1" href="{{ delimit (slice "/" .) "" }}" role="button">
-            {{ . }}
-          </a>
+          {{- if ne .Lang $.Site.Language.Lang -}}
+            <a class="btn btn-secondary mr-1 my-2" href="{{ delimit (slice "/" .) "" }}" role="button">
+              {{ .LanguageName }}
+            </a>
+          {{- end -}}
         {{- end -}}
       {{- end }}
     </div>
