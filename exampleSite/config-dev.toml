@@ -9,6 +9,9 @@ enableGitInfo = true
 version = "0.16.2"
 disableKinds = ["RSS", "taxonomy", "taxonomyTerm"]
 
+RelativeURLs = true
+CanonifyURLs = true
+
 # Google Analytics tracking
 googleAnalytics = ""
 
