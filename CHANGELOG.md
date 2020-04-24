@@ -1,7 +1,7 @@
 <!--
 # v0.17.0
 _2018_
-  - [Downloads for v0.17.0](https://syna.okkur.org/releases//v0.17.0)
+  - [Downloads for v0.17.0](https://syna.okkur.org/releases/v0.17.0)
   - [Changelog since v0.16.0](#changes-since-v016)
 
 ## Documentation for v0.17
@@ -14,6 +14,24 @@ _2018_
 ---
 
 -->
+
+# v0.17.0
+_2020-04-24_
+  - [Downloads for v0.17.0](https://syna.okkur.org/releases/v0.17.0)
+  - [Changelog since v0.16.2](#changes-since-v0162)
+
+## Documentation for v0.17
+[Documentation](https://syna.okkur.org/docs) *Documentation defaults to latest release*
+
+## Changes since v0.16.2
+- Dutch translation (now supporting French, Dutch, English, German and Portuguese)
+
+## Fixes since v0.16.2
+- Fix date_format not being used [738](https://github.com/okkur/syna/pull/738)
+- Remove relLangURL for assets [732](https://github.com/okkur/syna/pull/732)
+- Fix list section path in exampleSite [726](https://github.com/okkur/syna/pull/726)
+
+---
 
 # v0.16.2
 
