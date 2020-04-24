@@ -1,6 +1,6 @@
 {{- define "main" -}}
-  {{/* In some edge cases, .CurrentSection is not available. If it's not
-    available the build would break since we need .CurrentSection.File.Dir later on. */}}
+  {{- /* In some edge cases, .CurrentSection is not available. If it's not
+    available the build would break since we need .CurrentSection.File.Dir later on. */ -}}
   {{- if .CurrentSection -}}
     {{- $list_page := .Site.GetPage "page" (printf "%s%s" .CurrentSection.File.Dir "_index") -}}
     {{/* real_page is the _index.md file which indicates the page that is

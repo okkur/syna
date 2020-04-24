@@ -11,10 +11,12 @@
     <canvas id="{{ printf "chart-%s" .Name }}" width="400" height="400"></canvas>
   </div>
 {{- partial "helpers/container.html" (dict "end" true "in_slot" .in_slot) -}}
-<script>
-  var fragmentName = "{{ .Name }}";
-  window.syna.api.register('graph', 'graph-' + fragmentName, {
-    selector: "{{ printf "#chart-%s" .Name }}",
-    config: JSON.parse({{ readFile (printf "%s%s/config.json" .page.File.Dir .Name) | safeHTML }}),
-  });
-</script>
+{{- if .page.File.Dir -}}
+  <script>
+    var fragmentName = "{{ .Name }}";
+    window.syna.api.register('graph', 'graph-' + fragmentName, {
+      selector: "{{ printf "#chart-%s" .Name }}",
+      config: JSON.parse({{ readFile (printf "%s%s/config.json" .page.File.Dir .Name) | safeHTML }}),
+    });
+  </script>
+{{- end -}}
