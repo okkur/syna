@@ -5,6 +5,11 @@
 {{- .page_scratch.Add "js" (dict "file" "syna-contact.js") -}}
 {{- $bg := .self.Scratch.Get "bg" }}
 
+{{- $default_name_input := dict "name" "name" "text" "Your Name *" "error" "Please enter your name" "required" true -}}
+{{- $default_email_input := dict "name" "email" "text" "Your Email *" "error" "Please enter your email" "required" true -}}
+{{- $default_phone_input := dict "name" "phone" "text" "Your Phone *" "error" "Please enter your phone" "required" true -}}
+{{- $default_inputs := slice $default_name_input $default_email_input $default_phone_input -}}
+
 {{ "<!-- Contact -->" | safeHTML }}
 
 {{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "Name" .Name "Params" .Params) -}}
@@ -26,46 +31,43 @@
         {{- end }}>
           <div class="row py-3 should-fade">
             <div class="col-md-6">
-              {{- with .Params.fields.name }}
+              {{- range (.Params.fields.inputs | default $default_inputs) }}
+                {{- $field := . }}
                 <div class="form-group">
                   <input
-                    id="name"
-                    name="name"
+                    id="{{- print .name -}}"
+                    name="{{- print .name -}}"
                     class="form-control"
                     type="text"
-                    data-validation
-                    data-validation-error-msg="{{ .error | default (i18n "contact.defaultNameError") }}"
-                    placeholder="{{ with .text }}{{ . | markdownify }}{{ end }}"
-                    required>
-                  <div class="px-2" data-error id="name-error"></div>
-                </div>
-              {{- end -}}
-              {{- with .Params.fields.email }}
-                <div class="form-group">
-                  <input
-                    id="email"
-                    name="email"
-                    class="form-control"
-                    type="text"
-                    data-validation="email"
-                    data-validation-error-msg="{{ .error | default (i18n "contact.defaultEmailError") }}"
-                    placeholder="{{ with .text }}{{ . | markdownify }}{{ end }}"
-                    required>
-                  <div class="px-2" data-error id="email-error"></div>
-                </div>
-              {{- end -}}
-              {{- with .Params.fields.phone }}
-                <div class="form-group">
-                  <input
-                    id="phone"
-                    name="phone"
-                    class="form-control"
-                    type="text"
-                    data-validation="regex"
-                    data-validation-regex="^([0-9,\+]+)$"
-                    data-validation-error-msg="{{ .error | default (i18n "contact.defaultPhoneError") }}"
+
+                    {{- if eq .name "name" }}
+                      {{ safeHTMLAttr "data-validation" }}
+                    {{- else if eq .name "email" }}
+                      {{ safeHTMLAttr "data-validation='email'" }}
+                    {{- else if eq .name "phone" }}
+                      {{ safeHTMLAttr "data-validation=regex'" }}
+                      {{ safeHTMLAttr "data-validation-regex='^([0-9,\\+]+)$'" }}
+                    {{- end -}}
+
+                    {{- with .validation -}}
+                      {{- if eq . true }}
+                        {{ safeHTMLAttr "data-validation" }}
+                      {{- else }}
+                        {{ safeHTMLAttr (printf "data-validation='%s'" .) }}
+                      {{- end -}}
+
+                      {{- with $field.validation_regex }}
+                        {{ safeHTMLAttr (printf "data-validation-regex='%s'" .) }}
+                      {{- end -}}
+                    {{- end -}}
+
+                    {{- if .required }}
+                      {{ safeHTMLAttr "required" }}
+                    {{- end }}
+
+                    data-validation-error-msg="{{ .error | default (i18n (printf "contact.default%sError" .name)) }}"
                     placeholder="{{ with .text }}{{ . | markdownify }}{{ end }}">
-                  <div class="px-2" data-error id="phone-error"></div>
+                  <div class="px-2" data-error id="{{- printf "%s-error" .name -}}"></div>
                 </div>
               {{- end }}
             </div>
