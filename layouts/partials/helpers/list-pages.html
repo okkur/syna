@@ -10,9 +10,11 @@
   {{- end -}}
 {{- end -}}
 
-{{- .page_scratch.Set "pages" (.page_scratch.Get "page").Pages -}}
-{{- if .Params.subsections -}}
-  {{- .page_scratch.Add "pages" (.page_scratch.Get "page").Sections -}}
+{{- .page_scratch.Set "pages" slice -}}
+{{- range (.page_scratch.Get "page").Pages -}}
+  {{- if or $.Params.subsections (ne .Kind "section") -}}
+    {{- $.page_scratch.Add "pages" . -}}
+  {{- end -}}
 {{- end -}}
 {{- if .Params.subsection_leaves -}}
   {{- range (.page_scratch.Get "page").Sections -}}
