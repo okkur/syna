@@ -102,7 +102,7 @@
                       {{ safeHTMLAttr "required" }}
                     {{- end }}
 
-                    data-validation-error-msg="{{ .error | default (i18n (printf "contact.default%sError" .name)) }}"
+                    data-validation-error-msg="{{ .error | default (i18n (printf "contact.defaultError" .name)) }}"
                     placeholder="{{ with .text }}{{ . | markdownify }}{{ end }}">
                   <div class="px-2" data-error id="{{- printf "%s-error" .name -}}"></div>
                 </div>
