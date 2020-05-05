@@ -68,6 +68,45 @@
                   <div class="px-2" data-error id="phone-error"></div>
                 </div>
               {{- end }}
+              {{- range (.Params.fields.custom | default slice) }}
+                {{- $field := . }}
+                <div class="form-group">
+                  <input
+                    id="{{- print .name -}}"
+                    name="{{- print .name -}}"
+                    class="form-control"
+                    type="text"
+
+                    {{- if eq .name "name" }}
+                      {{ safeHTMLAttr "data-validation" }}
+                    {{- else if eq .name "email" }}
+                      {{ safeHTMLAttr "data-validation='email'" }}
+                    {{- else if eq .name "phone" }}
+                      {{ safeHTMLAttr "data-validation=regex'" }}
+                      {{ safeHTMLAttr "data-validation-regex='^([0-9,\\+]+)$'" }}
+                    {{- end -}}
+
+                    {{- with .validation -}}
+                      {{- if eq . true }}
+                        {{ safeHTMLAttr "data-validation" }}
+                      {{- else }}
+                        {{ safeHTMLAttr (printf "data-validation='%s'" .) }}
+                      {{- end -}}
+
+                      {{- with $field.validation_regex }}
+                        {{ safeHTMLAttr (printf "data-validation-regex='%s'" .) }}
+                      {{- end -}}
+                    {{- end -}}
+
+                    {{- if .required }}
+                      {{ safeHTMLAttr "required" }}
+                    {{- end }}
+
+                    data-validation-error-msg="{{ .error | default (i18n (printf "contact.defaultError" .name)) }}"
+                    placeholder="{{ with .text }}{{ . | markdownify }}{{ end }}">
+                  <div class="px-2" data-error id="{{- printf "%s-error" .name -}}"></div>
+                </div>
+              {{- end }}
             </div>
             <div class="col-md-6">
               {{- with .Params.fields.message }}
