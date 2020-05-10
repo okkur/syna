@@ -89,7 +89,7 @@ Each section can have global fragments and if there are multiple fragments with 
 
 ##### Disabling a global fragment in specific pages/sections
 
-As global fragments are displayed in all children pages, you might want to
+As global fragments are displayed in all child pages, you might want to
 disable them in some of those pages or specific sections. You can do so by
 duplicating that fragment in the page you want and disable it there.
 
