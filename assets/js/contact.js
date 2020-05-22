@@ -85,7 +85,7 @@ function checkReCaptcha() {
   ) {
     $('.captcha-error').removeClass('d-none');
     setTimeout(checkReCaptcha, 200);
-  } else {
+  } else if (document.querySelector('.g-recaptcha-container div div')) {
     $('.captcha-error').addClass('d-none');
     $('.g-recaptcha-filler').addClass('d-none');
     $('.g-recaptcha').attr('disabled', true);
