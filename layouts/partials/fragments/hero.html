@@ -43,8 +43,10 @@
               {{- print $.Params.title -}}
             {{- end -}}
           "
-          {{- if .height }} height="{{ .height }}"{{- end -}}
-          {{- if .width }} width="{{ .width }}"{{- end -}}
+          style="
+            {{- if .height }}height: {{ .height }} !important;{{- end -}}
+            {{- if .width }}width: {{ .width }} !important;{{- end -}}
+          "
         ></img>
       </div>
     {{- end }}
