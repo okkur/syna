@@ -9,6 +9,8 @@
   translation: "Read more..."
 
 # Contact Form
+- id: contact.defaultError
+  translation: 'Please fill the field'
 - id: contact.defaultNameError
   translation: "Please enter your name"
 - id: contact.defaultEmailError

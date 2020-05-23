@@ -1,32 +1,62 @@
 <!--
-# v0.17.0
+# v0.18.0
 _2018_
-  - [Downloads for v0.17.0](https://syna.okkur.org/releases/v0.17.0)
-  - [Changelog since v0.16.0](#changes-since-v016)
+- [Downloads for v0.18.0](https://syna.okkur.org/releases/v0.18.0)
+- [Changelog since v0.17.1](#changes-since-v0171)
 
 ## Documentation for v0.17
 [Documentation](https://syna.okkur.org/docs) *Documentation defaults to latest release*
 
-## Changes since v0.16.0
+## Changes since v0.17.1
 
-## Fixes since v0.16.0
+## Fixes since v0.17.1
 
 ---
 
 -->
 
+# v0.17.1
+
+_2020-05-23_
+
+- [Downloads for v0.17.1](https://syna.okkur.org/releases/v0.17.1)
+- [Changelog since v0.17.0](#changes-since-v0170)
+
+## Documentation for v0.17.1
+
+[Documentation](https://syna.okkur.org/docs) _Documentation defaults to latest release_
+
+## Changes since v0.17.0
+
+- Allow custom inputs in the contact form [754](https://github.com/okkur/syna/pull/754)
+
+## Fixes since v0.17.0
+
+- Fix duplicate section pages in list fragment [755](https://github.com/okkur/syna/pull/755)
+- Fix a bug that caused subsections be shown if the config was set to not show them or show duplicate subsections if config was set to show them.
+- hero: Fix image.height and image.width [768](https://github.com/okkur/syna/pull/768)
+- contact: Fix alignment of contact fragment's submit button when recaptcha is not fully loaded [767](https://github.com/okkur/syna/pull/767)
+- config: Fix duplicated output [765](https://github.com/okkur/syna/pull/765)
+
+---
+
 # v0.17.0
+
 _2020-04-24_
-  - [Downloads for v0.17.0](https://syna.okkur.org/releases/v0.17.0)
-  - [Changelog since v0.16.2](#changes-since-v0162)
+
+- [Downloads for v0.17.0](https://syna.okkur.org/releases/v0.17.0)
+- [Changelog since v0.16.2](#changes-since-v0162)
 
 ## Documentation for v0.17
-[Documentation](https://syna.okkur.org/docs) *Documentation defaults to latest release*
+
+[Documentation](https://syna.okkur.org/docs) _Documentation defaults to latest release_
 
 ## Changes since v0.16.2
+
 - Dutch translation (now supporting French, Dutch, English, German and Portuguese)
 
 ## Fixes since v0.16.2
+
 - Fix date_format not being used [738](https://github.com/okkur/syna/pull/738)
 - Remove relLangURL for assets [732](https://github.com/okkur/syna/pull/732)
 - Fix list section path in exampleSite [726](https://github.com/okkur/syna/pull/726)
@@ -45,6 +75,7 @@ _2020-03-23_
 [Documentation](https://syna.okkur.org/docs) _Documentation defaults to latest release_
 
 ## Changes since v0.16.1
+
 - `portfolio`: Add support for icons
 - `hero`: Remove leftover particle code, when disabled
 - `item`: Images and icons can now have urls

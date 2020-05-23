@@ -179,11 +179,11 @@
     {{- $name := replace .Name "/index" "" -}}
     {{- if ne $root.File nil -}}
       {{- $directory_same_name := in ($page_scratch.Get "fragments_directory_name") (printf "%s%s/" $root.File.Dir (replace $name ".md" "")) -}}
-      {{- if and (not .Params.disabled) (isset .Params "fragment") (not (where ($page_scratch.Get "page_fragments") ".Name" $name)) (not $directory_same_name) -}}
+      {{- if and (not .Params.disabled) (isset .Params "fragment") (not $directory_same_name) -}}
         {{- if or $is_404 (ne .Params.fragment "404") -}}
-          {{- if eq .Params.fragment "config" -}}
+          {{- if and (eq .Params.fragment "config") (not (where ($page_scratch.Get "page_config") ".Name" $name)) -}}
             {{- $page_scratch.Add "page_config" . -}}
-          {{- else -}}
+          {{- else if not (where ($page_scratch.Get "page_fragments") ".Name" $name) -}}
             {{- $page_scratch.Add "page_fragments" . -}}
             {{- $page_scratch.Add "fragments_directory_name" (printf "%s%s/" $root.File.Dir (replace $name ".md" "")) -}}
             {{- if isset .Params "padding" -}}
