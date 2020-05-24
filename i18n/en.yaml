@@ -63,6 +63,8 @@
 # Search
 - id: search.search
   translation: "Search"
+- id: search.no_results
+  translation: "No matches found"  
 
 # Stripe
 - id: stripe.pay

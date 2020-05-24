@@ -1,0 +1,87 @@
+# General
+- id: attribution
+  translation: "Página basada en"
+- id: es
+  translation: "Spanish"
+
+# Content
+- id: content.readmore
+  translation: "Leer más..."
+
+# Contact Form
+- id: contact.defaultError
+  translation: 'Por favor, rellene el campo'
+- id: contact.defaultNameError
+  translation: "Por favor, introduzca su nombre"
+- id: contact.defaultEmailError
+  translation: "Por favor, introduzca dirección de correo electrónico"
+- id: contact.defaultPhoneError
+  translation: "Por favor, introduzca número de teléfono"
+- id: contact.defaultMessageError
+  translation: "Por favor, introduzca un mensaje"
+- id: contact.defaultGenericSuccess
+  translation: "Gracias por contactarnos"
+- id: contact.defaultGenericError
+  translation: "No se puede enviar el mensaje. Por favor, póngase en contacto"
+- id: contact.defaultJsError
+  translation: "El mensaje no puede ser enviado con javascript deshabilidado. Por favor, póngase en contacto"
+- id: contact.defaultCaptchaError
+  translation: "El mensaje no puede ser enviado sin el captcha cargado. Por favor, póngase en contacto"
+- id: contact.defaultButton
+  translation: "Enviar Mensaje"
+
+# Footer
+- id: footerLegal.copyright
+  translation: "© Copyright"
+- id: footerLegal.by
+  translation: "por "
+
+# 404
+- id: 404.title
+  translation: "Página no encontrada"
+- id: 404.subtitle
+  translation: "La página solicitada no ha podido ser encontrada"
+- id: 404.direction
+  translation: "Siempre puede volver a su página princial"
+- id: 404.button
+  translation: "Página principal"
+  
+# Member
+- id: member.livesIn
+  translation: "Vive en"
+- id: member.reportsTo
+  translation: "Depende de"
+
+# Navbar
+- id: navbar.search
+  translation: "Buscar..."
+- id: navbar.github
+  translation: "Github"
+- id: navbar.back_to_top
+  translation: "Volver al principio"
+
+# Search
+- id: search.search
+  translation: "Buscar"
+- id: search.no_results
+  translation: "Sin resultados"
+
+# Stripe
+- id: stripe.pay
+  translation: "Pagar"
+- id: stripe.return
+  translation: "Volver"
+- id: stripe.email
+  translation: "Su dirección de correo electrónico"
+- id: stripe.pricePlaceholder
+  translation: "Introduzca su cantidad personalizada"
+- id: stripe.customPriceError
+  translation: "La cantidad debe ir en los siguientes formatos: 20, 20.00, 20,00"
+- id: stripe.defaultGenericSuccess
+  translation: "El pago se realizo con éxito. Gracias."
+- id: stripe.defaultGenericError
+  translation: "Algo sucedió. Por favor, pruebe de nuevo en unos minutos."
+- id: stripe.change_price
+  translation: "Cambie el valor"
+- id: stripe.change_currency
+  translation: "Cambie la moneda"
