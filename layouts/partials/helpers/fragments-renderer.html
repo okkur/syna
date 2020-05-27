@@ -7,7 +7,7 @@
 {{- range sort ($page_scratch.Get "page_fragments" | default slice) "Params.weight" -}}
   {{/* If a fragment contains a slot variable in it's frontmatter it should not
     be rendered on the page. It would be later handled by the slot helper. */}}
-  {{- if (not (isset .Params "slot")) (ne .Params.slot "") -}}
+  {{- if and (not (isset .Params "slot")) (ne .Params.slot "") -}}
     {{/* Cleanup .Name to be more useful within fragments */}}
     {{- $name := cond (eq $page .) .File.BaseFileName (strings.TrimSuffix ".md" (replace .Name "/index.md" "")) -}}
     {{- $bg := .Params.background | default "light" }}
