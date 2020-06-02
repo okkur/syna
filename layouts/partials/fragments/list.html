@@ -44,7 +44,7 @@
               {{- if $self.Params.tiled }}
                 <div class="card-title">
               {{- end }}
-                <div class="col-12 pl-0
+                <div class="col-12 pl-0 pb-1
                   {{- partial "helpers/text-color.html" (dict "self" $self.self) -}}
                 ">
                   <div
@@ -79,7 +79,7 @@
                   </div>
                 </div>
                 {{- if or (and $self.Params.tiled $self.Params.display_date) (and (ne $self.Params.display_categories false) .Params.categories) -}}
-                  <div class="col-12 pb-1 px-0">
+                  <div class="col-12 pb-2 px-0">
                     {{- if and $self.Params.tiled $self.Params.display_date -}}
                       {{- range $content_page -}}
                         {{- partial "helpers/publish-date.html" (dict "root" . "background" $bg) -}}
@@ -104,18 +104,18 @@
                   {{- $file_path := strings.TrimSuffix ".md" (replace .File.Path "/index.md" "") -}}
                   {{- $page_scratch := $.page_scratch -}}
                   {{- $root := (dict "page" (dict "file_path" $file_path) "page_scratch" $page_scratch "page" $page) }}
-                  <div class="col-12
+                  <div class="col-12 mt-1
                     {{- printf " p%s-0" (cond (eq $self.Params.tiled true) "x" "l") -}}
                   ">
                     <img
                       src="{{ partial "helpers/image.html" (dict "root" $root "asset" .Params.asset) }}"
                       alt="{{ .Params.subtitle | default $page_title }}"
-                      class="img-fluid mb-4">
+                      class="img-fluid mb-2">
                   </div>
                 {{- end -}}
               {{- end -}}
               {{- if $display_summary }}
-                <div class="col-12 pl-0
+                <div class="col-12 pl-0 mt-2
                   {{- partial "helpers/text-color.html" (dict "self" $self.self "light" "secondary") -}}
                 ">
                   {{- range $content_page }}
