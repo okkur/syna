@@ -6,7 +6,7 @@ title = "Okkur - Syna"
 theme = "syna"
 themesDir = "../.."
 enableGitInfo = true
-version = "0.17.1"
+version = "0.17.2"
 disableKinds = ["RSS", "taxonomy", "taxonomyTerm"]
 
 RelativeURLs = true

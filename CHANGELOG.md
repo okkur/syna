@@ -2,18 +2,39 @@
 # v0.18.0
 _2018_
 - [Downloads for v0.18.0](https://syna.okkur.org/releases/v0.18.0)
-- [Changelog since v0.17.1](#changes-since-v0171)
+- [Changelog since v0.17.2](#changes-since-v0171)
 
 ## Documentation for v0.17
 [Documentation](https://syna.okkur.org/docs) *Documentation defaults to latest release*
 
-## Changes since v0.17.1
+## Changes since v0.17.2
 
-## Fixes since v0.17.1
+## Fixes since v0.17.2
 
 ---
 
 -->
+
+# v0.17.2
+
+_2020-06-01_
+
+- [Downloads for v0.17.2](https://syna.okkur.org/releases/v0.17.2)
+- [Changelog since v0.17.1](#changes-since-v0171)
+
+## Documentation for v0.17.2
+
+[Documentation](https://syna.okkur.org/docs) _Documentation defaults to latest release_
+
+## Changes since v0.17.1
+
+- Spanish translation (now supporting Spanish, French, Dutch, English, German and Portuguese) [772](https://github.com/okkur/syna/pull/772)
+
+## Fixes since v0.17.1
+
+- Fix faulty conditional that broke compatibility with Hugo v0.72.0 [774](https://github.com/okkur/syna/pull/774)
+
+---
 
 # v0.17.1
 
