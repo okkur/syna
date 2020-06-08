@@ -54,23 +54,7 @@
                       {{- safeHTMLAttr (printf " data-add-collapse=\"#list-page-%s .article-title\"" (anchorize $page_id)) -}}
                     {{- end }}
                     class="row align-items-center justify-content-between mx-0 article-title">
-                    {{- if $display_summary }}
-                      <h4 class="col px-0 m-0
-                        {{- if eq $.page.Permalink .Permalink }} active-page {{- end -}}
-                      ">
-                        <a href="{{ .Permalink }}">
-                          {{- $page_title | markdownify -}}
-                        </a>
-                      </h4>
-                    {{- else }}
-                      <h5 class="col px-0 m-0
-                        {{- if eq $.page.Permalink .Permalink }} active-page {{- end -}}
-                      ">
-                        <a href="{{ .Permalink }}">
-                          {{- $page_title | markdownify -}}
-                        </a>
-                      </h5>
-                    {{- end -}}
+                    {{- partial "fragments/slices/list/title.html" (dict "display_summary" $display_summary "page_title" $page_title "page" $.page "Permalink" .Permalink) -}}
                     {{- if and (not $self.Params.tiled) $self.Params.display_date }}
                       {{- range $content_page -}}
                         {{- partial "helpers/publish-date.html" (dict "root" . "background" $bg "badge" false) -}}
@@ -78,20 +62,7 @@
                     {{- end }}
                   </div>
                 </div>
-                {{- if or (and $self.Params.tiled $self.Params.display_date) (and (ne $self.Params.display_categories false) .Params.categories) -}}
-                  <div class="col-12 pb-2 px-0">
-                    {{- if and $self.Params.tiled $self.Params.display_date -}}
-                      {{- range $content_page -}}
-                        {{- partial "helpers/publish-date.html" (dict "root" . "background" $bg) -}}
-                      {{- end -}}
-                    {{- end }}
-                    {{- if ne $self.Params.display_categories false -}}
-                      {{- with .Params.categories }}
-                        {{- partial "helpers/categories.html" (dict "categories" . "background" $bg) -}}
-                      {{- end -}}
-                    {{- end }}
-                  </div>
-                {{- end }}
+                {{- partial "fragments/slices/list/meta.html" (dict "content_page" $content_page "fragment" $self "Params" .Params "bg" $bg) -}}
               {{- if $self.Params.tiled }}
                 </div>
               {{- end -}}
@@ -105,7 +76,7 @@
                   {{- $page_scratch := $.page_scratch -}}
                   {{- $root := (dict "page" (dict "file_path" $file_path) "page_scratch" $page_scratch "page" $page) }}
                   <div class="col-12 mt-1
-                    {{- printf " p%s-0" (cond (eq $self.Params.tiled true) "x" "l") -}}
+                    {{- print (cond (eq $self.Params.tiled true) " px-0" " pl-0") -}}
                   ">
                     <img
                       src="{{ partial "helpers/image.html" (dict "root" $root "asset" .Params.asset) }}"

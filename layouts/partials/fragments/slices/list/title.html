@@ -1,0 +1,17 @@
+{{- if .display_summary }}
+  <h4 class="col px-0 m-0
+    {{- if eq .page.Permalink .Permalink }} active-page {{- end -}}
+  ">
+    <a href="{{ .Permalink }}">
+      {{- .page_title | markdownify -}}
+    </a>
+  </h4>
+{{- else }}
+  <h5 class="col px-0 m-0
+    {{- if eq .page.Permalink .Permalink }} active-page {{- end -}}
+  ">
+    <a href="{{ .Permalink }}">
+      {{- .page_title | markdownify -}}
+    </a>
+  </h5>
+{{- end -}}

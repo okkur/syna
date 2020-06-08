@@ -1,0 +1,16 @@
+{{- $bg := .bg -}}
+
+{{- if or (and .fragment.Params.tiled .fragment.Params.display_date) (and (ne .fragment.Params.display_categories false) .Params.categories) -}}
+  <div class="col-12 pb-2 px-0">
+    {{- if and .fragment.Params.tiled .fragment.Params.display_date -}}
+      {{- range .content_page -}}
+        {{- partial "helpers/publish-date.html" (dict "root" . "background" $.bg) -}}
+      {{- end -}}
+    {{- end }}
+    {{- if ne .fragment.Params.display_categories false -}}
+      {{- with .Params.categories }}
+        {{- partial "helpers/categories.html" (dict "categories" . "background" $.bg) -}}
+      {{- end -}}
+    {{- end }}
+  </div>
+{{- end }}
