@@ -25,8 +25,10 @@ $(document)
   .on('click', '.dropdown-item', (e) => {
     const dropdown = e.target.parentElement;
     const button = $(dropdown.parentElement).$('.dropdown-toggle');
-    button.text(e.target.innerText);
-    button.attr('data-value', e.target.dataset.value);
+    if (!button.$nodes[0].classList.contains('nav-link')) {
+      button.text(e.target.innerText);
+      button.attr('data-value', e.target.dataset.value);
+    }
     $(dropdown).removeClass('show');
     $(dropdown.parentElement).removeClass('show');
   })
