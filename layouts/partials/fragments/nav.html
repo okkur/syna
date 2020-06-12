@@ -54,16 +54,33 @@
         {{- end }}
         {{- if .Site.Menus.main -}}
           {{- range sort .Site.Menus.main }}
-            {{- $isMenuCurrent := or (eq $.root.Permalink .URL) (eq (printf "%s/" $.root.Permalink) .URL) (eq $.root.Permalink (printf "%s/" .URL)) -}}
-            <li class="nav-item">
-              <a href="{{ .URL | relLangURL }}"
+            {{- $isMenuCurrent := or ($.root.HasMenuCurrent "main" .) (eq $.root.Permalink .URL) (eq (printf "%s/" $.root.Permalink) .URL) (eq $.root.Permalink (printf "%s/" .URL)) -}}
+            <li class="nav-item {{ if .HasChildren }}dropdown{{ end }}">
+              <a
                 {{- if hasPrefix .URL "#" }}
                   class="nav-link anchor"
                 {{- else }}
-                  class="nav-link {{- if $isMenuCurrent }} active default-active {{- end -}}"
-                {{- end }}>
+                  class="nav-link {{- if $isMenuCurrent }} active default-active {{- end -}} {{ if .HasChildren }} dropdown-toggle{{ end }}"
+                {{- end }}
+                {{if .HasChildren}}
+                  id="navbarDropdown"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  href="#"
+                {{ else }}
+                  href="{{ .URL | relLangURL }}"
+                {{ end }}>
                 {{ .Name }}
               </a>
+              {{ if .HasChildren }}
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                {{ range .Children }}
+                  <a class="dropdown-item {{ if $.root.IsMenuCurrent "main" . }}active{{ end }}" href="{{ .URL }}">{{ .Name }}</a>
+                {{ end }}
+              </div>
+              {{ end }}
             </li>
           {{- end -}}
         {{- end }}
