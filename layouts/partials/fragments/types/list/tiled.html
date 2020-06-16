@@ -1,0 +1,59 @@
+{{- $article_vars := partial "fragments/slices/list/article-vars.html" (dict "article" .article "self" $.root)}}
+{{- $slot_context := dict "page" $article_vars.page "content_fragment" (index $article_vars.content_page 0) -}}
+{{- partial "helpers/slot.html" (dict "root" .root "slot" "before-item" "data" $slot_context) -}}
+<div class="col-lg-6 col-12 mb-2 d-flex">
+  <article
+    {{- if $.root.Params.collapsible -}}
+      {{- safeHTMLAttr (printf " id=\"list-page-%s\"" (anchorize $article_vars.page_id)) -}}
+    {{- end }}
+    class="card w-100">
+    <div class="card-body">
+      {{- if $article_vars.page_title -}}
+        <div class="card-title">
+          <div class="col-12 pl-0 pb-1
+            {{- partial "helpers/text-color.html" (dict "self" $.root) -}}
+          ">
+            <div
+              {{- if $.root.Params.collapsible -}}
+                {{- safeHTMLAttr (print " data-toggle=\"collapse\"") -}}
+                {{- safeHTMLAttr (printf " data-target=\"#list-page-%s .collapse\"" (anchorize $article_vars.page_id)) -}}
+                {{- safeHTMLAttr (printf " data-add-collapse=\"#list-page-%s .article-title\"" (anchorize $article_vars.page_id)) -}}
+              {{- end }}
+              class="row align-items-center justify-content-between mx-0 article-title">
+              {{- partial "fragments/slices/list/title.html" (dict "display_summary" $article_vars.display_summary "page_title" $article_vars.page_title "page" .root.page "Permalink" .article.Permalink) -}}
+            </div>
+          </div>
+          {{- partial "fragments/slices/list/meta.html" (dict "content_page" $article_vars.content_page "fragment" $.root "Params" $.article.Params "bg" $.bg) -}}
+        </div>
+      {{- end -}}
+      {{- if $.root.Params.collapsible -}}
+        <div class="collapse {{- if eq .root.page.Permalink .article.Permalink }} show {{- end }}">
+      {{- end -}}
+        {{- partial "fragments/slices/list/cover.html" (dict "content_page" $article_vars.content_page "fragment_params" .root.Params "page_scratch" .root.page_scratch "page" $article_vars.page "page_title" $article_vars.page_title) -}}
+        {{- if $article_vars.display_summary }}
+          <div class="col-12 pl-0 mt-2
+            {{- partial "helpers/text-color.html" (dict "self" $.root "light" "secondary") -}}
+          ">
+            {{- range $article_vars.content_page }}
+              {{- if (isset .Params "summary") }}
+                {{- .Params.summary | markdownify -}}
+              {{- else }}
+                {{- .Summary }}
+              {{- end -}}
+            {{- end -}}
+          </div>
+        {{- end -}}
+        {{- partial "helpers/slot.html" (dict "root" .root "slot" "after-item" "data" $slot_context) -}}
+      {{- if $.root.Params.collapsible -}}
+        </div>
+      {{- end -}}
+    </div>
+    {{- range $article_vars.content_page }}
+      {{- if and (ne $.root.Params.read_more false) (or $.root.Params.read_more .Truncated) }}
+        <div class="card-footer">
+          <a href="{{ .Permalink }}">{{ i18n "content.readmore" | default "Read more..." }}</a>
+        </div>
+      {{- end -}}
+    {{- end }}
+  </article>
+</div>

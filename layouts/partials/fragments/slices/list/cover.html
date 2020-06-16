@@ -1,0 +1,14 @@
+{{- range .content_page }}
+  {{- if and (ne $.fragment_params.images false) .Params.asset -}}
+    {{- $file_path := strings.TrimSuffix ".md" (replace .File.Path "/index.md" "") -}}
+    {{- $root := (dict "page" (dict "file_path" $file_path) "page_scratch" $.page_scratch "page" $.page) }}
+    <div class="col-12 mt-1
+      {{- print (cond (eq $.fragment_params.tiled true) " px-0" " pl-0") -}}
+    ">
+      <img
+        src="{{ partial "helpers/image.html" (dict "root" $root "asset" .Params.asset) }}"
+        alt="{{ .Params.subtitle | default $.page_title }}"
+        class="img-fluid mb-2">
+    </div>
+  {{- end -}}
+{{- end -}}

@@ -1,0 +1,10 @@
+{{- $page := .article -}}
+{{- $page_title := partial "helpers/page-title.html" (dict "page" .article "self" .article) -}}
+{{- .self.page_scratch.Set "article_page_fragments" (slice .article) -}}
+{{- range .article.Resources.ByType "page" -}}
+  {{- $.self.page_scratch.Add "article_page_fragments" . -}}
+{{- end -}}
+{{- $content_page := first 1 (where (.self.page_scratch.Get "article_page_fragments") "Params.fragment" "in" "content") -}}
+{{- $page_id := index (last 1 (findRE "[^\\/]+" .article.File.Dir)) 0 -}}
+{{- $display_summary := or (not (isset .self.Params "summary")) (eq .self.Params.summary true) -}}
+{{- return (dict "page" $page "page_title" $page_title "content_page" $content_page "page_id" $page_id "display_summary" $display_summary) -}}
