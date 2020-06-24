@@ -106,7 +106,6 @@ article .content {
   &-body {
     overflow-y: auto;
     max-height: calc(100vh - 2rem - var(--header-height));
-    margin-top: var(--header-height);
   }
 }
 

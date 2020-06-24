@@ -62,3 +62,27 @@
     </article>
   </div>
 {{- partial "helpers/container.html" (dict "end" true "in_slot" .in_slot) -}}
+
+<script>
+  (function() {
+    var sidebarContent = document.querySelector('.content-sidebar-body');
+    var sidebarContentParent = sidebarContent.parentElement;
+    var sidebarContentParentPadding = parseInt(getComputedStyle(sidebarContentParent).paddingTop, 10);
+    var headerHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-height'), 10);
+
+    if (!sidebarContent) {
+      return;
+    }
+
+    document.addEventListener('scroll', function() {
+      var sidebarTop = sidebarContentParent.getBoundingClientRect().top;
+      var extraPadding = 0;
+
+      if (sidebarTop <= headerHeight) {
+        extraPadding = headerHeight;
+      }
+
+      sidebarContentParent.style.setProperty('padding-top', extraPadding + sidebarContentParentPadding + 'px', 'important');
+    });
+  })();
+</script>

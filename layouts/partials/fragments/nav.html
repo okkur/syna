@@ -224,3 +224,10 @@
   });
 </script>
 {{- end -}}
+{{- if .Params.sticky }}
+<style>
+  :root {
+    --header-height: 56px;
+  }
+</style>
+{{- end -}}
