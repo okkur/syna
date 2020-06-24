@@ -66,13 +66,14 @@
 <script>
   (function() {
     var sidebarContent = document.querySelector('.content-sidebar-body');
-    var sidebarContentParent = sidebarContent.parentElement;
-    var sidebarContentParentPadding = parseInt(getComputedStyle(sidebarContentParent).paddingTop, 10);
-    var headerHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-height'), 10);
 
     if (!sidebarContent) {
       return;
     }
+
+    var sidebarContentParent = sidebarContent.parentElement;
+    var sidebarContentParentPadding = parseInt(getComputedStyle(sidebarContentParent).paddingTop, 10);
+    var headerHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-height'), 10);
 
     document.addEventListener('scroll', function() {
       var sidebarTop = sidebarContentParent.getBoundingClientRect().top;
