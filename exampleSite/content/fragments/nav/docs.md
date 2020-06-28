@@ -16,7 +16,7 @@ Use one instance of this fragment per page. Running more might lead to unexpecte
 
 - .Site.Menus.main
 
-  **Note:** Menus displayed in the nav fragment can be nested, in which case the nested menus are displayed in a dropdown, adding a chevron to the parent menu.
+  **Note:** Menus displayed in the nav fragment can be nested, in which case the nested menus are displayed in a dropdown.
 
   ```
   # config.toml
