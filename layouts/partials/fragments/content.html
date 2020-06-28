@@ -1,4 +1,5 @@
 {{- $self := .self -}}
+{{- .page_scratch.Add "js" (dict "file" "syna-content.js") -}}
 {{- $bg := .self.Scratch.Get "bg" }}
 
 {{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "Name" .Name "Params" .Params "section_class" "content-fragment" "container_class" "overlay") -}}
@@ -62,28 +63,3 @@
     </article>
   </div>
 {{- partial "helpers/container.html" (dict "end" true "in_slot" .in_slot) -}}
-
-<script>
-  (function() {
-    var sidebarContent = document.querySelector('.content-sidebar-body');
-
-    if (!sidebarContent) {
-      return;
-    }
-
-    var sidebarContentParent = sidebarContent.parentElement;
-    var sidebarContentParentPadding = parseInt(getComputedStyle(sidebarContentParent).paddingTop, 10);
-    var headerHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-height'), 10);
-
-    document.addEventListener('scroll', function() {
-      var sidebarTop = sidebarContentParent.getBoundingClientRect().top;
-      var extraPadding = 0;
-
-      if (sidebarTop <= headerHeight) {
-        extraPadding = headerHeight;
-      }
-
-      sidebarContentParent.style.setProperty('padding-top', extraPadding + sidebarContentParentPadding + 'px', 'important');
-    });
-  })();
-</script>
