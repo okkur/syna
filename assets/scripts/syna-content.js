@@ -94,7 +94,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar sidebarContent = document.querySelector('.content-sidebar-body');\n\nif (sidebarContent) {\n  var sidebarContentParent = sidebarContent.parentElement;\n  var sidebarContentParentPadding = parseInt(getComputedStyle(sidebarContentParent).paddingTop, 10);\n  var headerHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-height'), 10);\n\n  document.addEventListener('scroll', function () {\n    var sidebarTop = sidebarContentParent.getBoundingClientRect().top;\n    var extraPadding = 0;\n\n    if (sidebarTop <= headerHeight) {\n      extraPadding = headerHeight;\n    }\n\n    sidebarContentParent.style.setProperty('padding-top', extraPadding + sidebarContentParentPadding + 'px', 'important');\n  });\n}\n\n//# sourceURL=webpack:///./assets/js/content.js?");
+eval("\n\nvar sidebarContent = document.querySelector('.content-sidebar .sticky-top .content-sidebar-body');\n\nif (sidebarContent) {\n  var sidebarContentParent = sidebarContent.parentElement;\n  var sidebarContentParentPadding = parseInt(getComputedStyle(sidebarContentParent).paddingTop, 10);\n  var headerHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-height'), 10);\n\n  document.addEventListener('scroll', function () {\n    var sidebarTop = sidebarContentParent.getBoundingClientRect().top;\n    var extraPadding = 0;\n\n    if (sidebarTop <= headerHeight) {\n      extraPadding = headerHeight;\n    }\n\n    sidebarContentParent.style.setProperty('padding-top', extraPadding + sidebarContentParentPadding + 'px', 'important');\n  });\n}\n\n//# sourceURL=webpack:///./assets/js/content.js?");
 
 /***/ })
 

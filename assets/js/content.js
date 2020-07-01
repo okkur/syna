@@ -1,4 +1,4 @@
-const sidebarContent = document.querySelector('.content-sidebar-body');
+const sidebarContent = document.querySelector('.content-sidebar .sticky-top .content-sidebar-body');
 
 if (sidebarContent) {
   const sidebarContentParent = sidebarContent.parentElement;
