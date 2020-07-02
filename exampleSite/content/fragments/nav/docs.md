@@ -16,7 +16,7 @@ Use one instance of this fragment per page. Running more might lead to unexpecte
 
 - .Site.Menus.main
 
-  **Note:** Menus displayed in the nav fragment can be nested, in which case the nested menus are displayed in a dropdown.
+  **Note:** Menus displayed in the nav fragment can be nested, in which case the nested menus are displayed in a dropdown. Please see "[nesting](https://gohugo.io/content-management/menus/#nesting)" section of Menus documentation in Hugo documentation.
 
   ```
   # config.toml
