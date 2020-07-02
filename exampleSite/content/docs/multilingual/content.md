@@ -8,21 +8,39 @@ title = "MultiLingual Mode"
   sticky = true
 +++
 
-> Syna supports creating Multilingual websites since v0.16.1. The implementation
-> currently supports specifying languages on a per file basis such as
-> `page[.language code].md` future.
+<div class="alert alert-primary" role="alert">
+{{% md %}}
+Syna supports creating Multilingual websites since v0.16.1. The implementation
+currently supports specifying languages on a per file basis such as
+`page[.language code].md` future.
+{{% /md %}}
+</div>
 
 In order to make your website multilingual, you need to change your
 configuration so Hugo will generate new pages for translated content in your
-project. The way Multilingual mode works is that Hugo generates a new website
+project.
+
+The way Multilingual mode works is that Hugo generates a new website
 for each language and add each page to the website of the same language. For 
 example if your website has two languages, English and German, and each page
 is translated for both languages, Hugo will generate two websites with 
 same pages but in two languages. Hugo will not however generate English pages
-for German website if those pages are not translated to German. For more 
-information on Hugo's Multilingual mode, please refer to [their documentation](https://gohugo.io/content-management/multilingual/).
+for German website if those pages are not translated to German.
 
-In order to configure two languages, you need to update your main your
+For more information on Hugo's Multilingual mode, please refer to [their documentation](https://gohugo.io/content-management/multilingual/).
+
+### Multilingual website using Syna
+
+Please read the documentation provided by [Hugo](https: //gohugo.io/content-management/multilingual/). Please keep in mind that in order to make the configuration work with Syna, you have to: 
+
+- Add `DefaultContentLanguage` value to `params` section of your website's configuration file
+- Use [translation by filename](https:                  //gohugo.io/content-management/multilingual/#translation-by-filename) only
+
+Due to how we implement pages, we need these limitations to support multilingual mode.
+
+### Example
+
+For example, to configure two languages, you need to update your main your
 configuration. Here's an example from the official documentation:
 
 ```
@@ -37,6 +55,7 @@ DefaultContentLanguage = "en"
     weight = 2
 
 [params]
+  DefaultContentLanguage = "en"
   ...
 ```
 
@@ -55,10 +74,14 @@ expose the default language to the themes, you need to add the parameter to
 With this, whenever you build your website or start the development server, for
 each translated page you get `example.com/[page]` and `example.com/fr/[page]`.
 
-> Syna can generate pages for both approaches of content management that Hugo
-> supports but currently we only support the "[Translation by filename](https://gohugo.io/content-management/multilingual/#translation-by-filename)"
-> approach. We hope to add support for "[Translation by content directory](https://gohugo.io/content-management/multilingual/#translation-by-content-directory)"
-> in the future.
+<div class="alert alert-primary" role="alert">
+{{% md %}}
+Syna can generate pages for both approaches of content management that Hugo
+supports but currently we only support the "**[Translation by filename](https://gohugo.io/content-management/multilingual/#translation-by-filename)**"
+approach. We hope to add support for "[Translation by content directory](https://gohugo.io/content-management/multilingual/#translation-by-content-directory)"
+in the future.
+{{% /md %}}
+</div>
 
 Syna allows for fragment overrides in translated pages. This means that when you
 translate a page, the translated version will contain all the fragments from the
@@ -92,7 +115,11 @@ A French version of the page will be generated, containing all your fragments
 but the portfolio fragment will be the translated version. The page will have
 not changed for the default language.
 
-> Multilingual mode is currently release as alpha. It is subject to changes and
-> may not be stable. Please follow the changelog and updates to this page for
-> more information and news about any changes. Please create issues and pull
-> requests and let us know what you think.
+<div class="alert alert-danger" role="alert">
+{{% md %}}
+Multilingual mode is currently release as alpha. It is subject to changes and
+may not be stable. Please follow the changelog and updates to this page for
+more information and news about any changes. Please create issues and pull
+requests and let us know what you think.
+{{% /md %}}
+</div>
