@@ -1,3 +1,7 @@
+:root {
+  --header-height: 0px;
+}
+
 .nav-link {
   color: $navbar-light-color;
 
@@ -98,7 +102,11 @@ article .content {
 
 .content-sidebar {
   word-break: break-word;
-  overflow-y: auto;
+
+  &-body {
+    overflow-y: auto;
+    max-height: calc(100vh - 2rem - var(--header-height));
+  }
 }
 
 .items {

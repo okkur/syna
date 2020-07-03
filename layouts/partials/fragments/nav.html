@@ -175,7 +175,7 @@
     {{- else -}}
       {{- printf " navbar-%s" "dark" -}}
     {{- end -}}
-  " id="{{ .Name }}">
+  " id="{{ .Name }}-breadcrumb">
     <div class="container">
       <ol class="breadcrumb mb-0 py-1">
         {{- $item_count := sub (len ($page_scratch.Get "crumbs")) $level -}}
@@ -215,29 +215,38 @@
 {{- if .Params.search }}
 {{ partial "helpers/search-result-template.html" (dict "self" $self "name" .Name "message_class" "p-2" "background" $bg) }}
 <script>
-  var fragmentName = "{{ .Name }}";
-  window.syna.api.register('search', 'search-' + fragmentName, {
-    searchInput: '#search-query-{{ .Name }}',
-    resultsContainer: '#search-results-{{ .Name }}',
-    template: '#search-result-template-{{ .Name }}',
-    noResults: '#search-no-results-template-{{ .Name }}',
-    empty: '#search-empty-template-{{ .Name }}',
-  });
+  (function() {
+    var fragmentName = "{{ .Name }}";
+    window.syna.api.register('search', 'search-' + fragmentName, {
+      searchInput: `#search-query-${fragmentName}`,
+      resultsContainer: `#search-results-${fragmentName}`,
+      template: `#search-result-template-${fragmentName}`,
+      noResults: `#search-no-results-template-${fragmentName}`,
+      empty: `#search-empty-template-${fragmentName}`,
+    });
 
-  var resultsContainer = document.querySelector('.search-results-container');
-  document.querySelector('#search-query-{{ .Name }}').addEventListener('input', function(e) {
-    if (e.target.value.length) {
-      resultsContainer.classList.add('show');
-    } else {
-      resultsContainer.classList.remove('show');
-    }
-  });
+    var resultsContainer = document.querySelector(`#${fragmentName} .search-results-container`)
+    document.querySelector(`#search-query-${fragmentName}`).addEventListener('input', function(e) {
+      if (e.target.value.length) {
+        resultsContainer.classList.add('show');
+      } else {
+        resultsContainer.classList.remove('show');
+      }
+    });
 
-  document.addEventListener('click', function(e) {
-    if (!document.querySelector('.search-container').contains(e.target)) {
-      document.querySelector('#search-query-{{ .Name }}').value = '';
-      resultsContainer.classList.remove('show');
-    }
-  });
+    document.addEventListener('click', function(e) {
+      if (!document.querySelector(`#${fragmentName} .search-container`).contains(e.target)) {
+        document.querySelector(`#search-query-${fragmentName}`).value = '';
+        resultsContainer.classList.remove('show');
+      }
+    });
+  })();
 </script>
+{{- end -}}
+{{- if .Params.sticky }}
+<style>
+  :root {
+    --header-height: 56px;
+  }
+</style>
 {{- end -}}
