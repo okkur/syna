@@ -14,10 +14,13 @@ module.exports = {
     react: './assets/js/react.js',
     search: './assets/js/search.js',
     stripe: './assets/js/stripe.js',
+    'dev-jq-helpers': './assets/js/helpers/jq-helpers.js'
   },
   output: {
-    path: path.resolve('./assets/scripts/'),
-    filename: 'syna-[id].js'
+    path: path.resolve('./'),
+    filename: (pathData) => {
+      return pathData.chunk.name.indexOf('dev') === 0 ? 'exampleSite/static/scripts/[name].js': 'assets/scripts/syna-[id].js';
+    },
   },
   resolve: {
     extensions: ['.js', '.jsx'],
