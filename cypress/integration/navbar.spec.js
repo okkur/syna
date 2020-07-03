@@ -33,13 +33,13 @@ describe("Navbar", () => {
     cy.get('#nav-1 .search-container input').focus().type('nav');
     cy.get('#nav-1 .search-results-container').should("be.visible");
     cy.get('#nav-2 .search-results-container').should("be.hidden");
-    cy.get('#nav-1').click();
+    cy.get('body').click();
     cy.get('#nav-1 .search-results-container').should("be.hidden");
 
     cy.get('#nav-2 .search-container input').focus().type('nav');
     cy.get('#nav-2 .search-results-container').should("be.visible");
     cy.get('#nav-1 .search-results-container').should("be.hidden");
-    cy.get('#nav-2').click();
+    cy.get('body').click();
     cy.get('#nav-2 .search-results-container').should("be.hidden");
   });
 });
