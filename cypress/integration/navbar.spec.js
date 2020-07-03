@@ -27,4 +27,19 @@ describe("Navbar", () => {
     cy.get('[data-toggle="collapse"][data-target="#navbarCollapse"]').click();
     cy.get("#navbarCollapse").should("be.hidden");
   });
+
+  it("should show search results with multiple navs in page", () => {
+    cy.visit("/dev/nav-multiple/");
+    cy.get('#nav-1 .search-container input').focus().type('nav');
+    cy.get('#nav-1 .search-results-container').should("be.visible");
+    cy.get('#nav-2 .search-results-container').should("be.hidden");
+    cy.get('#nav-1').click();
+    cy.get('#nav-1 .search-results-container').should("be.hidden");
+
+    cy.get('#nav-2 .search-container input').focus().type('nav');
+    cy.get('#nav-2 .search-results-container').should("be.visible");
+    cy.get('#nav-1 .search-results-container').should("be.hidden");
+    cy.get('#nav-2').click();
+    cy.get('#nav-2 .search-results-container').should("be.hidden");
+  });
 });
