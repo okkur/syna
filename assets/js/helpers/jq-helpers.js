@@ -101,7 +101,7 @@ function $(selector) {
     submit: () => nodes.forEach((node) => node.submit()),
     serialize: (json = false) => {
       if (nodes.length > 1) {
-        throw new Error("Can't serialize forms at once");
+        throw new Error("Can't serialize multiple forms at once");
       }
 
       if (json) {
@@ -157,5 +157,9 @@ $.ajax = function ajax({
 };
 
 $.post = (url, data, options) => $.ajax({ method: 'post', url, data, options });
+
+if (window && window.testingMode) {
+  window.jqHelpers = $
+}
 
 export default $;
