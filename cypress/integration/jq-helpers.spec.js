@@ -1,3 +1,4 @@
+// file deepcode ignore PromiseNotCaughtGeneral: Cypress will fail in case there are any errors
 import $ from '../../assets/js/helpers/jq-helpers'
 
 describe('jq-helpers', () => {
