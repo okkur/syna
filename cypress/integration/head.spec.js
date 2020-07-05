@@ -1,3 +1,4 @@
+// file deepcode ignore PromiseNotCaughtGeneral: Cypress will fail in case there are any errors
 describe('head.js', () => {
   describe('stream', () => {
     beforeEach('visit dev page', () => {
