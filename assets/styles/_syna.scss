@@ -110,13 +110,14 @@ article .content {
 }
 
 .items {
-  .header {
-    flex: 0 1 160px;
-  }
+  &-column {
+    display: grid;
+    grid-auto-rows: 1fr auto 1fr;
 
-  .image {
-    flex: 1;
-
+    @include media-breakpoint-down('sm') {
+      grid-auto-rows: auto;
+    }
+  
     a {
       display: contents;
     }
