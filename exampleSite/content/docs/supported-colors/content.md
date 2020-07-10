@@ -22,7 +22,7 @@ These colors are customized within `config.toml` to fit the Syna theme.
 | light     | #f8f9fa |
 | dark      | #343a40 |
 
-For example, in order to change the primary color, you can update these line (or add if it doesn't exist) your `config.toml` file:
+In order to change the primary color, you can update the primary color within your `config.toml` file:
 
 ```toml
 [params]
@@ -33,7 +33,7 @@ For example, in order to change the primary color, you can update these line (or
 Please note that `colors` is under `params` section of your configuration.
 
 These colors are mainly used for backgrounds and button colors.  
-By changing the colors, all fragment colors and background will be changes to the new colors. Links, inline code and other elements will also be changed.
+By changing the colors, all fragment colors and backgrounds will be changed to the new colors. Links, inline code and other elements will also be changed.  
 These colors can also be overwritten for more details see our [style documentation]({{< ref "development" >}}#styles).
 
 **Important:** These colors define the color scheme that Bootstrap uses. As you update them, be careful to keep the contrast between different colors. Since it's not possible to recognize the contrast of colors within Syna, we rely on the names of colors when setting different text colors for different backgrounds. So if you change the `primary` color to a darker color, text colors will still use the `text-body` class from Bootstrap which is a dark color and may result in unreadable text.
