@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.6.3",
+    "@fullhuman/postcss-purgecss": "^2.3.0",
     "bootstrap": "^4.4.1",
     "chart.js": "^2.7.2",
     "eslint": "^6.8.0",
