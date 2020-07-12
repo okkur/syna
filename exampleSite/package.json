@@ -25,6 +25,7 @@
     "webpack-cli": "^3.0.8"
   },
   "dependencies": {
+    "@fullhuman/postcss-purgecss": "^2.3.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1"
   }
