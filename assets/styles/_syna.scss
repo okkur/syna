@@ -223,3 +223,7 @@ section .bg {
 .active-page {
   font-weight: bold;
 }
+
+.btn-group-toggle .btn input {
+  pointer-events: none;
+}

@@ -1,6 +1,6 @@
 describe("Events", () => {
   beforeEach(() => {
-    cy.visit("/dev/events/payment//");
+    cy.visit("/dev/events/payment/");
   });
 
   it("should focus stripe form when stripe event is fired", () => {
