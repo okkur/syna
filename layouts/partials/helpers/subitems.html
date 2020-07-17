@@ -3,9 +3,8 @@
 {{- $name := .Name -}}
 {{- $site := .Site -}}
 {{- $page_scratch := .page_scratch -}}
-{{ $default_lang := .root.Site.Params.DefaultContentLanguage | default .root.Site.Language.Lang }}
 
-{{- $items := where ($page.Resources.Match (printf "%s/*.md" (strings.TrimSuffix (cond (ne $default_lang $page.Language.Lang) (printf "/index.%s" $page.Language.Lang) "") $name))) ".Name" "ne" $self.Name -}}
+{{- $items := where ($page.Resources.Match (printf "%s/*.md" (strings.TrimSuffix "/index" $name))) ".Name" "ne" $self.Name -}}
 
 {{- if eq (len $items) 0 -}}
   {{- range $directory := ($page_scratch.Get "fragment_directories") -}}
