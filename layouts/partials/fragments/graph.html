@@ -2,7 +2,7 @@
 {{- .page_scratch.Add "js" (dict "file" "syna-graph.js") -}}
 {{- $bg := .self.Scratch.Get "bg" }}
 
-{{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "Name" .Name "Params" .Params) -}}
+{{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "id" .id "Params" .Params) -}}
   {{- partial "helpers/section-header.html" (dict "self" $self "bg" $bg "params" .Params) }}
   <div class="row chart-container position-relative" style="
     {{- (cond (isset .Params "width") (printf "width: %s;" .Params.width) (print "width: 100%;")) | safeCSS -}}

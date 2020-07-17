@@ -18,7 +18,7 @@
     {{- .Scratch.Set "bg" $bg -}}
 
     {{- $file_path := strings.TrimSuffix ".md" (replace .File.Path "/index.md" "") -}}
-    {{- $context := dict "page_scratch" $page_scratch "root" $real_page "Site" $real_page.Site "page" $page "resources" $real_page.Resources "self" . "Params" .Params "Name" ($page_scratch.Get "tmp_name") "file_path" $file_path }}
+    {{- $context := dict "id" (replaceRE "[\\/\\.]" "-" ($page_scratch.Get "tmp_name")) "page_scratch" $page_scratch "root" $real_page "Site" $real_page.Site "page" $page "resources" $real_page.Resources "self" . "Params" .Params "Name" ($page_scratch.Get "tmp_name") "file_path" $file_path }}
     {{- partial (print "fragments/" .Params.fragment ".html") $context -}}
   {{- end -}}
 {{- end -}}

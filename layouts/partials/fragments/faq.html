@@ -4,7 +4,7 @@
 {{- $bg := .Params.background | default "white" -}}
 {{- .page_scratch.Add "js" (dict "file" "syna-collapse.js") -}}
 
-{{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "Name" .Name "Params" .Params) -}}
+{{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "id" .id "Params" .Params) -}}
   {{- partial "helpers/section-header.html" (dict "self" $self "bg" $bg "params" .Params) }}
   <div class="row text-center justify-content-center">
     <div class="faq">
@@ -15,8 +15,8 @@
           {{/* Handle special case of index.md being considered an item */}}
           {{- if not (in .Name "/index.md") -}}
             {{- $item := .Params }}
-            {{- $card_header_id := printf "%s" (strings.TrimSuffix ".md" (replace .Name (printf "%s/" $.Name) "")) }}
-            {{- $collapse_id := printf "%s%s" $.Name (printf "%s-collapse" (strings.TrimSuffix ".md" (replace .Name (printf "%s/" $.Name) ""))) }}
+            {{- $card_header_id := printf "%s" (strings.TrimSuffix ".md" (replace .Name (printf "%s/" $.id) "")) }}
+            {{- $collapse_id := printf "%s%s" $.id (printf "%s-collapse" (strings.TrimSuffix ".md" (replace .Name (printf "%s/" $.id) ""))) }}
               <div class="card">
                 <div id="{{ $card_header_id }}" class="card-header" data-toggle="collapse" data-target="#{{ $collapse_id }}"
                             aria-expanded="false" aria-controls="{{ $collapse_id }}">
