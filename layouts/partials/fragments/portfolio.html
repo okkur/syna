@@ -15,6 +15,11 @@
           <div
             class="border rounded position-relative portfolio-item overflow-hidden 
               {{- if not .Params.item_url }} has-modal {{- end -}}
+              {{- with .Params.background -}}
+                {{- if .image -}}
+                  {{- print " has-background" -}}
+                {{- end -}}
+              {{- end -}}
             "
             {{- if $self.Params.height -}}
               {{- safeHTMLAttr (printf "style='min-height:%s; height:%s'" $self.Params.height $self.Params.height) -}}
@@ -33,7 +38,23 @@
                     </span>
                   {{- end -}}
                 {{- end -}}
-                <div class="position-absolute hover-overlay"></div>
+                <div
+                  class="position-absolute hover-overlay"
+                  {{- with .Params.background -}}
+                    {{- if .image -}}
+                      style="background-image: url('{{ partial "helpers/image.html" (dict "root" $self "this" $this "asset" . "resize" "350x266") }}');"
+                    {{- end -}}
+                  {{- end -}}></div>
+                {{- with .Params.asset -}}
+                  {{- if .image -}}
+                    <img src="{{ partial "helpers/image.html" (dict "root" $self "this" $this "asset" . "resize" "500x380") }}" class="portfolio-hover-image img-fluid" alt="{{ .text }}">
+                  {{- else if .icon }}
+                    <span class="portfolio-hover-icon fa-stack fa-3x m-2" title="{{ .text }}">
+                      <i class="{{ .icon }} fa-stack-2x fa-inverse"></i>
+                      <span class="sr-only">{{ .text }}</span>
+                    </span>
+                  {{- end -}}
+                {{- end -}}
                 {{- if .Params.labels -}}
                   <div class="position-absolute text-light badge-container">
                     {{- range .Params.labels -}}

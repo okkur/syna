@@ -3,6 +3,9 @@ weight = 20
 title = "Second Title"
 subtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing"
 
+[background]
+  image = "cat-1.jpeg"
+
 [asset]
   image = "cat-2.jpeg"
 
