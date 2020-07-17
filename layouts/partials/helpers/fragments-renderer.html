@@ -10,13 +10,15 @@
     be rendered on the page. It would be later handled by the slot helper. */}}
   {{- if and (not (isset .Params "slot")) (ne .Params.slot "") -}}
     {{/* Cleanup .Name to be more useful within fragments */}}
-    {{- $rel_lang_name := cond (eq $page .) .File.BaseFileName (strings.TrimSuffix ".md" (replace .Name "/index.md" "")) -}}
-    {{- $name := strings.TrimSuffix (cond (ne $default_lang $page.Language.Lang) (printf ".%s" $page.Language.Lang) "") $rel_lang_name -}}
+    {{- $page_scratch.Set "tmp_name" (cond (eq $page .) .File.BaseFileName (strings.TrimSuffix ".md" (replace .Name "/index.md" ""))) -}}
+    {{- if ne $page.Language nil -}}
+      {{- $page_scratch.Set "tmp_name" (strings.TrimSuffix (cond (ne $default_lang $page.Language.Lang) (printf ".%s" $page.Language.Lang) "") ($page_scratch.Get "tmp_name")) -}}
+    {{- end -}}
     {{- $bg := .Params.background | default "light" }}
     {{- .Scratch.Set "bg" $bg -}}
 
     {{- $file_path := strings.TrimSuffix ".md" (replace .File.Path "/index.md" "") -}}
-    {{- $context := dict "page_scratch" $page_scratch "root" $real_page "Site" $real_page.Site "page" $page "resources" $real_page.Resources "self" . "Params" .Params "Name" $name "file_path" $file_path }}
+    {{- $context := dict "page_scratch" $page_scratch "root" $real_page "Site" $real_page.Site "page" $page "resources" $real_page.Resources "self" . "Params" .Params "Name" ($page_scratch.Get "tmp_name") "file_path" $file_path }}
     {{- partial (print "fragments/" .Params.fragment ".html") $context -}}
   {{- end -}}
 {{- end -}}
