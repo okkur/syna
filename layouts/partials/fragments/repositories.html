@@ -1,0 +1,22 @@
+{{- $self := .self -}}
+{{- $bg := .self.Scratch.Get "bg" }}
+{{ $repositories := getJSON (printf "https://api.github.com/users/%s/repos" .Params.user) }}
+
+{{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "Name" .Name "Params" .Params "section_class" "content-fragment" "container_class" "overlay") -}}
+  <div class="row no-gutters repositories">
+    {{ range (first (.Params.count | default 1000) (sort ($repositories | default slice) (.Params.sort | default "updated_at") "desc")) }}
+      <div class="col-md-6 col-12 p-2 repository">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ .name }}</h5>
+            <h6 class="card-subtitle mb-3 text-muted">{{ printf "Last updated on: %s" (dateFormat "02/01/2006" .updated_at) }}</h6>
+            <p class="card-text">{{ .description }}</p>
+          </div>
+          <div class="card-footer">
+            <a href="{{ .svn_url }}" target="_blank" class="card-link">{{ print "Repository" }}</a>
+          </div>
+        </div>
+      </div>
+    {{ end }}
+  </div>
+{{- partial "helpers/container.html" (dict "end" true "in_slot" .in_slot) -}}
