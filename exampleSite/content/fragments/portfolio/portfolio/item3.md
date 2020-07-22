@@ -3,9 +3,6 @@ weight = 30
 title = "Third Title"
 subtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing"
 
-[background]
-  image = "cat-1.jpeg"
-
 [asset]
   icon = "fab fa-github"
 +++

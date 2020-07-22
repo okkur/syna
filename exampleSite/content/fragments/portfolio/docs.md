@@ -37,10 +37,4 @@ URL of the portfolio item. If set, then clicking the portfolio item would open t
 
 The image that is shown on the portfolio item.
 
-#### background
-*type: [asset object]({{< ref "global-variables" >}}#asset)*  
-*size: 500x380*
-
-The image that is shown on the portfolio item's overlay.
-
 [Global variables]({{< ref "global-variables" >}}) are documented as well and have been omitted from this page.
