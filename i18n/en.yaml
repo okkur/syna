@@ -3,6 +3,10 @@
   translation: "Website based on"
 - id: en
   translation: "English"
+- id: github.star
+  translation: "Star"
+- id: github.stars
+  translation: "Stars"
 
 # Content
 - id: content.readmore

@@ -227,3 +227,15 @@ section .bg {
 .btn-group-toggle .btn input {
   pointer-events: none;
 }
+
+.repositories {
+  .repository {
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+
+    .card {
+      flex: 1;
+    }
+  }
+}
