@@ -31,7 +31,7 @@ describe('index.js (assets/scripts/main.js)', () => {
     cy.get('#dropdown .dropdown-toggle').should('contain', '$');
     cy.get('#dropdown .dropdown-toggle')
       .parent()
-      .get('.dropdown-menu .dropdown-item:nth-child(2)')
+      .get('.currency-menu .dropdown-item:nth-child(2)')
       .click();
     cy.get('#dropdown .dropdown-toggle')
       .parent()

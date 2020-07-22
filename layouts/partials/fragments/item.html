@@ -2,7 +2,7 @@
 {{- $align := .Params.align | default "center" -}}
 {{- $bg := .self.Scratch.Get "bg" }}
 
-{{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "Name" .Name "Params" .Params) }}
+{{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "id" .id "Params" .Params) }}
   <div class="row align-items-center text-center
     {{- if eq $align "left" -}}
       {{- printf " justify-content-start text-lg-left" -}}

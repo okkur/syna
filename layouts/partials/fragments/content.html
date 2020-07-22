@@ -2,7 +2,7 @@
 {{- .page_scratch.Add "js" (dict "file" "syna-content.js") -}}
 {{- $bg := .self.Scratch.Get "bg" }}
 
-{{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "Name" .Name "Params" .Params "section_class" "content-fragment" "container_class" "overlay") -}}
+{{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "id" .id "Params" .Params "section_class" "content-fragment" "container_class" "overlay") -}}
   <div class="row">
     {{- with .Params.sidebar -}}
       <div class="content-sidebar col-md-3 pb-4 px-md-0 {{- if (eq .align "right") }} order-1 {{- else }} order-0 {{- end -}}">

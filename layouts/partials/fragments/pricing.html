@@ -4,7 +4,7 @@
 {{- $self := . -}}
 {{- $bg := .self.Scratch.Get "bg" }}
 
-{{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "Name" .Name "Params" .Params) -}}
+{{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "id" .id "Params" .Params) -}}
   {{- partial "helpers/section-header.html" (dict "self" $self.self "bg" $bg "params" .Params) }}
   {{- with .Content -}}
     <div class="row">
