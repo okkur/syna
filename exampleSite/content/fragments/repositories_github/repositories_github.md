@@ -1,5 +1,5 @@
 +++
-fragment = "repositories"
+fragment = "repositories_github"
 weight = 100
 background = "secondary"
 

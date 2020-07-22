@@ -2,7 +2,7 @@
 fragment = "content"
 weight = 100
 
-title = "Repositories"
+title = "Repositories - Github"
 background = "light"
 +++
 
