@@ -35,11 +35,23 @@ body.modal-open {
     }
   }
 
-  .icon-container {
-    font-size: 64px;
+  .modal-background {
+    position: relative;
+    min-height: 180px;
 
-    .fa-stack-1x, .fa-stack-2x {
-      position: relative;
+    .modal-asset-image, .modal-asset-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .icon-container {
+      font-size: 64px;
+
+      .fa-stack-1x, .fa-stack-2x {
+        position: relative;
+      }
     }
   }
 
