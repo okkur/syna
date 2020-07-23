@@ -8,6 +8,7 @@ portfolioItem.on("click", function() {
     title: (this.querySelector(".title") || _default).innerHTML,
     subtitle: (this.querySelector(".subtitle") || _default).innerHTML,
     content: (this.querySelector(".content") || _default).innerHTML,
+    background: (this.querySelector(".portfolio-background") || _default).src,
     image: (this.querySelector(".portfolio-image") || _default).src,
     icon: (this.querySelector(".portfolio-icon") || _default).innerHTML,
     labels: (this.querySelector(".badge-container") || _default).innerHTML,
