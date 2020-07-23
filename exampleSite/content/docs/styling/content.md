@@ -70,3 +70,18 @@ module.exports = {
   ],
 };
 ```
+
+### RTL stylesheet
+
+Syna is created for LTR languages but changing the theme to accommodate RTL languages is quite easy. In order to change the direction of the stylesheet, please run the following command:
+
+- `npm install rtlcss` or `yarn add rtlcss`
+- Add the following code to `<root-directory>/postcss.config.js`:
+
+```javascript
+module.exports = {
+  plugins: [
+    require('rtlcss')()
+  ]
+}
+```
