@@ -15,9 +15,6 @@ CanonifyURLs = true
 # Google Analytics tracking
 googleAnalytics = ""
 
-[build]
-  writeStats = true
-
 [outputs]
   home = ["HTML", "JSON"]
 

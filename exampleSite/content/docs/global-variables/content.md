@@ -28,7 +28,7 @@ Set the background of the fragment.
 Background also affects the text color of the fragment's content.
 For the background colors of `white`, `light`, `secondary` and `primary` we use Bootstrap's `text_dark` class on content and for other backgrounds, we use `text_light`.
 
-List of all supported colors can be found in [supported colors]({{< ref "supported-colors" >}}) section of the docs.
+List of all supported colors can be found in [supported colors]({{< ref "styling" >}}#supported-colors) section of the docs.
 
 #### title
 *type: string*
