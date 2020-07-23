@@ -130,7 +130,7 @@
     <div class="d-none d-lg-block pl-auto">
       <a class="btn btn-light ignore-color-change" href="{{ .url }}" role="button" title="{{- i18n "navbar.github" | default "Github" -}}">
         <i class="{{ printf "%s" .icon | default (printf "fab fa-github") }} mr-2"></i>
-        {{ .text | default "Star" }}
+        {{ .text | default (i18n "github.star") }}
       </a>
     </div>
   {{- end }}

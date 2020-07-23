@@ -4,7 +4,7 @@
 {{- .page_scratch.Add "js" (dict "file" "syna-stripe.js") -}}
 {{- $bg := $self.Scratch.Get "bg" }}
 
-{{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "Name" .Name "Params" .Params) -}}
+{{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "id" .id "Params" .Params) -}}
   {{- partial "helpers/section-header.html" (dict "self" $self "bg" $bg "params" .Params) -}}
   {{- if and .Params.user_input (eq (len (.Params.prices | default slice)) 1) -}}
     {{- partial "helpers/warning.html" (dict "Site" $.Site "message" "You have configured both `[user_input]` and a single `[[prices]]` which is not allowed.") -}}

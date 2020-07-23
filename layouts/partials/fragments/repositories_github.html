@@ -1,0 +1,35 @@
+{{- $self := .self -}}
+{{- $bg := .self.Scratch.Get "bg" }}
+{{- .page_scratch.Set "tmp_repositories" ((getJSON (printf "https://api.github.com/users/%s/repos" .Params.user)) | default slice) -}}
+
+{{- if or (not (isset .Params "display_forks")) (eq .Params.display_forks false) -}}
+  {{- .page_scratch.Set "tmp_repositories" (where (.page_scratch.Get "tmp_repositories") ".fork" "eq" false) -}}
+{{- end -}}
+
+{{- $repositories := (.page_scratch.Get "tmp_repositories") -}}
+
+{{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "Name" .Name "Params" .Params "section_class" "content-fragment" "container_class" "overlay") -}}
+  <div class="row no-gutters repositories">
+    {{- range (first (.Params.count | default 4) (sort $repositories (.Params.sort | default "stargazers_count") "desc")) }}
+      <div class="col-md-6 col-12 p-2 repository">
+        <div class="card">
+          <div class="card-body">
+            <div class="row justify-content-between mb-2">
+              <div class="col-auto">
+                <h5 class="card-title">{{ .name }}</h5>
+              </div>
+              <div class="col-auto">
+                <a class="btn btn-light ignore-color-change" href="{{ .svn_url }}" role="button" title="{{ .name }}" target="_blank">
+                  <i class="fab fa-github mr-2"></i>
+                  {{ .stargazers_count }} {{ i18n "github.stars" }}
+                </a>
+              </div>
+            </div>
+            <h6 class="card-subtitle mb-3 text-muted">{{ printf "Last updated on: %s" (dateFormat "02/01/2006" .updated_at) }}</h6>
+            <p class="card-text">{{ .description }}</p>
+          </div>
+        </div>
+      </div>
+    {{- end }}
+  </div>
+{{- partial "helpers/container.html" (dict "end" true "in_slot" .in_slot) -}}
