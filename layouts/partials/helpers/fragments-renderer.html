@@ -26,6 +26,6 @@
       subdirectory.
     */}}
     {{- $context := dict "id" (replaceRE "[\\/\\.]" "-" ($page_scratch.Get "tmp_name")) "page_scratch" $page_scratch "root" $real_page "Site" $real_page.Site "page" $page "resources" $real_page.Resources "self" . "Params" .Params "Name" ($page_scratch.Get "tmp_name") "file_path" $file_path }}
-    {{- partial (print "fragments/" .Params.fragment ".html") $context -}}
+    {{- partial (print "fragments/" (strings.TrimPrefix "bootstrap/" .Params.fragment) ".html") $context -}}
   {{- end -}}
 {{- end -}}
