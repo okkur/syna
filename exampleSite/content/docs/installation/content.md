@@ -17,7 +17,7 @@ This way whenever you want to update the theme you can just pull the updates and
 git submodule init # If you haven't initialized before
 git submodule add https://git.okkur.org/syna themes/syna
 cd themes/syna
-git checkout v0.17 # Latest release as of now is v0.17.2
+git checkout v0.17 # Latest release as of now is v0.17.3
 ```
 
 _You can visit [Hugo's documentation](https://gohugo.io/themes/installing-and-using-themes/) on installing themes for more information._
