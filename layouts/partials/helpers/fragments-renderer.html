@@ -3,18 +3,29 @@
 {{- $page := $layout_info.page -}}
 {{- $real_page := $layout_info.real_page -}}
 {{- $root := $layout_info.root -}}
+{{- $default_lang := $root.Site.Params.DefaultContentLanguage | default $root.Site.Language.Lang -}}
 
 {{- range sort ($page_scratch.Get "page_fragments" | default slice) "Params.weight" -}}
   {{/* If a fragment contains a slot variable in it's frontmatter it should not
     be rendered on the page. It would be later handled by the slot helper. */}}
   {{- if and (not (isset .Params "slot")) (ne .Params.slot "") -}}
     {{/* Cleanup .Name to be more useful within fragments */}}
-    {{- $name := cond (eq $page .) .File.BaseFileName (strings.TrimSuffix ".md" (replace .Name "/index.md" "")) -}}
+    {{- $page_scratch.Set "tmp_name" (cond (eq $page .) .File.BaseFileName (strings.TrimSuffix ".md" (replace .Name "/index.md" ""))) -}}
+    {{- if ne $page.Language nil -}}
+      {{- $page_scratch.Set "tmp_name" (strings.TrimSuffix (cond (ne $default_lang $page.Language.Lang) (printf ".%s" $page.Language.Lang) "") ($page_scratch.Get "tmp_name")) -}}
+    {{- end -}}
     {{- $bg := .Params.background | default "light" }}
     {{- .Scratch.Set "bg" $bg -}}
 
     {{- $file_path := strings.TrimSuffix ".md" (replace .File.Path "/index.md" "") -}}
-    {{- $context := dict "page_scratch" $page_scratch "root" $real_page "Site" $real_page.Site "page" $page "resources" $real_page.Resources "self" . "Params" .Params "Name" $name "file_path" $file_path }}
+    {{/* 
+      "id" is used in every fragment as a unique identifier, added to html as,
+      the id attribute. We also have "name" which is the name of the fragment,
+      (not the fragment itself), without the language suffix (if present), and,
+      without the extra index.md that appears if the fragment is in a,
+      subdirectory.
+    */}}
+    {{- $context := dict "id" (replaceRE "[\\/\\.]" "-" ($page_scratch.Get "tmp_name")) "page_scratch" $page_scratch "root" $real_page "Site" $real_page.Site "page" $page "resources" $real_page.Resources "self" . "Params" .Params "Name" ($page_scratch.Get "tmp_name") "file_path" $file_path }}
     {{- partial (print "fragments/" .Params.fragment ".html") $context -}}
   {{- end -}}
 {{- end -}}

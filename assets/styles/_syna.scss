@@ -1,3 +1,7 @@
+:root {
+  --header-height: 0px;
+}
+
 .nav-link {
   color: $navbar-light-color;
 
@@ -98,17 +102,22 @@ article .content {
 
 .content-sidebar {
   word-break: break-word;
-  overflow-y: auto;
+
+  &-body {
+    overflow-y: auto;
+    max-height: calc(100vh - 2rem - var(--header-height));
+  }
 }
 
 .items {
-  .header {
-    flex: 0 1 160px;
-  }
+  &-column {
+    display: grid;
+    grid-auto-rows: 1fr auto 1fr;
 
-  .image {
-    flex: 1;
-
+    @include media-breakpoint-down('sm') {
+      grid-auto-rows: auto;
+    }
+  
     a {
       display: contents;
     }
@@ -213,4 +222,20 @@ section .bg {
 #TableOfContents a.active,
 .active-page {
   font-weight: bold;
+}
+
+.btn-group-toggle .btn input {
+  pointer-events: none;
+}
+
+.repositories {
+  .repository {
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+
+    .card {
+      flex: 1;
+    }
+  }
 }

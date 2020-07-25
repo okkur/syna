@@ -17,7 +17,7 @@ jobs:
     - name: Setup Hugo
       uses: peaceiris/actions-hugo@v2
       with:
-        hugo-version: '0.60.1'
+        hugo-version: '0.72.0'
         
     - name: Cypress run
       uses: cypress-io/github-action@v1

@@ -6,7 +6,7 @@ title = "Okkur - Syna"
 theme = "syna"
 themesDir = "../.."
 enableGitInfo = true
-version = "0.17.2"
+version = "0.17.3"
 disableKinds = ["RSS", "taxonomy", "taxonomyTerm"]
 
 RelativeURLs = true
@@ -87,6 +87,36 @@ lastmod = ["lastmod", ":git", "date"]
   url = "/docs"
   name = "Docs"
   weight = 30
+
+[[menu.main]]
+  url = "/dev"
+  name = "Dev Section"
+  weight = 35
+  identifier = "dev"
+
+[[menu.main]]
+  url = "/dev"
+  name = "Dev Section"
+  weight = 10
+  parent = "dev"
+
+[[menu.main]]
+  url = "/dev/colors"
+  name = "Colors"
+  weight = 20
+  parent = "dev"
+
+[[menu.main]]
+  url = "/dev/blog"
+  name = "Blog"
+  weight = 30
+  parent = "dev"
+
+[[menu.main]]
+  url = "/dev/events"
+  name = "Events"
+  weight = 40
+  parent = "dev"
 
 [[menu.main]]
   url = "/about"

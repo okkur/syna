@@ -4,7 +4,7 @@
 {{- .page_scratch.Add "js" (dict "file" "syna-portfolio.js") -}}
 {{- $bg := .self.Scratch.Get "bg" }}
 
-{{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "Name" .Name "Params" .Params) -}}
+{{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "id" .id "Params" .Params) -}}
   {{- partial "helpers/section-header.html" (dict "self" $self.self "bg" $bg "params" .Params) }}
   <div class="row justify-content-center">
     {{- if eq (len $items) 0 }}
@@ -15,6 +15,11 @@
           <div
             class="border rounded position-relative portfolio-item overflow-hidden 
               {{- if not .Params.item_url }} has-modal {{- end -}}
+              {{- with .Params.background -}}
+                {{- if .image -}}
+                  {{- print " has-background" -}}
+                {{- end -}}
+              {{- end -}}
             "
             {{- if $self.Params.height -}}
               {{- safeHTMLAttr (printf "style='min-height:%s; height:%s'" $self.Params.height $self.Params.height) -}}
@@ -23,6 +28,11 @@
               <a href="{{ .Params.item_url | relLangURL }}">
             {{- end }}
                 {{- $this := . -}}
+                {{- with .Params.background -}}
+                  {{- if .image -}}
+                    <img src="{{ partial "helpers/image.html" (dict "root" $self "this" $this "asset" . "resize" "500x380") }}" class="portfolio-background img-fluid" alt="{{ .text }}">
+                  {{- end -}}
+                {{- end -}}
                 {{- with .Params.asset -}}
                   {{- if .image -}}
                     <img src="{{ partial "helpers/image.html" (dict "root" $self "this" $this "asset" . "resize" "500x380") }}" class="portfolio-image img-fluid" alt="{{ .text }}">

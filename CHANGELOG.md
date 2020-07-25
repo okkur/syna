@@ -15,6 +15,35 @@ _2018_
 
 -->
 
+# v0.17.3
+
+_2020-07-25_
+
+- [Downloads for v0.17.3](https://syna.okkur.org/releases/v0.17.3)
+- [Changelog since v0.17.2](#changes-since-v0172)
+
+## Documentation for v0.17.3
+
+[Documentation](https://syna.okkur.org/docs) _Documentation defaults to latest release_
+
+## Changes since v0.17.2
+
+- list: Update whitespace in list mode [776](https://github.com/okkur/syna/pull/776)
+- portfolio: Add support for background image on portfolio overlays [802](https://github.com/okkur/syna/pull/802)
+- repositories_hithub: Added new fragment to fetch and display user repositories from Github [803](https://github.com/okkur/syna/pull/803)
+- Update documentation
+- Added more tests
+
+## Fixes since v0.17.2
+
+- nav: Add support for nested menus by adding dropdowns [781](https://github.com/okkur/syna/pull/781)
+- nav: Fix the bug that prevented search from working if there were multiple nav fragments in one page [782](https://github.com/okkur/syna/pull/782)
+- content: Fix sticky sidebar issues [788](https://github.com/okkur/syna/pull/788)
+- items: Fix overflowing image issue [794](https://github.com/okkur/syna/pull/794)
+- Fix multilingual pages not showing subitems of fragments in non default language page [800](https://github.com/okkur/syna/pull/800)
+
+---
+
 # v0.17.2
 
 _2020-06-01_

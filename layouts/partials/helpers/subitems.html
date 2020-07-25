@@ -3,14 +3,20 @@
 {{- $name := .Name -}}
 {{- $site := .Site -}}
 {{- $page_scratch := .page_scratch -}}
-{{- $items := where ($page.Resources.Match (printf "%s/*.md" $name)) ".Name" "ne" $self.Name -}}
 
-{{- if eq (len $items) 0 -}}
+{{- $page_scratch.Set "tmp_items" (where ($page.Resources.Match (printf "%s/*.md" (strings.TrimSuffix "/index" $name))) ".Name" "ne" $self.Name) -}}
+
+{{- if eq (len ($page_scratch.Get "tmp_items")) 0 -}}
   {{- range $directory := ($page_scratch.Get "fragment_directories") -}}
-    {{- if eq (len $items) 0 -}}
-      {{- $items = where ($directory.Resources.Match (printf "%s/*.md" $name)) ".Name" "ne" $self.Name -}}
+    {{- if eq (len ($page_scratch.Get "tmp_items")) 0 -}}
+      {{- $page_scratch.Set "tmp_items" (where ($directory.Resources.Match (printf "%s/*.md" $name)) ".Name" "ne" $self.Name) -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}
 
-{{- return $items -}}
+{{- $page_scratch.Set "tmp_subitems" slice -}}
+{{- range ($page_scratch.Get "tmp_items") -}}
+  {{- $page_scratch.Add "tmp_subitems" (dict "Name" (replaceRE "[\\/\\.]" "-" .Name) "Params" .Params "File" .File "ResourceType" .ResourceType "Title" .Title "Permalink" .Permalink "RelPermalink" .RelPermalink "Content" .Content "MediaType" .MediaType "MediaType.MainType" .MediaType.MainType "MediaType.SubType" .MediaType.SubType "MediaType.Suffixes" .MediaType.Suffixes) -}}
+{{- end -}}
+
+{{- return ($page_scratch.Get "tmp_subitems") -}}
