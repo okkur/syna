@@ -35,4 +35,9 @@ This key is used to sort the repositories.
 
 **Note:** This value is a key from the response of Github's repositories API. Also the sort is done using Hugo's `sort` function.
 
+#### allowlist
+*type: array of string*
+
+A filter that is applied to repository names. Only repositories that are named in this list will be rendered.
+
 [Global variables]({{< ref "global-variables" >}}) are documented as well and have been omitted from this page.
