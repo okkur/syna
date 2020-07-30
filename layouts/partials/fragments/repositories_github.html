@@ -6,6 +6,10 @@
   {{- .page_scratch.Set "tmp_repositories" (where (.page_scratch.Get "tmp_repositories") ".fork" "eq" false) -}}
 {{- end -}}
 
+{{- if isset .Params "allowlist" -}}
+  {{- .page_scratch.Set "tmp_repositories" (where (.page_scratch.Get "tmp_repositories") ".name" "in" (.Params.allowlist | default slice)) -}}
+{{- end -}}
+
 {{- $repositories := (.page_scratch.Get "tmp_repositories") -}}
 
 {{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "Name" .Name "Params" .Params "section_class" "content-fragment" "container_class" "overlay") -}}
