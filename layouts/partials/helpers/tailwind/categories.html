@@ -1,0 +1,10 @@
+{{- range .categories }}
+  <div class="categories py-1 px-2 rounded text-sm font-bold mr-1 mb-1
+    {{- if (eq $.background "dark") -}}
+      {{- printf " bg-%s text-black" "light" -}}
+    {{- else -}}
+      {{- printf " bg-%s text-white" "primary" -}}
+    {{- end -}}">
+    {{- . -}}
+  </div>
+{{- end }}

@@ -172,6 +172,7 @@
   looking from the page directory or file to it's parents and so on. */}}
 {{- $page_scratch.Set "page_fragments" (slice) -}}
 {{- $page_scratch.Set "page_config" (slice) -}}
+{{- $page_scratch.Set "injections_css" (slice) -}}
 {{- $page_scratch.Set "experimentals_used_messages" (slice) -}}
 {{- $page_scratch.Set "fragments_directory_name" (slice) -}}
 {{- if $page_scratch.Get "fragments" -}}
@@ -186,6 +187,13 @@
           {{- else if not (where ($page_scratch.Get "page_fragments") ".Name" $name) -}}
             {{- $page_scratch.Add "page_fragments" . -}}
             {{- $page_scratch.Add "fragments_directory_name" (printf "%s%s/" $root.File.Dir (replace $name ".md" "")) -}}
+
+            {{- $variant := replaceRE "(((.*)\\/.*)|.*)" "$3" .Params.fragment -}}
+            {{- $injection := printf "fragments/%s_injection.html" (cond (eq $variant "") "" (printf "%s/" $variant)) -}}
+            {{- if and (ne .Params.hide true) (not (in ($page_scratch.Get "injections_css") $injection)) -}}
+              {{- $page_scratch.Add "injections_css" $injection -}}
+            {{- end -}}
+
             {{- if isset .Params "padding" -}}
               {{- $page_scratch.Add "experimentals_used_messages" "FrontMatter variable 'padding' is experimental and may get removed without notice" -}}
             {{- end -}}
