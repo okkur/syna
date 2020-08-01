@@ -1,9 +1,7 @@
 const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: {
-    tailwind: './assets/styles/tailwind/index.scss',
     head: './assets/js/head.js',
     main: './assets/js/index.js',
     collapse: './assets/js/collapse.js',
@@ -27,7 +25,7 @@ module.exports = {
     },
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.scss'],
+    extensions: ['.js', '.jsx'],
     modules: [path.join(process.cwd(), 'src'), 'node_modules'],
   },
   mode: process.env === 'production' ? 'production' : 'development',
@@ -43,33 +41,7 @@ module.exports = {
           },
         },
       },
-      {
-        test: /\.scss$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              publicPath: 'static/styles/',
-            },
-          },
-          'style-loader',
-          'css-loader?-url',
-          {
-            loader: 'postcss-loader',
-            options: {
-              ident: 'postcss',
-              plugins: [
-                require('tailwindcss'),
-                require('autoprefixer'),
-              ],
-            },
-          },
-          'sass-loader',
-        ],
-      },
     ],
   },
-  plugins: [new MiniCssExtractPlugin({
-    filename: '[name].css',
-  })],
+  plugins: [],
 };

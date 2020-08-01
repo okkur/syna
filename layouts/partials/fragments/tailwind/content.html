@@ -3,14 +3,14 @@
 {{- $bg := .self.Scratch.Get "bg" }}
 
 {{- partial "helpers/container.html" (dict "start" true "in_slot" .in_slot "bg" $bg "id" .id "Params" .Params "section_class" "content-fragment" "container_class" "overlay") -}}
-  <div class="row">
+  <div class="grid grid-cols-4 w-100">
     {{- with .Params.sidebar -}}
-      <div class="content-sidebar col-md-3 pb-4 px-md-0 {{- if (eq .align "right") }} order-1 {{- else }} order-0 {{- end -}}">
+      <div class="content-sidebar col-span-1 pb-4 md:px-0 {{- if (eq .align "right") }} order-1 {{- else }} order-none {{- end -}}">
         {{- if .sticky }}
-          <div class="sticky-top pt-3">
+          <div class="sticky pt-3">
         {{- end -}}
         {{- if .title }}
-          <div class="content-sidebar-title col-12 px-0
+          <div class="content-sidebar-title
             {{- partial "helpers/text-color.html" (dict "self" $self) -}}
           ">
             {{- $title_align := .title_align | default "left" -}}
@@ -20,7 +20,7 @@
           </div>
         {{- end }}
         {{- $content_align := .content_align | default "left" -}}
-        <div class="content-sidebar-body col-12 px-0
+        <div class="content-sidebar-body
           {{- printf " text-%s" $content_align -}}
           {{- partial "helpers/text-color.html" (dict "self" $self "light" "secondary") -}}
         ">
@@ -31,27 +31,27 @@
           </div> {{/* .sticky-top */}}
         {{- end -}}
       </div>
-      <article class="col-md-9">
+      <article class="col-span-3">
     {{- else }}
-      <article class="col-md-12">
+      <article class="col-span-4">
     {{- end }}
-      {{- partial "helpers/section-header.html" (dict "self" $self "bg" $bg "params" .Params) }}
+      {{- partial "helpers/tailwind/section-header.html" (dict "self" $self "bg" $bg "params" .Params) }}
       {{- if or .Params.display_date .Params.categories -}}
-        <div class="content-info col-12 pb-4 mt-2">
+        <div class="content-info flex px-5 pb-4 mt-2">
           {{- if .Params.display_date -}}
-            {{- partial "helpers/publish-date.html" (dict "root" $self "background" $bg) -}}
+            {{- partial "helpers/tailwind/publish-date.html" (dict "root" $self "background" $bg) -}}
           {{- end -}}
           {{- with .Params.categories }}
-            {{- partial "helpers/categories.html" (dict "categories" . "background" $bg) -}}
+            {{- partial "helpers/tailwind/categories.html" (dict "categories" . "background" $bg) -}}
           {{- end }}
         </div>
       {{- end }}
       {{- if .Params.asset -}}
-        <div class="content-image col-12">
-          <img src="{{ partial "helpers/image.html" (dict "root" . "asset" .Params.asset) }}" alt="{{ .Params.subtitle | default .Params.title }}" class="img-fluid mb-4">
+        <div class="content-image px-4">
+          <img src="{{ partial "helpers/image.html" (dict "root" . "asset" .Params.asset) }}" alt="{{ .Params.subtitle | default .Params.title }}" class="max-w-100 h-auto mb-4">
         </div>
       {{- end -}}
-      <div class="content-body col-12 content px-0
+      <div class="content-body w-100 content
         {{- partial "helpers/text-color.html" (dict "self" $self) -}}
       ">
         {{- partial "helpers/slot.html" (dict "root" $ "slot" "before-content" "data" (dict "page" $.page "content_fragment" .self)) -}}

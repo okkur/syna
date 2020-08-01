@@ -1,0 +1,6 @@
+{{ partial "extra/grid-css.html" -}}
+{{- $sassTemplate := resources.Get "styles/tailwind/index.scss" -}}
+{{- $options := (dict "targetPath" "tailwind.css" "outputStyle" "compressed" "enableSourceMap" true "includePaths" (slice "node_modules" "styles")) -}}
+{{- $styleTemplated := $sassTemplate | resources.ExecuteAsTemplate "main.scss" . -}}
+{{- $style := $styleTemplated | resources.ToCSS $options | resources.PostCSS | resources.PostProcess }}
+{{- .Scratch.Add "page_styles" $style -}}

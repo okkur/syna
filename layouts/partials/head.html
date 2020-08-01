@@ -53,8 +53,9 @@
   {{- range (.Scratch.Get "injections_css") -}}
     {{- partial . $context -}}
   {{- end -}}
-  {{- $style := index (.Scratch.Get "page_styles") 0 -}}
-  <link href="{{ $style.Permalink }}" rel="stylesheet">
+  {{ range ($.Scratch.Get "page_styles") }}
+    <link href="{{ .Permalink }}" rel="stylesheet">
+  {{- end -}}
 
   {{- with .Site.Params.custom -}}
     {{- with .favicon }}

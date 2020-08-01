@@ -189,7 +189,10 @@
             {{- $page_scratch.Add "fragments_directory_name" (printf "%s%s/" $root.File.Dir (replace $name ".md" "")) -}}
 
             {{- $variant := replaceRE "(((.*)\\/.*)|.*)" "$3" .Params.fragment -}}
-            {{- $page_scratch.Add "injections_css" (printf "fragments/%s_injection.html" (cond (eq $variant "") "" (printf "%s/" $variant))) -}}
+            {{- $injection := printf "fragments/%s_injection.html" (cond (eq $variant "") "" (printf "%s/" $variant)) -}}
+            {{- if and (ne .Params.hide true) (not (in ($page_scratch.Get "injections_css") $injection)) -}}
+              {{- $page_scratch.Add "injections_css" $injection -}}
+            {{- end -}}
 
             {{- if isset .Params "padding" -}}
               {{- $page_scratch.Add "experimentals_used_messages" "FrontMatter variable 'padding' is experimental and may get removed without notice" -}}
