@@ -181,7 +181,7 @@
       {{- $directory_same_name := in ($page_scratch.Get "fragments_directory_name") (printf "%s%s/" $root.File.Dir (replace $name ".md" "")) -}}
       {{- if and (not .Params.disabled) (isset .Params "fragment") (not $directory_same_name) -}}
         {{- if or $is_404 (ne .Params.fragment "404") -}}
-          {{- if and (eq .Params.fragment "config") (not (where ($page_scratch.Get "page_config") ".Name" $name)) -}}
+          {{- if and (eq .Params.fragment "config") (not (where ($page_scratch.Get "page_config") ".Name" $name)) (ne .Params.hide) -}}
             {{- $page_scratch.Add "page_config" . -}}
           {{- else if not (where ($page_scratch.Get "page_fragments") ".Name" $name) -}}
             {{- $page_scratch.Add "page_fragments" . -}}

@@ -1,7 +1,7 @@
 +++
 fragment = "content"
 weight = 100
-title = "Content fragment from Page"
+title = "Content fragment from Page, this text should be black"
 +++
 
 This is loaded from the page, overriding the globals of current section. Seems
