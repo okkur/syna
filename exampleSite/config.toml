@@ -17,8 +17,8 @@ googleAnalytics = ""
   home = ["HTML", "JSON"]
 
 [frontmatter]
-date = ["date", "lastmod"]
-lastmod = ["lastmod", ":git", "date"]
+  date = ["date", "lastmod"]
+  lastmod = ["lastmod", ":git", "date"]
 
 [markup]
   [markup.goldmark]
