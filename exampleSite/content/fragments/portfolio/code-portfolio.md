@@ -23,6 +23,7 @@ subtitle = "Displaying animals with links and modals"
 
 <details>
 <summary>Code (subitem)</summary>
+
 ```
 +++
 weight = 10

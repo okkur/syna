@@ -22,6 +22,7 @@ title = "Single Member Fragment"
 
 <details>
 <summary>Code (subitem)</summary>
+
 ```
 +++
 title = "Huge Gopher"

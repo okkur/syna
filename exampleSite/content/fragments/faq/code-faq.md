@@ -17,6 +17,7 @@ background = "secondary"
 
 <details>
 <summary>Code (subitem)</summary>
+
 ```
 +++
 title = "How to sit on the laptop?"

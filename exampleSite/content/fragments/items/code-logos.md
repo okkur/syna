@@ -22,6 +22,7 @@ subtitle= "Column based items with images"
 
 <details>
 <summary>Code (subitem)</summary>
+
 ```
 +++
 title = "Column 1"

@@ -5,6 +5,7 @@ weight = 111
 
 <details>
 <summary>Code (index)</summary>
+
 ```
 +++
 fragment = "pricing"
@@ -23,6 +24,7 @@ Supports feature listing of different plans and links to a payment service.
 
 <details>
 <summary>Code (subitem)</summary>
+
 ```
 +++
 weight = 10

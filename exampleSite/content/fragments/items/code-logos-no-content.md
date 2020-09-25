@@ -23,6 +23,7 @@ subtitle= "Column based items with images"
 
 <details>
 <summary>Code (subitem)</summary>
+
 ```
 +++
 weight = 10
