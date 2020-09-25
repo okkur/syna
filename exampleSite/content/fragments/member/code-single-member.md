@@ -27,6 +27,7 @@ title = "Single Member Fragment"
 title = "Huge Gopher"
 weight = 0
 date = "2017-10-17"
+#disabled = true
 
 position = "Lead Gopherineer"
 company = "Okkur Labs"

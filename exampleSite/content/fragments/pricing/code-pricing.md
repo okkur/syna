@@ -26,6 +26,7 @@ Supports feature listing of different plans and links to a payment service.
 ```
 +++
 weight = 10
+# disabled = true
 
 title = "Starting plan"
 subtitle = "starting at"

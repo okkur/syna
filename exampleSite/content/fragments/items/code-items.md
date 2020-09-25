@@ -26,6 +26,7 @@ subtitle= "Column based items with icons"
 +++
 title = "Column 1"
 weight = 10
+#disabled = true
 
 [asset]
   icon = "fas fa-random"

@@ -26,6 +26,7 @@ subtitle= "Column based items with images"
 +++
 title = "Column 1"
 weight = 10
+#disabled = true
 
 [asset]
   image = "caddy.svg"
