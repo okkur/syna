@@ -21,11 +21,13 @@ title = "Members fragment - Multiple members"
 
 <details>
 <summary>Code (subitem)</summary>
+
 ```
 +++
 title = "Huge Gopher"
 weight = 0
 date = "2017-10-17"
+#disabled = true
 
 position = "Lead Gopherineer"
 reports_to = "CTO"

@@ -22,9 +22,11 @@ background = "secondary"
 
 <details>
 <summary>Code (subitem)</summary>
+
 ```
 +++
 weight = 10
+#disabled = true
 
 [asset]
   icon = "fas fa-random"

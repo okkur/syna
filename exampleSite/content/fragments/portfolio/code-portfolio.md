@@ -23,12 +23,14 @@ subtitle = "Displaying animals with links and modals"
 
 <details>
 <summary>Code (subitem)</summary>
+
 ```
 +++
 weight = 10
 title = "First Title"
 subtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing"
 item_url = "#"
+#disabled = true
 
 [asset]
   image = "cat-1.jpeg"

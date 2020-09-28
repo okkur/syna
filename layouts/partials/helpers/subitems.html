@@ -16,7 +16,9 @@
 
 {{- $page_scratch.Set "tmp_subitems" slice -}}
 {{- range ($page_scratch.Get "tmp_items") -}}
-  {{- $page_scratch.Add "tmp_subitems" (dict "Name" (replaceRE "[\\/\\.]" "-" .Name) "Params" .Params "File" .File "ResourceType" .ResourceType "Title" .Title "Permalink" .Permalink "RelPermalink" .RelPermalink "Content" .Content "MediaType" .MediaType "MediaType.MainType" .MediaType.MainType "MediaType.SubType" .MediaType.SubType "MediaType.Suffixes" .MediaType.Suffixes) -}}
+  {{- if not .Params.disabled -}}
+    {{- $page_scratch.Add "tmp_subitems" (dict "Name" (replaceRE "[\\/\\.]" "-" .Name) "Params" .Params "File" .File "ResourceType" .ResourceType "Title" .Title "Permalink" .Permalink "RelPermalink" .RelPermalink "Content" .Content "MediaType" .MediaType "MediaType.MainType" .MediaType.MainType "MediaType.SubType" .MediaType.SubType "MediaType.Suffixes" .MediaType.Suffixes) -}}
+  {{- end -}}
 {{- end -}}
 
 {{- return ($page_scratch.Get "tmp_subitems") -}}
