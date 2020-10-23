@@ -8,7 +8,7 @@ subtitle = "Displays pages from dev/blog section"
 
 background = "dark"
 count = 5 # Default value is 10
-section = "example/blog" # Default value is current section
+section = "dev/blog" # Default value is current section
 #summary = false # Default value is true
 #images = false # Default value is true
 #read_more = true # Default value is empty (empty: show when content is truncated, false to never show, true to always show)
