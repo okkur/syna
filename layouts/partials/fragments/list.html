@@ -128,7 +128,7 @@
                           {{- else -}}
                             {{- printf " badge-%s" "secondary" -}}
                           {{- end -}}
-                        " href="{{ .Permalink }}">{{ i18n "content.readmore" | default "Read more..." }}</a>
+                        " href="{{ $page.Permalink }}">{{ i18n "content.readmore" | default "Read more..." }}</a>
                       {{- end -}}
                     {{- end -}}
                   {{- end -}}
@@ -143,7 +143,7 @@
             {{- range $content_page }}
               {{- if and (ne $self.Params.read_more false) (or $self.Params.read_more .Truncated) }}
                 <div class="card-footer">
-                  <a href="{{ .Permalink }}">{{ i18n "content.readmore" | default "Read more..." }}</a>
+                  <a href="{{ $page.Permalink }}">{{ i18n "content.readmore" | default "Read more..." }}</a>
                 </div>
               {{- end -}}
             {{- end -}}

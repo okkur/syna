@@ -84,6 +84,8 @@ All fragments within this directory are rendered on all pages by default.
 To overwrite a global fragment create a per page fragment with the same filename.
 This would overwrite the global one.
 
+In order to hide a global fragment in a specific page or section, you can use the [`hide` global variable]({{< ref "global-variables">}}/#hide).
+
 Aside from the `content/_global/` directory, you can create `_global/` directory in any section's directory (`content/[section]/_global/`).
 Each section can have global fragments and if there are multiple fragments with the same name, the fragment closest to the page would override the others.
 

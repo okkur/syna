@@ -21,6 +21,7 @@ subtitle = "Beautifully showcase your data with graphs based on chart.js"
 
 <details>
 <summary>Code (config.json)</summary>
+
 ```
 {
   "type": "line",
