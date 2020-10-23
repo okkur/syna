@@ -15,6 +15,29 @@ _2018_
 
 -->
 
+# v0.17.4
+
+_2020-10-23_
+
+- [Downloads for v0.17.3](https://syna.okkur.org/releases/v0.17.4)
+- [Changelog since v0.17.3](#changes-since-v0173)
+
+## Documentation for v0.17.3
+
+[Documentation](https://syna.okkur.org/docs) _Documentation defaults to latest release_
+
+## Changes since v0.17.3
+
+- Global variable hide similar to "disabled" [817](https://github.com/okkur/syna/pull/817)
+- repositories_github: Add allow list attribute [815](https://github.com/okkur/syna/pull/815)
+
+## Fixes since v0.17.3
+
+- Fix "read more" link on tiled list [832](https://github.com/okkur/syna/pull/832)
+- Fix disabled attribute on subitems [829](https://github.com/okkur/syna/pull/829)
+
+---
+
 # v0.17.3
 
 _2020-07-25_
