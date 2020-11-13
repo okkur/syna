@@ -60,8 +60,6 @@ Unique name for the form used to identify the form in scripts and on the page.
 
 #### post_url
 *type: string*  
-*default: formspree.io*  
-*Requires email to be set*
 
 URL to your own backend or a service you are using.
 

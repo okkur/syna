@@ -10,8 +10,8 @@ title = "Contact fragment"
 subtitle  = "*not working on demo page*"
 #title_align = "left" # Default is center, can be left, right or center
 
-# PostURL can be used with backends such as mailout from caddy
-post_url = "https://example.com/mailout" #default: formspree.io
+# PostURL can be used with backends such as formspree, or mailout from caddy
+post_url = "https://example.com/mailout"
 email = "mail@example.com"
 button_text = "Send Button" # defaults to theme default
 #netlify = false
