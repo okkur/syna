@@ -19,11 +19,8 @@
         {{- if .Params.netlify -}}
           {{- safeHTMLAttr (print " data-has-netlify=\"true\" netlify") -}}
         {{- else -}}
-          {{- safeHTMLAttr (printf " action=\"%s\"" (.Params.post_url | default (printf "https://formspree.io/%s" .Params.email))) -}}
-        {{- end -}}
-        {{- if and (isset .Params "email") -}}
-          {{- safeHTMLAttr (print " data-has-formspree=\"true\"") -}}
-        {{- end }}>
+          {{- safeHTMLAttr (printf " action=\"%s\"" .Params.post_url) -}}
+        {{- end -}}>
           <div class="row py-3 should-fade">
             <div class="col-md-6">
               {{- with .Params.fields.name }}

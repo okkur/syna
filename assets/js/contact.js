@@ -18,7 +18,7 @@ const validatorConfig = {
     );
   },
   onSuccess: function(e, form) {
-    if (form.dataset.hasNetlify || form.dataset.hasFormspree) {
+    if (form.dataset.hasNetlify) {
       return;
     }
 

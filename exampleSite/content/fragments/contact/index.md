@@ -19,5 +19,4 @@ Contact fragment renders a form with a maximum of 4 fields:
 
 This fragment supports validations and thus can have customized error messages.
 Recaptcha and Netlify (with Netlify auto Recaptcha) support is also available.
-With a [Formspree](https://formspree.io) account you can simply enter your
-email. Other options are using a custom server or other form submission handlers
+Other options are using a custom server or other form submission handlers such as [Formspree](https://formspree.io).
