@@ -1,15 +1,15 @@
 <!--
 # v0.18.0
-_2018_
+_2021_
 - [Downloads for v0.18.0](https://syna.okkur.org/releases/v0.18.0)
-- [Changelog since v0.17.2](#changes-since-v0171)
+- [Changelog since v0.17.4](#changes-since-v0174)
 
-## Documentation for v0.17
+## Documentation for v0.18
 [Documentation](https://syna.okkur.org/docs) *Documentation defaults to latest release*
 
-## Changes since v0.17.2
+## Changes since v0.17.4
 
-## Fixes since v0.17.2
+## Fixes since v0.17.4
 
 ---
 
@@ -19,10 +19,10 @@ _2018_
 
 _2020-10-23_
 
-- [Downloads for v0.17.3](https://syna.okkur.org/releases/v0.17.4)
+- [Downloads for v0.17.4](https://syna.okkur.org/releases/v0.17.4)
 - [Changelog since v0.17.3](#changes-since-v0173)
 
-## Documentation for v0.17.3
+## Documentation for v0.17.4
 
 [Documentation](https://syna.okkur.org/docs) _Documentation defaults to latest release_
 
