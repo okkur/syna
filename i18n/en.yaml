@@ -50,6 +50,18 @@
 - id: 404.button
   translation: "Main page"
   
+# List
+- id: list.first
+  translation: "First"
+- id: list.previous
+  translation: "Previous"
+- id: list.current
+  translation: "current"
+- id: list.next
+  translation: "Next"
+- id: list.last
+  translation: "Last"
+
 # Member
 - id: member.livesIn
   translation: "Lives in"
@@ -67,6 +79,8 @@
 # Search
 - id: search.search
   translation: "Search"
+- id: search.empty
+  translation: "Please enter a word or phrase above"
 - id: search.no_results
   translation: "No matches found"  
 
