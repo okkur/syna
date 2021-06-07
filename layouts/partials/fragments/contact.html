@@ -114,7 +114,7 @@
                     class="form-control text-dark"
                     type="text"
                     data-validation
-                    data-validation-error-msg="{{ .error | default (i18n "contact.defaultButton") }}"
+                    data-validation-error-msg="{{ .error | default (i18n "contact.defaultMessageError") }}"
                     placeholder="{{ with .text }}{{ . | markdownify }}{{ end }}"
                     rows="4"
                     required></textarea>
