@@ -14,7 +14,7 @@
 
 # Contact Form
 - id: contact.defaultError
-  translation: 'Veuillez remplir le champs'
+  translation: 'Veuillez remplir le champ'
 - id: contact.defaultNameError
   translation: "Veuillez saisir votre nom"
 - id: contact.defaultEmailError
@@ -50,6 +50,18 @@
 - id: 404.button
   translation: "Accueil"
   
+# List
+- id: list.first
+  translation: "Premier"
+- id: list.previous
+  translation: "Précédent"
+- id: list.current
+  translation: "actuel"
+- id: list.next
+  translation: "Suivant"
+- id: list.last
+  translation: "Dernier"
+
 # Member
 - id: member.livesIn
   translation: "Vie à"
@@ -68,7 +80,9 @@
 - id: search.search
   translation: "Rechercher"
 - id: search.no_results
-  translation: "Aucun résultat"  
+  translation: "Aucun résultat"
+- id: search.empty
+  translation: "Veuillez saisir un mot ou une phrase ci-dessus"
 
 # Stripe
 - id: stripe.pay
