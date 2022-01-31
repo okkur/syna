@@ -3,6 +3,14 @@
   translation: "Website baseado em"
 - id: pt
   translation: "Português"
+- id: github.star
+  translation: "Estrela"
+- id: github.stars
+  translation: "Estrelas"
+- id: linkedin.star
+  translation: "Estrela"
+- id: linkedin.stars
+  translation: "Estrelas"
 
 # Content
 - id: content.readmore

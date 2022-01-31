@@ -7,6 +7,10 @@
   translation: "Étoile"
 - id: github.stars
   translation: "Étoiles"
+- id: linkedin.star
+  translation: "Étoile"
+- id: linkedin.stars
+  translation: "Étoiles"
 
 # Content
 - id: content.readmore
