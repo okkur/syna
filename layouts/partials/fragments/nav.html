@@ -134,6 +134,14 @@
       </a>
     </div>
   {{- end }}
+  {{- with .Params.linkedin_button }}
+    <div class="d-none d-lg-block pl-auto">
+      <a class="btn btn-light ignore-color-change" href="{{ .url }}" role="button" title="{{- i18n "navbar.linkedin" | default "LinkedIn" -}}">
+        <i class="{{ printf "%s" .icon | default (printf "fab fa-linkedin") }} mr-2"></i>
+        {{ .text | default (i18n "linkedin.star") }}
+      </a>
+    </div>
+  {{- end }}  
 </nav>
 {{/*
   * Get the config of breadcrumbs and set defaults
