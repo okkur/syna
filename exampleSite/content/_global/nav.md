@@ -19,11 +19,11 @@ sticky = true
 
 [repo_button]
   url = "https://github.com/okkur/syna"
-  text = " " # default: "Star"
+  text = "" # default: "Star"
   icon = "fab fa-github" # defaults: "fab fa-github"
 
 [linkedin_button]  
   url = "https://www.linkedin.com/"
-  text = " "
+  text = ""
   icon = "" # defaults: "fab fa-linkedin"
 +++
