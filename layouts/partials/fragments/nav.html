@@ -129,19 +129,53 @@
   {{- with .Params.repo_button }}
     <div class="d-none d-lg-block pl-auto">
       <a class="btn btn-light ignore-color-change" href="{{ .url }}" role="button" title="{{- i18n "navbar.github" | default "Github" -}}">
-        <i class="{{ printf "%s" .icon | default (printf "fab fa-github") }} mr-2"></i>
-        {{ .text | default (i18n "github.star") }}
+        <i class="{{ printf "%s" .icon | default (printf "fab fa-github") }} {{ if not .no_text }}mr-2 {{ end }}"></i>
+        {{- if not .no_text -}}
+          {{ .text | default (i18n "github.star") }}
+        {{- end -}}
+      </a>
+    </div>
+  {{- end }}
+  {{- with .Params.twitter_button }}
+    <div class="d-none d-lg-block pl-auto">
+      <a class="btn btn-light ignore-color-change" href="{{ .url }}" role="button" title="{{- i18n "navbar.twitter" | default "twitter" -}}">
+        <i class="{{ printf "%s" .icon | default (printf "fab fa-twitter") }} {{ if not .no_text }}mr-2 {{ end }}"></i>
+        {{- if not .no_text -}}
+          {{ .text | default (i18n "twitter.star") }}
+        {{- end -}}
+      </a>
+    </div>
+  {{- end }}
+  {{- with .Params.facebook_button }}
+    <div class="d-none d-lg-block pl-auto">
+      <a class="btn btn-light ignore-color-change" href="{{ .url }}" role="button" title="{{- i18n "navbar.facebook" | default "facebook" -}}">
+        <i class="{{ printf "%s" .icon | default (printf "fab fa-facebook") }} {{ if not .no_text }}mr-2 {{ end }}"></i>
+        {{- if not .no_text -}}
+          {{ .text | default (i18n "facebook.star") }}
+        {{- end -}}
       </a>
     </div>
   {{- end }}
   {{- with .Params.linkedin_button }}
     <div class="d-none d-lg-block pl-auto">
-      <a class="btn btn-light ignore-color-change" href="{{ .url }}" role="button" title="{{- i18n "navbar.linkedin" | default "LinkedIn" -}}">
-        <i class="{{ printf "%s" .icon | default (printf "fab fa-linkedin") }} mr-2"></i>
-        {{ .text | default (i18n "linkedin.star") }}
+      <a class="btn btn-light ignore-color-change" href="{{ .url }}" role="button" title="{{- i18n "navbar.linkedin" | default "linkedin" -}}">
+        <i class="{{ printf "%s" .icon | default (printf "fab fa-linkedin") }} {{ if not .no_text }}mr-2 {{ end }}"></i>
+        {{- if not .no_text -}}
+          {{ .text | default (i18n "linkedin.star") }}
+        {{- end -}}
       </a>
     </div>
-  {{- end }}  
+  {{- end }}
+  {{- with .Params.custom_button }}
+    <div class="d-none d-lg-block pl-auto">
+      <a class="btn btn-light ignore-color-change" href="{{ .url }}" role="button" title="{{- i18n "navbar.custom" | default "custom" -}}">
+        <i class="{{ printf "%s" .icon | default (printf "fas fa-star") }} {{ if not .no_text }}mr-2 {{ end }}"></i>
+        {{- if not .no_text -}}
+          {{ .text | default (i18n "custom.star") }}
+        {{- end -}}
+      </a>
+    </div>
+  {{- end }} 
 </nav>
 {{/*
   * Get the config of breadcrumbs and set defaults

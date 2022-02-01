@@ -11,6 +11,18 @@
   translation: "Étoile"
 - id: linkedin.stars
   translation: "Étoiles"
+- id: twitter.star
+  translation: "Étoile"
+- id: twitter.stars
+  translation: "Étoiles"
+- id: facebook.star
+  translation: "Étoile"
+- id: facebook.stars
+  translation: "Étoiles"
+- id: custom.star
+  translation: "Étoile"
+- id: custom.stars
+  translation: "Étoiles"
 
 # Content
 - id: content.readmore

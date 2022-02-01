@@ -11,6 +11,18 @@
   translation: "Star"
 - id: linkedin.stars
   translation: "Stars"
+- id: twitter.star
+  translation: "Star"
+- id: twitter.stars
+  translation: "Stars"
+- id: facebook.star
+  translation: "Star"
+- id: facebook.stars
+  translation: "Stars"
+- id: custom.star
+  translation: "Star"
+- id: custom.stars
+  translation: "Stars"
 
 # Content
 - id: content.readmore

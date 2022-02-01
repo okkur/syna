@@ -21,9 +21,29 @@ sticky = true
   url = "https://github.com/okkur/syna"
   text = "" # default: "Star"
   icon = "fab fa-github" # defaults: "fab fa-github"
+  no_text = false # If true, the text will not be displayed
 
 [linkedin_button]  
   url = "https://www.linkedin.com/"
-  text = ""
+  text = "" # default: "Star"
   icon = "" # defaults: "fab fa-linkedin"
+  no_text = true # If true, the text will not be displayed
+
+#[twitter_button]
+#  url = "https://www.twitter.com/"
+#  text = "" # default: "Star"
+#  icon = "" # defaults: "fab fa-linkedin"  
+#  no_text = false # If true, the text will not be displayed
+
+#[facebook_button]
+#  url = "https://www.facebook.com/"
+#  text = "" # default: "Star"
+#  icon = "" # defaults: "fab fa-linkedin"    
+#  no_text = false # If true, the text will not be displayed
+
+#[custom_button]  
+#  url = "https://www.custom.com/"
+#  text = "" # default: "Star"
+#  icon = "" # defaults: "fas fa-star"  
+#  no_text = false # If true, the text will not be displayed
 +++
