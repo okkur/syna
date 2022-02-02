@@ -7,22 +7,6 @@
   translation: "Estrela"
 - id: github.stars
   translation: "Estrelas"
-- id: linkedin.star
-  translation: "Estrela"
-- id: linkedin.stars
-  translation: "Estrelas"
-- id: twitter.star
-  translation: "Estrela"
-- id: twitter.stars
-  translation: "Estrelas"
-- id: facebook.star
-  translation: "Estrela"
-- id: facebook.stars
-  translation: "Estrelas"
-- id: custom.star
-  translation: "Estrela"
-- id: custom.stars
-  translation: "Estrelas"
 
 # Content
 - id: content.readmore

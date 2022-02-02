@@ -136,46 +136,30 @@
       </a>
     </div>
   {{- end }}
-  {{- with .Params.twitter_button }}
+  {{- range .Params.buttons -}}
+    {{ $tmp := newScratch }}
+    {{ $tmp.Set "title" "GitHub"  }}
+    {{if and (isset . "title") (ne .title "")}}  
+      {{ $tmp.Set "title" .title  }}
+    {{end}}
+    {{if not (isset . "text") }}  
+      {{ $tmp.Set "text" ($tmp.Get "title")}}
+    {{else}}
+      {{ $tmp.Set "text" .text}}
+    {{end}}
+    {{if or (not (isset . "icon")) (eq .icon "")}}  
+      {{ $tmp.Set "icon" (printf "fab fa-%s" (lower ($tmp.Get "title")))  }}
+    {{else}}
+      {{ $tmp.Set "icon" .icon  }}
+    {{end}}
+    {{ $spacer := cond (ne (len ($tmp.Get "text")) 0) "mr-2" "" }}
     <div class="d-none d-lg-block pl-auto">
-      <a class="btn btn-light ignore-color-change" href="{{ .url }}" role="button" title="{{- i18n "navbar.twitter" | default "twitter" -}}">
-        <i class="{{ printf "%s" .icon | default (printf "fab fa-twitter") }} {{ if not .no_text }}mr-2 {{ end }}"></i>
-        {{- if not .no_text -}}
-          {{ .text | default (i18n "twitter.star") }}
-        {{- end -}}
+      <a class="btn btn-light ignore-color-change" href="{{ .url }}" role="button" title="{{$tmp.Get "title"}}">
+        <i class="{{$tmp.Get "icon"}} {{$spacer}}"></i>
+          {{$tmp.Get "text"}}
       </a>
     </div>
-  {{- end }}
-  {{- with .Params.facebook_button }}
-    <div class="d-none d-lg-block pl-auto">
-      <a class="btn btn-light ignore-color-change" href="{{ .url }}" role="button" title="{{- i18n "navbar.facebook" | default "facebook" -}}">
-        <i class="{{ printf "%s" .icon | default (printf "fab fa-facebook") }} {{ if not .no_text }}mr-2 {{ end }}"></i>
-        {{- if not .no_text -}}
-          {{ .text | default (i18n "facebook.star") }}
-        {{- end -}}
-      </a>
-    </div>
-  {{- end }}
-  {{- with .Params.linkedin_button }}
-    <div class="d-none d-lg-block pl-auto">
-      <a class="btn btn-light ignore-color-change" href="{{ .url }}" role="button" title="{{- i18n "navbar.linkedin" | default "linkedin" -}}">
-        <i class="{{ printf "%s" .icon | default (printf "fab fa-linkedin") }} {{ if not .no_text }}mr-2 {{ end }}"></i>
-        {{- if not .no_text -}}
-          {{ .text | default (i18n "linkedin.star") }}
-        {{- end -}}
-      </a>
-    </div>
-  {{- end }}
-  {{- with .Params.custom_button }}
-    <div class="d-none d-lg-block pl-auto">
-      <a class="btn btn-light ignore-color-change" href="{{ .url }}" role="button" title="{{- i18n "navbar.custom" | default "custom" -}}">
-        <i class="{{ printf "%s" .icon | default (printf "fas fa-star") }} {{ if not .no_text }}mr-2 {{ end }}"></i>
-        {{- if not .no_text -}}
-          {{ .text | default (i18n "custom.star") }}
-        {{- end -}}
-      </a>
-    </div>
-  {{- end }} 
+  {{- end -}}
 </nav>
 {{/*
   * Get the config of breadcrumbs and set defaults
