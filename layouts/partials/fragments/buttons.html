@@ -9,6 +9,9 @@
         {{- $color := .color | default "primary" -}}
         {{- printf " btn-%s" $color -}}
       " href="{{ .url | relLangURL }}">
+        {{- if isset . "icon" -}}
+          <i class="{{ printf "%s" .icon | default (printf "fas fa-check") }} {{- if isset . "text" -}}{{ print " mr-2"}}{{- end -}}"></i>
+        {{- end -}}
         {{- .text -}}
       </a>
     {{- end }}

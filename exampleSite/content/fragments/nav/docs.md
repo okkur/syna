@@ -116,4 +116,47 @@ The icon can be customized via `repo_button.icon`.
 *type: string*  
 *default: fab fa-github*
 
+##### repo_button.no_text
+*type: boolean*  
+*default: false*
+
+#### buttons
+*type: array of object*
+
+This enables the addition of one or more buttons on the top right navbar, just like `repo_button`. It can be used in conjunction with `repo_button` or replace it entirely if required.
+
+The following configuration mimics the behavior of `repo_button`:
+
+```
+[[buttons]] 
+  url = "https://github.com/okkur/syna"
+  text = "Star"
+```
+
+##### buttons.url
+*type: string*  
+*required*
+
+##### buttons.title
+*type: string*  
+*default: GitHub*
+
+Defines the title of the button. The title is used to define de default values for `buttons.text` and `buttons.icon`.
+
+It uses the same base names of **Font Awesome** to display icons but in a case insensitive manner. For example, `GitHub` sets the default `buttons.text` to `GitHub` and the default `buttons.icon` to `fab fa-github`. If you set the title name to `fAcEbOoK`, the default `buttons.text` will be `fAcEbOoK` and the default `buttons.icon` will be `fab fa-facebook`.
+
+##### buttons.text
+*type: string*  
+*default: The name of the profile* 
+
+Sets the text to be displayed on the right of the icon in the button. If not set, it will try to use the default value. If set to "", the text will be removed and the icon centered within the button.
+
+##### buttons.text
+*type: string*  
+*default: The profile's default*
+
+Sets the icon to be displayed on the left or center of the button. If unset or setted to "", the icon used will be the default icon defined by the profile.
+
+Its actual value must be one of the styles defined by **Font Awesome**. For example `fab fa-accessible-icon` for `accessible-icon`, `fas fa-star` for `star`, etc.
+
 [Global variables]({{< ref "global-variables" >}}) are documented as well and have been omitted from this page.

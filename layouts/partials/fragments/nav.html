@@ -129,11 +129,37 @@
   {{- with .Params.repo_button }}
     <div class="d-none d-lg-block pl-auto">
       <a class="btn btn-light ignore-color-change" href="{{ .url }}" role="button" title="{{- i18n "navbar.github" | default "Github" -}}">
-        <i class="{{ printf "%s" .icon | default (printf "fab fa-github") }} mr-2"></i>
-        {{ .text | default (i18n "github.star") }}
+        <i class="{{ printf "%s" .icon | default (printf "fab fa-github") }} {{ cond (not .no_text) "mr-2" "" }}"></i>
+        {{- if not .no_text -}}
+          {{ .text | default (i18n "github.star") }}
+        {{- end -}}
       </a>
     </div>
   {{- end }}
+  {{- range .Params.buttons -}}
+    {{ $tmp := newScratch }}
+    {{ $tmp.Set "title" "GitHub"  }}
+    {{if and (isset . "title") (ne .title "")}}  
+      {{ $tmp.Set "title" .title  }}
+    {{end}}
+    {{if not (isset . "text") }}  
+      {{ $tmp.Set "text" ($tmp.Get "title")}}
+    {{else}}
+      {{ $tmp.Set "text" .text}}
+    {{end}}
+    {{if or (not (isset . "icon")) (eq .icon "")}}  
+      {{ $tmp.Set "icon" (printf "fab fa-%s" (lower ($tmp.Get "title")))  }}
+    {{else}}
+      {{ $tmp.Set "icon" .icon  }}
+    {{end}}
+    {{ $spacer := cond (ne (len ($tmp.Get "text")) 0) "mr-2" "" }}
+    <div class="d-none d-lg-block pl-auto">
+      <a class="btn btn-light ignore-color-change" href="{{ .url }}" role="button" title="{{$tmp.Get "title"}}">
+        <i class="{{$tmp.Get "icon"}} {{$spacer}}"></i>
+          {{$tmp.Get "text"}}
+      </a>
+    </div>
+  {{- end -}}
 </nav>
 {{/*
   * Get the config of breadcrumbs and set defaults
