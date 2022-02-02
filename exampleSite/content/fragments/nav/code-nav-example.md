@@ -29,6 +29,7 @@ search = true
   url = "https://github.com/okkur/syna"
   text = "Star" # default: "Star"
   icon = "fab fa-github" # defaults: "fab fa-github"
+  # no_text = true # Uncomment to remove the text
 
 [[buttons]] 
   url = "https://linkedin.com/"

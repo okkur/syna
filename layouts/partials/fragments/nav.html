@@ -129,7 +129,7 @@
   {{- with .Params.repo_button }}
     <div class="d-none d-lg-block pl-auto">
       <a class="btn btn-light ignore-color-change" href="{{ .url }}" role="button" title="{{- i18n "navbar.github" | default "Github" -}}">
-        <i class="{{ printf "%s" .icon | default (printf "fab fa-github") }} {{ if not .no_text }}mr-2 {{ end }}"></i>
+        <i class="{{ printf "%s" .icon | default (printf "fab fa-github") }} {{ cond (not .no_text) "mr-2" "" }}"></i>
         {{- if not .no_text -}}
           {{ .text | default (i18n "github.star") }}
         {{- end -}}
