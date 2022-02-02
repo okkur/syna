@@ -103,25 +103,3 @@
   translation: "Change Price"
 - id: stripe.change_currency
   translation: "Change Currency"
-
-# Social buttons
-- id: github.title
-  translation: "GitHub"
-- id: github.icon
-  translation: "fab fa-github"
-- id: linkedin.title
-  translation: "LinkedIn"
-- id: linkedin.icon
-  translation: "fab fa-linkedin"
-- id: twitter.title
-  translation: "Twitter"
-- id: twitter.icon
-  translation: "fab fa-twitter"
-- id: facebook.title
-  translation: "Facebook"
-- id: facebook.icon
-  translation: "fab fa-facebook"
-- id: default_button.title
-  translation: "?"
-- id: default_button.icon
-  translation: "fas fa-question"
