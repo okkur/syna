@@ -17,4 +17,8 @@ button_url = "#"
 [[features]]
   text = "**Email** support"
   icon = "fas fa-check"
+
+[[features]]
+  text = "Unavailable feature"
+  icon = "fas fa-times-circle red"  
 +++
