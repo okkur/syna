@@ -13,7 +13,7 @@
           {{- partial "helpers/text-color.html" (dict "self" $self "light" "white" "dark" "black-50") -}}
         ">
           <div class="row mx-0 mr-lg-auto justify-content-center">
-            {{- with .Params.copyright }}
+            {{- with .Site.Copyright }}
               <div class="col-auto copyright-notice">
                 {{- . | markdownify -}}
               </div>
@@ -28,7 +28,7 @@
           </div>
         </div>
       </div>
-      {{- if eq .Params.attribution true }}
+      {{- if eq .Param.attribution true }}
         <div class="col-auto mx-auto">
           <div class="row mx-0 navbar-text text-center
             {{- partial "helpers/text-color.html" (dict "self" $self "light" "white" "dark" "black-50") -}}
