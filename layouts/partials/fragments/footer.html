@@ -27,7 +27,7 @@
         <div class="row justify-content-left ml-0">
           {{- range sort .Site.Menus.footer_social }}
             <span class="fa-stack fa-2x mt-3 mr-1" title="{{ .Name }}">
-              <a href="{{ .URL | relLangURL }}" class="ignore-color-change
+              <a href="{{ .URL | absLangURL }}" class="ignore-color-change
                 {{- if eq $bg "primary" -}}
                   {{- print " text-dark" -}}
                 {{- end -}}">
