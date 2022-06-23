@@ -1,5 +1,5 @@
 blank_issues_enabled: true
 contact_links:
   - name: Support guidelines
-    url: /blob/master/SUPPORT.md
+    url: https://github.com/okkur/syna/blob/master/SUPPORT.md
     about: Please read these!
