@@ -1,0 +1,12 @@
+name: Feature request
+description: Request a feature :)
+title: "[Feature Request]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: details
+    attributes:
+      label: Describe your feature request!
+      description: Go into as much detail as you please
+    validations:
+      required: true
