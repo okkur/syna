@@ -48,7 +48,7 @@ class SynaSearch {
       return callback(this.indexCache);
     }
 
-    $.ajax({ method: 'get', url: '/index.json' }).then((data) => {
+    $.ajax({ method: 'get', url: (window.location.origin + window.location.pathname).replace(/[\/]search[\/]$/, '') + 'index.json' }).then((data) => {
       this.indexCache = data;
       callback(data);
     });
