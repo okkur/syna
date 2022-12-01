@@ -2,7 +2,7 @@
 {{- .page_scratch.Add "js" (dict "file" "syna-collapse.js") -}}
 
 {{- $list_pages := partial "helpers/list-pages.html" (dict "Site" .Site "Params" .Params "root" .root "page_scratch" .page_scratch) -}}
-{{- $render_pagination := $list_pages.render_pagination -}}
+{{- $render_pagination := $list_pages.renderPagination -}}
 {{- $sorted_pages := $list_pages.sorted_pages -}}
 
 {{- $bg := .self.Scratch.Get "bg" }}
