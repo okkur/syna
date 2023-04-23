@@ -12,6 +12,9 @@
         {{- with .Params.minHeight -}}
           {{- (printf "min-height: %s;" .) | safeCSS -}}
         {{- end -}}
+        {{- if .Params.parallax -}}
+          background-attachment: fixed;
+        {{- end -}}
         background-image:url({{ partial "helpers/image.html" (dict "root" $self "asset" .Params.header) }})"
       class="jumbotron text-center header-image mb-0
         {{- printf " bg-%s" $bg -}}
