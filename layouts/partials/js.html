@@ -39,7 +39,7 @@
     {{- end -}}
   {{- end -}}
 {{- end -}}
-{{- template "_internal/google_analytics_async.html" . -}}
+{{- template "_internal/google_analytics.html" . -}}
 
 {{- if .Site.Params.analytics.piwik -}}
   {{- partial "_analytics/piwik.html" . -}}
