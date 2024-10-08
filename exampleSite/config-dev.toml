@@ -7,7 +7,7 @@ theme = "syna"
 themesDir = "../.."
 enableGitInfo = true
 version = "0.17.4"
-disableKinds = ["RSS", "taxonomy", "taxonomyTerm"]
+disableKinds = ["RSS", "taxonomy"]
 
 RelativeURLs = true
 CanonifyURLs = true
