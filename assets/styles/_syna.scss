@@ -149,6 +149,10 @@ section .bg {
       pre {
         background-color: $dark;
         color: $light;
+
+        code {
+          background-color: inherit;
+        }
       }
 
       p code {
