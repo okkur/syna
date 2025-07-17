@@ -1,7 +1,7 @@
 +++
 fragment = "list"
 weight = 110
-section = "dev/dev-alignments"
+section = "dev/alignments"
 count = 1000
 summary = false
 tiled = true
