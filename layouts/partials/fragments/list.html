@@ -20,7 +20,7 @@
       {{- end -}}
       {{- $content_page := first 1 (where ($self.page_scratch.Get "article_page_fragments") "Params.fragment" "in" "content") -}}
       {{- $page_id := index (last 1 (findRE "[^\\/]+" .File.Dir)) 0 -}}
-      {{- $display_summary := or (not (isset $self.Params "summary")) (eq $self.Params.summary true) -}}
+      {{- $display_summary := or (not (isset $self.Params "summary")) (eq $self.Params.summary "true") -}}
       {{- $slot_context := dict "page" $page "content_fragment" (index $content_page 0) -}}
       {{- partial "helpers/slot.html" (dict "root" $ "slot" "before-item" "data" $slot_context) -}}
       {{- if $self.Params.tiled -}}
