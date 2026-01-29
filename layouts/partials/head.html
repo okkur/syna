@@ -72,7 +72,7 @@
 
   {{- with .Site.Params.custom -}}
     {{- with .favicon }}
-      <link rel="shortcut icon" type="image/x-icon" href="{{ . }}">
+      <link rel="shortcut icon" type="image/x-icon" href="{{ . | relURL }}">
       <link rel="icon" {{ with $.Site.Params.custom.favicon_ico_sizes }}sizes="{{ . }}"{{ end }} type="image/x-icon" href="{{ . | relURL }}">
     {{- end }}
 
