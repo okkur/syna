@@ -5,6 +5,10 @@
   {{- $page = .root.Site.GetPage "page" (printf "/%s" (path.Dir (path.Dir .this.File.Dir))) -}}
   {{- $fragment_path = strings.TrimSuffix ".md" (replace (path.Dir .this.File.Path) "/index.md" "") -}}
 {{- end -}}
+{{- $page_dir := "" -}}
+{{- with $page -}}
+  {{- with .File -}}{{- $page_dir = .Dir -}}{{- end -}}
+{{- end -}}
 {{/* Global resource fallback */}}
 {{- $image := .asset.image -}}
 
@@ -20,7 +24,7 @@
 
 {{/* Page specific resource */}}
 {{- if $page -}}
-  {{- $location := (printf "%s/%s" $page.File.Dir $image) -}}
+  {{- $location := (printf "%s/%s" $page_dir $image) -}}
   {{- if (fileExists (printf "content/%s" $location)) -}}
     {{- .root.page_scratch.Set "resource" ($page.Resources.GetMatch $image) -}}
   {{- end -}}
@@ -29,7 +33,7 @@
 {{/* Fragment specific resource */}}
 {{- $location := (printf "%s/%s" $fragment_path $image) -}}
 {{- if (fileExists (printf "content/%s" $location)) -}}
-  {{- .root.page_scratch.Set "resource" ($page.Resources.GetMatch (strings.TrimPrefix $page.File.Dir $location)) -}}
+  {{- .root.page_scratch.Set "resource" ($page.Resources.GetMatch (strings.TrimPrefix $page_dir $location)) -}}
 {{- end -}}
 
 {{- if eq (.root.page_scratch.Get "resource") nil -}}

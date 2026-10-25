@@ -143,3 +143,7 @@ lastmod = ["lastmod", ":git", "date"]
   url = "/about"
   name = "About Us"
   weight = 10
+
+# The public demo intentionally renders incomplete fragments as warnings.
+[security.funcs]
+  getenv = ["^HUGO_", "^CI$", "^DEMO_MODE$"]

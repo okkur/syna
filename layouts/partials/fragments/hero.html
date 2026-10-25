@@ -105,7 +105,7 @@
   </div>
 </header>
 {{- if .Params.particles }}
-{{- if .page.File.Dir -}}
+{{- if and .page.File .page.File.Dir -}}
   <script>
     var fragmentName = "{{ .Name }}";
     {{- $file_path := printf "%s%s/config.json" .page.File.Dir .Name -}}

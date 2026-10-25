@@ -117,7 +117,7 @@
           </div>
         </div>
       {{- end }}
-      {{- if .Site.IsMultiLingual -}}
+      {{- if gt (len .Site.Languages) 1 -}}
         {{- range .Site.Languages }}
           <a class="btn btn-secondary p-1 m-1" href="{{ delimit (slice "/" .) "" }}" role="button">
             {{ . }}

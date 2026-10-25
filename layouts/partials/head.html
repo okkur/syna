@@ -54,18 +54,18 @@
   {{- $styleTemplated := $sassTemplate | resources.ExecuteAsTemplate "main.scss" . -}}
   {{- if hugo.IsProduction -}}
     {{- if .Site.Params.postcss -}}
-      {{- $style := $styleTemplated | resources.ToCSS $options | resources.PostCSS | resources.Minify | resources.Fingerprint | resources.PostProcess }}
+      {{- $style := $styleTemplated | toCSS $options | postCSS | resources.Minify | resources.Fingerprint | resources.PostProcess }}
       <link href="{{ $style.Permalink }}" rel="stylesheet">
     {{- else -}}
-      {{- $style := $styleTemplated | resources.ToCSS $options | resources.Minify | resources.Fingerprint }}
+      {{- $style := $styleTemplated | toCSS $options | resources.Minify | resources.Fingerprint }}
       <link href="{{ $style.Permalink }}" rel="stylesheet">
     {{- end -}}
   {{- else -}}
     {{- if .Site.Params.postcss -}}
-      {{- $style := $styleTemplated | resources.ToCSS $options | resources.PostCSS | resources.PostProcess }}
+      {{- $style := $styleTemplated | toCSS $options | postCSS | resources.PostProcess }}
       <link href="{{ $style.Permalink }}" rel="stylesheet">
     {{- else -}}
-      {{- $style := $styleTemplated | resources.ToCSS $options }}
+      {{- $style := $styleTemplated | toCSS $options }}
       <link href="{{ $style.Permalink }}" rel="stylesheet">
     {{- end -}}
   {{- end -}}

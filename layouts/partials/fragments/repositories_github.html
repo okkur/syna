@@ -1,6 +1,13 @@
 {{- $self := .self -}}
 {{- $bg := .self.Scratch.Get "bg" }}
-{{- .page_scratch.Set "tmp_repositories" ((getJSON (printf "https://api.github.com/users/%s/repos" .Params.user)) | default slice) -}}
+{{- $url := printf "https://api.github.com/users/%s/repos" .Params.user -}}
+{{- $repositories_data := slice -}}
+{{- with resources.GetRemote $url -}}
+  {{- $repositories_data = . | transform.Unmarshal -}}
+{{- else -}}
+  {{- errorf "Unable to load GitHub repositories from %s: resource not found" $url -}}
+{{- end -}}
+{{- .page_scratch.Set "tmp_repositories" ($repositories_data | default slice) -}}
 
 {{- if or (not (isset .Params "display_forks")) (eq .Params.display_forks false) -}}
   {{- .page_scratch.Set "tmp_repositories" (where (.page_scratch.Get "tmp_repositories") ".fork" "eq" false) -}}
